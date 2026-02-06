@@ -2,6 +2,8 @@
 
 A small browser-based tool for inspecting and editing Clicker Heroes savedata. Use it to view and modify your save (gold, rubies, heroes, ascension, achievements, profile data, etc.). Always back up your save before making changes.
 
+<img width="980" height="835" alt="editor" src="https://github.com/user-attachments/assets/8f75e357-368b-4f25-ac89-ecc003654029" />
+
 **Quick Start**
 
 - **Open:** Double-click [index.html](index.html) or serve the folder and visit `http://localhost:8000`.
