@@ -25,7 +25,7 @@ const Heroes = {
 	24: ['Shinatobe, Wind Deity', 'heroes/shinatobe.webp'],
 	25: ['Grant, The General', 'heroes/grant.webp'],
 	26: ['Frostleaf', 'heroes/frostleaf.webp'],
-	27: ['Dread Knight', 'heroes/dreadknight.webp'],
+	27: ['Dread Knight', 'heroes/dread_knight.webp'],
 	28: ['Atlas', 'heroes/atlas.webp'],
 	29: ['Terra', 'heroes/terra.webp'],
 	30: ['Phthalo', 'heroes/phthalo.webp'],
@@ -36,7 +36,7 @@ const Heroes = {
 	35: ['Astraea', 'heroes/astraea.webp'],
 	36: ['Chiron', 'heroes/chiron.webp'],
 	37: ['Moloch', 'heroes/moloch.webp'],
-	38: ['Bomber Max', 'heroes/bombermax.webp'],
+	38: ['Bomber Max', 'heroes/bomber_max.webp'],
 	39: ['Gog', 'heroes/gog.webp'],
 	40: ['Wepwawet', 'heroes/wepwawet.webp'],
 	41: ['Tsuchi', 'heroes/tsuchi.webp'],
@@ -47,10 +47,10 @@ const Heroes = {
 	46: ['Xavira', 'heroes/xavira.webp'],
 	47: ['Cadu, Tomb Guardian', 'heroes/cadu.webp'],
 	48: ['Ceus, Tomb Guardian', 'heroes/ceus.webp'],
-	49: ['The Maw', 'heroes/themaw.webp'],
+	49: ['The Maw', 'heroes/the_maw.webp'],
 	50: ['Yachiyl, The Primordial Soul', 'heroes/yachiyl.webp'],
-	51: ['Ace Scout Rose', 'heroes/acescoutrose.webp'],
-	52: ['Ace Scout Sophia', 'heroes/acescoutsophia.webp'],
-	53: ['Ace Scout Blanche', 'heroes/acescoutblanche.webp'],
-	54: ['Ace Scout Dorothy', 'heroes/acescoutdorothy.webp']
+	51: ['Ace Scout Rose', 'heroes/ace_scout_rose.webp'],
+	52: ['Ace Scout Sophia', 'heroes/ace_scout_sophia.webp'],
+	53: ['Ace Scout Blanche', 'heroes/ace_scout_blanche.webp'],
+	54: ['Ace Scout Dorothy', 'heroes/ace_scout_dorothy.webp']
 };
