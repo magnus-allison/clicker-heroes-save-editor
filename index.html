@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title -ld="page-title-programs"></title>
+	<link rel="stylesheet" href="./css/index.css">
+	<script type="text/javascript" src="/js/default.js"></script>
+	<meta -lp src="/default/scripts.html">
+	<script type="text/javascript" src="./js/pako.min.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+	<script type="text/javascript" src="./js/exampleSave.js"></script>
+	<script type="text/javascript" src="./js/achievements.js"></script>
+	<script type="text/javascript" src="./js/profile.js"></script>
+	<script type="text/javascript" src="./js/currentAscension.js"></script>
+	<script type="text/javascript" src="./js/heroes.js"></script>
+	<script type="text/javascript" src="./js/SaveViewer.js?v=2"></script>
+</head>
+
+<body v="1">
+	<meta -lp src="/default/header.html">
+	<div class="app-body">
+		<div class="app-left-panel"></div>
+		<div class="app-center">
+			<div class="flex-ver">
+				<div class="flex-hor file-menu">
+					<div class="flex-ver">
+						<div>Import Save Data</div>
+						<div>
+							<button onclick="fillExampleButtonEvent()">Load Example Save</button>
+						</div>
+						<div>
+							<input type="file" id="file-input" />
+						</div>
+						<div>
+							<input type="text" id="decodeField" placeholder="Paste your save data here..." -sa>
+						</div>
+						<div>
+							<button onclick="decodeSaveFromField()">Read Save Data</button>
+						</div>
+					</div>
+					<div class="flex-ver">
+						<div>Export Save Data</div>
+						<div>
+							<button onclick="encodeButtonClick()">Encode & Copy Save</button>
+						</div>
+						<div>
+							<input type="text" id="encodeField" placeholder="Encoded save will appear here..." rows="1" -sa>
+						</div>
+						<div>
+							<button onclick="copyButtonClick()">Copy to Clipboard</button>
+						</div>
+					</div>
+
+				</div>
+				<div class="panels">
+
+					<details>
+						<summary>Profile Values</summary>
+						<div>
+							<table class="table-border" id="ProfileValuesTable">
+								<tr>
+									<th>Image</th>
+									<th>Item</th>
+									<th>Value</th>
+								</tr>
+							</table>
+							<p style="margin-top: 16px; color: #888;">Auto Clicker Skins:</p>
+							<table class="table-border" id="AutoclickerSkinsTable" style="margin-top: 12px;">
+								<tr>
+									<th>Image</th>
+									<th>Skin Name</th>
+									<th>Unlocked</th>
+								</tr>
+							</table>
+						</div>
+					</details>
+
+					<details>
+						<summary>Current Ascension</summary>
+						<div>
+							<table class="table-border" id="CurrentAscensionTable">
+								<tr>
+									<th>Image</th>
+									<th>Item</th>
+									<th>Value</th>
+								</tr>
+							</table>
+						</div>
+					</details>
+
+					<details>
+						<summary>Heroes</summary>
+						<div>
+							<table class="table-border" id="HeroesTable">
+								<tr>
+									<th>Image</th>
+									<th>Name</th>
+									<th>Level</th>
+								</tr>
+							</table>
+						</div>
+					</details>
+
+					<details>
+						<summary>Achievements</summary>
+						<div>
+							<div id="AchievementsTables" class="flex-free"></div>
+						</div>
+					</details>
+
+					<details>
+						<summary>Transcensions & Ascensions</summary>
+						<div>
+							<p style="max-width: 600px;">Save contains all transcensions and ascensions information. This can significantly increase
+								the size of your save file. You can safely delete this information without any in-game consequences.
+							</p>
+							<p style="margin-top: 8px;">To view all ascensions in JSON, navigate to <code>'stats' > 'transcensions'</code></p>
+							<button onclick="ClearTranscensions()" style="margin-top: 12px;">Clear Transcension Data</button>
+						</div>
+					</details>
+
+					<details>
+						<summary>Clan Values</summary>
+						<div>
+							<table>
+								<tr>
+									<td>Clan Raid Class</td>
+									<td><input type="number" -ssf -sdv="newClanRaidClassId" title="0=None, 1=Rogue, 2=Mage, 3=Priest"></td>
+								</tr>
+								<tr>
+									<td>Clan Raid Class Level</td>
+									<td><input type="number" -ssf -sdv="newClanRaidClassLevel"></td>
+								</tr>
+								<tr>
+									<td>Immortal Souls</td>
+									<td><input type="number" -ssf -sdv="immortalSouls"></td>
+								</tr>
+								<tr>
+									<td>Titan Damage</td>
+									<td><input type="number" -ssf -sdv="titanDamage"></td>
+								</tr>
+							</table>
+							<p style="font-size: 12px; color: #666;">Raid Classes: 0 = None, 1 = Rogue, 2 = Mage, 3 = Priest</p>
+						</div>
+
+					</details>
+
+					<details>
+						<summary>Mercenaries</summary>
+						<div>
+
+							<table>
+								<tr>
+									<td>Total Mercenaries Revived</td>
+									<td><input type="text" -ssf -sdv="totalMercenariesRevived"></td>
+								</tr>
+								<tr>
+									<td>Total Mercenaries Buried</td>
+									<td><input type="text" -ssf -sdv="totalMercenariesBuried"></td>
+								</tr>
+								<tr>
+									<td>Total 5-Minute Quests</td>
+									<td><input type="text" -ssf -sdv="total5MinuteQuests"></td>
+								</tr>
+								<tr>
+									<td>Hero Soul Quests Completed</td>
+									<td><input type="text" -ssf -sdv="heroSoulQuestsCompleted"></td>
+								</tr>
+								<tr>
+									<td>Gold Quests Completed</td>
+									<td><input type="text" -ssf -sdv="goldQuestsCompleted"></td>
+								</tr>
+								<tr>
+									<td>Ruby Quests Completed</td>
+									<td><input type="text" -ssf -sdv="rubyQuestsCompleted"></td>
+								</tr>
+								<tr>
+									<td>Relic Quests Completed</td>
+									<td><input type="text" -ssf -sdv="relicQuestsCompleted"></td>
+								</tr>
+								<tr>
+									<td>Skill Quests Completed</td>
+									<td><input type="text" -ssf -sdv="skillQuestsCompleted"></td>
+								</tr>
+							</table>
+							<table id="mercenariesTablePrefab" class="table-border">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Level</th>
+										<th>Time to Die</th>
+										<th>Bonus Lives</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><input type="text" -sdv="mercenaries-mercenaries-0-name"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-0-level"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-0-timeToDie"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-0-bonusLives"></td>
+									</tr>
+									<tr>
+										<td><input type="text" -sdv="mercenaries-mercenaries-1-name"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-1-level"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-1-timeToDie"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-1-bonusLives"></td>
+									</tr>
+									<tr>
+										<td><input type="text" -sdv="mercenaries-mercenaries-2-name"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-2-level"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-2-timeToDie"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-2-bonusLives"></td>
+									</tr>
+									<tr>
+										<td><input type="text" -sdv="mercenaries-mercenaries-3-name"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-3-level"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-3-timeToDie"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-3-bonusLives"></td>
+									</tr>
+									<tr>
+										<td><input type="text" -sdv="mercenaries-mercenaries-4-name"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-4-level"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-4-timeToDie"></td>
+										<td><input type="number" -sdv="mercenaries-mercenaries-4-bonusLives"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</details>
+
+					<details>
+						<summary>Outsiders & Ancient Souls</summary>
+						<div>
+							<table>
+								<tr>
+									<td>Ancient Souls</td>
+									<td><input type="text" -ssf -sdv="ancientSouls"></td>
+								</tr>
+								<tr>
+									<td>Ancient Souls Total</td>
+									<td><input type="text" -ssf -sdv="ancientSoulsTotal"></td>
+								</tr>
+								<tr>
+									<td>Hero Souls Sacrificed</td>
+									<td><input type="text" -ssf -sdv="heroSoulsSacrificed"></td>
+								</tr>
+							</table>
+							<table class="table-border table-outsiders">
+								<tr>
+									<th>Image</th>
+									<th>Description</th>
+									<th>Level</th>
+									<th>Cost</th>
+									<th>Spent</th>
+								</tr>
+								<tr>
+									<td>
+										<img
+											src="https://static.wikia.nocookie.net/clickerheroes/images/4/49/Outsider_xyl.png">
+									</td>
+									<td>
+										<div>
+											<p>Xyliqil</p>
+											<p>+<b -sol="1" -slid="0">X</b>% effectiveness of all idle bonuses</p>
+										</div>
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-1-level" -svt="0"></td>
+									</td>
+									<td>
+										<b -sol="1" -slid="2">X</b> AS
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-1-spentAncientSouls">
+									</td>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img
+											src="https://static.wikia.nocookie.net/clickerheroes/images/b/b5/Outsider_chor.png">
+									</td>
+									<td>
+										<div>
+											<p>Chor'gorloth</p>
+											<p>-<b -sol="2" -slid="0">X</b>% Ancient cost</p>
+										</div>
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-2-level" -svt="0"></td>
+									</td>
+									<td>
+										<b -sol="2" -slid="2">X</b> AS
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-2-spentAncientSouls">
+									</td>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img
+											src="https://static.wikia.nocookie.net/clickerheroes/images/0/06/Outsider_phan.png">
+									</td>
+									<td>
+										<div>
+											<p>Phandoryss</p>
+											<p>+<b -sol="3" -slid="0">X</b>% DPS</p>
+										</div>
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-3-level" -svt="0"></td>
+									</td>
+									<td>
+										<b -sol="3" -slid="2">X</b> AS
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-3-spentAncientSouls">
+									</td>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img
+											src="https://static.wikia.nocookie.net/clickerheroes/images/2/2d/Outsider_ponyboy.png">
+									</td>
+									<td>
+										<div>
+											<p>Ponyboy</p>
+											<p>+<b -sol="5" -slid="0">X</b>% Primal Hero Souls</p>
+										</div>
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-5-level" -svt="0"></td>
+									</td>
+									<td>
+										<b -sol="5" -slid="2">X</b> AS
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-5-spentAncientSouls">
+									</td>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img
+											src="https://static.wikia.nocookie.net/clickerheroes/images/b/bd/Outsider_borb.png">
+									</td>
+									<td>
+										<div>
+											<p>Borb</p>
+											<p>+<b -sol="6" -slid="0">X</b>% effectiveness of Kumawakamaru (+12.5% per
+												level)</p>
+											<p>On cap(1498) lvl of Kumawakamaru total power will be:</p>
+											<p>-<b -sol="6" -slid="1">X</b> monsters on level (min : 2)</p>
+										</div>
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-6-level" -svt="0"></td>
+									</td>
+									<td>
+										<b -sol="6" -slid="2">X</b> AS
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-6-spentAncientSouls">
+									</td>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img
+											src="https://static.wikia.nocookie.net/clickerheroes/images/3/3c/Outsider_rhageist.png">
+									</td>
+									<td>
+										<div>
+											<p>Rhageist</p>
+											<p>+<b -sol="7" -slid="0">X</b>% effectiveness of Atman (+25% per level)</p>
+											<p>On cap(2880) lvl of Atman total power will be:</p>
+											<p>+<b -sol="7" -slid="1">X</b>% chance of Primal Boss (min : 5%)</p>
+										</div>
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-7-level" -svt="0"></td>
+									</td>
+									<td>
+										<b -sol="7" -slid="2">X</b> AS
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-7-spentAncientSouls">
+									</td>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img
+											src="https://static.wikia.nocookie.net/clickerheroes/images/1/1d/Outsider_k%27ariqua.png">
+									</td>
+									<td>
+										<div>
+											<p>K'Ariqua</p>
+											<p>+<b -sol="8" -slid="0">X</b>% effectiveness of Bubos (+50% per level)</p>
+											<p>On cap(18715) lvl of Bubos total power will be:</p>
+											<p>-<b -sol="8" -slid="1">X</b> multiplier of Boss HP (min : 5 mult.)</p>
+										</div>
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-8-level" -svt="0"></td>
+									</td>
+									<td>
+										<b -sol="8" -slid="2">X</b> AS
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-8-spentAncientSouls">
+									</td>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img
+											src="https://static.wikia.nocookie.net/clickerheroes/images/4/49/Outsider_orphalas.png">
+									</td>
+									<td>
+										<div>
+											<p>Orphalas</p>
+											<p>+<b -sol="9" -slid="0">X</b>% effectiveness of Chronos (+75% per level)
+											</p>
+											<p>On cap(1101) lvl of Chronos total power will be:</p>
+											<p>+<b -sol="9" -slid="1">X</b> seconds on Boss Fight (min : 2 sec)</p>
+										</div>
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-9-level" -svt="0"></td>
+									</td>
+									<td>
+										<b -sol="9" -slid="2">X</b> AS
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-9-spentAncientSouls">
+									</td>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img
+											src="https://static.wikia.nocookie.net/clickerheroes/images/0/0b/Outsider_sen-akhan.png">
+									</td>
+									<td>
+										<div>
+											<p>Sen-Akhan</p>
+											<p>+<b -sol="10" -slid="0">X</b>% effectiveness of Dora (+100% per level)
+											</p>
+											<p>On cap(18715) lvl of Dora total power will be:</p>
+											<p><b -sol="10" -slid="1">X</b>% chance of chest (min : 1%)</p>
+										</div>
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-10-level" -svt="0"></td>
+									</td>
+									<td>
+										<b -sol="10" -slid="2">X</b> AS
+									</td>
+									<td><input type="number" -sdv="outsiders-outsiders-10-spentAncientSouls">
+									</td>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</details>
+
+					<details>
+						<summary>Find Custom Field</summary>
+						<div>
+							<table>
+								<tr>
+									<td>Search Field by Name</td>
+									<td>
+										<input type="text" list="customFieldList" id="customFieldSelector" placeholder="Type to search...">
+										<datalist id="customFieldList">
+										</datalist>
+									</td>
+								</tr>
+
+								<tr>
+									<td>Field Name</td>
+									<td>
+										<div id="customFieldName" style="padding: 10px; background: #151515; border: 1px solid #333; min-height: 38px;"></div>
+									</td>
+								</tr>
+
+								<tr>
+									<td>Field Value</td>
+									<td><input type="text" id="customFieldValue" placeholder="Value will appear here..."></td>
+								</tr>
+							</table>
+						</div>
+					</details>
+
+					<details>
+						<summary>JSON Editor</summary>
+						<div>
+							<div class="flex-hor file-menu" style="margin-bottom: 16px;">
+								<div class="flex-ver">
+									<div>Export to JSON</div>
+									<button onclick="ConvertDataToJSON()">Convert Save to JSON</button>
+									<input id="outJSON" type="text" placeholder="JSON output will appear here..." -sa>
+								</div>
+								<div class="flex-ver">
+									<div>Import from JSON</div>
+									<input id="inJSON" type="text" placeholder="Paste JSON here..." -sa>
+									<button onclick="ConvertJSONtoData()">Convert JSON to Save</button>
+								</div>
+							</div>
+						</div>
+					</details>
+
+					<details>
+						<summary>Additional Info</summary>
+						<div>
+							<p style="max-width: 600px;">All code is open source and can be found on GitHub: <br/><a href="">
+								clicker-heroes-save-editor
+							</a>
+							</p>
+							<p style="margin-top: 8px;">If you want to liked this and want to support the project, consider donating: <br/><a href="">
+								Donate
+						</div>
+					</details>
+				</div>
+			</div>
+		</div>
+		<div class="app-right-panel"></div>
+	</div>
+	<meta -lp src="/default/footer.html">
+
+</body>
+
+</html>

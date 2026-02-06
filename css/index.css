@@ -1,0 +1,387 @@
+/* ===== Dark Monospace Theme ===== */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #0a0a0a;
+	color: #e0e0e0;
+	font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+	font-size: 13px;
+	line-height: 1.5;
+	min-height: 100vh;
+}
+
+.app-body {
+	grid-template-columns: 0 1fr 0 !important;
+	padding: 20px;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.app-center {
+	width: 100%;
+}
+
+/* ===== Typography ===== */
+p {
+	margin: 0;
+	color: #a0a0a0;
+}
+
+a {
+	color: #888;
+}
+
+a:hover {
+	color: #fff;
+}
+
+code {
+	background: #1a1a1a;
+	padding: 2px 6px;
+	border: 1px solid #333;
+}
+
+/* ===== Layout ===== */
+.flex-hor {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.flex-ver {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.flex-free {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
+/* ===== File Menu ===== */
+.file-menu {
+	background: #111;
+	border: 1px solid #333;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.file-menu > .flex-ver {
+	flex: 1;
+	min-width: 250px;
+}
+
+.file-menu > .flex-ver > div:first-child {
+	color: #666;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	border-bottom: 1px solid #333;
+	padding-bottom: 8px;
+	margin-bottom: 5px;
+}
+
+/* ===== Panels ===== */
+.panels {
+	background: #111;
+	border: 1px solid #333;
+}
+
+/* ===== Details/Accordion ===== */
+details {
+	border-bottom: 1px solid #222;
+}
+
+details:last-child {
+	border-bottom: none;
+}
+
+summary {
+	padding: 12px 15px;
+	cursor: pointer;
+	user-select: none;
+	color: #e0e0e0;
+	background: #0d0d0d;
+	list-style: none;
+	display: flex;
+	align-items: center;
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
+
+summary::before {
+	content: '>';
+	margin-right: 10px;
+	color: #555;
+}
+
+details[open] summary::before {
+	content: 'v';
+}
+
+summary:hover {
+	background: #151515;
+}
+
+summary + div {
+	padding: 15px;
+	background: #0a0a0a;
+}
+
+/* ===== Form Elements ===== */
+input {
+	background: #0a0a0a;
+	border: 1px solid #333;
+	color: #e0e0e0;
+	padding: 8px 10px;
+	font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+	font-size: 13px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+input:focus {
+	outline: none;
+	border-color: #555;
+}
+
+input:disabled {
+	background: #0d0d0d;
+	color: #444;
+}
+
+input[type="file"] {
+	color: #808080;
+	padding: 8px;
+	font-family: inherit;
+	font-size: 12px;
+}
+
+input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	accent-color: #666;
+	cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+textarea {
+	resize: none;
+	overflow: hidden;
+}
+
+/* ===== Buttons ===== */
+button {
+	background: #1a1a1a;
+	border: 1px solid #333;
+	color: #e0e0e0;
+	padding: 10px 15px;
+	font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+	font-size: 13px;
+	cursor: pointer;
+	width: 100%;
+}
+
+button:hover {
+	background: #252525;
+	border-color: #444;
+}
+
+/* ===== Tables ===== */
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table td,
+table th {
+	padding: 10px 12px;
+	text-align: left;
+	border-bottom: 1px solid #222;
+}
+
+table th {
+	background: #151515;
+	color: #666;
+	font-weight: normal;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+table td:first-child {
+	color: #888;
+}
+
+.table-border {
+	border: 1px solid #333;
+	margin: 10px 0;
+}
+
+.table-border td,
+.table-border th {
+	border: 1px solid #222;
+}
+
+.table-outsiders td {
+	vertical-align: middle;
+}
+
+.table-outsiders p {
+	text-align: left;
+}
+
+.table-outsiders div > p:first-of-type {
+	color: #e0e0e0;
+}
+
+/* ===== Images ===== */
+img {
+	max-width: 60px;
+	max-height: 60px;
+}
+
+/* ===== Labels ===== */
+label {
+	user-select: none;
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 10px;
+	background: #151515;
+	border: 1px solid #222;
+	cursor: pointer;
+	color: #a0a0a0;
+}
+
+label:hover {
+	background: #1a1a1a;
+	border-color: #333;
+}
+
+/* ===== Lists ===== */
+ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+ol.flex-free {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 8px;
+}
+
+/* ===== Achievements ===== */
+#AchievementsTables {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 15px;
+}
+
+#AchievementsTables table {
+	margin: 0;
+}
+
+#AchievementsTables input[type="checkbox"] {
+	width: 20px;
+	height: 20px;
+}
+
+#AchievementsTables td:first-child {
+	width: 70px;
+	text-align: center;
+}
+
+#AchievementsTables td:last-child {
+	width: 50px;
+	text-align: center;
+}
+
+#AchievementsTables b {
+	color: #e0e0e0;
+}
+
+#AchievementsTables i {
+	color: #555;
+	font-size: 12px;
+}
+
+#AchievementsTables u {
+	color: #888;
+	text-decoration: none;
+}
+
+/* ===== Skin Selector ===== */
+.skin-selector {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.skin-option {
+	width: 60px;
+	height: 60px;
+	border: 2px solid #333;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #0d0d0d;
+}
+
+.skin-option:hover {
+	border-color: #555;
+}
+
+.skin-option.selected {
+	border-color: #4a4;
+	background: #1a2a1a;
+}
+
+.skin-option img {
+	width: 50px;
+	height: 50px;
+	object-fit: contain;
+}
+
+/* ===== Utility ===== */
+.none {
+	display: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+	.app-body {
+		padding: 10px;
+	}
+	
+	.file-menu {
+		padding: 15px;
+	}
+	
+	#AchievementsTables {
+		grid-template-columns: 1fr;
+	}
+}
