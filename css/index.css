@@ -372,16 +372,88 @@ ol.flex-free {
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+	.app-body {
+		padding: 16px;
+	}
+
+	.flex-hor {
+		gap: 14px;
+	}
+
+	.file-menu {
+		padding: 16px;
+	}
+
+	.file-menu > .flex-ver {
+		min-width: 0;
+	}
+}
+
+@media (max-width: 700px) {
+	.file-menu {
+		flex-direction: column;
+	}
+
+	.file-menu > .flex-ver {
+		width: 100%;
+	}
+
+	summary + div {
+		padding: 12px;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	table td,
+	table th {
+		padding: 8px 9px;
+	}
+
+	/* Keep wide data tables usable without breaking the overall layout. */
+	#ProfileValuesTable,
+	#AutoclickerSkinsTable,
+	#CurrentAscensionTable,
+	#HeroesTable,
+	#mercenariesTablePrefab,
+	.table-outsiders,
+	#AchievementsTables table {
+		min-width: 520px;
+	}
+
+	#AchievementsTables {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 480px) {
 	.app-body {
 		padding: 10px;
 	}
-	
-	.file-menu {
-		padding: 15px;
+
+	body {
+		font-size: 12px;
 	}
-	
-	#AchievementsTables {
-		grid-template-columns: 1fr;
+
+	.flex-hor {
+		gap: 10px;
+	}
+
+	.file-menu {
+		padding: 12px;
+	}
+
+	summary {
+		padding: 10px 12px;
+		font-size: 12px;
+	}
+
+	img {
+		max-width: 44px;
+		max-height: 44px;
+	}
+
+	label {
+		white-space: normal;
 	}
 }
