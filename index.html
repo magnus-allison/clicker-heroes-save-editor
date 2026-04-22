@@ -538,16 +538,25 @@
 					<details>
 						<summary>JSON Editor</summary>
 						<div>
-							<div class="flex-hor file-menu" style="margin-bottom: 16px;">
-								<div class="flex-ver">
-									<div>Export to JSON</div>
-									<button onclick="ConvertDataToJSON()">Convert Save to JSON</button>
-									<input id="outJSON" type="text" placeholder="JSON output will appear here..." -sa>
+							<div class="file-menu json-menu">
+								<div class="file-menu-section">
+									<div class="file-menu-label">Export to JSON</div>
+									<div class="file-menu-actions">
+										<button class="btn-primary" onclick="ConvertDataToJSON()">Convert Save to JSON</button>
+									</div>
+									<div class="file-menu-row">
+										<input id="outJSON" type="text" placeholder="JSON output will appear here..." -sa>
+									</div>
 								</div>
-								<div class="flex-ver">
-									<div>Import from JSON</div>
-									<input id="inJSON" type="text" placeholder="Paste JSON here..." -sa>
-									<button onclick="ConvertJSONtoData()">Convert JSON to Save</button>
+								<div class="file-menu-divider"></div>
+								<div class="file-menu-section">
+									<div class="file-menu-label">Import from JSON</div>
+									<div class="file-menu-row">
+										<input id="inJSON" type="text" placeholder="Paste JSON here..." -sa>
+									</div>
+									<div class="file-menu-actions">
+										<button class="btn-primary" onclick="ConvertJSONtoData()">Convert JSON to Save</button>
+									</div>
 								</div>
 							</div>
 						</div>

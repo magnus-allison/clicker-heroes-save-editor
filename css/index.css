@@ -163,6 +163,10 @@ code {
 	flex-wrap: wrap;
 }
 
+.json-menu {
+	margin-bottom: 16px;
+}
+
 .btn-primary {
 	flex: 1;
 }
@@ -264,13 +268,20 @@ summary::-webkit-details-marker {
 }
 
 summary::before {
-	content: '>';
+	content: '';
+	width: 12px;
+	height: 12px;
+	background-image: url('../assets/icons/chevron-right.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	filter: invert(1);
+	opacity: 0.4;
 	margin-right: 10px;
-	color: #555;
 }
 
 details[open] summary::before {
-	content: 'v';
+	background-image: url('../assets/icons/chevron-down.svg');
 }
 
 summary:hover {
@@ -452,11 +463,56 @@ input[type='file'] {
 }
 
 input[type='checkbox'] {
+	appearance: none;
+	-webkit-appearance: none;
 	width: 16px;
 	height: 16px;
 	padding: 0;
-	accent-color: #666;
+	margin: 0;
+	border: 1px solid #3a3a3a;
+	background: #0a0a0a;
 	cursor: pointer;
+	position: relative;
+	display: inline-grid;
+	place-content: center;
+	transition:
+		background 0.15s ease,
+		border-color 0.15s ease,
+		box-shadow 0.15s ease;
+}
+
+input[type='checkbox']::before {
+	content: '';
+	width: 8px;
+	height: 8px;
+	transform: scale(0);
+	transition: transform 0.12s ease-in-out;
+	box-shadow: inset 1em 1em #7fd67f;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 18%, 80% 0, 43% 62%);
+}
+
+input[type='checkbox']:hover {
+	border-color: #555;
+	background: #111;
+}
+
+input[type='checkbox']:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(127, 214, 127, 0.25);
+}
+
+input[type='checkbox']:checked {
+	background: #122012;
+	border-color: #3f7a3f;
+}
+
+input[type='checkbox']:checked::before {
+	transform: scale(1);
+}
+
+input[type='checkbox']:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
 }
 
 input::-webkit-outer-spin-button,
@@ -670,7 +726,7 @@ ol.flex-free {
 		padding: 16px;
 	}
 
-	.file-menu > .flex-ver {
+	.file-menu-section {
 		min-width: 0;
 	}
 }
@@ -680,8 +736,15 @@ ol.flex-free {
 		flex-direction: column;
 	}
 
-	.file-menu > .flex-ver {
+	.file-menu-section {
 		width: 100%;
+		padding: 0;
+	}
+
+	.file-menu-divider {
+		height: 1px;
+		width: 100%;
+		margin: 8px 0;
 	}
 
 	summary + div {

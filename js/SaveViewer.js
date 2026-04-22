@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		<tr>
 			<th>Image</th>
 			<th>Description</th>
-			<th>Status</th>
+			<th>Unlocked</th>
 		</tr>
 		${achievements
 			.map(
@@ -212,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	inJSONobj = document.getElementById('inJSON');
 
 	InspectElement();
+	renderHeroesTable();
 });
 
 var typeChanger = { text: 'text', number: 'number', boolean: 'checkbox' },
@@ -276,32 +277,43 @@ function PutDataToPage() {
 	// Update skin selector visual state
 	updateSkinSelector();
 
-	// Populate Heroes table
-	let heroesTableBody = document.getElementById('HeroesTable');
-	let heroRows = heroesTableBody.querySelector('tr'); // keep header
-	heroesTableBody.innerHTML = heroRows.outerHTML;
-	if (dataJSON.heroCollection && dataJSON.heroCollection.heroes) {
-		let heroes = dataJSON.heroCollection.heroes;
-		Object.keys(heroes).forEach((heroId) => {
-			let hero = heroes[heroId];
-			let heroInfo = Heroes[heroId];
-			if (heroInfo) {
-				let row = document.createElement('tr');
-				row.innerHTML = `
-					<td><img src="assets/${heroInfo[1]}"></td>
-					<td>${heroInfo[0]}</td>
-					<td><input type="number" value="${hero.level}" data-hero-id="${heroId}"></td>
-				`;
-				let input = row.querySelector('input');
-				input.addEventListener('blur', function () {
-					dataJSON.heroCollection.heroes[heroId].level = parseInt(this.value) || 0;
-				});
-				heroesTableBody.appendChild(row);
-			}
-		});
-	}
+	renderHeroesTable(dataJSON);
 
 	SelectCustomFieldName(customFieldSelectorElement.value);
+}
+
+function renderHeroesTable(saveData) {
+	let heroesTableBody = document.getElementById('HeroesTable');
+	let heroRows = heroesTableBody.querySelector('tr');
+	heroesTableBody.innerHTML = heroRows.outerHTML;
+
+	let saveHeroes =
+		saveData && saveData.heroCollection && saveData.heroCollection.heroes
+			? saveData.heroCollection.heroes
+			: null;
+
+	Object.keys(Heroes).forEach((heroId) => {
+		let heroInfo = Heroes[heroId];
+		if (!heroInfo) return;
+
+		let heroLevel = saveHeroes && saveHeroes[heroId] ? saveHeroes[heroId].level : 0;
+		let row = document.createElement('tr');
+		row.innerHTML = `
+			<td><img src="assets/${heroInfo[1]}"></td>
+			<td>${heroInfo[0]}</td>
+			<td><input type="number" value="${heroLevel}" data-hero-id="${heroId}"></td>
+		`;
+
+		let input = row.querySelector('input');
+		input.disabled = !saveHeroes;
+		if (saveHeroes) {
+			input.addEventListener('blur', function () {
+				saveData.heroCollection.heroes[heroId].level = parseInt(this.value) || 0;
+			});
+		}
+
+		heroesTableBody.appendChild(row);
+	});
 }
 
 const updateSkinSelector = () => {
