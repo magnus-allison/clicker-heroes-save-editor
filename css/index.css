@@ -25,6 +25,26 @@ body {
 	width: 100%;
 }
 
+.page-intro {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-bottom: 12px;
+}
+
+.page-intro h1 {
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 700;
+	color: #f0f0f0;
+}
+
+.page-intro p {
+	font-size: 12px;
+	color: #8a8a8a;
+	max-width: 760px;
+}
+
 /* ===== Typography ===== */
 p {
 	margin: 0;
