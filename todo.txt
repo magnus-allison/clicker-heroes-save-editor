@@ -1,6 +1,14 @@
-[ ] Examples for All Unlocks
+Example Builds - Instead of loading one default build, have a list.
+
+[ ] Basic Build
 [ ] Insane Build
 [ ] Basic Build
 [ ] Hybrid Build
 [ ] Clicker Build
 [ ] Idle Build
+
+Localisation - Add support for multiple languages.
+[ ] English
+
+Relics - Add support for editing relics (with custom items)
+[ ] Images
