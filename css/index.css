@@ -816,9 +816,16 @@ ol.flex-free {
 
 .additional-links {
 	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	max-width: 440px;
+	gap: 20px;
+	max-width: 900px;
+
+	.additional-links__group {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		flex: 1 1 0;
+		min-width: 0;
+	}
 
 	.additional-links__card {
 		display: flex;
@@ -847,6 +854,11 @@ ol.flex-free {
 	filter: invert(1);
 	opacity: 0.75;
 	flex-shrink: 0;
+}
+
+.additional-link-icon--no-invert {
+	filter: none;
+	opacity: 1;
 }
 
 .additional-link-text {
@@ -898,6 +910,12 @@ ol.flex-free {
 
 	.file-menu {
 		padding: 16px;
+	}
+
+	.additional-links {
+		flex-direction: column;
+		gap: 10px;
+		max-width: 440px;
 	}
 
 	.file-menu-section {

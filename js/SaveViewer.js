@@ -99,8 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	encodeFieldElement = document.getElementById('encodeField');
 
 	let profileValuesTable = document.getElementById('ProfileValuesTable');
-	profileValuesTable.innerHTML += ProfileItems.map(
-		(item) => `<tr>
+	profileValuesTable.innerHTML += shopItems
+		.map(
+			(item) => `<tr>
 		<td><img src="assets/${item.image}"></td>
 		<td>${
 			item.helpText
@@ -117,7 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		}</td>
 		<td><input type="${item.inputType}" ${item.ssf ? '-ssf' : ''} -sdv="${item.dataKey}"></td>
 	</tr>`
-	).join('');
+		)
+		.join('');
 
 	let currentAscensionTable = document.getElementById('CurrentAscensionTable');
 	currentAscensionTable.innerHTML += CurrentAscensionItems.map(
@@ -241,6 +243,18 @@ var typeChanger = { text: 'text', number: 'number', boolean: 'checkbox' },
 	simpleKeysList,
 	listOfEditableFields;
 
+const _numFormatter = new Intl.NumberFormat('en-US');
+
+function formatNum(v) {
+	const n = typeof v === 'string' ? parseFloat(v.replace(/,/g, '')) : v;
+	if (typeof n !== 'number' || isNaN(n)) return String(v);
+	return _numFormatter.format(n);
+}
+
+function parseNum(s) {
+	return parseFloat(String(s).replace(/,/g, ''));
+}
+
 function InspectElement() {
 	listOfEditableFields = Array.from(document.querySelectorAll('[-sdv]'));
 	listOfEditableFields.forEach((element) =>
@@ -254,6 +268,30 @@ function InspectElement() {
 			element;
 	});
 	Array.from(document.querySelectorAll('[-sa]')).forEach((x) => x.addEventListener('focus', SelectAll));
+	// Strip number formatting on focus so users can type raw values
+	document.addEventListener('focusin', function (e) {
+		if (e.target.hasAttribute('data-numeric') && e.target.hasAttribute('-sdv')) {
+			e.target.value = String(parseNum(e.target.value));
+		}
+	});
+	// Restrict input to digits/minus/dot and blur on Enter for numeric fields
+	document.addEventListener('keydown', function (e) {
+		if (e.key === 'Enter' && e.target.hasAttribute('data-numeric')) {
+			e.target.blur();
+		}
+	});
+	document.addEventListener('input', function (e) {
+		if (e.target.hasAttribute('data-numeric')) {
+			const el = e.target;
+			const pos = el.selectionStart;
+			const cleaned = el.value.replace(/[^0-9.\-]/g, '');
+			if (cleaned !== el.value) {
+				const diff = el.value.length - cleaned.length;
+				el.value = cleaned;
+				el.setSelectionRange(pos - diff, pos - diff);
+			}
+		}
+	});
 }
 
 function PutDataToPage() {
@@ -273,12 +311,26 @@ function PutDataToPage() {
 		) {
 			element.disabled = false;
 			if (obj.hasOwnProperty(path[l])) {
+				const val = obj[path[l]];
+				const valType = typeof val;
 				// Don't change type for hidden inputs
 				if (element.getAttribute('type') !== 'hidden') {
-					element.setAttribute('type', typeChanger[typeof obj[path[l]]]);
+					if (valType === 'number') {
+						element.setAttribute('type', 'text');
+						element.setAttribute('data-numeric', 'true');
+					} else {
+						element.setAttribute('type', typeChanger[valType]);
+						element.removeAttribute('data-numeric');
+					}
 				}
-				element.title = obj[path[l]];
-				element[typeof obj[path[l]] == 'boolean' ? 'checked' : 'value'] = obj[path[l]];
+				element.title = val;
+				if (valType === 'boolean') {
+					element.checked = val;
+				} else if (valType === 'number') {
+					element.value = formatNum(val);
+				} else {
+					element.value = val;
+				}
 				if (element.hasAttribute('-svt')) {
 					switch (parseInt(element.getAttribute('-svt'))) {
 						case 0:
@@ -347,17 +399,32 @@ function renderHeroesTable(saveData) {
 					<span class="hero-multiplier-text${heroEpicLevel >= 1 ? ' is-visible' : ''}">${getGildedMultiplierText(heroEpicLevel)}</span>
 				</div>
 			</td>
-			<td><input type="number" value="${heroLevel}" data-hero-id="${heroId}" data-type="level"></td>
-			<td><input type="number" value="${heroEpicLevel}" data-hero-id="${heroId}" data-type="epic"></td>
+			<td><input type="text" value="${formatNum(heroLevel)}" data-hero-id="${heroId}" data-type="level"></td>
+			<td><input type="text" value="${formatNum(heroEpicLevel)}" data-hero-id="${heroId}" data-type="epic"></td>
 		`;
 
 		let inputs = row.querySelectorAll('input');
 		inputs.forEach((input) => {
 			input.disabled = !saveHeroes;
 			if (saveHeroes) {
+				input.addEventListener('focus', function () {
+					this.value = String(parseInt(parseNum(this.value)) || 0);
+				});
+				input.addEventListener('keydown', function (e) {
+					if (e.key === 'Enter') this.blur();
+				});
+				input.addEventListener('input', function () {
+					const pos = this.selectionStart;
+					const cleaned = this.value.replace(/[^0-9]/g, '');
+					if (cleaned !== this.value) {
+						const diff = this.value.length - cleaned.length;
+						this.value = cleaned;
+						this.setSelectionRange(pos - diff, pos - diff);
+					}
+				});
 				input.addEventListener('blur', function () {
 					const inputType = this.getAttribute('data-type');
-					const value = parseInt(this.value) || 0;
+					const value = parseInt(parseNum(this.value)) || 0;
 
 					if (inputType === 'level') {
 						saveData.heroCollection.heroes[heroId].level = value;
@@ -379,6 +446,7 @@ function renderHeroesTable(saveData) {
 							multiplierSpan.classList.toggle('is-visible', value >= 1);
 						}
 					}
+					this.value = formatNum(value);
 				});
 			}
 		});
@@ -449,11 +517,12 @@ function SelectCustomFieldName(key) {
 }
 
 function SaveFieldValue0(event) {
-	SyncKeys(
-		event.target.getAttribute('-sdv'),
-		event.target[event.target.getAttribute('type') == 'checkbox' ? 'checked' : 'value'],
-		0
-	);
+	const el = event.target;
+	const raw = el.hasAttribute('data-numeric')
+		? parseNum(el.value)
+		: el[el.getAttribute('type') == 'checkbox' ? 'checked' : 'value'];
+	SyncKeys(el.getAttribute('-sdv'), raw, 0);
+	if (el.hasAttribute('data-numeric')) el.value = formatNum(raw);
 }
 
 function SaveFieldValue1() {
@@ -492,7 +561,11 @@ function SaveValue(event) {
 			l = path.length - 1,
 			obj = dataJSON,
 			newValue;
-		newValue = element[element.getAttribute('type') == 'checkbox' ? 'checked' : 'value'];
+		if (element.hasAttribute('data-numeric')) {
+			newValue = parseNum(element.value);
+		} else {
+			newValue = element[element.getAttribute('type') == 'checkbox' ? 'checked' : 'value'];
+		}
 		for (let i = 0; i < l; i++) obj = obj[path[i]];
 		if (
 			(obj != undefined && obj.hasOwnProperty(path[l])) ||
@@ -512,6 +585,7 @@ function SaveValue(event) {
 				}
 			}
 		}
+		if (element.hasAttribute('data-numeric')) element.value = formatNum(newValue);
 	}
 }
 
