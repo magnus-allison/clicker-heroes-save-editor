@@ -71,21 +71,146 @@ code {
 	border: 1px solid #333;
 	padding: 20px;
 	margin-bottom: 20px;
+	display: flex;
+	flex-direction: row;
+	gap: 0;
+	flex-wrap: wrap;
 }
 
-.file-menu > .flex-ver {
+.file-menu-section {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 	flex: 1;
-	min-width: 250px;
+	min-width: 240px;
+	padding: 0 20px;
 }
 
-.file-menu > .flex-ver > div:first-child {
-	color: #666;
-	font-size: 11px;
+.file-menu-section:first-child {
+	padding-left: 0;
+}
+
+.file-menu-section:last-child {
+	padding-right: 0;
+}
+
+.file-menu-divider {
+	width: 1px;
+	background: #2a2a2a;
+	margin: 4px 0;
+	align-self: stretch;
+}
+
+.file-menu-label {
+	color: #999;
+	font-size: 12px;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	border-bottom: 1px solid #333;
+	border-bottom: 1px solid #2a2a2a;
 	padding-bottom: 8px;
-	margin-bottom: 5px;
+}
+
+.file-menu-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.file-menu-step {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	min-width: 20px;
+	border: 1px solid #333;
+	color: #555;
+	font-size: 11px;
+	background: #0a0a0a;
+}
+
+.file-menu-or {
+	color: #444;
+	font-size: 11px;
+	text-align: center;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.file-menu-actions {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.btn-primary {
+	flex: 1;
+}
+
+.btn-secondary {
+	flex: 1;
+	color: #888;
+	border-color: #2a2a2a;
+	background: #0f0f0f;
+}
+
+.btn-secondary:hover {
+	color: #e0e0e0;
+	border-color: #444;
+}
+
+.btn-ghost {
+	color: #444;
+	border-color: transparent;
+	background: transparent;
+	font-size: 11px;
+	padding: 10px 10px;
+}
+
+.btn-ghost:hover {
+	color: #888;
+	border-color: transparent;
+	background: transparent;
+}
+
+/* ===== Toast ===== */
+#toast-container {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 9999;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	pointer-events: none;
+}
+
+.toast {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 16px;
+	background: #0f1f0f;
+	border: 1px solid #2a5a2a;
+	color: #6fcf6f;
+	font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+	font-size: 12px;
+	max-width: 280px;
+	opacity: 0;
+	transform: translateX(16px);
+	transition:
+		opacity 0.2s ease,
+		transform 0.2s ease;
+}
+
+.toast.toast-show {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.toast-icon {
+	font-size: 14px;
+	line-height: 1;
 }
 
 /* ===== Panels ===== */
@@ -159,14 +284,154 @@ input:disabled {
 	color: #444;
 }
 
-input[type="file"] {
-	color: #808080;
-	padding: 8px;
-	font-family: inherit;
-	font-size: 12px;
+input[type='file'] {
+	display: none;
 }
 
-input[type="checkbox"] {
+.file-input-label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	padding: 8px 10px;
+	background: #0a0a0a;
+	border: 1px solid #333;
+	cursor: pointer;
+	color: #555;
+	font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+	font-size: 13px;
+	transition:
+		border-color 0.15s,
+		color 0.15s;
+}
+
+.file-input-label:hover {
+	border-color: #555;
+	color: #e0e0e0;
+}
+
+.file-input-label.has-file {
+	border-color: #555;
+	color: #e0e0e0;
+}
+
+.file-input-icon {
+	width: 16px;
+	height: 16px;
+	opacity: 0.4;
+	filter: invert(1);
+	transition: opacity 0.15s;
+	flex-shrink: 0;
+}
+
+.file-input-label:hover .file-input-icon,
+.file-input-label.has-file .file-input-icon {
+	opacity: 0.8;
+}
+
+.file-input-text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	flex: 1;
+}
+
+/* ===== File Help Button & Tooltip ===== */
+.file-help-btn {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	min-width: 38px;
+	align-self: stretch;
+	padding: 0;
+	background: #0a0a0a;
+	border: 1px solid #333;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.file-help-btn img {
+	width: 16px;
+	height: 16px;
+	filter: invert(1);
+	opacity: 0.4;
+	transition: opacity 0.15s;
+}
+
+.file-help-btn:hover img {
+	opacity: 0.9;
+}
+
+.file-help-tooltip {
+	display: none;
+	position: absolute;
+	top: calc(100% + 8px);
+	left: 0;
+	z-index: 100;
+	width: 520px;
+	background: #151515;
+	border: 1px solid #444;
+	padding: 14px;
+	color: #c0c0c0;
+	font-size: 12px;
+	line-height: 1.6;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.15s;
+	pointer-events: none;
+	text-align: left;
+}
+
+.file-help-btn:hover .file-help-tooltip,
+.file-help-btn:focus .file-help-tooltip {
+	visibility: visible;
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.file-help-tooltip-title {
+	color: #e0e0e0 !important;
+	font-size: 12px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	border-bottom: 1px solid #333;
+	padding-bottom: 6px;
+	margin-bottom: 2px;
+}
+
+.file-help-os-heading {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: #e0e0e0 !important;
+	margin-top: 4px;
+}
+
+.file-help-os-heading img {
+	width: 14px;
+	height: 14px;
+	filter: invert(1);
+	opacity: 0.7;
+	flex-shrink: 0;
+}
+
+.file-help-path {
+	background: #0a0a0a;
+	border: 1px solid #2a2a2a;
+	padding: 4px 8px;
+	color: #888 !important;
+	text-align: left;
+	font-size: 11px;
+	font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+	word-break: break-all;
+}
+
+input[type='checkbox'] {
 	width: 16px;
 	height: 16px;
 	padding: 0;
@@ -180,7 +445,7 @@ input::-webkit-inner-spin-button {
 	margin: 0;
 }
 
-input[type=number] {
+input[type='number'] {
 	-moz-appearance: textfield;
 	appearance: textfield;
 }
@@ -304,7 +569,7 @@ ol.flex-free {
 	margin: 0;
 }
 
-#AchievementsTables input[type="checkbox"] {
+#AchievementsTables input[type='checkbox'] {
 	width: 20px;
 	height: 20px;
 }

@@ -1,4 +1,6 @@
 {
-
-	
+	"header": {
+		"import_save_data": "Import Save Data",
+		"export_save_data": "Export Save Data"
+	}
 }

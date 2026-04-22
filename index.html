@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="/js/default.js"></script>
 	<meta -lp src="/default/scripts.html">
 	<script type="text/javascript" src="./js/pako.min.js"></script>
+	<script type="text/javascript" src="./js/toast.js"></script>
 	<script type="text/javascript" src="./js/index.js"></script>
 	<script type="text/javascript" src="./js/exampleSave.js"></script>
 	<script type="text/javascript" src="./js/achievements.js"></script>
@@ -23,39 +24,57 @@
 
 <body v="1">
 	<meta -lp src="/default/header.html">
+	<div id="toast-container"></div>
 	<div class="app-body">
 		<div class="app-left-panel"></div>
 		<div class="app-center">
 			<div class="flex-ver">
-				<div class="flex-hor file-menu">
-					<div class="flex-ver">
-						<div>Import Save Data</div>
-						<div>
-							<button onclick="fillExampleButtonEvent()">Load Example Save</button>
+				<div class="file-menu">
+					<div class="file-menu-section">
+						<div class="file-menu-label">Import Save Data</div>
+						<div class="file-menu-row">
+							<label class="file-input-label" for="file-input">
+								<img class="file-input-icon" src="./assets/icons/folder-open.svg" alt="">
+								<span class="file-input-text" id="file-input-text">Choose a file...</span>
+								<input type="file" id="file-input" />
+							</label>
+							<button class="file-help-btn" type="button" aria-label="Where is my save file?">
+								<img src="./assets/icons/circle-question-mark.svg" alt="">
+								<div class="file-help-tooltip" role="tooltip">
+									<p class="file-help-tooltip-title">Where is my save file?</p>
+									<p class="file-help-os-heading"><img src="./assets/icons/windows.svg" alt=""><strong>Windows</strong></p>
+									<p class="file-help-path">C:\Users\[USERNAME]\AppData\Roaming\ClickerHeroes2\Local Store\saves</p>
+									<p>Two files: <code>.save</code> and <code>.backup</code>.</p>
+									<p>Both the Steam and stand-alone use the same path.</p>
+									<p class="file-help-os-heading"><img src="./assets/icons/apple.svg" alt=""><img src="./assets/icons/steam.svg" alt=""><strong>Mac &mdash; Steam</strong></p>
+									<p class="file-help-path">~/Library/Application Support/Steam/userdata/[USERID]/363970/remote/</p>
+									<p class="file-help-os-heading"><img src="./assets/icons/apple.svg" alt=""><strong>Mac &mdash; Stand-alone</strong></p>
+									<p class="file-help-path">~/Library/Application Support/com.playsaurus.clickerheroes/</p>
+								</div>
+							</button>
 						</div>
-						<div>
-							<input type="file" id="file-input" />
-						</div>
-						<div>
+						<div class="file-menu-or">— or paste below —</div>
+						<div class="file-menu-row">
 							<input type="text" id="decodeField" placeholder="Paste your save data here..." -sa>
 						</div>
-						<div>
-							<button onclick="decodeSaveFromField()">Read Save Data</button>
+						<div class="file-menu-actions">
+							<button class="btn-primary" onclick="decodeSaveFromField()">Read Save Data</button>
+							<button class="btn-ghost" onclick="fillExampleButtonEvent()">Load an Example</button>
 						</div>
 					</div>
-					<div class="flex-ver">
-						<div>Export Save Data</div>
-						<div>
-							<button onclick="encodeButtonClick()">Encode & Copy Save</button>
+					<div class="file-menu-divider"></div>
+					<div class="file-menu-section">
+						<div class="file-menu-label">Export Save Data</div>
+						<div class="file-menu-actions">
+							<button class="btn-primary" onclick="encodeButtonClick()">Encode Save</button>
 						</div>
-						<div>
+						<div class="file-menu-row">
 							<input type="text" id="encodeField" placeholder="Encoded save will appear here..." rows="1" -sa>
 						</div>
-						<div>
-							<button onclick="copyButtonClick()">Copy to Clipboard</button>
+						<div class="file-menu-actions">
+							<button class="btn-secondary" onclick="copyButtonClick()">Copy to Clipboard</button>
 						</div>
 					</div>
-
 				</div>
 				<div class="panels">
 
@@ -508,7 +527,7 @@
 								clicker-heroes-save-editor
 							</a>
 							</p>
-							<p style="margin-top: 8px;">If you want to liked this and want to support the project, consider donating: <br/><a href="https://buymeacoffee.com/magnus.allison" target="_blank">
+							<p style="margin-top: 8px;">If you liked this and want to support the project, consider donating: <br/><a href="https://buymeacoffee.com/magnus.allison" target="_blank">
 								Donate
 						</div>
 					</details>

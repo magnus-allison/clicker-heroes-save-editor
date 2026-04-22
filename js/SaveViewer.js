@@ -35,6 +35,7 @@ function decodeSaveFromField() {
 		}
 		//console.log( JSON.stringify( dataJSON ) )
 		PutDataToPage();
+		if (typeof showToast === 'function') showToast('Save data loaded');
 	} else if (dataInput) {
 		document.getElementById('alive').innerHTML = 'Not a valid save, try again.';
 	}
@@ -65,6 +66,7 @@ function copyButtonClick() {
 	encodeFieldElement.select();
 	encodeFieldElement.setSelectionRange(0, 99999);
 	document.execCommand('copy');
+	if (typeof showToast === 'function') showToast('Copied to clipboard');
 	/*
 	navigator.clipboard.writeText( encodeFieldElement.value ).then(() => {
 		alert("successfully copied");
