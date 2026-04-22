@@ -102,7 +102,19 @@ document.addEventListener('DOMContentLoaded', function () {
 	profileValuesTable.innerHTML += ProfileItems.map(
 		(item) => `<tr>
 		<td><img src="assets/${item.image}"></td>
-		<td>${item.name}</td>
+		<td>${
+			item.helpText
+				? `<div class="profile-item-with-help">${item.name}
+					<button class="file-help-btn profile-help-btn" type="button" aria-label="${item.helpTitle}">
+						<img src="./assets/icons/circle-question-mark.svg" alt="">
+						<div class="file-help-tooltip profile-help-tooltip" role="tooltip">
+							<p class="file-help-tooltip-title">${item.helpTitle}</p>
+							<p>${item.helpText}</p>
+						</div>
+					</button>
+				</div>`
+				: item.name
+		}</td>
 		<td><input type="${item.inputType}" ${item.ssf ? '-ssf' : ''} -sdv="${item.dataKey}"></td>
 	</tr>`
 	).join('');
@@ -295,6 +307,14 @@ function PutDataToPage() {
 	SelectCustomFieldName(customFieldSelectorElement.value);
 }
 
+function getGildedMultiplierText(epicLevel) {
+	if (epicLevel <= 0) {
+		return '';
+	}
+	const bonus = epicLevel * 50;
+	return `${epicLevel}x Gilded (+${bonus}%)`;
+}
+
 function renderHeroesTable(saveData) {
 	let heroesTableBody = document.getElementById('HeroesTable');
 	let heroRows = heroesTableBody.querySelector('tr');
@@ -310,20 +330,58 @@ function renderHeroesTable(saveData) {
 		if (!heroInfo) return;
 
 		let heroLevel = saveHeroes && saveHeroes[heroId] ? saveHeroes[heroId].level : 0;
+		let heroEpicLevel = saveHeroes && saveHeroes[heroId] ? saveHeroes[heroId].epicLevel : 0;
+		let heroImage = heroEpicLevel >= 1 && heroInfo[2] ? heroInfo[2] : heroInfo[1];
 		let row = document.createElement('tr');
+
+		// Add gilded class if epicLevel is at least 1
+		if (heroEpicLevel >= 1) {
+			row.classList.add('hero-gilded');
+		}
+
 		row.innerHTML = `
-			<td><img src="assets/${heroInfo[1]}"></td>
-			<td>${heroInfo[0]}</td>
-			<td><input type="number" value="${heroLevel}" data-hero-id="${heroId}"></td>
+			<td><img src="assets/${heroImage}"></td>
+			<td>
+				<div class="hero-name-cell">
+					<div class="hero-name-text">${heroInfo[0]}</div>
+					<span class="hero-multiplier-text${heroEpicLevel >= 1 ? ' is-visible' : ''}">${getGildedMultiplierText(heroEpicLevel)}</span>
+				</div>
+			</td>
+			<td><input type="number" value="${heroLevel}" data-hero-id="${heroId}" data-type="level"></td>
+			<td><input type="number" value="${heroEpicLevel}" data-hero-id="${heroId}" data-type="epic"></td>
 		`;
 
-		let input = row.querySelector('input');
-		input.disabled = !saveHeroes;
-		if (saveHeroes) {
-			input.addEventListener('blur', function () {
-				saveData.heroCollection.heroes[heroId].level = parseInt(this.value) || 0;
-			});
-		}
+		let inputs = row.querySelectorAll('input');
+		inputs.forEach((input) => {
+			input.disabled = !saveHeroes;
+			if (saveHeroes) {
+				input.addEventListener('blur', function () {
+					const inputType = this.getAttribute('data-type');
+					const value = parseInt(this.value) || 0;
+
+					if (inputType === 'level') {
+						saveData.heroCollection.heroes[heroId].level = value;
+					} else if (inputType === 'epic') {
+						saveData.heroCollection.heroes[heroId].epicLevel = value;
+						// Update row styling and multiplier text based on new epicLevel
+						if (value >= 1) {
+							row.classList.add('hero-gilded');
+						} else {
+							row.classList.remove('hero-gilded');
+						}
+						const imageElement = row.querySelector('img');
+						if (imageElement) {
+							imageElement.src = `assets/${value >= 1 && heroInfo[2] ? heroInfo[2] : heroInfo[1]}`;
+						}
+						const multiplierSpan = row.querySelector('.hero-multiplier-text');
+						if (multiplierSpan) {
+							multiplierSpan.textContent = getGildedMultiplierText(value);
+							multiplierSpan.classList.toggle('is-visible', value >= 1);
+						}
+					}
+				});
+			}
+		});
 
 		heroesTableBody.appendChild(row);
 	});
@@ -369,7 +427,10 @@ function updateUnlockAllSkinsButton() {
 	let editableCheckboxes = skinCheckboxes.filter((element) => !element.disabled);
 	let hasAnyLocked = editableCheckboxes.some((element) => !element.checked);
 
-	unlockAllSkinsButton.hidden = editableCheckboxes.length > 0 && !hasAnyLocked;
+	unlockAllSkinsButton.classList.toggle(
+		'is-layout-hidden',
+		editableCheckboxes.length > 0 && !hasAnyLocked
+	);
 }
 
 function onSelectCustomFieldName(event) {

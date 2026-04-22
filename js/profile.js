@@ -12,7 +12,10 @@ const ProfileItems = [
 			image: 'profile/SpikedNog.webp',
 			dataKey: 'spikedNog',
 			inputType: 'number',
-			ssf: true
+			ssf: true,
+			helpTitle: 'Spiked Nog',
+			helpText:
+				'Consuming a Spiked Nog grants +1 CPS per Auto Clicker on the monster for 1 hour. This effect stacks both in effect and duration.'
 		},
 		{
 			name: 'Transcendent Highest Zone',

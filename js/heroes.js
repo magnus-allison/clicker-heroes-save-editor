@@ -1,8 +1,8 @@
 const Heroes = {
-	1: ['Cid, the Helpful Adventurer', 'heroes/cid.webp'],
-	2: ['Treebeast', 'heroes/2treebeast.webp'],
-	3: ['Ivan, the Drunken Brawler', 'heroes/3ivan.webp'],
-	4: ['Brittany, Beach Princess', 'heroes/brittany.webp'],
+	1: ['Cid, the Helpful Adventurer', 'heroes/normal/1.webp', 'heroes/gilded/1.webp'],
+	2: ['Treebeast', 'heroes/normal/2.webp', 'heroes/gilded/2.webp'],
+	3: ['Ivan, the Drunken Brawler', 'heroes/normal/3.webp', 'heroes/gilded/3.webp'],
+	4: ['Brittany, Beach Princess', 'heroes/normal/4.webp', 'heroes/gilded/4.webp'],
 	5: ['The Wandering Fisherman', 'heroes/5fisherman.webp'],
 	6: ['Betty Clicker', 'heroes/6betty.webp'],
 	7: ['The Masked Samurai', 'heroes/7samurai.webp'],
