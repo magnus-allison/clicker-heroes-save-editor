@@ -21,14 +21,7 @@ const shopItems = [
 			name: '2x Damage Multiplier',
 			image: 'profile/damage_multiplier.webp',
 			dataKey: 'paidForRubyMultiplier',
-			inputType: 'number',
-			ssf: true
-		},
-		{
-			name: 'Transcendent Highest Zone',
-			image: 'profile/Transcend_achieve.webp',
-			dataKey: 'transcendentHighestFinishedZone',
-			inputType: 'number',
+			inputType: 'checkbox',
 			ssf: true
 		}
 	],

@@ -59,22 +59,90 @@ function fillExampleButtonEvent() {
 	decodeSaveFromField();
 }
 
-function copyButtonClick() {
-	if (encodeFieldElement.value == '') {
-		encodeSaveLaunch();
+function showCopyTooltip(button) {
+	const tooltip = button.querySelector('.file-copy-popup');
+	if (!tooltip) return;
+	tooltip.classList.add('is-visible');
+	clearTimeout(button._copyTooltipTimer);
+	button._copyTooltipTimer = setTimeout(() => {
+		tooltip.classList.remove('is-visible');
+	}, 1200);
+}
+
+function legacyCopyFromField(fieldElement) {
+	fieldElement.focus();
+	if (typeof fieldElement.select === 'function') fieldElement.select();
+	if (typeof fieldElement.setSelectionRange === 'function') {
+		fieldElement.setSelectionRange(0, String(fieldElement.value).length);
 	}
-	encodeFieldElement.select();
-	encodeFieldElement.setSelectionRange(0, 99999);
-	document.execCommand('copy');
-	if (typeof showToast === 'function') showToast('Copied to clipboard');
-	/*
-	navigator.clipboard.writeText( encodeFieldElement.value ).then(() => {
-		alert("successfully copied");
-	  })
-	  .catch(() => {
-		alert("something went wrong");
-	  });
-	*/
+	try {
+		return document.execCommand('copy');
+	} catch {
+		return false;
+	}
+}
+
+function copyFieldValue(fieldElement, options) {
+	options = options || {};
+	if (!fieldElement) return;
+	if (options.ensureEncoded && fieldElement.value == '') encodeSaveLaunch();
+
+	const value = String(fieldElement.value || '');
+	if (!value) {
+		if (typeof showToast === 'function') showToast('Nothing to copy');
+		if (typeof options.onFailure === 'function') options.onFailure();
+		return;
+	}
+
+	const onSuccess = () => {
+		if (typeof showToast === 'function') showToast(options.successMessage || 'Copied to clipboard');
+		if (typeof options.onSuccess === 'function') options.onSuccess();
+	};
+
+	const onFailure = () => {
+		if (typeof showToast === 'function') showToast('Copy failed');
+		if (typeof options.onFailure === 'function') options.onFailure();
+	};
+
+	if (navigator.clipboard && window.isSecureContext) {
+		navigator.clipboard
+			.writeText(value)
+			.then(onSuccess)
+			.catch(() => {
+				if (legacyCopyFromField(fieldElement)) onSuccess();
+				else onFailure();
+			});
+		return;
+	}
+
+	if (legacyCopyFromField(fieldElement)) onSuccess();
+	else onFailure();
+}
+
+function initializeCopyButtons() {
+	document.querySelectorAll('.file-copy-btn[data-copy-target]').forEach((button) => {
+		button.addEventListener('click', function (event) {
+			const trigger = event.currentTarget;
+			if (!(trigger instanceof HTMLElement)) return;
+			const targetId = trigger.getAttribute('data-copy-target');
+			if (!targetId) return;
+			const field = document.getElementById(targetId);
+			const isEncodeField = targetId === 'encodeField';
+			copyFieldValue(field, {
+				ensureEncoded: isEncodeField,
+				successMessage: isEncodeField ? 'Encoded save copied' : 'Text copied',
+				onSuccess: () => showCopyTooltip(trigger),
+				onFailure: () => showCopyTooltip(trigger)
+			});
+		});
+	});
+}
+
+function copyButtonClick() {
+	copyFieldValue(encodeFieldElement, {
+		ensureEncoded: true,
+		successMessage: 'Encoded save copied'
+	});
 }
 
 function SelectAll(event) {
@@ -97,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('file-input').addEventListener('change', readSaveFile, false);
 	decodeFieldElement = document.getElementById('decodeField');
 	encodeFieldElement = document.getElementById('encodeField');
+	initializeCopyButtons();
 
 	let profileValuesTable = document.getElementById('ProfileValuesTable');
 	profileValuesTable.innerHTML += shopItems

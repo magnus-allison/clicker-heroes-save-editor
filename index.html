@@ -88,7 +88,13 @@
 						</div>
 						<div class="file-menu-or">— or paste below —</div>
 						<div class="file-menu-row">
-							<input type="text" id="decodeField" placeholder="Paste your save data here..." -sa>
+							<input id="decodeField" placeholder="Paste your save data here..." rows="1" -sa></input>
+							<button class="file-help-btn file-copy-btn" type="button" data-copy-target="decodeField" aria-label="Copy pasted save data">
+								<img src="./assets/icons/copy.svg" alt="">
+								<div class="file-help-tooltip file-copy-popup" role="tooltip">
+									<p class="file-help-tooltip-title">Copy</p>
+								</div>
+							</button>
 						</div>
 						<div class="file-menu-actions">
 							<button class="btn-primary" onclick="decodeSaveFromField()">Read Save Data</button>
@@ -98,21 +104,24 @@
 					<div class="file-menu-divider"></div>
 					<div class="file-menu-section">
 						<div class="file-menu-label">Export Save Data</div>
+						<div class="file-menu-row">
+							<input id="encodeField" placeholder="Encoded save will appear here..." rows="1" -sa></input>
+							<button class="file-help-btn file-copy-btn" type="button" data-copy-target="encodeField" aria-label="Copy encoded save data">
+								<img src="./assets/icons/copy.svg" alt="">
+								<div class="file-help-tooltip file-copy-popup" role="tooltip">
+									<p class="file-help-tooltip-title">Copy</p>
+								</div>
+							</button>
+						</div>
 						<div class="file-menu-actions">
 							<button class="btn-primary" onclick="encodeButtonClick()">Encode Save</button>
-						</div>
-						<div class="file-menu-row">
-							<input type="text" id="encodeField" placeholder="Encoded save will appear here..." rows="1" -sa>
-						</div>
-						<div class="file-menu-actions">
-							<button class="btn-secondary" onclick="copyButtonClick()">Copy to Clipboard</button>
 						</div>
 					</div>
 				</div>
 				<div class="panels">
 
 					<details>
-						<summary>Profile Values</summary>
+						<summary>Shop Values</summary>
 						<div>
 							<table class="table-border" id="ProfileValuesTable">
 								<tr>
@@ -177,6 +186,18 @@
 					<details>
 						<summary>Achievements</summary>
 						<div>
+							<table class="table-border" style="margin-bottom: 12px;">
+								<tr>
+									<th>Image</th>
+									<th>Item</th>
+									<th>Value</th>
+								</tr>
+								<tr>
+									<td><img src="assets/profile/Transcend_achieve.webp" alt="Transcendent Highest Zone"></td>
+									<td>Transcendent Highest Zone</td>
+									<td><input type="number" -ssf -sdv="transcendentHighestFinishedZone"></td>
+								</tr>
+							</table>
 							<div id="AchievementsTables" class="flex-free"></div>
 						</div>
 					</details>
