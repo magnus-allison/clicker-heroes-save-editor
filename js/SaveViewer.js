@@ -116,8 +116,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	</tr>`
 	).join('');
 
-	profileValuesTable.innerHTML += `<tr>
-		<td colspan="2">Current Autoclicker Skin</td>
+	let currentAutoclickerSkinTable = document.getElementById('CurrentAutoclickerSkinTable');
+	currentAutoclickerSkinTable.innerHTML += `<tr>
+		<td>Current Autoclicker Skin</td>
 		<td>
 			<input type="hidden" id="currentSkinValue" -ssf -sdv="currentAutoclickerSkin">
 			<div class="skin-selector">
@@ -212,6 +213,15 @@ document.addEventListener('DOMContentLoaded', function () {
 	inJSONobj = document.getElementById('inJSON');
 
 	InspectElement();
+	let unlockAllSkinsButton = document.getElementById('unlock-all-skins-btn');
+	if (unlockAllSkinsButton) {
+		unlockAllSkinsButton.addEventListener('click', unlockAllSkins);
+	}
+	autoclickerSkinsTable.addEventListener('change', function (event) {
+		if (event.target && event.target.matches('input[type="checkbox"]')) {
+			updateUnlockAllSkinsButton();
+		}
+	});
 	renderHeroesTable();
 });
 
@@ -276,6 +286,9 @@ function PutDataToPage() {
 
 	// Update skin selector visual state
 	updateSkinSelector();
+	let unlockAllSkinsButton = document.getElementById('unlock-all-skins-btn');
+	if (unlockAllSkinsButton) unlockAllSkinsButton.disabled = false;
+	updateUnlockAllSkinsButton();
 
 	renderHeroesTable(dataJSON);
 
@@ -325,6 +338,39 @@ const updateSkinSelector = () => {
 		}
 	});
 };
+
+function unlockAllSkins() {
+	if (dataJSON == undefined) return;
+
+	if (!dataJSON.autoclickerSkins || typeof dataJSON.autoclickerSkins !== 'object') {
+		dataJSON.autoclickerSkins = {};
+	}
+
+	Array.from(document.querySelectorAll('#AutoclickerSkinsTable input[type="checkbox"]')).forEach(
+		(element) => {
+			if (element.disabled) return;
+			element.checked = true;
+			element.dispatchEvent(new Event('blur'));
+		}
+	);
+
+	updateUnlockAllSkinsButton();
+
+	if (typeof showToast === 'function') showToast('All skins unlocked');
+}
+
+function updateUnlockAllSkinsButton() {
+	let unlockAllSkinsButton = document.getElementById('unlock-all-skins-btn');
+	if (!unlockAllSkinsButton) return;
+
+	let skinCheckboxes = Array.from(
+		document.querySelectorAll('#AutoclickerSkinsTable input[type="checkbox"]')
+	);
+	let editableCheckboxes = skinCheckboxes.filter((element) => !element.disabled);
+	let hasAnyLocked = editableCheckboxes.some((element) => !element.checked);
+
+	unlockAllSkinsButton.hidden = editableCheckboxes.length > 0 && !hasAnyLocked;
+}
 
 function onSelectCustomFieldName(event) {
 	if (dataJSON != undefined) {

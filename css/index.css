@@ -197,6 +197,21 @@ code {
 	background: transparent;
 }
 
+.btn-inline {
+	width: auto;
+	padding: 6px 10px;
+	font-size: 11px;
+	line-height: 1.2;
+	margin-top: 12px;
+}
+
+.skins-header-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
 /* ===== Toast ===== */
 #toast-container {
 	position: fixed;
