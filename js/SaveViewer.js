@@ -427,10 +427,7 @@ function updateUnlockAllSkinsButton() {
 	let editableCheckboxes = skinCheckboxes.filter((element) => !element.disabled);
 	let hasAnyLocked = editableCheckboxes.some((element) => !element.checked);
 
-	unlockAllSkinsButton.classList.toggle(
-		'is-layout-hidden',
-		editableCheckboxes.length > 0 && !hasAnyLocked
-	);
+	unlockAllSkinsButton.classList.toggle('is-layout-hidden', editableCheckboxes.length > 0 && !hasAnyLocked);
 }
 
 function onSelectCustomFieldName(event) {
