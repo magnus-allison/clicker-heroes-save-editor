@@ -24,6 +24,8 @@
 	--color-success-border: #2a5a2a;
 	--color-focus-ring: rgba(127, 214, 127, 0.25);
 	--color-icon-filter: invert(1);
+
+	--box-radius: 8px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -150,6 +152,7 @@ code {
 	flex-direction: row;
 	gap: 0;
 	flex-wrap: wrap;
+	border-radius: var(--box-radius);
 }
 
 .file-menu-section {
@@ -312,10 +315,11 @@ code {
 	line-height: 1;
 }
 
-/* ===== Panels ===== */
-.panels {
+.edit-section {
 	background: var(--color-bg-alt);
 	border: 1px solid var(--color-border);
+	border-radius: var(--box-radius);
+	overflow: hidden;
 }
 
 /* ===== Details/Accordion ===== */
@@ -332,14 +336,23 @@ summary {
 	cursor: pointer;
 	user-select: none;
 	color: var(--color-text);
-	background: var(--color-bg-soft);
 	list-style: none;
 	display: flex;
 	align-items: center;
-}
+	position: relative;
 
-summary::-webkit-details-marker {
-	display: none;
+	&::-webkit-details-marker {
+		display: none;
+	}
+
+	&:hover {
+		background: var(--color-bg-hover);
+	}
+
+	& + div {
+		padding: 16px;
+		background: var(--color-bg);
+	}
 }
 
 summary::before {
@@ -357,15 +370,6 @@ summary::before {
 
 details[open] summary::before {
 	background-image: url('../assets/icons/chevron-down.svg');
-}
-
-summary:hover {
-	background: var(--color-bg-hover);
-}
-
-summary + div {
-	padding: 15px;
-	background: var(--color-bg);
 }
 
 /* ===== Form Elements ===== */
