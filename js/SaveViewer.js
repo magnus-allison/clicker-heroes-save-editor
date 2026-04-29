@@ -199,49 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	</tr>`
 	).join('');
 
-	let currentAutoclickerSkinTable = document.getElementById('CurrentAutoclickerSkinTable');
-	currentAutoclickerSkinTable.innerHTML += `<tr>
-		<td>Current Autoclicker Skin</td>
-		<td>
-			<input type="hidden" id="currentSkinValue" -ssf -sdv="currentAutoclickerSkin">
-			<div class="skin-selector">
-				${Object.keys(AutoclickerSkins)
-					.map(
-						(skinId) => `
-					<div class="skin-option" data-skin-id="${skinId}" title="${AutoclickerSkins[skinId][0]}">
-						<img src="assets/${AutoclickerSkins[skinId][1]}" alt="${AutoclickerSkins[skinId][0]}">
-					</div>
-				`
-					)
-					.join('')}
-			</div>
-		</td>
-	</tr>`;
-
-	// Add click handlers for skin selection
-	document.querySelectorAll('.skin-option').forEach((option) => {
-		option.addEventListener('click', function () {
-			let skinId = this.getAttribute('data-skin-id');
-			let hiddenInput = document.getElementById('currentSkinValue');
-			hiddenInput.value = skinId;
-			hiddenInput.dispatchEvent(new Event('blur'));
-			// Update visual selection
-			document.querySelectorAll('.skin-option').forEach((opt) => opt.classList.remove('selected'));
-			this.classList.add('selected');
-		});
-	});
-
-	// Generate Autoclicker Skins Table
-	let autoclickerSkinsTable = document.getElementById('AutoclickerSkinsTable');
-	autoclickerSkinsTable.innerHTML += Object.keys(AutoclickerSkins)
-		.map(
-			(skinId) => `<tr>
-		<td><img src="assets/${AutoclickerSkins[skinId][1]}"></td>
-		<td>${AutoclickerSkins[skinId][0]}</td>
-		<td><input type="checkbox" -sdv="autoclickerSkins-${skinId}" -sf-ae></td>
-	</tr>`
-		)
-		.join('');
+	renderAutoClickerSkins();
 
 	AchievementsTablesElement = document.getElementById('AchievementsTables');
 	let AchievementSorted = Array.from(
@@ -300,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	if (unlockAllSkinsButton) {
 		unlockAllSkinsButton.addEventListener('click', unlockAllSkins);
 	}
-	autoclickerSkinsTable.addEventListener('change', function (event) {
+	document.getElementById('autoclicker-skins-table').addEventListener('change', function (event) {
 		if (event.target && event.target.matches('input[type="checkbox"]')) {
 			updateUnlockAllSkinsButton();
 		}
@@ -417,8 +375,7 @@ function PutDataToPage() {
 		}
 	});
 
-	// Update skin selector visual state
-	updateSkinSelector();
+	updateSkinSelector(dataJSON.currentAutoclickerSkin);
 	let unlockAllSkinsButton = document.getElementById('unlock-all-skins-btn');
 	if (unlockAllSkinsButton) unlockAllSkinsButton.disabled = false;
 	updateUnlockAllSkinsButton();
@@ -524,16 +481,6 @@ function renderHeroesTable(saveData) {
 	});
 }
 
-const updateSkinSelector = () => {
-	let currentSkin = dataJSON.currentAutoclickerSkin;
-	document.querySelectorAll('.skin-option').forEach((opt) => {
-		opt.classList.remove('selected');
-		if (opt.getAttribute('data-skin-id') == currentSkin) {
-			opt.classList.add('selected');
-		}
-	});
-};
-
 function unlockAllSkins() {
 	if (dataJSON == undefined) return;
 
@@ -541,7 +488,7 @@ function unlockAllSkins() {
 		dataJSON.autoclickerSkins = {};
 	}
 
-	Array.from(document.querySelectorAll('#AutoclickerSkinsTable input[type="checkbox"]')).forEach(
+	Array.from(document.querySelectorAll('#autoclicker-skins-table input[type="checkbox"]')).forEach(
 		(element) => {
 			if (element.disabled) return;
 			element.checked = true;
@@ -559,7 +506,7 @@ function updateUnlockAllSkinsButton() {
 	if (!unlockAllSkinsButton) return;
 
 	let skinCheckboxes = Array.from(
-		document.querySelectorAll('#AutoclickerSkinsTable input[type="checkbox"]')
+		document.querySelectorAll('#autoclicker-skins-table input[type="checkbox"]')
 	);
 	let editableCheckboxes = skinCheckboxes.filter((element) => !element.disabled);
 	let hasAnyLocked = editableCheckboxes.some((element) => !element.checked);

@@ -1045,7 +1045,7 @@ ol.flex-free {
 
 	/* Keep wide data tables usable without breaking the overall layout. */
 	#ProfileValuesTable,
-	#AutoclickerSkinsTable,
+	#autoclicker-skins-table,
 	#CurrentAscensionTable,
 	#HeroesTable,
 	#mercenariesTablePrefab,
