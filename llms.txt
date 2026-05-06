@@ -1,0 +1,70 @@
+# Clicker Heroes Save Editor
+
+> A free, browser-based tool for decoding, inspecting, editing, and re-encoding Clicker Heroes save data — no installation required.
+
+## Summary
+
+Clicker Heroes Save Editor is an open-source web application that lets players load their Clicker Heroes save string (or file), view and modify every field in the save, then export the updated save back into the game. It runs entirely in the browser using plain HTML, CSS, and JavaScript — nothing is sent to any server.
+
+## Features
+
+- **Decode & Encode Saves** – Paste a raw Clicker Heroes save string; the editor decodes it instantly and re-encodes it after edits.
+- **Edit Gold & Rubies** – Directly modify currency values without third-party software.
+- **Hero Management** – Inspect and change hero levels, unlocks, and upgrade states.
+- **Ascension Data** – View and edit ascension counts, Hero Souls, Ancients, and related stats.
+- **Achievements & Profile** – Toggle or modify achievement flags and player profile fields.
+- **Save Viewer** – A structured tree view that visualises every key in the save so you can understand the raw data.
+- **No Server Required** – Works offline; open `index.html` directly or serve with any static HTTP server.
+
+## Keywords
+
+- clicker heroes save editor
+- clicker heroes save file editor
+- clicker heroes cheat
+- clicker heroes gold editor
+- clicker heroes rubies
+- clicker heroes save decoder
+- clicker heroes save encoder
+- clicker heroes hero souls editor
+- clicker heroes ancients editor
+- clicker heroes ascension editor
+- clicker heroes achievements editor
+- clicker heroes profile editor
+- clicker heroes online tool
+- clicker heroes browser tool
+- clicker heroes mod
+- clicker heroes trainer
+- clicker heroes hack
+- clicker heroes cheats
+- edit clicker heroes save
+- clicker heroes save file
+- clicker heroes save string
+- clicker heroes idle game
+- clicker heroes save manipulator
+- free clicker heroes editor
+- open source clicker heroes
+- clicker heroes html tool
+
+## Target Audience
+
+- Clicker Heroes players who want to inspect or back up their save data.
+- Players who have lost progress and need to restore or reconstruct a save.
+- Speedrunners and content creators who need specific save states.
+- Developers and modders who want to understand the Clicker Heroes save format.
+
+## Technology
+
+- Pure HTML5, CSS3, and vanilla JavaScript (no framework dependencies).
+- Uses [pako](https://github.com/nodeca/pako) for zlib inflate/deflate of save strings.
+- No build step required — open the file directly in any modern browser.
+
+## Repository
+
+- **Source:** https://github.com/magnus-allison/clicker-heroes-save-editor
+- **Live Tool:** Open `index.html` locally or deploy the folder to any static host (GitHub Pages, Netlify, etc.).
+- **License:** See repository for license details.
+- **Issues / Requests:** https://github.com/magnus-allison/clicker-heroes-save-editor/issues
+
+## Related Topics
+
+idle games, clicker games, save editor, game save editor, browser game tools, Clicker Heroes 1, Clicker Heroes 2, incremental games, save file manipulation, game modding tools

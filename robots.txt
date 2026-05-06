@@ -1,2 +1,21 @@
 User-agent: *
 Allow: /
+
+# LLM / AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# llms.txt – machine-readable project summary for AI indexing
+# https://clickerheroes.dev/llms.txt
