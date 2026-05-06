@@ -148,7 +148,7 @@
 								</tr>
 							</table>
 							<div class="skins-header-row">
-								<p style="margin-top: 16px; color: #888;">Auto Clicker Skins:</p>
+								<p class="skins-subheading">Auto Clicker Skins:</p>
 								<button id="unlock-all-skins-btn" class="btn-ghost btn-inline" type="button" disabled>Unlock All</button>
 							</div>
 							<table class="table-border" id="autoclicker-skins-table" style="margin-top: 12px;">
@@ -210,11 +210,11 @@
 					<details>
 						<summary>Transcensions & Ascensions</summary>
 						<div>
-							<p style="max-width: 600px;">Save contains all transcensions and ascensions information. This can significantly increase
+							<p class="section-description">Save contains all transcensions and ascensions information. This can significantly increase
 								the size of your save file. You can safely delete this information without any in-game consequences.
 							</p>
-							<p style="margin-top: 8px;">To view all ascensions in JSON, navigate to <code>'stats' > 'transcensions'</code></p>
-							<button onclick="ClearTranscensions()" style="margin-top: 12px;">Clear Transcension Data</button>
+							<p class="section-note">To view all ascensions in JSON, navigate to <code>'stats' > 'transcensions'</code></p>
+							<button onclick="ClearTranscensions()" class="section-action">Clear Transcension Data</button>
 						</div>
 					</details>
 
@@ -239,7 +239,7 @@
 									<td><input type="number" -ssf -sdv="titanDamage"></td>
 								</tr>
 							</table>
-							<p style="font-size: 12px; color: #666;">Raid Classes: 0 = None, 1 = Rogue, 2 = Mage, 3 = Priest</p>
+							<p class="section-hint">Raid Classes: 0 = None, 1 = Rogue, 2 = Mage, 3 = Priest</p>
 						</div>
 
 					</details>
@@ -565,7 +565,7 @@
 								<tr>
 									<td>Field Name</td>
 									<td>
-										<div id="customFieldName" style="padding: 10px; background: #151515; border: 1px solid #333; min-height: 38px;"></div>
+										<div id="customFieldName" class="custom-field-display"></div>
 									</td>
 								</tr>
 
