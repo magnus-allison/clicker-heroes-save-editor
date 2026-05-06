@@ -18,4 +18,4 @@ User-agent: Google-Extended
 Allow: /
 
 # llms.txt – machine-readable project summary for AI indexing
-# https://github.com/magnus-allison/clicker-heroes-save-editor/blob/main/llms.txt
+# https://clickerheroes.dev/llms.txt
