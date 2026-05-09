@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import rubyGem from '@/public/assets/profile/ruby_gem.png';
 
 export const alt = 'Clicker Heroes Save Editor';
 export const contentType = 'image/png';
@@ -7,7 +8,14 @@ export const size = {
 	height: 630
 };
 
+const red = '#7A041D';
+
 export default function Image() {
+	const siteUrl =
+		process.env.NEXT_PUBLIC_SITE_URL ??
+		(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+	const rubyGemUrl = new URL(rubyGem.src, siteUrl).toString();
+
 	return new ImageResponse(
 		<div
 			style={{
@@ -15,7 +23,7 @@ export default function Image() {
 				background: '#0a0a0a',
 				color: '#f0f0f0',
 				display: 'flex',
-				fontFamily: 'monospace',
+				fontFamily: '"Courier New", Courier, monospace',
 				height: '100%',
 				padding: '58px',
 				position: 'relative',
@@ -24,32 +32,7 @@ export default function Image() {
 		>
 			<div
 				style={{
-					alignItems: 'center',
-					background: 'linear-gradient(145deg, #7af4ff 0%, #35c4ff 45%, #2a63ff 100%)',
-					border: '4px solid #c5f9ff',
-					boxShadow: '0 0 0 6px rgba(53,196,255,0.22), 0 12px 24px rgba(9,18,40,0.65)',
-					display: 'flex',
-					height: '74px',
-					justifyContent: 'center',
-					position: 'absolute',
-					right: '74px',
-					top: '72px',
-					transform: 'rotate(45deg)',
-					width: '74px'
-				}}
-			>
-				<div
-					style={{
-						background: 'rgba(238,252,255,0.75)',
-						height: '16px',
-						transform: 'rotate(-45deg)',
-						width: '16px'
-					}}
-				/>
-			</div>
-			<div
-				style={{
-					border: '2px solid #2a5a2a',
+					border: `2px solid ${red}`,
 					display: 'flex',
 					flexDirection: 'column',
 					justifyContent: 'space-between',
@@ -57,9 +40,28 @@ export default function Image() {
 					width: '100%'
 				}}
 			>
-				<div style={{ color: '#7fd67f', fontSize: 30, fontWeight: 600 }}>Free Online Tool</div>
+				<div style={{ alignItems: 'center', display: 'flex', height: '82px', width: '94px' }}>
+					<img
+						alt=''
+						src={rubyGemUrl}
+						width={94}
+						height={82}
+						style={{
+							height: '100%',
+							objectFit: 'contain',
+							width: '100%'
+						}}
+					/>
+				</div>
 				<div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-					<div style={{ fontSize: 78, fontWeight: 700, lineHeight: 1.05 }}>
+					<div
+						style={{
+							fontFamily: '"Courier New", Courier, monospace',
+							fontSize: 78,
+							fontWeight: 700,
+							lineHeight: 1.05
+						}}
+					>
 						Clicker Heroes Save Editor
 					</div>
 					<div style={{ color: '#c7c7c7', fontSize: 34, lineHeight: 1.35, maxWidth: 920 }}>
@@ -67,7 +69,7 @@ export default function Image() {
 						achievements, and more.
 					</div>
 				</div>
-				<div style={{ color: '#d4af37', fontSize: 28 }}>clickerheroes.dev</div>
+				<div style={{ color: '#fff', fontSize: 28 }}>clickerheroes.dev</div>
 			</div>
 		</div>,
 		size
