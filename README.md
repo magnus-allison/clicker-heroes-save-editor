@@ -5,11 +5,13 @@
 [![Open Issues](https://img.shields.io/github/issues/magnus-allison/clicker-heroes-save-editor)](https://github.com/magnus-allison/clicker-heroes-save-editor/issues)
 [![License](https://img.shields.io/github/license/magnus-allison/clicker-heroes-save-editor)](LICENSE)
 
+**Live app:** https://clickerheroes.dev/
+
 <img width="980" height="835" alt="Clicker Heroes Save Editor – browser-based save file editor showing gold, rubies, heroes and ascension data" src="https://github.com/user-attachments/assets/8f75e357-368b-4f25-ac89-ecc003654029" />
 
 ## Quick Start
 
-1. **Open:** Double-click [index.html](index.html) or serve the folder and visit `http://localhost:8000`.
+1. **Open:** Visit https://clickerheroes.dev/ in a modern browser.
 2. **Load Save:** Paste or load your save string/file using the in-app controls.
 3. **Edit Values:** Change gold, rubies, hero levels, ascension state, achievements, profile fields, and more.
 4. **Save/Export:** Export the modified save string from the UI and import it back into the game.
@@ -26,17 +28,16 @@
 | **Save Viewer** | Structured tree view of every key in the save for full transparency. |
 | **100% Client-Side** | Runs entirely in your browser — nothing is sent to any server. |
 
-## Run Locally (recommended)
+## Run Locally
 
-Start a simple HTTP server from the project root to avoid browser file-access restrictions:
+Install dependencies and start the Next.js development server:
 
 ```bash
-python3 -m http.server 8000
-# or
-npm install -g http-server && http-server -c-1
+pnpm install
+pnpm dev
 ```
 
-Then open `http://localhost:8000` in your browser.
+Then open the local URL printed by Next.js.
 
 ## Safety & Backup
 
@@ -45,7 +46,7 @@ Then open `http://localhost:8000` in your browser.
 
 ## Contributing / Development Notes
 
-- The UI and logic are plain HTML/JS — add features by editing files in [`js/`](js/) and styles in [`css/`](css/).
+- The UI is a Next.js app. Edit routes in [`app/`](app/), components in [`components/`](components/), and save/editor logic in [`lib/`](lib/).
 - If you add dependencies, update this README and include usage instructions.
 
 ## Related Resources

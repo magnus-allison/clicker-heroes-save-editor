@@ -1,0 +1,21 @@
+{
+	"name": "Clicker Heroes Save Editor",
+	"short_name": "CH Save Editor",
+	"description": "Free browser-based Clicker Heroes save decoder and editor.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#0a0a0a",
+	"theme_color": "#0a0a0a",
+	"icons": [
+		{
+			"src": "/assets/icons/clicker-heroes.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "/favicon.ico",
+			"sizes": "any",
+			"type": "image/x-icon"
+		}
+	]
+}

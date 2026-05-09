@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Diamond icon">
+  <defs>
+    <linearGradient id="diamondFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a6f7ff"/>
+      <stop offset="52%" stop-color="#3ec7ff"/>
+      <stop offset="100%" stop-color="#2f68ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="14" width="36" height="36" rx="2" transform="rotate(45 32 32)" fill="url(#diamondFill)" stroke="#e8fcff" stroke-width="3"/>
+  <path d="M32 22 42 32 32 42 22 32z" fill="#ecfcff" opacity="0.7"/>
+</svg>

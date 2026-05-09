@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+
+@theme inline {
+	--font-mono: var(--font-ibm-plex-mono);
+	--font-sans: var(--font-ibm-plex-mono);
+}
+
+:root {
+	color-scheme: dark;
+	--color-bg: #0a0a0a;
+	--color-bg-soft: #0d0d0d;
+	--color-bg-alt: #111111;
+	--color-bg-elevated: #151515;
+	--color-bg-elevated-2: #1a1a1a;
+	--color-bg-hover: #151515;
+	--color-border: #333333;
+	--color-border-soft: #2a2a2a;
+	--color-border-subtle: #222222;
+	--color-border-hover: #444444;
+	--color-text: #e0e0e0;
+	--color-text-strong: #f0f0f0;
+	--color-text-muted: #888888;
+	--color-text-dim: #666666;
+	--color-text-secondary: #a0a0a0;
+	--color-link: #a7a7a7;
+	--color-link-hover: #ffffff;
+	--color-primary: #6fcf6f;
+	--color-primary-dim: rgba(111, 207, 111, 0.2);
+	--color-primary-bg: #122012;
+	--color-primary-border: #3f7a3f;
+	--color-primary-check: #7fd67f;
+	--color-success-bg: #0f1f0f;
+	--color-success-border: #2a5a2a;
+	--color-focus-ring: rgba(127, 214, 127, 0.25);
+	--color-icon-filter: invert(1);
+	--color-gold: #d4af37;
+	--color-gold-text: #e8d5a0;
+	--color-gilded-bg: rgba(212, 175, 55, 0.12);
+	--color-gilded-border: rgba(212, 175, 55, 0.28);
+	--color-selected-bg: #1a2a1a;
+	--color-shadow: rgba(0, 0, 0, 0.35);
+	--input-radius: 2px;
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		color-scheme: light;
+		--color-bg: #f5f6f8;
+		--color-bg-soft: #eef1f4;
+		--color-bg-alt: #ffffff;
+		--color-bg-elevated: #f3f5f8;
+		--color-bg-elevated-2: #e9edf2;
+		--color-bg-hover: #eaf0f7;
+		--color-border: #c5ccd6;
+		--color-border-soft: #d5dbe3;
+		--color-border-subtle: #dce2ea;
+		--color-border-hover: #9eabb9;
+		--color-text: #20262e;
+		--color-text-strong: #12161c;
+		--color-text-muted: #566272;
+		--color-text-dim: #6c7787;
+		--color-text-secondary: #4a5665;
+		--color-link: #3b485a;
+		--color-link-hover: #12161c;
+		--color-primary: #2c8c41;
+		--color-primary-dim: rgba(44, 140, 65, 0.15);
+		--color-primary-bg: #e8f5ec;
+		--color-primary-border: #5aaf6a;
+		--color-primary-check: #2c8c41;
+		--color-success-bg: #e9f6ec;
+		--color-success-border: #8cc89a;
+		--color-focus-ring: rgba(44, 140, 65, 0.24);
+		--color-icon-filter: none;
+		--color-gold: #b8860b;
+		--color-gold-text: #7a5c00;
+		--color-gilded-bg: rgba(184, 134, 11, 0.06);
+		--color-gilded-border: rgba(184, 134, 11, 0.22);
+		--color-selected-bg: #e0f0e3;
+		--color-shadow: rgba(0, 0, 0, 0.06);
+	}
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	font-family: var(--font-ibm-plex-mono), 'Consolas', 'Monaco', 'Courier New', monospace;
+	font-size: 13px;
+	line-height: 1.5;
+	background: var(--color-bg);
+	color: var(--color-text);
+}
+
+::selection {
+	background: var(--color-focus-ring);
+}
+
+a {
+	color: var(--color-link);
+	transition: color 0.15s;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+}
+
+button:not(:disabled) {
+	cursor: pointer;
+}
+
+textarea {
+	resize: none;
+}
+
+img {
+	max-width: 100%;
+}
