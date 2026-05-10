@@ -15,7 +15,7 @@ export const shopItemFields: SimpleFieldConfig[] = [
 	},
 	{
 		label: 'Spiked Nog Count',
-		imageSrc: '/assets/profile/spiked_nog.webp',
+		imageSrc: '/assets/shopItems/spiked_nog.webp',
 		path: ['spikedNog'],
 		kind: 'number',
 		help: {
@@ -25,7 +25,7 @@ export const shopItemFields: SimpleFieldConfig[] = [
 	},
 	{
 		label: '2x Damage Multiplier',
-		imageSrc: '/assets/profile/damage_multiplier.webp',
+		imageSrc: '/assets/shopItems/damage_multiplier.webp',
 		path: ['paidForRubyMultiplier'],
 		kind: 'checkbox'
 	}

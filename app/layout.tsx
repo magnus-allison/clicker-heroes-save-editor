@@ -87,8 +87,9 @@ export const metadata: Metadata = {
 	},
 
 	icons: {
-		icon: [{ url: '/assets/profile/ruby_gem.webp', type: 'image/webp' }],
-		shortcut: '/assets/profile/ruby_gem.webp'
+		icon: [{ url: '/favicon.ico', sizes: 'any' }],
+		shortcut: '/favicon.ico',
+		apple: [{ url: '/assets/icons/clicker-heroes.png', sizes: '512x512', type: 'image/png' }]
 	},
 
 	manifest: '/site.webmanifest',

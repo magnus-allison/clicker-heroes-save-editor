@@ -36,7 +36,7 @@ export const SaveDataPanel = () => {
 	};
 
 	return (
-		<div className='grid w-full rounded-xl border border-(--color-border) bg-(--color-bg) shadow-[0_2px_8px_var(--color-shadow)] lg:grid-cols-2'>
+		<div className='grid w-full overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg) shadow-[0_2px_8px_var(--color-shadow)] lg:grid-cols-2'>
 			<section className='min-w-0'>
 				<h2 className='border-b border-(--color-border-soft) bg-(--color-bg-elevated) px-3 py-2.5 text-[12px] uppercase tracking-[0.16em] text-(--color-text-strong) sm:px-4'>
 					Import Save Data
@@ -105,13 +105,13 @@ export const SaveDataPanel = () => {
 					</p>
 					<div className='flex min-w-0 items-start gap-2'>
 						<TextInput
-							className='h-[38px] min-h-[38px] min-w-0 flex-1'
+							className='min-w-0 flex-1'
 							onValueChange={setDecodeValue}
 							placeholder='Paste save data...'
 							value={decodeValue}
 						/>
 						<CopyButton
-							className='h-[38px] w-[38px] min-w-[38px] px-0'
+							className='min-w-10 px-0'
 							idleLabel='Copy'
 							onCopied={() => showToast('Text copied.')}
 							text={decodeValue}
@@ -138,14 +138,14 @@ export const SaveDataPanel = () => {
 				<div className='flex flex-col gap-2.5 p-3 sm:p-4'>
 					<div className='flex min-w-0 items-start gap-2'>
 						<TextInput
-							className='h-[38px] min-h-[38px] min-w-0 flex-1'
+							className='min-w-0 flex-1'
 							placeholder='Encoded save...'
 							readOnly
 							selectOnFocus
 							value={encodeValue}
 						/>
 						<CopyButton
-							className='h-[38px] w-[38px] min-w-[38px] px-0'
+							className='min-w-10 px-0'
 							idleLabel='Copy'
 							onCopied={() => showToast('Encoded save copied.')}
 							text={encodeValue}

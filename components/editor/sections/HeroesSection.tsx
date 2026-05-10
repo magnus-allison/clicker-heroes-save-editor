@@ -58,6 +58,7 @@ export const HeroesSection = ({ defaultOpen }: Props) => {
 										</td>
 										<td className="min-w-45 px-4 py-3">
 											<NumberInput
+												compact
 												disabled={!saveData}
 												onCommit={(value) => updateValue(["heroCollection", "heroes", hero.heroId, "level"], value)}
 												selectOnFocus
@@ -66,6 +67,7 @@ export const HeroesSection = ({ defaultOpen }: Props) => {
 										</td>
 										<td className="min-w-45 px-4 py-3">
 											<NumberInput
+												compact
 												disabled={!saveData}
 												onCommit={(value) => updateValue(["heroCollection", "heroes", hero.heroId, "epicLevel"], value)}
 												selectOnFocus

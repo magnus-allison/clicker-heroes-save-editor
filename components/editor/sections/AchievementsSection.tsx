@@ -28,7 +28,7 @@ export const AchievementsSection = ({ defaultOpen }: Props) => {
 								<tr>
 									<th className="px-4 py-3">Image</th>
 									<th className="px-4 py-3">Item</th>
-									<th className="px-4 py-3">Value</th>
+									<th className="px-4 py-3 text-left sm:text-right">Value</th>
 								</tr>
 							</thead>
 							<tbody className="bg-(--color-bg)">

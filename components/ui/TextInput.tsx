@@ -42,7 +42,8 @@ export const TextInput = ({
 	const displayValue = isFocused ? draftValue : value;
 
 	const sharedClassName = cn(
-		'w-full rounded-(--input-radius) border border-(--color-border) bg-(--color-bg) px-2.5 py-2 text-[13px] text-(--color-text) outline-none transition placeholder:text-(--color-text-dim) hover:border-(--color-border-hover) focus:border-(--color-border-hover) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-border-soft) disabled:bg-(--color-bg-soft) disabled:text-(--color-text-dim)',
+		'w-full rounded-(--input-radius) border border-(--color-border) bg-(--color-bg) px-2.5 text-[13px] text-(--color-text) outline-none transition placeholder:text-(--color-text-dim) hover:border-(--color-border-hover) focus:border-(--color-border-hover) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-border-soft) disabled:bg-(--color-bg-soft) disabled:text-(--color-text-dim)',
+		multiline ? 'py-2' : 'h-10',
 		className
 	);
 

@@ -10,7 +10,7 @@ export const PanelSection: FC<Props> = ({ hasPadding, children }) => {
 	return (
 		<div
 			className={cn(
-				`w-full overflow-visible rounded-xl border border-(--color-border) bg-(--color-bg-alt) shadow-[0_2px_8px_var(--color-shadow)]`,
+				`w-full overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg-alt) shadow-[0_2px_8px_var(--color-shadow)]`,
 				hasPadding && 'p-5 flex-wrap flex'
 			)}
 

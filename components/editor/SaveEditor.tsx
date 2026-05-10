@@ -4,6 +4,7 @@ import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { AchievementsSection } from '@/components/editor/sections/AchievementsSection';
 import { AdditionalInfoSection } from '@/components/editor/sections/AdditionalInfoSection';
 import { CustomFieldSection } from '@/components/editor/sections/CustomFieldSection';
+import { FeedbackSection } from '@/components/editor/sections/FeedbackSection';
 import { HeroesSection } from '@/components/editor/sections/HeroesSection';
 import { JsonSection } from '@/components/editor/sections/JsonSection';
 import { MercenariesSection } from '@/components/editor/sections/MercenariesSection';
@@ -12,7 +13,9 @@ import { SimpleFieldsSection } from '@/components/editor/sections/SimpleFieldsSe
 import { SkinsSection } from '@/components/editor/sections/SkinsSection';
 import { TranscensionsSection } from '@/components/editor/sections/TranscensionsSection';
 import { useToast } from '@/components/ui/ToastProvider';
-import { clanFields, currentAscensionFields, shopItemFields } from '@/lib/data/editor-config';
+import { clanFields } from '@/lib/data/editor-config';
+import { shopItemFields } from '@/lib/data/shopItems';
+import { zoneItemFields } from '@/lib/data/zoneItems';
 import { PanelSection } from '../ui/PanelSection';
 
 export const SaveEditor = () => {
@@ -45,7 +48,7 @@ export const SaveEditor = () => {
 					<SimpleFieldsSection
 						defaultOpen
 						description="Gold, hero souls, and the current run's zone values."
-						fields={currentAscensionFields}
+						fields={zoneItemFields}
 						title='Zone Items'
 					/>
 
@@ -72,6 +75,8 @@ export const SaveEditor = () => {
 					<JsonSection defaultOpen={false} showToast={showToast} />
 
 					<AdditionalInfoSection defaultOpen={false} />
+
+					<FeedbackSection defaultOpen={false} />
 				</PanelSection>
 			</main>
 		</div>
