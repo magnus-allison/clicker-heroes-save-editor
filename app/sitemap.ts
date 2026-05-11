@@ -6,10 +6,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 	return [
 		{
 			url: siteUrl,
-			lastModified: new Date('2026-05-08'),
+			lastModified: new Date('2026-05-10'),
 			changeFrequency: 'weekly',
 			priority: 1,
-			images: [`${siteUrl}/assets/icons/clicker-heroes.png`]
+			images: [`${siteUrl}/assets/opengraph/opengraph-image.png`]
 		}
 	];
 }
