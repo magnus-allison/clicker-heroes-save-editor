@@ -7,6 +7,7 @@ import { SectionCard } from '@/components/ui/SectionCard';
 import { autoClickerSkins } from '@/lib/data/editor-config';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath, setValueAtPath } from '@/lib/save-utils';
+import { cn } from '@/lib/cn';
 
 type Props = {
 	showToast: (message: string) => void;
@@ -60,10 +61,10 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 					</Button>
 				</div>
 
-				<div className='my-2 overflow-hidden border border-(--color-border)'>
+				<div className='my-2 overflow-hidden rounded-2xl border border-(--color-border)'>
 					<div className='overflow-x-auto'>
 						<table className='min-w-full border-collapse text-left text-[13px] text-(--color-text-secondary)'>
-							<thead className='bg-(--color-bg-elevated) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+							<thead className='bg-(--color-table-header) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
 								<tr>
 									<th className='px-4 py-3'>Image</th>
 									<th className='px-4 py-3'>Skin Name</th>
@@ -118,11 +119,11 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 
 							return (
 								<button
-									className={`border px-3 py-3 text-left transition ${
-										isSelected
-											? 'border-(--color-primary-border) bg-(--color-selected-bg)'
-											: 'border-(--color-border) bg-(--color-bg-soft) hover:border-(--color-border-hover)'
-									}`}
+									className={cn(
+										`border rounded-2xl px-3 py-3 text-left transition border-(--color-border) bg-(--color-bg-soft) hover:border-(--color-border-hover)`,
+										isSelected &&
+											'border-(--color-primary-border) bg-(--color-selected-bg)'
+									)}
 									disabled={!saveData}
 									key={skin.id}
 									onClick={() => updateValue(['currentAutoclickerSkin'], skin.id)}

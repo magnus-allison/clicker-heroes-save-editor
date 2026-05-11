@@ -22,7 +22,7 @@ export const MercenariesSection = ({ defaultOpen }: Props) => {
 			<div className="space-y-6">
 				<div>
 					<p className="mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)">Summary</p>
-					<div className="overflow-hidden border border-(--color-border)">
+					<div className="overflow-hidden rounded-2xl border border-(--color-border)">
 						<div className="overflow-x-auto">
 							<table className="min-w-full border-collapse text-left text-[13px] text-(--color-text-secondary)">
 								<tbody className="bg-(--color-bg)">
@@ -42,10 +42,10 @@ export const MercenariesSection = ({ defaultOpen }: Props) => {
 
 				<div>
 					<p className="mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)">Mercenary roster</p>
-					<div className="overflow-hidden border border-(--color-border)">
+					<div className="overflow-hidden rounded-2xl border border-(--color-border)">
 						<div className="overflow-x-auto">
 							<table className="min-w-full border-collapse text-left text-[13px] text-(--color-text-secondary)">
-								<thead className="bg-(--color-bg-elevated) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)">
+								<thead className="bg-(--color-table-header) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)">
 									<tr>
 										<th className="px-4 py-3">Name</th>
 										<th className="px-4 py-3">Level</th>

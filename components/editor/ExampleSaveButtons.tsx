@@ -12,8 +12,8 @@ type Props = {
 export const ExampleSaveButtons = ({ onSelect }: Props) => {
 	return (
 		<div className='mt-2 flex flex-col gap-1.5'>
-			<p className='text-[10px] uppercase tracking-[0.14em] text-(--color-text-dim)'>
-				Examples
+			<p className='text-left text-[11px] uppercase tracking-wider text-(--color-text-dim) ml-2 py-2'>
+				-- Load an Example Save --
 			</p>
 			<div className='flex flex-wrap gap-1.5'>
 				{examples.map((example) => (
@@ -21,9 +21,9 @@ export const ExampleSaveButtons = ({ onSelect }: Props) => {
 						className='h-7 px-2.5 text-[11px] text-(--color-text-secondary)'
 						key={example.name}
 						onClick={() => {
-						posthog.capture('example_save_loaded', { example_name: example.name });
-						onSelect(example.save);
-					}}
+							posthog.capture('example_save_loaded', { example_name: example.name });
+							onSelect(example.save);
+						}}
 						size='sm'
 						variant='secondary'
 					>

@@ -18,7 +18,7 @@ export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, ti
 	return (
 		<SectionCard defaultOpen={defaultOpen} description={description} title={title}>
 			{note ? <p className='mb-4 text-[12px] leading-6 text-(--color-text-secondary)'>{note}</p> : null}
-			<div className='my-2 overflow-hidden rounded-(--input-radius) border border-(--color-border)'>
+			<div className='my-2 overflow-hidden rounded-2xl border border-(--color-border)'>
 				<div className='overflow-x-auto'>
 					<table className='w-full table-fixed border-collapse text-left text-[13px] text-(--color-text-secondary)'>
 						<colgroup>
@@ -26,7 +26,7 @@ export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, ti
 							<col className='w-[28%] sm:w-52' />
 							<col className='w-[52%] sm:w-120' />
 						</colgroup>
-						<thead className='bg-(--color-bg-elevated) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+						<thead className='bg-(--color-table-header) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
 							<tr>
 								{showImageColumn ? <th className='px-3 py-3 sm:px-4'>Image</th> : null}
 								<th className='px-3 py-3 sm:px-4'>Item</th>

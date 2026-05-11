@@ -14,6 +14,7 @@ import { useToast } from '@/components/ui/ToastProvider';
 import { decodeSaveString, encodeSaveData } from '@/lib/save-codec';
 import { saveHelpContent } from '@/lib/data/editor-config';
 import { useSaveStore } from '@/lib/save-store';
+import { StepTitle } from '../ui/StepTitle';
 
 const iconAltLabels: Record<string, string> = {
 	'/assets/icons/apple.svg': 'Apple',
@@ -29,7 +30,7 @@ export const SaveDataPanel = () => {
 	const { showToast } = useToast();
 	const loadSave = useSaveStore((state) => state.loadSave);
 	const saveData = useSaveStore((state) => state.saveData);
-	const [selectedFileName, setSelectedFileName] = useState('Choose a save file...');
+	const [selectedFileName, setSelectedFileName] = useState('No file selected');
 	const [decodeValue, setDecodeValue] = useState('');
 	const [encodeValue, setEncodeValue] = useState('');
 
@@ -53,11 +54,49 @@ export const SaveDataPanel = () => {
 	};
 
 	return (
-		<div className='grid w-full overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg) shadow-[0_2px_8px_var(--color-shadow)] lg:grid-cols-2'>
+		<div className='grid w-full overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-bg) shadow-[0_2px_8px_var(--color-shadow)] lg:grid-cols-2 px-1 py-2'>
 			<section className='min-w-0'>
-				<h2 className='border-b border-(--color-border-soft) bg-(--color-bg-elevated) px-3 py-2.5 text-[12px] uppercase tracking-[0.16em] text-(--color-text-strong) sm:px-4'>
-					Import Save Data
-				</h2>
+				<StepTitle
+					step={1}
+					title='Import Your Save Data'
+					trailing={
+						<HelpToolTip
+							title='Where is my save file?'
+							contentClassName='w-[min(620px,calc(100vw-2rem))] gap-2 rounded-xl border border-(--color-border) bg-(--color-bg-alt) p-3 shadow-[0_2px_8px_var(--color-shadow)] pointer-events-auto'
+							triggerClassName='h-7 min-h-7 w-7 min-w-7 self-auto rounded-full'
+							titleClassName='border-b-0 pb-0'
+						>
+							{saveHelpContent.map((entry) => (
+								<div
+									className='border-t border-(--color-border-soft) py-2.5 first:border-t-0'
+									key={entry.title}
+								>
+									<p className='flex items-center gap-1.5 text-[12px] uppercase tracking-[0.08em] text-(--color-text-strong)'>
+										{entry.iconPaths.map((iconPath) => (
+											<EditorImage
+												alt={getIconAlt(iconPath)}
+												className='h-3.5 w-3.5 object-contain opacity-80'
+												key={iconPath}
+												size={14}
+												src={iconPath}
+												style={{ filter: 'var(--color-icon-filter)' }}
+											/>
+										))}
+										<span>{entry.title}</span>
+									</p>
+									<p className='mt-1 rounded-(--input-radius) border border-(--color-border-soft) bg-(--color-bg) px-2 py-1 font-mono text-[11px] text-(--color-text-muted) break-all'>
+										{entry.path}
+									</p>
+									{entry.note ? (
+										<p className='mt-1 text-[11px] leading-5 text-(--color-text-secondary)'>
+											{entry.note}
+										</p>
+									) : null}
+								</div>
+							))}
+						</HelpToolTip>
+					}
+				/>
 				<div className='flex flex-col gap-2.5 p-3 sm:p-4'>
 					<input
 						aria-label='Choose save file'
@@ -79,54 +118,40 @@ export const SaveDataPanel = () => {
 						ref={inputRef}
 						type='file'
 					/>
-					<div className='flex items-center gap-2'>
+					<div className='flex flex-wrap items-center gap-2'>
 						<Button
-							className='flex-1 justify-start bg-(--color-bg)'
+							className='justify-center whitespace-nowrap'
 							onClick={() => inputRef.current?.click()}
-							variant='secondary'
+							variant='subtle'
 						>
 							<EditorImage
-								alt='Open save file'
+								alt='Upload save file'
 								className='h-4 w-4 shrink-0 object-contain opacity-80'
 								size={16}
 								src='/assets/icons/folder-open.svg'
 								style={{ filter: 'var(--color-icon-filter)' }}
 							/>
-							<span className='truncate'>{selectedFileName}</span>
+							<span>Upload file</span>
 						</Button>
-						<HelpToolTip title='Where is my save file?'>
-							{saveHelpContent.map((entry) => (
-								<div key={entry.title}>
-									<p className='flex items-center gap-1.5 text-(--color-text)'>
-										{entry.iconPaths.map((iconPath) => (
-											<EditorImage
-												alt={getIconAlt(iconPath)}
-												className='h-3.5 w-3.5 object-contain opacity-70'
-												key={iconPath}
-												size={14}
-												src={iconPath}
-												style={{ filter: 'var(--color-icon-filter)' }}
-											/>
-										))}
-										<strong>{entry.title}</strong>
-									</p>
-									<p className='mt-1 border border-(--color-border-soft) bg-(--color-bg) px-2 py-1 font-mono text-[11px] text-(--color-text-muted) break-all'>
-										{entry.path}
-									</p>
-									{entry.note ? <p>{entry.note}</p> : null}
-								</div>
-							))}
-						</HelpToolTip>
+						<p className='max-w-full truncate text-[12px] text-(--color-text-muted)'>
+							{selectedFileName}
+						</p>
 					</div>
-					<p className='text-center text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
-						or paste below
+					<p className='text-left text-[11px] uppercase tracking-wider text-(--color-text-dim) ml-2 py-2'>
+						-- or paste below --
 					</p>
 					<div className='flex min-w-0 items-start gap-2'>
-						<TextInput
-							className='min-w-0 flex-1'
-							onValueChange={setDecodeValue}
-							placeholder='Paste save data...'
+						<textarea
+							className='min-h-32 w-full resize-y rounded-xl border border-(--color-border) bg-(--color-bg) p-3 text-sm font-mono text-(--color-text) focus-visible:outline-none sm:p-4'
+							placeholder='Paste your encoded save data here...'
 							value={decodeValue}
+							onChange={(e) => setDecodeValue(e.target.value)}
+							onPaste={(e) => {
+								const pastedData = e.clipboardData.getData('text');
+								if (pastedData) {
+									handleDecode(pastedData, 'paste');
+								}
+							}}
 						/>
 						<CopyButton
 							className='min-w-10 px-0'
@@ -141,7 +166,7 @@ export const SaveDataPanel = () => {
 							onClick={() => handleDecode(decodeValue, 'paste')}
 							variant='primary'
 						>
-							Read Save Data
+							Load Save Data
 						</Button>
 					</div>
 					<ExampleSaveButtons
@@ -153,26 +178,20 @@ export const SaveDataPanel = () => {
 					/>
 				</div>
 			</section>
-			<section className='min-w-0 border-t border-(--color-border-soft) lg:border-l lg:border-t-0'>
-				<h2 className='border-b border-(--color-border-soft) bg-(--color-bg-elevated) px-3 py-2.5 text-[12px] uppercase tracking-[0.16em] text-(--color-text-strong) sm:px-4'>
-					Export Save Data
-				</h2>
-				<div className='flex flex-col gap-2.5 p-3 sm:p-4'>
+			<section className='flex min-w-0 flex-col border-t border-(--color-border-soft) lg:border-l lg:border-t-0 px-1'>
+				<StepTitle title='Export Your Save Data' step={3} />
+				<div className='flex flex-1 flex-col gap-2.5 p-3 sm:p-4'>
 					<div className='flex min-w-0 items-start gap-2'>
-						<TextInput
-							className='min-w-0 flex-1'
-							placeholder='Encoded save...'
-							readOnly
-							selectOnFocus
+						<textarea
+							className='min-h-32 w-full resize-y rounded-xl border border-(--color-border) bg-(--color-bg) p-3 text-sm font-mono text-(--color-text) focus-visible:outline-none sm:p-4'
+							placeholder='Your encoded save data will appear here...'
 							value={encodeValue}
+							onChange={(e) => setEncodeValue(e.target.value)}
 						/>
 						<CopyButton
 							className='min-w-10 px-0'
 							idleLabel='Copy'
-							onCopied={() => {
-								showToast('Encoded save copied.');
-								posthog.capture('encoded_save_copied');
-							}}
+							onCopied={() => showToast('Text copied.')}
 							text={encodeValue}
 						/>
 					</div>
@@ -195,7 +214,7 @@ export const SaveDataPanel = () => {
 							Encode Save
 						</Button>
 					</div>
-					<p className='text-[12px] leading-6 text-(--color-text-secondary)'>
+					<p className='mt-auto pt-2 pb-1 text-sm leading-6 text-[11px] tracking-wider text-(--color-text-dim)'>
 						Always keep a backup of your original save before importing edited data back into the
 						game.
 					</p>

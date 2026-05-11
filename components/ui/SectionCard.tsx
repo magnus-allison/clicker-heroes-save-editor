@@ -21,7 +21,7 @@ export const SectionCard = ({ actions, children, className, defaultOpen, descrip
 			open={defaultOpen}
 		>
 			<summary
-				className='grid list-none cursor-pointer grid-cols-[auto_minmax(0,1fr)] items-start gap-x-2 gap-y-1 bg-transparent px-4 py-3 text-[13px] text-(--color-text) transition hover:bg-(--color-bg-hover) group-open:bg-(--color-bg-elevated) group-open:text-(--color-text-strong) marker:hidden [&::-webkit-details-marker]:hidden'
+				className='grid list-none cursor-pointer grid-cols-[auto_minmax(0,1fr)] items-start gap-x-2 gap-y-1 bg-(--color-bg-elevated) px-4 py-3 text-[13px] text-(--color-text) transition hover:bg-(--color-bg-hover) group-open:bg-(--color-bg-elevated-2) group-open:text-(--color-text-strong) marker:hidden [&::-webkit-details-marker]:hidden'
 				style={{ padding: '12px 15px', paddingRight: actions ? 72 : 15 }}
 			>
 				<span className='mt-0.5 text-[11px] text-(--color-text-dim) transition duration-200 group-open:rotate-90 group-open:opacity-60'>

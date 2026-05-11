@@ -21,10 +21,10 @@ export const AchievementsSection = ({ defaultOpen }: Props) => {
 			title='Achievements'
 		>
 			<div className='space-y-6'>
-				<div className='my-2 overflow-hidden border border-(--color-border)'>
+				<div className='my-2 overflow-hidden rounded-2xl border border-(--color-border)'>
 					<div className='overflow-x-auto'>
 						<table className='min-w-full border-collapse text-left text-[13px] text-(--color-text-secondary)'>
-							<thead className='bg-(--color-bg-elevated) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+							<thead className='bg-(--color-table-header) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
 								<tr>
 									<th className='px-4 py-3'>Image</th>
 									<th className='px-4 py-3'>Item</th>
@@ -66,7 +66,7 @@ export const AchievementsSection = ({ defaultOpen }: Props) => {
 
 				<div className='grid gap-4 xl:grid-cols-2'>
 					{achievementGroups.map((group) => (
-						<div className='overflow-hidden border border-(--color-border)' key={group.type}>
+						<div className='overflow-hidden rounded-2xl border border-(--color-border)' key={group.type}>
 							<div className='border-b border-(--color-border-subtle) bg-(--color-bg-elevated) px-4 py-3'>
 								<h3 className='text-[13px] text-(--color-text)'>
 									{group.label}-related achievements
@@ -74,7 +74,7 @@ export const AchievementsSection = ({ defaultOpen }: Props) => {
 							</div>
 							<div className='overflow-x-auto'>
 								<table className='min-w-full border-collapse text-left text-[13px] text-(--color-text-secondary)'>
-									<thead className='bg-(--color-bg) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+									<thead className='bg-(--color-table-header) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
 										<tr>
 											<th className='px-4 py-3'>Image</th>
 											<th className='px-4 py-3'>Description</th>

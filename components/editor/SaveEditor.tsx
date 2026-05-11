@@ -17,15 +17,18 @@ import { clanFields } from '@/lib/data/editor-config';
 import { shopItemFields } from '@/lib/data/shopItems';
 import { zoneItemFields } from '@/lib/data/zoneItems';
 import { PanelSection } from '../ui/PanelSection';
+import { StepTitle } from '../ui/StepTitle';
+import { useSaveStore } from '@/lib/save-store';
 
 export const SaveEditor = () => {
 	const { showToast } = useToast();
+	const hasSave = useSaveStore((state) => state.saveData !== null);
 
 	return (
 		<div className='flex min-h-screen w-full justify-center overflow-x-hidden p-10'>
 			<main className='flex w-full max-w-6xl flex-col gap-3'>
-				<header className='mb-2 flex flex-col gap-1.5'>
-					<h1 className='text-2xl font-semibold leading-[1.2] text-(--color-text-strong)'>
+				<header className='mb-4 flex flex-col gap-1.5'>
+					<h1 className='text-[1.6rem] font-semibold leading-[1.2] text-(--color-text-strong)'>
 						Clicker Heroes Save Editor
 					</h1>
 					<p className='max-w-190 text-sm text-(--color-text-muted)'>
@@ -35,7 +38,10 @@ export const SaveEditor = () => {
 
 				<SaveDataPanel />
 
-				<PanelSection>
+				<div className='ml-2'>
+					<StepTitle title='Edit Your Save Data' step={2} />
+				</div>
+				<PanelSection className={!hasSave ? 'pointer-events-none opacity-40 select-none' : undefined}>
 					<SimpleFieldsSection
 						defaultOpen
 						description='Core currencies and ruby-shop purchases.'

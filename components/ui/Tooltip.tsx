@@ -11,6 +11,8 @@ type Props = {
 	trigger: ReactNode;
 	children: ReactNode;
 	className?: string;
+	contentClassName?: string;
+	titleClassName?: string;
 	triggerClassName?: string;
 	placement?: 'top' | 'bottom';
 };
@@ -18,6 +20,8 @@ type Props = {
 export const Tooltip = ({
 	children,
 	className,
+	contentClassName,
+	titleClassName,
 	title,
 	trigger,
 	triggerClassName,
@@ -111,7 +115,8 @@ export const Tooltip = ({
 					<div
 						className={cn(
 							'pointer-events-none fixed z-1000 flex w-[min(520px,calc(100vw-2rem))] max-w-[calc(100vw-2rem)] flex-col gap-1 rounded-(--input-radius) border border-(--color-border-hover) bg-(--color-bg-elevated) p-3 text-left text-[12px] leading-6 text-(--color-text-secondary) shadow-[0_2px_8px_var(--color-shadow)] transition duration-150',
-							position?.placement === 'top' ? '-translate-y-1' : 'translate-y-0.5'
+							position?.placement === 'top' ? '-translate-y-1' : 'translate-y-0.5',
+							contentClassName
 						)}
 						id={tooltipId}
 						ref={tooltipRef}
@@ -122,7 +127,12 @@ export const Tooltip = ({
 							visibility: position ? 'visible' : 'hidden'
 						}}
 					>
-						<p className='border-b border-(--color-border) pb-1.5 text-[12px] uppercase tracking-[0.08em] text-(--color-text)'>
+						<p
+							className={cn(
+								'border-b border-(--color-border) pb-1.5 text-[12px] uppercase tracking-[0.08em] text-(--color-text) font-semibold',
+								titleClassName
+							)}
+						>
 							{title}
 						</p>
 						<div className='space-y-2'>{children}</div>

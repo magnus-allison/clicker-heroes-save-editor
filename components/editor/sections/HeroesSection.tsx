@@ -32,10 +32,10 @@ export const HeroesSection = ({ defaultOpen }: Props) => {
 			description='Edit hero levels and gilded levels without digging through the raw save structure.'
 			title='Heroes'
 		>
-			<div className='my-2 overflow-hidden border border-(--color-border)'>
+			<div className='my-2 overflow-hidden rounded-2xl border border-(--color-border)'>
 				<div className='overflow-x-auto'>
 					<table className='min-w-full border-collapse text-left text-[13px] text-(--color-text-secondary)'>
-						<thead className='bg-(--color-bg-elevated) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+						<thead className='bg-(--color-table-header) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
 							<tr>
 								<th className='px-4 py-3'>Image</th>
 								<th className='px-4 py-3'>Hero</th>
