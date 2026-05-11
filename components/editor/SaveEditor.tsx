@@ -23,7 +23,7 @@ export const SaveEditor = () => {
 
 	return (
 		<div className='flex min-h-screen w-full justify-center overflow-x-hidden p-10'>
-			<main className='flex w-full max-w-6xl flex-col gap-3' role='main'>
+			<main className='flex w-full max-w-6xl flex-col gap-3'>
 				<header className='mb-2 flex flex-col gap-1.5'>
 					<h1 className='text-2xl font-semibold leading-[1.2] text-(--color-text-strong)'>
 						Clicker Heroes Save Editor
