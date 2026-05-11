@@ -66,7 +66,10 @@ export const AchievementsSection = ({ defaultOpen }: Props) => {
 
 				<div className='grid gap-4 xl:grid-cols-2'>
 					{achievementGroups.map((group) => (
-						<div className='overflow-hidden rounded-2xl border border-(--color-border)' key={group.type}>
+						<div
+							className='overflow-hidden rounded-2xl border border-(--color-border)'
+							key={group.type}
+						>
 							<div className='border-b border-(--color-border-subtle) bg-(--color-bg-elevated) px-4 py-3'>
 								<h3 className='text-[13px] text-(--color-text)'>
 									{group.label}-related achievements
