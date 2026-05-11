@@ -31,7 +31,7 @@ export const AdditionalInfoSection = ({ defaultOpen }: Props) => {
 								>
 									<div className='flex items-center gap-4'>
 										<EditorImage
-											alt=''
+											alt={`${link.title} icon`}
 											className='h-11 w-11 object-contain'
 											size={44}
 											src={link.iconSrc}

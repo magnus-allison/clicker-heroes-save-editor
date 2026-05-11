@@ -42,7 +42,7 @@ export default function Image() {
 			>
 				<div style={{ alignItems: 'center', display: 'flex', height: '82px', width: '94px' }}>
 					<img
-						alt=''
+						alt='Ruby gem icon'
 						src={rubyGemUrl}
 						width={94}
 						height={82}

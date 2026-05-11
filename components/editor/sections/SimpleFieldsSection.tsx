@@ -43,7 +43,7 @@ export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, ti
 										<td className='px-3 py-3 sm:px-4'>
 											{field.imageSrc ? (
 												<EditorImage
-													alt=''
+													alt={field.label}
 													className='h-11 w-11 object-contain'
 													size={44}
 													src={field.imageSrc}

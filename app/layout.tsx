@@ -13,9 +13,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 const siteUrl = 'https://clickerheroes.dev';
-const siteTitle = 'Clicker Heroes Save Editor - Free Online CH Save Decoder & Editor';
+const siteTitle = 'Clicker Heroes Save Editor - Free Online Save Editor';
 const siteDescription =
-	'Free online Clicker Heroes save editor. Decode, inspect, and edit your Clicker Heroes save file: gold, rubies, hero levels, Hero Souls, Ancients, ascensions, achievements, and more.';
+	'Free Clicker Heroes save editor online. Decode and edit Clicker Heroes save files instantly — modify gold, rubies, hero levels, achievements, ascensions, and more.';
 
 export const metadata: Metadata = {
 	metadataBase: new URL(siteUrl),

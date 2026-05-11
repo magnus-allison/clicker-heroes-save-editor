@@ -15,6 +15,15 @@ import { decodeSaveString, encodeSaveData } from '@/lib/save-codec';
 import { saveHelpContent } from '@/lib/data/editor-config';
 import { useSaveStore } from '@/lib/save-store';
 
+const iconAltLabels: Record<string, string> = {
+	'/assets/icons/apple.svg': 'Apple',
+	'/assets/icons/folder-open.svg': 'Open folder',
+	'/assets/icons/steam.svg': 'Steam',
+	'/assets/icons/windows.svg': 'Windows'
+};
+
+const getIconAlt = (iconPath: string) => `${iconAltLabels[iconPath] ?? 'Platform'} icon`;
+
 export const SaveDataPanel = () => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { showToast } = useToast();
@@ -38,7 +47,7 @@ export const SaveDataPanel = () => {
 			posthog.captureException(error, { properties: { source } });
 			posthog.capture('save_decode_failed', {
 				source,
-				error_message: error instanceof Error ? error.message : 'Unknown error',
+				error_message: error instanceof Error ? error.message : 'Unknown error'
 			});
 		}
 	};
@@ -77,7 +86,7 @@ export const SaveDataPanel = () => {
 							variant='secondary'
 						>
 							<EditorImage
-								alt=''
+								alt='Open save file'
 								className='h-4 w-4 shrink-0 object-contain opacity-80'
 								size={16}
 								src='/assets/icons/folder-open.svg'
@@ -91,7 +100,7 @@ export const SaveDataPanel = () => {
 									<p className='flex items-center gap-1.5 text-(--color-text)'>
 										{entry.iconPaths.map((iconPath) => (
 											<EditorImage
-												alt=''
+												alt={getIconAlt(iconPath)}
 												className='h-3.5 w-3.5 object-contain opacity-70'
 												key={iconPath}
 												size={14}
@@ -127,7 +136,11 @@ export const SaveDataPanel = () => {
 						/>
 					</div>
 					<div className='flex flex-wrap gap-2'>
-						<Button className='flex-1' onClick={() => handleDecode(decodeValue, 'paste')} variant='primary'>
+						<Button
+							className='flex-1'
+							onClick={() => handleDecode(decodeValue, 'paste')}
+							variant='primary'
+						>
 							Read Save Data
 						</Button>
 					</div>
@@ -157,9 +170,9 @@ export const SaveDataPanel = () => {
 							className='min-w-10 px-0'
 							idleLabel='Copy'
 							onCopied={() => {
-							showToast('Encoded save copied.');
-							posthog.capture('encoded_save_copied');
-						}}
+								showToast('Encoded save copied.');
+								posthog.capture('encoded_save_copied');
+							}}
 							text={encodeValue}
 						/>
 					</div>
