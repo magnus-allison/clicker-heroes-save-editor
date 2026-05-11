@@ -1,3 +1,5 @@
+import posthog from 'posthog-js';
+
 import { Button } from '@/components/ui/Button';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { EditorImage } from '@/components/ui/EditorImage';
@@ -49,6 +51,7 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 								return next;
 							});
 							showToast('All skins unlocked.');
+						posthog.capture('skins_all_unlocked');
 						}}
 						size='sm'
 						variant='ghost'

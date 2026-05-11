@@ -2,6 +2,8 @@
 
 import { startTransition, useState } from 'react';
 
+import posthog from 'posthog-js';
+
 import { Button } from '@/components/ui/Button';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { SectionCard } from '@/components/ui/SectionCard';
@@ -58,6 +60,7 @@ export const JsonSection = ({ defaultOpen, showToast }: Props) => {
 								}
 
 								setOutputValue(JSON.stringify(saveData, null, 2));
+							posthog.capture('json_exported');
 							}}
 							variant='primary'
 						>
@@ -99,7 +102,9 @@ export const JsonSection = ({ defaultOpen, showToast }: Props) => {
 										loadSave(parsed);
 									});
 									showToast('JSON loaded into the editor.');
+									posthog.capture('json_imported');
 								} catch (error) {
+									posthog.captureException(error);
 									showToast(
 										error instanceof Error ? error.message : 'Failed to import JSON.'
 									);

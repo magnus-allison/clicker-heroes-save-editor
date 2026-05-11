@@ -1,3 +1,5 @@
+import posthog from 'posthog-js';
+
 import { Button } from "@/components/ui/Button";
 import { SectionCard } from "@/components/ui/SectionCard";
 import { useSaveStore } from "@/lib/save-store";
@@ -41,6 +43,7 @@ export const TranscensionsSection = ({ defaultOpen, showToast }: Props) => {
 								return next;
 							});
 							showToast("Transcension history cleared.");
+						posthog.capture('transcension_history_cleared');
 						}}
 						variant="primary"
 					>

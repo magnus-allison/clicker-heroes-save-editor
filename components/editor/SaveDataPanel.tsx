@@ -2,6 +2,8 @@
 
 import { startTransition, useRef, useState } from 'react';
 
+import posthog from 'posthog-js';
+
 import { ExampleSaveButtons } from '@/components/editor/ExampleSaveButtons';
 import { Button } from '@/components/ui/Button';
 import { CopyButton } from '@/components/ui/CopyButton';
@@ -22,7 +24,7 @@ export const SaveDataPanel = () => {
 	const [decodeValue, setDecodeValue] = useState('');
 	const [encodeValue, setEncodeValue] = useState('');
 
-	const handleDecode = (nextValue = decodeValue) => {
+	const handleDecode = (nextValue = decodeValue, source: 'paste' | 'file' | 'example' = 'paste') => {
 		try {
 			const decoded = decodeSaveString(nextValue);
 			setEncodeValue('');
@@ -30,8 +32,14 @@ export const SaveDataPanel = () => {
 				loadSave(decoded.data);
 			});
 			showToast('Save data loaded.');
+			posthog.capture('save_decoded', { source });
 		} catch (error) {
 			showToast(error instanceof Error ? error.message : 'Failed to decode save data.');
+			posthog.captureException(error, { properties: { source } });
+			posthog.capture('save_decode_failed', {
+				source,
+				error_message: error instanceof Error ? error.message : 'Unknown error',
+			});
 		}
 	};
 
@@ -56,7 +64,8 @@ export const SaveDataPanel = () => {
 							const text = await file.text();
 							setSelectedFileName(file.name);
 							setDecodeValue(text);
-							handleDecode(text);
+							posthog.capture('save_file_uploaded', { file_name: file.name });
+							handleDecode(text, 'file');
 						}}
 						ref={inputRef}
 						type='file'
@@ -118,7 +127,7 @@ export const SaveDataPanel = () => {
 						/>
 					</div>
 					<div className='flex flex-wrap gap-2'>
-						<Button className='flex-1' onClick={() => handleDecode()} variant='primary'>
+						<Button className='flex-1' onClick={() => handleDecode(decodeValue, 'paste')} variant='primary'>
 							Read Save Data
 						</Button>
 					</div>
@@ -126,7 +135,7 @@ export const SaveDataPanel = () => {
 						onSelect={(save) => {
 							setSelectedFileName('Example save');
 							setDecodeValue(save);
-							handleDecode(save);
+							handleDecode(save, 'example');
 						}}
 					/>
 				</div>
@@ -147,7 +156,10 @@ export const SaveDataPanel = () => {
 						<CopyButton
 							className='min-w-10 px-0'
 							idleLabel='Copy'
-							onCopied={() => showToast('Encoded save copied.')}
+							onCopied={() => {
+							showToast('Encoded save copied.');
+							posthog.capture('encoded_save_copied');
+						}}
 							text={encodeValue}
 						/>
 					</div>
@@ -163,6 +175,7 @@ export const SaveDataPanel = () => {
 								const nextValue = encodeSaveData(saveData);
 								setEncodeValue(nextValue);
 								showToast('Save encoded.');
+								posthog.capture('save_encoded');
 							}}
 							variant='primary'
 						>

@@ -1,5 +1,7 @@
 'use client';
 
+import posthog from 'posthog-js';
+
 import { Button } from '@/components/ui/Button';
 import { examples } from '@/lib/data/example-saves';
 
@@ -18,7 +20,10 @@ export const ExampleSaveButtons = ({ onSelect }: Props) => {
 					<Button
 						className='h-7 px-2.5 text-[11px] text-(--color-text-secondary)'
 						key={example.name}
-						onClick={() => onSelect(example.save)}
+						onClick={() => {
+						posthog.capture('example_save_loaded', { example_name: example.name });
+						onSelect(example.save);
+					}}
 						size='sm'
 						variant='secondary'
 					>
