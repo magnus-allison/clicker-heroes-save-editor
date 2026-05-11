@@ -67,7 +67,7 @@ export const FeedbackSection = ({ defaultOpen }: Props) => {
 	return (
 		<SectionCard
 			defaultOpen={defaultOpen}
-			description='Send your suggestions / improvements'
+			description='Send your suggestions and improvements to make the save editor better!'
 			title='Feedback'
 		>
 			<form className='space-y-3' onSubmit={handleSubmit}>
@@ -82,6 +82,7 @@ export const FeedbackSection = ({ defaultOpen }: Props) => {
 				/>
 				<TextInput
 					ariaLabel='Your name'
+					className='max-w-70'
 					disabled={isSubmitting}
 					onValueChange={setName}
 					placeholder='Name (optional)'
@@ -93,7 +94,7 @@ export const FeedbackSection = ({ defaultOpen }: Props) => {
 					disabled={isSubmitting}
 					multiline
 					onValueChange={setMessage}
-					placeholder='Message'
+					placeholder='Write your feedback here...'
 					rows={5}
 					value={message}
 				/>
