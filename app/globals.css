@@ -6,78 +6,40 @@
 }
 
 :root {
-	color-scheme: dark;
-	--color-bg: #0a0a0a;
-	--color-bg-soft: #0d0d0d;
-	--color-bg-alt: #111111;
-	--color-bg-elevated: #151515;
-	--color-bg-elevated-2: #1a1a1a;
-	--color-bg-hover: #151515;
-	--color-border: #333333;
-	--color-border-soft: #2a2a2a;
-	--color-border-subtle: #222222;
-	--color-border-hover: #444444;
-	--color-text: #e0e0e0;
-	--color-text-strong: #f0f0f0;
-	--color-text-muted: #888888;
-	--color-text-dim: #666666;
-	--color-text-secondary: #a0a0a0;
-	--color-link: #a7a7a7;
-	--color-link-hover: #ffffff;
-	--color-primary: #6fcf6f;
-	--color-primary-dim: rgba(111, 207, 111, 0.2);
-	--color-primary-bg: #122012;
-	--color-primary-border: #3f7a3f;
-	--color-primary-check: #7fd67f;
-	--color-success-bg: #0f1f0f;
-	--color-success-border: #2a5a2a;
-	--color-focus-ring: rgba(127, 214, 127, 0.25);
-	--color-icon-filter: invert(1);
-	--color-gold: #d4af37;
-	--color-gold-text: #e8d5a0;
-	--color-gilded-bg: rgba(212, 175, 55, 0.12);
-	--color-gilded-border: rgba(212, 175, 55, 0.28);
-	--color-selected-bg: #1a2a1a;
-	--color-shadow: rgba(0, 0, 0, 0.35);
-	--input-radius: 2px;
-}
-
-@media (prefers-color-scheme: light) {
-	:root {
-		color-scheme: light;
-		--color-bg: #f5f6f8;
-		--color-bg-soft: #eef1f4;
-		--color-bg-alt: #ffffff;
-		--color-bg-elevated: #f3f5f8;
-		--color-bg-elevated-2: #e9edf2;
-		--color-bg-hover: #eaf0f7;
-		--color-border: #c5ccd6;
-		--color-border-soft: #d5dbe3;
-		--color-border-subtle: #dce2ea;
-		--color-border-hover: #9eabb9;
-		--color-text: #20262e;
-		--color-text-strong: #12161c;
-		--color-text-muted: #566272;
-		--color-text-dim: #6c7787;
-		--color-text-secondary: #4a5665;
-		--color-link: #3b485a;
-		--color-link-hover: #12161c;
-		--color-primary: #2c8c41;
-		--color-primary-dim: rgba(44, 140, 65, 0.15);
-		--color-primary-bg: #e8f5ec;
-		--color-primary-border: #5aaf6a;
-		--color-primary-check: #2c8c41;
-		--color-success-bg: #e9f6ec;
-		--color-success-border: #8cc89a;
-		--color-focus-ring: rgba(44, 140, 65, 0.24);
-		--color-icon-filter: none;
-		--color-gold: #b8860b;
-		--color-gold-text: #7a5c00;
-		--color-gilded-bg: rgba(184, 134, 11, 0.06);
-		--color-gilded-border: rgba(184, 134, 11, 0.22);
-		--color-selected-bg: #e0f0e3;
-		--color-shadow: rgba(0, 0, 0, 0.06);
-	}
+	color-scheme: light dark;
+	--color-bg: light-dark(#f5f6f8, #0a0a0a);
+	--color-bg-soft: light-dark(#eef1f4, #0d0d0d);
+	--color-bg-alt: light-dark(#ffffff, #111111);
+	--color-bg-elevated: light-dark(#f3f5f8, #151515);
+	--color-bg-elevated-2: light-dark(#e9edf2, #1a1a1a);
+	--color-bg-hover: light-dark(#eaf0f7, #151515);
+	--color-border: light-dark(#b1bcc7, #3d3d3d);
+	--color-border-soft: light-dark(#c8d1db, #2f2f2f);
+	--color-border-subtle: light-dark(#d4dbe4, #252525);
+	--color-border-hover: light-dark(#96a5b4, #494949);
+	--color-text: light-dark(#1d242c, #e3e3e3);
+	--color-text-strong: light-dark(#12161c, #f0f0f0);
+	--color-text-muted: light-dark(#435162, #9a9a9a);
+	--color-text-dim: light-dark(#667283, #6c6c6c);
+	--color-text-secondary: light-dark(#374455, #b3b3b3);
+	--color-link: light-dark(#364456, #acacac);
+	--color-link-hover: light-dark(#12161c, #ffffff);
+	--color-primary: light-dark(#2c8c41, #6fcf6f);
+	--color-primary-dim: light-dark(rgba(44, 140, 65, 0.15), rgba(111, 207, 111, 0.2));
+	--color-primary-bg: light-dark(#e8f5ec, #122012);
+	--color-primary-border: light-dark(#5aaf6a, #3f7a3f);
+	--color-primary-check: light-dark(#2c8c41, #7fd67f);
+	--color-success-bg: light-dark(#e9f6ec, #0f1f0f);
+	--color-success-border: light-dark(#8cc89a, #2a5a2a);
+	--color-focus-ring: light-dark(rgba(44, 140, 65, 0.24), rgba(127, 214, 127, 0.25));
+	--color-icon-filter: light-dark(none, invert(1));
+	--color-gold: light-dark(#b8860b, #d4af37);
+	--color-gold-text: light-dark(#7a5c00, #e8d5a0);
+	--color-gilded-bg: light-dark(rgba(184, 134, 11, 0.06), rgba(212, 175, 55, 0.12));
+	--color-gilded-border: light-dark(rgba(184, 134, 11, 0.22), rgba(212, 175, 55, 0.28));
+	--color-selected-bg: light-dark(#e0f0e3, #1a2a1a);
+	--color-shadow: light-dark(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.35));
+	--input-radius: 4px;
 }
 
 html,

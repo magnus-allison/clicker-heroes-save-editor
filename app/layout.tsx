@@ -117,7 +117,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en' className={`${ibmPlexMono.variable} h-full antialiased`}>
-			<body className='min-h-full bg-black'>
+			<body className='min-h-full'>
 				<ToastProvider>{children}</ToastProvider>
 				<Analytics />
 			</body>
