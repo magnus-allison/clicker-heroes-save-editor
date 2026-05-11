@@ -51,7 +51,7 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 								return next;
 							});
 							showToast('All skins unlocked.');
-						posthog.capture('skins_all_unlocked');
+							posthog.capture('skins_all_unlocked');
 						}}
 						size='sm'
 						variant='ghost'
@@ -134,9 +134,9 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 										size={64}
 										src={skin.imageSrc}
 									/>
-									<p className='mt-3 text-center text-[12px] text-(--color-text-secondary)'>
+									<span className='mt-3 block text-center text-[12px] text-(--color-text-secondary)'>
 										{skin.name}
-									</p>
+									</span>
 								</button>
 							);
 						})}
