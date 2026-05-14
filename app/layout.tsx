@@ -42,9 +42,6 @@ export const metadata: Metadata = {
 	creator: 'Magnus Allison',
 	publisher: 'Magnus Allison',
 	category: 'game tools',
-	alternates: {
-		canonical: 'https://clickerheroes.dev/'
-	},
 	openGraph: {
 		type: 'website',
 		url: '/',
