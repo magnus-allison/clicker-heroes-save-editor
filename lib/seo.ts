@@ -57,7 +57,7 @@ export const seoPages = {
 		title: { absolute: 'Clicker Heroes Free Online Tools' },
 		metaTitle: 'Clicker Heroes | Free Online Tools',
 		description:
-			'Free browser-based Clicker Heroes tools for editing saves, decoding save files, planning instakill routes, viewing transcensions, and cleaning clan data.',
+			'Free browser-based utilities for editing save data, planning faster runs, guides and more.',
 		keywords: [
 			'clicker heroes tools',
 			'clicker heroes save editor',
