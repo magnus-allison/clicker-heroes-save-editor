@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/Button';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { HelpToolTip } from '@/components/ui/HelpToolTip';
-import { TextInput } from '@/components/ui/TextInput';
 import { useToast } from '@/components/ui/ToastProvider';
 import { decodeSaveString, encodeSaveData } from '@/lib/save-codec';
 import { saveHelpContent } from '@/lib/data/editor-config';

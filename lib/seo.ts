@@ -2,7 +2,7 @@ import type { Metadata, MetadataRoute } from 'next';
 
 export const SITE_CONFIG = {
 	url: 'https://clickerheroes.dev',
-	name: 'Clicker Heroes Save Editor',
+	name: 'Clicker Heroes',
 	title: 'Clicker Heroes Save Editor - Free Online Save File Editor',
 	description:
 		'Free online Clicker Heroes save editor and tools. Decode, inspect, edit, and re-encode Clicker Heroes saves in your browser.',
@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
 		name: 'Magnus Allison',
 		url: 'https://github.com/magnus-allison'
 	},
-	ogImage: '/opengraph-image'
+	ogImage: '/opengraph.png'
 } as const;
 
 const baseKeywords = [
@@ -26,18 +26,15 @@ const baseKeywords = [
 export const saveEditorFaqs = [
 	{
 		question: 'How do I edit a Clicker Heroes save file?',
-		answer:
-			'Paste your Clicker Heroes save string into the editor, decode it, change the fields you need, then copy the encoded result back into the game import dialog.'
+		answer: 'Paste your Clicker Heroes save string into the editor, decode it, change the fields you need, then copy the encoded result back into the game import dialog.'
 	},
 	{
 		question: 'Can this editor change gold, rubies, Hero Souls, and Ancients?',
-		answer:
-			'Yes. The editor includes controls for core currencies, hero levels, Hero Souls, Ancients-related progression, ascensions, achievements, skins, mercenaries, outsiders, clan values, and raw save JSON.'
+		answer: 'Yes. The editor includes controls for core currencies, hero levels, Hero Souls, Ancients-related progression, ascensions, achievements, skins, mercenaries, outsiders, clan values, and raw save JSON.'
 	},
 	{
 		question: 'Is my Clicker Heroes save uploaded to a server?',
-		answer:
-			'No. The editor runs in the browser and processes save data client-side, so editing works without uploading your save to this site.'
+		answer: 'No. The editor runs in the browser and processes save data client-side, so editing works without uploading your save to this site.'
 	}
 ] as const;
 
@@ -57,15 +54,15 @@ type SeoPage = {
 export const seoPages = {
 	home: {
 		path: '/',
-		title: { absolute: 'Clicker Heroes Save Editor & Free Online Tools' },
-		metaTitle: 'Clicker Heroes Save Editor & Free Online Tools',
+		title: { absolute: 'Clicker Heroes Free Online Tools' },
+		metaTitle: 'Clicker Heroes | Free Online Tools',
 		description:
 			'Free browser-based Clicker Heroes tools for editing saves, decoding save files, planning instakill routes, viewing transcensions, and cleaning clan data.',
 		keywords: [
 			'clicker heroes tools',
+			'clicker heroes save editor',
 			'clicker heroes save tools',
-			'clicker heroes calculator',
-			'clicker heroes transcension viewer'
+			'clicker heroes cheats'
 		],
 		changeFrequency: 'weekly',
 		priority: 1,
@@ -74,7 +71,7 @@ export const seoPages = {
 	saveEditor: {
 		path: '/tools/save-editor',
 		title: 'Save Editor',
-		metaTitle: 'Clicker Heroes Save Editor - Free Online Save File Editor',
+		metaTitle: 'Clicker Heroes | Save Editor',
 		description:
 			'Free online Clicker Heroes save editor for decoding, inspecting, editing, and re-encoding save files. Edit gold, rubies, Hero Souls, heroes, Ancients, ascensions, and more.',
 		keywords: [
@@ -101,7 +98,7 @@ export const seoPages = {
 	instakillCalculator: {
 		path: '/tools/instakill-calculator',
 		title: 'Instakill Calculator',
-		metaTitle: 'Clicker Heroes Instakill Calculator',
+		metaTitle: 'Clicker Heroes | Instakill Calculator',
 		description:
 			'Estimate Clicker Heroes instakill route duration, monsters per zone, and zones per hour from Kumawakamaru, Borb, zone range, and FPS.',
 		keywords: [
@@ -124,7 +121,7 @@ export const seoPages = {
 	transcensionViewer: {
 		path: '/tools/transcension-viewer',
 		title: 'Transcension Viewer',
-		metaTitle: 'Clicker Heroes Transcension Viewer',
+		metaTitle: 'Clicker Heroes | Transcension Viewer',
 		description:
 			'Import a Clicker Heroes save and inspect transcension history with ascension duration, HZE, Hero Souls, and Ancient Souls totals.',
 		keywords: [
@@ -146,7 +143,7 @@ export const seoPages = {
 	removeClanData: {
 		path: '/tools/remove-clan-data',
 		title: 'Remove Clan Data',
-		metaTitle: 'Clicker Heroes Remove Clan Data Tool',
+		metaTitle: 'Clicker Heroes | Remove Clan Data Tool',
 		description:
 			'Remove Clicker Heroes clan, account, and login data from an imported save file, then re-encode the cleaned save locally in your browser.',
 		keywords: [
@@ -163,6 +160,29 @@ export const seoPages = {
 			'Remove clan fields from Clicker Heroes saves',
 			'Clean account and login values',
 			'Re-encode the cleaned save in the browser'
+		]
+	},
+	saveConverter: {
+		path: '/tools/save-converter',
+		title: 'Save Converter',
+		metaTitle: 'Clicker Heroes | Save Converter',
+		description:
+			'Convert Clicker Heroes save files between PC and mobile formats locally in your browser, with detected origin and patch number details.',
+		keywords: [
+			'clicker heroes save converter',
+			'clicker heroes pc save to mobile',
+			'clicker heroes mobile save to pc',
+			'clicker heroes save format'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.8,
+		schemaType: 'WebApplication',
+		applicationName: 'Clicker Heroes Save Converter',
+		featureList: [
+			'Detect PC or mobile Clicker Heroes save origin',
+			'Show the save patch number when available',
+			'Convert saves between PC and mobile compression formats',
+			'Re-encode converted saves locally in the browser'
 		]
 	},
 	feedback: {

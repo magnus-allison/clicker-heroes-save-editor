@@ -7,6 +7,7 @@ const ZLIB_PREFIX = "7a990d405d2c6fb93aa8fbb0ec1a3b23";
 const DEFLATE_PREFIX = "7e8bb5a89f2842ac4af01b3b7e228592";
 
 export type SaveEncodingFormat = "zlib" | "deflate" | "legacy";
+export type SaveDevice = "pc" | "mobile";
 
 export type DecodeResult = {
 	data: SaveData;
@@ -85,7 +86,24 @@ export function decodeSaveString(input: string): DecodeResult {
 	throw new Error("That string does not look like a supported Clicker Heroes save.");
 }
 
-export function encodeSaveData(data: SaveData) {
-	const compressed = pako.deflate(JSON.stringify(data));
-	return `${ZLIB_PREFIX}${bytesToBase64(compressed)}`;
+export function getSaveDeviceFromFormat(format: SaveEncodingFormat): SaveDevice | null {
+	if (format === "deflate") {
+		return "pc";
+	}
+
+	if (format === "zlib") {
+		return "mobile";
+	}
+
+	return null;
+}
+
+export function encodeSaveData(data: SaveData, device: SaveDevice = "mobile") {
+	const json = JSON.stringify(data);
+
+	if (device === "pc") {
+		return `${DEFLATE_PREFIX}${bytesToBase64(pako.deflateRaw(json))}`;
+	}
+
+	return `${ZLIB_PREFIX}${bytesToBase64(pako.deflate(json))}`;
 }
