@@ -3,13 +3,16 @@
 import posthog from 'posthog-js';
 
 import { Button } from '@/components/ui/Button';
-import { examples } from '@/lib/data/example-saves';
+import { examples as defaultExamples, type ExampleSave } from '@/lib/data/example-saves';
 
 type Props = {
+	customExamples?: ExampleSave[];
 	onSelect: (save: string) => void;
 };
 
-export const ExampleSaveButtons = ({ onSelect }: Props) => {
+export const ExampleSaveButtons = ({ customExamples, onSelect }: Props) => {
+	const examples = customExamples && customExamples.length > 0 ? customExamples : defaultExamples;
+
 	return (
 		<div className='mt-2 flex flex-col gap-1.5'>
 			<p className='text-left text-[11px] uppercase tracking-wider text-(--color-text-dim) ml-2 py-2'>

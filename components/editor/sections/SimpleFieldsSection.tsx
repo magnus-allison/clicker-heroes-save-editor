@@ -1,5 +1,6 @@
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
 import { EditorImage } from '@/components/ui/EditorImage';
+import { EditorTable, EditorTableBody, EditorTableHead } from '@/components/ui/EditorTable';
 import { HelpToolTip } from '@/components/ui/HelpToolTip';
 import { SectionCard } from '@/components/ui/SectionCard';
 import type { SimpleFieldConfig } from '@/lib/data/editor-config';
@@ -18,69 +19,65 @@ export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, ti
 	return (
 		<SectionCard defaultOpen={defaultOpen} description={description} title={title}>
 			{note ? <p className='mb-4 text-[12px] leading-6 text-(--color-text-secondary)'>{note}</p> : null}
-			<div className='my-2 overflow-hidden rounded-2xl border border-(--color-border)'>
-				<div className='overflow-x-auto'>
-					<table className='w-full table-fixed border-collapse text-left text-[13px] text-(--color-text-secondary)'>
-						<colgroup>
-							{showImageColumn ? <col className='w-18 sm:w-22' /> : null}
-							<col className='w-[28%] sm:w-52' />
-							<col className='w-[52%] sm:w-120' />
-						</colgroup>
-						<thead className='bg-(--color-table-header) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
-							<tr>
-								{showImageColumn ? <th className='px-3 py-3 sm:px-4'>Image</th> : null}
-								<th className='px-3 py-3 sm:px-4'>Item</th>
-								<th className='px-3 py-3 text-left sm:px-4 sm:text-right'>Value</th>
-							</tr>
-						</thead>
-						<tbody className='bg-(--color-bg)'>
-							{fields.map((field) => (
-								<tr
-									className='align-middle not-last:border-b not-last:border-(--color-border-subtle)'
-									key={field.path.join('.')}
-								>
-									{showImageColumn ? (
-										<td className='px-3 py-3 sm:px-4'>
-											{field.imageSrc ? (
-												<EditorImage
-													alt={field.label}
-													className='h-11 w-11 object-contain'
-													size={44}
-													src={field.imageSrc}
-												/>
-											) : (
-												<div className='h-11 w-11 border border-dashed border-(--color-border-soft) bg-(--color-bg-soft)' />
-											)}
-										</td>
-									) : null}
-									<td className='px-3 py-3 sm:px-4'>
-										<div className='flex min-w-0 items-center gap-3'>
-											<span className='min-w-0 text-[13px] text-(--color-text)'>
-												{field.label}
-											</span>
-											{field.help ? (
-												<HelpToolTip title={field.help.title}>
-													<p>{field.help.body}</p>
-												</HelpToolTip>
-											) : null}
-										</div>
-									</td>
-									<td className='px-3 py-3 sm:px-4'>
-										<BoundFieldControl
-											allowMissing={field.allowMissing}
-											inputClassName={field.inputClassName}
-											kind={field.kind}
-											options={field.options}
-											path={field.path}
-											selectOnFocus
+			<EditorTable className='my-2' tableClassName='w-full table-fixed'>
+				<colgroup>
+					{showImageColumn ? <col className='w-18 sm:w-22' /> : null}
+					<col className='w-[28%] sm:w-52' />
+					<col className='w-[52%] sm:w-120' />
+				</colgroup>
+				<EditorTableHead>
+					<tr>
+						{showImageColumn ? <th className='px-3 py-3 sm:px-4'>Image</th> : null}
+						<th className='px-3 py-3 sm:px-4'>Item</th>
+						<th className='px-3 py-3 text-left sm:px-4 sm:text-right'>Value</th>
+					</tr>
+				</EditorTableHead>
+				<EditorTableBody>
+					{fields.map((field) => (
+						<tr
+							className='align-middle not-last:border-b not-last:border-(--color-border-subtle)'
+							key={field.path.join('.')}
+						>
+							{showImageColumn ? (
+								<td className='px-3 py-3 sm:px-4'>
+									{field.imageSrc ? (
+										<EditorImage
+											alt={field.label}
+											className='h-11 w-11 object-contain'
+											size={44}
+											src={field.imageSrc}
 										/>
-									</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				</div>
-			</div>
+									) : (
+										<div className='h-11 w-11 border border-dashed border-(--color-border-soft) bg-(--color-bg-soft)' />
+									)}
+								</td>
+							) : null}
+							<td className='px-3 py-3 sm:px-4'>
+								<div className='flex min-w-0 items-center gap-3'>
+									<span className='min-w-0 text-[13px] text-(--color-text)'>
+										{field.label}
+									</span>
+									{field.help ? (
+										<HelpToolTip title={field.help.title}>
+											<p>{field.help.body}</p>
+										</HelpToolTip>
+									) : null}
+								</div>
+							</td>
+							<td className='px-3 py-3 sm:px-4'>
+								<BoundFieldControl
+									allowMissing={field.allowMissing}
+									inputClassName={field.inputClassName}
+									kind={field.kind}
+									options={field.options}
+									path={field.path}
+									selectOnFocus
+								/>
+							</td>
+						</tr>
+					))}
+				</EditorTableBody>
+			</EditorTable>
 		</SectionCard>
 	);
 };

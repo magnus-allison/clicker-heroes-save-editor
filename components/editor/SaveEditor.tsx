@@ -20,6 +20,7 @@ import { zoneItemFields } from '@/lib/data/zoneItems';
 import { PanelSection } from '../ui/PanelSection';
 import { StepTitle } from '../ui/StepTitle';
 import { useSaveStore } from '@/lib/save-store';
+import { PageHeading } from '../ui/PageHeading';
 
 export const SaveEditor = () => {
 	const { showToast } = useToast();
@@ -35,14 +36,10 @@ export const SaveEditor = () => {
 	return (
 		<div className='flex min-h-screen w-full justify-center overflow-x-hidden p-10'>
 			<main className='flex w-full max-w-6xl flex-col gap-3'>
-				<header className='mb-4 flex flex-col gap-1.5'>
-					<h1 className='text-[1.6rem] font-semibold leading-[1.2] text-(--color-text-strong)'>
-						Clicker Heroes Save Editor
-					</h1>
-					<p className='max-w-190 text-sm text-(--color-text-muted)'>
-						Import your save file, edit values, and export an updated save.
-					</p>
-				</header>
+				<PageHeading
+					title='Clicker Heroes Save Editor'
+					subtitle='Import your save file, edit values, and export an updated save.'
+				/>
 
 				<SaveDataPanel onLoadSuccess={scrollToStep2} />
 

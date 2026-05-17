@@ -53,7 +53,7 @@ export async function POST(request: Request) {
 			from,
 			to: process.env.EMAIL_TO,
 			subject: `[Feedback] ${senderName}`,
-			text: `Clicker Heroes Save Editor feedback from: ${senderName}\n\n${message}`
+			text: `Clicker Heroes tools feedback from: ${senderName}\n\n${message}`
 		});
 
 		if (error) {
@@ -81,8 +81,8 @@ export async function POST(request: Request) {
 			event: 'feedback_submitted',
 			properties: {
 				has_name: Boolean(name),
-				message_length: message.length,
-			},
+				message_length: message.length
+			}
 		});
 		await posthog.shutdown();
 

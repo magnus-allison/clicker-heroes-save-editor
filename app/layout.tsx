@@ -3,6 +3,7 @@ import { IBM_Plex_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 
 import { ToastProvider } from '@/components/ui/ToastProvider';
+import { SITE_CONFIG } from '@/lib/seo';
 
 import './globals.css';
 
@@ -12,19 +13,14 @@ const ibmPlexMono = IBM_Plex_Mono({
 	weight: ['400', '500', '600']
 });
 
-const siteUrl = 'https://clickerheroes.dev';
-const siteTitle = 'Clicker Heroes Save Editor - Free Online Save Editor';
-const siteDescription =
-	'Free Clicker Heroes save editor online. Decode and edit Clicker Heroes save files instantly — modify gold, rubies, hero levels, achievements, ascensions, and more.';
-
 export const metadata: Metadata = {
-	metadataBase: new URL(siteUrl),
-	applicationName: 'Clicker Heroes Save Editor',
+	metadataBase: new URL(SITE_CONFIG.url),
+	applicationName: SITE_CONFIG.name,
 	title: {
-		default: siteTitle,
-		template: '%s | Clicker Heroes Save Editor'
+		default: SITE_CONFIG.title,
+		template: `%s | ${SITE_CONFIG.name}`
 	},
-	description: siteDescription,
+	description: SITE_CONFIG.description,
 	keywords: [
 		'clicker heroes save editor',
 		'clicker heroes save file editor',
@@ -38,36 +34,34 @@ export const metadata: Metadata = {
 		'clicker heroes save encoder',
 		'idle game save editor'
 	],
-	authors: [{ name: 'Magnus Allison', url: 'https://github.com/magnus-allison' }],
-	creator: 'Magnus Allison',
-	publisher: 'Magnus Allison',
+	authors: [SITE_CONFIG.author],
+	creator: SITE_CONFIG.author.name,
+	publisher: SITE_CONFIG.author.name,
 	category: 'game tools',
 	openGraph: {
 		type: 'website',
 		url: '/',
-		title: 'Clicker Heroes Save Editor - Free Online Save File Decoder & Editor',
-		description:
-			'Free browser-based Clicker Heroes save editor. Modify gold, rubies, hero levels, Hero Souls, Ancients, ascensions, achievements, and more.',
-		siteName: 'Clicker Heroes Save Editor',
+		title: SITE_CONFIG.title,
+		description: SITE_CONFIG.description,
+		siteName: SITE_CONFIG.name,
 		locale: 'en_US',
 		images: [
 			{
-				url: '/opengraph-image',
+				url: SITE_CONFIG.ogImage,
 				width: 1200,
 				height: 630,
-				alt: 'Clicker Heroes Save Editor interface'
+				alt: SITE_CONFIG.title
 			}
 		]
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Clicker Heroes Save Editor - Free Online Save File Editor',
-		description:
-			'Free browser-based editor for Clicker Heroes save files. Edit gold, rubies, heroes, Hero Souls, Ancients, and more.',
+		title: SITE_CONFIG.title,
+		description: SITE_CONFIG.description,
 		images: [
 			{
-				url: '/opengraph-image',
-				alt: 'Clicker Heroes Save Editor interface'
+				url: SITE_CONFIG.ogImage,
+				alt: SITE_CONFIG.title
 			}
 		]
 	},

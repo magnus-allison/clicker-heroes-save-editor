@@ -10,9 +10,17 @@ import { useToast } from '@/components/ui/ToastProvider';
 
 type Props = {
 	defaultOpen?: boolean;
+	title?: string;
+	description?: string;
 };
 
-export const FeedbackSection = ({ defaultOpen }: Props) => {
+const defaultDescription = 'Send your suggestions and improvements to make the save editor better!';
+
+export const FeedbackSection = ({
+	defaultOpen,
+	description = defaultDescription,
+	title = 'Feedback'
+}: Props) => {
 	const { showToast } = useToast();
 	const [name, setName] = useState('');
 	const [message, setMessage] = useState('');
@@ -65,11 +73,7 @@ export const FeedbackSection = ({ defaultOpen }: Props) => {
 	};
 
 	return (
-		<SectionCard
-			defaultOpen={defaultOpen}
-			description='Send your suggestions and improvements to make the save editor better!'
-			title='Feedback'
-		>
+		<SectionCard defaultOpen={defaultOpen} description={description} title={title}>
 			<form className='space-y-3' onSubmit={handleSubmit}>
 				<input
 					aria-hidden='true'

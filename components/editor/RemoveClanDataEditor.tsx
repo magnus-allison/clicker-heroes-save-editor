@@ -6,6 +6,7 @@ import posthog from 'posthog-js';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { Button } from '@/components/ui/Button';
+import { PageHeading } from '@/components/ui/PageHeading';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { useToast } from '@/components/ui/ToastProvider';
@@ -113,17 +114,12 @@ export const RemoveClanDataEditor = () => {
 	};
 
 	return (
-		<div className='flex min-h-screen w-full justify-center overflow-x-hidden p-10'>
+		<div className='flex min-h-screen w-full justify-center overflow-x-hidden p-5 sm:p-10'>
 			<main className='flex w-full max-w-6xl flex-col gap-3'>
-				<header className='mb-4 flex flex-col gap-1.5'>
-					<h1 className='text-[1.6rem] font-semibold leading-[1.2] text-(--color-text-strong)'>
-						Remove Clan Data
-					</h1>
-					<p className='max-w-190 text-sm text-(--color-text-muted)'>
-						Remove clan-specific information from your save data, review what was removed before
-						exporting it again.
-					</p>
-				</header>
+				<PageHeading
+					title='Remove Clan Data'
+					subtitle='Import your save, inspect the stored clan and account values, then export a cleaned save.'
+				/>
 
 				<SaveDataPanel />
 

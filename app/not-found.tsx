@@ -2,12 +2,12 @@ import Link from 'next/link';
 
 const recoveryLinks = [
 	{
-		href: '/',
+		href: '/tools/save-editor',
 		label: 'Open Save Editor',
 		description: 'Return to the main editor and load a save file.'
 	},
 	{
-		href: '/#about-clicker-heroes-save-editor',
+		href: '/tools/save-editor#about-clicker-heroes-save-editor',
 		label: 'Read About The Tool',
 		description: 'Jump to the overview and supported editing features.'
 	}
@@ -30,7 +30,7 @@ const NotFound = () => {
 						</h1>
 						<p className='mt-4 max-w-2xl text-[13px] leading-6 text-(--color-text-secondary) sm:text-sm'>
 							The page you requested does not exist, was moved, or the URL was typed incorrectly.
-							 The save editor itself is still available from the homepage.
+							 The save editor itself is still available from its tool page.
 						</p>
 						<div className='mt-6 flex flex-wrap gap-3'>
 							{recoveryLinks.map((link, index) => (

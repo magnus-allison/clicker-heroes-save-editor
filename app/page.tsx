@@ -1,87 +1,57 @@
-import { SaveEditor } from '@/components/editor/SaveEditor';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import {
+	ArrowRight,
+	BookOpen,
+	Calculator,
+	FileCode2,
+	History,
+	MessageSquare,
+	Wrench,
+	type LucideIcon
+} from 'lucide-react';
 
-const siteUrl = 'https://clickerheroes.dev';
+import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
 
-const structuredData = {
-	'@context': 'https://schema.org',
-	'@graph': [
-		{
-			'@type': 'WebSite',
-			'@id': `${siteUrl}/#website`,
-			name: 'Clicker Heroes Save Editor',
-			url: siteUrl,
-			description:
-				'Free online Clicker Heroes save editor for decoding, inspecting, editing, and re-encoding Clicker Heroes save files.',
-			inLanguage: 'en',
-			potentialAction: {
-				'@type': 'SearchAction',
-				target: `${siteUrl}/?q={search_term_string}`,
-				'query-input': 'required name=search_term_string'
-			}
-		},
-		{
-			'@type': 'WebApplication',
-			'@id': `${siteUrl}/#app`,
-			name: 'Clicker Heroes Save Editor',
-			url: siteUrl,
-			applicationCategory: 'GameApplication',
-			operatingSystem: 'Windows, macOS, Linux, iOS, Android',
-			browserRequirements: 'Requires a modern web browser with JavaScript enabled.',
-			isAccessibleForFree: true,
-			description:
-				'A free, browser-based tool to decode, view, edit, and re-encode Clicker Heroes save data. Edit gold, rubies, hero levels, Hero Souls, Ancients, ascensions, achievements, skins, mercenaries, outsiders, clan values, and raw JSON data client-side.',
-			featureList: [
-				'Decode Clicker Heroes save strings',
-				'Encode edited saves for import back into the game',
-				'Edit gold, rubies, Hero Souls, Ancients, and ascension data',
-				'Edit heroes, achievements, skins, mercenaries, outsiders, clan values, and custom fields',
-				'Inspect structured save JSON in the browser'
-			],
-			keywords:
-				'clicker heroes save editor, clicker heroes save file editor, clicker heroes save decoder, clicker heroes gold editor, clicker heroes rubies editor, clicker heroes hero souls editor, clicker heroes ancients editor, idle game save editor',
-			author: {
-				'@type': 'Person',
-				name: 'Magnus Allison',
-				url: 'https://github.com/magnus-allison'
-			},
-			offers: {
-				'@type': 'Offer',
-				price: '0',
-				priceCurrency: 'USD'
-			}
-		},
-		{
-			'@type': 'FAQPage',
-			'@id': `${siteUrl}/#faq`,
-			mainEntity: [
-				{
-					'@type': 'Question',
-					name: 'How do I edit a Clicker Heroes save file?',
-					acceptedAnswer: {
-						'@type': 'Answer',
-						text: 'Paste your Clicker Heroes save string into the editor, decode it, change the fields you need, then copy the encoded result back into the game import dialog.'
-					}
-				},
-				{
-					'@type': 'Question',
-					name: 'Can this editor change gold, rubies, Hero Souls, and Ancients?',
-					acceptedAnswer: {
-						'@type': 'Answer',
-						text: 'Yes. The editor includes controls for core currencies, hero levels, Hero Souls, Ancients-related progression, ascensions, achievements, skins, mercenaries, outsiders, clan values, and raw save JSON.'
-					}
-				},
-				{
-					'@type': 'Question',
-					name: 'Is my Clicker Heroes save uploaded to a server?',
-					acceptedAnswer: {
-						'@type': 'Answer',
-						text: 'No. The editor runs in the browser and processes save data client-side.'
-					}
-				}
-			]
-		}
-	]
+export const metadata: Metadata = createPageMetadata('home');
+
+const structuredData = createPageJsonLd('home');
+
+type ToolCard = {
+	title: string;
+	href: string;
+	description: string;
+	icon: LucideIcon;
+	tag?: string;
 };
+
+const tools: ToolCard[] = [
+	{
+		title: 'save-editor',
+		href: '/tools/save-editor',
+		description: 'Decode, inspect, edit, and re-encode Clicker Heroes save files.',
+		icon: FileCode2,
+		tag: 'Most popular'
+	},
+	{
+		title: 'instakill-calculator',
+		href: '/tools/instakill-calculator',
+		description: 'Estimate route duration, monsters per zone, and zones per hour.',
+		icon: Calculator
+	},
+	{
+		title: 'transcension-viewer',
+		href: '/tools/transcension-viewer',
+		description: 'Inspect transcension history and drill into ascensions from a save.',
+		icon: History
+	},
+	{
+		title: 'remove-clan-data',
+		href: '/tools/remove-clan-data',
+		description: 'Remove clan, account, and login fields from a save in your browser.',
+		icon: Wrench
+	}
+] as const;
 
 const Page = () => (
 	<>
@@ -89,51 +59,158 @@ const Page = () => (
 			type='application/ld+json'
 			dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
 		/>
-		<SaveEditor />
-		<section
-			aria-labelledby='about-clicker-heroes-save-editor'
-			className='mx-auto flex w-full max-w-6xl flex-col gap-5 px-10 pb-14 text-(--color-text)'
-		>
-			<div>
-				<h2
-					id='about-clicker-heroes-save-editor'
-					className='text-lg font-semibold text-(--color-text-strong)'
-				>
-					Free Clicker Heroes Save Decoder and Editor
-				</h2>
-				<p className='mt-3 max-w-4xl text-sm text-(--color-text-muted)'>
-					This browser-based Clicker Heroes save editor decodes save strings, exposes editable game
-					data, and re-encodes the result for import back into Clicker Heroes. It is built for
-					restoring progress, testing builds, creating specific save states, and inspecting what is
-					inside a Clicker Heroes save file.
-				</p>
-			</div>
+		<div className='flex min-h-screen w-full justify-center overflow-x-hidden p-5 sm:p-10'>
+		<main className='flex w-full max-w-6xl flex-col gap-10'>
+			<section className='grid gap-6 rounded-2xl border border-(--color-border) bg-(--color-bg-alt) p-5 shadow-[0_2px_8px_var(--color-shadow)] md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:p-7'>
+				<div className='flex h-20 w-20 items-center justify-center rounded-(--input-radius) border border-(--color-border-subtle) bg-(--color-bg-elevated) p-3'>
+					<img
+						alt='Clicker Heroes'
+						className='h-14 w-14 object-contain'
+						src='/assets/icons/clicker-heroes.png'
+					/>
+				</div>
+				<div>
+					<p className='mb-2 text-[11px] font-semibold uppercase tracking-normal text-(--color-primary)'>
+						Clicker Heroes
+					</p>
+					<h1 className='text-[1.75rem] font-semibold leading-[1.2] text-(--color-text-strong)'>
+						Save tools and calculators
+					</h1>
+					<p className='mt-3 max-w-3xl text-sm text-(--color-text-muted)'>
+						Browser-based utilities for editing save data, planning faster runs, and cleaning up
+						problematic account or clan fields.
+					</p>
+				</div>
+			</section>
 
-			<div className='grid gap-5 md:grid-cols-3'>
-				<div>
-					<h3 className='text-sm font-semibold text-(--color-text-strong)'>Editable Progress</h3>
-					<p className='mt-2 text-sm text-(--color-text-muted)'>
-						Change gold, rubies, Hero Souls, ascensions, transcensions, zone data, clan values,
-						outsiders, and custom fields.
-					</p>
+			<section aria-labelledby='guides-heading' className='flex flex-col gap-3'>
+				<SectionHeading
+					description='Short walkthroughs for common save editing and route planning tasks.'
+					icon={<BookOpen aria-hidden='true' className='h-4 w-4' />}
+					title='Guides'
+				/>
+				<div className='rounded-2xl border border-dashed border-(--color-border) bg-(--color-bg-alt) p-5 text-sm text-(--color-text-muted) shadow-[0_2px_8px_var(--color-shadow)]'>
+					<span className='font-semibold text-(--color-text-strong)'>Coming soon.</span> Guides are
+					being written for the most common Clicker Heroes save workflows.
 				</div>
-				<div>
-					<h3 className='text-sm font-semibold text-(--color-text-strong)'>Heroes and Unlocks</h3>
-					<p className='mt-2 text-sm text-(--color-text-muted)'>
-						Inspect and adjust heroes, levels, gilds, skins, mercenaries, achievements, and
-						profile-related save values.
-					</p>
+			</section>
+
+			<section aria-labelledby='tools-heading' className='flex flex-col gap-3'>
+				<SectionHeading
+					description='Pick the utility you need and keep everything local in your browser.'
+					icon={<Wrench aria-hidden='true' className='h-4 w-4' />}
+					title='Tools'
+				/>
+				<div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
+					{tools.map((tool) => {
+						const Icon = tool.icon;
+
+						return (
+							<Link
+								className='group flex min-h-46 flex-col justify-between rounded-2xl border border-(--color-border) bg-(--color-bg-alt) p-5 text-(--color-text) shadow-[0_2px_8px_var(--color-shadow)] transition hover:border-(--color-border-hover) hover:bg-(--color-bg-hover) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
+								href={tool.href}
+								key={tool.href}
+							>
+								<span>
+									<span className='flex items-center gap-2'>
+										<span className='flex h-10 w-10 items-center justify-center rounded-(--input-radius) border border-(--color-border-subtle) bg-(--color-bg-elevated) text-(--color-primary)'>
+											<Icon aria-hidden='true' className='h-4 w-4' />
+										</span>
+										{tool.tag ? (
+											<span className='ml-auto inline-flex h-6 items-center rounded-full border border-(--color-primary-border) bg-(--color-primary-dim) px-2 text-[10px] font-bold tracking-wide text-(--color-primary)'>
+												{tool.tag}
+											</span>
+										) : null}
+									</span>
+									<span className='mt-6 block text-base font-semibold text-(--color-text-strong)'>
+										{tool.title}
+									</span>
+									<span className='mt-2 block text-sm text-(--color-text-muted)'>
+										{tool.description}
+									</span>
+								</span>
+								<span className='mt-5 inline-flex items-center gap-2 text-[12px] font-semibold text-(--color-primary)'>
+									Open tool
+									<ArrowRight
+										aria-hidden='true'
+										className='h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5'
+									/>
+								</span>
+							</Link>
+						);
+					})}
 				</div>
-				<div>
-					<h3 className='text-sm font-semibold text-(--color-text-strong)'>Client-Side Tool</h3>
-					<p className='mt-2 text-sm text-(--color-text-muted)'>
-						Save strings are decoded and encoded locally in the browser, so the workflow stays
-						fast and does not require installing a desktop trainer or mod.
-					</p>
-				</div>
-			</div>
-		</section>
+			</section>
+
+			<section aria-labelledby='feedback-heading' className='flex flex-col gap-3'>
+				<SectionHeading
+					description='Send general feedback, report issues, or request features and guides.'
+					icon={<MessageSquare aria-hidden='true' className='h-4 w-4' />}
+					title='Feedback'
+				/>
+				<Link
+					className='group rounded-2xl border border-(--color-border) bg-(--color-bg-alt) p-5 shadow-[0_2px_8px_var(--color-shadow)] transition hover:border-(--color-border-hover) hover:bg-(--color-bg-hover) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
+					href='/feedback'
+				>
+					<div className='grid gap-5 md:grid-cols-[minmax(0,1fr)_auto] md:items-center'>
+						<div>
+							<p className='text-[11px] font-semibold uppercase tracking-normal text-(--color-primary)'>
+								General feedback
+							</p>
+							<h3 className='mt-2 text-[1.1rem] font-semibold text-(--color-text-strong)'>
+								Report bugs, request features, or suggest a guide
+							</h3>
+							<p className='mt-2 max-w-3xl text-sm text-(--color-text-muted)'>
+								Use the feedback page for editor issues, calculator edge cases, missing
+								workflows, or anything else that would make the site more useful.
+							</p>
+							<div className='mt-4 flex flex-wrap gap-2'>
+								{['Bug report', 'Feature request', 'Guide idea'].map((label) => (
+									<span
+										className='inline-flex h-7 items-center rounded-full border border-(--color-border-soft) bg-(--color-bg-soft) px-3 text-[11px] text-(--color-text-secondary)'
+										key={label}
+									>
+										{label}
+									</span>
+								))}
+							</div>
+						</div>
+						<span className='inline-flex items-center gap-2 text-[12px] font-semibold text-(--color-primary)'>
+							Open feedback page
+							<ArrowRight
+								aria-hidden='true'
+								className='h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5'
+							/>
+						</span>
+					</div>
+				</Link>
+			</section>
+		</main>
+		</div>
 	</>
+);
+
+type SectionHeadingProps = {
+	description: string;
+	icon: React.ReactNode;
+	title: string;
+};
+
+const SectionHeading = ({ description, icon, title }: SectionHeadingProps) => (
+	<div className='grid gap-3 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start'>
+		<span className='flex h-9 w-9 items-center justify-center rounded-(--input-radius) border border-(--color-border-soft) bg-(--color-bg-soft) text-(--color-text-secondary)'>
+			{icon}
+		</span>
+		<div>
+			<h2
+				className='text-[1.25rem] font-semibold leading-tight text-(--color-text-strong)'
+				id={`${title.toLowerCase()}-heading`}
+			>
+				{title}
+			</h2>
+			<p className='mt-1 max-w-3xl text-sm text-(--color-text-muted)'>{description}</p>
+		</div>
+	</div>
 );
 
 export default Page;

@@ -15,6 +15,7 @@ import { decodeSaveString, encodeSaveData } from '@/lib/save-codec';
 import { saveHelpContent } from '@/lib/data/editor-config';
 import { useSaveStore } from '@/lib/save-store';
 import { StepTitle } from '../ui/StepTitle';
+import { ExampleSave } from '@/lib/data/example-saves';
 
 const iconAltLabels: Record<string, string> = {
 	'/assets/icons/apple.svg': 'Apple',
@@ -25,7 +26,12 @@ const iconAltLabels: Record<string, string> = {
 
 const getIconAlt = (iconPath: string) => `${iconAltLabels[iconPath] ?? 'Platform'} icon`;
 
-export const SaveDataPanel = ({ onLoadSuccess }: { onLoadSuccess?: () => void }) => {
+interface Props {
+	onLoadSuccess?: () => void;
+	examples?: ExampleSave[];
+}
+
+export const SaveDataPanel = ({ onLoadSuccess, examples }: Props) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { showToast } = useToast();
 	const loadSave = useSaveStore((state) => state.loadSave);
@@ -177,6 +183,7 @@ export const SaveDataPanel = ({ onLoadSuccess }: { onLoadSuccess?: () => void })
 						</Button>
 					</div>
 					<ExampleSaveButtons
+						customExamples={examples}
 						onSelect={(save) => {
 							setSelectedFileName('Example save');
 							setDecodeValue(save);

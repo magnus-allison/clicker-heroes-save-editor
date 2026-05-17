@@ -3,15 +3,14 @@ import type { ButtonHTMLAttributes } from 'react';
 import { cn } from '@/lib/cn';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-	variant?: 'primary' | 'secondary' | 'ghost' | 'subtle';
+	variant?: 'primary' | 'secondary' | 'ghost';
 	size?: 'sm' | 'md';
 	fullWidth?: boolean;
 };
 
 const variantClasses = {
 	primary:
-		'border-(--color-primary-border)/40 bg-(--color-selected-bg)/35 text-(--color-primary) shadow-[inset_0_1px_0_rgba(255,255,255,0.03),0_1px_2px_rgba(0,0,0,0.16)] hover:border-(--color-primary) hover:bg-(--color-primary-bg) hover:text-(--color-text-strong) rounded-lg',
-	subtle: 'border-(--color-border) bg-(--color-bg-soft) text-(--color-text-secondary) shadow-[inset_0_1px_0_rgba(255,255,255,0.03),0_1px_2px_rgba(0,0,0,0.12)] hover:border-(--color-border-hover) hover:bg-(--color-bg-hover) hover:text-(--color-text)',
+		'border-(--color-primary-border)/40 bg-(--color-selected-bg)/35 text-(--color-primary) shadow-[inset_0_1px_0_rgba(255,255,255,0.03),0_1px_2px_rgba(0,0,0,0.16)] hover:border-(--color-primary) hover:bg-(--color-primary-bg) hover:text-(--color-text-strong)',
 	secondary:
 		'border-(--color-border-soft) bg-(--color-bg-soft) text-(--color-text-muted) hover:text-(--color-text)',
 	ghost: 'border-transparent bg-transparent px-2.5 text-[11px] text-(--color-text-dim) hover:border-transparent hover:bg-transparent hover:text-(--color-text-muted)'
