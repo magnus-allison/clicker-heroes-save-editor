@@ -68,6 +68,7 @@ export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, ti
 									<td className='px-3 py-3 sm:px-4'>
 										<BoundFieldControl
 											allowMissing={field.allowMissing}
+											inputClassName={field.inputClassName}
 											kind={field.kind}
 											options={field.options}
 											path={field.path}

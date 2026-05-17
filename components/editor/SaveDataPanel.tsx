@@ -25,7 +25,7 @@ const iconAltLabels: Record<string, string> = {
 
 const getIconAlt = (iconPath: string) => `${iconAltLabels[iconPath] ?? 'Platform'} icon`;
 
-export const SaveDataPanel = () => {
+export const SaveDataPanel = ({ onLoadSuccess }: { onLoadSuccess?: () => void }) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { showToast } = useToast();
 	const loadSave = useSaveStore((state) => state.loadSave);
@@ -34,7 +34,11 @@ export const SaveDataPanel = () => {
 	const [decodeValue, setDecodeValue] = useState('');
 	const [encodeValue, setEncodeValue] = useState('');
 
-	const handleDecode = (nextValue = decodeValue, source: 'paste' | 'file' | 'example' = 'paste') => {
+	const handleDecode = (
+		nextValue = decodeValue,
+		source: 'paste' | 'file' | 'example' = 'paste',
+		shouldScroll = false
+	) => {
 		try {
 			const decoded = decodeSaveString(nextValue);
 			setEncodeValue('');
@@ -42,6 +46,9 @@ export const SaveDataPanel = () => {
 				loadSave(decoded.data);
 			});
 			showToast('Save data loaded.');
+			if (shouldScroll && onLoadSuccess) {
+				onLoadSuccess();
+			}
 			posthog.capture('save_decoded', { source });
 		} catch (error) {
 			showToast(error instanceof Error ? error.message : 'Failed to decode save data.');
@@ -163,7 +170,7 @@ export const SaveDataPanel = () => {
 					<div className='flex flex-wrap gap-2'>
 						<Button
 							className='flex-1'
-							onClick={() => handleDecode(decodeValue, 'paste')}
+							onClick={() => handleDecode(decodeValue, 'paste', true)}
 							variant='primary'
 						>
 							Load Save Data

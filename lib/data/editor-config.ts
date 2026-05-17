@@ -13,6 +13,7 @@ export type SimpleFieldConfig = {
 		body: string;
 	};
 	options?: SelectOption[];
+	inputClassName?: string;
 };
 
 export type OutsiderConfig = {

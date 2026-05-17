@@ -23,6 +23,7 @@ type Props = {
 	placeholder?: string;
 	selectOnFocus?: boolean;
 	allowDecimal?: boolean;
+	inputClassName?: string;
 };
 
 export const NumberInput = ({
@@ -32,6 +33,7 @@ export const NumberInput = ({
 	compact = false,
 	disabled,
 	id,
+	inputClassName,
 	name,
 	onCommit,
 	placeholder,
@@ -77,7 +79,8 @@ export const NumberInput = ({
 			<input
 				aria-label={ariaLabel ?? placeholder ?? 'Number input'}
 				className={cn(
-					'h-10 w-full min-w-0 rounded-(--input-radius) border border-(--color-border) bg-(--color-bg) px-2.5 text-[13px] text-(--color-text) outline-none transition placeholder:text-(--color-text-dim) hover:border-(--color-border-hover) focus:border-(--color-border-hover) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-border-soft) disabled:bg-(--color-bg-soft) disabled:text-(--color-text-dim) sm:w-auto sm:flex-1',
+					'h-10 w-full min-w-0 rounded-(--input-radius) border border-(--color-border) bg-(--color-bg) px-2.5 text-(--color-text) outline-none transition placeholder:text-(--color-text-dim) hover:border-(--color-border-hover) focus:border-(--color-border-hover) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-border-soft) disabled:bg-(--color-bg-soft) disabled:text-(--color-text-dim) sm:w-auto sm:flex-1',
+					inputClassName || 'text-[13px]',
 					compact ? 'sm:min-w-0' : 'sm:min-w-34',
 					className
 				)}

@@ -37,7 +37,7 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 						Unlocked skins
 					</p>
 					<Button
-						className='disabled:border-transparent'
+						className='disabled:border-transparent disabled:opacity-45'
 						disabled={!saveData || allUnlocked}
 						onClick={() => {
 							if (!saveData) {

@@ -20,9 +20,17 @@ type Props = {
 	allowMissing?: boolean;
 	options?: readonly SelectOption[];
 	selectOnFocus?: boolean;
+	inputClassName?: string;
 };
 
-export const BoundFieldControl = ({ allowMissing, kind, options, path, selectOnFocus }: Props) => {
+export const BoundFieldControl = ({
+	allowMissing,
+	inputClassName,
+	kind,
+	options,
+	path,
+	selectOnFocus
+}: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 	const fieldValue = saveData ? getValueAtPath(saveData, path) : undefined;
@@ -68,6 +76,7 @@ export const BoundFieldControl = ({ allowMissing, kind, options, path, selectOnF
 				onCommit={(value) => updateValue(path, value)}
 				selectOnFocus={selectOnFocus}
 				value={typeof fieldValue === 'number' || typeof fieldValue === 'string' ? fieldValue : 0}
+				inputClassName={inputClassName}
 			/>
 		);
 	}

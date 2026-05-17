@@ -7,7 +7,8 @@ export const zoneItemFields: SimpleFieldConfig[] = [
 		label: 'Gold',
 		imageSrc: `/assets/zoneItems/gold.webp`,
 		path: ['gold'],
-		kind: 'number'
+		kind: 'number',
+		inputClassName: 'text-base sm:text-lg !w-82'
 	},
 	{
 		label: 'Highest Zone Number',
