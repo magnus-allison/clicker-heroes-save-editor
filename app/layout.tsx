@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next';
+import { Suspense } from 'react';
 import { IBM_Plex_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 
+import { PostHogPageTracker } from '@/components/analytics/PostHogPageTracker';
 import { ToastProvider } from '@/components/ui/ToastProvider';
 import { SITE_CONFIG } from '@/lib/seo';
 
@@ -109,6 +111,9 @@ export default function RootLayout({
 	return (
 		<html lang='en' className={`${ibmPlexMono.variable} h-full antialiased`}>
 			<body className='min-h-full'>
+				<Suspense fallback={null}>
+					<PostHogPageTracker />
+				</Suspense>
 				<ToastProvider>{children}</ToastProvider>
 				<Analytics />
 			</body>
