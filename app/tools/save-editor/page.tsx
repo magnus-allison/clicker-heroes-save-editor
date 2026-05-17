@@ -67,7 +67,9 @@ const SaveEditorPage = () => (
 				<div className='grid gap-4 md:grid-cols-3'>
 					{saveEditorFaqs.map((faq) => (
 						<div key={faq.question}>
-							<h3 className='text-sm font-semibold text-(--color-text-strong)'>{faq.question}</h3>
+							<h3 className='text-sm font-semibold text-(--color-text-strong)'>
+								{faq.question}
+							</h3>
 							<p className='mt-2 text-sm text-(--color-text-muted)'>{faq.answer}</p>
 						</div>
 					))}

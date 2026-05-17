@@ -29,8 +29,8 @@ const NotFound = () => {
 							Page not found
 						</h1>
 						<p className='mt-4 max-w-2xl text-[13px] leading-6 text-(--color-text-secondary) sm:text-sm'>
-							The page you requested does not exist, was moved, or the URL was typed incorrectly.
-							 The save editor itself is still available from its tool page.
+							The page you requested does not exist, was moved, or the URL was typed
+							incorrectly. The save editor itself is still available from its tool page.
 						</p>
 						<div className='mt-6 flex flex-wrap gap-3'>
 							{recoveryLinks.map((link, index) => (

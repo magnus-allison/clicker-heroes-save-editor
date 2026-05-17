@@ -70,7 +70,10 @@ export const InstakillCalculator = () => {
 							</Button>
 						}
 					>
-						<EditorTable className='border-(--color-border-subtle)' tableClassName='w-full table-fixed'>
+						<EditorTable
+							className='border-(--color-border-subtle)'
+							tableClassName='w-full table-fixed'
+						>
 							<colgroup>
 								<col className='w-18 sm:w-22' />
 								<col className='w-[38%] sm:w-auto' />
@@ -162,7 +165,10 @@ export const InstakillCalculator = () => {
 						description='Calculated monsters per zone, duration, and pace.'
 						title='Output'
 					>
-						<EditorTable className='border-(--color-border-subtle)' tableClassName='w-full table-fixed'>
+						<EditorTable
+							className='border-(--color-border-subtle)'
+							tableClassName='w-full table-fixed'
+						>
 							<colgroup>
 								<col className='w-18 sm:w-22' />
 								<col className='w-[42%] sm:w-auto' />
