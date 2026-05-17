@@ -11,7 +11,7 @@ type Props = {
 	onCopied?: () => void;
 	idleLabel?: string;
 	successLabel?: string;
-	variant?: 'primary' | 'secondary' | 'ghost';
+	variant?: 'primary' | 'secondary' | 'subtle' | 'ghost';
 	size?: 'sm' | 'md';
 	disabled?: boolean;
 	className?: string;

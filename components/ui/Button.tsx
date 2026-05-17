@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes } from 'react';
 import { cn } from '@/lib/cn';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-	variant?: 'primary' | 'secondary' | 'ghost';
+	variant?: 'primary' | 'secondary' | 'subtle' | 'ghost';
 	size?: 'sm' | 'md';
 	fullWidth?: boolean;
 };
@@ -13,6 +13,7 @@ const variantClasses = {
 		'border-(--color-primary-border)/40 bg-(--color-selected-bg)/35 text-(--color-primary) shadow-[inset_0_1px_0_rgba(255,255,255,0.03),0_1px_2px_rgba(0,0,0,0.16)] hover:border-(--color-primary) hover:bg-(--color-primary-bg) hover:text-(--color-text-strong)',
 	secondary:
 		'border-(--color-border-soft) bg-(--color-bg-soft) text-(--color-text-muted) hover:text-(--color-text)',
+	subtle: 'border-(--color-border-subtle) bg-(--color-bg-elevated) text-(--color-text-muted) hover:bg-(--color-bg-soft) hover:text-(--color-text)',
 	ghost: 'border-transparent bg-transparent px-2.5 text-[11px] text-(--color-text-dim) hover:border-transparent hover:bg-transparent hover:text-(--color-text-muted)'
 } as const;
 
