@@ -6,32 +6,44 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test \"lib/**/*.test.ts\"",
+    "test:watch": "node --test --watch \"lib/**/*.test.ts\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "pnpm typecheck && pnpm test && pnpm format:check"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
-    "@vercel/firewall": "^1.2.1",
+    "@vercel/firewall": "^1.2.2",
     "clsx": "^2.1.1",
-    "lucide-react": "^1.14.0",
-    "next": "16.2.6",
-    "pako": "^2.1.0",
-    "posthog-js": "^1.372.10",
-    "posthog-node": "^5.33.4",
-    "react": "19.2.6",
-    "react-dom": "19.2.6",
-    "resend": "^6.12.3",
-    "tailwind-merge": "^3.5.0",
-    "zustand": "^5.0.13"
+    "decimal.js": "^10.6.0",
+    "lucide-react": "^1.27.0",
+    "next": "16.2.12",
+    "pako": "^3.0.1",
+    "posthog-js": "^1.407.5",
+    "posthog-node": "^5.46.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "resend": "^6.18.1",
+    "tailwind-merge": "^3.6.0",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^25",
+    "@types/node": "^26",
     "@types/pako": "^2.0.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^10",
-    "eslint-config-next": "16.2.6",
+    "eslint-config-next": "16.2.12",
+    "prettier": "^3.9.6",
     "tailwindcss": "^4",
-    "typescript": "^6"
+    "typescript": "^7"
+  },
+  "engines": {
+    "node": ">=22.6.0"
   }
 }

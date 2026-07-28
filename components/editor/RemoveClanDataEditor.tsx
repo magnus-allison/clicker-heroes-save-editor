@@ -1,22 +1,37 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import posthog from 'posthog-js';
+import { ArrowLeft } from 'lucide-react';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
+import { SectionHeading } from '@/components/home/SectionHeading';
 import { Button } from '@/components/ui/Button';
-import { PageHeading } from '@/components/ui/PageHeading';
+import {
+	EditorTable,
+	EditorTableBody,
+	EditorTableCell,
+	EditorTableHead,
+	EditorTableHeaderCell,
+	EditorTableRow
+} from '@/components/ui/EditorTable';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { useToast } from '@/components/ui/ToastProvider';
 import { clanFields, raidClassOptions } from '@/lib/data/editor-config';
 import { useSaveStore } from '@/lib/save-store';
-import { getValueAtPath, setValueAtPath, type PathSegment } from '@/lib/save-utils';
+import { getValueAtPath, setValueAtPath, type PathSegment, type SaveData } from '@/lib/save-utils';
 
 type RemovedClanEntry = {
 	label: string;
 	value: string;
+};
+
+/** The removed values, tied to the save they were taken from. */
+type RemovedClanData = {
+	source: SaveData | null;
+	entries: RemovedClanEntry[];
 };
 
 type WipeFieldConfig = {
@@ -41,7 +56,8 @@ const wipeFields: WipeFieldConfig[] = [
 const wipeClanFields: WipeFieldConfig[] = clanFields.map((field) => ({
 	label: field.label,
 	path: field.path,
-	value: field.path[0] === 'newClanRaidClassId' ? 0 : field.kind === 'select' ? 0 : 0,
+	// Every clan field is wiped to 0, the raid class included (0 = None).
+	value: 0,
 	format:
 		field.path[0] === 'newClanRaidClassId'
 			? (rawValue) => `${getRaidClassLabel(rawValue)} (${String(rawValue ?? 0)})`
@@ -80,11 +96,12 @@ export const RemoveClanDataEditor = () => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const originalSaveData = useSaveStore((state) => state.originalSaveData);
 	const updateSave = useSaveStore((state) => state.updateSave);
-	const [removedClanEntries, setRemovedClanEntries] = useState<RemovedClanEntry[] | null>(null);
+	const [removedClanData, setRemovedClanData] = useState<RemovedClanData | null>(null);
 
-	useEffect(() => {
-		setRemovedClanEntries(null);
-	}, [originalSaveData]);
+	// Derived rather than reset in an effect: importing a save replaces
+	// `originalSaveData`, which retires whatever the previous save gave up.
+	const removedClanEntries =
+		removedClanData && removedClanData.source === originalSaveData ? removedClanData.entries : null;
 
 	const handleRemoveClanData = () => {
 		if (!saveData) {
@@ -102,65 +119,68 @@ export const RemoveClanDataEditor = () => {
 		});
 
 		updateSave((current) =>
-			wipeEntries.reduce(
-				(nextSave, field) => setValueAtPath(nextSave, field.path, field.value),
-				current
-			)
+			wipeEntries.reduce((nextSave, field) => setValueAtPath(nextSave, field.path, field.value), current)
 		);
 
-		setRemovedClanEntries(nextRemovedFields);
+		setRemovedClanData({ source: originalSaveData, entries: nextRemovedFields });
 		showToast('Clan data removed from the save.');
 		posthog.capture('clan_data_removed');
 	};
 
 	return (
-		<div className='flex min-h-screen w-full justify-center overflow-x-hidden p-5 sm:p-10'>
-			<main className='flex w-full max-w-6xl flex-col gap-3'>
-				<PageHeading
-					title='Remove Clan Data'
-					subtitle='Import your save, inspect the stored clan and account values, then export a cleaned save.'
-				/>
+		<>
+			<SectionHeading
+				back='/'
+				description=''
+				icon={<ArrowLeft aria-hidden='true' className='h-4 w-4' />}
+				title='Tools · Remove Clan Data'
+			/>
 
-				<SaveDataPanel />
+			<SaveDataPanel />
 
-				<div className='ml-2'>
-					<StepTitle step={2} title='Remove Clan Data From JSON' />
-				</div>
-				<PanelSection
-					className={!saveData ? 'pointer-events-none opacity-40 select-none' : undefined}
-				>
+			<StepTitle step={2} title='Remove Clan Data From JSON' />
+			<div
+				className={!saveData ? 'pointer-events-none opacity-40 select-none' : undefined}
+				// `inert` keeps the controls out of the tab order while the panel
+				// only looks disabled.
+				inert={!saveData}
+			>
+				<PanelSection>
 					<div className='grid gap-4 p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]'>
 						<div className='flex flex-col gap-3'>
-							<p className='text-sm leading-6 text-(--color-text-secondary)'>
-								This removes clan-related fields and clears the account/login fields from the
-								loaded save JSON so the exported result is stripped down for a fresh rebuild.
+							<p className='text-[13px] leading-6 text-(--color-fg-secondary)'>
+								This removes clan-related fields and clears the account/login fields from the loaded save JSON
+								so the exported result is stripped down for a fresh rebuild.
 							</p>
-							<div className='rounded-2xl border border-(--color-border) bg-(--color-bg-soft) p-4'>
-								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+							<div className='flex flex-col gap-2'>
+								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 									What gets removed
 								</p>
-								<ul className='mt-3 space-y-2 text-sm text-(--color-text-secondary)'>
-									{wipeEntries.map((field) =>
-										(() => {
+								<EditorTable label='Fields that get removed'>
+									<EditorTableHead>
+										<tr>
+											<EditorTableHeaderCell>Field</EditorTableHeaderCell>
+											<EditorTableHeaderCell>Current value</EditorTableHeaderCell>
+										</tr>
+									</EditorTableHead>
+									<EditorTableBody>
+										{wipeEntries.map((field) => {
 											const currentValue = getValueAtPath(saveData, field.path);
 											const displayValue = field.format
 												? field.format(currentValue)
 												: formatDisplayValue(currentValue);
 
 											return (
-												<li
-													key={field.path.join('.')}
-													className='flex items-center justify-between gap-3'
-												>
-													<span>{field.label}</span>
-													<span className='max-w-[60%] truncate text-(--color-text-dim)'>
+												<EditorTableRow key={field.path.join('.')}>
+													<EditorTableCell className='text-(--color-fg)'>{field.label}</EditorTableCell>
+													<EditorTableCell className='wrap-break-word text-(--color-fg-dim)'>
 														{displayValue}
-													</span>
-												</li>
+													</EditorTableCell>
+												</EditorTableRow>
 											);
-										})()
-									)}
-								</ul>
+										})}
+									</EditorTableBody>
+								</EditorTable>
 							</div>
 							<div className='flex flex-wrap gap-2'>
 								<Button className='flex-1' onClick={handleRemoveClanData} variant='primary'>
@@ -169,39 +189,38 @@ export const RemoveClanDataEditor = () => {
 							</div>
 						</div>
 
-						<div className='overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-bg-alt)'>
-							<div className='border-b border-(--color-border-soft) bg-(--color-table-header) px-4 py-3'>
-								<h3 className='text-[13px] font-semibold text-(--color-text-strong)'>
-									Removed Clan Data
-								</h3>
-							</div>
-							<div className='p-4'>
-								{removedClanEntries ? (
-									<div className='space-y-3'>
+						<div className='flex flex-col gap-2'>
+							<h3 className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+								Removed Clan Data
+							</h3>
+							{removedClanEntries ? (
+								<EditorTable label='Removed clan data'>
+									<EditorTableHead>
+										<tr>
+											<EditorTableHeaderCell>Field</EditorTableHeaderCell>
+											<EditorTableHeaderCell>Removed value</EditorTableHeaderCell>
+										</tr>
+									</EditorTableHead>
+									<EditorTableBody>
 										{removedClanEntries.map((entry) => (
-											<div
-												className='rounded-xl border border-(--color-border-soft) bg-(--color-bg) px-3 py-2.5'
-												key={entry.label}
-											>
-												<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
-													{entry.label}
-												</p>
-												<p className='mt-1 wrap-break-word text-[13px] text-(--color-text)'>
+											<EditorTableRow key={entry.label}>
+												<EditorTableCell className='text-(--color-fg)'>{entry.label}</EditorTableCell>
+												<EditorTableCell className='wrap-break-word text-(--color-fg-dim)'>
 													{entry.value}
-												</p>
-											</div>
+												</EditorTableCell>
+											</EditorTableRow>
 										))}
-									</div>
-								) : (
-									<p className='text-sm leading-6 text-(--color-text-secondary)'>
-										Remove clan data from a loaded save to see the stripped values here.
-									</p>
-								)}
-							</div>
+									</EditorTableBody>
+								</EditorTable>
+							) : (
+								<p className='text-[13px] leading-6 text-(--color-fg-secondary)'>
+									Remove clan data from a loaded save to see the stripped values here.
+								</p>
+							)}
 						</div>
 					</div>
 				</PanelSection>
-			</main>
-		</div>
+			</div>
+		</>
 	);
 };

@@ -1,4 +1,14 @@
+'use client';
+
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
+import {
+	EditorTable,
+	EditorTableBody,
+	EditorTableCell,
+	EditorTableHead,
+	EditorTableHeaderCell,
+	EditorTableRow
+} from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { mercenarySlots, mercenarySummaryFields } from '@/lib/data/editor-config';
@@ -21,102 +31,89 @@ export const MercenariesSection = ({ defaultOpen }: Props) => {
 		>
 			<div className='space-y-6'>
 				<div>
-					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 						Summary
 					</p>
-					<div className='overflow-hidden rounded-2xl border border-(--color-border)'>
-						<div className='overflow-x-auto'>
-							<table className='min-w-full border-collapse text-left text-[13px] text-(--color-text-secondary)'>
-								<tbody className='bg-(--color-bg)'>
-									{mercenarySummaryFields.map((field) => (
-										<tr
-											className='not-last:border-b not-last:border-(--color-border-subtle)'
-											key={field.path.join('.')}
-										>
-											<td className='px-4 py-3 text-(--color-text)'>{field.label}</td>
-											<td className='min-w-55 px-4 py-3'>
-												<BoundFieldControl
-													kind={field.kind}
-													path={field.path}
-													selectOnFocus
-												/>
-											</td>
-										</tr>
-									))}
-								</tbody>
-							</table>
-						</div>
-					</div>
+					<EditorTable label='Mercenary summary'>
+						<EditorTableBody>
+							{mercenarySummaryFields.map((field) => (
+								<EditorTableRow key={field.path.join('.')}>
+									<EditorTableCell className='text-(--color-fg)'>
+										{field.label}
+									</EditorTableCell>
+									<EditorTableCell className='min-w-55'>
+										<BoundFieldControl
+											kind={field.kind}
+											label={field.label}
+											path={field.path}
+											selectOnFocus
+										/>
+									</EditorTableCell>
+								</EditorTableRow>
+							))}
+						</EditorTableBody>
+					</EditorTable>
 				</div>
 
 				<div>
-					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 						Mercenary roster
 					</p>
-					<div className='overflow-hidden rounded-2xl border border-(--color-border)'>
-						<div className='overflow-x-auto'>
-							<table className='min-w-full border-collapse text-left text-[13px] text-(--color-text-secondary)'>
-								<thead className='bg-(--color-table-header) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
-									<tr>
-										<th className='px-4 py-3'>Name</th>
-										<th className='px-4 py-3'>Level</th>
-										<th className='px-4 py-3'>Time to Die</th>
-										<th className='px-4 py-3'>Bonus Lives</th>
-									</tr>
-								</thead>
-								<tbody className='bg-(--color-bg)'>
-									{mercenarySlots.map((slot) => (
-										<tr
-											className='not-last:border-b not-last:border-(--color-border-subtle)'
-											key={slot.id}
-										>
-											<td className='min-w-55 px-4 py-3'>
-												<BoundFieldControl
-													kind='text'
-													path={slot.namePath}
-													selectOnFocus
-												/>
-											</td>
-											<td className='min-w-40 px-4 py-3'>
-												<NumberInput
-													disabled={!saveData}
-													onCommit={(value) => updateValue(slot.levelPath, value)}
-													selectOnFocus
-													value={Number(
-														getValueAtPath(saveData, slot.levelPath) ?? 0
-													)}
-												/>
-											</td>
-											<td className='min-w-45 px-4 py-3'>
-												<NumberInput
-													disabled={!saveData}
-													onCommit={(value) =>
-														updateValue(slot.timeToDiePath, value)
-													}
-													selectOnFocus
-													value={Number(
-														getValueAtPath(saveData, slot.timeToDiePath) ?? 0
-													)}
-												/>
-											</td>
-											<td className='min-w-45 px-4 py-3'>
-												<NumberInput
-													disabled={!saveData}
-													onCommit={(value) =>
-														updateValue(slot.bonusLivesPath, value)
-													}
-													selectOnFocus
-													value={Number(
-														getValueAtPath(saveData, slot.bonusLivesPath) ?? 0
-													)}
-												/>
-											</td>
-										</tr>
-									))}
-								</tbody>
-							</table>
-						</div>
-					</div>
+					<EditorTable label='Mercenary roster'>
+						<EditorTableHead>
+							<tr>
+								<EditorTableHeaderCell>Name</EditorTableHeaderCell>
+								<EditorTableHeaderCell>Level</EditorTableHeaderCell>
+								<EditorTableHeaderCell>Time to Die</EditorTableHeaderCell>
+								<EditorTableHeaderCell>Bonus Lives</EditorTableHeaderCell>
+							</tr>
+						</EditorTableHead>
+						<EditorTableBody>
+							{mercenarySlots.map((slot) => (
+								<EditorTableRow key={slot.id}>
+									<EditorTableCell className='min-w-55'>
+										<BoundFieldControl
+											kind='text'
+											label={`Mercenary ${slot.id + 1} name`}
+											path={slot.namePath}
+											selectOnFocus
+										/>
+									</EditorTableCell>
+									<EditorTableCell className='min-w-40'>
+										<NumberInput
+											ariaLabel={`Mercenary ${slot.id + 1} level`}
+											disabled={!saveData}
+											onCommit={(value) => updateValue(slot.levelPath, value)}
+											selectOnFocus
+											value={Number(getValueAtPath(saveData, slot.levelPath) ?? 0)}
+										/>
+									</EditorTableCell>
+									<EditorTableCell className='min-w-45'>
+										<NumberInput
+											ariaLabel={`Mercenary ${slot.id + 1} time to die`}
+											disabled={!saveData}
+											onCommit={(value) => updateValue(slot.timeToDiePath, value)}
+											selectOnFocus
+											value={Number(
+												getValueAtPath(saveData, slot.timeToDiePath) ?? 0
+											)}
+										/>
+									</EditorTableCell>
+									<EditorTableCell className='min-w-45'>
+										<NumberInput
+											ariaLabel={`Mercenary ${slot.id + 1} bonus lives`}
+											disabled={!saveData}
+											onCommit={(value) => updateValue(slot.bonusLivesPath, value)}
+											selectOnFocus
+											value={Number(
+												getValueAtPath(saveData, slot.bonusLivesPath) ?? 0
+											)}
+										/>
+									</EditorTableCell>
+								</EditorTableRow>
+							))}
+						</EditorTableBody>
+					</EditorTable>
 				</div>
 			</div>
 		</SectionCard>

@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { AchievementsSection } from '@/components/editor/sections/AchievementsSection';
-import { AdditionalInfoSection } from '@/components/editor/sections/AdditionalInfoSection';
 import { CustomFieldSection } from '@/components/editor/sections/CustomFieldSection';
 import { FeedbackSection } from '@/components/editor/sections/FeedbackSection';
 import { HeroesSection } from '@/components/editor/sections/HeroesSection';
@@ -20,7 +19,8 @@ import { zoneItemFields } from '@/lib/data/zoneItems';
 import { PanelSection } from '../ui/PanelSection';
 import { StepTitle } from '../ui/StepTitle';
 import { useSaveStore } from '@/lib/save-store';
-import { PageHeading } from '../ui/PageHeading';
+import { ArrowLeft } from 'lucide-react';
+import { SectionHeading } from '../home/SectionHeading';
 
 export const SaveEditor = () => {
 	const { showToast } = useToast();
@@ -34,19 +34,26 @@ export const SaveEditor = () => {
 	};
 
 	return (
-		<div className='flex min-h-screen w-full justify-center overflow-x-hidden p-10'>
-			<main className='flex w-full max-w-6xl flex-col gap-3'>
-				<PageHeading
-					title='Clicker Heroes Save Editor'
-					subtitle='Import your save file, edit values, and export an updated save.'
-				/>
+		<>
+			<SectionHeading
+				back='/'
+				description=''
+				icon={<ArrowLeft aria-hidden='true' className='h-4 w-4' />}
+				title='Tools · Clicker Heroes Save Editor'
+			/>
 
-				<SaveDataPanel onLoadSuccess={scrollToStep2} />
+			<SaveDataPanel onLoadSuccess={scrollToStep2} />
 
-				<div className='ml-2' ref={step2Ref}>
-					<StepTitle title='Edit Your Save Data' step={2} />
-				</div>
-				<PanelSection className={!hasSave ? 'pointer-events-none opacity-40 select-none' : undefined}>
+			<div ref={step2Ref}>
+				<StepTitle title='Edit Your Save Data' step={2} />
+			</div>
+			<div
+				className={!hasSave ? 'pointer-events-none opacity-40 select-none' : undefined}
+				// `inert` keeps every field inside out of the tab order while the
+				// panel only looks disabled.
+				inert={!hasSave}
+			>
+				<PanelSection>
 					<SimpleFieldsSection
 						defaultOpen
 						description='Core currencies and ruby-shop purchases.'
@@ -85,11 +92,9 @@ export const SaveEditor = () => {
 
 					<JsonSection defaultOpen={false} showToast={showToast} />
 
-					<AdditionalInfoSection defaultOpen={false} />
-
 					<FeedbackSection defaultOpen={false} />
 				</PanelSection>
-			</main>
-		</div>
+			</div>
+		</>
 	);
 };

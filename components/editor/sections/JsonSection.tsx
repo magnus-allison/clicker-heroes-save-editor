@@ -30,9 +30,9 @@ export const JsonSection = ({ defaultOpen, showToast }: Props) => {
 			title='JSON Editor'
 		>
 			<div className='grid gap-5 lg:grid-cols-2'>
-				<div className='border border-(--color-border) bg-(--color-bg-soft) p-4'>
+				<div className='rounded-(--radius-card) border border-(--color-line) bg-(--color-surface-sunken) bg-[image:var(--gradient-sunken)] p-4 shadow-[var(--shadow-raised)]'>
 					<div className='flex items-center justify-between gap-3'>
-						<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+						<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 							Export to JSON
 						</p>
 						<CopyButton
@@ -42,10 +42,12 @@ export const JsonSection = ({ defaultOpen, showToast }: Props) => {
 						/>
 					</div>
 					<TextInput
+						ariaLabel='JSON output'
 						className='mt-3'
 						multiline
 						placeholder='JSON output will appear here...'
 						readOnly
+						resizable
 						rows={10}
 						selectOnFocus
 						value={outputValue}
@@ -60,7 +62,7 @@ export const JsonSection = ({ defaultOpen, showToast }: Props) => {
 								}
 
 								setOutputValue(JSON.stringify(saveData, null, 2));
-							posthog.capture('json_exported');
+								posthog.capture('json_exported');
 							}}
 							variant='primary'
 						>
@@ -69,9 +71,9 @@ export const JsonSection = ({ defaultOpen, showToast }: Props) => {
 					</div>
 				</div>
 
-				<div className='border border-(--color-border) bg-(--color-bg) p-4'>
+				<div className='rounded-(--radius-card) border border-(--color-line) bg-(--color-surface) bg-[image:var(--gradient-raised)] p-4 shadow-[var(--shadow-raised)]'>
 					<div className='flex items-center justify-between gap-3'>
-						<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+						<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 							Import from JSON
 						</p>
 						<CopyButton
@@ -81,10 +83,12 @@ export const JsonSection = ({ defaultOpen, showToast }: Props) => {
 						/>
 					</div>
 					<TextInput
+						ariaLabel='JSON to import'
 						className='mt-3'
 						multiline
 						onValueChange={setInputValue}
 						placeholder='Paste JSON here...'
+						resizable
 						rows={10}
 						value={inputValue}
 					/>

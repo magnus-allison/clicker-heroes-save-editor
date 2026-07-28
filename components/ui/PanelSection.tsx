@@ -1,22 +1,23 @@
+import type { ReactNode } from 'react';
+
 import { cn } from '@/lib/cn';
-import { type FC } from 'react';
 
 interface Props {
-	children: React.ReactNode;
-	hasPadding?: boolean;
+	children: ReactNode;
 	className?: string;
 }
 
-export const PanelSection: FC<Props> = ({ hasPadding, children, className }) => {
+/**
+ * Outermost card on a page. Use `SectionCard` for collapsible groups nested
+ * inside one of these.
+ */
+export const PanelSection = ({ children, className }: Props) => {
 	return (
 		<div
 			className={cn(
-				`w-full overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-bg-alt) shadow-[0_2px_8px_var(--color-shadow)]`,
-				hasPadding && 'p-5 flex-wrap flex',
+				'w-full overflow-hidden rounded-(--radius-panel) border border-(--color-line) bg-(--color-surface-raised) shadow-[var(--shadow-card)]',
 				className
 			)}
-
-			// mx-auto flex flex-wrap gap-0 rounded-(--box-radius) border border-(--color-border) bg-(--color-bg-alt) p-5 shadow-[0_2px_8px_var(--color-shadow)]
 		>
 			{children}
 		</div>

@@ -1,13 +1,22 @@
+'use client';
+
 import posthog from 'posthog-js';
 
 import { Button } from '@/components/ui/Button';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { EditorImage } from '@/components/ui/EditorImage';
+import {
+	EditorTable,
+	EditorTableBody,
+	EditorTableCell,
+	EditorTableHead,
+	EditorTableHeaderCell,
+	EditorTableRow
+} from '@/components/ui/EditorTable';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { autoClickerSkins } from '@/lib/data/editor-config';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath, setValueAtPath } from '@/lib/save-utils';
-import { cn } from '@/lib/cn';
 
 type Props = {
 	showToast: (message: string) => void;
@@ -31,9 +40,9 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 			description='Pick the current skin and toggle which auto clicker skins are unlocked.'
 			title='Auto Clicker Skins'
 		>
-			<div className='space-x-6'>
+			<div className='space-y-6'>
 				<div className='flex items-center justify-between gap-3'>
-					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 						Unlocked skins
 					</p>
 					<Button
@@ -61,56 +70,47 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 					</Button>
 				</div>
 
-				<div className='my-2 overflow-hidden rounded-2xl border border-(--color-border)'>
-					<div className='overflow-x-auto'>
-						<table className='min-w-full border-collapse text-left text-[13px] text-(--color-text-secondary)'>
-							<thead className='bg-(--color-table-header) text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
-								<tr>
-									<th className='px-4 py-3'>Image</th>
-									<th className='px-4 py-3'>Skin Name</th>
-									<th className='px-4 py-3'>Unlocked</th>
-								</tr>
-							</thead>
-							<tbody className='bg-(--color-bg)'>
-								{autoClickerSkins.map((skin) => (
-									<tr
-										className='not-last:border-b not-last:border-(--color-border-subtle)'
-										key={skin.id}
-									>
-										<td className='px-4 py-3'>
-											<EditorImage
-												alt={skin.name}
-												className='h-11 w-11 object-contain'
-												size={44}
-												src={skin.imageSrc}
-											/>
-										</td>
-										<td className='px-4 py-3 text-(--color-text)'>{skin.name}</td>
-										<td className='px-4 py-3'>
-											<div className='flex justify-start'>
-												<Checkbox
-													checked={Boolean(
-														getValueAtPath(saveData, [
-															'autoclickerSkins',
-															skin.id
-														])
-													)}
-													disabled={!saveData}
-													onCheckedChange={(checked) =>
-														updateValue(['autoclickerSkins', skin.id], checked)
-													}
-												/>
-											</div>
-										</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</div>
-				</div>
+				<EditorTable className='my-2' label='Auto clicker skins'>
+					<EditorTableHead>
+						<tr>
+							<EditorTableHeaderCell>Image</EditorTableHeaderCell>
+							<EditorTableHeaderCell>Skin Name</EditorTableHeaderCell>
+							<EditorTableHeaderCell>Unlocked</EditorTableHeaderCell>
+						</tr>
+					</EditorTableHead>
+					<EditorTableBody>
+						{autoClickerSkins.map((skin) => (
+							<EditorTableRow key={skin.id}>
+								<EditorTableCell>
+									<EditorImage
+										alt={skin.name}
+										className='h-11 w-11 object-contain'
+										size={44}
+										src={skin.imageSrc}
+									/>
+								</EditorTableCell>
+								<EditorTableCell className='text-(--color-fg)'>{skin.name}</EditorTableCell>
+								<EditorTableCell>
+									<div className='flex justify-start'>
+										<Checkbox
+											ariaLabel={`${skin.name} unlocked`}
+											checked={Boolean(
+												getValueAtPath(saveData, ['autoclickerSkins', skin.id])
+											)}
+											disabled={!saveData}
+											onCheckedChange={(checked) =>
+												updateValue(['autoclickerSkins', skin.id], checked)
+											}
+										/>
+									</div>
+								</EditorTableCell>
+							</EditorTableRow>
+						))}
+					</EditorTableBody>
+				</EditorTable>
 
 				<div className='mt-4 mb-2'>
-					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-text-dim)'>
+					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 						Current skin
 					</p>
 					<div className='mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4'>
@@ -118,16 +118,22 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 							const isSelected = selectedSkinId === skin.id;
 
 							return (
-								<button
-									className={cn(
-										`border rounded-2xl px-3 py-3 text-left transition border-(--color-border) bg-(--color-bg-soft) hover:border-(--color-border-hover)`,
-										isSelected &&
-											'border-(--color-primary-border) bg-(--color-selected-bg)'
-									)}
+								// A `Button` rather than a bare `<button>` so these picker
+								// cards get the shared focus ring and disabled treatment.
+								// Selection is the `selected` surface rather than the
+								// accent-filled `primary` variant: this is a choice among
+								// eight options, not the panel's main action.
+								<Button
+									aria-pressed={isSelected}
+									className={
+										isSelected
+											? 'h-auto flex-col rounded-(--radius-card) border-(--color-primary-line) bg-(--color-surface-selected) px-3 py-3 text-left text-(--color-fg-strong)'
+											: 'h-auto flex-col rounded-(--radius-card) px-3 py-3 text-left'
+									}
 									disabled={!saveData}
 									key={skin.id}
 									onClick={() => updateValue(['currentAutoclickerSkin'], skin.id)}
-									type='button'
+									variant='secondary'
 								>
 									<EditorImage
 										alt={skin.name}
@@ -135,10 +141,8 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 										size={64}
 										src={skin.imageSrc}
 									/>
-									<span className='mt-3 block text-center text-[12px] text-(--color-text-secondary)'>
-										{skin.name}
-									</span>
-								</button>
+									<span className='mt-3 block text-center text-[12px]'>{skin.name}</span>
+								</Button>
 							);
 						})}
 					</div>

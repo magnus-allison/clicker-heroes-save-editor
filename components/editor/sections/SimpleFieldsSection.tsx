@@ -1,6 +1,15 @@
+'use client';
+
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
 import { EditorImage } from '@/components/ui/EditorImage';
-import { EditorTable, EditorTableBody, EditorTableHead } from '@/components/ui/EditorTable';
+import {
+	EditorTable,
+	EditorTableBody,
+	EditorTableCell,
+	EditorTableHead,
+	EditorTableHeaderCell,
+	EditorTableRow
+} from '@/components/ui/EditorTable';
 import { HelpToolTip } from '@/components/ui/HelpToolTip';
 import { SectionCard } from '@/components/ui/SectionCard';
 import type { SimpleFieldConfig } from '@/lib/data/editor-config';
@@ -18,8 +27,8 @@ export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, ti
 
 	return (
 		<SectionCard defaultOpen={defaultOpen} description={description} title={title}>
-			{note ? <p className='mb-4 text-[12px] leading-6 text-(--color-text-secondary)'>{note}</p> : null}
-			<EditorTable className='my-2' tableClassName='w-full table-fixed'>
+			{note ? <p className='mb-4 text-[12px] leading-6 text-(--color-fg-secondary)'>{note}</p> : null}
+			<EditorTable className='my-2' label={title} tableClassName='w-full table-fixed'>
 				<colgroup>
 					{showImageColumn ? <col className='w-18 sm:w-22' /> : null}
 					<col className='w-[28%] sm:w-52' />
@@ -27,19 +36,18 @@ export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, ti
 				</colgroup>
 				<EditorTableHead>
 					<tr>
-						{showImageColumn ? <th className='px-3 py-3 sm:px-4'>Image</th> : null}
-						<th className='px-3 py-3 sm:px-4'>Item</th>
-						<th className='px-3 py-3 text-left sm:px-4 sm:text-right'>Value</th>
+						{showImageColumn ? <EditorTableHeaderCell>Image</EditorTableHeaderCell> : null}
+						<EditorTableHeaderCell>Item</EditorTableHeaderCell>
+						<EditorTableHeaderCell className='text-left sm:text-right'>
+							Value
+						</EditorTableHeaderCell>
 					</tr>
 				</EditorTableHead>
 				<EditorTableBody>
 					{fields.map((field) => (
-						<tr
-							className='align-middle not-last:border-b not-last:border-(--color-border-subtle)'
-							key={field.path.join('.')}
-						>
+						<EditorTableRow key={field.path.join('.')}>
 							{showImageColumn ? (
-								<td className='px-3 py-3 sm:px-4'>
+								<EditorTableCell>
 									{field.imageSrc ? (
 										<EditorImage
 											alt={field.label}
@@ -48,33 +56,32 @@ export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, ti
 											src={field.imageSrc}
 										/>
 									) : (
-										<div className='h-11 w-11 border border-dashed border-(--color-border-soft) bg-(--color-bg-soft)' />
+										<div className='h-11 w-11 rounded-(--radius-control) border border-dashed border-(--color-line-soft) bg-(--color-surface-sunken)' />
 									)}
-								</td>
+								</EditorTableCell>
 							) : null}
-							<td className='px-3 py-3 sm:px-4'>
+							<EditorTableCell>
 								<div className='flex min-w-0 items-center gap-3'>
-									<span className='min-w-0 text-[13px] text-(--color-text)'>
-										{field.label}
-									</span>
+									<span className='min-w-0 text-[13px] text-(--color-fg)'>{field.label}</span>
 									{field.help ? (
 										<HelpToolTip title={field.help.title}>
 											<p>{field.help.body}</p>
 										</HelpToolTip>
 									) : null}
 								</div>
-							</td>
-							<td className='px-3 py-3 sm:px-4'>
+							</EditorTableCell>
+							<EditorTableCell>
 								<BoundFieldControl
 									allowMissing={field.allowMissing}
 									inputClassName={field.inputClassName}
 									kind={field.kind}
+									label={field.label}
 									options={field.options}
 									path={field.path}
 									selectOnFocus
 								/>
-							</td>
-						</tr>
+							</EditorTableCell>
+						</EditorTableRow>
 					))}
 				</EditorTableBody>
 			</EditorTable>

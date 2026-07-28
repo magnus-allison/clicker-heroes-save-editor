@@ -26,15 +26,18 @@ const baseKeywords = [
 export const saveEditorFaqs = [
 	{
 		question: 'How do I edit a Clicker Heroes save file?',
-		answer: 'Paste your Clicker Heroes save string into the editor, decode it, change the fields you need, then copy the encoded result back into the game import dialog.'
+		answer:
+			'Paste your Clicker Heroes save string into the editor, decode it, change the fields you need, then copy the encoded result back into the game import dialog.'
 	},
 	{
 		question: 'Can this editor change gold, rubies, Hero Souls, and Ancients?',
-		answer: 'Yes. The editor includes controls for core currencies, hero levels, Hero Souls, Ancients-related progression, ascensions, achievements, skins, mercenaries, outsiders, clan values, and raw save JSON.'
+		answer:
+			'Yes. The editor includes controls for core currencies, hero levels, Hero Souls, Ancients-related progression, ascensions, achievements, skins, mercenaries, outsiders, clan values, and raw save JSON.'
 	},
 	{
 		question: 'Is my Clicker Heroes save uploaded to a server?',
-		answer: 'No. The editor runs in the browser and processes save data client-side, so editing works without uploading your save to this site.'
+		answer:
+			'No. The editor runs in the browser and processes save data client-side, so editing works without uploading your save to this site.'
 	}
 ] as const;
 
@@ -46,9 +49,12 @@ type SeoPage = {
 	keywords: string[];
 	changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'];
 	priority: number;
-	schemaType?: 'CollectionPage' | 'ContactPage' | 'WebApplication';
+	schemaType?: 'Article' | 'CollectionPage' | 'ContactPage' | 'WebApplication';
 	applicationName?: string;
 	featureList?: string[];
+	/** ISO date. Required by `Article` schema; ignored by every other page type. */
+	datePublished?: string;
+	dateModified?: string;
 };
 
 export const seoPages = {
@@ -56,8 +62,7 @@ export const seoPages = {
 		path: '/',
 		title: { absolute: 'Clicker Heroes Free Online Tools' },
 		metaTitle: 'Clicker Heroes | Free Online Tools',
-		description:
-			'Free browser-based utilities for editing save data, planning faster runs, guides and more.',
+		description: 'Free browser-based utilities for editing save data, planning faster runs, guides and more.',
 		keywords: [
 			'clicker heroes tools',
 			'clicker heroes save editor',
@@ -116,6 +121,32 @@ export const seoPages = {
 			'Estimate route duration',
 			'Calculate monsters per zone',
 			'Estimate zones per hour from zone range and FPS'
+		]
+	},
+	ancientsCalculator: {
+		path: '/tools/ancients-calculator',
+		title: 'Ancients Calculator',
+		metaTitle: 'Clicker Heroes | Ancients Calculator',
+		description:
+			'Free Clicker Heroes ancients calculator. Import a save to get optimal ancient levels, level-up costs, and an ancient soul planner for idle, hybrid, and active builds.',
+		keywords: [
+			'clicker heroes ancients calculator',
+			'clicker heroes ancient optimizer',
+			'clicker heroes rules of thumb',
+			'clicker heroes idle build',
+			'clicker heroes hybrid build',
+			'clicker heroes ancient souls planner',
+			'clicker heroes hero souls calculator'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.85,
+		schemaType: 'WebApplication',
+		applicationName: 'Clicker Heroes Ancients Calculator',
+		featureList: [
+			'Calculate optimal ancient levels from an imported save',
+			'Support idle, hybrid, and active builds with an adjustable hybrid ratio',
+			'Show hero soul cost per ancient and souls left over',
+			'Plan the hero souls needed for the next ancient souls'
 		]
 	},
 	transcensionViewer: {
@@ -184,6 +215,28 @@ export const seoPages = {
 			'Convert saves between PC and mobile compression formats',
 			'Re-encode converted saves locally in the browser'
 		]
+	},
+	newPlayerGuide: {
+		path: '/guides/new-player-guide',
+		title: 'New Player Guide',
+		metaTitle: 'Clicker Heroes | New Player Guide',
+		description:
+			'A beginner guide to Clicker Heroes 1.0e11: your first run, when to ascend, gilding the Power 5, which ancients to buy, your first transcension, rubies, mercenaries, clans, and relics.',
+		keywords: [
+			'clicker heroes new player guide',
+			'clicker heroes beginner guide',
+			'clicker heroes guide',
+			'clicker heroes when to ascend',
+			'clicker heroes first transcension',
+			'clicker heroes idle build',
+			'clicker heroes which ancients to buy',
+			'clicker heroes ruby spending'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.8,
+		schemaType: 'Article',
+		datePublished: '2026-07-28',
+		dateModified: '2026-07-28'
 	},
 	feedback: {
 		path: '/feedback',
@@ -260,7 +313,9 @@ export const createPageJsonLd = (key: SeoPageKey) => {
 			inLanguage: 'en'
 		},
 		{
-			'@type': page.schemaType ?? 'WebPage',
+			// `Article` describes the content, not the page, so it gets its own
+			// node below and this one stays a plain `WebPage`.
+			'@type': page.schemaType === 'Article' ? 'WebPage' : (page.schemaType ?? 'WebPage'),
 			'@id': `${pageUrl}#webpage`,
 			name: page.metaTitle,
 			url: pageUrl,
@@ -316,6 +371,37 @@ export const createPageJsonLd = (key: SeoPageKey) => {
 				'@type': 'Offer',
 				price: '0',
 				priceCurrency: 'USD'
+			}
+		});
+	}
+
+	if (page.schemaType === 'Article') {
+		graph.push({
+			'@type': 'Article',
+			'@id': `${pageUrl}#article`,
+			headline: page.metaTitle,
+			description: page.description,
+			url: pageUrl,
+			inLanguage: 'en',
+			datePublished: page.datePublished,
+			dateModified: page.dateModified ?? page.datePublished,
+			keywords: [...new Set([...baseKeywords, ...page.keywords])].join(', '),
+			author: {
+				'@type': 'Person',
+				name: SITE_CONFIG.author.name,
+				url: SITE_CONFIG.author.url
+			},
+			publisher: {
+				'@type': 'Person',
+				name: SITE_CONFIG.author.name,
+				url: SITE_CONFIG.author.url
+			},
+			image: absoluteUrl(SITE_CONFIG.ogImage),
+			mainEntityOfPage: {
+				'@id': `${pageUrl}#webpage`
+			},
+			isPartOf: {
+				'@id': `${SITE_CONFIG.url}/#website`
 			}
 		});
 	}

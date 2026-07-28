@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 
+import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/cn';
 import { formatNumber, parseNumberish, sanitizeNumberInput } from '@/lib/save-utils';
 
@@ -51,11 +52,10 @@ export const NumberInput = ({
 		setDraftValue(nextValue);
 	};
 
-	useEffect(() => {
-		if (!isFocused) {
-			updateDraftValue(String(value ?? ''));
-		}
-	}, [isFocused, value]);
+	// No effect syncing `draftValue` to `value`: the draft is only ever read
+	// while focused, `onFocus` seeds it from `value`, and `handleIncrement`
+	// reads `value` directly when unfocused. Syncing in an effect just caused
+	// a cascading re-render on every keystroke committed upstream.
 
 	const commitValue = (nextValue: number) => {
 		onCommit(nextValue);
@@ -79,7 +79,7 @@ export const NumberInput = ({
 			<input
 				aria-label={ariaLabel ?? placeholder ?? 'Number input'}
 				className={cn(
-					'h-10 w-full min-w-0 rounded-(--input-radius) border border-(--color-border) bg-(--color-bg) px-2.5 text-(--color-text) outline-none transition placeholder:text-(--color-text-dim) hover:border-(--color-border-hover) focus:border-(--color-border-hover) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-border-soft) disabled:bg-(--color-bg-soft) disabled:text-(--color-text-dim) sm:w-auto sm:flex-1',
+					'h-10 w-full min-w-0 rounded-(--radius-control) border border-(--color-line) bg-(--color-surface) px-2.5 text-(--color-fg) outline-none transition placeholder:text-(--color-fg-dim) hover:border-(--color-line-strong) focus:border-(--color-line-strong) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim) sm:w-auto sm:flex-1',
 					inputClassName || 'text-[13px]',
 					compact ? 'sm:min-w-0' : 'sm:min-w-34',
 					className
@@ -113,9 +113,9 @@ export const NumberInput = ({
 				value={displayValue}
 			/>
 			{incrementOptions.map((option) => (
-				<button
+				<Button
 					aria-label={`Increase by ${option.amount}`}
-					className='inline-flex h-10 flex-none items-center justify-center rounded-(--input-radius) border border-(--color-border-soft) bg-(--color-bg-elevated-2) px-2 text-sm! leading-none text-(--color-text-muted) transition-[background-color,border-color,color,box-shadow] duration-150 hover:border-(--color-border-hover) hover:bg-(--color-bg-hover) hover:text-(--color-text) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-border-soft) disabled:bg-(--color-bg-soft) disabled:text-(--color-text-dim)'
+					className='flex-none px-2'
 					disabled={disabled}
 					key={option.amount}
 					onPointerDown={(event) => {
@@ -128,10 +128,10 @@ export const NumberInput = ({
 							handleIncrement(option.amount);
 						}
 					}}
-					type='button'
+					variant='secondary'
 				>
 					{option.label}
-				</button>
+				</Button>
 			))}
 		</div>
 	);

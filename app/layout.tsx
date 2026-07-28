@@ -8,6 +8,8 @@ import { ToastProvider } from '@/components/ui/ToastProvider';
 import { SITE_CONFIG } from '@/lib/seo';
 
 import './globals.css';
+import { PageBanner } from '@/components/home/PageBanner';
+import { PageShell } from '@/components/ui/PageShell';
 
 const ibmPlexMono = IBM_Plex_Mono({
 	variable: '--font-ibm-plex-mono',
@@ -114,7 +116,12 @@ export default function RootLayout({
 				<Suspense fallback={null}>
 					<PostHogPageTracker />
 				</Suspense>
-				<ToastProvider>{children}</ToastProvider>
+				<ToastProvider>
+					<PageShell spacing='loose'>
+						<PageBanner />
+						{children}
+					</PageShell>
+				</ToastProvider>
 				<Analytics />
 			</body>
 		</html>

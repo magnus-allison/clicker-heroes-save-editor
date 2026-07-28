@@ -1,57 +1,100 @@
 @import 'tailwindcss';
 
-@theme inline {
-	--font-mono: var(--font-ibm-plex-mono);
-	--font-sans: var(--font-ibm-plex-mono);
+/*
+ * Design tokens.
+ *
+ * Everything lives in `@theme` so Tailwind treats these as real theme values:
+ * they are emitted to `:root` *and* generate utilities (`bg-surface`,
+ * `rounded-card`, ...). Components reference them with the arbitrary-value
+ * shorthand — `text-(--color-fg-muted)`, `rounded-(--radius-card)` — which
+ * keeps the semantic name readable at the call site.
+ *
+ * Naming:
+ *   --color-surface-*  backgrounds
+ *   --color-fg-*       text, as a de-emphasis ramp:
+ *                      fg-strong > fg > fg-secondary > fg-muted > fg-dim
+ *   --color-line-*     borders, as a strength ramp:
+ *                      line-strong > line > line-soft > line-subtle
+ *   --radius-*         corner radii: control < card < panel
+ *   --shadow-*         elevation
+ */
+@theme {
+	--font-mono: var(--font-ibm-plex-mono), 'Consolas', 'Monaco', 'Courier New', monospace;
+	--font-sans: var(--font-mono);
+
+	/* Surfaces */
+	--color-surface: light-dark(#f5f6f8, #0a0a0a);
+	--color-surface-sunken: light-dark(#eef1f4, #0d0d0d);
+	--color-surface-raised: light-dark(#ffffff, #0f0f0f);
+	--color-surface-muted: light-dark(#f3f5f8, #151515);
+	--color-surface-strong: light-dark(#e9edf2, #1a1a1a);
+	--color-surface-header: light-dark(#e6edf5, #1d1d1d);
+	--color-surface-hover: light-dark(#eaf0f7, #151515);
+	--color-surface-selected: light-dark(#e0f0e3, #1a2a1a);
+
+	/* Foreground ramp */
+	--color-fg-strong: light-dark(#0f1318, #f0f0f0);
+	--color-fg: light-dark(#1a2128, #e3e3e3);
+	--color-fg-secondary: light-dark(#2c3d4e, #b3b3b3);
+	--color-fg-muted: light-dark(#374858, #9a9a9a);
+	--color-fg-dim: light-dark(#50606e, #6c6c6c);
+
+	/* Borders */
+	--color-line-strong: light-dark(#8a9aaa, #494949);
+	--color-line: light-dark(#a6b3c0, #252525);
+	--color-line-soft: light-dark(#bac4cf, #2f2f2f);
+	--color-line-subtle: light-dark(#c8d2dc, #252525);
+
+	/* Links */
+	--color-link: light-dark(#2c3d4e, #acacac);
+	--color-link-hover: light-dark(#0f1318, #ffffff);
+
+	/* Accent */
+	--color-primary: light-dark(#2c8c41, #6fcf6f);
+	--color-primary-soft: light-dark(rgba(44, 140, 65, 0.15), rgba(111, 207, 111, 0.2));
+	--color-primary-surface: light-dark(#e8f5ec, #122012);
+	--color-primary-line: light-dark(#5aaf6a, #3f7a3f);
+
+	/* Status */
+	--color-success-surface: light-dark(#e9f6ec, #0f1f0f);
+	--color-success-line: light-dark(#8cc89a, #2a5a2a);
+
+	/* Gilded / gold accents */
+	--color-gold: light-dark(#7a5c00, #e8d5a0);
+	--color-gilded-surface: light-dark(rgba(184, 134, 11, 0.06), rgba(212, 175, 55, 0.12));
+	--color-gilded-line: light-dark(rgba(184, 134, 11, 0.22), rgba(212, 175, 55, 0.28));
+
+	/* Effects */
+	--color-focus-ring: light-dark(rgba(44, 140, 65, 0.24), rgba(127, 214, 127, 0.25));
+	--color-shadow: light-dark(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.35));
+	--color-icon-filter: light-dark(none, invert(1));
+
+	/* Radii — one step per structural level */
+	--radius-control: 5px;
+	--radius-card: 0.75rem;
+	--radius-panel: 1rem;
+
+	/* Elevation */
+	--shadow-card: 0 2px 8px var(--color-shadow);
+	--shadow-popover: 0 12px 32px var(--color-shadow);
+	--shadow-raised:
+		inset 0 1px 0 light-dark(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.03)),
+		0 1px 2px var(--color-shadow);
 }
 
 :root {
 	color-scheme: light dark;
-	--color-bg: light-dark(#f5f6f8, #0a0a0a);
-	--color-bg-soft: light-dark(#eef1f4, #0d0d0d);
-	--color-bg-alt: light-dark(#ffffff, #111111);
-	--color-bg-elevated: light-dark(#f3f5f8, #151515);
-	--color-bg-elevated-2: light-dark(#e9edf2, #1a1a1a);
-	--color-table-header: light-dark(#e6edf5, #1d1d1d);
-	--color-bg-hover: light-dark(#eaf0f7, #151515);
-	--color-border: light-dark(#a6b3c0, #3d3d3d);
-	--color-border-soft: light-dark(#bac4cf, #2f2f2f);
-	--color-border-subtle: light-dark(#c8d2dc, #252525);
-	--color-border-hover: light-dark(#8a9aaa, #494949);
-	--color-text: light-dark(#1a2128, #e3e3e3);
-	--color-text-strong: light-dark(#0f1318, #f0f0f0);
-	--color-text-muted: light-dark(#374858, #9a9a9a);
-	--color-text-dim: light-dark(#50606e, #6c6c6c);
-	--color-text-secondary: light-dark(#2c3d4e, #b3b3b3);
-	--color-link: light-dark(#2c3d4e, #acacac);
-	--color-link-hover: light-dark(#0f1318, #ffffff);
-	--color-primary: light-dark(#2c8c41, #6fcf6f);
-	--color-primary-dim: light-dark(rgba(44, 140, 65, 0.15), rgba(111, 207, 111, 0.2));
-	--color-primary-bg: light-dark(#e8f5ec, #122012);
-	--color-primary-border: light-dark(#5aaf6a, #3f7a3f);
-	--color-primary-check: light-dark(#2c8c41, #7fd67f);
-	--color-success-bg: light-dark(#e9f6ec, #0f1f0f);
-	--color-success-border: light-dark(#8cc89a, #2a5a2a);
-	--color-focus-ring: light-dark(rgba(44, 140, 65, 0.24), rgba(127, 214, 127, 0.25));
-	--color-icon-filter: light-dark(none, invert(1));
-	--color-gold: light-dark(#b8860b, #d4af37);
-	--color-gold-text: light-dark(#7a5c00, #e8d5a0);
-	--color-gilded-bg: light-dark(rgba(184, 134, 11, 0.06), rgba(212, 175, 55, 0.12));
-	--color-gilded-border: light-dark(rgba(184, 134, 11, 0.22), rgba(212, 175, 55, 0.28));
-	--color-selected-bg: light-dark(#e0f0e3, #1a2a1a);
-	--color-shadow: light-dark(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.35));
-	--input-radius: 5px;
 }
 
 html,
 body {
 	width: 100%;
 	height: 100%;
-	font-family: var(--font-ibm-plex-mono), 'Consolas', 'Monaco', 'Courier New', monospace;
+	font-family: var(--font-mono);
 	font-size: 13px;
 	line-height: 1.5;
-	background: var(--color-bg);
-	color: var(--color-text);
+	background: var(--color-surface);
+	color: var(--color-fg);
 }
 
 ::selection {
@@ -84,4 +127,52 @@ textarea {
 
 img {
 	max-width: 100%;
+}
+
+/*
+ * Motion is additive polish only — hover lifts, presses, in-transitions. None
+ * of it carries meaning, so all of it is dropped when the user asks for less.
+ */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	/* Kill the hover/press displacement, not just its duration. */
+	.motion-lift:hover,
+	.motion-press:active {
+		transform: none !important;
+	}
+}
+
+/*
+ * Shared motion recipes. These exist as classes rather than repeated utility
+ * strings because every card and button in the app wants the identical lift,
+ * and because `prefers-reduced-motion` above needs something to hook onto.
+ */
+.motion-lift {
+	transition:
+		transform 0.18s var(--ease-snap),
+		box-shadow 0.18s var(--ease-snap),
+		border-color 0.18s var(--ease-snap),
+		background-color 0.18s var(--ease-snap);
+}
+
+.motion-lift:hover {
+	transform: translateY(-2px);
+}
+
+.motion-press:active {
+	transform: translateY(1px);
 }

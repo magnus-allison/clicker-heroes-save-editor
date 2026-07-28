@@ -1,6 +1,6 @@
 'use client';
 
-import type { FocusEvent, MouseEvent, ReactNode } from 'react';
+import type { FocusEvent, ReactNode } from 'react';
 import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -89,11 +89,11 @@ export const Tooltip = ({
 		};
 	}, [isOpen, placement]);
 
-	const handleMouseEnter = (_event: MouseEvent<HTMLDivElement>) => {
+	const handleMouseEnter = () => {
 		setIsOpen(true);
 	};
 
-	const handleMouseLeave = (_event: MouseEvent<HTMLDivElement>) => {
+	const handleMouseLeave = () => {
 		setIsOpen(false);
 	};
 
@@ -114,7 +114,7 @@ export const Tooltip = ({
 			? createPortal(
 					<div
 						className={cn(
-							'pointer-events-none fixed z-1000 flex w-[min(520px,calc(100vw-2rem))] max-w-[calc(100vw-2rem)] flex-col gap-1 rounded-(--input-radius) border border-(--color-border-hover) bg-(--color-bg-elevated) p-3 text-left text-[12px] leading-6 text-(--color-text-secondary) shadow-[0_2px_8px_var(--color-shadow)] transition duration-150',
+							'pointer-events-none fixed z-1000 flex w-[min(520px,calc(100vw-2rem))] max-w-[calc(100vw-2rem)] flex-col gap-1 rounded-(--radius-card) border border-(--color-line-strong) bg-(--color-surface-muted) p-3 text-left text-[12px] leading-6 text-(--color-fg-secondary) shadow-[var(--shadow-popover)] transition duration-150',
 							position?.placement === 'top' ? '-translate-y-1' : 'translate-y-0.5',
 							contentClassName
 						)}
@@ -129,7 +129,7 @@ export const Tooltip = ({
 					>
 						<p
 							className={cn(
-								'border-b border-(--color-border) pb-1.5 text-[12px] uppercase tracking-[0.08em] text-(--color-text) font-semibold',
+								'border-b border-(--color-line) pb-1.5 text-[12px] uppercase tracking-[0.08em] text-(--color-fg) font-semibold',
 								titleClassName
 							)}
 						>

@@ -19,6 +19,8 @@ type Props = {
 	rows?: number;
 	readOnly?: boolean;
 	selectOnFocus?: boolean;
+	/** Let the user drag-resize a `multiline` field vertically. */
+	resizable?: boolean;
 };
 
 export const TextInput = ({
@@ -32,6 +34,7 @@ export const TextInput = ({
 	placeholder,
 	ariaLabel,
 	readOnly,
+	resizable,
 	rows = 4,
 	selectOnFocus,
 	value
@@ -42,8 +45,9 @@ export const TextInput = ({
 	const displayValue = isFocused ? draftValue : value;
 
 	const sharedClassName = cn(
-		'w-full rounded-(--input-radius) border border-(--color-border) bg-(--color-bg) px-2.5 text-[13px] text-(--color-text) outline-none transition placeholder:text-(--color-text-dim) hover:border-(--color-border-hover) focus:border-(--color-border-hover) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-border-soft) disabled:bg-(--color-bg-soft) disabled:text-(--color-text-dim)',
+		'w-full rounded-(--radius-control) border border-(--color-line) bg-(--color-surface) px-2.5 text-[13px] text-(--color-fg) outline-none transition placeholder:text-(--color-fg-dim) hover:border-(--color-line-strong) focus:border-(--color-line-strong) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim)',
 		multiline ? 'py-2' : 'h-10',
+		multiline && resizable && 'resize-y',
 		className
 	);
 

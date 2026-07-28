@@ -3,6 +3,9 @@
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    // `pnpm test` runs Node's native type stripping, which requires relative
+    // imports to carry their real `.ts` extension.
+    "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,

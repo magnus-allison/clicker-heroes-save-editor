@@ -99,6 +99,7 @@ export const FeedbackSection = ({
 					multiline
 					onValueChange={setMessage}
 					placeholder='Write your feedback here...'
+					resizable
 					rows={5}
 					value={message}
 				/>

@@ -9,10 +9,13 @@ type Props = {
 
 export const ToastStack = ({ toasts }: Props) => {
 	return (
-		<div className="pointer-events-none fixed right-5 top-5 z-50 flex max-w-70 flex-col gap-2">
+		<div
+			aria-live='polite'
+			className='pointer-events-none fixed top-5 right-5 z-50 flex max-w-70 flex-col gap-2'
+		>
 			{toasts.map((toast) => (
 				<div
-					className="rounded-(--input-radius) border border-(--color-success-border) bg-(--color-success-bg) px-4 py-2.5 text-[12px] text-(--color-primary) shadow-[0_2px_8px_var(--color-shadow)]"
+					className='animate-toast-in rounded-(--radius-card) border border-(--color-success-line) bg-(--color-success-surface) px-4 py-2.5 text-[12px] font-medium text-(--color-primary-text) shadow-[var(--shadow-popover)]'
 					key={toast.id}
 				>
 					{toast.message}

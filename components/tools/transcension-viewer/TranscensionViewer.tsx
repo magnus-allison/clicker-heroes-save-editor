@@ -1,13 +1,28 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
+import { ArrowLeft } from 'lucide-react';
 
-import { EditorTable, EditorTableBody, EditorTableHead } from '@/components/ui/EditorTable';
-import { PageHeading } from '@/components/ui/PageHeading';
+import { SectionHeading } from '@/components/home/SectionHeading';
+import {
+	EditorTable,
+	EditorTableBody,
+	EditorTableCell,
+	EditorTableHead,
+	EditorTableHeaderCell,
+	EditorTableRow
+} from '@/components/ui/EditorTable';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { cn } from '@/lib/cn';
+import {
+	formatDurationMinutes,
+	formatDurationSeconds,
+	formatLargeNumber,
+	formatNumber,
+	log10OfSaveValue
+} from '@/lib/format';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
 import { transcensionExamples } from '@/lib/data/example-saves';
@@ -23,10 +38,6 @@ type FieldMatch = {
 	key: string;
 	value: unknown;
 };
-
-const numberFormat = new Intl.NumberFormat('en-US', {
-	maximumFractionDigits: 0
-});
 
 const fieldAliases = {
 	duration: ['duration', 'time', 'timePlayed', 'seconds', 'elapsedSeconds', 'durationSeconds'],
@@ -63,8 +74,7 @@ const getFirstMatch = (entry: SaveRecord, aliases: readonly string[]): FieldMatc
 		.map(([key, value]) => ({ key, normalizedKey: normalizeKey(key), value }))
 		.find(({ normalizedKey }) =>
 			normalizedAliases.some(
-				(alias) =>
-					alias.length > 2 && (normalizedKey.includes(alias) || alias.includes(normalizedKey))
+				(alias) => alias.length > 2 && (normalizedKey.includes(alias) || alias.includes(normalizedKey))
 			)
 		);
 };
@@ -78,9 +88,7 @@ const getHistoryValue = (entry: SaveRecord, aliases: readonly string[]) => {
 		.map((alias) =>
 			Object.entries(entry).find(
 				([key, value]) =>
-					value !== undefined &&
-					(Array.isArray(value) || isRecord(value)) &&
-					normalizeKey(key) === alias
+					value !== undefined && (Array.isArray(value) || isRecord(value)) && normalizeKey(key) === alias
 			)
 		)
 		.find((match) => match !== undefined)?.[1];
@@ -116,54 +124,24 @@ const toHistoryEntries = (value: unknown): HistoryEntry[] => {
 		.sort((left, right) => left.index - right.index);
 };
 
+/**
+ * Saves are inconsistent about the unit a duration field is in, so the matched
+ * key decides whether we read seconds or minutes. The formatting itself is
+ * shared.
+ */
 const formatDuration = (match: FieldMatch | undefined) => {
 	const value = match?.value;
 
-	if (typeof value === 'string' && value.trim()) {
-		const numericValue = Number(value);
-		if (!Number.isFinite(numericValue)) {
-			return value;
-		}
+	// A non-numeric string is shown verbatim rather than as `0m`.
+	if (typeof value === 'string' && value.trim() && !Number.isFinite(Number(value))) {
+		return value;
 	}
 
 	const numericValue = typeof value === 'number' ? value : Number(value ?? 0);
-	if (!Number.isFinite(numericValue) || numericValue <= 0) {
-		return '0m';
-	}
 
-	const key = normalizeKey(match?.key ?? '');
-	const totalMinutes =
-		key.includes('second') || key === 'seconds'
-			? Math.floor(numericValue / 60)
-			: Math.floor(numericValue);
-	const days = Math.floor(totalMinutes / 1440);
-	const hours = Math.floor((totalMinutes % 1440) / 60);
-	const minutes = totalMinutes % 60;
-	const parts = [
-		days > 0 ? `${days}d` : null,
-		hours > 0 ? `${hours}h` : null,
-		minutes > 0 || (days === 0 && hours === 0) ? `${minutes}m` : null
-	];
-
-	return parts.filter(Boolean).join(' ');
-};
-
-const formatDurationMinutes = (totalMinutes: number) => {
-	if (!Number.isFinite(totalMinutes) || totalMinutes <= 0) {
-		return '0m';
-	}
-
-	const minutesValue = Math.floor(totalMinutes);
-	const days = Math.floor(minutesValue / 1440);
-	const hours = Math.floor((minutesValue % 1440) / 60);
-	const minutes = minutesValue % 60;
-	const parts = [
-		days > 0 ? `${days}d` : null,
-		hours > 0 ? `${hours}h` : null,
-		minutes > 0 || (days === 0 && hours === 0) ? `${minutes}m` : null
-	];
-
-	return parts.filter(Boolean).join(' ');
+	return normalizeKey(match?.key ?? '').includes('second')
+		? formatDurationSeconds(numericValue)
+		: formatDurationMinutes(numericValue);
 };
 
 const getDurationLabel = (entry: SaveRecord) => {
@@ -177,72 +155,18 @@ const getDurationLabel = (entry: SaveRecord) => {
 	return formatDuration(getFirstMatch(entry, fieldAliases.duration));
 };
 
-const getLog10 = (value: unknown) => {
-	if (typeof value === 'number') {
-		return value > 0 && Number.isFinite(value) ? Math.log10(value) : null;
-	}
-
-	const rawValue = String(value ?? '')
-		.trim()
-		.replaceAll(',', '');
-	if (!rawValue || rawValue.startsWith('-')) {
-		return null;
-	}
-
-	const scientificMatch = rawValue.match(/^(\d+(?:\.\d+)?|\.\d+)[eE]([+-]?\d+)$/);
-	if (scientificMatch) {
-		const mantissa = Number(scientificMatch[1]);
-		const exponent = Number(scientificMatch[2]);
-		return mantissa > 0 && Number.isFinite(exponent) ? Math.log10(mantissa) + exponent : null;
-	}
-
-	const [integerPartRaw, decimalPartRaw = ''] = rawValue.split('.');
-	const integerPart = integerPartRaw.replace(/^0+/, '');
-
-	if (integerPart.length > 0) {
-		const leadingDigits = integerPart.slice(0, 16);
-		return Math.log10(Number(leadingDigits)) + integerPart.length - leadingDigits.length;
-	}
-
-	const firstDecimalDigit = decimalPartRaw.search(/[1-9]/);
-	if (firstDecimalDigit === -1) {
-		return null;
-	}
-
-	const leadingDecimalDigits = decimalPartRaw.slice(firstDecimalDigit, firstDecimalDigit + 16);
-	return Math.log10(Number(leadingDecimalDigits)) - firstDecimalDigit - leadingDecimalDigits.length;
-};
+/** Every save field here is optional, and a missing field reads as zero. */
+const formatSaveNumber = (value: unknown) => formatLargeNumber(value ?? 0);
 
 const getAncientSoulsLabel = (entry: SaveRecord) => {
 	const heroSoulsGained = getFirstValue(entry, fieldAliases.heroSouls);
-	const log10HeroSouls = getLog10(heroSoulsGained);
+	const log10HeroSouls = log10OfSaveValue(heroSoulsGained);
 
 	if (log10HeroSouls == null) {
-		return formatNumberValue(getFirstValue(entry, fieldAliases.ancientSouls));
+		return formatSaveNumber(getFirstValue(entry, fieldAliases.ancientSouls));
 	}
 
-	return numberFormat.format(Math.floor(log10HeroSouls * 5));
-};
-
-const formatNumberValue = (value: unknown) => {
-	if (typeof value === 'string' && value.trim()) {
-		const numericValue = Number(value);
-		if (!Number.isFinite(numericValue)) {
-			return value;
-		}
-		return formatNumberValue(numericValue);
-	}
-
-	const numericValue = typeof value === 'number' ? value : Number(value ?? 0);
-	if (!Number.isFinite(numericValue)) {
-		return String(value ?? 0);
-	}
-
-	if (Math.abs(numericValue) >= 1_000_000) {
-		return numericValue.toExponential(4).replace('e+', 'e');
-	}
-
-	return numberFormat.format(numericValue);
+	return formatNumber(Math.floor(log10HeroSouls * 5));
 };
 
 const getAscensions = (transcension: SaveRecord) =>
@@ -251,16 +175,165 @@ const getAscensions = (transcension: SaveRecord) =>
 const getAscensionCount = (transcension: SaveRecord) => {
 	const ascensionValue = getFirstValue(transcension, fieldAliases.ascensionCount);
 	if (typeof ascensionValue === 'number' || typeof ascensionValue === 'string') {
-		return formatNumberValue(ascensionValue);
+		return formatSaveNumber(ascensionValue);
 	}
 
-	return numberFormat.format(getAscensions(transcension).length);
+	return formatNumber(getAscensions(transcension).length);
 };
 
 const getEntryNumberLabel = (entry: HistoryEntry) => {
 	const id = entry.data.id;
 	return typeof id === 'number' || typeof id === 'string' ? String(id) : String(entry.index);
 };
+
+type HistoryColumn = {
+	/** Doubles as the React key, so it must be unique within a table. */
+	label: string;
+	widthClassName: string;
+	align?: 'left' | 'right';
+	cellClassName?: string;
+	render: (entry: HistoryEntry) => ReactNode;
+};
+
+type HistorySelection = {
+	selectedIndex: number | undefined;
+	onSelect: (index: number) => void;
+	/** Accessible name for the per-row select button. */
+	getSelectLabel: (entry: HistoryEntry) => string;
+};
+
+type HistoryTableProps = {
+	columns: readonly HistoryColumn[];
+	emptyMessage: string;
+	entries: readonly HistoryEntry[];
+	label: string;
+	/** Omit to render a read-only table. */
+	selection?: HistorySelection;
+};
+
+/**
+ * The transcension and ascension tables are the same table with different
+ * columns; the only structural difference is that one of them is selectable.
+ */
+const HistoryTable = ({ columns, emptyMessage, entries, label, selection }: HistoryTableProps) => (
+	<div className='grid gap-4 p-4'>
+		<EditorTable className='border-(--color-line-subtle)' label={label} tableClassName='w-full table-fixed'>
+			<colgroup>
+				{columns.map((column) => (
+					<col className={column.widthClassName} key={column.label} />
+				))}
+			</colgroup>
+			<EditorTableHead>
+				<tr>
+					{columns.map((column) => (
+						<EditorTableHeaderCell
+							className={column.align === 'right' ? 'text-right' : undefined}
+							key={column.label}
+						>
+							{column.label}
+						</EditorTableHeaderCell>
+					))}
+				</tr>
+			</EditorTableHead>
+			<EditorTableBody>
+				{entries.length > 0 ? (
+					entries.map((entry) => {
+						const isSelected = entry.index === selection?.selectedIndex;
+
+						return (
+							<EditorTableRow
+								className={cn(
+									selection && 'cursor-pointer',
+									isSelected && 'bg-(--color-primary-soft) text-(--color-fg)'
+								)}
+								key={entry.index}
+								onClick={selection ? () => selection.onSelect(entry.index) : undefined}
+							>
+								{columns.map((column, columnIndex) => (
+									<EditorTableCell
+										className={cn(
+											column.align === 'right' && 'text-right tabular-nums',
+											column.cellClassName
+										)}
+										key={column.label}
+									>
+										{/* The first cell carries the keyboard-reachable
+										    control that selects the row. */}
+										{selection && columnIndex === 0 ? (
+											<button
+												aria-label={selection.getSelectLabel(entry)}
+												aria-pressed={isSelected}
+												className='rounded-(--radius-control) underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
+												onClick={() => selection.onSelect(entry.index)}
+												type='button'
+											>
+												{column.render(entry)}
+											</button>
+										) : (
+											column.render(entry)
+										)}
+									</EditorTableCell>
+								))}
+							</EditorTableRow>
+						);
+					})
+				) : (
+					<EditorTableRow>
+						<EditorTableCell className='py-6 text-center text-(--color-fg-muted)' colSpan={columns.length}>
+							{emptyMessage}
+						</EditorTableCell>
+					</EditorTableRow>
+				)}
+			</EditorTableBody>
+		</EditorTable>
+	</div>
+);
+
+const numberColumn = (label: string, widthClassName: string, aliases: readonly string[]): HistoryColumn => ({
+	label,
+	widthClassName,
+	align: 'right',
+	render: (entry) => formatSaveNumber(getFirstValue(entry.data, aliases))
+});
+
+const entryNumberColumn: HistoryColumn = {
+	label: 'No.',
+	widthClassName: 'w-16',
+	cellClassName: 'font-mono text-(--color-fg)',
+	render: getEntryNumberLabel
+};
+
+const durationColumn: HistoryColumn = {
+	label: 'Duration',
+	widthClassName: 'w-32',
+	render: (entry) => getDurationLabel(entry.data)
+};
+
+const transcensionColumns: readonly HistoryColumn[] = [
+	entryNumberColumn,
+	durationColumn,
+	{
+		label: 'Ascensions',
+		widthClassName: 'w-28',
+		align: 'right',
+		render: (entry) => getAscensionCount(entry.data)
+	},
+	numberColumn('HZE', 'w-24', fieldAliases.highestZone),
+	numberColumn('HS', 'w-32', fieldAliases.heroSouls),
+	{
+		label: 'AS',
+		widthClassName: 'w-24',
+		align: 'right',
+		render: (entry) => getAncientSoulsLabel(entry.data)
+	}
+];
+
+const ascensionColumns: readonly HistoryColumn[] = [
+	entryNumberColumn,
+	durationColumn,
+	numberColumn('HZE', 'w-24', fieldAliases.highestZone),
+	numberColumn('HS', 'w-32', fieldAliases.heroSouls)
+];
 
 export const TranscensionViewer = () => {
 	const saveData = useSaveStore((state) => state.saveData);
@@ -274,174 +347,47 @@ export const TranscensionViewer = () => {
 	const selectedAscensions = selectedTranscension ? getAscensions(selectedTranscension.data) : [];
 
 	return (
-		<div className='flex min-h-screen w-full justify-center overflow-x-hidden p-5 sm:p-10'>
-			<main className='flex w-full max-w-6xl flex-col gap-3'>
-				<PageHeading
-					title='Clicker Heroes Transcension Viewer'
-					subtitle='Import a save to inspect every transcension and drill into the ascensions inside it.'
+		<>
+			<SectionHeading
+				back='/'
+				description=''
+				icon={<ArrowLeft aria-hidden='true' className='h-4 w-4' />}
+				title='Tools · Clicker Heroes Transcension Viewer'
+			/>
+
+			<SaveDataPanel examples={transcensionExamples} />
+
+			<StepTitle step={2} title='Transcensions' />
+			<PanelSection>
+				<HistoryTable
+					columns={transcensionColumns}
+					emptyMessage='Load a save with transcension history to see it here.'
+					entries={transcensions}
+					label='Transcensions'
+					selection={{
+						selectedIndex: selectedTranscension?.index,
+						onSelect: setSelectedIndex,
+						getSelectLabel: (entry) => `Show ascensions in transcension #${getEntryNumberLabel(entry)}`
+					}}
 				/>
+			</PanelSection>
 
-				<SaveDataPanel examples={transcensionExamples} />
-
-				<div className='ml-2'>
-					<StepTitle step={2} title='Transcensions' />
-				</div>
-				<PanelSection>
-					<div className='grid gap-4 p-4'>
-						<EditorTable
-							className='border-(--color-border-subtle)'
-							tableClassName='w-full table-fixed'
-						>
-							<colgroup>
-								<col className='w-16' />
-								<col className='w-32' />
-								<col className='w-28' />
-								<col className='w-24' />
-								<col className='w-32' />
-								<col className='w-24' />
-							</colgroup>
-							<EditorTableHead>
-								<tr>
-									<th className='px-3 py-3 sm:px-4'>No.</th>
-									<th className='px-3 py-3 sm:px-4'>Duration</th>
-									<th className='px-3 py-3 text-right sm:px-4'>Ascensions</th>
-									<th className='px-3 py-3 text-right sm:px-4'>HZE</th>
-									<th className='px-3 py-3 text-right sm:px-4'>HS</th>
-									<th className='px-3 py-3 text-right sm:px-4'>AS</th>
-								</tr>
-							</EditorTableHead>
-							<EditorTableBody>
-								{transcensions.length > 0 ? (
-									transcensions.map((transcension) => {
-										const isSelected = transcension.index === selectedTranscension?.index;
-
-										return (
-											<tr
-												className={cn(
-													'cursor-pointer border-t border-(--color-border-soft) transition hover:bg-(--color-bg-hover)',
-													isSelected &&
-														'bg-(--color-primary-dim) text-(--color-text)'
-												)}
-												key={transcension.index}
-												onClick={() => setSelectedIndex(transcension.index)}
-											>
-												<td className='px-3 py-3 font-mono text-(--color-text) sm:px-4'>
-													{getEntryNumberLabel(transcension)}
-												</td>
-												<td className='px-3 py-3 sm:px-4'>
-													{getDurationLabel(transcension.data)}
-												</td>
-												<td className='px-3 py-3 text-right tabular-nums sm:px-4'>
-													{getAscensionCount(transcension.data)}
-												</td>
-												<td className='px-3 py-3 text-right tabular-nums sm:px-4'>
-													{formatNumberValue(
-														getFirstValue(
-															transcension.data,
-															fieldAliases.highestZone
-														)
-													)}
-												</td>
-												<td className='px-3 py-3 text-right tabular-nums sm:px-4'>
-													{formatNumberValue(
-														getFirstValue(
-															transcension.data,
-															fieldAliases.heroSouls
-														)
-													)}
-												</td>
-												<td className='px-3 py-3 text-right tabular-nums sm:px-4'>
-													{getAncientSoulsLabel(transcension.data)}
-												</td>
-											</tr>
-										);
-									})
-								) : (
-									<tr>
-										<td
-											className='px-3 py-6 text-center text-(--color-text-muted) sm:px-4'
-											colSpan={6}
-										>
-											Load a save with transcension history to see it here.
-										</td>
-									</tr>
-								)}
-							</EditorTableBody>
-						</EditorTable>
-					</div>
-				</PanelSection>
-
-				<div className='ml-2'>
-					<StepTitle
-						step={3}
-						title={
-							selectedTranscension
-								? `Ascensions in Transcension #${getEntryNumberLabel(selectedTranscension)}`
-								: 'Ascensions in Transcension'
-						}
-					/>
-				</div>
-				<PanelSection>
-					<div className='grid gap-4 p-4'>
-						<EditorTable
-							className='border-(--color-border-subtle)'
-							tableClassName='w-full table-fixed'
-						>
-							<colgroup>
-								<col className='w-16' />
-								<col className='w-32' />
-								<col className='w-24' />
-								<col className='w-32' />
-							</colgroup>
-							<EditorTableHead>
-								<tr>
-									<th className='px-3 py-3 sm:px-4'>No.</th>
-									<th className='px-3 py-3 sm:px-4'>Duration</th>
-									<th className='px-3 py-3 text-right sm:px-4'>HZE</th>
-									<th className='px-3 py-3 text-right sm:px-4'>HS</th>
-								</tr>
-							</EditorTableHead>
-							<EditorTableBody>
-								{selectedAscensions.length > 0 ? (
-									selectedAscensions.map((ascension) => (
-										<tr
-											className='border-t border-(--color-border-soft)'
-											key={ascension.index}
-										>
-											<td className='px-3 py-3 font-mono text-(--color-text) sm:px-4'>
-												{getEntryNumberLabel(ascension)}
-											</td>
-											<td className='px-3 py-3 sm:px-4'>
-												{getDurationLabel(ascension.data)}
-											</td>
-											<td className='px-3 py-3 text-right tabular-nums sm:px-4'>
-												{formatNumberValue(
-													getFirstValue(ascension.data, fieldAliases.highestZone)
-												)}
-											</td>
-											<td className='px-3 py-3 text-right tabular-nums sm:px-4'>
-												{formatNumberValue(
-													getFirstValue(ascension.data, fieldAliases.heroSouls)
-												)}
-											</td>
-										</tr>
-									))
-								) : (
-									<tr>
-										<td
-											className='px-3 py-6 text-center text-(--color-text-muted) sm:px-4'
-											colSpan={4}
-										>
-											Select a transcension with ascension history to see its ascensions
-											here.
-										</td>
-									</tr>
-								)}
-							</EditorTableBody>
-						</EditorTable>
-					</div>
-				</PanelSection>
-			</main>
-		</div>
+			<StepTitle
+				step={3}
+				title={
+					selectedTranscension
+						? `Ascensions in Transcension #${getEntryNumberLabel(selectedTranscension)}`
+						: 'Ascensions in Transcension'
+				}
+			/>
+			<PanelSection>
+				<HistoryTable
+					columns={ascensionColumns}
+					emptyMessage='Select a transcension with ascension history to see its ascensions here.'
+					entries={selectedAscensions}
+					label='Ascensions in the selected transcension'
+				/>
+			</PanelSection>
+		</>
 	);
 };

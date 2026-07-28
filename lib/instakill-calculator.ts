@@ -1,3 +1,8 @@
+// Relative path with an explicit extension rather than `@/lib/format`: the
+// `@/*` alias is a bundler/tsconfig convenience and does not resolve when this
+// module is loaded by plain Node (`node --test`).
+import { formatNumber, toFiniteNumber } from './format.ts';
+
 export type InstakillCalculatorInputs = {
 	kumawakamaruLevel: number;
 	borbLevel: number;
@@ -39,6 +44,7 @@ const monstersPerZoneStep = 0.1;
 const nonBossZonesPerBand = 400;
 const framesPerBand = 500;
 const secondsPerYear = 31557600;
+const secondsPerDay = 86400;
 
 export function normalizeInstakillInputs(
 	inputs: Partial<InstakillCalculatorInputs>
@@ -54,19 +60,13 @@ export function normalizeInstakillInputs(
 		borbLevel: clampInteger(withDefaults.borbLevel, 0, Number.MAX_SAFE_INTEGER),
 		startZone,
 		endZone: clampInteger(withDefaults.endZone, startZone, maxZone),
-		fps: clamp(
-			roundToHundredth(toFiniteNumber(withDefaults.fps, defaultInstakillInputs.fps)),
-			0.01,
-			30
-		),
+		fps: clamp(roundToHundredth(toFiniteNumber(withDefaults.fps) ?? defaultInstakillInputs.fps), 0.01, 30),
 		acInstakill: withDefaults.acInstakill,
 		root2: withDefaults.root2
 	};
 }
 
-export function calculateInstakill(
-	rawInputs: Partial<InstakillCalculatorInputs>
-): InstakillCalculation {
+export function calculateInstakill(rawInputs: Partial<InstakillCalculatorInputs>): InstakillCalculation {
 	const inputs = normalizeInstakillInputs(rawInputs);
 	const mpzReduction = calculateMonstersPerZoneReduction(inputs);
 	const rawStartMonstersPerZone = calculateRawMonstersPerZone(inputs.startZone, mpzReduction);
@@ -86,7 +86,7 @@ export function calculateInstakill(
 		zonesTotal,
 		framesTotal,
 		durationSeconds,
-		durationLabel: formatDuration(durationSeconds),
+		durationLabel: formatInstakillDuration(durationSeconds),
 		zonesPerHour
 	};
 }
@@ -105,7 +105,13 @@ export function calculateMonstersPerZoneReduction({
 	return kumawakamaruEffect * (1 + borbLevel / 8);
 }
 
-export function formatDuration(durationSeconds: number) {
+/**
+ * Deliberately *not* `formatDurationSeconds` from `lib/format`: a route can be
+ * over in seconds or take millennia, so short runs keep clock notation
+ * (`hh:mm:ss`) and long runs need a years component. Only the thousands
+ * grouping is shared.
+ */
+export function formatInstakillDuration(durationSeconds: number) {
 	const roundedSeconds = Math.max(0, Math.round(durationSeconds));
 
 	if (roundedSeconds < 72 * 3600) {
@@ -116,16 +122,12 @@ export function formatDuration(durationSeconds: number) {
 		return [hours, minutes, seconds].map((value) => String(value).padStart(2, '0')).join(':');
 	}
 
-	let remainingSeconds = roundedSeconds;
-	const years = Math.floor(remainingSeconds / secondsPerYear);
-	remainingSeconds -= years * secondsPerYear;
-	const days = Math.floor(remainingSeconds / 86400);
-	remainingSeconds -= days * 86400;
-	const hours = remainingSeconds / 3600;
+	const years = Math.floor(roundedSeconds / secondsPerYear);
+	const secondsThisYear = roundedSeconds - years * secondsPerYear;
+	const days = Math.floor(secondsThisYear / secondsPerDay);
+	const hours = (secondsThisYear - days * secondsPerDay) / 3600;
 
-	return `${years > 0 ? `${years.toLocaleString('en-US')}y ` : ''}${days.toLocaleString(
-		'en-US'
-	)}d ${hours.toFixed(2)}h`;
+	return `${years > 0 ? `${formatNumber(years)}y ` : ''}${formatNumber(days)}d ${hours.toFixed(2)}h`;
 }
 
 function calculateRawMonstersPerZone(zone: number, mpzReduction: number) {
@@ -195,7 +197,7 @@ function sumArithmeticSeries(start: number, step: number, count: number) {
 }
 
 function clampInteger(value: number, min: number, max: number) {
-	return Math.min(max, Math.max(min, Math.floor(toFiniteNumber(value, min))));
+	return Math.min(max, Math.max(min, Math.floor(toFiniteNumber(value) ?? min)));
 }
 
 function roundToHundredth(value: number) {
@@ -204,8 +206,4 @@ function roundToHundredth(value: number) {
 
 function clamp(value: number, min: number, max: number) {
 	return Math.min(max, Math.max(min, value));
-}
-
-function toFiniteNumber(value: number, fallback: number) {
-	return Number.isFinite(value) ? value : fallback;
 }

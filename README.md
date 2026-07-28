@@ -18,15 +18,16 @@
 
 ## Features
 
-| Feature | Description |
-|---|---|
-| **Decode & Encode** | Instantly decode any Clicker Heroes save string and re-encode after edits. |
-| **Edit Gold & Rubies** | Modify currency values directly — no third-party software needed. |
-| **Hero Management** | Inspect and edit hero levels, unlocks, and upgrade states. |
-| **Ascension & Hero Souls** | View and change ascension counts, Hero Souls, Ancients, and Outsiders. |
-| **Achievements & Profile** | Toggle or edit achievement flags and player profile entries. |
-| **Save Viewer** | Structured tree view of every key in the save for full transparency. |
-| **100% Client-Side** | Runs entirely in your browser — nothing is sent to any server. |
+| Feature                    | Description                                                                                |
+| -------------------------- | ------------------------------------------------------------------------------------------ |
+| **Decode & Encode**        | Instantly decode any Clicker Heroes save string and re-encode after edits.                 |
+| **Edit Gold & Rubies**     | Modify currency values directly — no third-party software needed.                          |
+| **Hero Management**        | Inspect and edit hero levels, unlocks, and upgrade states.                                 |
+| **Ascension & Hero Souls** | View and change ascension counts, Hero Souls, Ancients, and Outsiders.                     |
+| **Achievements & Profile** | Toggle or edit achievement flags and player profile entries.                               |
+| **Ancients Calculator**    | Optimal ancient levels, level-up costs, and an ancient soul planner from an imported save. |
+| **Save Viewer**            | Structured tree view of every key in the save for full transparency.                       |
+| **100% Client-Side**       | Runs entirely in your browser — nothing is sent to any server.                             |
 
 ## Run Locally
 

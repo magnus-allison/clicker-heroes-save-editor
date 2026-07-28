@@ -9,6 +9,8 @@ import { cn } from '@/lib/cn';
 type Props = {
 	text: string;
 	onCopied?: () => void;
+	/** Called when the clipboard write is blocked or unavailable. */
+	onCopyFailed?: () => void;
 	idleLabel?: string;
 	successLabel?: string;
 	variant?: 'primary' | 'secondary' | 'subtle' | 'ghost';
@@ -22,6 +24,7 @@ export const CopyButton = ({
 	disabled,
 	idleLabel = 'Copy',
 	onCopied,
+	onCopyFailed,
 	size = 'md',
 	successLabel = 'Copied',
 	text,
@@ -46,10 +49,19 @@ export const CopyButton = ({
 				className
 			)}
 			disabled={disabled || !text}
-			onClick={async () => {
-				await navigator.clipboard.writeText(text);
-				setIsCopied(true);
-				onCopied?.();
+			onClick={() => {
+				// `navigator.clipboard` is undefined on insecure origins and
+				// rejects when permission is denied, so this must never be an
+				// unhandled rejection.
+				void (async () => {
+					try {
+						await navigator.clipboard.writeText(text);
+						setIsCopied(true);
+						onCopied?.();
+					} catch {
+						onCopyFailed?.();
+					}
+				})();
 			}}
 			size={size}
 			variant={variant}
@@ -59,7 +71,6 @@ export const CopyButton = ({
 			) : (
 				<Copy aria-hidden='true' className='h-4 w-4' />
 			)}
-			<span className='sr-only'>{isCopied ? successLabel : idleLabel}</span>
 		</Button>
 	);
 };
