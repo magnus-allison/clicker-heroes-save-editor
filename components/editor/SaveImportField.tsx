@@ -114,9 +114,7 @@ export const SaveImportField = ({ examples, fileInputId, onLoad, step }: Props) 
 						/>
 						<span>Upload file</span>
 					</Button>
-					<p className='max-w-full truncate text-[12px] text-fg-muted'>
-						{selectedFileName}
-					</p>
+					<p className='max-w-full truncate text-[12px] text-fg-muted'>{selectedFileName}</p>
 				</div>
 				<p className='ml-2 py-2 text-left text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 					-- or paste below --
