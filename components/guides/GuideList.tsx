@@ -9,7 +9,7 @@ interface ItemProps {
 }
 
 export const GuideList: FC<ListProps> = ({ children }) => (
-	<ul className='flex flex-col gap-2.5'>{children}</ul>
+	<ul className='flex max-w-3xl flex-col gap-2.5'>{children}</ul>
 );
 
 export const GuideListItem: FC<ItemProps> = ({ children }) => (

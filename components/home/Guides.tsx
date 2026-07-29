@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpenTextIcon, LucideIcon } from 'lucide-react';
+import { ArrowRight, BookOpenTextIcon, type LucideIcon } from 'lucide-react';
 import { type FC } from 'react';
 import Link from 'next/link';
 
@@ -18,7 +18,7 @@ const guides: GuideCard[] = [
 		icon: BookOpenTextIcon,
 		tag: 'New'
 	}
-] as const;
+];
 
 interface Props {
 	guide: GuideCard;
@@ -38,7 +38,6 @@ const GuideCard: FC<Props> = ({ guide }) => {
 		<Link
 			className='group flex min-h-46 flex-col justify-between rounded-(--radius-panel) border border-(--color-line) bg-(--color-surface-raised) bg-[image:var(--gradient-raised)] p-5 text-(--color-fg) shadow-[var(--shadow-card)] hover:border-(--color-primary-line) hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
 			href={guide.href}
-			key={guide.href}
 		>
 			<span>
 				<span className='flex items-center gap-2'>
