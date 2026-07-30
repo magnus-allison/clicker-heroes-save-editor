@@ -14,6 +14,7 @@ import { SkinsSection } from '@/components/editor/sections/SkinsSection';
 import { TranscensionsSection } from '@/components/editor/sections/TranscensionsSection';
 import { useToast } from '@/components/ui/ToastProvider';
 import { clanFields } from '@/lib/data/editor-config';
+import { seasonalItemFields } from '@/lib/data/seasonalItems';
 import { shopItemFields } from '@/lib/data/shopItems';
 import { zoneItemFields } from '@/lib/data/zoneItems';
 import { PanelSection } from '../ui/PanelSection';
@@ -59,6 +60,13 @@ export const SaveEditor = () => {
 						description='Core currencies and ruby-shop purchases.'
 						fields={shopItemFields}
 						title='Shop Items'
+					/>
+
+					<SimpleFieldsSection
+						defaultOpen={true}
+						description='Limited-time event items and currencies.'
+						fields={seasonalItemFields}
+						title='Seasonal Items'
 					/>
 
 					<SkinsSection defaultOpen showToast={showToast} />
