@@ -7,11 +7,11 @@ export const AnnouncementBanner: FC = () => (
 		className='group flex flex-wrap items-center gap-x-3 gap-y-2 rounded-card border border-line hover:border-line-strong px-4 py-2.5'
 		href='/feedback'
 	>
-		<MessageSquare aria-hidden='true' className='h-4 w-4 shrink-0 text-(--color-info)' />
+		<MessageSquare aria-hidden='true' className='h-4 w-4 shrink-0 text-fg-secondary' />
 		<span className='min-w-0 text-xs text-fg-secondary'>
 			Help us improve the site — share your suggestions and feedback!
 		</span>
-		<span className='ml-auto inline-flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-(--color-info)'>
+		<span className='ml-auto inline-flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-fg-secondary'>
 			Open feedback page
 			<ArrowRight aria-hidden='true' className='h-3 w-3 transition-transform group-hover:translate-x-0.5' />
 		</span>
