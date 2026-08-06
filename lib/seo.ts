@@ -32,7 +32,7 @@ export const saveEditorFaqs = [
 	{
 		question: 'Can this editor change gold, rubies, Hero Souls, and Ancients?',
 		answer:
-			'Yes. The editor includes controls for core currencies, hero levels, Hero Souls, Ancients-related progression, ascensions, achievements, skins, mercenaries, outsiders, clan values, and raw save JSON.'
+			'Yes. The editor includes controls for core currencies, hero levels, Hero Souls, Ancients-related progression, ascensions, achievements, skins, mercenaries, outsiders, clan values, and custom save fields. Raw JSON editing lives in the separate save-json tool.'
 	},
 	{
 		question: 'Is my Clicker Heroes save uploaded to a server?',
@@ -97,7 +97,7 @@ export const seoPages = {
 			'Encode edited saves for import back into the game',
 			'Edit gold, rubies, Hero Souls, Ancients, and ascension data',
 			'Edit heroes, achievements, skins, mercenaries, outsiders, clan values, and custom fields',
-			'Inspect structured save JSON in the browser'
+			'Write any save field directly with a custom field path'
 		]
 	},
 	instakillCalculator: {
@@ -171,6 +171,28 @@ export const seoPages = {
 			'Review HZE, Hero Souls, and Ancient Souls totals'
 		]
 	},
+	mercenaryViewer: {
+		path: '/tools/mercenary-viewer',
+		title: 'Mercenary Viewer',
+		metaTitle: 'Clicker Heroes | Mercenary Viewer',
+		description:
+			'Import a Clicker Heroes save and view your mercenary roster and lifetime mercenary stats, including levels, time to die, bonus lives, and completed quests.',
+		keywords: [
+			'clicker heroes mercenary viewer',
+			'clicker heroes mercenaries',
+			'clicker heroes mercenary quests',
+			'clicker heroes save viewer'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.7,
+		schemaType: 'WebApplication',
+		applicationName: 'Clicker Heroes Mercenary Viewer',
+		featureList: [
+			'View the Clicker Heroes mercenary roster from a save',
+			'Inspect mercenary level, time to die, and bonus lives',
+			'Review lifetime mercenary and quest totals'
+		]
+	},
 	removeClanData: {
 		path: '/tools/remove-clan-data',
 		title: 'Remove Clan Data',
@@ -214,6 +236,30 @@ export const seoPages = {
 			'Show the save patch number when available',
 			'Convert saves between PC and mobile compression formats',
 			'Re-encode converted saves locally in the browser'
+		]
+	},
+	saveJson: {
+		path: '/tools/save-json',
+		title: 'Save JSON',
+		metaTitle: 'Clicker Heroes | Save JSON Tool',
+		description:
+			'Developer tool that decodes a Clicker Heroes save into raw JSON, lets you edit any field by hand, and re-encodes the JSON back into a save string in your browser.',
+		keywords: [
+			'clicker heroes save json',
+			'clicker heroes save to json',
+			'clicker heroes json to save',
+			'clicker heroes raw save data',
+			'clicker heroes save format json'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.75,
+		schemaType: 'WebApplication',
+		applicationName: 'Clicker Heroes Save JSON Tool',
+		featureList: [
+			'Decode Clicker Heroes saves into formatted JSON',
+			'Edit any raw save field by hand',
+			'Convert edited JSON back into an encoded save string',
+			'Format and copy raw save JSON in the browser'
 		]
 	},
 	newPlayerGuide: {

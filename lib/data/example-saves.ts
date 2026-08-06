@@ -25,6 +25,15 @@ export const transcensionExamples: ExampleSave[] = [
 	}
 ];
 
+/**
+ * The `examples` saves above have an empty mercenary roster, so the mercenary
+ * viewer reuses the fully populated save instead.
+ */
+export const mercenaryExamples: ExampleSave[] = transcensionExamples.map((example) => ({
+	...example,
+	name: 'Full Roster'
+}));
+
 export const saveConverterExamples: ExampleSave[] = [
 	{
 		name: 'Mobile',

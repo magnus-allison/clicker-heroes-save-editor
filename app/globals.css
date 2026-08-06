@@ -64,6 +64,11 @@
 	--color-gilded-surface: light-dark(rgba(184, 134, 11, 0.06), rgba(212, 175, 55, 0.12));
 	--color-gilded-line: light-dark(rgba(184, 134, 11, 0.22), rgba(212, 175, 55, 0.28));
 
+	/* Info / blue accents */
+	--color-info: light-dark(#1d5f9c, #8ec5f0);
+	--color-info-surface: light-dark(rgba(29, 95, 156, 0.06), rgba(96, 165, 250, 0.12));
+	--color-info-line: light-dark(rgba(29, 95, 156, 0.22), rgba(96, 165, 250, 0.3));
+
 	/* Effects */
 	--color-focus-ring: light-dark(rgba(44, 140, 65, 0.24), rgba(127, 214, 127, 0.25));
 	--color-shadow: light-dark(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.35));

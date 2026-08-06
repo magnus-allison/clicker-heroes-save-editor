@@ -1,25 +1,20 @@
+import type { FC } from 'react';
+
 import {
+	ArrowRightLeft,
+	Braces,
 	Calculator,
 	FileCode2,
-	LucideIcon,
-	Landmark,
+	Gem,
 	History,
-	Wrench,
-	ArrowRightLeft,
-	ArrowRight
+	Landmark,
+	Users,
+	Wrench
 } from 'lucide-react';
-import { type FC } from 'react';
-import Link from 'next/link';
 
-type ToolCard = {
-	title: string;
-	href: string;
-	description: string;
-	icon: LucideIcon;
-	tag?: string;
-};
+import { LinkCard, type LinkCardItem } from '@/components/ui/LinkCard';
 
-const tools: ToolCard[] = [
+const tools: LinkCardItem[] = [
 	{
 		title: 'save-editor',
 		href: '/tools/save-editor',
@@ -46,6 +41,12 @@ const tools: ToolCard[] = [
 		icon: History
 	},
 	{
+		title: 'mercenary-viewer',
+		href: '/tools/mercenary-viewer',
+		description: 'View your mercenary roster and lifetime mercenary stats from a save.',
+		icon: Users
+	},
+	{
 		title: 'remove-clan-data',
 		href: '/tools/remove-clan-data',
 		description: 'Remove clan, account, and login fields from a save in your browser.',
@@ -56,50 +57,36 @@ const tools: ToolCard[] = [
 		href: '/tools/save-converter',
 		description: 'Convert Clicker Heroes saves between PC and mobile formats.',
 		icon: ArrowRightLeft
+	},
+	{
+		title: 'save-json',
+		href: '/tools/save-json',
+		description: 'Convert saves to and from raw JSON. Built for developers.',
+		icon: Braces
+	},
+	{
+		title: 'relic-viewer',
+		href: '/tools/relic-viewer',
+		description: 'Inspect relics, their bonuses, and rarity from a save.',
+		icon: Gem,
+		tag: 'Coming soon',
+		comingSoon: true
 	}
-] as const;
-
-interface Props {
-	tool: ToolCard;
-}
+];
 
 export const Tools: FC = () => (
 	<>
 		{tools.map((tool) => (
-			<ToolCard tool={tool} key={tool.title} />
+			<LinkCard
+				cta={tool.comingSoon ? 'In development' : 'Open tool'}
+				description={tool.description}
+				disabled={tool.comingSoon}
+				href={tool.href}
+				icon={tool.icon}
+				key={tool.title}
+				tag={tool.tag}
+				title={tool.title}
+			/>
 		))}
 	</>
 );
-
-const ToolCard: FC<Props> = ({ tool }) => {
-	const Icon = tool.icon;
-	return (
-		<Link
-			className='group flex min-h-46 flex-col justify-between rounded-(--radius-panel) border border-(--color-line) bg-(--color-surface-raised) bg-[image:var(--gradient-raised)] p-5 text-(--color-fg) shadow-[var(--shadow-card)] hover:border-(--color-primary-line) hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
-			href={tool.href}
-			key={tool.href}
-		>
-			<span>
-				<span className='flex items-center gap-2'>
-					<span className='flex items-center justify-center rounded-(--radius-card) text-primary-text transition-[background-color,border-color,color] duration-200 ease-snap group-hover:border-(--color-primary-line) group-hover:bg-(--color-primary-surface)'>
-						<Icon aria-hidden='true' className='h-6 w-6' />
-					</span>
-					{tool.tag ? (
-						<span className='ml-auto inline-flex h-6 items-center rounded-full border border-(--color-primary-line) bg-(--color-primary-soft) px-2 text-[10px] font-bold tracking-wide text-fg-strong shadow-[var(--shadow-raised)]'>
-							{tool.tag}
-						</span>
-					) : null}
-				</span>
-				<span className='mt-6 block text-lg font-medium text-fg-strong'>{tool.title}</span>
-				<span className='mt-2 block text-sm text-(--color-fg-muted)'>{tool.description}</span>
-			</span>
-			<span className='mt-5 inline-flex items-center gap-2 text-[12px] font-semibold text-(--color-primary-text)'>
-				Open tool
-				<ArrowRight
-					aria-hidden='true'
-					className='h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5'
-				/>
-			</span>
-		</Link>
-	);
-};

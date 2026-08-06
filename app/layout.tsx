@@ -117,7 +117,7 @@ export default function RootLayout({
 					<PostHogPageTracker />
 				</Suspense>
 				<ToastProvider>
-					<PageShell spacing='loose'>
+					<PageShell>
 						<PageBanner />
 						{children}
 					</PageShell>

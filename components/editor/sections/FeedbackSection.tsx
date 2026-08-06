@@ -16,6 +16,9 @@ type Props = {
 
 const defaultDescription = 'Send your suggestions and improvements to make the save editor better!';
 
+/** Deliberately loose: the server and the mail provider are the real arbiters. */
+const isLikelyEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
 export const FeedbackSection = ({
 	defaultOpen,
 	description = defaultDescription,
@@ -23,16 +26,23 @@ export const FeedbackSection = ({
 }: Props) => {
 	const { showToast } = useToast();
 	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
 	const [website, setWebsite] = useState('');
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const trimmedMessage = message.trim();
+	const trimmedEmail = email.trim();
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
 		if (!trimmedMessage) {
 			showToast('Enter a message before sending feedback.');
+			return;
+		}
+
+		if (trimmedEmail && !isLikelyEmail(trimmedEmail)) {
+			showToast('Enter a valid email address, or leave it blank.');
 			return;
 		}
 
@@ -45,6 +55,7 @@ export const FeedbackSection = ({
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
+					email: trimmedEmail,
 					message: trimmedMessage,
 					name,
 					website
@@ -62,6 +73,7 @@ export const FeedbackSection = ({
 			}
 
 			setName('');
+			setEmail('');
 			setMessage('');
 			setWebsite('');
 			showToast('Feedback sent.');
@@ -74,7 +86,7 @@ export const FeedbackSection = ({
 
 	return (
 		<SectionCard defaultOpen={defaultOpen} description={description} title={title}>
-			<form className='space-y-3' onSubmit={handleSubmit}>
+			<form className='flex flex-col gap-3' onSubmit={handleSubmit}>
 				<input
 					aria-hidden='true'
 					autoComplete='off'
@@ -91,6 +103,15 @@ export const FeedbackSection = ({
 					onValueChange={setName}
 					placeholder='Name (optional)'
 					value={name}
+				/>
+				<TextInput
+					ariaLabel='Your email address'
+					className='max-w-70'
+					disabled={isSubmitting}
+					onValueChange={setEmail}
+					placeholder='Email (optional)'
+					type='email'
+					value={email}
 				/>
 				<TextInput
 					ariaLabel='Your feedback message'

@@ -21,6 +21,8 @@ type Props = {
 	selectOnFocus?: boolean;
 	/** Let the user drag-resize a `multiline` field vertically. */
 	resizable?: boolean;
+	/** Ignored when `multiline` is set. */
+	type?: 'text' | 'email';
 };
 
 export const TextInput = ({
@@ -37,6 +39,7 @@ export const TextInput = ({
 	resizable,
 	rows = 4,
 	selectOnFocus,
+	type = 'text',
 	value
 }: Props) => {
 	const generatedId = useId();
@@ -104,7 +107,7 @@ export const TextInput = ({
 			onFocus={handleFocus}
 			placeholder={placeholder}
 			readOnly={readOnly}
-			type='text'
+			type={type}
 			value={displayValue}
 		/>
 	);

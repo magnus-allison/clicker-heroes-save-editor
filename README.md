@@ -26,7 +26,7 @@
 | **Ascension & Hero Souls** | View and change ascension counts, Hero Souls, Ancients, and Outsiders.                     |
 | **Achievements & Profile** | Toggle or edit achievement flags and player profile entries.                               |
 | **Ancients Calculator**    | Optimal ancient levels, level-up costs, and an ancient soul planner from an imported save. |
-| **Save Viewer**            | Structured tree view of every key in the save for full transparency.                       |
+| **Save JSON**              | Developer tool to decode a save into raw JSON, edit it by hand, and re-encode it.          |
 | **100% Client-Side**       | Runs entirely in your browser — nothing is sent to any server.                             |
 
 ## Run Locally

@@ -6,9 +6,11 @@ import { getPostHogClient } from '@/lib/posthog-server';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const MAX_MESSAGE_LENGTH = 5000;
+const MAX_EMAIL_LENGTH = 254;
 
 type ContactPayload = {
 	name?: string;
+	email?: string;
 	message?: string;
 	website?: string; // honeypot
 };
@@ -17,11 +19,20 @@ function sanitize(input: string) {
 	return input.replace(/\s+/g, ' ').trim();
 }
 
+/** Deliberately loose: the mail provider is the real arbiter of deliverability. */
+function isLikelyEmail(value: string) {
+	return value.length <= MAX_EMAIL_LENGTH && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
 /**
  * Analytics must never decide the outcome of a request that already sent an
  * email, so the capture and its flush are isolated from the response path.
  */
-async function captureSubmission(properties: { has_name: boolean; message_length: number }) {
+async function captureSubmission(properties: {
+	has_name: boolean;
+	has_email: boolean;
+	message_length: number;
+}) {
 	try {
 		const posthog = getPostHogClient();
 
@@ -73,11 +84,17 @@ export async function POST(request: Request) {
 		}
 
 		const name = sanitize(typeof payload.name === 'string' ? payload.name : '');
+		const email = sanitize(typeof payload.email === 'string' ? payload.email : '');
 		const message = (typeof payload.message === 'string' ? payload.message : '').trim();
 		const senderName = name || 'Anonymous';
 
 		if (!message) {
 			return NextResponse.json({ error: 'Message is required.' }, { status: 400 });
+		}
+
+		// Email stays optional, but a malformed one would break the reply-to header.
+		if (email && !isLikelyEmail(email)) {
+			return NextResponse.json({ error: 'Enter a valid email address, or leave it blank.' }, { status: 400 });
 		}
 
 		if (message.length > MAX_MESSAGE_LENGTH) {
@@ -97,8 +114,9 @@ export async function POST(request: Request) {
 			sendResult = await resend.emails.send({
 				from,
 				to: process.env.EMAIL_TO,
+				...(email ? { replyTo: email } : {}),
 				subject: `[Feedback] ${senderName}`,
-				text: `Clicker Heroes tools feedback from: ${senderName}\n\n${message}`
+				text: `Clicker Heroes tools feedback from: ${senderName}\nEmail: ${email || 'Not provided'}\n\n${message}`
 			});
 		} catch (sendError) {
 			// The SDK throws rather than returning an error for transport failures.
@@ -133,7 +151,11 @@ export async function POST(request: Request) {
 
 		emailSent = true;
 
-		await captureSubmission({ has_name: Boolean(name), message_length: message.length });
+		await captureSubmission({
+			has_email: Boolean(email),
+			has_name: Boolean(name),
+			message_length: message.length
+		});
 
 		return NextResponse.json({ ok: true });
 	} catch (error) {

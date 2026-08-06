@@ -1,6 +1,7 @@
 import { type FC } from 'react';
 
 import { AnnouncementBanner } from '@/components/home/AnnouncementBanner';
+// import { SeasonalItemsBanner } from '@/components/home/SeasonalItemsBanner';
 
 interface Props {}
 
@@ -16,16 +17,17 @@ export const PageBanner: FC<Props> = () => {
 					/>
 				</div>
 				<div>
-					<p className='mb-2 inline-flex items-center gap-2 rounded-full py-1 text-xs font-medium uppercase text-primary'>
+					<p className='mb-2 inline-flex items-center gap-2 rounded-full py-1 text-xs font-medium uppercase text-[#FF57F9]'>
 						Clicker Heroes - Free Tools & Calculators
 					</p>
-					<h1 className='text-4xl text-fg-strong font-medium'>clickerheroes.dev</h1>
+					<h1 className='text-4xl text-[#F7EEE0] font-medium'>clickerheroes.dev</h1>
 					<p className='mt-3 max-w-3xl text-sm text-fg-muted'>
 						Free browser-based utilities for editing save data, planning faster runs, guides and more.
 					</p>
 				</div>
 			</section>
 
+			{/* <SeasonalItemsBanner /> */}
 			<AnnouncementBanner />
 		</div>
 	);

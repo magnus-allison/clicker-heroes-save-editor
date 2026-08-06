@@ -3,7 +3,6 @@ import { ArrowLeft } from 'lucide-react';
 
 import { NewPlayerGuide } from '@/components/guides/new-player-guide/NewPlayerGuide';
 import { SectionHeading } from '@/components/home/SectionHeading';
-import { PanelSection } from '@/components/ui/PanelSection';
 import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('newPlayerGuide');
@@ -23,9 +22,7 @@ export default function NewPlayerGuidePage() {
 				icon={<ArrowLeft aria-hidden='true' className='h-4 w-4' />}
 				title='Guides · New Player Guide'
 			/>
-			<PanelSection className='p-5 sm:p-6'>
-				<NewPlayerGuide />
-			</PanelSection>
+			<NewPlayerGuide />
 		</>
 	);
 }

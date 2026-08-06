@@ -6,7 +6,6 @@ import { AchievementsSection } from '@/components/editor/sections/AchievementsSe
 import { CustomFieldSection } from '@/components/editor/sections/CustomFieldSection';
 import { FeedbackSection } from '@/components/editor/sections/FeedbackSection';
 import { HeroesSection } from '@/components/editor/sections/HeroesSection';
-import { JsonSection } from '@/components/editor/sections/JsonSection';
 import { MercenariesSection } from '@/components/editor/sections/MercenariesSection';
 import { OutsidersSection } from '@/components/editor/sections/OutsidersSection';
 import { SimpleFieldsSection } from '@/components/editor/sections/SimpleFieldsSection';
@@ -97,8 +96,6 @@ export const SaveEditor = () => {
 					<OutsidersSection defaultOpen={false} />
 
 					<CustomFieldSection defaultOpen={false} />
-
-					<JsonSection defaultOpen={false} showToast={showToast} />
 
 					<FeedbackSection defaultOpen={false} />
 				</PanelSection>

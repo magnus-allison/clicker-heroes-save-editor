@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { AnvilIcon, ArrowRight, BookOpen, Info, MessageSquare } from 'lucide-react';
+
+import { AnvilIcon, BookOpen, Info, MessageSquare } from 'lucide-react';
 
 import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
 import { AdditionalInfo } from '@/components/home/AdditionalInfo';
 import { Guides } from '@/components/home/Guides';
 import { SectionHeading } from '@/components/home/SectionHeading';
 import { Tools } from '@/components/home/Tools';
+import { LinkCard } from '@/components/ui/LinkCard';
 
 export const metadata: Metadata = createPageMetadata('home');
 
@@ -44,21 +45,12 @@ const Page = () => (
 				icon={<MessageSquare aria-hidden='true' className='h-4 w-4' />}
 				title='Feedback'
 			/>
-			<Link
-				className='group flex items-center gap-4 rounded-(--radius-panel) border border-(--color-line) bg-(--color-surface-raised) bg-[image:var(--gradient-raised)] p-5 shadow-[var(--shadow-card)] hover:border-(--color-primary-line) hover:shadow-[var(--shadow-card-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
+			<LinkCard
+				cta='Open feedback page'
 				href='/feedback'
-			>
-				<span className='min-w-0 text-sm font-medium text-fg-strong'>
-					Report bugs, request features, or suggest a guide
-				</span>
-				<span className='ml-auto inline-flex shrink-0 items-center gap-2 text-[12px] font-semibold text-(--color-primary-text)'>
-					Open feedback page
-					<ArrowRight
-						aria-hidden='true'
-						className='h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5'
-					/>
-				</span>
-			</Link>
+				layout='horizontal'
+				title='Report bugs, request features, or suggest a guide'
+			/>
 		</section>
 
 		<section aria-labelledby='additional-info-heading' className='flex flex-col gap-3'>
