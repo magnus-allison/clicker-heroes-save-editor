@@ -7,5 +7,9 @@ ignoredBuiltDependencies:
   - unrs-resolver
 minimumReleaseAgeExclude:
   - '@vercel/firewall@1.2.2'
-  - posthog-js@1.407.5
+  - posthog-js@1.407.5 || 1.413.3
   - resend@6.18.1
+  - '@posthog/core@1.46.9'
+  - '@posthog/types@1.402.2'
+  - lucide-react@1.29.0
+  - posthog-node@5.48.1

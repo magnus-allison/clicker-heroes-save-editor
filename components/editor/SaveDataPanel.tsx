@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import posthog from 'posthog-js';
 
+import { SaveChangesSummary } from '@/components/editor/SaveChangesSummary';
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
 import { useSaveImport } from '@/components/editor/useSaveImport';
@@ -60,15 +61,11 @@ export const SaveDataPanel = ({ onLoadSuccess, examples }: Props) => {
 
 	return (
 		<PanelSection className='grid px-1 py-2 lg:grid-cols-2'>
-			<SaveImportField
-				examples={examples}
-				fileInputId='save-file-input'
-				onLoad={importSave}
-				step={1}
-			/>
+			<SaveImportField examples={examples} fileInputId='save-file-input' onLoad={importSave} step={1} />
 			<SaveExportField
 				actionLabel='Encode Save'
 				ariaLabel='Encoded save data to export'
+				belowOutput={<SaveChangesSummary />}
 				dataLabel='edited data'
 				onAction={handleEncode}
 				onValueChange={setEncodeValue}

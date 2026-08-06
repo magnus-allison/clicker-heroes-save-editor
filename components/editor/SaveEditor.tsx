@@ -21,6 +21,7 @@ import { StepTitle } from '../ui/StepTitle';
 import { useSaveStore } from '@/lib/save-store';
 import { ArrowLeft } from 'lucide-react';
 import { SectionHeading } from '../home/SectionHeading';
+import { cn } from '@/lib/cn';
 
 export const SaveEditor = () => {
 	const { showToast } = useToast();
@@ -44,15 +45,10 @@ export const SaveEditor = () => {
 
 			<SaveDataPanel onLoadSuccess={scrollToStep2} />
 
-			<div ref={step2Ref}>
-				<StepTitle title='Edit Your Save Data' step={2} />
-			</div>
-			<div
-				className={!hasSave ? 'pointer-events-none opacity-40 select-none' : undefined}
-				// `inert` keeps every field inside out of the tab order while the
-				// panel only looks disabled.
-				inert={!hasSave}
-			>
+			<div className={cn(!hasSave && 'pointer-events-none opacity-40 select-none')} inert={!hasSave}>
+				<div ref={step2Ref} className='mb-10'>
+					<StepTitle title='Edit Your Save Data' step={2} />
+				</div>
 				<PanelSection>
 					<SimpleFieldsSection
 						defaultOpen

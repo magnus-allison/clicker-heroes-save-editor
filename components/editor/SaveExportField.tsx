@@ -1,5 +1,7 @@
 'use client';
 
+import type { ReactNode } from 'react';
+
 import { Button } from '@/components/ui/Button';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { TextInput } from '@/components/ui/TextInput';
@@ -19,6 +21,11 @@ type Props = {
 	 * "converted data" — used in the backup warning.
 	 */
 	dataLabel: string;
+	/**
+	 * Rendered between the output field and the action button. Used for the
+	 * change summary, which belongs with the string it describes.
+	 */
+	belowOutput?: ReactNode;
 };
 
 /**
@@ -29,6 +36,7 @@ type Props = {
 export const SaveExportField = ({
 	actionLabel,
 	ariaLabel,
+	belowOutput,
 	dataLabel,
 	onAction,
 	onValueChange,
@@ -62,6 +70,7 @@ export const SaveExportField = ({
 						text={value}
 					/>
 				</div>
+				{belowOutput}
 				<div className='flex flex-wrap gap-2'>
 					<Button className='flex-1' onClick={onAction} variant='primary'>
 						{actionLabel}

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { useSaveStore } from '@/lib/save-store';
+import { setValueAtPath } from '@/lib/save-utils';
 
 type Props = {
 	defaultOpen?: boolean;
@@ -24,9 +25,8 @@ export const TranscensionsSection = ({ defaultOpen, showToast }: Props) => {
 		>
 			<div className='space-y-4 text-[12px] leading-6 text-(--color-fg-secondary)'>
 				<p>
-					The save contains all transcensions and ascensions information. This can significantly
-					increase the size of the save file, and the game does not require this history to continue
-					working.
+					The save contains all transcensions and ascensions information. This can significantly increase the
+					size of the save file, and the game does not require this history to continue working.
 				</p>
 				<div>
 					{/* Styled to match `Button`'s `secondary` variant, but it has to stay
@@ -56,14 +56,10 @@ export const TranscensionsSection = ({ defaultOpen, showToast }: Props) => {
 								return;
 							}
 
-							updateSave((current) => {
-								const next = structuredClone(current);
-								if (!next.stats || typeof next.stats !== 'object') {
-									next.stats = {};
-								}
-								(next.stats as Record<string, unknown>).transcensions = {};
-								return next;
-							});
+							// `setValueAtPath` rather than a `structuredClone`: the
+							// untouched parts of the save keep their identity, which is
+							// what lets the change summary diff the save in O(edits).
+							updateSave((current) => setValueAtPath(current, ['stats', 'transcensions'], {}));
 							showToast('Transcension history cleared.');
 							posthog.capture('transcension_history_cleared');
 						}}
