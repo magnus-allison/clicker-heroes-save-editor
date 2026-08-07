@@ -8,7 +8,7 @@ interface Props {}
 export const PageBanner: FC<Props> = () => {
 	return (
 		<div className='flex flex-col gap-3'>
-			<section className='grid gap-6 rounded-(--radius-panel) border border-line bg-surface-raised bg-(image:--gradient-hero) p-5 shadow-(--shadow-card) md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:p-7'>
+			<section className='grid gap-6 rounded-panel border border-line bg-surface-raised bg-(image:--gradient-hero) p-5 shadow-(--shadow-card) md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:p-7'>
 				<div className='flex h-22 w-22 items-center justify-center'>
 					<img
 						alt='Clicker Heroes'
@@ -17,10 +17,10 @@ export const PageBanner: FC<Props> = () => {
 					/>
 				</div>
 				<div>
-					<p className='mb-2 inline-flex items-center gap-2 rounded-full py-1 text-xs font-medium uppercase text-[#FF57F9]'>
+					<p className='mb-2 inline-flex items-center gap-2 rounded-full py-1 text-xs font-normal uppercase text-[#FF57F9]'>
 						Clicker Heroes - Free Tools & Calculators
 					</p>
-					<h1 className='text-4xl dark:text-[#F7EEE0] font-medium text-fg'>clickerheroes.dev</h1>
+					<h1 className='text-4xl dark:text-[#F7EEE0] font-medium text-fg-heading'>clickerheroes.dev</h1>
 					<p className='mt-3 max-w-3xl text-sm text-fg-muted'>
 						Free browser-based utilities for editing save data, planning faster runs, guides and more.
 					</p>

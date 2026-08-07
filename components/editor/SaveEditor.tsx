@@ -58,7 +58,7 @@ export const SaveEditor = () => {
 					/>
 
 					<SimpleFieldsSection
-						defaultOpen={true}
+						defaultOpen
 						description='Limited-time event items and currencies.'
 						fields={seasonalItemFields}
 						title='Seasonal Items'

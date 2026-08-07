@@ -355,10 +355,8 @@ export const NewPlayerGuide: FC = () => (
 						and monsters per zone once Kumawakamaru and Borb start mattering.
 					</GuideListItem>
 					<GuideListItem>
-						<GuideLink href='https://www.reddit.com/r/ClickerHeroes/comments/7dvpi2/hero_gilding_chart_for_clicker_heroes_10e10/'>
-							Hero gilding chart
-						</GuideLink>{' '}
-						— which hero to move your gilds to, and when.
+						<GuideLink href='/guides/gilding-chart'>Hero gilding chart</GuideLink> — which hero to move your
+						gilds to, and when.
 					</GuideListItem>
 					<GuideListItem>
 						<GuideLink href='https://www.reddit.com/r/ClickerHeroes/comments/7on5it/outsiders_calculator_web_app_version/'>

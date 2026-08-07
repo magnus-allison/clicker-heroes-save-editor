@@ -5,9 +5,9 @@ import {
 	Braces,
 	Calculator,
 	FileCode2,
-	Gem,
 	History,
 	Landmark,
+	SwordIcon,
 	Users,
 	Wrench
 } from 'lucide-react';
@@ -68,7 +68,7 @@ const tools: LinkCardItem[] = [
 		title: 'relic-viewer',
 		href: '/tools/relic-viewer',
 		description: 'Inspect relics, their bonuses, and rarity from a save.',
-		icon: Gem,
+		icon: SwordIcon,
 		tag: 'Coming soon',
 		comingSoon: true
 	}

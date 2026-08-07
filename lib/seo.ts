@@ -41,6 +41,45 @@ export const saveEditorFaqs = [
 	}
 ] as const;
 
+export const gildingChartFaqs = [
+	{
+		question: 'Do I need to re-gild on every row of the gilding chart?',
+		answer: 'No. Re-gilding costs Hero Souls, and while you are instakilling, extra damage does nothing. Skip rows freely and only re-gild when monsters start surviving your hits. The chart maps what is optimal, not a checklist you have to complete.'
+	},
+	{
+		question: 'Why does the same hero appear more than once in the gilding chart?',
+		answer: 'Heroes gain 10x damage multipliers at level milestones, and leveling costs scale as you go. So Wepwawet at 5,000 can fall behind Gog, then overtake it again at 6,000 once Wep picks up its next multiplier. Between e383 and e500 the two leapfrog every 500 levels or so.'
+	},
+	{
+		question: 'Should I gild Dread Knight in Clicker Heroes?',
+		answer: 'No. Dread Knight is never optimal to gild at any point in the game. Skip it.'
+	},
+	{
+		question: 'Why do Wepwawet and Gog stop alternating after e442?',
+		answer: 'Gog receives no further 10x multipliers after level 8,000, so it cannot leapfrog Wepwawet again. Stay on Wepwawet from e442 until Tsuchi at e500.'
+	},
+	{
+		question: 'Why is Tsuchi at level 1 better than Wepwawet at level 9,000?',
+		answer: 'Hiring Tsuchi costs less than buying 25 more levels of Wepwawet at that point, and its base damage is on a different tier entirely. The same pattern repeats at The Maw, which at level 1 deals roughly 1e6750x the damage of Cadu at 680,625.'
+	},
+	{
+		question: 'Why do Cadu and Ceus alternate in the gilding chart?',
+		answer: 'The Tomb Guardians buff each other: Cadu unlocks an upgrade for Ceus, Ceus unlocks one for Cadu, and so on. You push whichever one is next in line. Either is a fine starting point at e25,500, and after the last Ceus upgrade at 588,000 you stay on Cadu until The Maw.'
+	},
+	{
+		question: 'Why does Yachiyl start at level 157,500 instead of level 1?',
+		answer: 'Yachiyl only overtakes The Maw once it reaches its first upgrade at level 157,500. Rose has the same problem against Yachiyl and needs level 9,700 first.'
+	},
+	{
+		question: 'Why is Dorothy skipped so often in the Ace Scouts rotation?',
+		answer: 'Several of her upgrade tiers cost more gold than the equivalent Rose upgrade while dealing less damage, so Dorothy 1, 2 and 4 are worse buys than simply pushing Rose. She still appears three times in the rotation, so follow the rows as listed rather than writing her off.'
+	},
+	{
+		question: 'How many Ancient Souls do I need to reach a hero in the gilding chart?',
+		answer: 'The Ancient Souls column is a rough guide through Xavira at about 6,000. Past that it is not meaningfully tabulated, since progression depends heavily on your outsider allocation and transcension count.'
+	}
+] as const;
+
 type SeoPage = {
 	path: string;
 	title: string | { absolute: string };
@@ -284,6 +323,30 @@ export const seoPages = {
 		datePublished: '2026-07-28',
 		dateModified: '2026-07-28'
 	},
+	gildingChart: {
+		path: '/guides/gilding-chart',
+		title: 'Hero Gilding Chart',
+		metaTitle: 'Clicker Heroes | Hero Gilding Chart',
+		description:
+			'The Clicker Heroes 1.0e11 hero gilding chart: which hero to gild at every gold threshold, from The Masked Samurai through Wepwawet, Xavira, the Tomb Guardians, The Maw, Yachiyl and the Ace Scouts. Enter your gold to find your optimal hero.',
+		keywords: [
+			'clicker heroes gilding chart',
+			'clicker heroes hero gilding chart',
+			'clicker heroes which hero to gild',
+			'clicker heroes gilding guide',
+			'clicker heroes regilding',
+			'clicker heroes optimal hero',
+			'clicker heroes gilding e11',
+			'clicker heroes ace scouts',
+			'clicker heroes yachiyl',
+			'clicker heroes tomb guardians'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.85,
+		schemaType: 'Article',
+		datePublished: '2026-08-07',
+		dateModified: '2026-08-07'
+	},
 	feedback: {
 		path: '/feedback',
 		title: 'Feedback',
@@ -452,11 +515,13 @@ export const createPageJsonLd = (key: SeoPageKey) => {
 		});
 	}
 
-	if (key === 'saveEditor') {
+	const faqs = key === 'saveEditor' ? saveEditorFaqs : key === 'gildingChart' ? gildingChartFaqs : null;
+
+	if (faqs) {
 		graph.push({
 			'@type': 'FAQPage',
 			'@id': `${pageUrl}#faq`,
-			mainEntity: saveEditorFaqs.map((faq) => ({
+			mainEntity: faqs.map((faq) => ({
 				'@type': 'Question',
 				name: faq.question,
 				acceptedAnswer: {
