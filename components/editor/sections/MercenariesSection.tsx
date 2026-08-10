@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { SectionCard } from '@/components/ui/SectionCard';
+import { ToolLink } from '@/components/ui/ToolLink';
 import { mercenarySlots, mercenarySummaryFields } from '@/lib/data/editor-config';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
@@ -31,16 +32,16 @@ export const MercenariesSection = ({ defaultOpen }: Props) => {
 		>
 			<div className='space-y-6'>
 				<div>
-					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-						Summary
-					</p>
+					<ToolLink href='/tools/mercenary-viewer'>View Mercenary Details</ToolLink>
+				</div>
+
+				<div>
+					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>Summary</p>
 					<EditorTable label='Mercenary summary'>
 						<EditorTableBody>
 							{mercenarySummaryFields.map((field) => (
 								<EditorTableRow key={field.path.join('.')}>
-									<EditorTableCell className='text-(--color-fg)'>
-										{field.label}
-									</EditorTableCell>
+									<EditorTableCell className='text-(--color-fg)'>{field.label}</EditorTableCell>
 									<EditorTableCell className='min-w-55'>
 										<BoundFieldControl
 											kind={field.kind}
@@ -94,9 +95,7 @@ export const MercenariesSection = ({ defaultOpen }: Props) => {
 											disabled={!saveData}
 											onCommit={(value) => updateValue(slot.timeToDiePath, value)}
 											selectOnFocus
-											value={Number(
-												getValueAtPath(saveData, slot.timeToDiePath) ?? 0
-											)}
+											value={Number(getValueAtPath(saveData, slot.timeToDiePath) ?? 0)}
 										/>
 									</EditorTableCell>
 									<EditorTableCell className='min-w-45'>
@@ -105,9 +104,7 @@ export const MercenariesSection = ({ defaultOpen }: Props) => {
 											disabled={!saveData}
 											onCommit={(value) => updateValue(slot.bonusLivesPath, value)}
 											selectOnFocus
-											value={Number(
-												getValueAtPath(saveData, slot.bonusLivesPath) ?? 0
-											)}
+											value={Number(getValueAtPath(saveData, slot.bonusLivesPath) ?? 0)}
 										/>
 									</EditorTableCell>
 								</EditorTableRow>

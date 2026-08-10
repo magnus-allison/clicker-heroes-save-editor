@@ -1,10 +1,10 @@
 'use client';
 
 import posthog from 'posthog-js';
-import Link from 'next/link';
 
 import { Button } from '@/components/ui/Button';
 import { SectionCard } from '@/components/ui/SectionCard';
+import { ToolLink } from '@/components/ui/ToolLink';
 import { useSaveStore } from '@/lib/save-store';
 import { setValueAtPath } from '@/lib/save-utils';
 
@@ -29,17 +29,7 @@ export const TranscensionsSection = ({ defaultOpen, showToast }: Props) => {
 					size of the save file, and the game does not require this history to continue working.
 				</p>
 				<div>
-					{/* Styled to match `Button`'s `secondary` variant, but it has to stay
-					    a `Link` so navigation is a real anchor. Deliberately not the
-					    accent-filled `primary` treatment: "Clear Transcension Data"
-					    below is this card's primary action, and two accent fills in one
-					    card would leave neither reading as the main one. */}
-					<Link
-						className='motion-press inline-flex h-10 items-center justify-center gap-2 rounded-(--radius-control) border border-(--color-line-soft) bg-(--color-surface-sunken) px-4 text-[13px] leading-none text-(--color-fg-muted) shadow-[var(--shadow-raised)] transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-snap hover:border-(--color-line-strong) hover:bg-(--color-surface-hover) hover:text-(--color-fg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
-						href='/tools/transcension-viewer'
-					>
-						View Transcension History
-					</Link>
+					<ToolLink href='/tools/transcension-viewer'>View Transcension History</ToolLink>
 				</div>
 				<p>
 					To inspect the history first, look under{' '}
