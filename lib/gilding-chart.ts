@@ -322,7 +322,16 @@ const rawRows: readonly RawRow[] = [
 	['Rose', '1,806,000', '1,956,500', 263966, 276964, null, 'Skip Dorothy 2, same reason as before.', 6],
 	['Sophia', '1,881,250', '2,107,025', 276964, 296463, null, null, 6],
 	['Blanche', '1,956,500', '2,126,700', 296463, 311163, null, null, 6],
-	['Dorothy', '1,956,500', '2,011,975', 311163, 315954, null, 'Dorothy 3 is worth taking, unlike 1 and 2.', 6],
+	[
+		'Dorothy',
+		'1,956,500',
+		'2,011,975',
+		311163,
+		315954,
+		null,
+		'Dorothy 3 is worth taking, unlike 1 and 2.',
+		6
+	],
 	['Rose', '2,408,000', '2,558,500', 315954, 328953, null, null, 6],
 	['Sophia', '2,483,250', '2,709,025', 328953, 348452, null, null, 6],
 	['Blanche', '2,558,500', '2,784,200', 348452, 367943, null, null, 6],
