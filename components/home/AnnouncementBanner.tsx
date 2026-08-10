@@ -4,7 +4,7 @@ import { ArrowRight, MessageSquare } from 'lucide-react';
 
 export const AnnouncementBanner: FC = () => (
 	<Link
-		className='group hidden flex-wrap items-center gap-x-3 gap-y-2 rounded-card border border-line hover:border-line-strong px-4 py-2.5 md:flex'
+		className='group hidden flex-wrap items-center gap-x-3 gap-y-2 rounded-card px-4 py-2.5 md:flex '
 		href='/feedback'
 	>
 		<MessageSquare aria-hidden='true' className='h-4 w-4 shrink-0 text-fg-secondary' />

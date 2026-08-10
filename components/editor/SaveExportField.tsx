@@ -4,8 +4,11 @@ import type { ReactNode } from 'react';
 
 import { Button } from '@/components/ui/Button';
 import { CopyButton } from '@/components/ui/CopyButton';
+import { StepTitle } from '@/components/ui/StepTitle';
 import { TextInput } from '@/components/ui/TextInput';
 import { useToast } from '@/components/ui/ToastProvider';
+import { FileDownIcon } from 'lucide-react';
+import { Pill } from '../ui/Pill';
 
 type Props = {
 	title: string;
@@ -21,6 +24,8 @@ type Props = {
 	 * "converted data" — used in the backup warning.
 	 */
 	dataLabel: string;
+	/** Shines the step pill while exporting is the thing left to do. */
+	isActiveStep?: boolean;
 	/**
 	 * Rendered between the output field and the action button. Used for the
 	 * change summary, which belongs with the string it describes.
@@ -38,6 +43,7 @@ export const SaveExportField = ({
 	ariaLabel,
 	belowOutput,
 	dataLabel,
+	isActiveStep = false,
 	onAction,
 	onValueChange,
 	placeholder,
@@ -47,39 +53,48 @@ export const SaveExportField = ({
 	const { showToast } = useToast();
 
 	return (
-		<section className='flex min-w-0 flex-col border-t border-(--color-line-soft) px-1 lg:border-l lg:border-t-0'>
-			<h2 className='flex items-center gap-2 px-4 py-2.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-strong)'>
-				{title}
-			</h2>
-			<div className='flex flex-1 flex-col gap-2.5 p-3 sm:p-4'>
-				<div className='flex min-w-0 items-start gap-2'>
-					<TextInput
-						ariaLabel={ariaLabel}
-						className='min-h-32'
-						multiline
-						onValueChange={onValueChange}
-						placeholder={placeholder}
-						resizable
-						value={value}
-					/>
-					<CopyButton
-						className='min-w-10 px-0'
-						idleLabel='Copy'
-						onCopied={() => showToast('Text copied.')}
-						onCopyFailed={() => showToast('Copying is not available in this browser.')}
-						text={value}
-					/>
-				</div>
-				{belowOutput}
-				<div className='flex flex-wrap gap-2'>
-					<Button className='flex-1' onClick={onAction} variant='primary'>
+		<section className='flex min-w-0 flex-col border-t border-shadow px-1 lg:border-l lg:border-t-0'>
+			<div className='p-5'>
+				<span className='flex items-center gap-2'>
+					<span className='flex items-center justify-center transition-[background-color] duration-200'>
+						<FileDownIcon aria-hidden='true' className='h-5 w-5' />
+					</span>
+					<Pill className='ml-auto' isShining={isActiveStep}>
+						Step 3
+					</Pill>
+				</span>
+				<span className='mt-5 block text-[1.1rem] font-medium text-fg-strong mb-7 uppercase'>
+					Export your save data
+				</span>
+
+				<div className='flex flex-1 flex-col gap-2.5'>
+					<div className='flex min-w-0 items-start gap-2'>
+						<TextInput
+							ariaLabel={ariaLabel}
+							className='min-h-33'
+							multiline
+							onValueChange={onValueChange}
+							placeholder={placeholder}
+							resizable
+							value={value}
+						/>
+						<CopyButton
+							className='min-w-10 px-0'
+							idleLabel='Copy'
+							onCopied={() => showToast('Text copied.')}
+							onCopyFailed={() => showToast('Copying is not available in this browser.')}
+							text={value}
+						/>
+					</div>
+					{belowOutput}
+					<Button fullWidth onClick={onAction} variant='primary'>
 						{actionLabel}
 					</Button>
 				</div>
-				<p className='mt-auto pt-2 pb-1 text-[12px] leading-5 text-(--color-fg-dim)'>
-					Always keep a backup of your original save before importing {dataLabel} back into the game.
-				</p>
 			</div>
+			<p className='mt-auto text-[12px] leading-5 text-fg-dim/65 italic p-5'>
+				* Always keep a backup of your original save before importing {dataLabel} back into the game.
+			</p>
 		</section>
 	);
 };

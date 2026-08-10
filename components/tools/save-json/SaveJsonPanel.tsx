@@ -84,12 +84,18 @@ export const SaveJsonPanel = () => {
 
 	return (
 		<>
-			<PanelSection className='grid px-1 py-2 lg:grid-cols-2'>
-				<SaveImportField fileInputId='save-json-file-input' onLoad={importSave} step={1} />
+			<PanelSection className='grid lg:grid-cols-2'>
+				<SaveImportField
+					fileInputId='save-json-file-input'
+					isActiveStep={isJsonEmpty}
+					onLoad={importSave}
+					step={1}
+				/>
 				<SaveExportField
 					actionLabel='Convert JSON to Save'
 					ariaLabel='Encoded save data to export'
 					dataLabel='edited data'
+					isActiveStep={!isJsonEmpty && encodeValue.length === 0}
 					onAction={handleEncode}
 					onValueChange={setEncodeValue}
 					placeholder='Your encoded save data will appear here...'

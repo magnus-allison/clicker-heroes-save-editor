@@ -7,11 +7,6 @@ interface Props {
 	children: ReactNode;
 }
 
-/**
- * One section of a guide, nested inside a `GuidePart`. The `id` doubles as the
- * jump-link target used by `GuideIndex`, so it has to stay stable once a guide
- * is published.
- */
 export const GuideSection: FC<Props> = ({ children, id, summary, title }) => (
 	<section aria-labelledby={`${id}-heading`} className='scroll-mt-8' id={id}>
 		<h3 className='text-[0.95rem] font-semibold leading-tight text-fg-strong' id={`${id}-heading`}>

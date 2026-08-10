@@ -14,6 +14,7 @@ export type LinkCardItem = {
 	description: string;
 	icon: LucideIcon;
 	tag?: string;
+	tagIsShining?: boolean;
 	comingSoon?: boolean;
 };
 
@@ -29,6 +30,8 @@ type Props = {
 	/** Image icons are inverted in dark mode unless this is explicitly `false`. */
 	invertIcon?: boolean;
 	tag?: string;
+	/** Gives the tag pill the gold spinning border. */
+	tagIsShining?: boolean;
 	/** Footer text. Omit on horizontal rows to show the arrow alone. */
 	cta?: string;
 	/** Opens in a new tab and swaps the chevron for the outbound arrow. */
@@ -36,9 +39,6 @@ type Props = {
 	/** Renders inert markup: no link, no arrow, dimmed. */
 	disabled?: boolean;
 };
-
-const baseClassName =
-	'group rounded-(--radius-panel) border border-(--color-line) bg-(--color-surface-raised) p-5 shadow-[var(--shadow-card)]';
 
 const layoutClassName = {
 	vertical: 'flex min-h-46 flex-col justify-between text-(--color-fg)',
@@ -59,6 +59,7 @@ export const LinkCard: FC<Props> = ({
 	invertIcon,
 	layout = 'vertical',
 	tag,
+	tagIsShining = false,
 	title
 }) => {
 	const arrow = external ? (
@@ -76,18 +77,20 @@ export const LinkCard: FC<Props> = ({
 	const body =
 		layout === 'vertical' ? (
 			<>
-				<span>
-					<span className='flex items-center gap-2'>
-						{Icon && (
-							<span className='flex items-center justify-center rounded-(--radius-card) transition-[background-color,border-color] duration-200 group-hover:border-(--color-primary-line) group-hover:bg-(--color-primary-surface)'>
-								<Icon aria-hidden='true' className='h-6 w-6' />
-							</span>
-						)}
-						{tag && <Pill className='ml-auto'>{tag}</Pill>}
-					</span>
-					<span className='mt-6 block text-lg font-medium text-fg-strong'>{title}</span>
-					{description && <span className='mt-2 block text-sm text-(--color-fg-muted)'>{description}</span>}
+				<span className='flex items-center gap-2'>
+					{Icon && (
+						<span className='flex items-center justify-center transition-[background-color] duration-200'>
+							<Icon aria-hidden='true' className='h-5 w-5' />
+						</span>
+					)}
+					{tag && (
+						<Pill className='ml-auto' isShining={tagIsShining}>
+							{tag}
+						</Pill>
+					)}
 				</span>
+				<span className='mt-5 block text-[1.1rem] font-medium text-fg-strong mb-7 uppercase'>{title}</span>
+				{description && <span className='block text-sm text-(--color-fg-muted)'>{description}</span>}
 				<span className='mt-5 inline-flex items-center gap-2 text-[12px] font-semibold'>
 					{cta}
 					{!disabled && arrow}
@@ -115,7 +118,11 @@ export const LinkCard: FC<Props> = ({
 			</>
 		);
 
-	const className = cn(baseClassName, layoutClassName[layout], !disabled && interactiveClassName);
+	const className = cn(
+		`group rounded-card bg-card-background p-5 shadow-(--shadow-card)`,
+		layoutClassName[layout],
+		!disabled && interactiveClassName
+	);
 
 	if (disabled) {
 		return (

@@ -6,17 +6,18 @@ import { LinkCard, type LinkCardItem } from '@/components/ui/LinkCard';
 
 const guides: LinkCardItem[] = [
 	{
-		title: 'new-player-guide',
+		title: 'new player guide',
 		href: '/guides/new-player-guide',
 		description: 'Fresh save to first transcension: ascending, ancients, rubies, mercs, and clans.',
 		icon: BookOpenTextIcon
 	},
 	{
-		title: 'gilding-chart',
+		title: 'gilding chart',
 		href: '/guides/gilding-chart',
 		description: 'Which hero to gild at every gold threshold, from Samurai through to the Ace Scouts.',
 		icon: CoinsIcon,
-		tag: 'New'
+		tag: 'New',
+		tagIsShining: true
 	}
 ];
 
@@ -30,6 +31,7 @@ export const Guides: FC = () => (
 				icon={guide.icon}
 				key={guide.title}
 				tag={guide.tag}
+				tagIsShining={guide.tagIsShining}
 				title={guide.title}
 			/>
 		))}

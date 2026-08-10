@@ -132,11 +132,11 @@ export const RemoveClanDataEditor = () => {
 			<SectionHeading
 				back='/'
 				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-4 w-4' />}
+				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
 				title='Tools · Remove Clan Data'
 			/>
 
-			<SaveDataPanel />
+			<SaveDataPanel hasEditStep />
 
 			<StepTitle step={2} title='Remove Clan Data From JSON' />
 			<div

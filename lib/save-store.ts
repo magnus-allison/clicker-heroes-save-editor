@@ -14,7 +14,15 @@ import {
 type SaveStore = {
 	saveData: SaveData | null;
 	originalSaveData: SaveData | null;
+	/**
+	 * Whether the save in its *current* shape has been encoded. Any later edit
+	 * invalidates the exported string, so this flips back to `false` — it drives
+	 * the "step 3" highlight, which should come back when there is new work to
+	 * export.
+	 */
+	hasExported: boolean;
 	loadSave: (data: SaveData) => void;
+	markExported: () => void;
 	updateValue: (path: PathSegment[], value: unknown) => void;
 	updateValues: (updates: ValueUpdate[]) => void;
 	updateSave: (updater: (current: SaveData) => SaveData) => void;
@@ -37,6 +45,7 @@ function applyUpdate(save: SaveData, { path, value }: ValueUpdate) {
 export const useSaveStore = create<SaveStore>((set) => ({
 	saveData: null,
 	originalSaveData: null,
+	hasExported: false,
 	loadSave: (data) => {
 		// One clone is enough. Nothing mutates `saveData` in place — every edit
 		// goes through the copy-on-write helpers in `lib/save-utils` — so
@@ -44,10 +53,17 @@ export const useSaveStore = create<SaveStore>((set) => ({
 		// deep copy. It is only read as a "which save is loaded" identity signal
 		// (see `RemoveClanDataEditor`), never as a mutable snapshot.
 		const nextSave = structuredClone(data);
-		set({ saveData: nextSave, originalSaveData: nextSave });
+		set({ saveData: nextSave, originalSaveData: nextSave, hasExported: false });
+	},
+	markExported: () => {
+		set({ hasExported: true });
 	},
 	updateValue: (path, value) => {
-		set((state) => (state.saveData ? { saveData: applyUpdate(state.saveData, { path, value }) } : state));
+		set((state) =>
+			state.saveData
+				? { saveData: applyUpdate(state.saveData, { path, value }), hasExported: false }
+				: state
+		);
 	},
 	updateValues: (updates) => {
 		set((state) => {
@@ -64,11 +80,12 @@ export const useSaveStore = create<SaveStore>((set) => ({
 				saveData: removals.reduce(
 					(save, { path }) => removeValueAtPath(save, path),
 					setValuesAtPaths(state.saveData, writes)
-				)
+				),
+				hasExported: false
 			};
 		});
 	},
 	updateSave: (updater) => {
-		set((state) => (state.saveData ? { saveData: updater(state.saveData) } : state));
+		set((state) => (state.saveData ? { saveData: updater(state.saveData), hasExported: false } : state));
 	}
 }));

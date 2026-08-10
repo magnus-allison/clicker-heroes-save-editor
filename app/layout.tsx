@@ -111,7 +111,12 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html className={`${ibmPlexMono.variable} h-full antialiased`} data-scroll-behavior='smooth' lang='en'>
+		<html
+			className={`${ibmPlexMono.variable} h-full antialiased`}
+			data-scroll-behavior='smooth'
+			lang='en'
+			suppressHydrationWarning
+		>
 			<body className='min-h-full'>
 				<Suspense fallback={null}>
 					<PostHogPageTracker />

@@ -10,10 +10,13 @@ import { SaveHelpToolTip } from '@/components/editor/SaveHelpToolTip';
 import { Button } from '@/components/ui/Button';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
+import { FieldDivider } from '@/components/ui/FieldDivider';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { TextInput } from '@/components/ui/TextInput';
 import { useToast } from '@/components/ui/ToastProvider';
 import type { ExampleSave } from '@/lib/data/example-saves';
+import { FileCode, FileCode2, FilePlusCornerIcon, FileUp, FileUpIcon, Icon } from 'lucide-react';
+import { Pill } from '../ui/Pill';
 
 export type SaveImportSource = 'paste' | 'file' | 'example';
 
@@ -32,6 +35,8 @@ type Props = {
 	/** Unique per page, because the hidden file input is a real form control. */
 	fileInputId: string;
 	examples?: ExampleSave[];
+	/** Shines the step pill while importing is the thing left to do. */
+	isActiveStep?: boolean;
 	onLoad: (request: SaveImportRequest) => void;
 };
 
@@ -47,7 +52,7 @@ const MAX_SAVE_FILE_BYTES = 4 * 1024 * 1024;
  * Owns the picked-file name and the pasted text; the caller only decides what
  * "load this" means.
  */
-export const SaveImportField = ({ examples, fileInputId, onLoad, step }: Props) => {
+export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, onLoad, step }: Props) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { showToast } = useToast();
 	const [selectedFileName, setSelectedFileName] = useState('No file selected');
@@ -85,9 +90,21 @@ export const SaveImportField = ({ examples, fileInputId, onLoad, step }: Props) 
 	};
 
 	return (
-		<section className='min-w-0'>
-			<StepTitle step={step} title='Import Your Save Data' trailing={<SaveHelpToolTip />} />
-			<div className='flex flex-col gap-2.5 p-3 sm:p-4'>
+		<section className='min-w-0 p-5'>
+			<span className='flex items-center gap-2'>
+				<span className='flex items-center justify-center transition-[background-color] duration-200'>
+					<FileUpIcon aria-hidden='true' className='h-5 w-5' />
+				</span>
+				<Pill className='ml-auto' isShining={isActiveStep}>
+					Step 1
+				</Pill>
+			</span>
+			<span className='mt-5 block text-[1.1rem] font-medium text-fg-strong mb-7 uppercase'>
+				Import your save data
+			</span>
+
+			{/* <StepTitle step={step} title='Import Your Save Data' trailing={<SaveHelpToolTip />} /> */}
+			<div className='flex flex-col gap-2.5'>
 				<input
 					aria-label='Choose save file'
 					className='hidden'
@@ -101,24 +118,23 @@ export const SaveImportField = ({ examples, fileInputId, onLoad, step }: Props) 
 				/>
 				<div className='flex flex-wrap items-center gap-2'>
 					<Button
-						className='justify-center whitespace-nowrap'
+						className='gap-1.5 whitespace-nowrap'
 						onClick={() => inputRef.current?.click()}
+						size='sm'
 						variant='subtle'
 					>
 						<EditorImage
 							alt='Upload save file'
-							className='h-4 w-4 shrink-0 object-contain opacity-80'
-							size={16}
+							className='h-3.5 w-3.5 shrink-0 object-contain opacity-70'
+							size={14}
 							src='/assets/icons/folder-open.svg'
 							style={{ filter: 'var(--color-icon-filter)' }}
 						/>
 						<span>Upload file</span>
 					</Button>
-					<p className='max-w-full truncate text-[12px] text-fg-muted'>{selectedFileName}</p>
+					<p className='max-w-full truncate text-[11px] text-(--color-fg-dim)'>{selectedFileName}</p>
 				</div>
-				<p className='ml-2 py-2 text-left text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-					-- or paste below --
-				</p>
+				<FieldDivider label='or paste below' />
 				<div
 					className='flex min-w-0 items-start gap-2'
 					// `TextInput` does not expose `onPaste`, but paste events bubble,
@@ -132,7 +148,7 @@ export const SaveImportField = ({ examples, fileInputId, onLoad, step }: Props) 
 				>
 					<TextInput
 						ariaLabel='Encoded save data to import'
-						className='min-h-32'
+						className='min-h-33'
 						multiline
 						onValueChange={setDecodeValue}
 						placeholder='Paste your encoded save data here...'
@@ -147,15 +163,13 @@ export const SaveImportField = ({ examples, fileInputId, onLoad, step }: Props) 
 						text={decodeValue}
 					/>
 				</div>
-				<div className='flex flex-wrap gap-2'>
-					<Button
-						className='flex-1'
-						onClick={() => onLoad({ value: decodeValue, source: 'paste', isSubmit: true })}
-						variant='primary'
-					>
-						Load Save Data
-					</Button>
-				</div>
+				<Button
+					fullWidth
+					onClick={() => onLoad({ value: decodeValue, source: 'paste', isSubmit: true })}
+					variant='primary'
+				>
+					Load Save Data
+				</Button>
 				<ExampleSaveButtons
 					customExamples={examples}
 					onSelect={(save) => {

@@ -117,10 +117,11 @@ export const SaveConverterPanel = () => {
 
 	return (
 		<>
-			<PanelSection className='grid px-1 py-2 lg:grid-cols-2'>
+			<PanelSection className='grid lg:grid-cols-2'>
 				<SaveImportField
 					examples={saveConverterExamples}
 					fileInputId='save-converter-file-input'
+					isActiveStep={!loadedSave}
 					onLoad={importSave}
 					step={1}
 				/>
@@ -128,6 +129,7 @@ export const SaveConverterPanel = () => {
 					actionLabel='Convert Save'
 					ariaLabel='Converted save data to export'
 					dataLabel='converted data'
+					isActiveStep={Boolean(loadedSave) && encodeValue.length === 0}
 					onAction={handleEncode}
 					onValueChange={setEncodeValue}
 					placeholder='Your converted save data will appear here...'

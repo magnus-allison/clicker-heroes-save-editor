@@ -2,7 +2,8 @@ import type { ReactNode } from 'react';
 
 interface Props {
 	title: string;
-	step: number;
+	/** Omit for a section that shares a card with a numbered step but is not one itself. */
+	step?: number;
 	trailing?: ReactNode;
 }
 
@@ -12,8 +13,8 @@ interface Props {
  * with each other.
  */
 export const StepTitle = ({ title, step, trailing }: Props) => (
-	<h2 className='flex items-center gap-2 px-4 py-2.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-strong)'>
-		<StepPill number={step} />
+	<h2 className='flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-strong)'>
+		{step === undefined ? null : <StepPill number={step} />}
 		{title}
 		{trailing ? <span className='ml-auto'>{trailing}</span> : null}
 	</h2>

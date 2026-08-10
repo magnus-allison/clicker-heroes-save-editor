@@ -18,14 +18,17 @@ import { shopItemFields } from '@/lib/data/shopItems';
 import { zoneItemFields } from '@/lib/data/zoneItems';
 import { PanelSection } from '../ui/PanelSection';
 import { StepTitle } from '../ui/StepTitle';
+import { useSaveFlowStep } from '@/lib/save-flow';
 import { useSaveStore } from '@/lib/save-store';
 import { ArrowLeft } from 'lucide-react';
 import { SectionHeading } from '../home/SectionHeading';
 import { cn } from '@/lib/cn';
+import { Pill } from '../ui/Pill';
 
 export const SaveEditor = () => {
 	const { showToast } = useToast();
 	const hasSave = useSaveStore((state) => state.saveData !== null);
+	const activeStep = useSaveFlowStep({ hasEditStep: true });
 	const step2Ref = useRef<HTMLDivElement>(null);
 
 	const scrollToStep2 = () => {
@@ -39,15 +42,18 @@ export const SaveEditor = () => {
 			<SectionHeading
 				back='/'
 				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-4 w-4' />}
+				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
 				title='Tools · Clicker Heroes Save Editor'
 			/>
 
-			<SaveDataPanel onLoadSuccess={scrollToStep2} />
+			<SaveDataPanel hasEditStep onLoadSuccess={scrollToStep2} />
 
 			<div className={cn(!hasSave && 'pointer-events-none opacity-40 select-none')} inert={!hasSave}>
-				<div ref={step2Ref} className='mb-10'>
-					<StepTitle title='Edit Your Save Data' step={2} />
+				<div ref={step2Ref} className='mt-5 mb-10 flex flex-row items-center gap-3'>
+					<Pill isShining={activeStep === 2}>Step 2</Pill>
+					<span className='block text-[1.1rem] font-medium uppercase text-fg-strong'>
+						Edit your save data
+					</span>
 				</div>
 				<PanelSection>
 					<SimpleFieldsSection

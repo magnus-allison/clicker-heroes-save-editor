@@ -351,7 +351,7 @@ export const TranscensionViewer = () => {
 			<SectionHeading
 				back='/'
 				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-4 w-4' />}
+				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
 				title='Tools · Clicker Heroes Transcension Viewer'
 			/>
 

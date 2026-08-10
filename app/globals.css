@@ -22,8 +22,17 @@
 	--font-mono: var(--font-ibm-plex-mono), 'Consolas', 'Monaco', 'Courier New', monospace;
 	--font-sans: var(--font-mono);
 
-	/* Surfaces */
+	--color-background: light-dark(#fafafa, #020202);
+
+	--color-card-background: light-dark(#ffffff, #0a0a0a);
+	--radius-card: 2rem;
+	--color-card-border: light-dark(#e0e0e0, #1a1a1a);
+
 	--color-surface: light-dark(#f5f6f8, #0a0a0a);
+	/* The two ends of the page ground ramp; their midpoint is `--color-surface`,
+	 * so anything painting the flat token still sits flush against the page. */
+	--color-surface-top: light-dark(#f8f9fb, #0d0d0e);
+	--color-surface-bottom: light-dark(#f2f3f6, #070707);
 	--color-surface-sunken: light-dark(#eef1f4, #0d0d0d);
 	--color-surface-raised: light-dark(#ffffff, #0f0f0f);
 	--color-surface-muted: light-dark(#f3f5f8, #151515);
@@ -71,16 +80,17 @@
 
 	/* Effects */
 	--color-focus-ring: light-dark(rgba(44, 140, 65, 0.24), rgba(127, 214, 127, 0.25));
-	--color-shadow: light-dark(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.35));
+	--color-shadow: light-dark(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.45));
 	--color-icon-filter: light-dark(none, invert(1));
 
 	/* Radii — one step per structural level */
 	--radius-control: 5px;
 	--radius-card: 0.75rem;
-	--radius-panel: 1rem;
+	--radius-panel: 1.2rem;
 
 	/* Elevation */
-	--shadow-card: 0 2px 8px var(--color-shadow);
+	--shadow-card: 0 0 0 1px light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
+
 	--shadow-popover: 0 12px 32px var(--color-shadow);
 	--shadow-raised:
 		inset 0 1px 0 light-dark(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.03)),
@@ -98,8 +108,13 @@ body {
 	font-family: var(--font-mono);
 	font-size: 13px;
 	line-height: 1.5;
-	background: var(--color-surface);
 	color: var(--color-fg);
+}
+
+html {
+	background-color: var(--color-background);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 }
 
 ::selection {
@@ -180,4 +195,27 @@ img {
 
 .motion-press:active {
 	transform: translateY(1px);
+}
+
+/*
+ * Spinning gradient border (Pill). The angle is a registered custom property so
+ * it can be interpolated — plain `--vars` are unanimatable strings. The element
+ * paints the conic gradient edge-to-edge; the inner child covers the middle,
+ * leaving only the 1px rim visible.
+ */
+@property --spin-angle {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: false;
+}
+
+@keyframes spin-gradient {
+	to {
+		--spin-angle: 360deg;
+	}
+}
+
+.gradient-spin {
+	background-image: conic-gradient(from var(--spin-angle), #fde68a, #facc15, #f59e0b, #facc15, #fde68a);
+	animation: spin-gradient 3s linear infinite;
 }

@@ -3,6 +3,7 @@
 import posthog from 'posthog-js';
 
 import { Button } from '@/components/ui/Button';
+import { FieldDivider } from '@/components/ui/FieldDivider';
 import { examples as defaultExamples, type ExampleSave } from '@/lib/data/example-saves';
 
 type Props = {
@@ -14,10 +15,8 @@ export const ExampleSaveButtons = ({ customExamples, onSelect }: Props) => {
 	const examples = customExamples && customExamples.length > 0 ? customExamples : defaultExamples;
 
 	return (
-		<div className='mt-2 flex flex-col gap-1.5'>
-			<p className='ml-2 py-2 text-left text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-				-- Load an Example Save --
-			</p>
+		<div className='flex flex-col gap-2.5'>
+			<FieldDivider label='or load an example save' />
 			<div className='flex flex-wrap gap-1.5'>
 				{examples.map((example) => (
 					<Button

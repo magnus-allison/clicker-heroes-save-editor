@@ -363,10 +363,10 @@ export const parseGoldExponent = (input: string): number | null => {
 
 	if (normalized === '') return null;
 
-	const withSuffix = /^[\d.]*e\+?(?<exponent>-?\d+)$/.exec(normalized);
+	const withSuffix = /^[\d.]*e\+?(-?\d+)$/.exec(normalized);
 
-	if (withSuffix?.groups?.exponent) {
-		return Number.parseInt(withSuffix.groups.exponent, 10);
+	if (withSuffix?.[1]) {
+		return Number.parseInt(withSuffix[1], 10);
 	}
 
 	// No `e`, so the whole string has to be the exponent itself.
