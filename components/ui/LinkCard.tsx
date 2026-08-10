@@ -119,7 +119,7 @@ export const LinkCard: FC<Props> = ({
 		);
 
 	const className = cn(
-		`group rounded-card bg-card-background p-5 shadow-(--shadow-card)`,
+		`group rounded-card bg-card-background p-5 shadow-card`,
 		layoutClassName[layout],
 		!disabled && interactiveClassName
 	);

@@ -4,7 +4,7 @@ import { AnnouncementBanner } from '@/components/home/AnnouncementBanner';
 export const PageBanner: FC = () => {
 	return (
 		<div className='flex flex-col gap-2'>
-			<section className='grid gap-6 rounded-panel  bg-card-background p-5 shadow-(--shadow-card) md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:p-7'>
+			<section className='grid gap-6 rounded-panel  bg-card-background p-5 shadow-card md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:p-7'>
 				<div className='flex h-23 w-23 items-center justify-center'>
 					<img
 						alt='Clicker Heroes'
