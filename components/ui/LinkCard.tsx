@@ -48,6 +48,10 @@ const layoutClassName = {
 const interactiveClassName =
 	'hover:border-line-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong';
 
+/** Quiet until the card is hovered, so the title carries the card and the arrow leads the eye. */
+const ctaClassName =
+	'inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-(--color-fg-dim) transition-colors group-hover:text-fg-strong';
+
 export const LinkCard: FC<Props> = ({
 	cta,
 	description,
@@ -89,9 +93,12 @@ export const LinkCard: FC<Props> = ({
 						</Pill>
 					)}
 				</span>
-				<span className='mt-5 block text-[1.1rem] font-medium text-fg-strong mb-7 uppercase'>{title}</span>
+				{/* Aeonik's space glyph is narrow; the word-spacing nudge keeps uppercase titles from closing up. */}
+				<span className='font-aeonik mt-4.5 mb-6.5 block text-[1.24rem] tracking-wide font-medium uppercase text-fg-strong [word-spacing:0.2em]'>
+					{title}
+				</span>
 				{description && <span className='block text-sm text-(--color-fg-muted)'>{description}</span>}
-				<span className='mt-5 inline-flex items-center gap-2 text-[12px] font-semibold'>
+				<span className={cn('mt-5', ctaClassName)}>
 					{cta}
 					{!disabled && arrow}
 				</span>
@@ -108,10 +115,12 @@ export const LinkCard: FC<Props> = ({
 					/>
 				)}
 				<span className='min-w-0'>
-					<span className='block text-sm font-medium text-fg-strong'>{title}</span>
+					<span className='font-aeonik block text-[0.95rem] font-medium tracking-wide uppercase text-fg-strong [word-spacing:0.2em]'>
+						{title}
+					</span>
 					{description && <span className='mt-1 block text-sm text-(--color-fg-muted)'>{description}</span>}
 				</span>
-				<span className='ml-auto inline-flex shrink-0 items-center gap-2 text-[12px] font-semibold'>
+				<span className={cn('ml-auto shrink-0', ctaClassName)}>
 					{cta}
 					{!disabled && arrow}
 				</span>

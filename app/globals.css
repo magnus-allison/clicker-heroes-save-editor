@@ -21,6 +21,8 @@
 @theme {
 	--font-mono: var(--font-ibm-plex-mono), 'Consolas', 'Monaco', 'Courier New', monospace;
 	--font-sans: var(--font-mono);
+	/* Display face for card headings — `font-aeonik`. */
+	--font-aeonik: var(--font-aeonik-local), 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 	--color-background: light-dark(#fafafa, #020202);
 

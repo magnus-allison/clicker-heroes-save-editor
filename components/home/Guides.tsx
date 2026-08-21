@@ -1,23 +1,28 @@
 import type { FC } from 'react';
 
-import { BookOpenTextIcon, CoinsIcon } from 'lucide-react';
+import { BookOpenTextIcon, CoinsIcon, MessageCirclePlus } from 'lucide-react';
 
 import { LinkCard, type LinkCardItem } from '@/components/ui/LinkCard';
 
 const guides: LinkCardItem[] = [
 	{
-		title: 'new player guide',
+		title: 'New Player Guide',
 		href: '/guides/new-player-guide',
 		description: 'Fresh save to first transcension: ascending, ancients, rubies, mercs, and clans.',
 		icon: BookOpenTextIcon
 	},
 	{
-		title: 'gilding chart',
+		title: 'Gilding Chart',
 		href: '/guides/gilding-chart',
 		description: 'Which hero to gild at every gold threshold, from Samurai through to the Ace Scouts.',
 		icon: CoinsIcon,
-		tag: 'New',
-		tagIsShining: true
+		tag: 'New'
+	},
+	{
+		title: 'Request New Guide',
+		href: '/guides/request-guide',
+		description: 'Suggest a new guide you would like to see.',
+		icon: MessageCirclePlus
 	}
 ];
 
@@ -25,7 +30,7 @@ export const Guides: FC = () => (
 	<>
 		{guides.map((guide) => (
 			<LinkCard
-				cta='Read guide'
+				cta='Read'
 				description={guide.description}
 				href={guide.href}
 				icon={guide.icon}

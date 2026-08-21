@@ -33,7 +33,7 @@ export const SectionCard = ({ actions, children, className, defaultOpen, descrip
 					aria-hidden='true'
 					className='mt-0.5 h-3.5 w-3.5 shrink-0 text-(--color-fg-dim) transition-transform duration-200 ease-snap group-open:rotate-90 group-open:text-(--color-primary)'
 				/>
-				<h2 className='min-w-0 text-[13px] font-semibold text-(--color-fg) group-open:text-(--color-fg-strong)'>
+				<h2 className='font-aeonik min-w-0 text-[13px] font-medium text-(--color-fg) group-open:text-(--color-fg-strong) [word-spacing:0.12em]'>
 					{title}
 				</h2>
 				{actions ? (

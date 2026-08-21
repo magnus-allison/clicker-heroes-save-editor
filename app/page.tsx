@@ -39,20 +39,6 @@ const Page = () => (
 			</div>
 		</section>
 
-		<section aria-labelledby='feedback-heading' className='flex flex-col'>
-			<SectionHeading
-				description='Send general feedback, report issues, or request features and guides.'
-				icon={<MessageSquare aria-hidden='true' className='h-5 w-5' />}
-				title='Feedback'
-			/>
-			<LinkCard
-				cta='Open feedback page'
-				href='/feedback'
-				layout='horizontal'
-				title='Report bugs, request features, or suggest a guide'
-			/>
-		</section>
-
 		<section aria-labelledby='additional-info-heading' className='flex flex-col'>
 			<SectionHeading
 				description='Project source, support, and the official Clicker Heroes links.'

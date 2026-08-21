@@ -12,8 +12,23 @@ type ContactPayload = {
 	name?: string;
 	email?: string;
 	message?: string;
+	topic?: string;
 	website?: string; // honeypot
 };
+
+/**
+ * Allowlisted so the subject line can never be set from arbitrary user input.
+ * Anything unrecognised falls back to plain feedback.
+ */
+const TOPICS = {
+	feedback: { label: 'Feedback', lead: 'Clicker Heroes tools feedback from' },
+	'guide-request': { label: 'Guide Request', lead: 'Clicker Heroes guide request from' },
+	'tool-request': { label: 'Tool Request', lead: 'Clicker Heroes tool request from' }
+} as const;
+
+type Topic = keyof typeof TOPICS;
+
+const isTopic = (value: unknown): value is Topic => typeof value === 'string' && value in TOPICS;
 
 function sanitize(input: string) {
 	return input.replace(/\s+/g, ' ').trim();
@@ -32,6 +47,7 @@ async function captureSubmission(properties: {
 	has_name: boolean;
 	has_email: boolean;
 	message_length: number;
+	topic: Topic;
 }) {
 	try {
 		const posthog = getPostHogClient();
@@ -87,6 +103,7 @@ export async function POST(request: Request) {
 		const email = sanitize(typeof payload.email === 'string' ? payload.email : '');
 		const message = (typeof payload.message === 'string' ? payload.message : '').trim();
 		const senderName = name || 'Anonymous';
+		const topic: Topic = isTopic(payload.topic) ? payload.topic : 'feedback';
 
 		if (!message) {
 			return NextResponse.json({ error: 'Message is required.' }, { status: 400 });
@@ -115,8 +132,8 @@ export async function POST(request: Request) {
 				from,
 				to: process.env.EMAIL_TO,
 				...(email ? { replyTo: email } : {}),
-				subject: `[Feedback] ${senderName}`,
-				text: `Clicker Heroes tools feedback from: ${senderName}\nEmail: ${email || 'Not provided'}\n\n${message}`
+				subject: `[${TOPICS[topic].label}] ${senderName}`,
+				text: `${TOPICS[topic].lead}: ${senderName}\nEmail: ${email || 'Not provided'}\n\n${message}`
 			});
 		} catch (sendError) {
 			// The SDK throws rather than returning an error for transport failures.
@@ -154,7 +171,8 @@ export async function POST(request: Request) {
 		await captureSubmission({
 			has_email: Boolean(email),
 			has_name: Boolean(name),
-			message_length: message.length
+			message_length: message.length,
+			topic
 		});
 
 		return NextResponse.json({ ok: true });

@@ -8,10 +8,20 @@ import { SectionCard } from '@/components/ui/SectionCard';
 import { TextInput } from '@/components/ui/TextInput';
 import { useToast } from '@/components/ui/ToastProvider';
 
+/** Decides the subject line the server puts on the email. */
+export type FeedbackTopic = 'feedback' | 'guide-request' | 'tool-request';
+
 type Props = {
 	defaultOpen?: boolean;
 	title?: string;
 	description?: string;
+	/** Routes the message to the right subject line. Defaults to general feedback. */
+	topic?: FeedbackTopic;
+	messageLabel?: string;
+	messagePlaceholder?: string;
+	submitLabel?: string;
+	emptyMessageError?: string;
+	successMessage?: string;
 };
 
 const defaultDescription = 'Send your suggestions and improvements to make the save editor better!';
@@ -22,7 +32,13 @@ const isLikelyEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value
 export const FeedbackSection = ({
 	defaultOpen,
 	description = defaultDescription,
-	title = 'Feedback'
+	emptyMessageError = 'Enter a message before sending feedback.',
+	messageLabel = 'Your feedback message',
+	messagePlaceholder = 'Write your feedback here...',
+	submitLabel = 'Submit',
+	successMessage = 'Feedback sent.',
+	title = 'Feedback',
+	topic = 'feedback'
 }: Props) => {
 	const { showToast } = useToast();
 	const [name, setName] = useState('');
@@ -37,7 +53,7 @@ export const FeedbackSection = ({
 		event.preventDefault();
 
 		if (!trimmedMessage) {
-			showToast('Enter a message before sending feedback.');
+			showToast(emptyMessageError);
 			return;
 		}
 
@@ -58,6 +74,7 @@ export const FeedbackSection = ({
 					email: trimmedEmail,
 					message: trimmedMessage,
 					name,
+					topic,
 					website
 				})
 			});
@@ -76,7 +93,7 @@ export const FeedbackSection = ({
 			setEmail('');
 			setMessage('');
 			setWebsite('');
-			showToast('Feedback sent.');
+			showToast(successMessage);
 		} catch {
 			showToast('Unable to send feedback right now.');
 		} finally {
@@ -114,19 +131,19 @@ export const FeedbackSection = ({
 					value={email}
 				/>
 				<TextInput
-					ariaLabel='Your feedback message'
+					ariaLabel={messageLabel}
 					className='min-h-28'
 					disabled={isSubmitting}
 					multiline
 					onValueChange={setMessage}
-					placeholder='Write your feedback here...'
+					placeholder={messagePlaceholder}
 					resizable
 					rows={5}
 					value={message}
 				/>
 				<div className='flex justify-start'>
 					<Button disabled={isSubmitting || !trimmedMessage} type='submit' variant='primary'>
-						{isSubmitting ? 'Sending...' : 'Submit'}
+						{isSubmitting ? 'Sending...' : submitLabel}
 					</Button>
 				</div>
 			</form>

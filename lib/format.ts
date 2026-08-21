@@ -14,6 +14,9 @@ const oneDecimal = new Intl.NumberFormat('en-US', {
 
 const MINUTES_PER_DAY = 1440;
 const MINUTES_PER_HOUR = 60;
+const SECONDS_PER_HOUR = 3600;
+const SECONDS_PER_DAY = 86400;
+const SECONDS_PER_YEAR = 31557600;
 
 /** Coerce an unknown save value to a finite number, or `null` if impossible. */
 export function toFiniteNumber(value: unknown): number | null {
@@ -95,6 +98,31 @@ export function formatDurationSeconds(totalSeconds: number): string {
 	}
 
 	return formatDurationMinutes(totalSeconds / 60);
+}
+
+/**
+ * Deliberately *not* `formatDurationSeconds`: the calculators model spans that
+ * can be over in seconds or take millennia, so short runs keep clock notation
+ * (`hh:mm:ss`) and long runs need a years component. Only the thousands
+ * grouping is shared.
+ */
+export function formatLongDuration(durationSeconds: number): string {
+	const roundedSeconds = Math.max(0, Math.round(durationSeconds));
+
+	if (roundedSeconds < 72 * SECONDS_PER_HOUR) {
+		const hours = Math.floor(roundedSeconds / SECONDS_PER_HOUR);
+		const minutes = Math.floor((roundedSeconds - hours * SECONDS_PER_HOUR) / 60);
+		const seconds = roundedSeconds - hours * SECONDS_PER_HOUR - minutes * 60;
+
+		return [hours, minutes, seconds].map((value) => String(value).padStart(2, '0')).join(':');
+	}
+
+	const years = Math.floor(roundedSeconds / SECONDS_PER_YEAR);
+	const secondsThisYear = roundedSeconds - years * SECONDS_PER_YEAR;
+	const days = Math.floor(secondsThisYear / SECONDS_PER_DAY);
+	const hours = (secondsThisYear - days * SECONDS_PER_DAY) / SECONDS_PER_HOUR;
+
+	return `${years > 0 ? `${formatNumber(years)}y ` : ''}${formatNumber(days)}d ${hours.toFixed(2)}h`;
 }
 
 /**

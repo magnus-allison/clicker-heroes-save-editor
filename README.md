@@ -18,16 +18,17 @@
 
 ## Features
 
-| Feature                    | Description                                                                                |
-| -------------------------- | ------------------------------------------------------------------------------------------ |
-| **Decode & Encode**        | Instantly decode any Clicker Heroes save string and re-encode after edits.                 |
-| **Edit Gold & Rubies**     | Modify currency values directly — no third-party software needed.                          |
-| **Hero Management**        | Inspect and edit hero levels, unlocks, and upgrade states.                                 |
-| **Ascension & Hero Souls** | View and change ascension counts, Hero Souls, Ancients, and Outsiders.                     |
-| **Achievements & Profile** | Toggle or edit achievement flags and player profile entries.                               |
-| **Ancients Calculator**    | Optimal ancient levels, level-up costs, and an ancient soul planner from an imported save. |
-| **Save JSON**              | Developer tool to decode a save into raw JSON, edit it by hand, and re-encode it.          |
-| **100% Client-Side**       | Runs entirely in your browser — nothing is sent to any server.                             |
+| Feature                    | Description                                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Decode & Encode**        | Instantly decode any Clicker Heroes save string and re-encode after edits.                              |
+| **Edit Gold & Rubies**     | Modify currency values directly — no third-party software needed.                                       |
+| **Hero Management**        | Inspect and edit hero levels, unlocks, and upgrade states.                                              |
+| **Ascension & Hero Souls** | View and change ascension counts, Hero Souls, Ancients, and Outsiders.                                  |
+| **Achievements & Profile** | Toggle or edit achievement flags and player profile entries.                                            |
+| **Ancients Calculator**    | Optimal ancient levels, level-up costs, and an ancient soul planner from an imported save.              |
+| **Outsiders Calculator**   | Optimal outsider levels, end-of-transcension estimates, zone breakpoints, and a transcension simulator. |
+| **Save JSON**              | Developer tool to decode a save into raw JSON, edit it by hand, and re-encode it.                       |
+| **100% Client-Side**       | Runs entirely in your browser — nothing is sent to any server.                                          |
 
 ## Run Locally
 
@@ -56,6 +57,7 @@ Then open the local URL printed by Next.js.
 - [Clicker Heroes Wiki (Fandom)](https://clickerheroes.fandom.com/wiki/Clicker_Heroes_Wiki)
 - [Clicker Heroes Subreddit](https://www.reddit.com/r/ClickerHeroes/)
 - [pako (zlib for JS)](https://github.com/nodeca/pako) — used for save decompression
+- [Clicker Heroes Outsiders](https://github.com/Driej/Clicker-Heroes-Outsiders) — the outsiders calculator is a port of this (Unlicense)
 
 ## Keywords
 

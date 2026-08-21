@@ -1,7 +1,7 @@
 // Relative path with an explicit extension rather than `@/lib/format`: the
 // `@/*` alias is a bundler/tsconfig convenience and does not resolve when this
 // module is loaded by plain Node (`node --test`).
-import { formatNumber, toFiniteNumber } from './format.ts';
+import { formatLongDuration, toFiniteNumber } from './format.ts';
 
 export type InstakillCalculatorInputs = {
 	kumawakamaruLevel: number;
@@ -43,8 +43,6 @@ const zoneBandSize = 500;
 const monstersPerZoneStep = 0.1;
 const nonBossZonesPerBand = 400;
 const framesPerBand = 500;
-const secondsPerYear = 31557600;
-const secondsPerDay = 86400;
 
 export function normalizeInstakillInputs(
 	inputs: Partial<InstakillCalculatorInputs>
@@ -86,7 +84,7 @@ export function calculateInstakill(rawInputs: Partial<InstakillCalculatorInputs>
 		zonesTotal,
 		framesTotal,
 		durationSeconds,
-		durationLabel: formatInstakillDuration(durationSeconds),
+		durationLabel: formatLongDuration(durationSeconds),
 		zonesPerHour
 	};
 }
@@ -106,29 +104,11 @@ export function calculateMonstersPerZoneReduction({
 }
 
 /**
- * Deliberately *not* `formatDurationSeconds` from `lib/format`: a route can be
- * over in seconds or take millennia, so short runs keep clock notation
- * (`hh:mm:ss`) and long runs need a years component. Only the thousands
- * grouping is shared.
+ * Route durations are formatted by the shared long-duration formatter, which
+ * this calculator used to own. Re-exported under the old name so callers and
+ * tests keep working.
  */
-export function formatInstakillDuration(durationSeconds: number) {
-	const roundedSeconds = Math.max(0, Math.round(durationSeconds));
-
-	if (roundedSeconds < 72 * 3600) {
-		const hours = Math.floor(roundedSeconds / 3600);
-		const minutes = Math.floor((roundedSeconds - hours * 3600) / 60);
-		const seconds = roundedSeconds - hours * 3600 - minutes * 60;
-
-		return [hours, minutes, seconds].map((value) => String(value).padStart(2, '0')).join(':');
-	}
-
-	const years = Math.floor(roundedSeconds / secondsPerYear);
-	const secondsThisYear = roundedSeconds - years * secondsPerYear;
-	const days = Math.floor(secondsThisYear / secondsPerDay);
-	const hours = (secondsThisYear - days * secondsPerDay) / 3600;
-
-	return `${years > 0 ? `${formatNumber(years)}y ` : ''}${formatNumber(days)}d ${hours.toFixed(2)}h`;
-}
+export const formatInstakillDuration = formatLongDuration;
 
 function calculateRawMonstersPerZone(zone: number, mpzReduction: number) {
 	return Math.floor(zone / zoneBandSize) / 10 + 10 - mpzReduction;

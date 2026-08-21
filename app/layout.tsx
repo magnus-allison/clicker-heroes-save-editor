@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Suspense } from 'react';
 import { IBM_Plex_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 
 import { PostHogPageTracker } from '@/components/analytics/PostHogPageTracker';
@@ -15,6 +16,23 @@ const ibmPlexMono = IBM_Plex_Mono({
 	variable: '--font-ibm-plex-mono',
 	subsets: ['latin'],
 	weight: ['400', '500', '600']
+});
+
+/*
+ * Aeonik is a display face used for card headings only, so just the three
+ * weights those headings reach for are loaded.
+ */
+const aeonik = localFont({
+	variable: '--font-aeonik-local',
+	display: 'swap',
+	src: [
+		{ path: '../public/fonts/aeonik-font/Aeonik-Regular.ttf', weight: '400', style: 'normal' },
+		{ path: '../public/fonts/aeonik-font/Aeonik-RegularItalic.ttf', weight: '400', style: 'italic' },
+		{ path: '../public/fonts/aeonik-font/Aeonik-Medium.ttf', weight: '500', style: 'normal' },
+		{ path: '../public/fonts/aeonik-font/Aeonik-MediumItalic.ttf', weight: '500', style: 'italic' },
+		{ path: '../public/fonts/aeonik-font/Aeonik-Bold.ttf', weight: '700', style: 'normal' },
+		{ path: '../public/fonts/aeonik-font/Aeonik-BoldItalic.ttf', weight: '700', style: 'italic' }
+	]
 });
 
 export const metadata: Metadata = {
@@ -112,7 +130,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html
-			className={`${ibmPlexMono.variable} h-full antialiased`}
+			className={`${ibmPlexMono.variable} ${aeonik.variable} h-full antialiased`}
 			data-scroll-behavior='smooth'
 			lang='en'
 			suppressHydrationWarning

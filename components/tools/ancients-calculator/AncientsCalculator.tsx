@@ -5,16 +5,9 @@ import { ArrowLeft, RotateCcw } from 'lucide-react';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { SectionHeading } from '@/components/home/SectionHeading';
-import {
-	AncientGoalRow,
-	EmptyTableRow,
-	OutsiderLevelRow,
-	PlannerRow,
-	SettingRow,
-	StatRow,
-	SummaryStat
-} from '@/components/tools/ancients-calculator/rows';
+import { AncientGoalRow, OutsiderLevelRow, PlannerRow } from '@/components/tools/ancients-calculator/rows';
 import { Button } from '@/components/ui/Button';
+import { EmptyTableRow, SettingRow, StatRow, SummaryStat } from '@/components/ui/CalculatorRows';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Dropdown } from '@/components/ui/Dropdown';
 import {

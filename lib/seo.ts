@@ -44,11 +44,13 @@ export const saveEditorFaqs = [
 export const gildingChartFaqs = [
 	{
 		question: 'Do I need to re-gild on every row of the gilding chart?',
-		answer: 'No. Re-gilding costs Hero Souls, and while you are instakilling, extra damage does nothing. Skip rows freely and only re-gild when monsters start surviving your hits. The chart maps what is optimal, not a checklist you have to complete.'
+		answer:
+			'No. Re-gilding costs Hero Souls, and while you are instakilling, extra damage does nothing. Skip rows freely and only re-gild when monsters start surviving your hits. The chart maps what is optimal, not a checklist you have to complete.'
 	},
 	{
 		question: 'Why does the same hero appear more than once in the gilding chart?',
-		answer: 'Heroes gain 10x damage multipliers at level milestones, and leveling costs scale as you go. So Wepwawet at 5,000 can fall behind Gog, then overtake it again at 6,000 once Wep picks up its next multiplier. Between e383 and e500 the two leapfrog every 500 levels or so.'
+		answer:
+			'Heroes gain 10x damage multipliers at level milestones, and leveling costs scale as you go. So Wepwawet at 5,000 can fall behind Gog, then overtake it again at 6,000 once Wep picks up its next multiplier. Between e383 and e500 the two leapfrog every 500 levels or so.'
 	},
 	{
 		question: 'Should I gild Dread Knight in Clicker Heroes?',
@@ -56,27 +58,33 @@ export const gildingChartFaqs = [
 	},
 	{
 		question: 'Why do Wepwawet and Gog stop alternating after e442?',
-		answer: 'Gog receives no further 10x multipliers after level 8,000, so it cannot leapfrog Wepwawet again. Stay on Wepwawet from e442 until Tsuchi at e500.'
+		answer:
+			'Gog receives no further 10x multipliers after level 8,000, so it cannot leapfrog Wepwawet again. Stay on Wepwawet from e442 until Tsuchi at e500.'
 	},
 	{
 		question: 'Why is Tsuchi at level 1 better than Wepwawet at level 9,000?',
-		answer: 'Hiring Tsuchi costs less than buying 25 more levels of Wepwawet at that point, and its base damage is on a different tier entirely. The same pattern repeats at The Maw, which at level 1 deals roughly 1e6750x the damage of Cadu at 680,625.'
+		answer:
+			'Hiring Tsuchi costs less than buying 25 more levels of Wepwawet at that point, and its base damage is on a different tier entirely. The same pattern repeats at The Maw, which at level 1 deals roughly 1e6750x the damage of Cadu at 680,625.'
 	},
 	{
 		question: 'Why do Cadu and Ceus alternate in the gilding chart?',
-		answer: 'The Tomb Guardians buff each other: Cadu unlocks an upgrade for Ceus, Ceus unlocks one for Cadu, and so on. You push whichever one is next in line. Either is a fine starting point at e25,500, and after the last Ceus upgrade at 588,000 you stay on Cadu until The Maw.'
+		answer:
+			'The Tomb Guardians buff each other: Cadu unlocks an upgrade for Ceus, Ceus unlocks one for Cadu, and so on. You push whichever one is next in line. Either is a fine starting point at e25,500, and after the last Ceus upgrade at 588,000 you stay on Cadu until The Maw.'
 	},
 	{
 		question: 'Why does Yachiyl start at level 157,500 instead of level 1?',
-		answer: 'Yachiyl only overtakes The Maw once it reaches its first upgrade at level 157,500. Rose has the same problem against Yachiyl and needs level 9,700 first.'
+		answer:
+			'Yachiyl only overtakes The Maw once it reaches its first upgrade at level 157,500. Rose has the same problem against Yachiyl and needs level 9,700 first.'
 	},
 	{
 		question: 'Why is Dorothy skipped so often in the Ace Scouts rotation?',
-		answer: 'Several of her upgrade tiers cost more gold than the equivalent Rose upgrade while dealing less damage, so Dorothy 1, 2 and 4 are worse buys than simply pushing Rose. She still appears three times in the rotation, so follow the rows as listed rather than writing her off.'
+		answer:
+			'Several of her upgrade tiers cost more gold than the equivalent Rose upgrade while dealing less damage, so Dorothy 1, 2 and 4 are worse buys than simply pushing Rose. She still appears three times in the rotation, so follow the rows as listed rather than writing her off.'
 	},
 	{
 		question: 'How many Ancient Souls do I need to reach a hero in the gilding chart?',
-		answer: 'The Ancient Souls column is a rough guide through Xavira at about 6,000. Past that it is not meaningfully tabulated, since progression depends heavily on your outsider allocation and transcension count.'
+		answer:
+			'The Ancient Souls column is a rough guide through Xavira at about 6,000. Past that it is not meaningfully tabulated, since progression depends heavily on your outsider allocation and transcension count.'
 	}
 ] as const;
 
@@ -186,6 +194,34 @@ export const seoPages = {
 			'Support idle, hybrid, and active builds with an adjustable hybrid ratio',
 			'Show hero soul cost per ancient and souls left over',
 			'Plan the hero souls needed for the next ancient souls'
+		]
+	},
+	outsidersCalculator: {
+		path: '/tools/outsiders-calculator',
+		title: 'Outsiders Calculator',
+		metaTitle: 'Clicker Heroes | Outsiders Calculator',
+		description:
+			'Free Clicker Heroes outsiders calculator. Import a save to get optimal Borb, Phandoryss, Ponyboy and Chor’gorloth levels, end-of-transcension estimates, zone breakpoints, and a transcension simulator.',
+		keywords: [
+			'clicker heroes outsiders calculator',
+			'clicker heroes outsider levels',
+			'clicker heroes borb calculator',
+			'clicker heroes phandoryss',
+			'clicker heroes ponyboy',
+			'clicker heroes chorgorloth',
+			'clicker heroes ancient souls calculator',
+			'clicker heroes transcension simulator'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.85,
+		schemaType: 'WebApplication',
+		applicationName: 'Clicker Heroes Outsiders Calculator',
+		featureList: [
+			'Calculate optimal outsider levels from an imported save',
+			'Estimate the highest zone, hero souls, and ancient souls a transcension ends on',
+			'Show zone breakpoints and buffed stats at the highest zone',
+			'Project every transcension between now and the end of the game',
+			'Write the recommended outsider levels back into the save'
 		]
 	},
 	transcensionViewer: {
@@ -346,6 +382,38 @@ export const seoPages = {
 		schemaType: 'Article',
 		datePublished: '2026-08-07',
 		dateModified: '2026-08-07'
+	},
+	requestTool: {
+		path: '/tools/request-tool',
+		title: 'Request New Tool',
+		metaTitle: 'Clicker Heroes | Request a New Tool',
+		description:
+			'Suggest a new Clicker Heroes tool or calculator. Describe the tool you want, what it should work out, and how you would use it.',
+		keywords: [
+			'clicker heroes tool request',
+			'clicker heroes new tool',
+			'clicker heroes calculator request',
+			'clicker heroes tool suggestion'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.5,
+		schemaType: 'ContactPage'
+	},
+	requestGuide: {
+		path: '/guides/request-guide',
+		title: 'Request New Guide',
+		metaTitle: 'Clicker Heroes | Request a New Guide',
+		description:
+			'Suggest a new Clicker Heroes guide. Tell us the topic you are stuck on and what an ideal guide would cover.',
+		keywords: [
+			'clicker heroes guide request',
+			'clicker heroes new guide',
+			'clicker heroes guide suggestion',
+			'clicker heroes help'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.5,
+		schemaType: 'ContactPage'
 	},
 	feedback: {
 		path: '/feedback',
