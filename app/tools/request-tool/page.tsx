@@ -21,7 +21,7 @@ export default function RequestToolPage() {
 				back='/'
 				description=''
 				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Request New Tool'
+				title='Tools · Request a New Tool'
 			/>
 			<PanelSection>
 				<FeedbackSection

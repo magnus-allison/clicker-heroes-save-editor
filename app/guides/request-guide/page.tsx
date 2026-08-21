@@ -21,7 +21,7 @@ export default function RequestGuidePage() {
 				back='/'
 				description=''
 				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Request New Guide'
+				title='Guides · Request a New Guide'
 			/>
 			<PanelSection>
 				<FeedbackSection
