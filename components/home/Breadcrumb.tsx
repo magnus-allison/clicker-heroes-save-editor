@@ -76,3 +76,9 @@ export const homeCrumb: Crumb = {
 	icon: <LayoutPanelTop aria-hidden='true' className='h-5 w-5 mt-0.5' />,
 	srLabel: 'Home'
 };
+
+// Neither section has a page of its own, so the middle crumb points at the
+// matching section on the home page rather than a `/tools` or `/guides` route.
+export const toolsCrumb: Crumb = { label: 'Tools', href: '/#tools' };
+
+export const guidesCrumb: Crumb = { label: 'Guides', href: '/#guides' };

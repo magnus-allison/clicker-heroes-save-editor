@@ -17,7 +17,7 @@ const Page = () => (
 	<>
 		<script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
-		<section aria-labelledby='tools-heading' className='flex flex-col'>
+		<section aria-labelledby='tools-heading' className='flex flex-col scroll-mt-8' id='tools'>
 			<SectionHeading
 				description='Pick the utility you need and keep everything local in your browser.'
 				icon={<AnvilIcon aria-hidden='true' className='h-5 w-5' />}
@@ -28,7 +28,7 @@ const Page = () => (
 			</div>
 		</section>
 
-		<section aria-labelledby='guides-heading' className='flex flex-col'>
+		<section aria-labelledby='guides-heading' className='flex flex-col scroll-mt-8' id='guides'>
 			<SectionHeading
 				description='Short walkthroughs for common save editing and route planning tasks.'
 				icon={<BookOpen aria-hidden='true' className='h-5 w-5' />}

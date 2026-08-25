@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { FeedbackSection } from '@/components/editor/sections/FeedbackSection';
-import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
+import { Breadcrumb, homeCrumb, toolsCrumb } from '@/components/home/Breadcrumb';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
 
@@ -16,7 +16,7 @@ export default function RequestToolPage() {
 				type='application/ld+json'
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
 			/>
-			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Request a New Tool' }]} />
+			<Breadcrumb items={[homeCrumb, toolsCrumb, { label: 'Request a New Tool' }]} />
 			<PanelSection>
 				<FeedbackSection
 					defaultOpen

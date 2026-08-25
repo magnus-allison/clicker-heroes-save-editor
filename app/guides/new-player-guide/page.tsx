@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { NewPlayerGuide } from '@/components/guides/new-player-guide/NewPlayerGuide';
-import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
+import { Breadcrumb, guidesCrumb, homeCrumb } from '@/components/home/Breadcrumb';
 import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('newPlayerGuide');
@@ -15,7 +15,7 @@ export default function NewPlayerGuidePage() {
 				type='application/ld+json'
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
 			/>
-			<Breadcrumb items={[homeCrumb, { label: 'Guides' }, { label: 'New Player Guide' }]} />
+			<Breadcrumb items={[homeCrumb, guidesCrumb, { label: 'New Player Guide' }]} />
 			<NewPlayerGuide />
 		</>
 	);

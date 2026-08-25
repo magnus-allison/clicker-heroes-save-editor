@@ -50,7 +50,12 @@ export const SectionHeading: FC<Props> = ({ icon, title, back, backLabel }) => (
 			) : (
 				<span className='flex h-10 w-10 shrink-0 items-center justify-center text-fg-strong'>{icon}</span>
 			)}
-			<h2 className='text-2xl font-medium leading-tight text-fg-strong font-aeonik [word-spacing:0.2em]'>
+			{/* The id is what each section's `aria-labelledby` points at, so it only
+			    exists for the plain-string headings that name a section. */}
+			<h2
+				className='text-2xl font-medium leading-tight text-fg-strong font-aeonik [word-spacing:0.2em]'
+				id={typeof title === 'string' ? `${slugify(title)}-heading` : undefined}
+			>
 				{title}
 			</h2>
 		</div>

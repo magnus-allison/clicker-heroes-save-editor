@@ -5,7 +5,7 @@ import { useState } from 'react';
 import posthog from 'posthog-js';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
+import { Breadcrumb, homeCrumb, toolsCrumb } from '@/components/home/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import {
 	EditorTable,
@@ -128,7 +128,7 @@ export const RemoveClanDataEditor = () => {
 
 	return (
 		<>
-			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Remove Clan Data' }]} />
+			<Breadcrumb items={[homeCrumb, toolsCrumb, { label: 'Remove Clan Data' }]} />
 
 			<SaveDataPanel hasEditStep />
 

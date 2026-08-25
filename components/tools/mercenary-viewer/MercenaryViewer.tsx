@@ -3,7 +3,7 @@
 import { useMemo, type ReactNode } from 'react';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
+import { Breadcrumb, homeCrumb, toolsCrumb } from '@/components/home/Breadcrumb';
 import {
 	EditorTable,
 	EditorTableBody,
@@ -171,7 +171,7 @@ export const MercenaryViewer = () => {
 
 	return (
 		<>
-			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Mercenary Viewer' }]} />
+			<Breadcrumb items={[homeCrumb, toolsCrumb, { label: 'Mercenary Viewer' }]} />
 
 			<SaveDataPanel examples={mercenaryExamples} />
 

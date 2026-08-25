@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { RotateCcw } from 'lucide-react';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
+import { Breadcrumb, homeCrumb, toolsCrumb } from '@/components/home/Breadcrumb';
 import { AncientGoalRow, OutsiderLevelRow, PlannerRow } from '@/components/tools/ancients-calculator/rows';
 import { Button } from '@/components/ui/Button';
 import { EmptyTableRow, SettingRow, StatRow, SummaryStat } from '@/components/ui/CalculatorRows';
@@ -67,7 +67,7 @@ export const AncientsCalculator = () => {
 
 	return (
 		<>
-			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Ancients Calculator' }]} />
+			<Breadcrumb items={[homeCrumb, toolsCrumb, { label: 'Ancients Calculator' }]} />
 
 			<SaveDataPanel examples={examples} />
 
