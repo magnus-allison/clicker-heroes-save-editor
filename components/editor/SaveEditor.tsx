@@ -20,8 +20,7 @@ import { PanelSection } from '../ui/PanelSection';
 import { StepTitle } from '../ui/StepTitle';
 import { useSaveFlowStep } from '@/lib/save-flow';
 import { useSaveStore } from '@/lib/save-store';
-import { ArrowLeft } from 'lucide-react';
-import { SectionHeading } from '../home/SectionHeading';
+import { Breadcrumb, homeCrumb } from '../home/Breadcrumb';
 import { cn } from '@/lib/cn';
 import { Pill } from '../ui/Pill';
 
@@ -39,12 +38,7 @@ export const SaveEditor = () => {
 
 	return (
 		<>
-			<SectionHeading
-				back='/'
-				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Tools · Clicker Heroes Save Editor'
-			/>
+			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Save Editor' }]} />
 
 			<SaveDataPanel hasEditStep onLoadSuccess={scrollToStep2} />
 

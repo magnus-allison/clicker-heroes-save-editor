@@ -1,10 +1,9 @@
 'use client';
 
 import { useMemo, type ReactNode } from 'react';
-import { ArrowLeft } from 'lucide-react';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { SectionHeading } from '@/components/home/SectionHeading';
+import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
 import {
 	EditorTable,
 	EditorTableBody,
@@ -172,12 +171,7 @@ export const MercenaryViewer = () => {
 
 	return (
 		<>
-			<SectionHeading
-				back='/'
-				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Tools · Clicker Heroes Mercenary Viewer'
-			/>
+			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Mercenary Viewer' }]} />
 
 			<SaveDataPanel examples={mercenaryExamples} />
 

@@ -4,7 +4,7 @@ import { AnnouncementBanner } from '@/components/home/AnnouncementBanner';
 export const PageBanner: FC = () => {
 	return (
 		<div className='flex flex-col gap-2'>
-			<section className='grid gap-6 rounded-panel bg-card-background p-5 shadow-card md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:p-7'>
+			<section className='grid gap-6 rounded-3xl bg-card-background p-3 shadow-card md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:p-6'>
 				<div className='flex h-23 w-23 items-center justify-center'>
 					<img
 						alt='Clicker Heroes'
@@ -18,11 +18,11 @@ export const PageBanner: FC = () => {
 						Clicker Heroes - Free Tools & Calculators
 					</p>
 					{/* Aeonik's space glyph is narrow; the word-spacing nudge keeps uppercase titles from closing up. */}
-					<h1 className='font-aeonik -ml-0.5 text-[2rem] tracking-wider font-bold uppercase text-fg-heading dark:text-fg-strong'>
+					<h1 className='font-aeonik -ml-[0.1rem] text-[2rem] tracking-wider font-bold uppercase text-fg-heading dark:text-fg-strong'>
 						clickerheroes.dev
 					</h1>
 					<p className='mt-1 max-w-3xl text-sm text-fg-muted'>
-						Free browser-based utilities for editing save data, planning faster runs, guides and more.
+						Free browser-based tools for editing saves, planning runs, and more.
 					</p>
 				</div>
 			</section>

@@ -3,10 +3,9 @@
 import { useState } from 'react';
 
 import posthog from 'posthog-js';
-import { ArrowLeft } from 'lucide-react';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { SectionHeading } from '@/components/home/SectionHeading';
+import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import {
 	EditorTable,
@@ -129,12 +128,7 @@ export const RemoveClanDataEditor = () => {
 
 	return (
 		<>
-			<SectionHeading
-				back='/'
-				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Tools · Remove Clan Data'
-			/>
+			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Remove Clan Data' }]} />
 
 			<SaveDataPanel hasEditStep />
 

@@ -7,12 +7,12 @@ ignoredBuiltDependencies:
   - unrs-resolver
 minimumReleaseAgeExclude:
   - '@vercel/firewall@1.2.2'
-  - posthog-js@1.407.5 || 1.413.3 || 1.415.0 || 1.415.1 || 1.418.4 || 1.418.10
-  - resend@6.18.1
-  - '@posthog/core@1.46.9 || 1.47.0 || 1.48.4 || 1.48.8'
-  - '@posthog/types@1.402.2 || 1.405.1'
-  - lucide-react@1.29.0 || 1.31.0 || 1.33.0
-  - posthog-node@5.48.1 || 5.50.0
+  - posthog-js@1.407.5 || 1.413.3 || 1.415.0 || 1.415.1 || 1.418.4 || 1.418.10 || 1.418.16
+  - resend@6.18.1 || 6.22.1
+  - '@posthog/core@1.46.9 || 1.47.0 || 1.48.4 || 1.48.8 || 1.48.9 || 1.48.10'
+  - '@posthog/types@1.402.2 || 1.405.1 || 1.405.3'
+  - lucide-react@1.29.0 || 1.31.0 || 1.33.0 || 1.34.0
+  - posthog-node@5.48.1 || 5.50.0 || 5.51.1
   - '@next/env@16.3.2'
   - '@next/eslint-plugin-next@16.3.2'
   - '@next/swc-darwin-arm64@16.3.2'
@@ -25,3 +25,4 @@ minimumReleaseAgeExclude:
   - '@next/swc-win32-x64-msvc@16.3.2'
   - eslint-config-next@16.3.2
   - next@16.3.2
+  - '@posthog/browser-common@0.5.1'

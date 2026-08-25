@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
-import { ArrowLeft } from 'lucide-react';
 
 import { NewPlayerGuide } from '@/components/guides/new-player-guide/NewPlayerGuide';
-import { SectionHeading } from '@/components/home/SectionHeading';
+import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
 import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('newPlayerGuide');
@@ -16,12 +15,7 @@ export default function NewPlayerGuidePage() {
 				type='application/ld+json'
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
 			/>
-			<SectionHeading
-				back='/'
-				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Guides · New Player Guide'
-			/>
+			<Breadcrumb items={[homeCrumb, { label: 'Guides' }, { label: 'New Player Guide' }]} />
 			<NewPlayerGuide />
 		</>
 	);

@@ -3,10 +3,10 @@
 import { useMemo, useState } from 'react';
 
 import posthog from 'posthog-js';
-import { ArrowLeft, RotateCcw } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { SectionHeading } from '@/components/home/SectionHeading';
+import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
 import { OutsiderGoalRow, TranscensionTableRow } from '@/components/tools/outsiders-calculator/rows';
 import { Button } from '@/components/ui/Button';
 import { EmptyTableRow, SettingRow, StatRow, SummaryStat } from '@/components/ui/CalculatorRows';
@@ -87,12 +87,7 @@ export const OutsidersCalculator = () => {
 
 	return (
 		<>
-			<SectionHeading
-				back='/'
-				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Tools · Clicker Heroes Outsiders Calculator'
-			/>
+			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Outsiders Calculator' }]} />
 
 			<SaveDataPanel examples={examples} hasEditStep />
 

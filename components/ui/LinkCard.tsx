@@ -15,6 +15,7 @@ export type LinkCardItem = {
 	icon: LucideIcon;
 	tag?: string;
 	tagIsShining?: boolean;
+	isShining?: boolean;
 	comingSoon?: boolean;
 };
 
@@ -32,6 +33,8 @@ type Props = {
 	tag?: string;
 	/** Gives the tag pill the gold spinning border. */
 	tagIsShining?: boolean;
+	/** Gives the card a slow grey shimmer travelling its edge, plus a faint glow. */
+	isShining?: boolean;
 	/** Footer text. Omit on horizontal rows to show the arrow alone. */
 	cta?: string;
 	/** Opens in a new tab and swaps the chevron for the outbound arrow. */
@@ -61,6 +64,7 @@ export const LinkCard: FC<Props> = ({
 	icon: Icon,
 	iconSrc,
 	invertIcon,
+	isShining = false,
 	layout = 'vertical',
 	tag,
 	tagIsShining = false,
@@ -108,7 +112,7 @@ export const LinkCard: FC<Props> = ({
 				{iconSrc && (
 					<EditorImage
 						alt={`${title} icon`}
-						className='h-11 w-11 shrink-0 object-contain'
+						className='h-10 w-10 shrink-0 object-contain'
 						size={44}
 						src={iconSrc}
 						style={invertIcon === false ? undefined : { filter: 'var(--color-icon-filter)' }}
@@ -128,8 +132,11 @@ export const LinkCard: FC<Props> = ({
 		);
 
 	const className = cn(
-		`group rounded-card bg-card-background p-5 shadow-card`,
+		`group rounded-2xl bg-card-background p-5 transition-shadow duration-300`,
 		layoutClassName[layout],
+		// The rim replaces `shadow-card` rather than joining it: the ring paints
+		// outside the border box and the rim inside, so both together read as 2px.
+		isShining ? 'gradient-spin-border' : 'shadow-card',
 		!disabled && interactiveClassName
 	);
 

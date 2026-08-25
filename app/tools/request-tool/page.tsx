@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
-import { ArrowLeft } from 'lucide-react';
 
 import { FeedbackSection } from '@/components/editor/sections/FeedbackSection';
-import { SectionHeading } from '@/components/home/SectionHeading';
+import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
 
@@ -17,12 +16,7 @@ export default function RequestToolPage() {
 				type='application/ld+json'
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
 			/>
-			<SectionHeading
-				back='/'
-				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Tools · Request a New Tool'
-			/>
+			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Request a New Tool' }]} />
 			<PanelSection>
 				<FeedbackSection
 					defaultOpen

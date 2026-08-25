@@ -1,9 +1,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ArrowLeft, Calculator, Gauge, RotateCcw, Timer, Zap } from 'lucide-react';
+import { Calculator, Gauge, RotateCcw, Timer, Zap } from 'lucide-react';
 
-import { SectionHeading } from '@/components/home/SectionHeading';
+import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import {
 	EditorTable,
@@ -59,12 +59,7 @@ export const InstakillCalculator = () => {
 
 	return (
 		<>
-			<SectionHeading
-				back='/'
-				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Tools · Clicker Heroes Instakill Calculator'
-			/>
+			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Instakill Calculator' }]} />
 
 			<PanelSection>
 				<SectionCard

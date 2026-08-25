@@ -5,7 +5,7 @@ import { type FC, type ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 
 interface Props {
-	title: string;
+	title: string | ReactNode;
 	/**
 	 * Accepted for the section headings on the home page. Not rendered yet —
 	 * kept optional so page-level headings don't have to pass `description=''`.
@@ -22,11 +22,6 @@ interface Props {
 	backLabel?: string;
 }
 
-/*
- * `slugify` keeps heading ids ASCII and selector-safe. Titles carry a middle dot
- * ('Tools · Save Editor'), which would otherwise land verbatim in the id and
- * break any `#fragment` link or `querySelector` aimed at it.
- */
 const slugify = (value: string) =>
 	value
 		.toLowerCase()
@@ -36,7 +31,7 @@ const slugify = (value: string) =>
 export const SectionHeading: FC<Props> = ({ icon, title, back, backLabel }) => (
 	// Page-level headings (with a back link) sit directly in <main className='gap-10'>, so the
 	// 40px flex gap is pulled back to keep the space below the heading at mb-7 (28px) everywhere.
-	<div className={cn('flex flex-col', back ? '-mb-3' : 'mb-7')}>
+	<div className={cn('flex flex-col', back ? '-mb-3' : 'mb-10')}>
 		<div className='flex flex-row items-center gap-2'>
 			{back ? (
 				/*
@@ -55,10 +50,7 @@ export const SectionHeading: FC<Props> = ({ icon, title, back, backLabel }) => (
 			) : (
 				<span className='flex h-10 w-10 shrink-0 items-center justify-center text-fg-strong'>{icon}</span>
 			)}
-			<h2
-				className='text-2xl font-medium leading-tight text-fg-strong font-aeonik [word-spacing:0.2em]'
-				id={`${slugify(title)}-heading`}
-			>
+			<h2 className='text-2xl font-medium leading-tight text-fg-strong font-aeonik [word-spacing:0.2em]'>
 				{title}
 			</h2>
 		</div>

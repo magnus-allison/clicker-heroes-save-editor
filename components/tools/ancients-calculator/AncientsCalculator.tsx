@@ -1,10 +1,10 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ArrowLeft, RotateCcw } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { SectionHeading } from '@/components/home/SectionHeading';
+import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
 import { AncientGoalRow, OutsiderLevelRow, PlannerRow } from '@/components/tools/ancients-calculator/rows';
 import { Button } from '@/components/ui/Button';
 import { EmptyTableRow, SettingRow, StatRow, SummaryStat } from '@/components/ui/CalculatorRows';
@@ -67,12 +67,7 @@ export const AncientsCalculator = () => {
 
 	return (
 		<>
-			<SectionHeading
-				back='/'
-				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Tools · Clicker Heroes Ancients Calculator'
-			/>
+			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Ancients Calculator' }]} />
 
 			<SaveDataPanel examples={examples} />
 

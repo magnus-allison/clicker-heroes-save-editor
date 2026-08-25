@@ -99,9 +99,9 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 					Step 1
 				</Pill>
 			</span>
-			<span className='mt-5 block text-[1.1rem] font-medium text-fg-strong mb-7 uppercase'>
-				Import your save data
-			</span>
+			<h3 className='font-aeonik mt-4.5 mb-6.5 block text-[1.24rem] tracking-wide font-medium uppercase text-fg-strong [word-spacing:0.2em]'>
+				Import save data
+			</h3>
 
 			{/* <StepTitle step={step} title='Import Your Save Data' trailing={<SaveHelpToolTip />} /> */}
 			<div className='flex flex-col gap-2.5'>

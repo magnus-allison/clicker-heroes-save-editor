@@ -63,9 +63,9 @@ export const SaveExportField = ({
 						Step 3
 					</Pill>
 				</span>
-				<span className='mt-5 block text-[1.1rem] font-medium text-fg-strong mb-7 uppercase'>
-					Export your save data
-				</span>
+				<h3 className='font-aeonik mt-4.5 mb-6.5 block text-[1.24rem] tracking-wide font-medium uppercase text-fg-strong [word-spacing:0.2em]'>
+					Export save data
+				</h3>
 
 				<div className='flex flex-1 flex-col gap-2.5'>
 					<div className='flex min-w-0 items-start gap-2'>

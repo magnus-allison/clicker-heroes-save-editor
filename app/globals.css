@@ -91,7 +91,12 @@
 	--radius-panel: 1.2rem;
 
 	/* Elevation */
-	--shadow-card: 0 0 0 1px light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
+	--shadow-card: 0 0 0 1px light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+
+	/* The card edge, and the slightly brighter grey that travels along it when shining */
+	--color-card-edge: light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
+	--color-card-edge-highlight: light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.34));
+	--color-card-glow: light-dark(rgba(0, 0, 0, 0.14), rgba(255, 255, 255, 0.1));
 
 	--shadow-popover: 0 12px 32px var(--color-shadow);
 	--shadow-raised:
@@ -220,4 +225,45 @@ img {
 .gradient-spin {
 	background-image: conic-gradient(from var(--spin-angle), #fde68a, #facc15, #f59e0b, #facc15, #fde68a);
 	animation: spin-gradient 3s linear infinite;
+}
+
+/*
+ * The same travelling rim for cards, in the card's own grey rather than gold —
+ * a lighter band drifts around an edge that otherwise matches `--shadow-card`.
+ * Cards own their background, so the Pill's padding-and-inner-child trick is out:
+ * a pseudo-element paints the gradient and a two-layer mask punches out
+ * everything but the 1px edge. Unlayered, so it beats the `shadow-card` utility.
+ */
+.gradient-spin-border {
+	position: relative;
+	/* Callers drop `shadow-card` when they add this class — its ring paints
+	 * outside the border box and the rim inside, so both together read as 2px. */
+	box-shadow: 0 0 24px -14px var(--color-card-glow);
+}
+
+.gradient-spin-border::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	padding: 1px;
+	border-radius: inherit;
+	background-image: conic-gradient(
+		from var(--spin-angle),
+		var(--color-card-edge),
+		var(--color-card-edge),
+		var(--color-card-edge-highlight),
+		var(--color-card-edge),
+		var(--color-card-edge)
+	);
+	animation: spin-gradient 6s linear infinite;
+	pointer-events: none;
+	-webkit-mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
+	mask-composite: exclude;
 }

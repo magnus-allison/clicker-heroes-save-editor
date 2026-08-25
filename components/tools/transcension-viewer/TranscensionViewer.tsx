@@ -1,9 +1,8 @@
 'use client';
 
 import { useMemo, useState, type ReactNode } from 'react';
-import { ArrowLeft } from 'lucide-react';
 
-import { SectionHeading } from '@/components/home/SectionHeading';
+import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
 import {
 	EditorTable,
 	EditorTableBody,
@@ -348,12 +347,7 @@ export const TranscensionViewer = () => {
 
 	return (
 		<>
-			<SectionHeading
-				back='/'
-				description=''
-				icon={<ArrowLeft aria-hidden='true' className='h-5 w-5' />}
-				title='Tools · Clicker Heroes Transcension Viewer'
-			/>
+			<Breadcrumb items={[homeCrumb, { label: 'Tools' }, { label: 'Transcension Viewer' }]} />
 
 			<SaveDataPanel examples={transcensionExamples} />
 
