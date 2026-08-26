@@ -36,14 +36,13 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 	disabled,
 	tag
 }) => {
-	return (
-		<Link
-			className={cn(
-				`group flex h-full flex-col rounded-2xl bg-card-background p-5 transition-shadow duration-300 shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong hover:shadow-card-hover`,
-				disabled && 'pointer-events-none opacity-50 focus-within:none focus:visible:ring-0 focus-visible:none'
-			)}
-			href={href}
-		>
+	const className = cn(
+		`group flex h-full flex-col rounded-2xl bg-card-background p-5 transition-shadow duration-300 shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong hover:shadow-card-hover`,
+		disabled && 'opacity-50 select-none'
+	);
+
+	const content = (
+		<>
 			<span className='flex items-center gap-2'>
 				<span className='flex items-center justify-center transition-[background-color] duration-200'>
 					{Icon && <Icon aria-hidden='true' className='h-4.5 w-4.5' />}
@@ -61,11 +60,7 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 				</span>
 			)}
 			{!disabled && (
-				<span
-					className={cn(
-						'mt-auto pt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-fg-dim transition-colors font-aeonik group-hover:text-fg-strong'
-					)}
-				>
+				<span className='mt-auto pt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-fg-dim transition-colors font-aeonik group-hover:text-fg-strong'>
 					Open
 					<ArrowRight
 						aria-hidden='true'
@@ -73,6 +68,26 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 					/>
 				</span>
 			)}
+		</>
+	);
+
+	/*
+	 * A disabled card has nothing to navigate to, so it drops the anchor
+	 * entirely rather than keeping one and blocking it with
+	 * `pointer-events-none`: that stops the mouse but leaves the card in the tab
+	 * order, still announced as a link, and still activatable with Enter.
+	 */
+	if (disabled) {
+		return (
+			<div aria-disabled='true' className={className}>
+				{content}
+			</div>
+		);
+	}
+
+	return (
+		<Link className={className} href={href}>
+			{content}
 		</Link>
 	);
 };

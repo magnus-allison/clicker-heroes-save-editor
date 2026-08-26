@@ -21,13 +21,13 @@ export const additionalLinks: ExternalLinkCardItem[] = [
 		href: 'https://clickerheroes.com/',
 		title: 'Clicker Heroes',
 		description: 'Link to the games official website'
+	},
+	{
+		icon: '/assets/icons/steam.svg',
+		title: 'Clicker Heroes on Steam',
+		href: 'https://store.steampowered.com/app/363970/Clicker_Heroes/',
+		description: 'Link to the games official steam listing page'
 	}
-	// {
-	// 	icon: '/assets/icons/steam.svg',
-	// 	title: 'Clicker Heroes on Steam',
-	// 	href: 'https://store.steampowered.com/app/363970/Clicker_Heroes/',
-	// 	description: 'Link to the games official steam listing page'
-	// }
 ];
 
 export const AdditionalInfo: FC = () => (
@@ -44,12 +44,12 @@ export const AdditionalInfo: FC = () => (
 			href='/faq'
 			description='Answers to common questions about the editor, save files, and more'
 		/>
-		<LinkCard
+		{/* <LinkCard
 			icon={MessageCircleQuestionIcon}
 			title='Changelog'
 			href='/changelog'
 			description='View the latest updates and improvements to the editor'
-		/>
+		/> */}
 		{additionalLinks.map((link) => (
 			<ExternalLinkCard
 				description={link.description}
