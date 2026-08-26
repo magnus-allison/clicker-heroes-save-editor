@@ -20,7 +20,7 @@ import { PanelSection } from '../ui/PanelSection';
 import { StepTitle } from '../ui/StepTitle';
 import { useSaveFlowStep } from '@/lib/save-flow';
 import { useSaveStore } from '@/lib/save-store';
-import { Breadcrumb, homeCrumb, toolsCrumb } from '../home/Breadcrumb';
+import { Breadcrumb } from '../home/Breadcrumb';
 import { cn } from '@/lib/cn';
 import { Pill } from '../ui/Pill';
 
@@ -38,7 +38,7 @@ export const SaveEditor = () => {
 
 	return (
 		<>
-			<Breadcrumb items={[homeCrumb, toolsCrumb, { label: 'Save Editor' }]} />
+			<Breadcrumb subtitle='Save Editor' title='tools' />
 
 			<SaveDataPanel hasEditStep onLoadSuccess={scrollToStep2} />
 

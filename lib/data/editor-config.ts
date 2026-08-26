@@ -264,38 +264,3 @@ export function getOutsiderStats(id: number, level: number) {
 		spent
 	};
 }
-
-export const additionalLinkGroups: ExternalLinkCard[][] = [
-	[
-		{
-			href: 'https://github.com/magnus-allison/clicker-heroes-save-editor',
-			title: 'GitHub Repository',
-			description: 'magnus-allison/clicker-heroes-save-editor',
-			iconSrc: '/assets/icons/github.svg'
-		},
-		{
-			href: 'https://buymeacoffee.com/magnus.allison',
-			title: 'Buy Me a Coffee',
-			description: 'Help keep the editor free and updated',
-			iconSrc: '/assets/icons/buymeacoffee.svg'
-		}
-	],
-	[
-		{
-			href: 'https://clickerheroes.com/',
-			title: 'Clicker Heroes',
-			description: 'Official game website',
-			iconSrc: '/assets/icons/clicker-heroes.png',
-			invertIcon: false
-		},
-		{
-			href: 'https://store.steampowered.com/app/363970/Clicker_Heroes/',
-			title: 'Clicker Heroes on Steam',
-			description: 'Official Steam listing',
-			iconSrc: '/assets/icons/steam.svg'
-		}
-	]
-];
-
-export const additionalDisclaimer =
-	'This is an independent project and is not affiliated with, endorsed by, or associated with the creators of Clicker Heroes.';

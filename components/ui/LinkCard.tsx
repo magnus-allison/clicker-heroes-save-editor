@@ -1,164 +1,139 @@
-import type { FC } from 'react';
-import type { LucideIcon } from 'lucide-react';
-
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import Link from 'next/link';
-
-import { EditorImage } from '@/components/ui/EditorImage';
-import { Pill } from '@/components/ui/Pill';
 import { cn } from '@/lib/cn';
+import { ArrowRight, ArrowUpRight, LucideIcon } from 'lucide-react';
+import Link from 'next/link';
+import { type FC } from 'react';
+import { Pill } from './Pill';
+import { EditorImage } from './EditorImage';
 
-export type LinkCardItem = {
+export interface CardItem {
 	title: string;
-	href: string;
 	description: string;
-	icon: LucideIcon;
-	tag?: string;
-	tagIsShining?: boolean;
-	isShining?: boolean;
-	comingSoon?: boolean;
-};
-
-type Props = {
 	href: string;
-	title: string;
-	description?: string;
-	layout?: 'vertical' | 'horizontal';
-	/** Lucide glyph, for vertical tiles. */
-	icon?: LucideIcon;
-	/** Image asset, for horizontal rows. Takes precedence over `icon`. */
-	iconSrc?: string;
-	/** Image icons are inverted in dark mode unless this is explicitly `false`. */
-	invertIcon?: boolean;
-	tag?: string;
-	/** Gives the tag pill the gold spinning border. */
-	tagIsShining?: boolean;
-	/** Gives the card a slow grey shimmer travelling its edge, plus a faint glow. */
-	isShining?: boolean;
-	/** Footer text. Omit on horizontal rows to show the arrow alone. */
-	cta?: string;
-	/** Opens in a new tab and swaps the chevron for the outbound arrow. */
-	external?: boolean;
-	/** Renders inert markup: no link, no arrow, dimmed. */
-	disabled?: boolean;
+	tag?: 'Most popular' | 'New' | 'Coming soon';
+}
+
+export type LinkCardItem = CardItem & {
+	icon: LucideIcon;
 };
 
-const layoutClassName = {
-	vertical: 'flex min-h-46 flex-col justify-between text-(--color-fg)',
-	horizontal: 'flex items-center gap-4'
-} as const;
+export type ExternalLinkCardItem = CardItem & {
+	icon: string;
+};
 
-const interactiveClassName =
-	'hover:border-line-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong';
+interface Props {
+	title: LinkCardItem['title'];
+	description: LinkCardItem['description'];
+	href: LinkCardItem['href'];
+	disabled?: boolean;
+	tag?: LinkCardItem['tag'];
+}
 
-/** Quiet until the card is hovered, so the title carries the card and the arrow leads the eye. */
-const ctaClassName =
-	'inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-(--color-fg-dim) transition-colors group-hover:text-fg-strong';
-
-export const LinkCard: FC<Props> = ({
-	cta,
-	description,
-	disabled = false,
-	external = false,
-	href,
+export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 	icon: Icon,
-	iconSrc,
-	invertIcon,
-	isShining = false,
-	layout = 'vertical',
-	tag,
-	tagIsShining = false,
-	title
+	title,
+	description,
+	href,
+	disabled,
+	tag
 }) => {
-	const arrow = external ? (
-		<ArrowUpRight
-			aria-hidden='true'
-			className='h-3.5 w-3.5 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5'
-		/>
-	) : (
-		<ArrowRight
-			aria-hidden='true'
-			className='h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5'
-		/>
-	);
-
-	const body =
-		layout === 'vertical' ? (
-			<>
-				<span className='flex items-center gap-2'>
-					{Icon && (
-						<span className='flex items-center justify-center transition-[background-color] duration-200'>
-							<Icon aria-hidden='true' className='h-5 w-5' />
-						</span>
-					)}
-					{tag && (
-						<Pill className='ml-auto' isShining={tagIsShining}>
-							{tag}
-						</Pill>
-					)}
-				</span>
-				{/* Aeonik's space glyph is narrow; the word-spacing nudge keeps uppercase titles from closing up. */}
-				<span className='font-aeonik mt-4.5 mb-6.5 block text-[1.24rem] tracking-wide font-medium uppercase text-fg-strong [word-spacing:0.2em]'>
-					{title}
-				</span>
-				{description && <span className='block text-sm text-(--color-fg-muted)'>{description}</span>}
-				<span className={cn('mt-5', ctaClassName)}>
-					{cta}
-					{!disabled && arrow}
-				</span>
-			</>
-		) : (
-			<>
-				{iconSrc && (
-					<EditorImage
-						alt={`${title} icon`}
-						className='h-10 w-10 shrink-0 object-contain'
-						size={44}
-						src={iconSrc}
-						style={invertIcon === false ? undefined : { filter: 'var(--color-icon-filter)' }}
-					/>
-				)}
-				<span className='min-w-0'>
-					<span className='font-aeonik block text-[0.95rem] font-medium tracking-wide uppercase text-fg-strong [word-spacing:0.2em]'>
-						{title}
-					</span>
-					{description && <span className='mt-1 block text-sm text-(--color-fg-muted)'>{description}</span>}
-				</span>
-				<span className={cn('ml-auto shrink-0', ctaClassName)}>
-					{cta}
-					{!disabled && arrow}
-				</span>
-			</>
-		);
-
-	const className = cn(
-		`group rounded-2xl bg-card-background p-5 transition-shadow duration-300`,
-		layoutClassName[layout],
-		// The rim replaces `shadow-card` rather than joining it: the ring paints
-		// outside the border box and the rim inside, so both together read as 2px.
-		isShining ? 'gradient-spin-border' : 'shadow-card',
-		!disabled && interactiveClassName
-	);
-
-	if (disabled) {
-		return (
-			<div aria-disabled='true' className={cn(className, 'cursor-default opacity-60')}>
-				{body}
-			</div>
-		);
-	}
-
-	if (external) {
-		return (
-			<a className={className} href={href} rel='noreferrer' target='_blank'>
-				{body}
-			</a>
-		);
-	}
-
 	return (
-		<Link className={className} href={href}>
-			{body}
+		<Link
+			className={cn(
+				`group flex h-full flex-col rounded-2xl bg-card-background p-5 transition-shadow duration-300 shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong hover:shadow-card-hover`,
+				disabled && 'pointer-events-none opacity-50 focus-within:none focus:visible:ring-0 focus-visible:none'
+			)}
+			href={href}
+		>
+			<span className='flex items-center gap-2'>
+				<span className='flex items-center justify-center transition-[background-color] duration-200'>
+					{Icon && <Icon aria-hidden='true' className='h-4.5 w-4.5' />}
+				</span>
+				{tag && (
+					<Pill className='ml-auto' isShining={tag === 'Most popular'}>
+						{tag}
+					</Pill>
+				)}
+			</span>
+			<CardTitle title={title} />
+			{description && (
+				<span className='block text-[1rem] text-fg-muted/80 items-center gap-2 font-light tracking-[0.035rem] transition-colors font-aeonik'>
+					{description}
+				</span>
+			)}
+			{!disabled && (
+				<span
+					className={cn(
+						'mt-auto pt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-fg-dim transition-colors font-aeonik group-hover:text-fg-strong'
+					)}
+				>
+					Open
+					<ArrowRight
+						aria-hidden='true'
+						className='h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5'
+					/>
+				</span>
+			)}
 		</Link>
 	);
 };
+
+export const ExternalLinkCard: FC<Props & { icon: string }> = ({
+	icon: Icon,
+	title,
+	description,
+	href,
+	tag
+}) => {
+	return (
+		<a
+			className={cn(
+				`group flex h-full flex-col rounded-2xl bg-card-background p-5 transition-shadow duration-300 shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong hover:shadow-card-hover`
+			)}
+			href={href}
+			target='_blank'
+			rel='noopener noreferrer'
+		>
+			<span className='flex items-center gap-2'>
+				<span className='flex items-center justify-center transition-[background-color] duration-200'>
+					{Icon && (
+						<EditorImage
+							alt={`${title} icon`}
+							className='h-5 w-5 shrink-0 object-contain'
+							size={44}
+							src={Icon}
+							style={title === 'Clicker Heroes' ? undefined : { filter: 'var(--color-icon-filter)' }}
+						/>
+					)}
+				</span>
+				{tag && (
+					<Pill className='ml-auto' isShining={tag === 'Most popular'}>
+						{tag}
+					</Pill>
+				)}
+			</span>
+			<CardTitle title={title} />
+			{description && (
+				<span className='block text-[1rem] text-fg-muted/80 items-center gap-2 font-light tracking-[0.035rem] transition-colors font-aeonik'>
+					{description}
+				</span>
+			)}
+			<span
+				className={cn(
+					'mt-auto pt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-fg-dim transition-colors font-aeonik group-hover:text-fg-strong'
+				)}
+			>
+				Visit
+				<ArrowUpRight
+					aria-hidden='true'
+					className='h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5'
+				/>
+			</span>
+		</a>
+	);
+};
+
+export const CardTitle: FC<{ title: string }> = ({ title }) => (
+	<h3 className='font-aeonik mt-4 mb-6 block text-[1.24rem] tracking-wide font-semibold uppercase text-fg-strong [word-spacing:0.2em]'>
+		{title}
+	</h3>
+);

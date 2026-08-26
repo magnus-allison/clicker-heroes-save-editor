@@ -2,7 +2,7 @@
 
 import { useMemo, useState, type ReactNode } from 'react';
 
-import { Breadcrumb, homeCrumb, toolsCrumb } from '@/components/home/Breadcrumb';
+import { Breadcrumb } from '@/components/home/Breadcrumb';
 import {
 	EditorTable,
 	EditorTableBody,
@@ -347,7 +347,7 @@ export const TranscensionViewer = () => {
 
 	return (
 		<>
-			<Breadcrumb items={[homeCrumb, toolsCrumb, { label: 'Transcension Viewer' }]} />
+			<Breadcrumb subtitle='Transcension Viewer' title='tools' />
 
 			<SaveDataPanel examples={transcensionExamples} />
 

@@ -41,6 +41,123 @@ export const saveEditorFaqs = [
 	}
 ] as const;
 
+export type Faq = {
+	question: string;
+	answer: string;
+};
+
+/**
+ * The `/faq` page. Grouped for the page itself; `siteFaqs` flattens the same
+ * entries for the `FAQPage` structured data, so the two can never drift.
+ */
+export const siteFaqSections = [
+	{
+		id: 'using-the-editor',
+		title: 'Using the editor',
+		summary: 'Getting a save in, changing it, and getting it back into Clicker Heroes.',
+		faqs: [
+			{
+				question: 'How do I load my save into the editor?',
+				answer:
+					'Export your save from the game and paste the string into step 1 of the save editor, then press Load Save Data. You can also pick your .save file with the file picker instead. The save is decoded in place and step 2 unlocks. Several of the calculators also ship example saves if you just want to see how a tool behaves.'
+			},
+			{
+				question: 'Where is my Clicker Heroes save file?',
+				answer:
+					'On Windows, both the Steam and stand-alone versions use C:\\Users\\[USERNAME]\\AppData\\Roaming\\ClickerHeroes2\\Local Store\\saves, which holds a .save and a .backup file. On Mac via Steam it is ~/Library/Application Support/Steam/userdata/[USERID]/363970/remote/, and the stand-alone Mac build uses ~/Library/Application Support/com.playsaurus.clickerheroes/. The same list is under "Where is my save file?" in the editor.'
+			},
+			{
+				question: 'How do I get my edited save back into the game?',
+				answer:
+					'Press Encode Save in step 3, copy the encoded string, and paste it into the import save option in Clicker Heroes. Encode again after any further edits — the export box only holds the string from the last time you pressed it.'
+			},
+			{
+				question: 'What can I actually change?',
+				answer:
+					'Gold, rubies, Hero Souls, shop and seasonal items, hero levels and gilds, skins, achievements, ascensions and transcensions, clan values, mercenaries, and outsiders. Anything the sections do not cover can be written by path in the Custom Field section, or by hand in the Save JSON tool.'
+			},
+			{
+				question: 'Does the editor work with mobile saves?',
+				answer:
+					'It decodes PC, mobile, and older legacy save strings. If you need a save from one platform to load on the other, run it through the Save Converter tool first.'
+			}
+		]
+	},
+	{
+		id: 'safety-and-privacy',
+		title: 'Safety and privacy',
+		summary: 'What happens to your save data, and how to avoid losing progress.',
+		faqs: [
+			{
+				question: 'Is my save uploaded to a server?',
+				answer:
+					'No. Decoding, editing, and encoding all run in your browser, so your save string is never sent to this site or stored anywhere off your device.'
+			},
+			{
+				question: 'Should I back up my save before editing?',
+				answer:
+					'Always. Keep a copy of the original save string, or of the .save file, before you import an edited one. On Windows there is also a .backup file next to the save you can fall back on.'
+			},
+			{
+				question: 'Can editing my save break it?',
+				answer:
+					'It can. Values far outside what the game expects, or a custom field written to the wrong path, can produce a save the game refuses to load. Change one thing at a time, re-import, and check the game before making the next edit.'
+			},
+			{
+				question: 'Is editing my save against the rules?',
+				answer:
+					'Editing a single-player save is a personal choice, but edited values can carry into clan raids and leaderboards, and modifying save data may go against the game\u2019s terms. The tools are provided as-is; use them at your own risk.'
+			},
+			{
+				question: 'How do I strip clan and account data before sharing a save?',
+				answer:
+					'Use the Remove Clan Data tool. It clears clan, account, and login fields from an imported save and re-encodes the cleaned result in your browser.'
+			}
+		]
+	},
+	{
+		id: 'troubleshooting',
+		title: 'Troubleshooting',
+		summary: 'The errors that come up most, and what usually causes them.',
+		faqs: [
+			{
+				question: '"That string does not look like a supported Clicker Heroes save"',
+				answer:
+					'The pasted text is not in any save format the editor recognises. Almost always this means only part of the string was copied, or the text came from a different game or tool. Copy the save again from the start of the string to the very end, or load the .save file directly.'
+			},
+			{
+				question: 'The save payload is not valid base64, or will not decompress',
+				answer:
+					'The string reached the editor incomplete or altered. Line breaks and spaces are fine — missing characters are not. Re-copy the whole save, or use the file picker instead of pasting.'
+			},
+			{
+				question: 'Nothing happens after I paste my save',
+				answer:
+					'The editor decodes on load, not on paste. Press Load Save Data after pasting; you should get a "Save data loaded." toast and the edit sections should come out of their disabled state.'
+			},
+			{
+				question: 'The game will not accept my edited save',
+				answer:
+					'Check that you pressed Encode Save after your last edit and copied the entire encoded string. If the game still refuses it, import your backup and redo the edits in smaller steps to find the value it does not like.'
+			},
+			{
+				question: 'Something else is wrong, or a value is missing',
+				answer:
+					'Send it through the feedback form with the tool you were using and what you expected to happen. Bug reports and requests for fields the editor does not cover yet are both welcome.'
+			}
+		]
+	}
+] as const satisfies readonly {
+	id: string;
+	title: string;
+	summary: string;
+	faqs: readonly Faq[];
+}[];
+
+export const siteFaqs: readonly Faq[] = siteFaqSections.flatMap(
+	(section): readonly Faq[] => section.faqs
+);
+
 export const gildingChartFaqs = [
 	{
 		question: 'Do I need to re-gild on every row of the gilding chart?',
@@ -415,6 +532,23 @@ export const seoPages = {
 		priority: 0.5,
 		schemaType: 'ContactPage'
 	},
+	faq: {
+		path: '/faq',
+		title: 'FAQ',
+		metaTitle: 'Clicker Heroes | Save Editor FAQ',
+		description:
+			'Answers to common questions about the Clicker Heroes save editor: how to load and export a save, where the save file lives, whether save data leaves your browser, and what to do when a save will not decode.',
+		keywords: [
+			'clicker heroes save editor faq',
+			'clicker heroes save file location',
+			'clicker heroes how to edit save',
+			'clicker heroes import save',
+			'clicker heroes save not working',
+			'is clicker heroes save editor safe'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.7
+	},
 	feedback: {
 		path: '/feedback',
 		title: 'Feedback',
@@ -437,7 +571,7 @@ export type SeoPageKey = keyof typeof seoPages;
 const absoluteUrl = (path: string) => new URL(path, SITE_CONFIG.url).toString();
 
 export const createPageMetadata = (key: SeoPageKey): Metadata => {
-	const page = seoPages[key];
+	const page: SeoPage = seoPages[key];
 	const keywords = [...new Set([...baseKeywords, ...page.keywords])];
 
 	return {
@@ -477,8 +611,15 @@ export const createPageMetadata = (key: SeoPageKey): Metadata => {
 	};
 };
 
+/** Pages that carry `FAQPage` structured data, and the questions they answer. */
+const faqsByPage: Partial<Record<SeoPageKey, readonly Faq[]>> = {
+	saveEditor: saveEditorFaqs,
+	gildingChart: gildingChartFaqs,
+	faq: siteFaqs
+};
+
 export const createPageJsonLd = (key: SeoPageKey) => {
-	const page = seoPages[key];
+	const page: SeoPage = seoPages[key];
 	const pageUrl = absoluteUrl(page.path);
 	const graph: object[] = [
 		{
@@ -583,7 +724,7 @@ export const createPageJsonLd = (key: SeoPageKey) => {
 		});
 	}
 
-	const faqs = key === 'saveEditor' ? saveEditorFaqs : key === 'gildingChart' ? gildingChartFaqs : null;
+	const faqs = faqsByPage[key];
 
 	if (faqs) {
 		graph.push({

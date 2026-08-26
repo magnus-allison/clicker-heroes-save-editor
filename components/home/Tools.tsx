@@ -7,12 +7,8 @@ import {
 	FileCode2,
 	History,
 	Landmark,
-	MessageCircle,
 	MessageCirclePlus,
-	MessageSquare,
-	MessageSquarePlus,
 	Orbit,
-	SendIcon,
 	SwordIcon,
 	Users,
 	Wrench
@@ -26,8 +22,7 @@ const tools: LinkCardItem[] = [
 		href: '/tools/save-editor',
 		description: 'Inspect your save data, modify values, and export your updated save',
 		icon: FileCode2,
-		tag: 'Most popular',
-		tagIsShining: true
+		tag: 'Most popular'
 	},
 	{
 		title: 'Outsiders Calculator',
@@ -65,8 +60,7 @@ const tools: LinkCardItem[] = [
 		href: '/tools/relic-viewer',
 		description: 'Inspect relics, their bonuses, and rarity from a save',
 		icon: SwordIcon,
-		tag: 'Coming soon',
-		comingSoon: true
+		tag: 'Coming soon'
 	},
 	{
 		title: 'Remove Clan Data',
@@ -94,21 +88,15 @@ const tools: LinkCardItem[] = [
 	}
 ];
 
-export const Tools: FC = () => (
-	<>
-		{tools.map((tool) => (
-			<LinkCard
-				cta={tool.comingSoon ? 'In development' : 'Open'}
-				description={tool.description}
-				disabled={tool.comingSoon}
-				href={tool.href}
-				icon={tool.icon}
-				isShining={tool.isShining}
-				key={tool.title}
-				tag={tool.tag}
-				tagIsShining={tool.tagIsShining}
-				title={tool.title}
-			/>
-		))}
-	</>
-);
+export const Tools: FC = () =>
+	tools.map((tool) => (
+		<LinkCard
+			description={tool.description}
+			disabled={tool.tag === 'Coming soon'}
+			href={tool.href}
+			icon={tool.icon}
+			key={tool.title}
+			tag={tool.tag}
+			title={tool.title}
+		/>
+	));

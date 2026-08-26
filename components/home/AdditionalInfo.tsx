@@ -1,34 +1,63 @@
 import type { FC } from 'react';
 
-import { LinkCard } from '@/components/ui/LinkCard';
-import { additionalDisclaimer, additionalLinkGroups } from '@/lib/data/editor-config';
+import { ExternalLinkCard, ExternalLinkCardItem, LinkCard } from '@/components/ui/LinkCard';
+import { Link, MessageCircle, MessageCircleQuestionIcon } from 'lucide-react';
 
-const links = additionalLinkGroups.flat();
+export const additionalLinks: ExternalLinkCardItem[] = [
+	{
+		icon: '/assets/icons/github.svg',
+		title: 'GitHub Repository',
+		href: 'https://github.com/magnus-allison/clicker-heroes-save-editor',
+		description: 'magnus-allison/clicker-heroes-save-editor'
+	},
+	{
+		icon: '/assets/icons/buymeacoffee.svg',
+		title: 'Buy Me a Coffee',
+		href: 'https://buymeacoffee.com/magnus.allison',
+		description: 'Help keep the editor free and updated by making a small contribution'
+	},
+	{
+		icon: '/assets/icons/clicker-heroes.png',
+		href: 'https://clickerheroes.com/',
+		title: 'Clicker Heroes',
+		description: 'Link to the games official website'
+	}
+	// {
+	// 	icon: '/assets/icons/steam.svg',
+	// 	title: 'Clicker Heroes on Steam',
+	// 	href: 'https://store.steampowered.com/app/363970/Clicker_Heroes/',
+	// 	description: 'Link to the games official steam listing page'
+	// }
+];
 
 export const AdditionalInfo: FC = () => (
-	<div className='flex flex-col gap-3'>
+	<>
 		<LinkCard
-			cta='Open'
+			icon={MessageCircle}
+			title='Submit Feedback'
 			href='/feedback'
-			layout='horizontal'
-			title='Report bugs, request features, or suggest a guide'
+			description='Help us improve the quality of the site by submitting your thoughts'
 		/>
-		<div className='flex flex-col gap-3'>
-			<div className='grid gap-3 sm:grid-cols-2'>
-				{links.map((link) => (
-					<LinkCard
-						description={link.description}
-						external
-						href={link.href}
-						iconSrc={link.iconSrc}
-						invertIcon={link.invertIcon}
-						key={link.href}
-						layout='horizontal'
-						title={link.title}
-					/>
-				))}
-			</div>
-			<p className='text-[12px] leading-6 text-(--color-fg-dim) mt-12'>{additionalDisclaimer}</p>
-		</div>
-	</div>
+		<LinkCard
+			icon={MessageCircleQuestionIcon}
+			title='FAQ'
+			href='/faq'
+			description='Answers to common questions about the editor, save files, and more'
+		/>
+		<LinkCard
+			icon={MessageCircleQuestionIcon}
+			title='Changelog'
+			href='/changelog'
+			description='View the latest updates and improvements to the editor'
+		/>
+		{additionalLinks.map((link) => (
+			<ExternalLinkCard
+				description={link.description}
+				href={link.href}
+				key={link.href}
+				title={link.title}
+				icon={link.icon}
+			/>
+		))}
+	</>
 );

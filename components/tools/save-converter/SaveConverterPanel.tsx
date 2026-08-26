@@ -123,7 +123,6 @@ export const SaveConverterPanel = () => {
 					fileInputId='save-converter-file-input'
 					isActiveStep={!loadedSave}
 					onLoad={importSave}
-					step={1}
 				/>
 				<SaveExportField
 					actionLabel='Convert Save'
@@ -157,9 +156,7 @@ export const SaveConverterPanel = () => {
 								</p>
 							</div>
 							<div className='rounded-(--radius-card) border border-(--color-line-soft) bg-(--color-surface) px-3 py-2.5 shadow-[var(--shadow-raised)]'>
-								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-									Patch number
-								</p>
+								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>Patch number</p>
 								<p className='mt-1 text-[13px] font-semibold text-(--color-fg-strong)'>
 									{loadedSave?.patchNumber ?? 'n/a'}
 								</p>

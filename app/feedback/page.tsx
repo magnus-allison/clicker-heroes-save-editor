@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { FeedbackSection } from '@/components/editor/sections/FeedbackSection';
-import { Breadcrumb, homeCrumb } from '@/components/home/Breadcrumb';
+import { Breadcrumb } from '@/components/home/Breadcrumb';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
 
@@ -16,7 +16,7 @@ export default function FeedbackPage() {
 				type='application/ld+json'
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
 			/>
-			<Breadcrumb items={[homeCrumb, { label: 'General Feedback' }]} />
+			<Breadcrumb subtitle='Feedback' title='additional info' />
 			<PanelSection>
 				<FeedbackSection
 					defaultOpen

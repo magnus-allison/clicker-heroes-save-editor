@@ -92,6 +92,7 @@
 
 	/* Elevation */
 	--shadow-card: 0 0 0 1px light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+	--shadow-card-hover: 0 0 0 1px light-dark(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.15));
 
 	/* The card edge, and the slightly brighter grey that travels along it when shining */
 	--color-card-edge: light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));

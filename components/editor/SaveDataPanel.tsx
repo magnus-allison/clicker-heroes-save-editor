@@ -72,7 +72,6 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 				fileInputId='save-file-input'
 				isActiveStep={activeStep === 1}
 				onLoad={importSave}
-				step={1}
 			/>
 			<SaveExportField
 				actionLabel='Encode Save'

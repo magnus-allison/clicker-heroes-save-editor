@@ -6,17 +6,16 @@ import { useRef, useState } from 'react';
 import posthog from 'posthog-js';
 
 import { ExampleSaveButtons } from '@/components/editor/ExampleSaveButtons';
-import { SaveHelpToolTip } from '@/components/editor/SaveHelpToolTip';
 import { Button } from '@/components/ui/Button';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { FieldDivider } from '@/components/ui/FieldDivider';
-import { StepTitle } from '@/components/ui/StepTitle';
 import { TextInput } from '@/components/ui/TextInput';
 import { useToast } from '@/components/ui/ToastProvider';
 import type { ExampleSave } from '@/lib/data/example-saves';
-import { FileCode, FileCode2, FilePlusCornerIcon, FileUp, FileUpIcon, Icon } from 'lucide-react';
+import { FileUpIcon } from 'lucide-react';
 import { Pill } from '../ui/Pill';
+import { CardTitle } from '../ui/LinkCard';
 
 export type SaveImportSource = 'paste' | 'file' | 'example';
 
@@ -31,11 +30,8 @@ export type SaveImportRequest = {
 };
 
 type Props = {
-	step: number;
-	/** Unique per page, because the hidden file input is a real form control. */
 	fileInputId: string;
 	examples?: ExampleSave[];
-	/** Shines the step pill while importing is the thing left to do. */
 	isActiveStep?: boolean;
 	onLoad: (request: SaveImportRequest) => void;
 };
@@ -52,7 +48,7 @@ const MAX_SAVE_FILE_BYTES = 4 * 1024 * 1024;
  * Owns the picked-file name and the pasted text; the caller only decides what
  * "load this" means.
  */
-export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, onLoad, step }: Props) => {
+export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, onLoad }: Props) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { showToast } = useToast();
 	const [selectedFileName, setSelectedFileName] = useState('No file selected');
@@ -93,17 +89,14 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 		<section className='min-w-0 p-5'>
 			<span className='flex items-center gap-2'>
 				<span className='flex items-center justify-center transition-[background-color] duration-200'>
-					<FileUpIcon aria-hidden='true' className='h-5 w-5' />
+					<FileUpIcon aria-hidden='true' className='h-4.5 w-4.5' />
 				</span>
 				<Pill className='ml-auto' isShining={isActiveStep}>
 					Step 1
 				</Pill>
 			</span>
-			<h3 className='font-aeonik mt-4.5 mb-6.5 block text-[1.24rem] tracking-wide font-medium uppercase text-fg-strong [word-spacing:0.2em]'>
-				Import save data
-			</h3>
+			<CardTitle title='Import save data' />
 
-			{/* <StepTitle step={step} title='Import Your Save Data' trailing={<SaveHelpToolTip />} /> */}
 			<div className='flex flex-col gap-2.5'>
 				<input
 					aria-label='Choose save file'

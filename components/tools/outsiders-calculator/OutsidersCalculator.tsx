@@ -6,7 +6,7 @@ import posthog from 'posthog-js';
 import { RotateCcw } from 'lucide-react';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { Breadcrumb, homeCrumb, toolsCrumb } from '@/components/home/Breadcrumb';
+import { Breadcrumb } from '@/components/home/Breadcrumb';
 import { OutsiderGoalRow, TranscensionTableRow } from '@/components/tools/outsiders-calculator/rows';
 import { Button } from '@/components/ui/Button';
 import { EmptyTableRow, SettingRow, StatRow, SummaryStat } from '@/components/ui/CalculatorRows';
@@ -87,7 +87,7 @@ export const OutsidersCalculator = () => {
 
 	return (
 		<>
-			<Breadcrumb items={[homeCrumb, toolsCrumb, { label: 'Outsiders Calculator' }]} />
+			<Breadcrumb subtitle='Outsiders Calculator' title='tools' />
 
 			<SaveDataPanel examples={examples} hasEditStep />
 

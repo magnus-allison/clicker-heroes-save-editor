@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { Calculator, Gauge, RotateCcw, Timer, Zap } from 'lucide-react';
 
-import { Breadcrumb, homeCrumb, toolsCrumb } from '@/components/home/Breadcrumb';
+import { Breadcrumb } from '@/components/home/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import {
 	EditorTable,
@@ -59,7 +59,7 @@ export const InstakillCalculator = () => {
 
 	return (
 		<>
-			<Breadcrumb items={[homeCrumb, toolsCrumb, { label: 'Instakill Calculator' }]} />
+			<Breadcrumb subtitle='Instakill Calculator' title='tools' />
 
 			<PanelSection>
 				<SectionCard

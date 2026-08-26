@@ -13,7 +13,7 @@ interface Props {
  */
 export const PanelSection = ({ children, className }: Props) => {
 	return (
-		<div className={cn('w-full overflow-hidden rounded-card bg-card-background shadow-card', className)}>
+		<div className={cn('w-full overflow-hidden rounded-2xl bg-card-background shadow-card', className)}>
 			{children}
 		</div>
 	);

@@ -9,6 +9,7 @@ import { TextInput } from '@/components/ui/TextInput';
 import { useToast } from '@/components/ui/ToastProvider';
 import { FileDownIcon } from 'lucide-react';
 import { Pill } from '../ui/Pill';
+import { CardTitle } from '../ui/LinkCard';
 
 type Props = {
 	title: string;
@@ -57,15 +58,13 @@ export const SaveExportField = ({
 			<div className='p-5'>
 				<span className='flex items-center gap-2'>
 					<span className='flex items-center justify-center transition-[background-color] duration-200'>
-						<FileDownIcon aria-hidden='true' className='h-5 w-5' />
+						<FileDownIcon aria-hidden='true' className='h-4.5 w-4.5' />
 					</span>
 					<Pill className='ml-auto' isShining={isActiveStep}>
 						Step 3
 					</Pill>
 				</span>
-				<h3 className='font-aeonik mt-4.5 mb-6.5 block text-[1.24rem] tracking-wide font-medium uppercase text-fg-strong [word-spacing:0.2em]'>
-					Export save data
-				</h3>
+				<CardTitle title='Export save data' />
 
 				<div className='flex flex-1 flex-col gap-2.5'>
 					<div className='flex min-w-0 items-start gap-2'>
