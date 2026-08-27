@@ -30,12 +30,7 @@ export const EditorTable = ({
 	tableClassName
 }: EditorTableProps) => {
 	return (
-		<div
-			className={cn(
-				'overflow-hidden rounded-(--radius-card) border border-(--color-line)',
-				className
-			)}
-		>
+		<div className={cn('overflow-hidden rounded-(--radius-card) border border-(--color-line)', className)}>
 			<div className={cn('overflow-x-auto', scrollerClassName)}>
 				<table
 					aria-label={label}
@@ -76,10 +71,7 @@ export const EditorTableBody = ({ children, className, ...props }: EditorTableBo
 /** Body row. Carries the single canonical row separator. */
 export const EditorTableRow = ({ children, className, ...props }: EditorTableRowProps) => {
 	return (
-		<tr
-			className={cn('border-t border-(--color-line-subtle) first:border-t-0', className)}
-			{...props}
-		>
+		<tr className={cn('border-t border-(--color-line-subtle) first:border-t-0', className)} {...props}>
 			{children}
 		</tr>
 	);
@@ -93,7 +85,7 @@ export const EditorTableHeaderCell = ({
 	...props
 }: EditorTableHeaderCellProps) => {
 	return (
-		<th className={cn('px-3 py-3 font-semibold sm:px-4', className)} scope={scope} {...props}>
+		<th className={cn('px-3 py-3 font-semibold sm:px-4 font-aeonik', className)} scope={scope} {...props}>
 			{children}
 		</th>
 	);

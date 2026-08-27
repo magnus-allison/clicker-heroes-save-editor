@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 
 import { FeedbackSection } from '@/components/editor/sections/FeedbackSection';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
-import { PanelSection } from '@/components/ui/PanelSection';
 import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('requestGuide');
@@ -17,19 +16,17 @@ export default function RequestGuidePage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
 			/>
 			<Breadcrumb subtitle='Request a New Guide' title='guides' />
-			<PanelSection>
-				<FeedbackSection
-					defaultOpen
-					description='Tell us the topic you are stuck on and what an ideal guide would cover.'
-					emptyMessageError='Describe the guide before sending your request.'
-					messageLabel='Your guide request'
-					messagePlaceholder='What topic should the guide cover, and where are you getting stuck?'
-					submitLabel='Send request'
-					successMessage='Guide request sent.'
-					title='Request a Guide'
-					topic='guide-request'
-				/>
-			</PanelSection>
+			<FeedbackSection
+				defaultOpen
+				description='Tell us the topic you are stuck on and what an ideal guide would cover.'
+				emptyMessageError='Describe the guide before sending your request.'
+				messageLabel='Your guide request'
+				messagePlaceholder='What topic should the guide cover, and where are you getting stuck?'
+				submitLabel='Send request'
+				successMessage='Guide request sent.'
+				title='Request a Guide'
+				topic='guide-request'
+			/>
 		</>
 	);
 }

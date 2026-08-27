@@ -1,5 +1,8 @@
 'use client';
 
+import type { LucideIcon } from 'lucide-react';
+
+import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
 import {
 	EditorTable,
@@ -10,13 +13,14 @@ import {
 	EditorTableRow
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
-import { SectionCard } from '@/components/ui/SectionCard';
 import { orderedHeroes } from '@/lib/data/heroes';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
 
 type Props = {
 	defaultOpen?: boolean;
+	icon?: LucideIcon;
+	title?: string;
 };
 
 function getGildedLabel(epicLevel: number) {
@@ -27,7 +31,7 @@ function getGildedLabel(epicLevel: number) {
 	return `${epicLevel}x Gilded (+${epicLevel * 50}%)`;
 }
 
-export const HeroesSection = ({ defaultOpen }: Props) => {
+export const HeroesSection = ({ defaultOpen, icon, title = 'Heroes' }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 	const heroCollection =
@@ -37,12 +41,8 @@ export const HeroesSection = ({ defaultOpen }: Props) => {
 		]) ?? {};
 
 	return (
-		<SectionCard
-			defaultOpen={defaultOpen}
-			description='Edit hero levels and gilded levels without digging through the raw save structure.'
-			title='Heroes'
-		>
-			<EditorTable className='my-2' label='Heroes'>
+		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title={title}>
+			<EditorTable label={title}>
 				<EditorTableHead>
 					<tr>
 						<EditorTableHeaderCell>Image</EditorTableHeaderCell>
@@ -77,9 +77,7 @@ export const HeroesSection = ({ defaultOpen }: Props) => {
 									/>
 								</EditorTableCell>
 								<EditorTableCell>
-									<p className={isGilded ? 'text-(--color-gold)' : 'text-(--color-fg)'}>
-										{hero.name}
-									</p>
+									<p className={isGilded ? 'text-(--color-gold)' : 'text-(--color-fg)'}>{hero.name}</p>
 									{isGilded ? (
 										<p className='mt-1 text-[11px] uppercase tracking-[0.08em] text-(--color-gold)'>
 											{getGildedLabel(epicLevel)}
@@ -92,10 +90,7 @@ export const HeroesSection = ({ defaultOpen }: Props) => {
 										compact
 										disabled={!saveData}
 										onCommit={(value) =>
-											updateValue(
-												['heroCollection', 'heroes', hero.heroId, 'level'],
-												value
-											)
+											updateValue(['heroCollection', 'heroes', hero.heroId, 'level'], value)
 										}
 										selectOnFocus
 										value={level}
@@ -107,10 +102,7 @@ export const HeroesSection = ({ defaultOpen }: Props) => {
 										compact
 										disabled={!saveData}
 										onCommit={(value) =>
-											updateValue(
-												['heroCollection', 'heroes', hero.heroId, 'epicLevel'],
-												value
-											)
+											updateValue(['heroCollection', 'heroes', hero.heroId, 'epicLevel'], value)
 										}
 										selectOnFocus
 										value={epicLevel}
@@ -121,6 +113,6 @@ export const HeroesSection = ({ defaultOpen }: Props) => {
 					})}
 				</EditorTableBody>
 			</EditorTable>
-		</SectionCard>
+		</CollapsiblePanel>
 	);
 };

@@ -1,6 +1,7 @@
 'use client';
 
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
+import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
 import {
 	EditorTable,
@@ -11,24 +12,24 @@ import {
 	EditorTableRow
 } from '@/components/ui/EditorTable';
 import { HelpToolTip } from '@/components/ui/HelpToolTip';
-import { SectionCard } from '@/components/ui/SectionCard';
 import type { SimpleFieldConfig } from '@/lib/data/editor-config';
+import type { LucideIcon } from 'lucide-react';
+import { type FC } from 'react';
 
 type Props = {
+	icon?: LucideIcon;
 	title: string;
 	description?: string;
 	fields: SimpleFieldConfig[];
 	defaultOpen?: boolean;
-	note?: string;
 };
 
-export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, title }: Props) => {
+export const SimpleFieldsSection: FC<Props> = ({ icon, title, description, fields, defaultOpen }) => {
 	const showImageColumn = fields.some((field) => Boolean(field.imageSrc));
 
 	return (
-		<SectionCard defaultOpen={defaultOpen} description={description} title={title}>
-			{note ? <p className='mb-4 text-[12px] leading-6 text-(--color-fg-secondary)'>{note}</p> : null}
-			<EditorTable className='my-2' label={title} tableClassName='w-full table-fixed'>
+		<CollapsiblePanel defaultOpen={defaultOpen} description={description} icon={icon} title={title}>
+			<EditorTable label={title} tableClassName='w-full table-fixed'>
 				<colgroup>
 					{showImageColumn ? <col className='w-18 sm:w-22' /> : null}
 					<col className='w-[28%] sm:w-52' />
@@ -38,9 +39,7 @@ export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, ti
 					<tr>
 						{showImageColumn ? <EditorTableHeaderCell>Image</EditorTableHeaderCell> : null}
 						<EditorTableHeaderCell>Item</EditorTableHeaderCell>
-						<EditorTableHeaderCell className='text-left sm:text-right'>
-							Value
-						</EditorTableHeaderCell>
+						<EditorTableHeaderCell className='text-left sm:text-right'>Amount</EditorTableHeaderCell>
 					</tr>
 				</EditorTableHead>
 				<EditorTableBody>
@@ -85,6 +84,6 @@ export const SimpleFieldsSection = ({ defaultOpen, description, fields, note, ti
 					))}
 				</EditorTableBody>
 			</EditorTable>
-		</SectionCard>
+		</CollapsiblePanel>
 	);
 };

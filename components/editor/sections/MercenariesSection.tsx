@@ -1,6 +1,9 @@
 'use client';
 
+import type { LucideIcon } from 'lucide-react';
+
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
+import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import {
 	EditorTable,
 	EditorTableBody,
@@ -10,7 +13,6 @@ import {
 	EditorTableRow
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
-import { SectionCard } from '@/components/ui/SectionCard';
 import { ToolLink } from '@/components/ui/ToolLink';
 import { mercenarySlots, mercenarySummaryFields } from '@/lib/data/editor-config';
 import { useSaveStore } from '@/lib/save-store';
@@ -18,17 +20,19 @@ import { getValueAtPath } from '@/lib/save-utils';
 
 type Props = {
 	defaultOpen?: boolean;
+	icon?: LucideIcon;
+	title?: string;
 };
 
-export const MercenariesSection = ({ defaultOpen }: Props) => {
+export const MercenariesSection = ({ defaultOpen, icon, title = 'Mercenaries' }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 
 	return (
-		<SectionCard
-			defaultOpen={defaultOpen}
+		<CollapsiblePanel
 			description='Tweak mercenary lifetime stats and the current party roster.'
-			title='Mercenaries'
+			icon={icon}
+			title={title}
 		>
 			<div className='space-y-6'>
 				<div>
@@ -113,6 +117,6 @@ export const MercenariesSection = ({ defaultOpen }: Props) => {
 					</EditorTable>
 				</div>
 			</div>
-		</SectionCard>
+		</CollapsiblePanel>
 	);
 };

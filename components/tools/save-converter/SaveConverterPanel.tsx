@@ -117,7 +117,7 @@ export const SaveConverterPanel = () => {
 
 	return (
 		<>
-			<PanelSection className='grid lg:grid-cols-2'>
+			<PanelSection className='grid lg:grid-cols-2 p-0'>
 				<SaveImportField
 					examples={saveConverterExamples}
 					fileInputId='save-converter-file-input'

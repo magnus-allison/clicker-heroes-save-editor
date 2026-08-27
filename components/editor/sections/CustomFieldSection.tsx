@@ -1,20 +1,23 @@
 'use client';
 
+import type { LucideIcon } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
 import { Checkbox } from '@/components/ui/Checkbox';
+import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { Dropdown } from '@/components/ui/Dropdown';
 import { NumberInput } from '@/components/ui/NumberInput';
-import { SectionCard } from '@/components/ui/SectionCard';
 import { TextInput } from '@/components/ui/TextInput';
 import { useSaveStore } from '@/lib/save-store';
 import { listPrimitiveKeys } from '@/lib/save-utils';
 
 type Props = {
 	defaultOpen?: boolean;
+	icon?: LucideIcon;
+	title?: string;
 };
 
-export const CustomFieldSection = ({ defaultOpen }: Props) => {
+export const CustomFieldSection = ({ defaultOpen, icon, title = 'Find Custom Field' }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 	const options = useMemo(
@@ -29,10 +32,11 @@ export const CustomFieldSection = ({ defaultOpen }: Props) => {
 	const isDisabled = !saveData || !resolvedKey;
 
 	return (
-		<SectionCard
+		<CollapsiblePanel
 			defaultOpen={defaultOpen}
 			description='Search a top-level primitive field and edit it directly.'
-			title='Find Custom Field'
+			icon={icon}
+			title={title}
 		>
 			<div className='grid gap-4 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)]'>
 				<div className='space-y-4'>
@@ -89,6 +93,6 @@ export const CustomFieldSection = ({ defaultOpen }: Props) => {
 					)}
 				</div>
 			</div>
-		</SectionCard>
+		</CollapsiblePanel>
 	);
 };

@@ -7,7 +7,6 @@ export const SaveJson = () => {
 	return (
 		<>
 			<Breadcrumb subtitle='Save JSON' title='tools' />
-
 			<SaveJsonPanel />
 		</>
 	);

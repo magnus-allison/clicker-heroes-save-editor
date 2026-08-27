@@ -66,7 +66,7 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 	};
 
 	return (
-		<PanelSection className='grid lg:grid-cols-2'>
+		<PanelSection className='grid lg:grid-cols-2 p-0'>
 			<SaveImportField
 				examples={examples}
 				fileInputId='save-file-input'

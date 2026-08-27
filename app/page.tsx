@@ -5,6 +5,7 @@ import { AdditionalInfo } from '@/components/home/AdditionalInfo';
 import { Guides } from '@/components/home/Guides';
 import { Tools } from '@/components/home/Tools';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
+import { InfoIcon, ShieldAlertIcon } from 'lucide-react';
 
 export const metadata: Metadata = createPageMetadata('home');
 
@@ -28,16 +29,24 @@ const Page = () => (
 			</div>
 		</section>
 
-		<section aria-labelledby='additional-info-heading' className='flex flex-col gap-10 scroll-mt-8' id='additional-info'>
+		<section
+			aria-labelledby='additional-info-heading'
+			className='flex flex-col gap-10 scroll-mt-8'
+			id='additional-info'
+		>
 			<Breadcrumb title='additional info' />
 			<div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
 				<AdditionalInfo />
 			</div>
-			<p className='text-[12px] leading-6 text-fg-dim'>
+		</section>
+
+		<p className='mt-auto flex items-start gap-2 p-5 font-aeonik text-sm tracking-wide text-fg-dim/65'>
+			<InfoIcon aria-hidden='true' className='mt-1 h-3 w-3 shrink-0' />
+			<span>
 				This is an independent project and is not affiliated with, endorsed by, or associated with the
 				creators of Clicker Heroes.
-			</p>
-		</section>
+			</span>
+		</p>
 	</>
 );
 

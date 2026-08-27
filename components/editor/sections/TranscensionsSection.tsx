@@ -1,27 +1,36 @@
 'use client';
 
+import type { LucideIcon } from 'lucide-react';
 import posthog from 'posthog-js';
 
 import { Button } from '@/components/ui/Button';
-import { SectionCard } from '@/components/ui/SectionCard';
+import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { ToolLink } from '@/components/ui/ToolLink';
 import { useSaveStore } from '@/lib/save-store';
 import { setValueAtPath } from '@/lib/save-utils';
 
 type Props = {
 	defaultOpen?: boolean;
+	icon?: LucideIcon;
 	showToast: (message: string) => void;
+	title?: string;
 };
 
-export const TranscensionsSection = ({ defaultOpen, showToast }: Props) => {
+export const TranscensionsSection = ({
+	defaultOpen,
+	icon,
+	showToast,
+	title = 'Transcensions and Ascensions'
+}: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateSave = useSaveStore((state) => state.updateSave);
 
 	return (
-		<SectionCard
+		<CollapsiblePanel
 			defaultOpen={defaultOpen}
 			description='Save history for transcensions and ascensions can safely be cleared if you want a smaller export.'
-			title='Transcensions and Ascensions'
+			icon={icon}
+			title={title}
 		>
 			<div className='space-y-4 text-[12px] leading-6 text-(--color-fg-secondary)'>
 				<p>
@@ -59,6 +68,6 @@ export const TranscensionsSection = ({ defaultOpen, showToast }: Props) => {
 					</Button>
 				</div>
 			</div>
-		</SectionCard>
+		</CollapsiblePanel>
 	);
 };

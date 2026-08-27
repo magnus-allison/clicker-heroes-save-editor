@@ -2,8 +2,11 @@
 
 import posthog from 'posthog-js';
 
+import { type LucideIcon } from 'lucide-react';
+
 import { Button } from '@/components/ui/Button';
 import { Checkbox } from '@/components/ui/Checkbox';
+import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
 import {
 	EditorTable,
@@ -13,17 +16,18 @@ import {
 	EditorTableHeaderCell,
 	EditorTableRow
 } from '@/components/ui/EditorTable';
-import { SectionCard } from '@/components/ui/SectionCard';
 import { autoClickerSkins } from '@/lib/data/editor-config';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath, setValueAtPath } from '@/lib/save-utils';
+import { Pill } from '@/components/ui/Pill';
 
 type Props = {
 	showToast: (message: string) => void;
 	defaultOpen?: boolean;
+	icon?: LucideIcon;
 };
 
-export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
+export const SkinsSection = ({ defaultOpen, icon, showToast }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateSave = useSaveStore((state) => state.updateSave);
 	const updateValue = useSaveStore((state) => state.updateValue);
@@ -35,18 +39,11 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 		: false;
 
 	return (
-		<SectionCard
-			defaultOpen={defaultOpen}
-			description='Pick the current skin and toggle which auto clicker skins are unlocked.'
-			title='Auto Clicker Skins'
-		>
+		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title='Auto Clicker Skins'>
 			<div className='space-y-6'>
 				<div className='flex items-center justify-between gap-3'>
-					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-						Unlocked skins
-					</p>
-					<Button
-						className='disabled:border-transparent disabled:opacity-45'
+					<Pill
+						className='disabled:border-transparent disabled:opacity-45 cursor-pointer'
 						disabled={!saveData || allUnlocked}
 						onClick={() => {
 							if (!saveData) {
@@ -63,14 +60,12 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 							showToast('All skins unlocked.');
 							posthog.capture('skins_all_unlocked');
 						}}
-						size='sm'
-						variant='ghost'
 					>
 						Unlock All
-					</Button>
+					</Pill>
 				</div>
 
-				<EditorTable className='my-2' label='Auto clicker skins'>
+				<EditorTable label='Auto clicker skins'>
 					<EditorTableHead>
 						<tr>
 							<EditorTableHeaderCell>Image</EditorTableHeaderCell>
@@ -94,13 +89,9 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 									<div className='flex justify-start'>
 										<Checkbox
 											ariaLabel={`${skin.name} unlocked`}
-											checked={Boolean(
-												getValueAtPath(saveData, ['autoclickerSkins', skin.id])
-											)}
+											checked={Boolean(getValueAtPath(saveData, ['autoclickerSkins', skin.id]))}
 											disabled={!saveData}
-											onCheckedChange={(checked) =>
-												updateValue(['autoclickerSkins', skin.id], checked)
-											}
+											onCheckedChange={(checked) => updateValue(['autoclickerSkins', skin.id], checked)}
 										/>
 									</div>
 								</EditorTableCell>
@@ -109,10 +100,8 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 					</EditorTableBody>
 				</EditorTable>
 
-				<div className='mt-4 mb-2'>
-					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-						Current skin
-					</p>
+				<div>
+					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>Current skin</p>
 					<div className='mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4'>
 						{autoClickerSkins.map((skin) => {
 							const isSelected = selectedSkinId === skin.id;
@@ -148,6 +137,6 @@ export const SkinsSection = ({ defaultOpen, showToast }: Props) => {
 					</div>
 				</div>
 			</div>
-		</SectionCard>
+		</CollapsiblePanel>
 	);
 };

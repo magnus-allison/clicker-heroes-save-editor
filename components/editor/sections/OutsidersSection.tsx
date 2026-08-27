@@ -1,8 +1,10 @@
 'use client';
 
+import type { LucideIcon } from 'lucide-react';
 import { useMemo } from 'react';
 
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
+import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
 import {
 	EditorTable,
@@ -13,7 +15,6 @@ import {
 	EditorTableRow
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
-import { SectionCard } from '@/components/ui/SectionCard';
 import { ancientSoulFields, getOutsiderStats, outsiderFields } from '@/lib/data/editor-config';
 import { formatLargeNumber, formatNumber } from '@/lib/format';
 import { useSaveStore } from '@/lib/save-store';
@@ -21,13 +22,19 @@ import { getValueAtPath } from '@/lib/save-utils';
 
 type Props = {
 	defaultOpen?: boolean;
+	icon?: LucideIcon;
+	title?: string;
 };
 
 /** Outsider bonuses grow past what plain grouping can show, so switch to
  *  exponential notation at the same threshold the section always used. */
 const OUTSIDER_EXPONENTIAL_ABOVE = 100_000;
 
-export const OutsidersSection = ({ defaultOpen }: Props) => {
+export const OutsidersSection = ({
+	defaultOpen,
+	icon,
+	title = 'Outsiders and Ancient Souls'
+}: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 	const outsiderRows = useMemo(
@@ -48,10 +55,11 @@ export const OutsidersSection = ({ defaultOpen }: Props) => {
 	);
 
 	return (
-		<SectionCard
+		<CollapsiblePanel
 			defaultOpen={defaultOpen}
 			description='Edit ancient soul values and the outsider levels that shape long-run progression.'
-			title='Outsiders and Ancient Souls'
+			icon={icon}
+			title={title}
 		>
 			<div className='space-y-6'>
 				<div>
@@ -144,6 +152,6 @@ export const OutsidersSection = ({ defaultOpen }: Props) => {
 					</EditorTableBody>
 				</EditorTable>
 			</div>
-		</SectionCard>
+		</CollapsiblePanel>
 	);
 };

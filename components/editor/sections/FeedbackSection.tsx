@@ -1,10 +1,11 @@
 'use client';
 
+import { MessageCircleMoreIcon, type LucideIcon } from 'lucide-react';
 import type { FormEvent } from 'react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/Button';
-import { SectionCard } from '@/components/ui/SectionCard';
+import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { TextInput } from '@/components/ui/TextInput';
 import { useToast } from '@/components/ui/ToastProvider';
 
@@ -13,6 +14,7 @@ export type FeedbackTopic = 'feedback' | 'guide-request' | 'tool-request';
 
 type Props = {
 	defaultOpen?: boolean;
+	icon?: LucideIcon;
 	title?: string;
 	description?: string;
 	/** Routes the message to the right subject line. Defaults to general feedback. */
@@ -33,6 +35,7 @@ export const FeedbackSection = ({
 	defaultOpen,
 	description = defaultDescription,
 	emptyMessageError = 'Enter a message before sending feedback.',
+	icon,
 	messageLabel = 'Your feedback message',
 	messagePlaceholder = 'Write your feedback here...',
 	submitLabel = 'Submit',
@@ -102,7 +105,12 @@ export const FeedbackSection = ({
 	};
 
 	return (
-		<SectionCard defaultOpen={defaultOpen} description={description} title={title}>
+		<CollapsiblePanel
+			defaultOpen={defaultOpen}
+			description={description}
+			icon={MessageCircleMoreIcon}
+			title={title}
+		>
 			<form className='flex flex-col gap-3' onSubmit={handleSubmit}>
 				<input
 					aria-hidden='true'
@@ -147,6 +155,6 @@ export const FeedbackSection = ({
 					</Button>
 				</div>
 			</form>
-		</SectionCard>
+		</CollapsiblePanel>
 	);
 };

@@ -147,8 +147,18 @@ export const ExternalLinkCard: FC<Props & { icon: string }> = ({
 	);
 };
 
-export const CardTitle: FC<{ title: string }> = ({ title }) => (
-	<h3 className='font-aeonik mt-4 mb-6 block text-[1.24rem] tracking-wide font-semibold uppercase text-fg-strong [word-spacing:0.2em]'>
+interface CardTitleProps {
+	title: string;
+	className?: string;
+}
+
+export const CardTitle: FC<CardTitleProps> = ({ title, className }) => (
+	<h3
+		className={cn(
+			'font-aeonik mt-4 mb-6 block text-[1.24rem] tracking-wide font-semibold uppercase text-fg-strong [word-spacing:0.2em]',
+			className
+		)}
+	>
 		{title}
 	</h3>
 );

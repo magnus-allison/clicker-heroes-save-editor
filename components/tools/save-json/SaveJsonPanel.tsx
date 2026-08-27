@@ -84,7 +84,7 @@ export const SaveJsonPanel = () => {
 
 	return (
 		<>
-			<PanelSection className='grid lg:grid-cols-2'>
+			<PanelSection className='grid lg:grid-cols-2 p-0'>
 				<SaveImportField fileInputId='save-json-file-input' isActiveStep={isJsonEmpty} onLoad={importSave} />
 				<SaveExportField
 					actionLabel='Convert JSON to Save'

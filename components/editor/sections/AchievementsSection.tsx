@@ -1,6 +1,9 @@
 'use client';
 
+import type { LucideIcon } from 'lucide-react';
+
 import { Checkbox } from '@/components/ui/Checkbox';
+import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
 import {
 	EditorTable,
@@ -11,34 +14,29 @@ import {
 	EditorTableRow
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
-import { SectionCard } from '@/components/ui/SectionCard';
 import { achievementGroups, getAchievementImage } from '@/lib/data/achievements';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
 
 type Props = {
 	defaultOpen?: boolean;
+	icon: LucideIcon;
+	title: string;
 };
 
-export const AchievementsSection = ({ defaultOpen }: Props) => {
+export const AchievementsSection = ({ defaultOpen, icon, title }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 
 	return (
-		<SectionCard
-			defaultOpen={defaultOpen}
-			description='Toggle achievements in groups and adjust the transcendent highest zone field.'
-			title='Achievements'
-		>
+		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title={title}>
 			<div className='space-y-6'>
-				<EditorTable className='my-2' label='Transcension achievement fields'>
+				<EditorTable label='Transcension achievement fields'>
 					<EditorTableHead>
 						<tr>
 							<EditorTableHeaderCell>Image</EditorTableHeaderCell>
 							<EditorTableHeaderCell>Item</EditorTableHeaderCell>
-							<EditorTableHeaderCell className='text-left sm:text-right'>
-								Value
-							</EditorTableHeaderCell>
+							<EditorTableHeaderCell className='text-left sm:text-right'>Value</EditorTableHeaderCell>
 						</tr>
 					</EditorTableHead>
 					<EditorTableBody>
@@ -51,20 +49,14 @@ export const AchievementsSection = ({ defaultOpen }: Props) => {
 									src='/assets/profile/Transcend_achieve.webp'
 								/>
 							</EditorTableCell>
-							<EditorTableCell className='text-(--color-fg)'>
-								Transcendent Highest Zone
-							</EditorTableCell>
+							<EditorTableCell className='text-(--color-fg)'>Transcendent Highest Zone</EditorTableCell>
 							<EditorTableCell className='min-w-55'>
 								<NumberInput
 									ariaLabel='Transcendent Highest Zone'
 									disabled={!saveData}
-									onCommit={(value) =>
-										updateValue(['transcendentHighestFinishedZone'], value)
-									}
+									onCommit={(value) => updateValue(['transcendentHighestFinishedZone'], value)}
 									selectOnFocus
-									value={Number(
-										getValueAtPath(saveData, ['transcendentHighestFinishedZone']) ?? 0
-									)}
+									value={Number(getValueAtPath(saveData, ['transcendentHighestFinishedZone']) ?? 0)}
 								/>
 							</EditorTableCell>
 						</EditorTableRow>
@@ -99,27 +91,19 @@ export const AchievementsSection = ({ defaultOpen }: Props) => {
 										</EditorTableCell>
 										<EditorTableCell className='align-top'>
 											<p className='text-(--color-fg)'>{achievement[0]}</p>
-											<p className='mt-1 leading-6 text-(--color-fg-secondary)'>
-												{achievement[1]}
-											</p>
+											<p className='mt-1 leading-6 text-(--color-fg-secondary)'>{achievement[1]}</p>
 											{achievement[2] ? (
-												<p className='mt-1 italic text-(--color-fg-dim)'>
-													{achievement[2]}
-												</p>
+												<p className='mt-1 italic text-(--color-fg-dim)'>{achievement[2]}</p>
 											) : null}
 											{achievement[3] ? (
-												<p className='mt-1 text-(--color-primary-text)'>
-													Reward: {achievement[3]}
-												</p>
+												<p className='mt-1 text-(--color-primary-text)'>Reward: {achievement[3]}</p>
 											) : null}
 										</EditorTableCell>
 										<EditorTableCell className='align-top'>
 											<div className='flex justify-start pt-1'>
 												<Checkbox
 													ariaLabel={`${achievement[0]} unlocked`}
-													checked={Boolean(
-														getValueAtPath(saveData, ['achievements', id])
-													)}
+													checked={Boolean(getValueAtPath(saveData, ['achievements', id]))}
 													disabled={!saveData}
 													onCheckedChange={(checked) => {
 														if (!saveData) {
@@ -138,6 +122,6 @@ export const AchievementsSection = ({ defaultOpen }: Props) => {
 					))}
 				</div>
 			</div>
-		</SectionCard>
+		</CollapsiblePanel>
 	);
 };

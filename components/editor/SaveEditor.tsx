@@ -16,13 +16,26 @@ import { clanFields } from '@/lib/data/editor-config';
 import { seasonalItemFields } from '@/lib/data/seasonalItems';
 import { shopItemFields } from '@/lib/data/shopItems';
 import { zoneItemFields } from '@/lib/data/zoneItems';
-import { PanelSection } from '../ui/PanelSection';
-import { StepTitle } from '../ui/StepTitle';
 import { useSaveFlowStep } from '@/lib/save-flow';
 import { useSaveStore } from '@/lib/save-store';
 import { Breadcrumb } from '../home/Breadcrumb';
 import { cn } from '@/lib/cn';
 import { Pill } from '../ui/Pill';
+import {
+	CandyCaneIcon,
+	CircleDollarSign,
+	GhostIcon,
+	MessageSquareIcon,
+	PointerIcon,
+	SearchIcon,
+	ShieldIcon,
+	SparklesIcon,
+	StoreIcon,
+	SwordsIcon,
+	TrophyIcon,
+	UsersIcon
+} from 'lucide-react';
+import { CardTitle } from '../ui/LinkCard';
 
 export const SaveEditor = () => {
 	const { showToast } = useToast();
@@ -45,56 +58,46 @@ export const SaveEditor = () => {
 			<div className={cn(!hasSave && 'pointer-events-none opacity-40 select-none')} inert={!hasSave}>
 				<div ref={step2Ref} className='mt-5 mb-10 flex scroll-mt-8 flex-row items-center gap-3'>
 					<Pill isShining={activeStep === 2}>Step 2</Pill>
-					<span className='block text-[1.1rem] font-medium uppercase text-fg-strong'>
-						Edit your save data
-					</span>
+					<CardTitle title={'Edit your save data'} className='pt-1' />
 				</div>
-				<PanelSection>
-					<SimpleFieldsSection
-						defaultOpen
-						description='Core currencies and ruby-shop purchases.'
-						fields={shopItemFields}
-						title='Shop Items'
-					/>
+				<div className='flex flex-col gap-5'>
+					<SimpleFieldsSection title='Shop Items' icon={StoreIcon} fields={shopItemFields} />
 
 					<SimpleFieldsSection
 						defaultOpen
-						description='Limited-time event items and currencies.'
+						icon={CandyCaneIcon}
 						fields={seasonalItemFields}
 						title='Seasonal Items'
 					/>
 
-					<SkinsSection defaultOpen showToast={showToast} />
+					<SkinsSection defaultOpen showToast={showToast} icon={PointerIcon} />
 
 					<SimpleFieldsSection
 						defaultOpen
-						description="Gold, hero souls, and the current run's zone values."
+						icon={CircleDollarSign}
 						fields={zoneItemFields}
 						title='Zone Items'
 					/>
 
-					<HeroesSection defaultOpen />
+					<HeroesSection icon={UsersIcon} title='Heroes' />
 
-					<AchievementsSection defaultOpen={false} />
+					<AchievementsSection icon={TrophyIcon} title='Achievements' />
 
-					<TranscensionsSection defaultOpen={false} showToast={showToast} />
+					<TranscensionsSection icon={SparklesIcon} showToast={showToast} />
 
 					<SimpleFieldsSection
-						defaultOpen={false}
-						description='Clan raid class, immortal souls, and titan damage values.'
+						description='Raid classes map to 0 = None, 1 = Rogue, 2 = Mage, 3 = Priest.'
 						fields={clanFields}
-						note='Raid classes map to 0 = None, 1 = Rogue, 2 = Mage, 3 = Priest.'
+						icon={ShieldIcon}
 						title='Clan Values'
 					/>
 
-					<MercenariesSection defaultOpen={false} />
+					<MercenariesSection icon={SwordsIcon} />
 
-					<OutsidersSection defaultOpen={false} />
+					<OutsidersSection icon={GhostIcon} />
 
-					<CustomFieldSection defaultOpen={false} />
-
-					<FeedbackSection defaultOpen={false} />
-				</PanelSection>
+					<CustomFieldSection icon={SearchIcon} />
+				</div>
 			</div>
 		</>
 	);
