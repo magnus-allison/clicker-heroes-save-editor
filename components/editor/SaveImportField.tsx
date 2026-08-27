@@ -6,16 +6,16 @@ import { useRef, useState } from 'react';
 import posthog from 'posthog-js';
 
 import { ExampleSaveButtons } from '@/components/editor/ExampleSaveButtons';
-import { Button } from '@/components/ui/Button';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { FieldDivider } from '@/components/ui/FieldDivider';
 import { TextInput } from '@/components/ui/TextInput';
 import { useToast } from '@/components/ui/ToastProvider';
 import type { ExampleSave } from '@/lib/data/example-saves';
-import { FileUpIcon } from 'lucide-react';
+import { FileUpIcon, MonitorUpIcon } from 'lucide-react';
 import { Pill } from '../ui/Pill';
 import { CardTitle } from '../ui/LinkCard';
+import { SaveDataButton } from './SaveDataButton';
 
 export type SaveImportSource = 'paste' | 'file' | 'example';
 
@@ -110,28 +110,19 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 					type='file'
 				/>
 				<div className='flex flex-wrap items-center gap-2'>
-					<Button
-						className='gap-1.5 whitespace-nowrap'
+					<button
+						className='gap-1.5 whitespace-nowrap rounded-full
+						shadow-card px-2.5 py-1.5 font-medium text-fg-dim transition-[background-color] duration-200 hover:bg-(--color-bg-subtle-hover) dark:border-(--color-border-dark) dark:bg-(--color-bg-subtle-dark) dark:text-(--color-fg-dim-dark) dark:hover:bg-(--color-bg-subtle-hover-dark) flex items-center'
 						onClick={() => inputRef.current?.click()}
-						size='sm'
-						variant='subtle'
 					>
-						<EditorImage
-							alt='Upload save file'
-							className='h-3.5 w-3.5 shrink-0 object-contain opacity-70'
-							size={14}
-							src='/assets/icons/folder-open.svg'
-							style={{ filter: 'var(--color-icon-filter)' }}
-						/>
-						<span>Upload file</span>
-					</Button>
+						<MonitorUpIcon className='w-3.5 h-3.5 mt-0.5' />
+						<span className='font-aeonik text-sm'>Upload File</span>
+					</button>
 					<p className='max-w-full truncate text-[11px] text-(--color-fg-dim)'>{selectedFileName}</p>
 				</div>
 				<FieldDivider label='or paste below' />
 				<div
 					className='flex min-w-0 items-start gap-2'
-					// `TextInput` does not expose `onPaste`, but paste events bubble,
-					// so pasting a save still loads it immediately.
 					onPaste={(event) => {
 						const pastedData = event.clipboardData.getData('text');
 						if (pastedData) {
@@ -156,13 +147,6 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 						text={decodeValue}
 					/>
 				</div>
-				<Button
-					fullWidth
-					onClick={() => onLoad({ value: decodeValue, source: 'paste', isSubmit: true })}
-					variant='primary'
-				>
-					Load Save Data
-				</Button>
 				<ExampleSaveButtons
 					customExamples={examples}
 					onSelect={(save) => {
@@ -170,6 +154,10 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 						setDecodeValue(save);
 						onLoad({ value: save, source: 'example', isSubmit: false });
 					}}
+				/>
+				<SaveDataButton
+					title='Load Save Data'
+					onClick={() => onLoad({ value: decodeValue, source: 'paste', isSubmit: true })}
 				/>
 			</div>
 		</section>

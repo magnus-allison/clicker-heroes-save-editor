@@ -43,7 +43,7 @@ export const SaveEditor = () => {
 			<SaveDataPanel hasEditStep onLoadSuccess={scrollToStep2} />
 
 			<div className={cn(!hasSave && 'pointer-events-none opacity-40 select-none')} inert={!hasSave}>
-				<div ref={step2Ref} className='mt-5 mb-10 flex flex-row items-center gap-3'>
+				<div ref={step2Ref} className='mt-5 mb-10 flex scroll-mt-8 flex-row items-center gap-3'>
 					<Pill isShining={activeStep === 2}>Step 2</Pill>
 					<span className='block text-[1.1rem] font-medium uppercase text-fg-strong'>
 						Edit your save data
