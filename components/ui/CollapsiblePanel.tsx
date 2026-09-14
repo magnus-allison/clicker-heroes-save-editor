@@ -4,7 +4,7 @@ import { ChevronDownIcon, type LucideIcon } from 'lucide-react';
 import { useId, useState, type ReactNode } from 'react';
 
 import { PanelSection } from '@/components/ui/PanelSection';
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 
 type Props = {
 	icon?: LucideIcon;

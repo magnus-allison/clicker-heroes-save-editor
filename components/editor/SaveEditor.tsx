@@ -19,7 +19,7 @@ import { zoneItemFields } from '@/lib/data/zoneItems';
 import { useSaveFlowStep } from '@/lib/save-flow';
 import { useSaveStore } from '@/lib/save-store';
 import { Breadcrumb } from '../home/Breadcrumb';
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 import { Pill } from '../ui/Pill';
 import {
 	CandyCaneIcon,

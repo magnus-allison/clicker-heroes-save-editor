@@ -14,7 +14,7 @@ import {
 import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 import {
 	formatDurationMinutes,
 	formatDurationSeconds,

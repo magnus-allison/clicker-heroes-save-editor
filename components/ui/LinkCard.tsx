@@ -1,4 +1,4 @@
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 import { ArrowRight, ArrowUpRight, LucideIcon } from 'lucide-react';
 import Link from 'next/link';
 import { type FC } from 'react';

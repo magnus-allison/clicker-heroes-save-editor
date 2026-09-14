@@ -4,7 +4,7 @@ import type { FocusEvent, ReactNode } from 'react';
 import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 
 type Props = {
 	title: string;
@@ -67,9 +67,7 @@ export const Tooltip = ({
 						? 'top'
 						: 'bottom';
 			const top =
-				resolvedPlacement === 'top'
-					? wrapperRect.top - tooltipRect.height - gap
-					: wrapperRect.bottom + gap;
+				resolvedPlacement === 'top' ? wrapperRect.top - tooltipRect.height - gap : wrapperRect.bottom + gap;
 			const left = Math.min(
 				Math.max(wrapperRect.left, margin),
 				Math.max(margin, viewportWidth - tooltipRect.width - margin)

@@ -1,7 +1,7 @@
 import type { SelectHTMLAttributes } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 import type { SelectOption } from '@/lib/save-utils';
 
 type Props = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'children'> & {

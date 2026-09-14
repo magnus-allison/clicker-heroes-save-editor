@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 	variant?: 'primary' | 'secondary' | 'subtle' | 'ghost';

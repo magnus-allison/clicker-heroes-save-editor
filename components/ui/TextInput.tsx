@@ -3,7 +3,7 @@
 import type { FocusEvent } from 'react';
 import { useId, useState } from 'react';
 
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 
 type Props = {
 	value: string;

@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/EditorTable';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 import { mercenarySummaryFields } from '@/lib/data/editor-config';
 import { mercenaryExamples } from '@/lib/data/example-saves';
 import { formatDecimal, formatDurationSeconds, formatNumber, toFiniteNumber } from '@/lib/format';

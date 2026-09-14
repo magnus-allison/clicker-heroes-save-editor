@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { ExternalLinkIcon } from 'lucide-react';
 
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 
 type Props = {
 	href: string;

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { ChevronRight } from 'lucide-react';
 
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 
 type Props = {
 	title: string;
@@ -49,9 +49,7 @@ export const SectionCard = ({ actions, children, className, defaultOpen, descrip
 					<span className='col-start-2 block text-[12px] text-(--color-fg-muted)'>{description}</span>
 				) : null}
 			</summary>
-			<div className='border-t border-(--color-line-subtle) bg-(--color-surface) p-4'>
-				{children}
-			</div>
+			<div className='border-t border-(--color-line-subtle) bg-(--color-surface) p-4'>{children}</div>
 		</details>
 	);
 };

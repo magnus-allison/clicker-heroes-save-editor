@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { CircleHelp } from 'lucide-react';
 
 import { Tooltip } from '@/components/ui/Tooltip';
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 
 type Props = {
 	title: string;

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Check, Copy } from 'lucide-react';
 
 import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 
 type Props = {
 	text: string;

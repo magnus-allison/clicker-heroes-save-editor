@@ -3,7 +3,7 @@
 import { useId, useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 import { formatNumber, parseNumberish, sanitizeNumberInput } from '@/lib/save-utils';
 
 const incrementOptions = [

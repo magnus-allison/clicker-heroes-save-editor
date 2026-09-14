@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { type FC, type ReactNode } from 'react';
 
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 
 interface Props {
 	title: string | ReactNode;

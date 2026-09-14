@@ -5,7 +5,7 @@ import { useId } from 'react';
 
 import { Check } from 'lucide-react';
 
-import { cn } from '@/lib/cn';
+import { cn } from 'cn';
 
 type Props = {
 	checked: boolean;
@@ -66,10 +66,7 @@ export const Checkbox = ({ ariaLabel, checked, className, disabled, id, label, o
 			/>
 			{label ? (
 				<span
-					className={cn(
-						'text-[13px] text-(--color-fg)',
-						checked && !disabled && 'text-(--color-fg-strong)'
-					)}
+					className={cn('text-[13px] text-(--color-fg)', checked && !disabled && 'text-(--color-fg-strong)')}
 				>
 					{label}
 				</span>
