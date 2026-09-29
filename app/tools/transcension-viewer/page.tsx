@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { TranscensionViewer } from '@/components/tools/transcension-viewer/TranscensionViewer';
-import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
+import { createPageJsonLd, createPageMetadata, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('transcensionViewer');
 
@@ -12,7 +12,7 @@ export default function TranscensionViewerPage() {
 		<>
 			<script
 				type='application/ld+json'
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+				dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
 			/>
 			<TranscensionViewer />
 		</>

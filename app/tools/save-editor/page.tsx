@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { SaveEditor } from '@/components/editor/SaveEditor';
-import { createPageJsonLd, createPageMetadata, saveEditorFaqs } from '@/lib/seo';
+import { createPageJsonLd, createPageMetadata, saveEditorFaqs, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('saveEditor');
 
@@ -9,7 +9,10 @@ const structuredData = createPageJsonLd('saveEditor');
 
 const SaveEditorPage = () => (
 	<>
-		<script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+		<script
+			type='application/ld+json'
+			dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
+		/>
 		<SaveEditor />
 		<section
 			aria-labelledby='about-clicker-heroes-save-editor'

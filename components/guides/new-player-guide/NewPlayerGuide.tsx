@@ -64,7 +64,7 @@ export const NewPlayerGuide: FC = () => (
 	<article className='flex flex-col gap-10'>
 		<div className='flex flex-col gap-6'>
 			<p className='max-w-3xl text-[14px] leading-7 text-(--color-fg-secondary)'>
-				Everything you need to get from a fresh save to your first transcension in Clicker Heroes 1.0e11. It
+				Everything you need to get from a fresh save to your first transcension in Clicker Heroes 1.0e12. It
 				assumes an idle build, which is the easiest way to start: gold keeps accruing while the game is
 				closed. Once you have transcended and picked up a few in-game auto-clickers, a hybrid or active build
 				will take you further.

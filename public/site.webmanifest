@@ -1,7 +1,7 @@
 {
-	"name": "Clicker Heroes Save Editor",
-	"short_name": "CH Save Editor",
-	"description": "Free browser-based Clicker Heroes save decoder and editor.",
+	"name": "clickerheroes.dev – Clicker Heroes Tools",
+	"short_name": "CH Tools",
+	"description": "Free Clicker Heroes save editor, calculators, and guides in your browser.",
 	"start_url": "/",
 	"display": "standalone",
 	"background_color": "#0a0a0a",

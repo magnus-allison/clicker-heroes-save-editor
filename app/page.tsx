@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
-import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
+import { createPageJsonLd, createPageMetadata, serializeJsonLd } from '@/lib/seo';
 import { AdditionalInfo } from '@/components/home/AdditionalInfo';
 import { Guides } from '@/components/home/Guides';
 import { Tools } from '@/components/home/Tools';
@@ -13,7 +14,10 @@ const structuredData = createPageJsonLd('home');
 
 const Page = () => (
 	<>
-		<script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+		<script
+			type='application/ld+json'
+			dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
+		/>
 
 		<section aria-labelledby='tools-heading' className='flex flex-col gap-10 scroll-mt-8' id='tools'>
 			<Breadcrumb title='tools' />
