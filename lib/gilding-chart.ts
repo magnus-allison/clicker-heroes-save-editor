@@ -1,5 +1,5 @@
 /**
- * Hero gilding chart for Clicker Heroes 1.0e11.
+ * Hero gilding chart for Clicker Heroes 1.0e12 (hero balance unchanged since 1.0e11).
  *
  * Adapted from the community e10 chart (/u/parker_cube) and the ClickerHeroes
  * Wiki, extended through the Ace Scouts rotation. Gold thresholds are log10:

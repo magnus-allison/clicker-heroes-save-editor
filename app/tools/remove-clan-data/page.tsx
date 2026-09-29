@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { RemoveClanDataEditor } from '@/components/editor/RemoveClanDataEditor';
-import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
+import { createPageJsonLd, createPageMetadata, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('removeClanData');
 
@@ -12,7 +12,7 @@ export default function RemoveClanDataPage() {
 		<>
 			<script
 				type='application/ld+json'
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+				dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
 			/>
 			<RemoveClanDataEditor />
 		</>

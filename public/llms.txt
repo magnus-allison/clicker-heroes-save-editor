@@ -1,87 +1,27 @@
-# Clicker Heroes Save Editor
+# clickerheroes.dev
 
-> A free, browser-based tool for decoding, inspecting, editing, and re-encoding Clicker Heroes save data — no installation required.
+> Free, browser-based tools, calculators, and guides for Clicker Heroes (the idle game by Playsaurus, current version 1.0e12). Includes a save editor, ancients and outsiders calculators, save viewers and converters, and a hero gilding chart. Independent and open source; not affiliated with Playsaurus.
 
-## Summary
+Save decoding, editing, and encoding run in the browser; saves are not uploaded to the site for processing. Source code: https://github.com/magnus-allison/clicker-heroes-save-editor
 
-Clicker Heroes Save Editor is an open-source web application that lets players load a Clicker Heroes save string or save file, decode it, inspect structured game data, edit values, and export the updated save for import back into the game. It runs in the browser; save data is processed client-side.
+## Tools
 
-Canonical URL: https://clickerheroes.dev/
-Live app: https://clickerheroes.dev/
-Source repository: https://github.com/magnus-allison/clicker-heroes-save-editor
+- [Save Editor](https://clickerheroes.dev/tools/save-editor): Decode a Clicker Heroes save string or .save file, edit gold, rubies, Hero Souls, heroes, gilds, skins, achievements, ascensions, transcensions, outsiders, mercenaries, clan values, and custom fields, then re-encode it for import back into the game.
+- [Ancients Calculator](https://clickerheroes.dev/tools/ancients-calculator): Optimal ancient levels and level-up costs from an imported save, for idle, hybrid, and active builds, plus a hero soul planner.
+- [Outsiders Calculator](https://clickerheroes.dev/tools/outsiders-calculator): Optimal Borb, Phandoryss, Ponyboy, and Chor'gorloth levels by Ancient Souls, end-of-transcension estimates, zone breakpoints, and a transcension simulator.
+- [Instakill Calculator](https://clickerheroes.dev/tools/instakill-calculator): Route duration, monsters per zone, and zones per hour from Kumawakamaru, Borb, zone range, and FPS.
+- [Transcension Viewer](https://clickerheroes.dev/tools/transcension-viewer): Transcension and ascension history from a save, with HZE, Hero Souls, and Ancient Souls totals.
+- [Mercenary Viewer](https://clickerheroes.dev/tools/mercenary-viewer): Mercenary roster and lifetime mercenary and quest stats from a save.
+- [Save Converter](https://clickerheroes.dev/tools/save-converter): Convert saves between PC and mobile formats, with detected origin and patch number.
+- [Remove Clan Data](https://clickerheroes.dev/tools/remove-clan-data): Strip clan, account, and login fields from a save before sharing it.
+- [Save JSON](https://clickerheroes.dev/tools/save-json): Decode a save into raw JSON, edit it by hand, and re-encode it. Built for developers.
 
-## Features
+## Guides
 
-- **Decode & Encode Saves** – Paste a raw Clicker Heroes save string; the editor decodes it instantly and re-encodes it after edits.
-- **Edit Gold & Rubies** – Directly modify currency values without third-party software.
-- **Hero Management** – Inspect and change hero levels, unlocks, gilds, skins, and upgrade states.
-- **Ascension Data** – View and edit ascension counts, Hero Souls, Ancients, outsiders, transcensions, and related stats.
-- **Achievements & Profile** – Toggle or modify achievement flags and player profile fields.
-- **Mercenaries & Clan Values** – Inspect and edit mercenary state, clan raid class, immortal souls, and titan damage values.
-- **Raw JSON Editing** – Use the structured JSON view for advanced save inspection and precise custom changes.
-- **No Server Uploads** – Save decoding and encoding happen client-side in the browser.
+- [New Player Guide](https://clickerheroes.dev/guides/new-player-guide): From a fresh save to the first transcension: ascending, gilding, which ancients to buy, rubies, mercenaries, clans, and relics.
+- [Hero Gilding Chart](https://clickerheroes.dev/guides/gilding-chart): Which hero to gild at every gold threshold, from The Masked Samurai through the Ace Scouts, with a gold lookup.
 
-## Primary Use Cases
+## Help
 
-- Restore lost Clicker Heroes progress by reconstructing a save.
-- Edit gold, rubies, Hero Souls, hero levels, Ancients, outsiders, ascensions, and achievements.
-- Create test saves for speedruns, guides, videos, build experiments, or modding research.
-- Decode a Clicker Heroes save string to understand the save file format.
-
-## Keywords
-
-- clicker heroes save editor
-- clicker heroes save file editor
-- clicker heroes cheat
-- clicker heroes gold editor
-- clicker heroes rubies
-- clicker heroes save decoder
-- clicker heroes save encoder
-- clicker heroes hero souls editor
-- clicker heroes ancients editor
-- clicker heroes ascension editor
-- clicker heroes achievements editor
-- clicker heroes profile editor
-- clicker heroes online tool
-- clicker heroes browser tool
-- clicker heroes mod
-- clicker heroes trainer
-- clicker heroes hack
-- clicker heroes cheats
-- edit clicker heroes save
-- clicker heroes save file
-- clicker heroes save string
-- clicker heroes idle game
-- clicker heroes save manipulator
-- free clicker heroes editor
-- open source clicker heroes
-- clicker heroes html tool
-- clicker heroes online save editor
-- clicker heroes web save editor
-- clicker heroes import save editor
-- clicker heroes save repair
-- clicker heroes progress restore
-
-## Target Audience
-
-- Clicker Heroes players who want to inspect or back up their save data.
-- Players who have lost progress and need to restore or reconstruct a save.
-- Speedrunners and content creators who need specific save states.
-- Developers and modders who want to understand the Clicker Heroes save format.
-
-## Technology
-
-- Next.js web application deployed as a browser-based editor.
-- Uses [pako](https://github.com/nodeca/pako) for zlib inflate/deflate of save strings.
-- No save data upload is required for normal editing workflows.
-
-## Links
-
-- **Live Tool:** https://clickerheroes.dev/
-- **Source:** https://github.com/magnus-allison/clicker-heroes-save-editor
-- **License:** See repository for license details.
-- **Issues / Requests:** https://github.com/magnus-allison/clicker-heroes-save-editor/issues
-
-## Related Topics
-
-idle games, clicker games, save editor, game save editor, browser game tools, Clicker Heroes 1, Clicker Heroes 2, incremental games, save file manipulation, game modding tools
+- [FAQ](https://clickerheroes.dev/faq): Loading and exporting saves, where the save file is on Windows and Mac, save safety, and decode errors.
+- [Feedback](https://clickerheroes.dev/feedback): Bug reports and feature requests.

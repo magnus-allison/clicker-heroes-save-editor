@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { FeedbackSection } from '@/components/editor/sections/FeedbackSection';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
-import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
+import { createPageJsonLd, createPageMetadata, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('feedback');
 
@@ -13,7 +13,7 @@ export default function FeedbackPage() {
 		<>
 			<script
 				type='application/ld+json'
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+				dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
 			/>
 			<Breadcrumb subtitle='Feedback' title='additional info' />
 			<FeedbackSection

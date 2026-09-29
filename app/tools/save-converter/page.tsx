@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { SaveConverter } from '@/components/tools/save-converter/SaveConverter';
-import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
+import { createPageJsonLd, createPageMetadata, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('saveConverter');
 
@@ -12,7 +12,7 @@ export default function SaveConverterPage() {
 		<>
 			<script
 				type='application/ld+json'
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+				dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
 			/>
 			<SaveConverter />
 		</>

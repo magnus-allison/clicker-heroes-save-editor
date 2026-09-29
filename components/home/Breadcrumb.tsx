@@ -5,7 +5,11 @@ import { BookOpen, BoxIcon, ChevronRight, Info, type LucideIcon } from 'lucide-r
 interface Props {
 	/** The group the page sits in — matches the home page section headings. */
 	title: 'tools' | 'guides' | 'additional info';
-	/** The page itself: a tool, guide, or info page. Omitted on the home page. */
+	/**
+	 * The page itself: a tool, guide, or info page. Omitted on the home page.
+	 * When set, it is the page's `<h1>` — the site name in `PageBanner` is not a
+	 * heading, so every page leads with its own topic.
+	 */
 	subtitle?: string;
 }
 
@@ -14,6 +18,9 @@ const groups: Record<Props['title'], { icon: LucideIcon; href: string }> = {
 	guides: { icon: BookOpen, href: '/#guides' },
 	'additional info': { icon: Info, href: '/#additional-info' }
 };
+
+const headingClassName =
+	'text-lg font-semibold leading-tight text-fg-strong font-aeonik [word-spacing:0.2em] uppercase tracking-wide';
 
 export const Breadcrumb: FC<Props> = ({ title, subtitle }) => {
 	const { icon: Icon, href } = groups[title];
@@ -25,25 +32,24 @@ export const Breadcrumb: FC<Props> = ({ title, subtitle }) => {
 				<span className='flex h-10 w-10 shrink-0 items-center justify-center text-fg-strong'>
 					<Icon aria-hidden='true' className='h-5 w-5' />
 				</span>
-				<h2
-					className='flex flex-row items-center text-lg font-semibold leading-tight text-fg-strong font-aeonik [word-spacing:0.2em] uppercase tracking-wide'
-					id={id}
-				>
-					{subtitle ? (
-						<>
-							<Link
-								className='rounded-radius-control text-fg-dim transition-colors hover:text-fg-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'
-								href={href}
-							>
-								{title}
-							</Link>
-							<ChevronRight aria-hidden='true' className='mx-1.5 h-4 w-4 shrink-0 text-fg-dim' />
-							<span>{subtitle}</span>
-						</>
-					) : (
-						title
-					)}
-				</h2>
+				{subtitle ? (
+					<nav aria-label='Breadcrumb' className='flex flex-row items-center'>
+						<Link
+							className={`${headingClassName} rounded-radius-control text-fg-dim transition-colors hover:text-fg-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring`}
+							href={href}
+						>
+							{title}
+						</Link>
+						<ChevronRight aria-hidden='true' className='mx-1.5 h-4 w-4 shrink-0 text-fg-dim' />
+						<h1 aria-current='page' className={headingClassName} id={id}>
+							{subtitle}
+						</h1>
+					</nav>
+				) : (
+					<h2 className={headingClassName} id={id}>
+						{title}
+					</h2>
+				)}
 			</div>
 		</div>
 	);

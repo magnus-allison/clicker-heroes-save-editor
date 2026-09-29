@@ -62,9 +62,10 @@ export const GildingChartGuide: FC = () => (
 	<article className='flex flex-col gap-10'>
 		<div className='flex flex-col gap-6'>
 			<p className='max-w-3xl text-[14px] leading-7 text-(--color-fg-secondary)'>
-				Which hero to put every gild into, at every point in Clicker Heroes 1.0e11, from your first
+				Which hero to put every gild into, at every point in Clicker Heroes 1.0e12, from your first
 				transcension through to the Ace Scouts. Enter your gold below and the chart tells you where you should
-				be. Adapted from the community e10 chart and extended past Yachiyl.
+				be. Hero balance has not changed since 1.0e11, so the chart applies to the current game. Adapted from
+				the community e10 chart and extended past Yachiyl.
 			</p>
 			<GuideIndex parts={parts} />
 		</div>

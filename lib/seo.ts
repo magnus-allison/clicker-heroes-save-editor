@@ -3,6 +3,8 @@ import type { Metadata, MetadataRoute } from 'next';
 export const SITE_CONFIG = {
 	url: 'https://clickerheroes.dev',
 	name: 'Clicker Heroes',
+	siteName: 'clickerheroes.dev',
+	alternateName: 'Clicker Heroes Tools',
 	title: 'Clicker Heroes Save Editor - Free Online Save File Editor',
 	description:
 		'Free online Clicker Heroes save editor and tools. Decode, inspect, edit, and re-encode Clicker Heroes saves in your browser.',
@@ -154,9 +156,7 @@ export const siteFaqSections = [
 	faqs: readonly Faq[];
 }[];
 
-export const siteFaqs: readonly Faq[] = siteFaqSections.flatMap(
-	(section): readonly Faq[] => section.faqs
-);
+export const siteFaqs: readonly Faq[] = siteFaqSections.flatMap((section): readonly Faq[] => section.faqs);
 
 export const gildingChartFaqs = [
 	{
@@ -216,26 +216,32 @@ type SeoPage = {
 	schemaType?: 'Article' | 'CollectionPage' | 'ContactPage' | 'WebApplication';
 	applicationName?: string;
 	featureList?: string[];
+	/**
+	 * ISO date the page's content last meaningfully changed. Feeds the sitemap
+	 * and, for articles, `dateModified` — bump it when you edit the page.
+	 */
+	lastModified: string;
 	/** ISO date. Required by `Article` schema; ignored by every other page type. */
 	datePublished?: string;
-	dateModified?: string;
 };
 
 export const seoPages = {
 	home: {
 		path: '/',
-		title: { absolute: 'Clicker Heroes Free Online Tools' },
-		metaTitle: 'Clicker Heroes | Free Online Tools',
-		description: 'Free browser-based utilities for editing save data, planning faster runs, guides and more.',
+		title: { absolute: 'Clicker Heroes Save Editor, Calculators & Guides' },
+		metaTitle: 'Clicker Heroes Save Editor, Calculators & Guides',
+		description:
+			'Free Clicker Heroes tools in your browser: a save editor, ancients and outsiders calculators, instakill calculator, save converter, and a hero gilding chart.',
 		keywords: [
 			'clicker heroes tools',
 			'clicker heroes save editor',
-			'clicker heroes save tools',
-			'clicker heroes cheats'
+			'clicker heroes calculator',
+			'clicker heroes save tools'
 		],
 		changeFrequency: 'weekly',
 		priority: 1,
-		schemaType: 'CollectionPage'
+		schemaType: 'CollectionPage',
+		lastModified: '2026-09-29'
 	},
 	saveEditor: {
 		path: '/tools/save-editor',
@@ -254,6 +260,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'weekly',
 		priority: 0.95,
+		lastModified: '2026-09-14',
 		schemaType: 'WebApplication',
 		applicationName: 'Clicker Heroes Save Editor',
 		featureList: [
@@ -279,6 +286,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.75,
+		lastModified: '2026-08-26',
 		schemaType: 'WebApplication',
 		applicationName: 'Clicker Heroes Instakill Calculator',
 		featureList: [
@@ -304,6 +312,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.85,
+		lastModified: '2026-08-26',
 		schemaType: 'WebApplication',
 		applicationName: 'Clicker Heroes Ancients Calculator',
 		featureList: [
@@ -331,6 +340,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.85,
+		lastModified: '2026-08-26',
 		schemaType: 'WebApplication',
 		applicationName: 'Clicker Heroes Outsiders Calculator',
 		featureList: [
@@ -355,6 +365,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.75,
+		lastModified: '2026-09-14',
 		schemaType: 'WebApplication',
 		applicationName: 'Clicker Heroes Transcension Viewer',
 		featureList: [
@@ -377,6 +388,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.7,
+		lastModified: '2026-09-14',
 		schemaType: 'WebApplication',
 		applicationName: 'Clicker Heroes Mercenary Viewer',
 		featureList: [
@@ -399,6 +411,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.8,
+		lastModified: '2026-08-26',
 		schemaType: 'WebApplication',
 		applicationName: 'Clicker Heroes Remove Clan Data Tool',
 		featureList: [
@@ -421,6 +434,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.8,
+		lastModified: '2026-08-27',
 		schemaType: 'WebApplication',
 		applicationName: 'Clicker Heroes Save Converter',
 		featureList: [
@@ -445,6 +459,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.75,
+		lastModified: '2026-08-27',
 		schemaType: 'WebApplication',
 		applicationName: 'Clicker Heroes Save JSON Tool',
 		featureList: [
@@ -459,7 +474,7 @@ export const seoPages = {
 		title: 'New Player Guide',
 		metaTitle: 'Clicker Heroes | New Player Guide',
 		description:
-			'A beginner guide to Clicker Heroes 1.0e11: your first run, when to ascend, gilding the Power 5, which ancients to buy, your first transcension, rubies, mercenaries, clans, and relics.',
+			'A beginner guide to Clicker Heroes 1.0e12: your first run, when to ascend, gilding the Power 5, which ancients to buy, your first transcension, rubies, mercenaries, clans, and relics.',
 		keywords: [
 			'clicker heroes new player guide',
 			'clicker heroes beginner guide',
@@ -472,16 +487,16 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.8,
+		lastModified: '2026-09-29',
 		schemaType: 'Article',
-		datePublished: '2026-07-28',
-		dateModified: '2026-07-28'
+		datePublished: '2026-07-28'
 	},
 	gildingChart: {
 		path: '/guides/gilding-chart',
 		title: 'Hero Gilding Chart',
 		metaTitle: 'Clicker Heroes | Hero Gilding Chart',
 		description:
-			'The Clicker Heroes 1.0e11 hero gilding chart: which hero to gild at every gold threshold, from The Masked Samurai through Wepwawet, Xavira, the Tomb Guardians, The Maw, Yachiyl and the Ace Scouts. Enter your gold to find your optimal hero.',
+			'The Clicker Heroes 1.0e12 hero gilding chart: which hero to gild at every gold threshold, from The Masked Samurai through Wepwawet, Xavira, the Tomb Guardians, The Maw, Yachiyl and the Ace Scouts. Enter your gold to find your optimal hero.',
 		keywords: [
 			'clicker heroes gilding chart',
 			'clicker heroes hero gilding chart',
@@ -496,9 +511,9 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.85,
+		lastModified: '2026-09-29',
 		schemaType: 'Article',
-		datePublished: '2026-08-07',
-		dateModified: '2026-08-07'
+		datePublished: '2026-08-07'
 	},
 	requestTool: {
 		path: '/tools/request-tool',
@@ -514,6 +529,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.5,
+		lastModified: '2026-08-27',
 		schemaType: 'ContactPage'
 	},
 	requestGuide: {
@@ -530,6 +546,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.5,
+		lastModified: '2026-08-27',
 		schemaType: 'ContactPage'
 	},
 	faq: {
@@ -547,7 +564,8 @@ export const seoPages = {
 			'is clicker heroes save editor safe'
 		],
 		changeFrequency: 'monthly',
-		priority: 0.7
+		priority: 0.7,
+		lastModified: '2026-08-26'
 	},
 	feedback: {
 		path: '/feedback',
@@ -562,6 +580,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.55,
+		lastModified: '2026-08-27',
 		schemaType: 'ContactPage'
 	}
 } satisfies Record<string, SeoPage>;
@@ -582,11 +601,17 @@ export const createPageMetadata = (key: SeoPageKey): Metadata => {
 			canonical: page.path
 		},
 		openGraph: {
-			type: 'website',
+			...(page.schemaType === 'Article'
+				? {
+						type: 'article',
+						publishedTime: page.datePublished,
+						modifiedTime: page.lastModified
+					}
+				: { type: 'website' }),
 			url: page.path,
 			title: page.metaTitle,
 			description: page.description,
-			siteName: SITE_CONFIG.name,
+			siteName: SITE_CONFIG.siteName,
 			locale: 'en_US',
 			images: [
 				{
@@ -618,52 +643,67 @@ const faqsByPage: Partial<Record<SeoPageKey, readonly Faq[]>> = {
 	faq: siteFaqs
 };
 
+/** The home page section a page belongs to, mirroring the on-page `Breadcrumb`. */
+const sectionFor = (path: string) =>
+	path.startsWith('/tools/')
+		? { name: 'Tools', url: absoluteUrl('/#tools') }
+		: path.startsWith('/guides/')
+			? { name: 'Guides', url: absoluteUrl('/#guides') }
+			: null;
+
+/** The page's short name for breadcrumbs, e.g. "Save Editor". */
+const breadcrumbName = (page: SeoPage) => (typeof page.title === 'string' ? page.title : page.metaTitle);
+
 export const createPageJsonLd = (key: SeoPageKey) => {
 	const page: SeoPage = seoPages[key];
 	const pageUrl = absoluteUrl(page.path);
+	const section = sectionFor(page.path);
+	const crumbs = [
+		{ name: 'Home', url: SITE_CONFIG.url },
+		...(section ? [section] : []),
+		...(page.path === '/' ? [] : [{ name: breadcrumbName(page), url: pageUrl }])
+	];
+
 	const graph: object[] = [
 		{
 			'@type': 'WebSite',
 			'@id': `${SITE_CONFIG.url}/#website`,
-			name: SITE_CONFIG.name,
+			name: SITE_CONFIG.siteName,
+			alternateName: SITE_CONFIG.alternateName,
 			url: SITE_CONFIG.url,
 			description: SITE_CONFIG.description,
 			inLanguage: 'en'
 		},
 		{
-			// `Article` describes the content, not the page, so it gets its own
-			// node below and this one stays a plain `WebPage`.
-			'@type': page.schemaType === 'Article' ? 'WebPage' : (page.schemaType ?? 'WebPage'),
+			// The page itself. Tools and articles describe their content in
+			// their own `WebApplication` / `Article` node below, so this stays a
+			// `WebPage` rather than duplicating that entity.
+			'@type':
+				page.schemaType === 'CollectionPage' || page.schemaType === 'ContactPage'
+					? page.schemaType
+					: 'WebPage',
 			'@id': `${pageUrl}#webpage`,
 			name: page.metaTitle,
 			url: pageUrl,
 			description: page.description,
+			dateModified: page.lastModified,
 			isPartOf: {
 				'@id': `${SITE_CONFIG.url}/#website`
+			},
+			breadcrumb: {
+				'@id': `${pageUrl}#breadcrumb`
 			},
 			inLanguage: 'en'
 		},
 		{
 			'@type': 'BreadcrumbList',
 			'@id': `${pageUrl}#breadcrumb`,
-			itemListElement: [
-				{
-					'@type': 'ListItem',
-					position: 1,
-					name: 'Clicker Heroes Tools',
-					item: SITE_CONFIG.url
-				},
-				...(page.path === '/'
-					? []
-					: [
-							{
-								'@type': 'ListItem',
-								position: 2,
-								name: page.metaTitle,
-								item: pageUrl
-							}
-						])
-			]
+			itemListElement: crumbs.map((crumb, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				name: crumb.name,
+				item: crumb.url
+			}))
 		}
 	];
 
@@ -673,6 +713,9 @@ export const createPageJsonLd = (key: SeoPageKey) => {
 			'@id': `${pageUrl}#app`,
 			name: page.applicationName ?? page.metaTitle,
 			url: pageUrl,
+			mainEntityOfPage: {
+				'@id': `${pageUrl}#webpage`
+			},
 			applicationCategory: 'GameApplication',
 			operatingSystem: 'Windows, macOS, Linux, iOS, Android',
 			browserRequirements: 'Requires a modern web browser with JavaScript enabled.',
@@ -702,7 +745,7 @@ export const createPageJsonLd = (key: SeoPageKey) => {
 			url: pageUrl,
 			inLanguage: 'en',
 			datePublished: page.datePublished,
-			dateModified: page.dateModified ?? page.datePublished,
+			dateModified: page.lastModified,
 			keywords: [...new Set([...baseKeywords, ...page.keywords])].join(', '),
 			author: {
 				'@type': 'Person',
@@ -747,9 +790,16 @@ export const createPageJsonLd = (key: SeoPageKey) => {
 	};
 };
 
-export const seoSitemapEntries = Object.values(seoPages).map((page) => ({
+/**
+ * `JSON.stringify` for a `<script type='application/ld+json'>` body. Escaping
+ * `<` keeps a stray `</script>` in any string from closing the tag early, as
+ * the Next.js JSON-LD guide recommends.
+ */
+export const serializeJsonLd = (data: object) => JSON.stringify(data).replace(/</g, '\\u003c');
+
+export const seoSitemapEntries = Object.values(seoPages).map((page: SeoPage) => ({
 	url: absoluteUrl(page.path),
-	lastModified: new Date('2026-05-17'),
+	lastModified: new Date(page.lastModified),
 	changeFrequency: page.changeFrequency,
 	priority: page.priority,
 	images: [absoluteUrl(SITE_CONFIG.ogImage)]

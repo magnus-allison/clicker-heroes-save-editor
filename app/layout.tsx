@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 		url: '/',
 		title: SITE_CONFIG.title,
 		description: SITE_CONFIG.description,
-		siteName: SITE_CONFIG.name,
+		siteName: SITE_CONFIG.siteName,
 		locale: 'en_US',
 		images: [
 			{
@@ -106,9 +106,6 @@ export const metadata: Metadata = {
 	},
 
 	manifest: '/site.webmanifest',
-	verification: {
-		google: 'google33175fba0d09710c.html'
-	},
 	other: {
 		'profile:first_name': 'Magnus',
 		'profile:last_name': 'Allison',

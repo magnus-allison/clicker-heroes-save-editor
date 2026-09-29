@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { AncientsCalculator } from '@/components/tools/ancients-calculator/AncientsCalculator';
-import { createPageJsonLd, createPageMetadata } from '@/lib/seo';
+import { createPageJsonLd, createPageMetadata, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('ancientsCalculator');
 
@@ -12,7 +12,7 @@ export default function AncientsCalculatorPage() {
 		<>
 			<script
 				type='application/ld+json'
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+				dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
 			/>
 			<AncientsCalculator />
 		</>
