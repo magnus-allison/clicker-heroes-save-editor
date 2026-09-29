@@ -10,6 +10,7 @@ import { SITE_CONFIG } from '@/lib/seo';
 
 import './globals.css';
 import { PageBanner } from '@/components/home/PageBanner';
+import { welcomeBannerScript } from '@/lib/welcome-banner';
 import { PageShell } from '@/components/ui/PageShell';
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -132,6 +133,10 @@ export default function RootLayout({
 			lang='en'
 			suppressHydrationWarning
 		>
+			<head>
+				{/* Hides the dismissed welcome banner before first paint; see `WelcomeBanner`. */}
+				<script dangerouslySetInnerHTML={{ __html: welcomeBannerScript }} />
+			</head>
 			<body className='min-h-full'>
 				<Suspense fallback={null}>
 					<PostHogPageTracker />

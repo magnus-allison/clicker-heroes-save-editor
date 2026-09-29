@@ -515,6 +515,28 @@ export const seoPages = {
 		schemaType: 'Article',
 		datePublished: '2026-08-07'
 	},
+	progressTips: {
+		path: '/guides/progress-tips',
+		title: '10 Tips to Progress Faster',
+		metaTitle: 'Clicker Heroes | 10 Tips to Progress Faster',
+		description:
+			'Ten ways to speed up progress in Clicker Heroes 1.0e12: when to ascend and transcend, which hero to level and gild, picking a build, ancient and outsider calculators, skill combos, ruby spending, and breaking through walls.',
+		keywords: [
+			'clicker heroes tips',
+			'clicker heroes progress faster',
+			'clicker heroes how to progress',
+			'clicker heroes stuck',
+			'clicker heroes skill combo',
+			'clicker heroes edr combo',
+			'clicker heroes when to ascend',
+			'clicker heroes when to transcend'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.8,
+		lastModified: '2026-09-29',
+		schemaType: 'Article',
+		datePublished: '2026-09-29'
+	},
 	requestTool: {
 		path: '/tools/request-tool',
 		title: 'Request New Tool',

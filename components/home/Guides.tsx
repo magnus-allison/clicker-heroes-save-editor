@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { BookOpenTextIcon, CoinsIcon, MessageCirclePlus } from 'lucide-react';
+import { BookOpenTextIcon, CoinsIcon, MessageCirclePlus, RocketIcon } from 'lucide-react';
 
 import { LinkCard, type LinkCardItem } from '@/components/ui/LinkCard';
 
@@ -16,6 +16,13 @@ const guides: LinkCardItem[] = [
 		href: '/guides/gilding-chart',
 		description: 'Which hero to gild at every gold threshold, from Samurai through to the Ace Scouts',
 		icon: CoinsIcon,
+		tag: 'New'
+	},
+	{
+		title: '10 Tips to Progress Faster',
+		href: '/guides/progress-tips',
+		description: 'Ascending, gilding, builds, skill combos, rubies, and getting past walls',
+		icon: RocketIcon,
 		tag: 'New'
 	},
 	{

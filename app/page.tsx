@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 import { createPageJsonLd, createPageMetadata, serializeJsonLd } from '@/lib/seo';
 import { AdditionalInfo } from '@/components/home/AdditionalInfo';
 import { Guides } from '@/components/home/Guides';
 import { Tools } from '@/components/home/Tools';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
+import { WelcomeBanner } from '@/components/home/WelcomeBanner';
 import { InfoIcon, ShieldAlertIcon } from 'lucide-react';
 
 export const metadata: Metadata = createPageMetadata('home');
@@ -18,6 +18,8 @@ const Page = () => (
 			type='application/ld+json'
 			dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
 		/>
+
+		{/* <WelcomeBanner /> */}
 
 		<section aria-labelledby='tools-heading' className='flex flex-col gap-10 scroll-mt-8' id='tools'>
 			<Breadcrumb title='tools' />
