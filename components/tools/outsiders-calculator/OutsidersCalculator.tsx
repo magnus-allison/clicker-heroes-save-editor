@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from 'react';
 
-import posthog from 'posthog-js';
 import { RotateCcw } from 'lucide-react';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
@@ -82,7 +81,6 @@ export const OutsidersCalculator = () => {
 
 		updateValues(plan.updates);
 		showToast('Outsider levels written to the save.');
-		posthog.capture('outsiders_applied_to_save');
 	};
 
 	return (

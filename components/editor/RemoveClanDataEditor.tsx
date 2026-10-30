@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import posthog from 'posthog-js';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
@@ -123,7 +122,6 @@ export const RemoveClanDataEditor = () => {
 
 		setRemovedClanData({ source: originalSaveData, entries: nextRemovedFields });
 		showToast('Clan data removed from the save.');
-		posthog.capture('clan_data_removed');
 	};
 
 	return (

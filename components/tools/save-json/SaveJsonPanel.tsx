@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import posthog from 'posthog-js';
 
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
@@ -44,7 +43,6 @@ export const SaveJsonPanel = () => {
 			setJsonValue(JSON.stringify(decoded.data, null, 2));
 			// The old export belongs to the save that was just replaced.
 			setEncodeValue('');
-			posthog.capture('save_json_decoded');
 		},
 		onFailed: () => {
 			setJsonValue('');
@@ -63,13 +61,8 @@ export const SaveJsonPanel = () => {
 		try {
 			setEncodeValue(encodeSaveData(parseSaveJson(jsonValue)));
 			showToast('JSON converted to save data.');
-			posthog.capture('save_json_encoded');
 		} catch (error) {
 			showToast(error instanceof Error ? error.message : 'Failed to convert JSON to save data.');
-			posthog.captureException(error);
-			posthog.capture('save_json_encode_failed', {
-				error_message: error instanceof Error ? error.message : 'Unknown error'
-			});
 		}
 	};
 

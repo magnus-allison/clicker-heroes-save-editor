@@ -2,7 +2,6 @@
 
 import { startTransition } from 'react';
 
-import posthog from 'posthog-js';
 
 import type { SaveImportRequest } from '@/components/editor/SaveImportField';
 import { useToast } from '@/components/ui/ToastProvider';
@@ -35,15 +34,9 @@ export const useSaveImport = ({ onDecoded, onFailed }: Options = {}) => {
 			});
 			onDecoded?.(decoded, request);
 			showToast('Save data loaded.');
-			posthog.capture('save_decoded', { source });
 		} catch (error) {
 			onFailed?.(request);
 			showToast(error instanceof Error ? error.message : 'Failed to decode save data.');
-			posthog.captureException(error, { properties: { source } });
-			posthog.capture('save_decode_failed', {
-				source,
-				error_message: error instanceof Error ? error.message : 'Unknown error'
-			});
 		}
 	};
 };

@@ -1,6 +1,5 @@
 'use client';
 
-import posthog from 'posthog-js';
 
 import { type LucideIcon } from 'lucide-react';
 
@@ -58,7 +57,6 @@ export const SkinsSection = ({ defaultOpen, icon, showToast }: Props) => {
 								return next;
 							});
 							showToast('All skins unlocked.');
-							posthog.capture('skins_all_unlocked');
 						}}
 					>
 						Unlock All

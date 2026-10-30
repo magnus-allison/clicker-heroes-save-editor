@@ -3,7 +3,6 @@
 import type { ChangeEvent } from 'react';
 import { useRef, useState } from 'react';
 
-import posthog from 'posthog-js';
 
 import { ExampleSaveButtons } from '@/components/editor/ExampleSaveButtons';
 import { CopyButton } from '@/components/ui/CopyButton';
@@ -81,7 +80,6 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 
 		setSelectedFileName(file.name);
 		setDecodeValue(text);
-		posthog.capture('save_file_uploaded', { file_name: file.name });
 		onLoad({ value: text, source: 'file', isSubmit: false });
 	};
 

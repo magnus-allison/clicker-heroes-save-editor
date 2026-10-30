@@ -2,7 +2,6 @@
 
 import type { ReactNode } from 'react';
 
-import posthog from 'posthog-js';
 
 import { CopyButton } from '@/components/ui/CopyButton';
 import { FieldDivider } from '@/components/ui/FieldDivider';
@@ -83,7 +82,6 @@ export const SaveExportField = ({
 		// The blob is only needed for the duration of the click.
 		URL.revokeObjectURL(url);
 
-		posthog.capture('save_file_downloaded', { file_name: fileName });
 	};
 
 	return (

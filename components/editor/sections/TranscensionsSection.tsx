@@ -1,7 +1,6 @@
 'use client';
 
 import type { LucideIcon } from 'lucide-react';
-import posthog from 'posthog-js';
 
 import { Button } from '@/components/ui/Button';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
@@ -60,7 +59,6 @@ export const TranscensionsSection = ({
 							// what lets the change summary diff the save in O(edits).
 							updateSave((current) => setValueAtPath(current, ['stats', 'transcensions'], {}));
 							showToast('Transcension history cleared.');
-							posthog.capture('transcension_history_cleared');
 						}}
 						variant='primary'
 					>

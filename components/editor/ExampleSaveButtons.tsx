@@ -1,6 +1,5 @@
 'use client';
 
-import posthog from 'posthog-js';
 
 import { Button } from '@/components/ui/Button';
 import { FieldDivider } from '@/components/ui/FieldDivider';
@@ -24,7 +23,6 @@ export const ExampleSaveButtons = ({ customExamples, onSelect }: Props) => {
 						className='cursor-pointer'
 						key={example.name}
 						onClick={() => {
-							posthog.capture('example_save_loaded', { example_name: example.name });
 							onSelect(example.save);
 						}}
 					>

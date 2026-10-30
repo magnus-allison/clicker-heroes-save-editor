@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import posthog from 'posthog-js';
 
 import { SaveChangesSummary } from '@/components/editor/SaveChangesSummary';
 import { SaveExportField } from '@/components/editor/SaveExportField';
@@ -55,13 +54,8 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 			setEncodeValue(encodeSaveData(saveData));
 			markExported();
 			showToast('Save encoded.');
-			posthog.capture('save_encoded');
 		} catch (error) {
 			showToast(error instanceof Error ? error.message : 'Failed to encode save data.');
-			posthog.captureException(error);
-			posthog.capture('save_encode_failed', {
-				error_message: error instanceof Error ? error.message : 'Unknown error'
-			});
 		}
 	};
 

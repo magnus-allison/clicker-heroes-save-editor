@@ -1,7 +1,6 @@
 import { checkRateLimit } from '@vercel/firewall';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { getPostHogClient } from '@/lib/posthog-server';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -37,30 +36,6 @@ function sanitize(input: string) {
 /** Deliberately loose: the mail provider is the real arbiter of deliverability. */
 function isLikelyEmail(value: string) {
 	return value.length <= MAX_EMAIL_LENGTH && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
-
-/**
- * Analytics must never decide the outcome of a request that already sent an
- * email, so the capture and its flush are isolated from the response path.
- */
-async function captureSubmission(properties: {
-	has_name: boolean;
-	has_email: boolean;
-	message_length: number;
-	topic: Topic;
-}) {
-	try {
-		const posthog = getPostHogClient();
-
-		if (!posthog) {
-			return;
-		}
-
-		posthog.capture({ distinctId: 'anonymous', event: 'feedback_submitted', properties });
-		await posthog.shutdown();
-	} catch (error) {
-		console.error('Failed to record feedback analytics', error);
-	}
 }
 
 export async function POST(request: Request) {
@@ -167,13 +142,6 @@ export async function POST(request: Request) {
 		}
 
 		emailSent = true;
-
-		await captureSubmission({
-			has_email: Boolean(email),
-			has_name: Boolean(name),
-			message_length: message.length,
-			topic
-		});
 
 		return NextResponse.json({ ok: true });
 	} catch (error) {

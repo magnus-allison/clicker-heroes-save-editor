@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import posthog from 'posthog-js';
 
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
@@ -82,9 +81,6 @@ export const SaveConverterPanel = () => {
 		});
 		// The old export belongs to the save that was just replaced.
 		setEncodeValue('');
-		posthog.capture('save_converter_decoded', {
-			detected_device: detectedDevice ?? 'unknown'
-		});
 	};
 
 	const importSave = useSaveImport({
@@ -105,13 +101,8 @@ export const SaveConverterPanel = () => {
 		try {
 			setEncodeValue(encodeConvertedSave(saveData, outputDevice));
 			showToast(`Save converted for ${formatDevice(outputDevice)}.`);
-			posthog.capture('save_converted');
 		} catch (error) {
 			showToast(error instanceof Error ? error.message : 'Failed to convert save data.');
-			posthog.captureException(error);
-			posthog.capture('save_convert_failed', {
-				error_message: error instanceof Error ? error.message : 'Unknown error'
-			});
 		}
 	};
 
