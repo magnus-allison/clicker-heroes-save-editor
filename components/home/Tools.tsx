@@ -14,89 +14,86 @@ import {
 	Wrench
 } from 'lucide-react';
 
-import { LinkCard, type LinkCardItem } from '@/components/ui/LinkCard';
+import { useTranslations } from 'next-intl';
 
-export const tools: LinkCardItem[] = [
+import { LinkCard, type LinkCardItem } from '@/components/ui/LinkCard';
+import type { messages } from '@/messages';
+
+type ToolCardKey = keyof (typeof messages)['en']['common']['cards']['tools'];
+
+export const tools: LinkCardItem<ToolCardKey>[] = [
 	{
-		title: 'Save Editor',
+		key: 'saveEditor',
 		href: '/tools/save-editor',
-		description: 'Inspect your save data, modify values, and export your updated save',
 		icon: FileCode2,
-		tag: 'Most popular'
+		tag: 'mostPopular'
 	},
 	{
-		title: 'Outsiders Calculator',
+		key: 'outsidersCalculator',
 		href: '/tools/outsiders-calculator',
-		description: 'Plan outsider levels, transcension estimates, and future transcensions',
 		icon: Orbit,
-		tag: 'New'
+		tag: 'new'
 	},
 	{
-		title: 'Instakill Calculator',
+		key: 'instakillCalculator',
 		href: '/tools/instakill-calculator',
-		description: 'Estimate route duration, monsters per zone, and zones per hour',
 		icon: Calculator
 	},
 	{
-		title: 'Ancients Calculator',
+		key: 'ancientsCalculator',
 		href: '/tools/ancients-calculator',
-		description: 'Get optimal ancient levels and costs for your hero souls',
 		icon: Landmark
 	},
 	{
-		title: 'Transcension Viewer',
+		key: 'transcensionViewer',
 		href: '/tools/transcension-viewer',
-		description: 'Inspect transcension history and drill into ascensions from a save',
 		icon: History
 	},
 	{
-		title: 'Mercenary Viewer',
+		key: 'mercenaryViewer',
 		href: '/tools/mercenary-viewer',
-		description: 'View your mercenary roster and lifetime mercenary stats from a save',
 		icon: Users
 	},
 	{
-		title: 'Relic Viewer',
+		key: 'relicViewer',
 		href: '/tools/relic-viewer',
-		description: 'Inspect relics, their bonuses, and rarity from a save',
 		icon: SwordIcon,
-		tag: 'Coming soon'
+		tag: 'comingSoon'
 	},
 	{
-		title: 'Remove Clan Data',
+		key: 'removeClanData',
 		href: '/tools/remove-clan-data',
-		description: 'Remove clan, account, and login fields from a save in your browser',
 		icon: Wrench
 	},
 	{
-		title: 'Save Converter',
+		key: 'saveConverter',
 		href: '/tools/save-converter',
-		description: 'Convert your save files between PC and mobile formats',
 		icon: ArrowRightLeft
 	},
 	{
-		title: 'Save JSON',
+		key: 'saveJson',
 		href: '/tools/save-json',
-		description: 'Convert saves to and from raw JSON. Built for developers',
 		icon: Braces
 	},
 	{
-		title: 'Request New Tool',
+		key: 'requestTool',
 		href: '/tools/request-tool',
-		description: "Make a suggestion for a new tool you'd like to see",
 		icon: MessageCirclePlus
 	}
 ];
 
-export const Tools: FC = () =>
-	tools.map((tool) => (
+export const Tools: FC = () => {
+	const t = useTranslations('common.cards.tools');
+
+	return tools.map((tool) => (
 		<LinkCard
-			description={tool.description}
-			disabled={tool.tag === 'Coming soon'}
+			description={t(`${tool.key}.description`)}
+			disabled={tool.tag === 'comingSoon'}
 			href={tool.href}
 			icon={tool.icon}
-			key={tool.title}
+			key={tool.key}
 			tag={tool.tag}
-			title={tool.title}
+			title={t(`${tool.key}.title`)}
 		/>
 	));
+};

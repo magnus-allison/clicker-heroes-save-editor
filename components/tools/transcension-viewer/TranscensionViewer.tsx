@@ -347,7 +347,7 @@ export const TranscensionViewer = () => {
 
 	return (
 		<>
-			<Breadcrumb subtitle='Transcension Viewer' title='tools' />
+			<Breadcrumb page='transcensionViewer' title='tools' />
 
 			<SaveDataPanel examples={transcensionExamples} />
 

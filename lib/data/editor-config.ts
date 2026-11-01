@@ -36,19 +36,28 @@ export type ExternalLinkCard = {
 	invertIcon?: boolean;
 };
 
-export const saveHelpContent = [
+export const saveHelpContent: {
+	key: 'windows' | 'macSteam' | 'macStandalone';
+	title: string;
+	iconPaths: string[];
+	path: string;
+	note?: string;
+}[] = [
 	{
+		key: 'windows',
 		title: 'Windows',
 		iconPaths: ['/assets/icons/windows.svg'],
 		path: String.raw`C:\Users\[USERNAME]\AppData\Roaming\ClickerHeroes2\Local Store\saves`,
 		note: 'Two files: .save and .backup. Both the Steam and stand-alone use the same path.'
 	},
 	{
+		key: 'macSteam',
 		title: 'Mac - Steam',
 		iconPaths: ['/assets/icons/apple.svg', '/assets/icons/steam.svg'],
 		path: '~/Library/Application Support/Steam/userdata/[USERID]/363970/remote/'
 	},
 	{
+		key: 'macStandalone',
 		title: 'Mac - Stand-alone',
 		iconPaths: ['/assets/icons/apple.svg'],
 		path: '~/Library/Application Support/com.playsaurus.clickerheroes/'

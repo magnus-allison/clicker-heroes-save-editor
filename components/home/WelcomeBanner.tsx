@@ -2,7 +2,7 @@
 
 import { useLayoutEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowRight, BookOpenTextIcon, FileCode2, Orbit, X, type LucideIcon } from 'lucide-react';
 
 import {

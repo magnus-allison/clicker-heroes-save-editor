@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ExternalLinkIcon } from 'lucide-react';
 
 import { cn } from 'cn';
+import { useTranslations } from 'next-intl';
 
 type Props = {
 	href: string;
@@ -24,7 +25,10 @@ type Props = {
  * left untouched behind the viewer. The save store is per-tab in-memory state,
  * so the new tab starts at step 1 and the save has to be loaded there again.
  */
-export const ToolLink = ({ children, className, href }: Props) => (
+export const ToolLink = ({ children, className, href }: Props) => {
+	const t = useTranslations('common.ui');
+
+	return (
 	<Link
 		className={cn(
 			'motion-press inline-flex h-10 items-center justify-center gap-2 rounded-(--radius-control) border border-(--color-line-soft) bg-(--color-surface-sunken) px-4 text-[13px] leading-none text-(--color-fg-muted) shadow-[var(--shadow-raised)] transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-snap hover:border-(--color-line-strong) hover:bg-(--color-surface-hover) hover:text-(--color-fg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)',
@@ -36,6 +40,7 @@ export const ToolLink = ({ children, className, href }: Props) => (
 	>
 		{children}
 		<ExternalLinkIcon aria-hidden='true' className='h-3.5 w-3.5 shrink-0 opacity-70' />
-		<span className='sr-only'>(opens in a new tab)</span>
+		<span className='sr-only'>{t('opensInNewTab')}</span>
 	</Link>
-);
+	);
+};

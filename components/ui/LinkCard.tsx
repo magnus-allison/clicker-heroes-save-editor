@@ -1,31 +1,29 @@
 import { cn } from 'cn';
 import { ArrowRight, ArrowUpRight, LucideIcon } from 'lucide-react';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
+
+import { Link } from '@/i18n/navigation';
 import { Pill } from './Pill';
 import { EditorImage } from './EditorImage';
 
-export interface CardItem {
-	title: string;
-	description: string;
+/** Message key under `common.cards.tags`. */
+export type CardTag = 'mostPopular' | 'new' | 'comingSoon';
+
+/** A card in a home page list. `key` names its title and description in `common.cards`. */
+export type LinkCardItem<Key extends string = string> = {
+	key: Key;
 	href: string;
-	tag?: 'Most popular' | 'New' | 'Coming soon';
-}
-
-export type LinkCardItem = CardItem & {
 	icon: LucideIcon;
-};
-
-export type ExternalLinkCardItem = CardItem & {
-	icon: string;
+	tag?: CardTag;
 };
 
 interface Props {
-	title: LinkCardItem['title'];
-	description: LinkCardItem['description'];
-	href: LinkCardItem['href'];
+	title: string;
+	description: string;
+	href: string;
 	disabled?: boolean;
-	tag?: LinkCardItem['tag'];
+	tag?: CardTag;
 }
 
 export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
@@ -36,6 +34,7 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 	disabled,
 	tag
 }) => {
+	const t = useTranslations('common.cards');
 	const className = cn(
 		`group flex h-full flex-col rounded-2xl bg-card-background p-5 transition-shadow duration-300 shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong hover:shadow-card-hover`,
 		disabled && 'opacity-50 select-none'
@@ -48,8 +47,8 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 					{Icon && <Icon aria-hidden='true' className='h-4.5 w-4.5' />}
 				</span>
 				{tag && (
-					<Pill className='ml-auto' isShining={tag === 'Most popular'}>
-						{tag}
+					<Pill className='ml-auto' isShining={tag === 'mostPopular'}>
+						{t(`tags.${tag}`)}
 					</Pill>
 				)}
 			</span>
@@ -61,7 +60,7 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 			)}
 			{!disabled && (
 				<span className='mt-auto pt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-fg-dim transition-colors font-aeonik group-hover:text-fg-strong'>
-					Open
+					{t('open')}
 					<ArrowRight
 						aria-hidden='true'
 						className='h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5'
@@ -92,13 +91,17 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 	);
 };
 
-export const ExternalLinkCard: FC<Props & { icon: string }> = ({
+/** `tintIcon` recolours monochrome icons for the theme; leave it off for full-colour logos. */
+export const ExternalLinkCard: FC<Props & { icon: string; tintIcon?: boolean }> = ({
 	icon: Icon,
+	tintIcon = true,
 	title,
 	description,
 	href,
 	tag
 }) => {
+	const t = useTranslations('common.cards');
+
 	return (
 		<a
 			className={cn(
@@ -112,17 +115,17 @@ export const ExternalLinkCard: FC<Props & { icon: string }> = ({
 				<span className='flex items-center justify-center transition-[background-color] duration-200'>
 					{Icon && (
 						<EditorImage
-							alt={`${title} icon`}
+							alt={t('iconAlt', { title })}
 							className='h-5 w-5 shrink-0 object-contain'
 							size={44}
 							src={Icon}
-							style={title === 'Clicker Heroes' ? undefined : { filter: 'var(--color-icon-filter)' }}
+							style={tintIcon ? { filter: 'var(--color-icon-filter)' } : undefined}
 						/>
 					)}
 				</span>
 				{tag && (
-					<Pill className='ml-auto' isShining={tag === 'Most popular'}>
-						{tag}
+					<Pill className='ml-auto' isShining={tag === 'mostPopular'}>
+						{t(`tags.${tag}`)}
 					</Pill>
 				)}
 			</span>
@@ -137,10 +140,10 @@ export const ExternalLinkCard: FC<Props & { icon: string }> = ({
 					'mt-auto pt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-fg-dim transition-colors font-aeonik group-hover:text-fg-strong'
 				)}
 			>
-				Visit
+				{t('visit')}
 				<ArrowUpRight
 					aria-hidden='true'
-					className='h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5'
+					className='h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
 				/>
 			</span>
 		</a>
@@ -155,7 +158,7 @@ interface CardTitleProps {
 export const CardTitle: FC<CardTitleProps> = ({ title, className }) => (
 	<h3
 		className={cn(
-			'font-aeonik mt-4 mb-6 block text-[1.24rem] tracking-wide font-semibold uppercase text-fg-strong [word-spacing:0.2em]',
+			'font-aeonik mt-4 mb-6 block text-[1.24rem] tracking-wide font-semibold uppercase text-balance text-fg-strong [word-spacing:0.2em]',
 			className
 		)}
 	>

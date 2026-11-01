@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface Props {
 	title: string;
@@ -24,8 +25,12 @@ interface StepPillProps {
 	number: number;
 }
 
-const StepPill = ({ number }: StepPillProps) => (
+const StepPill = ({ number }: StepPillProps) => {
+	const t = useTranslations('common.ui');
+
+	return (
 	<span className='inline-flex h-6 shrink-0 items-center justify-center rounded-full border border-(--color-primary-line) bg-(--color-primary-soft) px-2 text-[10px] font-bold tracking-[0.08em] text-(--color-primary)'>
-		Step {number}
+		{t('step', { number })}
 	</span>
-);
+	);
+};

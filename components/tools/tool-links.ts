@@ -1,18 +1,22 @@
-import type { ToolAboutLink } from '@/components/tools/ToolAbout';
-
-/** Cross-links for the `ToolAbout` "See also" rows, named the same everywhere. */
+/**
+ * Cross-links for the `ToolAbout` "See also" rows. Titles live in the
+ * `toolAbout.links` messages under the same keys, so they read the same
+ * everywhere.
+ */
 export const toolLinks = {
-	saveEditor: { href: '/tools/save-editor', title: 'Save editor' },
-	ancientsCalculator: { href: '/tools/ancients-calculator', title: 'Ancients calculator' },
-	outsidersCalculator: { href: '/tools/outsiders-calculator', title: 'Outsiders calculator' },
-	instakillCalculator: { href: '/tools/instakill-calculator', title: 'Instakill calculator' },
-	transcensionViewer: { href: '/tools/transcension-viewer', title: 'Transcension viewer' },
-	mercenaryViewer: { href: '/tools/mercenary-viewer', title: 'Mercenary viewer' },
-	saveConverter: { href: '/tools/save-converter', title: 'Save converter' },
-	removeClanData: { href: '/tools/remove-clan-data', title: 'Remove clan data' },
-	saveJson: { href: '/tools/save-json', title: 'Save JSON' },
-	newPlayerGuide: { href: '/guides/new-player-guide', title: 'New player guide' },
-	gildingChart: { href: '/guides/gilding-chart', title: 'Gilding chart' },
-	progressTips: { href: '/guides/progress-tips', title: 'Progress tips' },
-	faq: { href: '/faq', title: 'FAQ' }
-} as const satisfies Record<string, ToolAboutLink>;
+	saveEditor: '/tools/save-editor',
+	ancientsCalculator: '/tools/ancients-calculator',
+	outsidersCalculator: '/tools/outsiders-calculator',
+	instakillCalculator: '/tools/instakill-calculator',
+	transcensionViewer: '/tools/transcension-viewer',
+	mercenaryViewer: '/tools/mercenary-viewer',
+	saveConverter: '/tools/save-converter',
+	removeClanData: '/tools/remove-clan-data',
+	saveJson: '/tools/save-json',
+	newPlayerGuide: '/guides/new-player-guide',
+	gildingChart: '/guides/gilding-chart',
+	progressTips: '/guides/progress-tips',
+	faq: '/faq'
+} as const satisfies Record<string, string>;
+
+export type ToolLinkKey = keyof typeof toolLinks;

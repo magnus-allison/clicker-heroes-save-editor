@@ -6,7 +6,7 @@ import { SaveConverterPanel } from '@/components/tools/save-converter/SaveConver
 export const SaveConverter = () => {
 	return (
 		<>
-			<Breadcrumb subtitle='Save Converter' title='tools' />
+			<Breadcrumb page='saveConverter' title='tools' />
 			<SaveConverterPanel />
 		</>
 	);

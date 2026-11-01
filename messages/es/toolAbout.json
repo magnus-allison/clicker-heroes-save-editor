@@ -1,0 +1,114 @@
+{
+	"heading": "Cómo funciona",
+	"seeAlso": "Ver también:",
+	"links": {
+		"saveEditor": "Editor de partidas",
+		"ancientsCalculator": "Calculadora de ancients",
+		"outsidersCalculator": "Calculadora de outsiders",
+		"instakillCalculator": "Calculadora de instakill",
+		"transcensionViewer": "Visor de trascendencias",
+		"mercenaryViewer": "Visor de mercenarios",
+		"saveConverter": "Convertidor de partidas",
+		"removeClanData": "Eliminar datos de clan",
+		"saveJson": "Partida a JSON",
+		"newPlayerGuide": "Guía para principiantes",
+		"gildingChart": "Tabla de gilds",
+		"progressTips": "Consejos para progresar",
+		"faq": "Preguntas frecuentes"
+	},
+	"ancients": {
+		"intro": "Reparte tus Hero Souls entre los ancients que tienes según las Rules of Thumb de la comunidad. Adaptado del <link>optimizador de kepow.org</link>.",
+		"builds": {
+			"title": "Builds",
+			"body": "La build idle sube todo en función de Siyalatas y la activa en función de Fragsworth. La híbrida sube ambos, y la proporción indica cuántos niveles de Fragsworth compras por cada nivel de Siyalatas."
+		},
+		"bestHero": {
+			"title": "Mejor héroe",
+			"body": "Cada grupo de héroes tiene una relación distinta entre oro y daño, y eso cambia hasta dónde vale la pena subir los ancients de oro."
+		}
+	},
+	"instakill": {
+		"intro": "Cuando todos los monstruos mueren de un golpe, la velocidad depende de los monstruos por zona y de los fotogramas por muerte. Esta herramienta calcula ambos a partir de tus niveles de Kumawakamaru y Borb.",
+		"monstersPerZone": {
+			"title": "Monstruos por zona",
+			"body": "Las zonas empiezan con 10 monstruos y suman 0.1 cada 500 zonas. Kumawakamaru quita hasta 8, Borb multiplica ese efecto y nunca se baja de 2."
+		},
+		"routeTime": {
+			"title": "Duración de la ruta",
+			"body": "Cada muerte lleva 15 fotogramas, o 14 con instakill con AC. Los fotogramas se suman zona a zona y se dividen entre tus FPS."
+		}
+	},
+	"mercenary": {
+		"intro": "Muestra tus mercenarios en una sola tabla, junto con las estadísticas históricas que el juego registra pero casi nunca enseña.",
+		"roster": {
+			"title": "Plantilla",
+			"body": "Nivel, experiencia, tiempo de vida, vidas extra, última misión y su probabilidad de éxito para cada hueco."
+		},
+		"lifetimeStats": {
+			"title": "Estadísticas históricas",
+			"body": "Mercenarios revividos y enterrados, nivel más alto alcanzado y misiones completadas por tipo de recompensa."
+		}
+	},
+	"outsiders": {
+		"intro": "Convierte las Ancient Souls de tu partida en niveles de outsiders y estima dónde termina la trascendencia. Adaptado de la <link>calculadora de outsiders de Driej</link>.",
+		"spendingOrder": {
+			"title": "Orden de gasto",
+			"body": "Primero Borb, luego Rhageist, K’Ariqua, Orphalas y Sen-Akhan hasta sus topes. El resto va a Chor’gorloth, Phandoryss y Ponyboy, según cuál rinda más por soul."
+		},
+		"applying": {
+			"title": "Aplicar los niveles",
+			"body": "El plan usa todas las Ancient Souls que has obtenido, así que primero haz respec en el juego, o aplica los niveles a tu partida e impórtala."
+		}
+	},
+	"removeClanData": {
+		"intro": "Una partida también guarda los datos de tu clan y de tu cuenta. Quítalos antes de publicar una partida para pedir ayuda o de pasársela a otra persona.",
+		"removed": {
+			"title": "Qué se elimina",
+			"body": "Todos los campos del clan, incluida la clase de raid, además del email, el hash de la contraseña y los campos de cuenta e inicio de sesión. Tu progreso no se toca."
+		}
+	},
+	"saveConverter": {
+		"intro": "Las partidas de PC y de móvil guardan los mismos datos, pero se comprimen de forma distinta, así que una partida de una plataforma no se puede importar en la otra. Esta herramienta la vuelve a codificar para la otra plataforma.",
+		"difference": {
+			"title": "La diferencia",
+			"body": "Las partidas de PC usan deflate sin envoltorio; las de móvil envuelven el mismo JSON en zlib. También se reconocen las partidas antiguas."
+		}
+	},
+	"saveJson": {
+		"intro": "Bajo la codificación, una partida es un gran objeto JSON. Decodifícala, edita cualquier campo a mano y vuelve a codificarla.",
+		"careful": {
+			"title": "Ten cuidado",
+			"body": "Nada comprueba si tus valores son los que espera el juego. Guarda la original y cambia una cosa cada vez."
+		}
+	},
+	"transcension": {
+		"intro": "El juego guarda un historial de tus trascendencias y ascensiones recientes, pero nunca lo muestra. Esta herramienta lo lee de tu partida.",
+		"shows": {
+			"title": "Qué muestra",
+			"body": "Duración, ascensiones, zona más alta, Hero Souls y Ancient Souls de cada trascendencia. Elige una para ver sus ascensiones."
+		},
+		"helps": {
+			"title": "Para qué sirve",
+			"body": "Cuando las últimas ascensiones aportaron poco para el tiempo que llevaron, es hora de trascender."
+		}
+	},
+	"saveEditor": {
+		"heading": "Decodificador y editor de partidas de Clicker Heroes gratis",
+		"intro": "Este editor de partidas de Clicker Heroes funciona en el navegador: decodifica códigos de partida, muestra los datos del juego que se pueden editar y vuelve a codificar el resultado para importarlo de nuevo en Clicker Heroes. Sirve para recuperar progreso, probar builds, crear partidas con un estado concreto y ver qué hay dentro de un archivo de guardado de Clicker Heroes.",
+		"features": {
+			"progress": {
+				"title": "Progreso editable",
+				"body": "Cambia oro, rubíes, Hero Souls, ascensiones, trascendencias, datos de zonas, valores del clan, outsiders y campos personalizados."
+			},
+			"heroes": {
+				"title": "Héroes y desbloqueos",
+				"body": "Revisa y ajusta héroes, niveles, gilds, skins, mercenarios, logros y valores de la partida relacionados con el perfil."
+			},
+			"clientSide": {
+				"title": "Funciona en tu navegador",
+				"body": "Los códigos de partida se decodifican y codifican localmente en el navegador, así que todo es rápido y no hace falta instalar ningún trainer ni mod de escritorio."
+			}
+		},
+		"faqHeading": "Preguntas frecuentes sobre el editor de partidas de Clicker Heroes"
+	}
+}

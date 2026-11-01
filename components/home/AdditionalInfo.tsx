@@ -1,63 +1,62 @@
 import type { FC } from 'react';
 
-import { ExternalLinkCard, ExternalLinkCardItem, LinkCard } from '@/components/ui/LinkCard';
-import { Link, MessageCircle, MessageCircleQuestionIcon } from 'lucide-react';
+import { MessageCircle, MessageCircleQuestionIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
-export const additionalLinks: ExternalLinkCardItem[] = [
+import { ExternalLinkCard, LinkCard } from '@/components/ui/LinkCard';
+
+const externalLinks = [
 	{
+		key: 'github',
 		icon: '/assets/icons/github.svg',
-		title: 'GitHub Repository',
-		href: 'https://github.com/magnus-allison/clicker-heroes-save-editor',
-		description: 'magnus-allison/clicker-heroes-save-editor'
+		href: 'https://github.com/magnus-allison/clicker-heroes-save-editor'
 	},
 	{
+		key: 'coffee',
 		icon: '/assets/icons/buymeacoffee.svg',
-		title: 'Buy Me a Coffee',
-		href: 'https://buymeacoffee.com/magnus.allison',
-		description: 'Help keep the editor free and updated by making a small contribution'
+		href: 'https://buymeacoffee.com/magnus.allison'
 	},
 	{
+		key: 'game',
 		icon: '/assets/icons/clicker-heroes.png',
 		href: 'https://clickerheroes.com/',
-		title: 'Clicker Heroes',
-		description: 'Link to the games official website'
+		// The game's logo is full colour, so it is not tinted for the theme.
+		tintIcon: false
 	},
 	{
+		key: 'steam',
 		icon: '/assets/icons/steam.svg',
-		title: 'Clicker Heroes on Steam',
-		href: 'https://store.steampowered.com/app/363970/Clicker_Heroes/',
-		description: 'Link to the games official steam listing page'
+		href: 'https://store.steampowered.com/app/363970/Clicker_Heroes/'
 	}
-];
+] as const;
 
-export const AdditionalInfo: FC = () => (
-	<>
-		<LinkCard
-			icon={MessageCircle}
-			title='Submit Feedback'
-			href='/feedback'
-			description='Help us improve the quality of the site by submitting your thoughts'
-		/>
-		<LinkCard
-			icon={MessageCircleQuestionIcon}
-			title='FAQ'
-			href='/faq'
-			description='Answers to common questions about the editor, save files, and more'
-		/>
-		{/* <LinkCard
-			icon={MessageCircleQuestionIcon}
-			title='Changelog'
-			href='/changelog'
-			description='View the latest updates and improvements to the editor'
-		/> */}
-		{additionalLinks.map((link) => (
-			<ExternalLinkCard
-				description={link.description}
-				href={link.href}
-				key={link.href}
-				title={link.title}
-				icon={link.icon}
+export const AdditionalInfo: FC = () => {
+	const t = useTranslations('common.cards.additional');
+
+	return (
+		<>
+			<LinkCard
+				description={t('feedback.description')}
+				href='/feedback'
+				icon={MessageCircle}
+				title={t('feedback.title')}
 			/>
-		))}
-	</>
-);
+			<LinkCard
+				description={t('faq.description')}
+				href='/faq'
+				icon={MessageCircleQuestionIcon}
+				title={t('faq.title')}
+			/>
+			{externalLinks.map((link) => (
+				<ExternalLinkCard
+					description={t(`${link.key}.description`)}
+					href={link.href}
+					icon={link.icon}
+					key={link.href}
+					tintIcon={'tintIcon' in link ? link.tintIcon : true}
+					title={t(`${link.key}.title`)}
+				/>
+			))}
+		</>
+	);
+};

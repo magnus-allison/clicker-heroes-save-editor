@@ -343,7 +343,7 @@ export type OutsidersCalculation = {
 	/** Borb the last ascension needs, versus the one the early ones want. */
 	borbForZone: number;
 	borbForFirstAscension: number;
-	hints: string[];
+	hints: OutsiderHint[];
 };
 
 type PlanOptions = {
@@ -540,7 +540,30 @@ type HintContext = {
 	highestZone: number;
 };
 
-/** The original's contextual advice, as plain sentences. */
+export type OutsiderHintKey =
+	| 'noAncientSouls'
+	| 'firstAscension'
+	| 'borbForZone'
+	| 'borbHigher'
+	| 'transcendAfterAscensions'
+	| 'estimateActive'
+	| 'guidelineNoLongerApplies'
+	| 'keepAscending'
+	| 'closeToCap'
+	| 'borbOnlyLimit'
+	| 'lastFourAtZero'
+	| 'oneLessAscension';
+
+/**
+ * One piece of contextual advice, as a message key plus the numbers it quotes.
+ * The sentences themselves live in the `tools.outsiders.hints` messages.
+ */
+export type OutsiderHint = {
+	key: OutsiderHintKey;
+	values?: Record<string, number>;
+};
+
+/** The original's contextual advice. */
 function buildHints({
 	ancientSouls,
 	borb,
@@ -549,68 +572,44 @@ function buildHints({
 	buffedMonstersPerZone,
 	highestZone
 }: HintContext) {
-	const hints: string[] = [];
+	const hints: OutsiderHint[] = [];
 
 	if (ancientSouls === 0) {
-		hints.push(
-			'You need ancient souls for this to work. Transcend as soon as you unlock transcendence at zone 300. It is worth it.'
-		);
+		hints.push({ key: 'noAncientSouls' });
 
 		return hints;
 	}
 
 	if (ancientSouls < 2000) {
-		hints.push(
-			'Your first ascension should be at zone 130, so you unlock Kumawakamaru and a few other ancients as soon as possible. That speeds up every ascension after it.'
-		);
+		hints.push({ key: 'firstAscension' });
 
 		if (borbForZone < borb && ancientSouls > 50) {
-			hints.push(
-				`Only ${borbForZone} Borb is needed for two monsters per zone on your final ascension, but ${borbFant} is needed for two monsters per zone after ascending for the first time at zone 130.`
-			);
-			hints.push(
-				'There are more ascensions than the last one, so Borb is levelled higher to speed up the earlier ones.'
-			);
+			hints.push({ key: 'borbForZone', values: { borbForFirstAscension: borbFant, borbForZone } });
+			hints.push({ key: 'borbHigher' });
 		}
 	}
 
 	if (ancientSouls < 10500) {
-		hints.push(
-			'Transcend after 3 or 4 ascensions that give new ancient souls. An ascension only counts if it earns you more hero souls than your previous transcension.'
-		);
-		hints.push(
-			'The highest zone below is an estimate and assumes active play, which you should switch to as soon as you have two autoclickers.'
-		);
+		hints.push({ key: 'transcendAfterAscensions' });
+		hints.push({ key: 'estimateActive' });
 
 		return hints;
 	}
 
 	if (ancientSouls < 27000) {
-		hints.push(
-			'The "3 or 4 ascensions that give ancient souls" guideline does not apply beyond 24% Transcendent Power.'
-		);
-		hints.push(
-			'Keep ascending until you reach at least the estimated highest zone below. That takes more ascensions than you are used to.'
-		);
-		hints.push(
-			'You are getting close to 25% Transcendent Power, so transcending no longer gives the boost it used to.'
-		);
+		hints.push({ key: 'guidelineNoLongerApplies' });
+		hints.push({ key: 'keepAscending' });
+		hints.push({ key: 'closeToCap' });
 	}
 
 	if (ancientSouls >= 21000) {
 		if (ancientSouls < 50000) {
-			hints.push(
-				'You have enough Transcendent Power to reach any hero. Borb is your only limit now, and putting more levels into it is the only reason to transcend.'
-			);
-			hints.push(
-				'The last four outsiders are impractical to maintain at high zones, so they are kept at 0. This is not a bug.'
-			);
+			hints.push({ key: 'borbOnlyLimit' });
+			hints.push({ key: 'lastFourAtZero' });
 		}
 
 		if (highestZone < 5.37e6 && buffedMonstersPerZone > 10) {
-			hints.push(
-				'You can do one less ascension than the highest zone estimate asks for if you want a more pleasant run. It is only slightly worse long term.'
-			);
+			hints.push({ key: 'oneLessAscension' });
 		}
 	}
 

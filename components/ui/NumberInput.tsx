@@ -4,6 +4,7 @@ import { useId, useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/Button';
 import { cn } from 'cn';
+import { useTranslations } from 'next-intl';
 import { formatNumber, parseNumberish, sanitizeNumberInput } from '@/lib/save-utils';
 
 const incrementOptions = [
@@ -41,6 +42,7 @@ export const NumberInput = ({
 	selectOnFocus,
 	value
 }: Props) => {
+	const t = useTranslations('common.ui');
 	const generatedId = useId();
 	const [draftValue, setDraftValue] = useState(String(value ?? ''));
 	const [isFocused, setIsFocused] = useState(false);
@@ -77,7 +79,7 @@ export const NumberInput = ({
 			)}
 		>
 			<input
-				aria-label={ariaLabel ?? placeholder ?? 'Number input'}
+				aria-label={ariaLabel ?? placeholder ?? t('numberInput')}
 				className={cn(
 					'h-10 w-full min-w-0 rounded-(--radius-control) border border-(--color-line) bg-(--color-surface) px-2.5 text-(--color-fg) outline-none transition placeholder:text-(--color-fg-dim) hover:border-(--color-line-strong) focus:border-(--color-line-strong) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim) sm:w-auto sm:flex-1',
 					inputClassName || 'text-[13px]',
