@@ -1,0 +1,56 @@
+{
+  "gildingChart": {
+    "phases": {
+      "1": "Der Weg bis e10",
+      "2": "Wepwawet und Gog",
+      "3": "Solo-Helden",
+      "4": "Tomb Guardians",
+      "5": "The Maw und Yachiyl",
+      "6": "Ace Scouts"
+    },
+    "notes": {
+      "dreadKnight": "Dread Knight lohnt sich nie zum Vergolden. Quellen nennen als Startlevel entweder 1.000 oder 1.500; beides ist in Ordnung.",
+      "bareExponent": "Ab hier wird Gold nur noch als Exponent angegeben, also als die Zahl nach dem „e“.",
+      "rangersAndBeasts": "Die meisten Ranger und Bestien werden ab Level 1.000 optimal.",
+      "thePattern": "Das Muster ist jetzt klar: bis 1.000 anheuern, vergolden, auf 1.500 leveln, weiter zum Nächsten.",
+      "bomberMaxUpgrade": "Wenn Chiron auf 1.100 ist, bring Bomber Max auf Level 100, um sein Upgrade „+50% gefundenes Gold“ zu bekommen.",
+      "gogUpgrade": "Wenn Moloch auf 1.100 ist, bring Gog auf Level 100, um sein Upgrade „+50% DPS für alle Helden“ zu bekommen.",
+      "followWepwawet": "Ab hier richtet sich das Vergolden nach den Upgrades von Wepwawet.",
+      "bettyClicker": "Braucht das Wepwawet-Upgrade bei Level 1.500, das Betty stark verbessert.",
+      "kingMidas": "Braucht das Wepwawet-Upgrade bei Level 2.000. Das Wiki gibt als Endlevel 13.575 an.",
+      "wepAndGog": "Wep und Gog wechseln sich jetzt etwa alle 500 Level ab, weil jeder von ihnen einen neuen 10x-Multiplikator bekommt.",
+      "stayOnWep": "Gog bekommt nach Level 8.000 keine 10x-Multiplikatoren mehr, also bleib ab hier bei Wep.",
+      "hireTsuchi": "Tsuchi auf Level 1 anzuheuern kostet weniger als 25 weitere Level Wepwawet und ist sofort besser.",
+      "lastSoulsEstimate": "Letzte Zeile mit einer brauchbaren Ancient-Souls-Schätzung. Ab hier nimmst du besser einen Progressionsrechner.",
+      "eitherGuardian": "Hier funktioniert jeder der beiden Guardians. Cadu bekommt das erste Upgrade, das Ceus verstärkt.",
+      "ceusBoostsCadu": "Bei 116.000 verstärkt Ceus Cadu. Ab hier geht das abwechselnde Muster weiter.",
+      "lastCeusUpgrade": "Hier wird das letzte Ceus-Upgrade freigeschaltet. Danach bleibst du bis The Maw bei Cadu.",
+      "theMaw": "The Maw macht auf Level 1 etwa 1e6750x so viel Schaden wie Cadu auf 680.625 – zum selben Preis.",
+      "yachiyl": "Yachiyl macht bis zum ersten Upgrade bei 157.500 weniger Schaden als The Maw, deshalb steigst du erst dort ein. Wenn du diese Zeile erreichst, hast du 1.0e10 geschafft.",
+      "roseLevel": "Wegen der Helden-Skalierung von 1.0e11 ist Rose nicht sofort besser als Yachiyl. Sie braucht Level 9.700.",
+      "noUpgradesFirst": "Geh zuerst jeden Scout ohne Upgrades durch.",
+      "firstUpgrades": "Jetzt sammelst du bei jedem Scout das erste Upgrade ein. Dieses rotierende Muster geht bis zum Ende weiter.",
+      "skipDorothy1": "Überspring Dorothy 1: Sie kostet mehr, macht aber weniger Schaden als Rose 2.",
+      "skipDorothy2": "Überspring Dorothy 2, aus demselben Grund wie vorher.",
+      "dorothy3": "Dorothy 3 lohnt sich, anders als 1 und 2.",
+      "skipDorothy4": "Überspring Dorothy 4, aus demselben Grund wie vorher.",
+      "endOfChart": "Ende der tabellierten Werte."
+    },
+    "forever": "Unbegrenzt",
+    "lookup": {
+      "label": "Dein Gold",
+      "inputLabel": "Dein aktuelles Gold",
+      "hint": "Füge die ganze Zahl oder nur den Exponenten ein. Es zählt nur die Größenordnung.",
+      "invalid": "Das sieht nicht nach einer Goldmenge aus. Versuch es mit etwas wie <mono>1.4e442</mono> oder <mono>442</mono>.",
+      "belowChart": "<mono>{gold}</mono> liegt unter dem ersten Tabelleneintrag bei <mono>{first}</mono>. Die Tabelle beginnt nach deiner ersten Transzendenz. Bis dahin legst du alle Gilds, die du hast, auf einen der Power 5 und levelst diesen Helden.",
+      "phase": "Phase {phase} · {title}",
+      "fromLevel": "Ab Level",
+      "toLevel": "Bis Level",
+      "goldRange": "Goldbereich",
+      "approxAncientSouls": "ca. AS",
+      "defaultNote": "Verschiebe alle deine Gilds auf {hero} und level von {from} bis {to}.",
+      "nextUp": "Als Nächstes: <strong>{hero}</strong> bei <mono>{gold}</mono>, {count, plural, one {{distance} Größenordnung} other {{distance} Größenordnungen}} entfernt.",
+      "lastRow": "Das ist die letzte Zeile der Tabelle. Danach ist nichts mehr tabelliert."
+    }
+  }
+}

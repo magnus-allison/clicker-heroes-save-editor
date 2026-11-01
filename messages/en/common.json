@@ -140,7 +140,8 @@
   },
   "localeNames": {
     "en": "English",
-    "es": "Español"
+    "es": "Español",
+    "de": "Deutsch"
   },
   "notFound": {
     "eyebrow": "Error 404",

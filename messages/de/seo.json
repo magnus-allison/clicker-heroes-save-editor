@@ -1,0 +1,284 @@
+{
+  "site": {
+    "description": "Kostenloser Clicker Heroes Spielstand-Editor und Tools online. Dekodiere, prüfe, bearbeite und kodiere deine Spielstände von Clicker Heroes direkt im Browser."
+  },
+  "breadcrumb": {
+    "home": "Startseite",
+    "tools": "Tools",
+    "guides": "Guides"
+  },
+  "pages": {
+    "home": {
+      "metaTitle": "Clicker Heroes Spielstand-Editor, Rechner & Guides",
+      "description": "Kostenlose Clicker Heroes Tools im Browser: Spielstand-Editor, Ancients- und Outsiders-Rechner, Instakill-Rechner, Spielstand-Konverter und Gild-Tabelle."
+    },
+    "saveEditor": {
+      "metaTitle": "Clicker Heroes Spielstand-Editor – online & kostenlos",
+      "description": "Kostenloser Clicker Heroes Spielstand-Editor: Spielstände online dekodieren, bearbeiten und neu kodieren. Gold, Rubine, Hero Souls, Helden, Ancients, Aufstiege & mehr.",
+      "applicationName": "Clicker Heroes Spielstand-Editor",
+      "featureList": [
+        "Clicker Heroes Spielstand-Codes dekodieren",
+        "Bearbeitete Spielstände kodieren und wieder ins Spiel importieren",
+        "Gold, Rubine, Hero Souls, Ancients und Aufstiegsdaten bearbeiten",
+        "Helden, Erfolge, Skins, Söldner, Outsiders, Clan-Werte und eigene Felder bearbeiten",
+        "Beliebige Spielstandfelder direkt über einen eigenen Feldpfad schreiben"
+      ]
+    },
+    "instakillCalculator": {
+      "metaTitle": "Clicker Heroes Instakill-Rechner – Zonen pro Stunde",
+      "description": "Clicker Heroes Instakill-Rechner: Schätze Routendauer, Monster pro Zone und Zonen pro Stunde anhand von Kumawakamaru, Borb, Zonenbereich und FPS.",
+      "applicationName": "Clicker Heroes Instakill-Rechner",
+      "featureList": [
+        "Routendauer abschätzen",
+        "Monster pro Zone berechnen",
+        "Zonen pro Stunde aus Zonenbereich und FPS abschätzen"
+      ]
+    },
+    "ancientsCalculator": {
+      "metaTitle": "Clicker Heroes Ancients-Rechner – optimale Ancient-Level",
+      "description": "Kostenloser Clicker Heroes Ancients-Rechner: optimale Ancient-Level, Kosten und Ancient-Souls-Planer für Idle-, Hybrid- und Aktiv-Builds aus deinem Spielstand.",
+      "applicationName": "Clicker Heroes Ancients-Rechner",
+      "featureList": [
+        "Optimale Ancient-Level aus einem importierten Spielstand berechnen",
+        "Idle-, Hybrid- und Aktiv-Builds mit einstellbarem Hybrid-Verhältnis",
+        "Hero-Souls-Kosten pro Ancient und übrige Souls anzeigen",
+        "Die Hero Souls für die nächsten Ancient Souls planen"
+      ]
+    },
+    "outsidersCalculator": {
+      "metaTitle": "Clicker Heroes Outsiders-Rechner – optimale Outsider-Level",
+      "description": "Kostenloser Clicker Heroes Outsiders-Rechner: optimale Level für Borb, Phandoryss, Ponyboy und Chor’gorloth, Prognose zum Transzendenz-Ende, Breakpoints und Simulator.",
+      "applicationName": "Clicker Heroes Outsiders-Rechner",
+      "featureList": [
+        "Optimale Outsider-Level aus einem importierten Spielstand berechnen",
+        "Höchste Zone, Hero Souls und Ancient Souls am Ende einer Transzendenz abschätzen",
+        "Zonen-Breakpoints und gebuffte Werte in der höchsten Zone anzeigen",
+        "Jede Transzendenz von jetzt bis zum Ende des Spiels hochrechnen",
+        "Die empfohlenen Outsider-Level zurück in den Spielstand schreiben"
+      ]
+    },
+    "transcensionViewer": {
+      "metaTitle": "Clicker Heroes Transzendenz-Übersicht – Aufstiegsverlauf",
+      "description": "Clicker Heroes Transzendenz-Verlauf aus deinem Spielstand: Dauer der Aufstiege, HZE sowie Summen für Hero Souls und Ancient Souls auf einen Blick.",
+      "applicationName": "Clicker Heroes Transzendenz-Übersicht",
+      "featureList": [
+        "Transzendenz-Verlauf von Clicker Heroes ansehen",
+        "Aufstiege aus importierten Spielstanddaten prüfen",
+        "HZE sowie Summen für Hero Souls und Ancient Souls auswerten"
+      ]
+    },
+    "mercenaryViewer": {
+      "metaTitle": "Clicker Heroes Söldner-Übersicht – Kader & Quest-Statistik",
+      "description": "Importiere einen Clicker Heroes Spielstand und sieh dir deine Söldner und ihre Gesamtstatistiken an: Level, Zeit bis zum Tod, Bonusleben und abgeschlossene Quests.",
+      "applicationName": "Clicker Heroes Söldner-Übersicht",
+      "featureList": [
+        "Den Söldner-Kader von Clicker Heroes aus einem Spielstand ansehen",
+        "Level, Zeit bis zum Tod und Bonusleben der Söldner prüfen",
+        "Gesamtwerte für Söldner und Quests auswerten"
+      ]
+    },
+    "removeClanData": {
+      "metaTitle": "Clicker Heroes Clan-Daten entfernen – Spielstand bereinigen",
+      "description": "Entferne Clan-, Konto- und Login-Daten aus einer Clicker Heroes Speicherdatei und kodiere den bereinigten Spielstand lokal in deinem Browser neu.",
+      "applicationName": "Clicker Heroes Tool zum Entfernen von Clan-Daten",
+      "featureList": [
+        "Clan-Felder aus Clicker Heroes Spielständen entfernen",
+        "Konto- und Login-Werte bereinigen",
+        "Den bereinigten Spielstand im Browser neu kodieren"
+      ]
+    },
+    "saveConverter": {
+      "metaTitle": "Clicker Heroes Spielstand-Konverter – PC zu Mobile & zurück",
+      "description": "Konvertiere Clicker Heroes Speicherdateien lokal im Browser zwischen PC- und Mobile-Format, mit Erkennung der Herkunft und Anzeige der Patch-Nummer.",
+      "applicationName": "Clicker Heroes Spielstand-Konverter",
+      "featureList": [
+        "PC- oder Mobile-Herkunft eines Clicker Heroes Spielstands erkennen",
+        "Die Patch-Nummer des Spielstands anzeigen, sofern vorhanden",
+        "Spielstände zwischen PC- und Mobile-Komprimierung konvertieren",
+        "Konvertierte Spielstände lokal im Browser neu kodieren"
+      ]
+    },
+    "saveJson": {
+      "metaTitle": "Clicker Heroes Spielstand als JSON – dekodieren & bearbeiten",
+      "description": "Clicker Heroes Spielstand als JSON: Dekodiere deinen Spielstand in rohes JSON, bearbeite jedes Feld von Hand und kodiere ihn im Browser neu. Ein Tool für Entwickler.",
+      "applicationName": "Clicker Heroes Spielstand-JSON-Tool",
+      "featureList": [
+        "Clicker Heroes Spielstände in formatiertes JSON dekodieren",
+        "Beliebige rohe Spielstandfelder von Hand bearbeiten",
+        "Bearbeitetes JSON zurück in einen kodierten Spielstand-Code umwandeln",
+        "Rohes Spielstand-JSON im Browser formatieren und kopieren"
+      ]
+    },
+    "newPlayerGuide": {
+      "metaTitle": "Clicker Heroes Guide für Anfänger & Einsteiger (1.0e12)",
+      "description": "Clicker Heroes 1.0e12 für Einsteiger: erster Run, wann du aufsteigst, Gilds für die Power 5, welche Ancients, erste Transzendenz, Rubine, Söldner, Clans und Relikte."
+    },
+    "gildingChart": {
+      "metaTitle": "Clicker Heroes Gild-Tabelle – wen vergolden? (1.0e12)",
+      "description": "Clicker Heroes Gild-Tabelle (1.0e12): welchen Helden du bei welcher Goldschwelle vergoldest, von The Masked Samurai bis zu den Ace Scouts. Gold eingeben, besten Helden finden."
+    },
+    "progressTips": {
+      "metaTitle": "Clicker Heroes Tipps – 10 Wege zu schnellerem Fortschritt",
+      "description": "10 Tipps für schnelleren Fortschritt in Clicker Heroes 1.0e12: Aufstieg und Transzendenz, welchen Helden leveln und vergolden, Builds, Skill-Kombos, Rubine und Mauern überwinden."
+    },
+    "requestTool": {
+      "metaTitle": "Clicker Heroes Tool oder Rechner anfragen",
+      "description": "Schlag ein neues Clicker Heroes Tool oder einen Rechner vor. Beschreib, was du dir wünschst, was es berechnen soll und wie du es nutzen würdest."
+    },
+    "requestGuide": {
+      "metaTitle": "Clicker Heroes Guide anfragen",
+      "description": "Schlag einen neuen Clicker Heroes Guide vor. Sag uns, bei welchem Thema du feststeckst und was ein idealer Guide abdecken sollte."
+    },
+    "faq": {
+      "metaTitle": "Clicker Heroes Spielstand-Editor FAQ – Speicherort & Hilfe",
+      "description": "Antworten zum Clicker Heroes Spielstand-Editor: Spielstand laden und exportieren, Speicherort der Datei, Datenschutz im Browser und Hilfe, wenn ein Spielstand nicht dekodiert."
+    },
+    "feedback": {
+      "metaTitle": "Clicker Heroes Tools – Feedback",
+      "description": "Sende Fehlerberichte, Feature-Wünsche, Ideen für fehlende Funktionen und allgemeines Feedback zum Clicker Heroes Spielstand-Editor und den Tools."
+    }
+  },
+  "faqs": {
+    "saveEditor": [
+      {
+        "question": "Wie bearbeite ich eine Clicker Heroes Speicherdatei?",
+        "answer": "Füge deinen Clicker Heroes Spielstand-Code in den Editor ein, dekodiere ihn, ändere die gewünschten Felder und kopiere das kodierte Ergebnis zurück in den Import-Dialog des Spiels."
+      },
+      {
+        "question": "Kann der Editor Gold, Rubine, Hero Souls und Ancients ändern?",
+        "answer": "Ja. Der Editor bietet Einstellungen für die wichtigsten Währungen, Heldenlevel, Hero Souls, den Fortschritt rund um Ancients, Aufstiege, Erfolge, Skins, Söldner, Outsiders, Clan-Werte und eigene Spielstandfelder. Rohes JSON bearbeitest du im separaten Tool „Spielstand als JSON“."
+      },
+      {
+        "question": "Wird mein Clicker Heroes Spielstand auf einen Server hochgeladen?",
+        "answer": "Nein. Der Editor läuft im Browser und verarbeitet die Spielstanddaten clientseitig. Du kannst also bearbeiten, ohne deinen Spielstand auf diese Seite hochzuladen."
+      }
+    ],
+    "site": [
+      {
+        "id": "using-the-editor",
+        "title": "Den Editor nutzen",
+        "summary": "Spielstand rein, ändern und zurück in Clicker Heroes.",
+        "faqs": [
+          {
+            "question": "Wie lade ich meinen Spielstand in den Editor?",
+            "answer": "Exportiere deinen Spielstand im Spiel, füge den Code in Schritt 1 des Spielstand-Editors ein und klicke auf „Spielstand laden“. Alternativ wählst du deine .save-Datei über die Dateiauswahl aus. Der Spielstand wird direkt dekodiert und Schritt 2 wird freigeschaltet. Einige Rechner bringen auch Beispiel-Spielstände mit, falls du nur sehen willst, wie ein Tool funktioniert."
+          },
+          {
+            "question": "Wo ist meine Clicker Heroes Speicherdatei?",
+            "answer": "Unter Windows nutzen sowohl die Steam- als auch die Standalone-Version C:\\Users\\[BENUTZERNAME]\\AppData\\Roaming\\ClickerHeroes2\\Local Store\\saves; dort liegen eine .save- und eine .backup-Datei. Auf dem Mac mit Steam ist es ~/Library/Application Support/Steam/userdata/[BENUTZER-ID]/363970/remote/, und die Standalone-Version für Mac nutzt ~/Library/Application Support/com.playsaurus.clickerheroes/. Dieselbe Liste findest du im Editor unter „Wo ist meine Speicherdatei?“."
+          },
+          {
+            "question": "Wie bekomme ich meinen bearbeiteten Spielstand zurück ins Spiel?",
+            "answer": "Klicke in Schritt 3 auf „Spielstand kodieren“, kopiere den kodierten Code und füge ihn in Clicker Heroes über die Option zum Importieren des Spielstands ein. Kodiere nach jeder weiteren Änderung erneut – das Exportfeld enthält nur den Code von deinem letzten Klick."
+          },
+          {
+            "question": "Was kann ich alles ändern?",
+            "answer": "Gold, Rubine, Hero Souls, Shop- und Saison-Items, Heldenlevel und Gilds, Skins, Erfolge, Aufstiege und Transzendenzen, Clan-Werte, Söldner und Outsiders. Alles, was die Abschnitte nicht abdecken, kannst du im Abschnitt „Eigenes Feld“ per Pfad schreiben oder im Tool „Spielstand als JSON“ von Hand bearbeiten."
+          },
+          {
+            "question": "Funktioniert der Editor mit Mobile-Spielständen?",
+            "answer": "Er dekodiert PC-, Mobile- und ältere Legacy-Spielstand-Codes. Wenn ein Spielstand von einer Plattform auf der anderen laden soll, schick ihn vorher durch den Spielstand-Konverter."
+          }
+        ]
+      },
+      {
+        "id": "safety-and-privacy",
+        "title": "Sicherheit und Datenschutz",
+        "summary": "Was mit deinen Spielstanddaten passiert und wie du keinen Fortschritt verlierst.",
+        "faqs": [
+          {
+            "question": "Wird mein Spielstand auf einen Server hochgeladen?",
+            "answer": "Nein. Dekodieren, Bearbeiten und Kodieren laufen komplett in deinem Browser. Dein Spielstand-Code wird nie an diese Seite gesendet oder außerhalb deines Geräts gespeichert."
+          },
+          {
+            "question": "Sollte ich meinen Spielstand vor dem Bearbeiten sichern?",
+            "answer": "Immer. Behalte eine Kopie des ursprünglichen Spielstand-Codes oder der .save-Datei, bevor du einen bearbeiteten Spielstand importierst. Unter Windows liegt neben dem Spielstand außerdem eine .backup-Datei, auf die du zurückgreifen kannst."
+          },
+          {
+            "question": "Kann ich meinen Spielstand durch Bearbeiten kaputt machen?",
+            "answer": "Ja. Werte weit außerhalb dessen, was das Spiel erwartet, oder ein eigenes Feld mit falschem Pfad können einen Spielstand erzeugen, den das Spiel nicht mehr lädt. Ändere immer nur eine Sache, importiere neu und prüf das Spiel, bevor du die nächste Änderung machst."
+          },
+          {
+            "question": "Verstößt das Bearbeiten meines Spielstands gegen die Regeln?",
+            "answer": "Einen Einzelspieler-Spielstand zu bearbeiten ist deine Entscheidung. Bearbeitete Werte können aber in Clan-Raids und Bestenlisten einfließen, und das Ändern von Spielstanddaten kann gegen die Nutzungsbedingungen des Spiels verstoßen. Die Tools werden ohne Gewähr bereitgestellt; die Nutzung erfolgt auf eigenes Risiko."
+          },
+          {
+            "question": "Wie entferne ich Clan- und Kontodaten, bevor ich einen Spielstand teile?",
+            "answer": "Nutze das Tool „Clan-Daten entfernen“. Es löscht Clan-, Konto- und Login-Felder aus einem importierten Spielstand und kodiert das bereinigte Ergebnis in deinem Browser neu."
+          }
+        ]
+      },
+      {
+        "id": "troubleshooting",
+        "title": "Fehlerbehebung",
+        "summary": "Die häufigsten Fehler und was sie meistens auslöst.",
+        "faqs": [
+          {
+            "question": "Der Editor meldet, der Text sehe nicht nach einem unterstützten Clicker Heroes Spielstand aus",
+            "answer": "Der eingefügte Text hat kein Spielstand-Format, das der Editor erkennt. Fast immer wurde nur ein Teil des Codes kopiert, oder der Text stammt aus einem anderen Spiel oder Tool. Kopiere den Spielstand noch einmal vom Anfang bis ganz zum Ende des Codes oder lade direkt die .save-Datei."
+          },
+          {
+            "question": "Die Spielstanddaten sind kein gültiges Base64 oder lassen sich nicht dekomprimieren",
+            "answer": "Der Code ist unvollständig oder verändert im Editor angekommen. Zeilenumbrüche und Leerzeichen sind kein Problem – fehlende Zeichen schon. Kopiere den ganzen Spielstand erneut oder nutze die Dateiauswahl, statt ihn einzufügen."
+          },
+          {
+            "question": "Nach dem Einfügen meines Spielstands passiert nichts",
+            "answer": "Der Editor dekodiert beim Laden, nicht beim Einfügen. Klicke nach dem Einfügen auf „Spielstand laden“. Du solltest die Meldung „Spielstand geladen.“ sehen, und die Bearbeitungsabschnitte werden freigeschaltet."
+          },
+          {
+            "question": "Das Spiel akzeptiert meinen bearbeiteten Spielstand nicht",
+            "answer": "Prüf, ob du nach deiner letzten Änderung auf „Spielstand kodieren“ geklickt und den gesamten kodierten Code kopiert hast. Lehnt das Spiel ihn trotzdem ab, importiere dein Backup und wiederhole die Änderungen in kleineren Schritten, um den Wert zu finden, mit dem es nicht klarkommt."
+          },
+          {
+            "question": "Etwas anderes funktioniert nicht oder ein Wert fehlt",
+            "answer": "Schick es über das Feedback-Formular, zusammen mit dem Tool, das du benutzt hast, und dem, was du erwartet hast. Fehlerberichte und Wünsche nach Feldern, die der Editor noch nicht abdeckt, sind gleichermaßen willkommen."
+          }
+        ]
+      }
+    ],
+    "gildingChart": [
+      {
+        "question": "Muss ich bei jeder Zeile der Gild-Tabelle umvergolden?",
+        "answer": "Nein. Umvergolden kostet Hero Souls, und solange du Instakills machst, bringt zusätzlicher Schaden nichts. Überspring ruhig Zeilen und vergolde erst um, wenn Monster deine Treffer überleben. Die Tabelle zeigt, was optimal ist – sie ist keine Checkliste, die du abarbeiten musst."
+      },
+      {
+        "question": "Warum taucht derselbe Held mehrmals in der Gild-Tabelle auf?",
+        "answer": "Helden bekommen bei bestimmten Level-Meilensteinen 10x-Schadensmultiplikatoren, und die Levelkosten steigen mit der Zeit. Deshalb kann Wepwawet auf Level 5.000 hinter Gog zurückfallen und ihn auf 6.000 wieder überholen, sobald Wep seinen nächsten Multiplikator bekommt. Zwischen e383 und e500 überholen sich die beiden etwa alle 500 Level gegenseitig."
+      },
+      {
+        "question": "Sollte ich Dread Knight in Clicker Heroes vergolden?",
+        "answer": "Nein. Dread Knight zu vergolden ist zu keinem Zeitpunkt im Spiel optimal. Lass ihn aus."
+      },
+      {
+        "question": "Warum wechseln sich Wepwawet und Gog nach e442 nicht mehr ab?",
+        "answer": "Gog bekommt nach Level 8.000 keine weiteren 10x-Multiplikatoren und kann Wepwawet daher nicht mehr überholen. Bleib ab e442 bei Wepwawet, bis bei e500 Tsuchi kommt."
+      },
+      {
+        "question": "Warum ist Tsuchi auf Level 1 besser als Wepwawet auf Level 9.000?",
+        "answer": "Tsuchi anzuheuern kostet an diesem Punkt weniger als 25 weitere Level für Wepwawet, und sein Grundschaden spielt in einer völlig anderen Liga. Dasselbe Muster wiederholt sich bei The Maw, das auf Level 1 etwa 1e6750-mal so viel Schaden macht wie Cadu auf Level 680.625."
+      },
+      {
+        "question": "Warum wechseln sich Cadu und Ceus in der Gild-Tabelle ab?",
+        "answer": "Die Tomb Guardians buffen sich gegenseitig: Cadu schaltet ein Upgrade für Ceus frei, Ceus eines für Cadu und so weiter. Du pushst jeweils den, der als Nächstes dran ist. Bei e25.500 ist jeder der beiden ein guter Start, und nach dem letzten Ceus-Upgrade auf Level 588.000 bleibst du bis The Maw bei Cadu."
+      },
+      {
+        "question": "Warum startet Yachiyl auf Level 157.500 statt auf Level 1?",
+        "answer": "Yachiyl überholt The Maw erst mit dem ersten Upgrade auf Level 157.500. Rose hat gegenüber Yachiyl dasselbe Problem und braucht zuerst Level 9.700."
+      },
+      {
+        "question": "Warum wird Dorothy in der Ace-Scouts-Rotation so oft übersprungen?",
+        "answer": "Mehrere ihrer Upgrade-Stufen kosten mehr Gold als das entsprechende Rose-Upgrade und machen dabei weniger Schaden. Dorothy 1, 2 und 4 sind deshalb schlechtere Käufe, als einfach Rose zu pushen. Trotzdem taucht sie dreimal in der Rotation auf – folge also den Zeilen wie angegeben, statt sie ganz abzuschreiben."
+      },
+      {
+        "question": "Wie viele Ancient Souls brauche ich, um einen Helden aus der Gild-Tabelle zu erreichen?",
+        "answer": "Die Spalte „Ancient Souls“ ist bis Xavira bei etwa 6.000 ein grober Richtwert. Danach ist sie nicht sinnvoll tabelliert, weil der Fortschritt stark von deiner Outsider-Verteilung und der Anzahl deiner Transzendenzen abhängt."
+      }
+    ]
+  },
+  "faqPage": {
+    "intro": "Häufige Fragen zum Clicker Heroes Spielstand-Editor und den Tools drumherum: Spielstände laden und exportieren, was mit deinen Spielstanddaten passiert und was die Fehlermeldungen bedeuten, wenn sich ein Spielstand nicht dekodieren lässt.",
+    "contentsLabel": "FAQ-Inhalt",
+    "contents": "Inhalt",
+    "footer": "Kommst du immer noch nicht weiter oder stimmt hier etwas nicht? <link>Schick uns Feedback</link> und erzähl uns, was du vorhattest – Fehlerberichte und Fragen, die diese Seite beantworten sollte, helfen beide weiter."
+  }
+}

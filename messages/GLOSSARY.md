@@ -34,3 +34,38 @@ Neutral Spanish, informal _tú_, no _vosotros_ or regionalisms. Clicker Heroes i
 | level (noun / verb)                                      | nivel / subir de nivel               |
 | cost                                                     | coste                                |
 | run (one play-through between resets)                    | run                                  |
+
+## German (`de`)
+
+Informal _du_ (lowercase), as German gaming sites use. Named game things stay in English, as for Spanish. Use German quotation marks („…“) and decimal/thousands conventions only in prose; numbers inside `{placeholders}` are formatted by code.
+
+| English                                                  | German                                 |
+| -------------------------------------------------------- | -------------------------------------- |
+| save (noun)                                              | Spielstand                             |
+| save string                                              | Spielstand-Code                        |
+| save file                                                | Speicherdatei                          |
+| save editor                                              | Spielstand-Editor                      |
+| import / export                                          | importieren / exportieren              |
+| encode / decode                                          | kodieren / dekodieren                  |
+| gold                                                     | Gold                                   |
+| rubies                                                   | Rubine                                 |
+| Hero Souls, Ancient Souls, Transcendent Power            | _unchanged_                            |
+| ancient(s), outsider(s)                                  | Ancient(s), Outsider(s)                |
+| every hero, ancient, outsider, item and achievement name | _unchanged_                            |
+| hero                                                     | Held                                   |
+| ascend / ascension                                       | aufsteigen / Aufstieg                  |
+| transcend / transcension                                 | transzendieren / Transzendenz          |
+| gild (noun) / to gild / gilding chart                    | Gild, Gilds / vergolden / Gild-Tabelle |
+| idle / hybrid / active build                             | Idle- / Hybrid- / Aktiv-Build          |
+| zone, highest zone (HZE)                                 | Zone, höchste Zone (HZE)               |
+| boss / monster                                           | Boss / Monster                         |
+| instakill                                                | Instakill                              |
+| mercenary / quest                                        | Söldner / Quest                        |
+| clan / raid                                              | Clan / Raid                            |
+| achievement / skin / relic                               | Erfolg / Skin / Relikt                 |
+| auto-clicker                                             | Autoclicker                            |
+| level (noun / verb)                                      | Level / leveln                         |
+| cost                                                     | Kosten                                 |
+| run (one play-through between resets)                    | Run                                    |
+
+Fixed UI strings the German FAQ refers to: "Load Save Data" → „Spielstand laden“, "Encode Save" → „Spielstand kodieren“, "Where is my save file?" → „Wo ist meine Speicherdatei?“, toast "Save data loaded." → „Spielstand geladen.“, Custom Field section → „Eigenes Feld“, Save JSON tool → „Spielstand als JSON“, Remove Clan Data tool → „Clan-Daten entfernen“.

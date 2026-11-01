@@ -1,0 +1,138 @@
+{
+  "intro": "Alles, was du brauchst, um in Clicker Heroes 1.0e12 von einem frischen Spielstand bis zu deiner ersten Transzendenz zu kommen. Der Guide geht von einem Idle-Build aus, denn damit fängst du am einfachsten an: Gold sammelt sich weiter an, während das Spiel geschlossen ist. Sobald du transzendiert und ein paar Autoclicker im Spiel gekauft hast, bringt dich ein Hybrid- oder Aktiv-Build weiter.",
+  "parts": {
+    "theEarlyGame": "Das frühe Spiel",
+    "ancients": "Ancients",
+    "transcending": "Transzendieren",
+    "theSideSystems": "Die Nebensysteme",
+    "afterThisGuide": "Nach diesem Guide"
+  },
+  "sections": {
+    "yourFirstRun": {
+      "title": "Dein erster Run",
+      "summary": "Der erste Durchlauf ist der langsamste, den du je spielen wirst. Komm bis Zone 130 und setz dann zurück.",
+      "items": {
+        "firstUpgrade": "Level jeden Helden bis zu seinem ersten Upgrade auf Level 10 und mach dann mit dem nächsten Helden weiter.",
+        "laterUpgrades": "Weiter unten in der Heldenliste gehst du vor dem Wechsel bis zum Upgrade auf Level 25 – und später bis Level 50.",
+        "allHeroUpgrades": "Geh zurück und kauf die <link>DPS-Upgrades für alle Helden</link>, sobald du sie dir leisten kannst.",
+        "lastUpgrade": "Level Helden vorerst nicht über ihr letztes Upgrade hinaus.",
+        "failedBoss": "An einem Boss gescheitert? Farm Gold in der vorherigen Zone, bis du ihn besiegen kannst.",
+        "longWaits": "Rechne am Anfang mit langen Wartezeiten. Gold sammelt sich auch offline an, also ist es eine gültige Strategie, das Spiel eine Weile liegen zu lassen.",
+        "skills": "Setz alle Skills ein, um eine Boss-Wand zu durchbrechen – etwa jede halbe Stunde.",
+        "primalBosses": "In den Zonen 110, 120 und 130 warten Primal-Bosse, also bringt dir jede davon garantiert Hero Souls."
+      }
+    },
+    "whenToAscend": {
+      "title": "Wann du aufsteigen solltest",
+      "summary": "Der Aufstieg ist die zentrale Fortschrittsschleife. Jeder Reset sollte schneller gehen als der letzte.",
+      "items": {
+        "moreSouls": "Je mehr Hero Souls du vor dem Aufstieg sammelst, desto schneller geht der nächste Run.",
+        "zone130": "Komm vor deinem ersten Aufstieg mindestens bis Zone 130 – dort wartet garantiert ein Primal-Boss.",
+        "every100th": "Danach ist auch jede 100. Zone garantiert ein Primal-Boss.",
+        "keepPushing": "Mach weiter, bis du auf einen Boss triffst, den du nicht besiegen kannst. Ist es ein Primal-Boss, farm Gold und versuch es erneut, bevor du ihn aufgibst.",
+        "spendGold": "Gib übriges Gold direkt vor dem Reset für Heldenlevel aus: Je 2.000 Heldenlevel insgesamt gibt es eine zusätzliche Hero Soul. Später spielt das keine Rolle mehr, aber jetzt lohnen sich die Souls."
+      }
+    },
+    "beyondZone130": {
+      "title": "Nach Zone 130",
+      "summary": "Ab deinem zweiten Run tragen dich die Power 5.",
+      "items": {
+        "backUp": "Sichere deinen Spielstand regelmäßig in einem Cloud-Speicher oder schick dir die Textdatei einfach per E-Mail. Mit dem <link>Spielstand-Editor</link> kannst du jederzeit eine Kopie herausziehen.",
+        "power5": "Level Frostleaf auf 150, geh dann zurück nach oben und level Treebeast, Ivan, Brittany, the Seer und the Masked Samurai – die „Power 5“ – in Vielfachen von 25.",
+        "remainingUpgrades": "Ab diesem Punkt kannst du auch alle übrigen Helden-Upgrades kaufen.",
+        "dreadKnight": "Ignorier Dread Knight. Sein Verhältnis von Kosten zu DPS ist miserabel; was du eigentlich willst, ist der ×10-Bonus dafür, einen Helden auf Level 1000 zu bringen, und die Power 5 reichen dafür noch lange.",
+        "buy25": "Nach ein paar Aufstiegen schaffst du die frühen Zonen schon, indem du Helden einfach jeweils 25 Level auf einmal kaufst.",
+        "deGilding": "Zufällige Gilds auf die Power 5 umzuverteilen ist optional. Wenn du es tust, gib dafür höchstens 10 % deiner Hero Souls aus – und vor deiner ersten Transzendenz solltest du Gilds überhaupt nicht verschieben."
+      }
+    },
+    "ancientsBeforeTranscending": {
+      "title": "Vor der Transzendenz",
+      "summary": "Vier Ancients, alle auf gleichem Level. Bis zur Transzendenz nichts anderes.",
+      "items": {
+        "idleFirst": "Idle ist der Build für den Anfang, weil sich Gold ansammelt, während das Spiel geschlossen ist.",
+        "buyFour": "Kauf bis zu deiner ersten Transzendenz Siyalatas, Libertas, Mammon und Mimzee und sonst keine.",
+        "keepLevel": "Halte alle vier auf demselben Level oder so nah daran, wie du es schaffst.",
+        "spareSouls": "Behalte so viele unverbrauchte Hero Souls, wie das Quadrat ihres Levels ergibt – bei Ancients auf Level 5 hältst du also 25 Hero Souls in Reserve."
+      }
+    },
+    "ancientsAfterTranscending": {
+      "title": "Nach der Transzendenz",
+      "summary": "Die Kaufreihenfolge ist eine grobe Rangliste nach Nutzen, keine feste Regel.",
+      "items": {
+        "earlyPick": "Hol dir in einer neuen Transzendenz so früh wie möglich einen Idle-Ancient oder Juggernaut, je nachdem, ob du Idle oder Aktiv/Hybrid spielst.",
+        "idleOrder": "Zuerst kaufen bei Idle: Libertas, Siyalatas, Nogardnit.",
+        "activeOrder": "Zuerst kaufen bei Aktiv oder Hybrid: Juggernaut, Bhaal, Fragsworth.",
+        "next": "Als Nächstes kaufen: Atman, Kumawakamaru, dann beliebige Gold-Ancients.",
+        "summonAll": "Nutze „Summon All Ancients“, sobald du dir den Rest auf einen Schlag leisten kannst.",
+        "nogardnit": "Level Nogardnit nur, wenn du Autoclicker im Spiel hast. Ohne sie bringt er nichts.",
+        "calculator": "Berechne die tatsächlichen Level mit dem <link>Ancients-Rechner</link> – importiere deinen Spielstand, und er gibt dir optimale Level und Kosten für Idle, Hybrid oder Aktiv aus."
+      }
+    },
+    "yourFirstTranscension": {
+      "title": "Deine erste Transzendenz",
+      "summary": "Wird in Zone 300 freigeschaltet. Mach sie sofort.",
+      "items": {
+        "what": "Die Transzendenz ist ein Reset der zweiten Stufe, der dich wieder voranbringt, wenn Aufstiege keine nennenswerten Fortschritte mehr bringen.",
+        "lose": "Du verlierst Ancients, Relikte, Hero Souls, Zonen-Gilds und deinen Zonenfortschritt.",
+        "keep": "Du behältst Ancient Souls, Rubine, Outsider, Söldner, deinen Clan-Fortschritt und alle mit Rubinen gekauften Gilds.",
+        "outsiders": "Ancient Souls gibst du für die neun Outsider aus – Meta-Ancients mit jeweils eigenem Bonus, die du in jeder Transzendenz kostenlos neu verteilen kannst.",
+        "transcendentPower": "Außerdem bekommst du Transcendent Power, die die Hero Souls von Primal-Bossen exponentiell erhöht. Deshalb lohnt es sich nicht, vor deiner ersten Transzendenz zu grinden: Transzendiere in Zone 300 und hol dir die Souls danach schneller zurück.",
+        "timing": "Um spätere Transzendenzen abzupassen, achte darauf, wie schnell deine Hero Souls pro Aufstieg wachsen. Wenn die Größenordnung nicht mehr steigt, ist es Zeit für den Reset. Die <link>Transzendenz-Übersicht</link> zeigt dir diesen Verlauf direkt aus deinem Spielstand."
+      }
+    },
+    "spendingRubies": {
+      "title": "Rubine ausgeben",
+      "summary": "Zuerst Autoclicker, dann dauerhafter Schaden, alles andere später.",
+      "items": {
+        "autoClickers": "Fang mit ein oder zwei Autoclickern an, dann kommt das dauerhafte Upgrade für doppelten Schaden.",
+        "reserve": "Behalte eine kleine Reserve, um Söldner wiederzubeleben, solange es noch günstig ist.",
+        "quickAscension": "Quick Ascension brauchst du zu Beginn einer neuen Transzendenz dank des Outsiders Phandoryss nicht mehr.",
+        "moreAutoClickers": "Als Nächstes kommen weitere Autoclicker; ab fünf Stück skalieren sie exponentiell.",
+        "timelapse": "Timelapse wird erst Zehntausende Zonen später wichtig. Setz es zu Beginn eines langen Aufstiegs ein, mit gebündelten Gilds und laufenden langen Rubin-Quests deiner Söldner.",
+        "avoid": "Gib keine Rubine für das Anwerben von Söldnern, Gilds, Relikte oder zusätzliche Raid-Boss-Kämpfe aus. Nichts davon lohnt sich."
+      }
+    },
+    "mercenaries": {
+      "title": "Söldner",
+      "summary": "Kostenloser Fortschritt, solange du sie auf Quests schickst. Auf Rubin-Quests kommt es an.",
+      "items": {
+        "lifespan": "Jeder Söldner hat eine festgelegte Lebenszeit, und nur die Zeit auf Quests wird davon abgezogen.",
+        "rewards": "Quest-Belohnungen werden mit dem Level des Söldners multipliziert, und 24 Stunden Quest-Zeit ergeben ein Level.",
+        "revive": "Belebe sie wieder, solange es günstig ist. Ab Level 11 oder 12 lohnen sich die Kosten meistens nicht mehr.",
+        "questLength": "Kurze Quests bringen pro Minute mehr; lange Quests brauchen weniger Aufmerksamkeit, aber ein hochleveliger Söldner kann mitten in der Quest sterben.",
+        "rubyQuests": "Rubin-Quests sind die besten. Quests für Hero Souls, Gold, Relikte und Skills sind bestenfalls situativ nützlich.",
+        "quality": "Die Qualität der Söldner ist reines Glück. Die vorhandenen auf Quests zu schicken bringt mehr, als sie in der Hoffnung auf bessere durchzutauschen."
+      }
+    },
+    "clans": {
+      "title": "Clans",
+      "summary": "Ein täglicher Raid-Boss und kostenlose Hero Souls fürs Mitmachen.",
+      "items": {
+        "raid": "Kämpf mit bis zu neun anderen Clan-Mitgliedern gegen einen täglichen Raid-Boss.",
+        "reward": "Die Mindestbelohnung sind 4 Hero Souls, und sie steigt, je mehr Primal-Bosse du besiegst.",
+        "join": "Tritt einem Clan mit Spielern auf ähnlichem Stand bei. Der <link>Subreddit r/ClickerHeroesRecruit</link> (auf Englisch) ist der übliche Ort, um einen zu finden."
+      }
+    },
+    "relics": {
+      "title": "Relikte",
+      "summary": "Am Anfang hilfreich, bald danach bedeutungslos.",
+      "items": {
+        "dwarfed": "Jeder Relikt-Wert wird irgendwann von Ancient-Leveln in den Schatten gestellt, aber im frühen Spiel helfen sie.",
+        "bestStats": "Kumawakamaru ist insgesamt der beste Wert. Atman und Revolc sind auch in Ordnung.",
+        "activeBuilds": "Bei Aktiv- oder Hybrid-Builds ohne unendliche Skill-Laufzeit verlängert ein gutes Sniperino- oder Klepto-Relikt Lucky Strikes und Golden Clicks."
+      }
+    },
+    "whereToGoNext": {
+      "title": "Wie es weitergeht",
+      "summary": "Tools und Nachschlagewerke für die Zeit nach deiner ersten Transzendenz.",
+      "items": {
+        "ancientsCalculator": "<link>Ancients-Rechner</link> – optimale Ancient-Level und Kosten aus deinem eigenen Spielstand.",
+        "transcensionViewer": "<link>Transzendenz-Übersicht</link> – verfolge die Hero Souls und Ancient Souls pro Aufstieg, um deine nächste Transzendenz abzupassen.",
+        "instakillCalculator": "<link>Instakill-Rechner</link> – Zonen pro Stunde und Monster pro Zone, sobald Kumawakamaru und Borb ins Gewicht fallen.",
+        "gildingChart": "<link>Gild-Tabelle</link> – auf welchen Helden du deine Gilds verschieben solltest und wann.",
+        "outsidersCalculator": "<link>Outsiders-Rechner</link> – wie du Ancient Souls nach der Transzendenz ausgibst.",
+        "community": "Stell deine Fragen im <link>Clicker-Heroes-Subreddit</link> (auf Englisch) oder im offiziellen Discord."
+      }
+    }
+  }
+}

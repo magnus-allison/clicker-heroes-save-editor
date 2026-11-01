@@ -1,0 +1,225 @@
+{
+  "shared": {
+    "part": "Teil {number}",
+    "contents": "Inhalt",
+    "contentsLabel": "Inhalt des Guides"
+  },
+  "progressTips": {
+    "intro": "Zehn Gewohnheiten, die am meisten darüber entscheiden, wie schnell ein Spielstand in Clicker Heroes 1.0e12 vorankommt. Keine davon ist ein Geheimnis, aber den meisten langsamen Spielständen fehlt mindestens eine. Wenn du ganz von vorn anfängst, lies zuerst den <newPlayerGuide>Einsteiger-Guide</newPlayerGuide> – dieser Guide setzt dort an, wo jener aufhört.",
+    "parts": {
+      "resets": "Resets",
+      "heroes": "Helden",
+      "souls": "Souls und Builds",
+      "skillsAndRubies": "Skills und Rubine",
+      "everythingElse": "Alles andere"
+    },
+    "sections": {
+      "ascend": {
+        "title": "1. Steig früh und oft auf",
+        "summary": "Ein kurzer Run, der deine Hero Souls verdoppelt, schlägt einen langen Run, der sie kaum bewegt.",
+        "items": {
+          "1": "Fortschritt entsteht durch Resets, nicht durch einen einzelnen Run. Wenn du weiterpushst, obwohl deine Zuwächse stagnieren, verschwendest du Zeit, die du in einen schnelleren nächsten Run hättest stecken können.",
+          "2": "Am Anfang gilt als gute Faustregel: Steig auf, sobald der Run deine vorhandenen Hero Souls mindestens verdoppeln würde.",
+          "3": "Wenn die nächste Boss-Wand mehr als ein paar Minuten Farmen erfordern würde, kommst du mit einem Aufstieg meist schneller an ihr vorbei.",
+          "4": "Gib direkt nach dem Aufstieg alle Hero Souls für Ancients aus, bevor du den neuen Run beginnst."
+        }
+      },
+      "transcend": {
+        "title": "2. Transzendiere zur richtigen Zeit",
+        "summary": "Die erste Transzendenz machst du in Zone 300. Danach achtest du auf das Wachstum deiner Souls.",
+        "items": {
+          "1": "Transzendiere, sobald es in Zone 300 freigeschaltet wird. Transcendent Power verstärkt danach jeden Primal-Boss, also hast du Souls, die du vorher grindest, schnell wieder drin.",
+          "2": "Bei späteren Transzendenzen geht es ums Timing: Wenn jeder Aufstieg deine Hero Souls nur noch um einen kleinen Bruchteil erhöht, ist die Transzendenz ausgereizt.",
+          "3": "Die <transcensionViewer>Transzendenz-Übersicht</transcensionViewer> zeigt Hero Souls und Ancient Souls pro Aufstieg direkt aus deinem Spielstand, sodass du die Verlangsamung leicht erkennst.",
+          "4": "Der <outsidersCalculator>Outsiders-Rechner</outsidersCalculator> schätzt, mit welcher Zone und wie vielen Ancient Souls eine Transzendenz enden sollte, damit du schon vorher ungefähr weißt, wo du aufhörst."
+        }
+      },
+      "newestHero": {
+        "title": "3. Push deinen neuesten Helden",
+        "summary": "Dein Schaden kommt immer von einem Helden. Sorg dafür, dass es der richtige ist.",
+        "items": {
+          "1": "Jeder neue Held ist eine Stufe stärker als der vorige, also bewirkt dein Gold beim neuesten Helden, den du dir leisten kannst, fast immer mehr als bei jedem davor.",
+          "2": "Kauf seine Upgrades, sobald sie freigeschaltet werden – sie sind fast immer der beste Kauf in Sachen Schaden pro Gold.",
+          "3": "Ab Level 200 levelst du in Vielfachen von 25. Die meisten Helden bekommen alle 25 Level einen Schadensmultiplikator, und knapp davor aufzuhören verschwendet Gold.",
+          "4": "Ältere Helden spielen keine Rolle mehr, sobald sie abgehängt sind. Verteil dein Gold nicht über die ganze Heldenliste, um sie auf gleichem Level zu halten."
+        }
+      },
+      "gilds": {
+        "title": "4. Halte deine Gilds auf einem Helden",
+        "summary": "Verteilte Gilds bringen nichts. Auf deinem Haupthelden gebündelt, vervielfachen sie alles.",
+        "items": {
+          "1": "Jedes Gild erhöht den Schaden von nur einem Helden. Über mehrere Helden verstreut, liegt der Großteil dieses Bonus auf Helden, die du gar nicht nutzt.",
+          "2": "Verschieb alle deine Gilds auf den Helden, der deinen Schaden trägt, und verschieb sie erneut, wenn ein neuerer Held übernimmt.",
+          "3": "Umvergolden kostet Hero Souls, also mach es nur, wenn dein aktueller Held deutlich zurückfällt – nicht bei jeder kleinen Änderung.",
+          "4": "Die <gildingChart>Gild-Tabelle</gildingChart> sagt dir, welchen Helden du bei deinem aktuellen Gold vergolden solltest."
+        }
+      },
+      "build": {
+        "title": "5. Leg dich auf einen Build fest",
+        "summary": "Idle, Hybrid oder Aktiv. Wähl den, der zu deiner tatsächlichen Spielweise passt.",
+        "items": {
+          "1": "Idle passt zu Spielern, die ein paar Mal am Tag reinschauen. Siyalatas und Libertas belohnen dich dafür, das Spiel in Ruhe zu lassen.",
+          "2": "Aktiv passt zu Spielern, die mit offenem Spiel davorsitzen. Juggernaut, Fragsworth und Bhaal skalieren mit Klicks, und Autoclicker im Spiel übernehmen das Klicken für dich.",
+          "3": "Hybrid teilt die Souls zwischen beiden auf und passt für die meisten Spieler, sobald sie ein paar Autoclicker haben.",
+          "4": "Halb Idle, halb Aktiv ist schwächer als jeder der beiden Builds, wenn er richtig umgesetzt ist. Entscheide dich für einen und gib deine Souls passend dazu aus."
+        }
+      },
+      "calculators": {
+        "title": "6. Lass die Rechner rechnen",
+        "summary": "Ancient- und Outsider-Level folgen Formeln. Es gibt keinen Grund, sie zu raten.",
+        "items": {
+          "1": "Importiere deinen Spielstand nach jedem Aufstieg in den <ancientsCalculator>Ancients-Rechner</ancientsCalculator>. Er gibt dir die optimalen Ancient-Level für deinen Build aus und was jedes Level kostet.",
+          "2": "Nutze den <outsidersCalculator>Outsiders-Rechner</outsidersCalculator> zu Beginn jeder Transzendenz. Outsider lassen sich kostenlos neu verteilen, du verlierst also nichts, wenn du ihm folgst.",
+          "3": "Wenn der Rechner und dein Bauchgefühl sich widersprechen, vertrau dem Rechner. Von Hand gelevelte Ancients sind einer der häufigsten Gründe, warum sich ein Spielstand langsam anfühlt."
+        }
+      },
+      "skills": {
+        "title": "7. Kombiniere deine Skills",
+        "summary": "Gemeinsam eingesetzte Skills treffen viel härter als Skills, die du einfach nach Ablauf der Abklingzeit zündest.",
+        "items": {
+          "1": "Heb dir deine Schadens-Skills für Bosskämpfe auf und zünde sie zusammen, damit sich die kurzen Zeitfenster überschneiden.",
+          "2": "Energize verdoppelt den nächsten Skill, den du einsetzt, und Reload verkürzt die Abklingzeit des letzten. Beide sind zusammen mit einem anderen Skill weit mehr wert als allein.",
+          "3": "Dark Ritual erhöht deine DPS dauerhaft für den Rest des Aufstiegs. Die klassische Kette Energize, Dark Ritual, Reload früh im Run zahlt sich in jeder Zone danach aus.",
+          "4": "Setz Metal Detector und Golden Clicks zusammen ein, wenn du Gold für einen großen Level-Schub farmst."
+        }
+      },
+      "rubies": {
+        "title": "8. Gib Rubine für Autoclicker aus",
+        "summary": "Rubine sind knapp. Gib sie für Dinge aus, die dauerhaft weiterwirken.",
+        "items": {
+          "1": "Autoclicker sind langfristig der beste Kauf für Rubine. Sie treiben Aktiv- und Hybrid-Builds an und bei Idle Nogardnit.",
+          "2": "Timelapse lohnt es sich für später im Spiel aufzuheben, wenn das Überspringen von Stunden an Fortschritt viele Zonen abdeckt.",
+          "3": "Verzichte darauf, Söldner anzuwerben und Gilds, Relikte oder zusätzliche Raid-Kämpfe zu kaufen. Sie kosten viel und bringen wenig.",
+          "4": "Der <rubySection>Abschnitt zu Rubinen</rubySection> im Einsteiger-Guide enthält die vollständige Kaufreihenfolge."
+        }
+      },
+      "sideSystems": {
+        "title": "9. Nutze die Nebensysteme",
+        "summary": "Söldner, Clans und Backups kosten jeweils eine Minute am Tag und summieren sich über Wochen.",
+        "items": {
+          "1": "Schick deine Söldner ständig auf Quests und wähl Rubin-Quests, wann immer sie angeboten werden. Die <mercenaryViewer>Söldner-Übersicht</mercenaryViewer> zeigt deine Söldner und ihre Statistiken über ihre gesamte Lebenszeit.",
+          "2": "Tritt einem Clan bei und kämpf gegen den täglichen Raid-Boss. Das sind kostenlose Hero Souls für ein paar Klicks.",
+          "3": "Sichere deinen Spielstand regelmäßig – exportiere ihn und bewahr den Code an einem sicheren Ort auf. Ein verlorener Spielstand ist der langsamste Fortschritt überhaupt."
+        }
+      },
+      "walls": {
+        "title": "10. Durchbrich Wände",
+        "summary": "Eine Wand heißt, dass sich etwas ändern muss. Abwarten löst sie selten.",
+        "items": {
+          "1": "Hängst du an einem Boss fest? Geh eine Zone zurück, farm Gold und level deinen Haupthelden auf das nächste Vielfache von 25, bevor du es erneut versuchst.",
+          "2": "Heb dir deine Skills für den Boss auf und zünde sie alle auf einmal, statt sie direkt nach jeder Abklingzeit zu nutzen.",
+          "3": "Prüf, ob deine Gilds auf dem richtigen Helden liegen und deine Ancients zum Rechner passen. Eine Wand, die plötzlich auftaucht, liegt oft an einem dieser beiden Punkte.",
+          "4": "Sobald Kumawakamaru und Borb die Monsterzahl spürbar senken, zeigt dir der <instakillCalculator>Instakill-Rechner</instakillCalculator>, wie schnell du durch die Zonen kommen solltest.",
+          "5": "Wenn nichts davon hilft, ist der Run wahrscheinlich vorbei. Steig auf und komm stärker zurück."
+        }
+      },
+      "whereNext": {
+        "title": "Wie es weitergeht",
+        "summary": "Mehr Details zu den Themen oben.",
+        "items": {
+          "1": "<newPlayerGuide>Einsteiger-Guide</newPlayerGuide> – Schritt für Schritt von einem frischen Spielstand bis zu deiner ersten Transzendenz.",
+          "2": "<gildingChart>Gild-Tabelle</gildingChart> – welchen Helden du vergolden solltest und wann.",
+          "3": "<blog>Offizieller Clicker-Heroes-Blog</blog> (auf Englisch) – die Tipp-Liste der Entwickler selbst.",
+          "4": "Stell deine Fragen im <subreddit>Clicker-Heroes-Subreddit</subreddit> (auf Englisch) oder im offiziellen Discord."
+        }
+      }
+    }
+  },
+  "gildingChart": {
+    "intro": "Auf welchen Helden jedes Gild gehört, zu jedem Zeitpunkt in Clicker Heroes 1.0e12, von deiner ersten Transzendenz bis zu den Ace Scouts. Gib unten dein Gold ein, und die Tabelle zeigt dir, wo du stehen solltest. Die Heldenbalance hat sich seit 1.0e11 nicht geändert, die Tabelle gilt also für das aktuelle Spiel. Basiert auf der e10-Tabelle der Community und wurde über Yachiyl hinaus erweitert.",
+    "parts": {
+      "findYourHero": "Finde deinen Helden",
+      "howGildingWorks": "So funktionieren Gilds",
+      "readingTheChart": "Die Tabelle lesen",
+      "theChart": "Die Tabelle",
+      "commonQuestions": "Häufige Fragen"
+    },
+    "sections": {
+      "goldLookup": {
+        "title": "Gold-Suche",
+        "summary": "Gib dein aktuelles Gold ein, um direkt zu der Zeile zu springen, die für dich gilt."
+      },
+      "whatAGildDoes": {
+        "title": "Was ein Gild bewirkt",
+        "summary": "Ein dauerhafter Schadensbonus von +50 %, der an einen bestimmten Helden gebunden ist.",
+        "items": {
+          "1": "Gilds droppen ab Zone 100 alle 10 Zonen von Zonen-Bossen und stapeln sich: 200 Gilds auf einem Helden sind +100x Schaden für diesen Helden.",
+          "2": "Ein Gild hilft nur dem Helden, auf dem es liegt, und es zu verschieben kostet Hero Souls.",
+          "3": "Beim Vergolden dreht sich also alles um eines: Zu jedem Zeitpunkt macht genau ein Held deinen Schaden, und jedes Gild, das du besitzt, sollte auf ihm liegen.",
+          "4": "Vor deiner ersten <newPlayerGuide>Transzendenz</newPlayerGuide> hast du nicht genug Hero Souls, um Gilds frei zu verschieben. Wenn du Glück hast und Gilds auf einem der Power 5 (Treebeast, Ivan, Brittany, Samurai, Seer) landen, level stattdessen diesen Helden."
+        }
+      },
+      "whenToRegild": {
+        "title": "Wann du umvergolden solltest",
+        "summary": "Erst, wenn du die Lebensbalken der Monster siehst.",
+        "items": {
+          "1": "Solange du Monster per Instakill erledigst, bringt zusätzlicher Schaden überhaupt nichts. Wenn du in dieser Phase umvergoldest, gibst du Hero Souls für Schaden aus, den du nicht nutzen kannst.",
+          "2": "Sobald Monster deine Treffer überleben, wechsle zum optimalen Helden für dein Gold und verschieb deine Gilds dorthin.",
+          "3": "Der <ancientsCalculator>Ancients-Rechner</ancientsCalculator> kann 80 Hero Souls pro Gild zurückhalten, damit ein Umvergolden nicht die Souls auffrisst, die du für Ancients gespart hast."
+        }
+      },
+      "ascendingAndTranscending": {
+        "title": "Aufsteigen und transzendieren",
+        "summary": "Was du tust, wenn selbst der optimale Held nicht mehr mithält.",
+        "items": {
+          "1": "Wenn du selbst nach dem Heldenwechsel, dem Umvergolden und dem Verbrauchen aller Abklingzeiten keine Instakills mehr schaffst, ist es Zeit aufzusteigen.",
+          "2": "Wenn Aufsteigen keine neuen Ancient Souls mehr bringt (sieh unter „Next AS“ im letzten Tab nach), ist es Zeit zu transzendieren.",
+          "3": "Steig immer auf, bevor du transzendierst. Sonst gehen alle Hero Souls aus deinem letzten Aufstieg verloren.",
+          "4": "Die <transcensionViewer>Transzendenz-Übersicht</transcensionViewer> zeigt die Zuwächse an Hero Souls und Ancient Souls pro Aufstieg, was diese Entscheidung erleichtert."
+        }
+      },
+      "theColumns": {
+        "title": "Die Spalten",
+        "summary": "Vier Spalten und eine Regel.",
+        "items": {
+          "1": "<strong>Gold</strong> ist als log10 angegeben, die Spalte zeigt also Exponenten statt Beträge. Eine Zeile mit e442 braucht 1e442 Gold – das ist die Zahl nach dem „e“ in deiner Goldanzeige.",
+          "2": "<strong>Von- und Bis-Level</strong> geben an, ab welchem Level du diesen Helden levelst und wo du aufhörst. Über dem Ziel bringt die nächste Zeile mehr Schaden pro Gold.",
+          "3": "<strong>Ca. AS</strong> sind ungefähr die Ancient Souls, die du an diesem Punkt hättest. Eher ein Plausibilitätscheck als eine Voraussetzung, und ab Xavira wird der Wert nicht mehr angegeben.",
+          "4": "<strong>Die Regel:</strong> Such die letzte Zeile, deren Gold-Anforderung du erfüllst. Dieser Held bekommt jedes Gild, das du besitzt."
+        }
+      },
+      "skippingRows": {
+        "title": "Zeilen überspringen",
+        "summary": "Überspringen ist normal. Für zwei Upgrades lohnt es sich zurückzugehen.",
+        "items": {
+          "1": "Wenn dein Schaden hoch genug ist, dass du weiterhin alles per Instakill erledigst, zieh einfach an den Zeilen vorbei. Du verpasst nichts.",
+          "2": "Für zwei Upgrades lohnt es sich in jedem Fall zurückzugehen, und beide sind in der Tabelle markiert: <strong>Bomber Max auf Level 100</strong> für +50 % gefundenes Gold und <strong>Gog auf Level 100</strong> für +50 % DPS für alle Helden.",
+          "3": "Dass Helden später in der Tabelle wieder auftauchen, ist kein Fehler. Helden bekommen an Level-Meilensteinen 10x-Multiplikatoren, und die Kosten skalieren, also kann ein abgehängter Held wieder zur günstigsten Schadensquelle werden."
+        }
+      },
+      "thePhases": {
+        "title": "Die sechs Phasen",
+        "summary": "Die Tabelle sieht aus wie 59 willkürliche Zeilen. In Wirklichkeit sind es sechs Muster."
+      },
+      "fullChart": {
+        "title": "Vollständige Gild-Tabelle",
+        "summary": "Nach Phasen gruppiert. Markierte Hinweise sind die beiden Upgrades, für die sich das Zurückgehen lohnt."
+      },
+      "faq": {
+        "title": "Häufig gestellte Fragen",
+        "summary": "Die Fragen, die jedes Mal kommen, wenn diese Tabelle gepostet wird."
+      }
+    },
+    "phaseSummaries": {
+      "1": "Stell jeden neuen Helden bei 1.000 ein, vergolde ihn, push ihn auf 1.500 und mach weiter. Mechanisch und schnell. Zwei Abstecher für Upgrades zählen: Bomber Max und Gog, beide auf Level 100.",
+      "2": "Die beiden überholen sich gegenseitig etwa alle 500 Level, da jeder einen neuen 10x-Multiplikator bekommt. Die Phase endet, wenn Gog auf Level 8.000 die Multiplikatoren ausgehen.",
+      "3": "Der einfachste Abschnitt im ganzen Spiel. Jeder neue Held ist so viel stärker, dass du ihn auf Level 1 einstellst, alle Gilds verschiebst und mit ihm bis zum nächsten fährst.",
+      "4": "Cadu und Ceus buffen sich gegenseitig, also wechselst du ab und pushst jeweils den, der das Upgrade freischaltet, das der andere braucht. Neun Schritte Pingpong.",
+      "5": "Zwei riesige Sprünge. The Maw auf Level 1 macht etwa 1e6750-mal so viel Schaden wie ein voll gelevelter Cadu. Yachiyl überholt The Maw erst auf Level 157.500, also fängst du dort mit ihm an.",
+      "6": "Rose, Sophia, Blanche und Dorothy wechseln sich ab, da jede Upgrades für die anderen freischaltet. Spiel sie zuerst ohne Upgrades, dann arbeite dich durch die Upgrade-Stufen und überspring den Großteil von Dorothy."
+    },
+    "range": "{from} bis {to}",
+    "rangeOnwards": "ab {from}",
+    "table": {
+      "label": "Clicker Heroes Gild-Tabelle",
+      "step": "#",
+      "hero": "Optimaler Held",
+      "fromLevel": "Von Lvl",
+      "toLevel": "Bis Lvl",
+      "gold": "Gold (log10)",
+      "approxAncientSouls": "~AS",
+      "notes": "Hinweise",
+      "phase": "Phase {phase} · {title} · {range}"
+    }
+  }
+}

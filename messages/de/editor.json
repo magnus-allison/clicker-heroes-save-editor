@@ -1,0 +1,354 @@
+{
+  "table": {
+    "image": "Bild",
+    "item": "Item",
+    "value": "Wert",
+    "amount": "Menge",
+    "description": "Beschreibung",
+    "unlocked": "Freigeschaltet",
+    "hero": "Held",
+    "level": "Level",
+    "gildedLevel": "Gilds",
+    "name": "Name",
+    "timeToDie": "Zeit bis zum Tod",
+    "bonusLives": "Bonusleben",
+    "cost": "Kosten",
+    "spent": "Ausgegeben",
+    "skinName": "Skin-Name",
+    "field": "Feld",
+    "currentValue": "Aktueller Wert",
+    "removedValue": "Entfernter Wert"
+  },
+  "clipboard": {
+    "copied": "Text kopiert.",
+    "unavailable": "Kopieren wird in diesem Browser nicht unterstützt."
+  },
+  "importField": {
+    "title": "Spielstand importieren",
+    "noFileSelected": "Keine Datei ausgewählt",
+    "exampleSave": "Beispiel-Spielstand",
+    "chooseFile": "Speicherdatei auswählen",
+    "uploadFile": "Datei hochladen",
+    "orPaste": "oder unten einfügen",
+    "ariaLabel": "Kodierter Spielstand zum Importieren",
+    "placeholder": "Füge hier deinen Spielstand-Code ein...",
+    "loadAction": "Spielstand laden",
+    "orExample": "oder lade einen Beispiel-Spielstand",
+    "fileTooLarge": "Diese Datei ist zu groß für einen Clicker-Heroes-Spielstand.",
+    "fileUnreadable": "Die Datei konnte nicht gelesen werden. Wähle sie noch einmal aus."
+  },
+  "exportField": {
+    "title": "Spielstand exportieren",
+    "downloadFile": "Datei herunterladen",
+    "orCopy": "oder unten kopieren",
+    "nothingToDownload": "Noch nichts zum Herunterladen – exportiere zuerst.",
+    "downloadUnavailable": "Herunterladen wird in diesem Browser nicht unterstützt.",
+    "backupWarning": "Leg immer eine Sicherungskopie deines ursprünglichen Spielstands an, bevor du bearbeitete Daten ins Spiel importierst."
+  },
+  "saveDataPanel": {
+    "title": "Exportiere deinen Spielstand",
+    "encodeAction": "Spielstand kodieren",
+    "ariaLabel": "Kodierter Spielstand zum Exportieren",
+    "placeholder": "Hier erscheint dein kodierter Spielstand...",
+    "dataLabel": "bearbeitete Daten",
+    "loadFirst": "Lade einen Spielstand, bevor du kodierst.",
+    "encoded": "Spielstand kodiert.",
+    "encodeFailed": "Der Spielstand konnte nicht kodiert werden."
+  },
+  "import": {
+    "loaded": "Spielstand geladen.",
+    "failed": "Der Spielstand konnte nicht dekodiert werden."
+  },
+  "decodeErrors": {
+    "empty": "Füge zuerst einen Spielstand-Code ein oder lade eine Speicherdatei.",
+    "unsupported": "Dieser Code sieht nicht nach einem unterstützten Clicker-Heroes-Spielstand aus.",
+    "invalidBase64": "Die {format}-Daten des Spielstands sind kein gültiges Base64. Prüfe, ob du den kompletten Spielstand-Code kopiert hast.",
+    "decompressFailed": "Die {format}-Daten des Spielstands konnten nicht entpackt werden ({reason}). Prüfe, ob du den kompletten Spielstand-Code kopiert hast.",
+    "notObject": "Der dekodierte Spielstand ist kein gültiges Objekt."
+  },
+  "saveHelp": {
+    "title": "Wo ist meine Speicherdatei?",
+    "iconAlt": "{name}-Symbol",
+    "icons": {
+      "apple": "Apple",
+      "openFolder": "Geöffneter Ordner",
+      "steam": "Steam",
+      "windows": "Windows",
+      "platform": "Plattform"
+    },
+    "entries": {
+      "windows": {
+        "title": "Windows",
+        "note": "Zwei Dateien: .save und .backup. Die Steam- und die Standalone-Version nutzen denselben Pfad."
+      },
+      "macSteam": {
+        "title": "Mac - Steam"
+      },
+      "macStandalone": {
+        "title": "Mac - Standalone"
+      }
+    }
+  },
+  "changes": {
+    "title": "Änderungen",
+    "versus": "vs. importierter Spielstand",
+    "truncated": "Nur die ersten {count} Änderungen werden angezeigt.",
+    "labels": {
+      "outsiderLevel": "{name} · Level",
+      "outsiderSpent": "{name} · Ausgegebene Ancient Souls",
+      "mercenaryName": "Söldner {number} · Name",
+      "mercenaryLevel": "Söldner {number} · Level",
+      "mercenaryTimeToDie": "Söldner {number} · Zeit bis zum Tod",
+      "mercenaryBonusLives": "Söldner {number} · Bonusleben",
+      "currentSkin": "Aktueller Autoclicker-Skin",
+      "transcensionHistory": "Transzendenz-Verlauf",
+      "heroLevel": "{name} · Level",
+      "heroGildedLevel": "{name} · Gilds",
+      "achievement": "Erfolg · {name}",
+      "skinUnlocked": "{name} · Freigeschaltet"
+    },
+    "values": {
+      "none": "keine",
+      "yes": "Ja",
+      "no": "Nein",
+      "empty": "leer",
+      "entries": "{count, plural, one {# Eintrag} other {# Einträge}}"
+    }
+  },
+  "fields": {
+    "rubies": "Rubine",
+    "autoclickers": "Autoclicker",
+    "paidForRubyMultiplier": "2x-Schadensmultiplikator",
+    "unopenedClickmasPresents": "Clickmas Presents",
+    "spikedNog": "Spiked Nog",
+    "candyCanes": "Candy Canes",
+    "labelMakers": "Label Makers",
+    "forgeCoals": "Forge Coals",
+    "gold": "Gold",
+    "highestFinishedZone": "Höchste Zone",
+    "currentZoneHeight": "Aktuelle Zone",
+    "heroSouls": "Hero Souls",
+    "primalSouls": "Transcendent Hero Souls",
+    "newClanRaidClassId": "Clan-Raid-Klasse",
+    "newClanRaidClassLevel": "Level der Clan-Raid-Klasse",
+    "immortalSouls": "Immortal Souls",
+    "titanDamage": "Titanenschaden",
+    "totalMercenariesRevived": "Wiederbelebte Söldner gesamt",
+    "totalMercenariesBuried": "Begrabene Söldner gesamt",
+    "total5MinuteQuests": "5-Minuten-Quests gesamt",
+    "heroSoulQuestsCompleted": "Abgeschlossene Hero-Souls-Quests",
+    "goldQuestsCompleted": "Abgeschlossene Gold-Quests",
+    "rubyQuestsCompleted": "Abgeschlossene Rubin-Quests",
+    "relicQuestsCompleted": "Abgeschlossene Relikt-Quests",
+    "skillQuestsCompleted": "Abgeschlossene Skill-Quests",
+    "ancientSouls": "Ancient Souls",
+    "ancientSoulsTotal": "Ancient Souls gesamt",
+    "heroSoulsSacrificed": "Geopferte Hero Souls"
+  },
+  "fieldHelp": {
+    "spikedNog": {
+      "body": "Ein Spiked Nog gibt 1 Stunde lang +1 CPS pro Autoclicker auf dem Monster. Der Effekt stapelt sich sowohl in der Stärke als auch in der Dauer."
+    },
+    "candyCanes": {
+      "body": "Damit kannst du gefallene Söldner wiederbeleben."
+    },
+    "labelMakers": {
+      "body": "Damit kannst du Söldner umbenennen."
+    },
+    "forgeCoals": {
+      "body": "Ein nutzloses Item, das du in Clickmas Presents findest."
+    }
+  },
+  "fieldOptions": {
+    "newClanRaidClassId": {
+      "0": "Keine",
+      "1": "Rogue",
+      "2": "Mage",
+      "3": "Priest"
+    }
+  },
+  "saveEditor": {
+    "editTitle": "Bearbeite deinen Spielstand",
+    "sections": {
+      "shopItems": "Shop-Items",
+      "seasonalItems": "Saison-Items",
+      "zoneItems": "Zonen-Items",
+      "heroes": "Helden",
+      "achievements": "Erfolge",
+      "clanValues": "Clan-Werte"
+    },
+    "clanDescription": "Raid-Klassen: 0 = Keine, 1 = Rogue, 2 = Mage, 3 = Priest."
+  },
+  "achievements": {
+    "tableLabel": "Felder für Transzendenz-Erfolge",
+    "transcendentHighestZone": "Höchste Zone über alle Transzendenzen",
+    "reward": "Belohnung: {reward}",
+    "unlockedAria": "{name} freigeschaltet",
+    "groups": {
+      "0": "Gold-Erfolge",
+      "1": "Helden-Erfolge",
+      "2": "DPS-Erfolge",
+      "3": "Klick-Erfolge",
+      "4": "Zonen-Erfolge",
+      "5": "Aufstiegs-Erfolge",
+      "6": "Monster-Erfolge",
+      "7": "Centennial-Boss-Erfolge",
+      "8": "Relikt-Erfolge",
+      "9": "Söldner-Erfolge",
+      "10": "Quest-Erfolge",
+      "11": "Transzendenz-Erfolge",
+      "12": "Sonstige Erfolge"
+    }
+  },
+  "customField": {
+    "title": "Eigenes Feld",
+    "description": "Suche ein einfaches Feld der obersten Ebene und bearbeite es direkt.",
+    "searchLabel": "Feld nach Name suchen",
+    "choose": "Feld auswählen",
+    "fieldName": "Feldname",
+    "fieldValue": "Feldwert",
+    "enabled": "Aktiviert"
+  },
+  "heroes": {
+    "title": "Helden",
+    "gilded": "{count, plural, one {# Gild} other {# Gilds}} (+{percent}%)",
+    "levelAria": "Level von {name}",
+    "gildedLevelAria": "Gilds von {name}"
+  },
+  "mercenaries": {
+    "title": "Söldner",
+    "description": "Passe die Gesamtstatistiken deiner Söldner und die aktuelle Truppe an.",
+    "viewDetails": "Söldner-Details anzeigen",
+    "summary": "Übersicht",
+    "summaryLabel": "Söldner-Übersicht",
+    "roster": "Söldner-Truppe",
+    "nameAria": "Name von Söldner {number}",
+    "levelAria": "Level von Söldner {number}",
+    "timeToDieAria": "Zeit bis zum Tod von Söldner {number}",
+    "bonusLivesAria": "Bonusleben von Söldner {number}"
+  },
+  "outsiders": {
+    "title": "Outsider und Ancient Souls",
+    "description": "Bearbeite deine Ancient Souls und die Outsider-Level, die den langfristigen Fortschritt bestimmen.",
+    "soulTotals": "Ancient-Souls-Summen",
+    "tableLabel": "Outsider",
+    "levelAria": "Level von {name}",
+    "spentAria": "Für {name} ausgegebene Ancient Souls",
+    "cost": "{amount} AS",
+    "bonus": {
+      "1": "Effektivität aller Idle-Boni",
+      "2": "Ancient-Kosten",
+      "3": "DPS",
+      "5": "Primal Hero Souls",
+      "6": "Effektivität von Kumawakamaru (+12,5% pro Level)",
+      "7": "Effektivität von Atman (+25% pro Level)",
+      "8": "Effektivität von Bubos (+50% pro Level)",
+      "9": "Effektivität von Chronos (+75% pro Level)",
+      "10": "Effektivität von Dora (+100% pro Level)"
+    },
+    "cap": {
+      "6": "Monster pro Zone (min. 2)",
+      "7": "Chance auf Primal-Boss (min. 5%)",
+      "8": "Multiplikator für Boss-HP (min. 5)",
+      "9": "Sekunden für den Bosskampf (min. 2 Sek.)",
+      "10": "Chance auf Truhe (min. 1%)"
+    }
+  },
+  "skins": {
+    "title": "Autoclicker-Skins",
+    "unlockAll": "Alle freischalten",
+    "allUnlocked": "Alle Skins freigeschaltet.",
+    "tableLabel": "Autoclicker-Skins",
+    "unlockedAria": "{name} freigeschaltet",
+    "currentSkin": "Aktueller Skin"
+  },
+  "transcensions": {
+    "title": "Transzendenzen und Aufstiege",
+    "description": "Den Verlauf deiner Transzendenzen und Aufstiege kannst du bedenkenlos löschen, wenn du einen kleineren Export willst.",
+    "body": "Der Spielstand enthält sämtliche Daten zu deinen Transzendenzen und Aufstiegen. Das kann die Speicherdatei deutlich vergrößern, und das Spiel braucht diesen Verlauf nicht, um weiter zu funktionieren.",
+    "viewHistory": "Transzendenz-Verlauf anzeigen",
+    "inspect": "Wenn du dir den Verlauf vorher ansehen willst, schau in den JSON-Tools unten unter <code>{path}</code> nach.",
+    "clear": "Transzendenz-Daten löschen",
+    "cleared": "Transzendenz-Verlauf gelöscht."
+  },
+  "removeClanData": {
+    "stepTitle": "Clan-Daten aus dem JSON entfernen",
+    "intro": "Damit werden clanbezogene Felder entfernt und die Konto- und Login-Felder im JSON des geladenen Spielstands geleert, sodass das exportierte Ergebnis für einen sauberen Neuaufbau bereinigt ist.",
+    "whatGetsRemoved": "Was entfernt wird",
+    "tableLabel": "Felder, die entfernt werden",
+    "action": "Clan-Daten entfernen",
+    "removedTitle": "Entfernte Clan-Daten",
+    "removedTableLabel": "Entfernte Clan-Daten",
+    "emptyState": "Entferne die Clan-Daten aus einem geladenen Spielstand, um die entfernten Werte hier zu sehen.",
+    "loadFirst": "Lade einen Spielstand, bevor du Clan-Daten entfernst.",
+    "removed": "Clan-Daten aus dem Spielstand entfernt.",
+    "emptyString": "(leerer String)",
+    "unknown": "Unbekannt",
+    "fields": {
+      "email": "E-Mail",
+      "passwordHash": "Passwort-Hash",
+      "prevLoginTimestamp": "Zeitpunkt des letzten Logins",
+      "account": "Konto",
+      "accountId": "Konto-ID",
+      "loginValidated": "Login bestätigt",
+      "uniqueId": "Eindeutige ID",
+      "subscribedEmail": "Abonnierte E-Mail",
+      "type": "Typ"
+    }
+  },
+  "feedback": {
+    "title": "Feedback",
+    "description": "Schick uns deine Vorschläge und Verbesserungsideen, damit der Spielstand-Editor noch besser wird!",
+    "messageLabel": "Deine Feedback-Nachricht",
+    "messagePlaceholder": "Schreib hier dein Feedback...",
+    "submit": "Senden",
+    "sending": "Wird gesendet...",
+    "emptyMessage": "Gib eine Nachricht ein, bevor du Feedback sendest.",
+    "success": "Feedback gesendet.",
+    "invalidEmail": "Gib eine gültige E-Mail-Adresse ein oder lass das Feld leer.",
+    "sendFailed": "Feedback kann gerade nicht gesendet werden.",
+    "nameAria": "Dein Name",
+    "namePlaceholder": "Name (optional)",
+    "emailAria": "Deine E-Mail-Adresse",
+    "emailPlaceholder": "E-Mail (optional)",
+    "pages": {
+      "feedback": {
+        "title": "Feedback senden",
+        "description": "Melde Probleme mit Tools oder der Website, fehlende Funktionen oder allgemeine Vorschläge."
+      },
+      "requestTool": {
+        "title": "Tool wünschen",
+        "description": "Beschreib das Tool, das du dir wünschst, was es berechnen soll und wie du es nutzen würdest.",
+        "emptyMessage": "Beschreib das Tool, bevor du deinen Wunsch absendest.",
+        "messageLabel": "Dein Tool-Wunsch",
+        "messagePlaceholder": "Was soll das Tool können? Was würdest du eingeben, und was soll es dir sagen?",
+        "submit": "Wunsch senden",
+        "success": "Tool-Wunsch gesendet."
+      },
+      "requestGuide": {
+        "title": "Guide wünschen",
+        "description": "Sag uns, bei welchem Thema du feststeckst und was ein idealer Guide abdecken sollte.",
+        "emptyMessage": "Beschreib den Guide, bevor du deinen Wunsch absendest.",
+        "messageLabel": "Dein Guide-Wunsch",
+        "messagePlaceholder": "Welches Thema soll der Guide behandeln, und wo kommst du nicht weiter?",
+        "submit": "Wunsch senden",
+        "success": "Guide-Wunsch gesendet."
+      }
+    },
+    "tooManyRequests": "Zu viele Anfragen. Bitte warte einen Moment, bevor du es erneut versuchst."
+  },
+  "seasonalBanner": {
+    "badge": "NEU",
+    "text": "Saison-Items sind jetzt im Spielstand-Editor verfügbar!",
+    "cta": "Spielstand-Editor öffnen"
+  },
+  "exampleSaves": {
+    "basic": "Einfacher Spielstand",
+    "idle": "Idle-Build",
+    "active": "Aktiv-Build",
+    "transcension": "Transzendenz",
+    "fullRoster": "Volle Truppe",
+    "mobile": "Mobil",
+    "desktop": "Desktop"
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "banner": {
+    "homeLabel": "Startseite von clickerheroes.dev",
+    "tagline": "Kostenlose Tools & Rechner - Clicker Heroes"
+  },
+  "breadcrumb": {
+    "label": "Navigationspfad",
+    "groups": {
+      "tools": "Tools",
+      "guides": "Guides",
+      "additionalInfo": "weitere Infos"
+    }
+  },
+  "pages": {
+    "saveEditor": "Spielstand-Editor",
+    "instakillCalculator": "Instakill-Rechner",
+    "ancientsCalculator": "Ancients-Rechner",
+    "outsidersCalculator": "Outsiders-Rechner",
+    "transcensionViewer": "Transzendenz-Übersicht",
+    "mercenaryViewer": "Söldner-Übersicht",
+    "removeClanData": "Clan-Daten entfernen",
+    "saveConverter": "Spielstand-Konverter",
+    "saveJson": "Spielstand als JSON",
+    "newPlayerGuide": "Einsteiger-Guide",
+    "gildingChart": "Gild-Tabelle für Helden",
+    "progressTips": "10 Tipps für schnelleren Fortschritt",
+    "requestTool": "Neues Tool anfragen",
+    "requestGuide": "Neuen Guide anfragen",
+    "faq": "FAQ",
+    "feedback": "Feedback"
+  },
+  "home": {
+    "title": "Clicker Heroes Spielstand-Editor, Rechner & Guides",
+    "intro": "Kostenlose Tools für Clicker Heroes 1.0e12. Alles läuft direkt in deinem Browser."
+  },
+  "cards": {
+    "open": "Öffnen",
+    "visit": "Besuchen",
+    "iconAlt": "Symbol für {title}",
+    "tags": {
+      "mostPopular": "Am beliebtesten",
+      "new": "Neu",
+      "comingSoon": "Demnächst"
+    },
+    "tools": {
+      "saveEditor": {
+        "title": "Spielstand-Editor",
+        "description": "Sieh dir deine Spielstanddaten an, ändere Werte und exportiere den aktualisierten Spielstand"
+      },
+      "outsidersCalculator": {
+        "title": "Outsiders-Rechner",
+        "description": "Plane Outsider-Level, Transzendenz-Prognosen und künftige Transzendenzen"
+      },
+      "instakillCalculator": {
+        "title": "Instakill-Rechner",
+        "description": "Schätze Routendauer, Monster pro Zone und Zonen pro Stunde ab"
+      },
+      "ancientsCalculator": {
+        "title": "Ancients-Rechner",
+        "description": "Optimale Ancient-Level und Kosten für deine Hero Souls"
+      },
+      "transcensionViewer": {
+        "title": "Transzendenz-Übersicht",
+        "description": "Sieh dir deinen Transzendenz-Verlauf an und prüfe einzelne Aufstiege aus einem Spielstand"
+      },
+      "mercenaryViewer": {
+        "title": "Söldner-Übersicht",
+        "description": "Sieh dir deine Söldner und ihre Gesamtstatistiken aus einem Spielstand an"
+      },
+      "relicViewer": {
+        "title": "Relikt-Übersicht",
+        "description": "Sieh dir Relikte, ihre Boni und ihre Seltenheit aus einem Spielstand an"
+      },
+      "removeClanData": {
+        "title": "Clan-Daten entfernen",
+        "description": "Entferne Clan-, Konto- und Login-Felder aus einem Spielstand, direkt in deinem Browser"
+      },
+      "saveConverter": {
+        "title": "Spielstand-Konverter",
+        "description": "Wandle deine Spielstände zwischen PC- und Mobile-Format um"
+      },
+      "saveJson": {
+        "title": "Spielstand als JSON",
+        "description": "Wandle Spielstände in rohes JSON um und wieder zurück. Gemacht für Entwickler"
+      },
+      "requestTool": {
+        "title": "Neues Tool anfragen",
+        "description": "Schlag ein neues Tool vor, das du gern sehen würdest"
+      }
+    },
+    "guides": {
+      "newPlayerGuide": {
+        "title": "Einsteiger-Guide",
+        "description": "Vom neuen Spielstand zur ersten Transzendenz: Aufstieg, Ancients, Rubine, Söldner und Clans"
+      },
+      "gildingChart": {
+        "title": "Gild-Tabelle",
+        "description": "Welchen Helden du bei welcher Goldschwelle vergoldest, vom Samurai bis zu den Ace Scouts"
+      },
+      "progressTips": {
+        "title": "10 Tipps für schnelleren Fortschritt",
+        "description": "Aufstieg, Gilds, Builds, Skill-Kombos, Rubine und wie du an Mauern vorbeikommst"
+      },
+      "requestGuide": {
+        "title": "Neuen Guide anfragen",
+        "description": "Schlag einen neuen Guide vor oder hilf bei einem bestehenden mit"
+      }
+    },
+    "additional": {
+      "feedback": {
+        "title": "Feedback senden",
+        "description": "Hilf uns, die Seite zu verbessern, indem du uns deine Meinung schickst"
+      },
+      "faq": {
+        "title": "FAQ",
+        "description": "Antworten auf häufige Fragen zum Editor, zu Speicherdateien und mehr"
+      },
+      "github": {
+        "title": "GitHub-Repository",
+        "description": "magnus-allison/clicker-heroes-save-editor"
+      },
+      "coffee": {
+        "title": "Buy Me a Coffee",
+        "description": "Hilf mit einem kleinen Beitrag, den Editor kostenlos und aktuell zu halten"
+      },
+      "game": {
+        "title": "Clicker Heroes",
+        "description": "Link zur offiziellen Website des Spiels"
+      },
+      "steam": {
+        "title": "Clicker Heroes auf Steam",
+        "description": "Link zur offiziellen Steam-Seite des Spiels"
+      }
+    }
+  },
+  "footer": {
+    "label": "Website",
+    "disclaimer": "Unabhängiges Projekt, nicht mit den Entwicklern von Clicker Heroes verbunden.",
+    "language": "Sprache"
+  },
+  "localeNames": {
+    "en": "English",
+    "es": "Español",
+    "de": "Deutsch"
+  },
+  "notFound": {
+    "eyebrow": "Fehler 404",
+    "kicker": "Angeforderte Seite fehlt",
+    "title": "Seite nicht gefunden",
+    "body": "Die angeforderte Seite existiert nicht, wurde verschoben oder die URL wurde falsch eingegeben. Der Spielstand-Editor selbst ist weiterhin über seine Tool-Seite erreichbar.",
+    "available": "Von hier aus erreichbar",
+    "openEditor": "Spielstand-Editor öffnen",
+    "openEditorDescription": "Zurück zum Haupteditor, um eine Speicherdatei zu laden.",
+    "about": "Mehr über das Tool",
+    "aboutDescription": "Zur Übersicht und den unterstützten Bearbeitungsfunktionen springen."
+  },
+  "ui": {
+    "step": "Schritt {number}",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "selectOption": "Option auswählen",
+    "numberInput": "Zahleneingabe",
+    "textInput": "Texteingabe",
+    "opensInNewTab": "(öffnet in neuem Tab)"
+  }
+}

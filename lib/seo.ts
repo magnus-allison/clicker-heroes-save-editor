@@ -3,6 +3,7 @@ import type { Metadata, MetadataRoute } from 'next';
 import { localizedPath, routing, type Locale } from '@/i18n/routing';
 import enSeo from '@/messages/en/seo.json';
 import esSeo from '@/messages/es/seo.json';
+import deSeo from '@/messages/de/seo.json';
 
 export const SITE_CONFIG = {
 	url: 'https://clickerheroes.dev',
@@ -20,10 +21,10 @@ export const SITE_CONFIG = {
  * every language has the same shape. It is read directly rather than through
  * next-intl because metadata, JSON-LD and the sitemap are plain functions.
  */
-const seoText: Record<Locale, typeof enSeo> = { en: enSeo, es: esSeo };
+const seoText: Record<Locale, typeof enSeo> = { en: enSeo, es: esSeo, de: deSeo };
 
 /** Open Graph wants a territory; hreflang does not. */
-const ogLocales: Record<Locale, string> = { en: 'en_US', es: 'es_ES' };
+const ogLocales: Record<Locale, string> = { en: 'en_US', es: 'es_ES', de: 'de_DE' };
 
 const baseKeywords = [
 	'clicker heroes',

@@ -1,0 +1,114 @@
+{
+  "heading": "So funktioniert’s",
+  "seeAlso": "Siehe auch:",
+  "links": {
+    "saveEditor": "Spielstand-Editor",
+    "ancientsCalculator": "Ancients-Rechner",
+    "outsidersCalculator": "Outsiders-Rechner",
+    "instakillCalculator": "Instakill-Rechner",
+    "transcensionViewer": "Transzendenz-Übersicht",
+    "mercenaryViewer": "Söldner-Übersicht",
+    "saveConverter": "Spielstand-Konverter",
+    "removeClanData": "Clan-Daten entfernen",
+    "saveJson": "Spielstand als JSON",
+    "newPlayerGuide": "Einsteiger-Guide",
+    "gildingChart": "Gild-Tabelle",
+    "progressTips": "Tipps für mehr Fortschritt",
+    "faq": "FAQ"
+  },
+  "ancients": {
+    "intro": "Verteilt deine Hero Souls nach den Rules of Thumb der Community auf die Ancients, die du besitzt. Portiert vom <link>Optimizer von kepow.org</link>.",
+    "builds": {
+      "title": "Builds",
+      "body": "Ein Idle-Build richtet alle Level an Siyalatas aus, ein Aktiv-Build an Fragsworth. Hybrid levelt beide, und das Verhältnis legt fest, wie viele Fragsworth-Level du pro Siyalatas-Level kaufst."
+    },
+    "bestHero": {
+      "title": "Bester Held",
+      "body": "Jede Heldenstufe hat ein anderes Verhältnis von Gold zu Schaden. Davon hängt ab, wie weit sich das Leveln der Gold-Ancients lohnt."
+    }
+  },
+  "instakill": {
+    "intro": "Sobald jedes Monster mit einem Treffer stirbt, hängt das Tempo nur noch von den Monstern pro Zone und den Frames pro Kill ab. Beides wird hier aus deinen Kumawakamaru- und Borb-Leveln berechnet.",
+    "monstersPerZone": {
+      "title": "Monster pro Zone",
+      "body": "Zonen starten mit 10 Monstern, alle 500 Zonen kommen 0,1 dazu. Kumawakamaru zieht bis zu 8 ab, Borb vervielfacht das, und unter 2 geht es nie."
+    },
+    "routeTime": {
+      "title": "Routendauer",
+      "body": "Jeder Kill dauert 15 Frames, mit AC-Instakill 14. Die Frames werden Zone für Zone addiert und durch deine FPS geteilt."
+    }
+  },
+  "mercenary": {
+    "intro": "Zeigt deine Söldner in einer Tabelle, zusammen mit den Gesamtstatistiken, die das Spiel zwar erfasst, aber kaum anzeigt.",
+    "roster": {
+      "title": "Kader",
+      "body": "Level, Erfahrung, Zeit bis zum Tod, Bonusleben, letzte Quest und deren Erfolgschance für jeden Platz."
+    },
+    "lifetimeStats": {
+      "title": "Gesamtstatistik",
+      "body": "Wiederbelebte und begrabene Söldner, höchstes erreichtes Level und abgeschlossene Quests nach Belohnungsart."
+    }
+  },
+  "outsiders": {
+    "intro": "Wandelt die Ancient Souls in deinem Spielstand in Outsider-Level um und schätzt, wo die Transzendenz endet. Portiert von <link>Driejs Outsiders-Rechner</link>.",
+    "spendingOrder": {
+      "title": "Reihenfolge",
+      "body": "Zuerst Borb, dann Rhageist, K’Ariqua, Orphalas und Sen-Akhan bis zu ihren Obergrenzen. Der Rest geht an Chor’gorloth, Phandoryss und Ponyboy, je nachdem, wer pro Soul am meisten bringt."
+    },
+    "applying": {
+      "title": "Level übernehmen",
+      "body": "Der Plan nutzt alle Ancient Souls, die du verdient hast. Mach also zuerst im Spiel einen Respec, oder übertrage die Level in deinen Spielstand und importiere ihn."
+    }
+  },
+  "removeClanData": {
+    "intro": "Ein Spielstand enthält auch deine Clan- und Kontodaten. Entferne sie, bevor du einen Spielstand postest, um Hilfe zu bekommen, oder ihn an jemanden weitergibst.",
+    "removed": {
+      "title": "Was entfernt wird",
+      "body": "Alle Clan-Felder inklusive Raid-Klasse sowie E-Mail, Passwort-Hash, Konto- und Login-Felder. Dein Fortschritt bleibt unverändert."
+    }
+  },
+  "saveConverter": {
+    "intro": "PC- und Mobile-Spielstände enthalten dieselben Daten, sind aber unterschiedlich komprimiert. Ein Spielstand der einen Plattform lässt sich deshalb nicht auf der anderen importieren. Das Tool kodiert ihn für die andere Plattform neu.",
+    "difference": {
+      "title": "Der Unterschied",
+      "body": "PC-Spielstände nutzen rohes Deflate, Mobile-Spielstände packen dasselbe JSON in zlib. Ältere Legacy-Spielstände werden ebenfalls erkannt."
+    }
+  },
+  "saveJson": {
+    "intro": "Unter der Kodierung ist ein Spielstand ein großes JSON-Objekt. Dekodiere ihn, bearbeite beliebige Felder von Hand und kodiere ihn wieder.",
+    "careful": {
+      "title": "Vorsicht",
+      "body": "Nichts prüft, ob deine Werte zu dem passen, was das Spiel erwartet. Behalte das Original und ändere immer nur eine Sache."
+    }
+  },
+  "transcension": {
+    "intro": "Das Spiel speichert einen Verlauf deiner letzten Transzendenzen und Aufstiege, zeigt ihn aber nie an. Dieses Tool liest ihn aus deinem Spielstand aus.",
+    "shows": {
+      "title": "Was angezeigt wird",
+      "body": "Dauer, Aufstiege, höchste Zone, Hero Souls und Ancient Souls jeder Transzendenz. Wähle eine aus, um ihre Aufstiege zu sehen."
+    },
+    "helps": {
+      "title": "Wozu das gut ist",
+      "body": "Wenn die letzten Aufstiege für die investierte Zeit kaum noch etwas gebracht haben, ist es Zeit zu transzendieren."
+    }
+  },
+  "saveEditor": {
+    "heading": "Kostenloser Clicker Heroes Spielstand-Decoder und -Editor",
+    "intro": "Dieser browserbasierte Clicker Heroes Spielstand-Editor dekodiert Spielstand-Codes, macht die Spieldaten bearbeitbar und kodiert das Ergebnis neu, damit du es wieder in Clicker Heroes importieren kannst. Er eignet sich, um Fortschritt wiederherzustellen, Builds zu testen, gezielte Spielstände zu erstellen und nachzusehen, was in einer Clicker Heroes Speicherdatei steckt.",
+    "features": {
+      "progress": {
+        "title": "Fortschritt bearbeiten",
+        "body": "Ändere Gold, Rubine, Hero Souls, Aufstiege, Transzendenzen, Zonendaten, Clan-Werte, Outsiders und eigene Felder."
+      },
+      "heroes": {
+        "title": "Helden und Freischaltungen",
+        "body": "Sieh dir Helden, Level, Gilds, Skins, Söldner, Erfolge und profilbezogene Spielstandwerte an und passe sie an."
+      },
+      "clientSide": {
+        "title": "Läuft im Browser",
+        "body": "Spielstand-Codes werden lokal im Browser dekodiert und kodiert. Das geht schnell, und du musst keinen Desktop-Trainer und keinen Mod installieren."
+      }
+    },
+    "faqHeading": "FAQ zum Clicker Heroes Spielstand-Editor"
+  }
+}
