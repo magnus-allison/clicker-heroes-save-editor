@@ -31,7 +31,7 @@
     "intro": "Cuando todos los monstruos mueren de un golpe, la velocidad depende de los monstruos por zona y de los fotogramas por muerte. Esta herramienta calcula ambos a partir de tus niveles de Kumawakamaru y Borb.",
     "monstersPerZone": {
       "title": "Monstruos por zona",
-      "body": "Las zonas empiezan con 10 monstruos y suman 0.1 cada 500 zonas. Kumawakamaru quita hasta 8, Borb multiplica ese efecto y nunca se baja de 2."
+      "body": "Las zonas empiezan con 10 monstruos y suman 0,1 cada 500 zonas. Kumawakamaru quita hasta 8, Borb multiplica ese efecto y nunca se baja de 2."
     },
     "routeTime": {
       "title": "Duración de la ruta",

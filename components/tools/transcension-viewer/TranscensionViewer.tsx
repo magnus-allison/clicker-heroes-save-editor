@@ -16,6 +16,7 @@ import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { useDurationUnits } from '@/components/tools/use-duration-units';
+import { useNumberFormat } from '@/components/ui/useNumberFormat';
 import { cn } from 'cn';
 import {
 	formatDurationMinutes,
@@ -158,29 +159,29 @@ const getDurationLabel = (entry: SaveRecord, units: DurationUnits) => {
 };
 
 /** Every save field here is optional, and a missing field reads as zero. */
-const formatSaveNumber = (value: unknown) => formatLargeNumber(value ?? 0);
+const formatSaveNumber = (value: unknown, locale: string) => formatLargeNumber(value ?? 0, undefined, locale);
 
-const getAncientSoulsLabel = (entry: SaveRecord) => {
+const getAncientSoulsLabel = (entry: SaveRecord, locale: string) => {
 	const heroSoulsGained = getFirstValue(entry, fieldAliases.heroSouls);
 	const log10HeroSouls = log10OfSaveValue(heroSoulsGained);
 
 	if (log10HeroSouls == null) {
-		return formatSaveNumber(getFirstValue(entry, fieldAliases.ancientSouls));
+		return formatSaveNumber(getFirstValue(entry, fieldAliases.ancientSouls), locale);
 	}
 
-	return formatNumber(Math.floor(log10HeroSouls * 5));
+	return formatNumber(Math.floor(log10HeroSouls * 5), locale);
 };
 
 const getAscensions = (transcension: SaveRecord) =>
 	toHistoryEntries(getHistoryValue(transcension, fieldAliases.ascensionHistory));
 
-const getAscensionCount = (transcension: SaveRecord) => {
+const getAscensionCount = (transcension: SaveRecord, locale: string) => {
 	const ascensionValue = getFirstValue(transcension, fieldAliases.ascensionCount);
 	if (typeof ascensionValue === 'number' || typeof ascensionValue === 'string') {
-		return formatSaveNumber(ascensionValue);
+		return formatSaveNumber(ascensionValue, locale);
 	}
 
-	return formatNumber(getAscensions(transcension).length);
+	return formatNumber(getAscensions(transcension).length, locale);
 };
 
 const getEntryNumberLabel = (entry: HistoryEntry) => {
@@ -296,13 +297,14 @@ const numberColumn = (
 	id: string,
 	label: string,
 	widthClassName: string,
-	aliases: readonly string[]
+	aliases: readonly string[],
+	locale: string
 ): HistoryColumn => ({
 	id,
 	label,
 	widthClassName,
 	align: 'right',
-	render: (entry) => formatSaveNumber(getFirstValue(entry.data, aliases))
+	render: (entry) => formatSaveNumber(getFirstValue(entry.data, aliases), locale)
 });
 
 type ColumnLabels = Record<
@@ -310,7 +312,7 @@ type ColumnLabels = Record<
 	string
 >;
 
-const buildColumns = (labels: ColumnLabels, units: DurationUnits) => {
+const buildColumns = (labels: ColumnLabels, units: DurationUnits, locale: string) => {
 	const entryNumberColumn: HistoryColumn = {
 		id: 'number',
 		label: labels.number,
@@ -334,24 +336,24 @@ const buildColumns = (labels: ColumnLabels, units: DurationUnits) => {
 			label: labels.ascensions,
 			widthClassName: 'w-28',
 			align: 'right',
-			render: (entry) => getAscensionCount(entry.data)
+			render: (entry) => getAscensionCount(entry.data, locale)
 		},
-		numberColumn('highestZone', labels.highestZone, 'w-24', fieldAliases.highestZone),
-		numberColumn('heroSouls', labels.heroSouls, 'w-32', fieldAliases.heroSouls),
+		numberColumn('highestZone', labels.highestZone, 'w-24', fieldAliases.highestZone, locale),
+		numberColumn('heroSouls', labels.heroSouls, 'w-32', fieldAliases.heroSouls, locale),
 		{
 			id: 'ancientSouls',
 			label: labels.ancientSouls,
 			widthClassName: 'w-24',
 			align: 'right',
-			render: (entry) => getAncientSoulsLabel(entry.data)
+			render: (entry) => getAncientSoulsLabel(entry.data, locale)
 		}
 	];
 
 	const ascensionColumns: readonly HistoryColumn[] = [
 		entryNumberColumn,
 		durationColumn,
-		numberColumn('highestZone', labels.highestZone, 'w-24', fieldAliases.highestZone),
-		numberColumn('heroSouls', labels.heroSouls, 'w-32', fieldAliases.heroSouls)
+		numberColumn('highestZone', labels.highestZone, 'w-24', fieldAliases.highestZone, locale),
+		numberColumn('heroSouls', labels.heroSouls, 'w-32', fieldAliases.heroSouls, locale)
 	];
 
 	return { ascensionColumns, transcensionColumns };
@@ -360,6 +362,7 @@ const buildColumns = (labels: ColumnLabels, units: DurationUnits) => {
 export const TranscensionViewer = () => {
 	const t = useTranslations('tools.transcension');
 	const units = useDurationUnits();
+	const { locale } = useNumberFormat();
 	const { ascensionColumns, transcensionColumns } = buildColumns(
 		{
 			number: t('columns.number'),
@@ -369,7 +372,8 @@ export const TranscensionViewer = () => {
 			heroSouls: t('columns.heroSouls'),
 			ancientSouls: t('columns.ancientSouls')
 		},
-		units
+		units,
+		locale
 	);
 	const saveData = useSaveStore((state) => state.saveData);
 	const [selectedIndex, setSelectedIndex] = useState<number | null>(null);

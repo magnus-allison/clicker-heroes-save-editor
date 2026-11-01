@@ -3,6 +3,7 @@ import { describe, test } from 'node:test';
 
 import {
 	formatDecimal,
+	formatFixed,
 	formatDurationMinutes,
 	formatDurationSeconds,
 	formatLargeNumber,
@@ -249,5 +250,21 @@ describe('log10OfSaveValue', () => {
 				`log10(${ascending[index]}) = ${current} should exceed log10(${ascending[index - 1]}) = ${previous}`
 			);
 		}
+	});
+});
+
+describe('page-locale formatting', () => {
+	test('groups and separates decimals the way each locale writes them', () => {
+		assert.equal(formatNumber(1234567, 'de'), '1.234.567');
+		assert.equal(formatNumber(12345, 'es'), '12.345');
+		assert.equal(formatNumber(1234567), '1,234,567');
+		assert.equal(formatDecimal(12.34, 'de'), '12,3');
+		assert.equal(formatFixed(2.5, 2, 'es'), '2,50');
+		assert.equal(formatFixed(2.5, 2), '2.50');
+	});
+
+	test('keeps scientific notation in the game’s own form', () => {
+		assert.equal(formatLargeNumber(1.23456e12, undefined, 'de'), '1.2346e12');
+		assert.equal(formatLargeNumber(123456, undefined, 'de'), '123.456');
 	});
 });

@@ -11,6 +11,10 @@
  * `gilding-chart.test.ts` asserts it.
  */
 
+// Relative path with an explicit extension rather than `@/lib/format`, so the
+// module still loads under plain Node (`node --test`).
+import { formatNumber } from './format.ts';
+
 export type GildingPhaseId = 1 | 2 | 3 | 4 | 5 | 6;
 
 /**
@@ -87,13 +91,20 @@ export const gildingPhases = [
 	{ id: 6, rangeFrom: 108838, rangeTo: null }
 ] as const satisfies readonly GildingPhase[];
 
-const exponentFormatter = new Intl.NumberFormat('en-US');
+/**
+ * `e442`, `e25,500` — grouped for the page locale (`e25.500` in German), so it
+ * matches the thresholds written in the translated guide text.
+ */
+export const formatGoldExponent = (value: number, locale?: string) => `e${formatNumber(value, locale)}`;
 
 /**
- * `e442`, `e25,500`. Always grouped the English way, whatever the page locale,
- * so it reads the same as the game’s own gold display.
+ * The chart's level and soul labels are written English-style (`1,000-1,500`);
+ * this regroups every number in one for the page locale (`1.000-1.500`).
  */
-export const formatGoldExponent = (value: number) => `e${exponentFormatter.format(value)}`;
+export const formatChartNumbers = (label: string, locale?: string) =>
+	label.replace(/\d{1,3}(?:,\d{3})+|\d+/g, (digits) =>
+		formatNumber(Number(digits.replaceAll(',', '')), locale)
+	);
 
 type RawRow = [
 	hero: string,

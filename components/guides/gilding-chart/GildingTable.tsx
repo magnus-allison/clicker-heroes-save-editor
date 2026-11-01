@@ -1,5 +1,5 @@
 import { Fragment, type FC } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import {
 	EditorTable,
@@ -9,21 +9,28 @@ import {
 	EditorTableHeaderCell,
 	EditorTableRow
 } from '@/components/ui/EditorTable';
-import { formatGoldExponent, type GildingPhase, gildingPhases, gildingRows } from '@/lib/gilding-chart';
+import {
+	formatChartNumbers,
+	formatGoldExponent,
+	type GildingPhase,
+	gildingPhases,
+	gildingRows
+} from '@/lib/gilding-chart';
 
-const formatGoldRange = (goldFrom: number, goldTo: number | null) =>
+const formatGoldRange = (goldFrom: number, goldTo: number | null, locale: string) =>
 	goldTo === null
-		? `${formatGoldExponent(goldFrom)}+`
-		: `${formatGoldExponent(goldFrom)} – ${formatGoldExponent(goldTo)}`;
+		? `${formatGoldExponent(goldFrom, locale)}+`
+		: `${formatGoldExponent(goldFrom, locale)} – ${formatGoldExponent(goldTo, locale)}`;
 
 /** `e35 to e295`, `e108,838 onwards`: a phase's gold span in the page locale. */
 export const useGildingPhaseRange = () => {
 	const t = useTranslations('guides.gildingChart');
+	const locale = useLocale();
 
 	return ({ rangeFrom, rangeTo }: GildingPhase) =>
 		rangeTo === null
-			? t('rangeOnwards', { from: formatGoldExponent(rangeFrom) })
-			: t('range', { from: formatGoldExponent(rangeFrom), to: formatGoldExponent(rangeTo) });
+			? t('rangeOnwards', { from: formatGoldExponent(rangeFrom, locale) })
+			: t('range', { from: formatGoldExponent(rangeFrom, locale), to: formatGoldExponent(rangeTo, locale) });
 };
 
 /**
@@ -35,6 +42,7 @@ export const GildingTable: FC = () => {
 	// Phase titles and row notes are shared with the client-side lookup.
 	const tUi = useTranslations('guidesUi.gildingChart');
 	const phaseRange = useGildingPhaseRange();
+	const locale = useLocale();
 
 	return (
 		<EditorTable className='border-(--color-line-subtle)' label={t('table.label')}>
@@ -74,16 +82,18 @@ export const GildingTable: FC = () => {
 									<EditorTableCell className='font-mono text-(--color-fg-dim)'>{row.step}</EditorTableCell>
 									<EditorTableCell className='font-medium text-fg-strong'>{row.hero}</EditorTableCell>
 									<EditorTableCell className='text-right font-mono whitespace-nowrap'>
-										{row.fromLevel}
+										{formatChartNumbers(row.fromLevel, locale)}
 									</EditorTableCell>
 									<EditorTableCell className='text-right font-mono whitespace-nowrap'>
-										{row.toLevel ?? tUi('forever')}
+										{row.toLevel === null ? tUi('forever') : formatChartNumbers(row.toLevel, locale)}
 									</EditorTableCell>
 									<EditorTableCell className='font-mono whitespace-nowrap text-(--color-gold)'>
-										{formatGoldRange(row.goldFrom, row.goldTo)}
+										{formatGoldRange(row.goldFrom, row.goldTo, locale)}
 									</EditorTableCell>
 									<EditorTableCell className='text-right font-mono text-(--color-fg-dim)'>
-										{row.approxAncientSouls ?? '—'}
+										{row.approxAncientSouls === null
+											? '—'
+											: formatChartNumbers(row.approxAncientSouls, locale)}
 									</EditorTableCell>
 									<EditorTableCell className='text-[12px] text-(--color-fg-muted)'>
 										{row.note ? (

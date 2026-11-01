@@ -6,11 +6,32 @@
  * different rounding and thresholds. Everything formats through here now.
  */
 
-const groupedNumber = new Intl.NumberFormat('en-US');
-const oneDecimal = new Intl.NumberFormat('en-US', {
-	minimumFractionDigits: 1,
-	maximumFractionDigits: 1
-});
+/**
+ * BCP 47 locale for number grouping and decimals. Defaults to `en-US` so save
+ * inputs (parsed by stripping commas) and tests keep one format; display-only
+ * output passes the page locale through `useNumberFormat`.
+ */
+export const DEFAULT_NUMBER_LOCALE = 'en-US';
+
+const formatters = new Map<string, Intl.NumberFormat>();
+
+/** One cached `Intl.NumberFormat` per locale and decimal count. */
+const numberFormat = (locale: string, fractionDigits?: number) => {
+	const cacheKey = `${locale}|${fractionDigits ?? ''}`;
+	let formatter = formatters.get(cacheKey);
+
+	if (!formatter) {
+		formatter = new Intl.NumberFormat(
+			locale,
+			fractionDigits === undefined
+				? undefined
+				: { minimumFractionDigits: fractionDigits, maximumFractionDigits: fractionDigits }
+		);
+		formatters.set(cacheKey, formatter);
+	}
+
+	return formatter;
+};
 
 const MINUTES_PER_DAY = 1440;
 const MINUTES_PER_HOUR = 60;
@@ -53,16 +74,21 @@ export function toFiniteNumber(value: unknown): number | null {
  * Thousands-separated integer. Falls back to the original stringified value
  * when it is not numeric, so unexpected save contents stay visible.
  */
-export function formatNumber(value: unknown): string {
+export function formatNumber(value: unknown, locale: string = DEFAULT_NUMBER_LOCALE): string {
 	const numericValue = toFiniteNumber(value);
-	return numericValue === null ? String(value ?? '') : groupedNumber.format(numericValue);
+	return numericValue === null ? String(value ?? '') : numberFormat(locale).format(numericValue);
 }
 
 /**
  * Like `formatNumber`, but switches to scientific notation for the very large
- * values idle-game saves contain.
+ * values idle-game saves contain. Scientific notation keeps the game's own
+ * `1.2345e10` form in every locale.
  */
-export function formatLargeNumber(value: unknown, exponentialAbove = 1_000_000): string {
+export function formatLargeNumber(
+	value: unknown,
+	exponentialAbove = 1_000_000,
+	locale: string = DEFAULT_NUMBER_LOCALE
+): string {
 	const numericValue = toFiniteNumber(value);
 
 	if (numericValue === null) {
@@ -73,13 +99,18 @@ export function formatLargeNumber(value: unknown, exponentialAbove = 1_000_000):
 		return numericValue.toExponential(4).replace('e+', 'e');
 	}
 
-	return groupedNumber.format(numericValue);
+	return numberFormat(locale).format(numericValue);
 }
 
 /** One-decimal number, for multipliers and percentages. */
-export function formatDecimal(value: unknown): string {
+export function formatDecimal(value: unknown, locale: string = DEFAULT_NUMBER_LOCALE): string {
+	return formatFixed(value, 1, locale);
+}
+
+/** A grouped number with exactly `digits` decimals: the locale-aware `toFixed`. */
+export function formatFixed(value: unknown, digits: number, locale: string = DEFAULT_NUMBER_LOCALE): string {
 	const numericValue = toFiniteNumber(value);
-	return numericValue === null ? String(value ?? '') : oneDecimal.format(numericValue);
+	return numericValue === null ? String(value ?? '') : numberFormat(locale, digits).format(numericValue);
 }
 
 /**

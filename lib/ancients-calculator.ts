@@ -1129,7 +1129,7 @@ const exponentialAbove = 1_000_000;
  * they are formatted from the Decimal itself. Matches `formatLargeNumber`:
  * grouped digits up to a million, four significant digits above it.
  */
-export function formatHeroSouls(value: Decimal | undefined) {
+export function formatHeroSouls(value: Decimal | undefined, locale?: string) {
 	if (value === undefined) {
 		return '0';
 	}
@@ -1139,7 +1139,7 @@ export function formatHeroSouls(value: Decimal | undefined) {
 	}
 
 	if (value.abs().lessThan(exponentialAbove)) {
-		return formatNumber(Number(value.toFixed(0)));
+		return formatNumber(Number(value.toFixed(0)), locale);
 	}
 
 	return value.toExponential(4).replace('e+', 'e');

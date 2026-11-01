@@ -5,7 +5,8 @@ import { useTranslations } from 'next-intl';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { EditorTableCell, EditorTableRow } from '@/components/ui/EditorTable';
-import { formatLongDuration, formatNumber, type DurationUnits } from '@/lib/format';
+import { useNumberFormat } from '@/components/ui/useNumberFormat';
+import { formatLongDuration, type DurationUnits } from '@/lib/format';
 import type { OutsiderRecommendation, TranscensionRow } from '@/lib/outsiders-calculator';
 
 /**
@@ -26,6 +27,7 @@ type OutsiderGoalRowProps = {
  */
 export const OutsiderGoalRow = ({ currentLevel, imageSrc, row }: OutsiderGoalRowProps) => {
 	const t = useTranslations('tools.outsiders.goalsTable');
+	const format = useNumberFormat();
 	const change = currentLevel === null ? null : row.level - currentLevel;
 
 	return (
@@ -39,12 +41,12 @@ export const OutsiderGoalRow = ({ currentLevel, imageSrc, row }: OutsiderGoalRow
 				<p className='text-[13px] font-semibold text-(--color-fg-strong)'>{row.name}</p>
 			</EditorTableCell>
 			<EditorTableCell className='text-right tabular-nums text-(--color-fg-muted)'>
-				{currentLevel === null ? '-' : formatNumber(currentLevel)}
+				{currentLevel === null ? '-' : format.number(currentLevel)}
 			</EditorTableCell>
 			<EditorTableCell className='text-right'>
 				<div className='flex items-center justify-end gap-1'>
 					<span className='text-[13px] font-semibold tabular-nums text-(--color-fg-strong)'>
-						{formatNumber(row.level)}
+						{format.number(row.level)}
 					</span>
 					<CopyButton
 						idleLabel={t('copyLevel', { name: row.name })}
@@ -59,11 +61,11 @@ export const OutsiderGoalRow = ({ currentLevel, imageSrc, row }: OutsiderGoalRow
 				) : (
 					<span className={change > 0 ? 'font-semibold text-(--color-primary-text)' : undefined}>
 						{change > 0 ? '+' : ''}
-						{formatNumber(change)}
+						{format.number(change)}
 					</span>
 				)}
 			</EditorTableCell>
-			<EditorTableCell className='text-right tabular-nums'>{formatNumber(row.cost)}</EditorTableCell>
+			<EditorTableCell className='text-right tabular-nums'>{format.number(row.cost)}</EditorTableCell>
 		</EditorTableRow>
 	);
 };
@@ -77,16 +79,17 @@ type TranscensionTableRowProps = {
 /** One projected transcension in the simulator. */
 export const TranscensionTableRow = ({ row, units }: TranscensionTableRowProps) => {
 	const t = useTranslations('tools.outsiders.simulator');
+	const format = useNumberFormat();
 
 	return (
 		<EditorTableRow>
 			<EditorTableCell className='tabular-nums text-(--color-fg-strong)'>
-				{formatNumber(row.ancientSouls)}
+				{format.number(row.ancientSouls)}
 			</EditorTableCell>
-			<EditorTableCell className='text-right tabular-nums'>{formatNumber(row.borbLevel)}</EditorTableCell>
-			<EditorTableCell className='text-right tabular-nums'>{formatNumber(row.highestZone)}</EditorTableCell>
+			<EditorTableCell className='text-right tabular-nums'>{format.number(row.borbLevel)}</EditorTableCell>
+			<EditorTableCell className='text-right tabular-nums'>{format.number(row.highestZone)}</EditorTableCell>
 			<EditorTableCell className='text-right tabular-nums'>
-				{row.monstersPerZone.toFixed(2)}
+				{format.fixed(row.monstersPerZone, 2)}
 				{row.monstersPerZone < 2 ? (
 					<span className='ml-1 text-(--color-fg-muted)' title={t('minimumTitle')}>
 						(2)

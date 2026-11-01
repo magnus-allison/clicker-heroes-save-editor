@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
 import { useDurationUnits } from '@/components/tools/use-duration-units';
+import { useNumberFormat } from '@/components/ui/useNumberFormat';
 import {
 	EditorTable,
 	EditorTableBody,
@@ -122,7 +123,8 @@ const toMercenaryEntries = (value: unknown): MercenaryEntry[] => {
 		.sort((left, right) => left.index - right.index);
 };
 
-const formatCount = (value: unknown) => (value == null ? EMPTY_VALUE : formatNumber(value));
+const formatCount = (value: unknown, locale: string) =>
+	value == null ? EMPTY_VALUE : formatNumber(value, locale);
 
 const formatName = (value: unknown) => {
 	const name = typeof value === 'string' ? value.trim() : '';
@@ -135,9 +137,9 @@ const formatDuration = (value: unknown, units: DurationUnits) => {
 };
 
 /** Save fields such as experience and success chance are 0–1 fractions. */
-const formatFraction = (value: unknown) => {
+const formatFraction = (value: unknown, locale: string) => {
 	const fraction = toFiniteNumber(value);
-	return fraction === null ? EMPTY_VALUE : `${formatDecimal(fraction * 100)}%`;
+	return fraction === null ? EMPTY_VALUE : `${formatDecimal(fraction * 100, locale)}%`;
 };
 
 type RosterColumnKey =
@@ -152,7 +154,7 @@ type RosterColumn = {
 	render: (entry: MercenaryEntry) => ReactNode;
 };
 
-const buildRosterColumns = (units: DurationUnits): readonly RosterColumn[] => [
+const buildRosterColumns = (units: DurationUnits, locale: string): readonly RosterColumn[] => [
 	{
 		key: 'slot',
 		widthClassName: 'w-16',
@@ -169,13 +171,13 @@ const buildRosterColumns = (units: DurationUnits): readonly RosterColumn[] => [
 		key: 'level',
 		widthClassName: 'w-24',
 		align: 'right',
-		render: (entry) => formatCount(entry.data.level)
+		render: (entry) => formatCount(entry.data.level, locale)
 	},
 	{
 		key: 'experience',
 		widthClassName: 'w-28',
 		align: 'right',
-		render: (entry) => formatFraction(entry.data.experience)
+		render: (entry) => formatFraction(entry.data.experience, locale)
 	},
 	{
 		key: 'timeToDie',
@@ -186,7 +188,7 @@ const buildRosterColumns = (units: DurationUnits): readonly RosterColumn[] => [
 		key: 'bonusLives',
 		widthClassName: 'w-28',
 		align: 'right',
-		render: (entry) => formatCount(entry.data.bonusLives)
+		render: (entry) => formatCount(entry.data.bonusLives, locale)
 	},
 	{
 		key: 'lastQuest',
@@ -197,13 +199,14 @@ const buildRosterColumns = (units: DurationUnits): readonly RosterColumn[] => [
 		key: 'successChance',
 		widthClassName: 'w-32',
 		align: 'right',
-		render: (entry) => formatFraction(entry.data.lastQuestSuccessChance)
+		render: (entry) => formatFraction(entry.data.lastQuestSuccessChance, locale)
 	}
 ];
 
 export const MercenaryViewer = () => {
 	const t = useTranslations('tools.mercenary');
-	const rosterColumns = buildRosterColumns(useDurationUnits());
+	const { locale } = useNumberFormat();
+	const rosterColumns = buildRosterColumns(useDurationUnits(), locale);
 	const saveData = useSaveStore((state) => state.saveData);
 	const mercenaries = useMemo(
 		() => toMercenaryEntries(getValueAtPath(saveData, ['mercenaries', 'mercenaries'])),
@@ -292,7 +295,7 @@ export const MercenaryViewer = () => {
 										{field.key ? t(`summary.${field.key}`) : field.label}
 									</EditorTableCell>
 									<EditorTableCell className='text-right tabular-nums'>
-										{formatCount(getValueAtPath(saveData, field.path))}
+										{formatCount(getValueAtPath(saveData, field.path), locale)}
 									</EditorTableCell>
 								</EditorTableRow>
 							))}

@@ -21,6 +21,7 @@ import { NumberInput } from '@/components/ui/NumberInput';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { StepTitle } from '@/components/ui/StepTitle';
+import { useNumberFormat } from '@/components/ui/useNumberFormat';
 import { TextInput } from '@/components/ui/TextInput';
 import {
 	buildModeOptions,
@@ -57,6 +58,7 @@ const isOutsiderKeyId = (id: number): id is keyof typeof outsiderKeys => id in o
 
 export const AncientsCalculator = () => {
 	const t = useTranslations('tools.ancients');
+	const format = useNumberFormat();
 	const tShared = useTranslations('tools.shared');
 	const saveData = useSaveStore((state) => state.saveData);
 	const [settings, setSettings] = useState<AncientsSettings>(defaultAncientsSettings);
@@ -81,7 +83,9 @@ export const AncientsCalculator = () => {
 		setHeroSoulsOverride('');
 	};
 
-	const availableSoulsLabel = calculation ? formatHeroSouls(calculation.heroSoulsAvailable) : '0';
+	const availableSoulsLabel = calculation
+		? formatHeroSouls(calculation.heroSoulsAvailable, format.locale)
+		: '0';
 	const buildOptions = buildModeOptions.map((option) => ({
 		label: t(`buildModes.${option.value}`),
 		value: option.value
@@ -208,7 +212,9 @@ export const AncientsCalculator = () => {
 						<SettingRow
 							description={
 								snapshot
-									? t('advanced.regildingDescription', { gilds: formatHeroSouls(snapshot.gilds) })
+									? t('advanced.regildingDescription', {
+											gilds: formatHeroSouls(snapshot.gilds, format.locale)
+										})
 									: t('advanced.regildingDescriptionEmpty')
 							}
 							label={t('advanced.regildingLabel')}
@@ -239,15 +245,17 @@ export const AncientsCalculator = () => {
 					<div className='grid gap-3 sm:grid-cols-3'>
 						<SummaryStat
 							label={t('summary.soulsToSpend')}
-							value={calculation ? formatHeroSouls(calculation.heroSoulsForLeveling) : '-'}
+							value={calculation ? formatHeroSouls(calculation.heroSoulsForLeveling, format.locale) : '-'}
 						/>
 						<SummaryStat
 							label={t('summary.soulsSpent')}
-							value={calculation ? formatHeroSouls(calculation.heroSoulsSpent) : '-'}
+							value={calculation ? formatHeroSouls(calculation.heroSoulsSpent, format.locale) : '-'}
 						/>
 						<SummaryStat
 							label={t('summary.soulsLeftOver')}
-							value={calculation ? formatHeroSouls(calculation.heroSoulsRemaining.floor()) : '-'}
+							value={
+								calculation ? formatHeroSouls(calculation.heroSoulsRemaining.floor(), format.locale) : '-'
+							}
 						/>
 					</div>
 
@@ -280,7 +288,7 @@ export const AncientsCalculator = () => {
 
 					{calculation?.soulBankLevel ? (
 						<p className='text-[12px] text-(--color-fg-muted)'>
-							{t('soulBank', { souls: formatHeroSouls(calculation.soulBankLevel) })}
+							{t('soulBank', { souls: formatHeroSouls(calculation.soulBankLevel, format.locale) })}
 						</p>
 					) : null}
 
@@ -288,7 +296,7 @@ export const AncientsCalculator = () => {
 						<p className='text-[12px] text-(--color-fg-dim)'>
 							{t('tunedAgainst', {
 								ancient: calculation.tuningAncientName,
-								seconds: (calculation.durationMs / 1000).toFixed(2)
+								seconds: format.fixed(calculation.durationMs / 1000, 2)
 							})}
 						</p>
 					) : null}
@@ -306,20 +314,23 @@ export const AncientsCalculator = () => {
 						<EditorTableBody>
 							<StatRow
 								label={t('stats.transcendentPower')}
-								value={calculation ? `${calculation.transcendentPower.toFixed(2)}%` : '-'}
+								value={calculation ? `${format.fixed(calculation.transcendentPower, 2)}%` : '-'}
 							/>
 							<StatRow
 								label={t('stats.highestZone')}
-								value={snapshot ? formatHeroSouls(snapshot.ascensionZone) : '-'}
+								value={snapshot ? formatHeroSouls(snapshot.ascensionZone, format.locale) : '-'}
 							/>
 							<StatRow
 								label={t('stats.ancientSoulsTotal')}
-								value={snapshot ? formatHeroSouls(snapshot.ancientSoulsTotal) : '-'}
+								value={snapshot ? formatHeroSouls(snapshot.ancientSoulsTotal, format.locale) : '-'}
 							/>
-							<StatRow label={t('stats.gilds')} value={snapshot ? formatHeroSouls(snapshot.gilds) : '-'} />
+							<StatRow
+								label={t('stats.gilds')}
+								value={snapshot ? formatHeroSouls(snapshot.gilds, format.locale) : '-'}
+							/>
 							<StatRow
 								label={t('stats.ascensionSouls')}
-								value={snapshot ? formatHeroSouls(snapshot.ascensionSouls) : '-'}
+								value={snapshot ? formatHeroSouls(snapshot.ascensionSouls, format.locale) : '-'}
 							/>
 						</EditorTableBody>
 					</EditorTable>
@@ -348,7 +359,9 @@ export const AncientsCalculator = () => {
 									}
 									imageSrc={outsider.imageSrc}
 									key={outsider.id}
-									level={snapshot ? formatHeroSouls(snapshot.outsiderLevels[outsider.id]) : '-'}
+									level={
+										snapshot ? formatHeroSouls(snapshot.outsiderLevels[outsider.id], format.locale) : '-'
+									}
 									name={outsider.name}
 								/>
 							))}
@@ -373,10 +386,10 @@ export const AncientsCalculator = () => {
 							{plannerRows.length > 0 ? (
 								plannerRows.map((row) => (
 									<PlannerRow
-										change={formatHeroSouls(row.heroSoulsFromPrevious)}
-										gain={`+${formatHeroSouls(row.ancientSoulsGained)} AS`}
+										change={formatHeroSouls(row.heroSoulsFromPrevious, format.locale)}
+										gain={`+${formatHeroSouls(row.ancientSoulsGained, format.locale)} AS`}
 										key={row.ancientSoulsGained.toString()}
-										required={`${formatHeroSouls(row.heroSoulsRequired)} HS`}
+										required={`${formatHeroSouls(row.heroSoulsRequired, format.locale)} HS`}
 									/>
 								))
 							) : (

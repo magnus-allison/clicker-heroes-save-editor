@@ -201,11 +201,11 @@
       }
     },
     "phaseSummaries": {
-      "1": "Lleva cada héroe nuevo a nivel 1,000, pásale los gilds, súbelo a 1,500 y pasa al siguiente. Mecánico y rápido. Hay dos desvíos por mejoras que importan: Bomber Max y Gog, ambos a nivel 100.",
-      "2": "Los dos se van adelantando el uno al otro cada ~500 niveles, a medida que cada uno consigue un nuevo multiplicador 10x. Termina cuando Gog se queda sin multiplicadores en el nivel 8,000.",
+      "1": "Lleva cada héroe nuevo a nivel 1000, pásale los gilds, súbelo a 1500 y pasa al siguiente. Mecánico y rápido. Hay dos desvíos por mejoras que importan: Bomber Max y Gog, ambos a nivel 100.",
+      "2": "Los dos se van adelantando el uno al otro cada ~500 niveles, a medida que cada uno consigue un nuevo multiplicador 10x. Termina cuando Gog se queda sin multiplicadores en el nivel 8000.",
       "3": "El tramo más fácil del juego. Cada héroe nuevo es tan superior que lo contratas a nivel 1, le pasas todos los gilds y lo subes hasta que llegue el siguiente.",
       "4": "Cadu y Ceus se potencian mutuamente, así que vas alternando y subes el que desbloquea la mejora que necesita el otro. Nueve pasos de ping-pong.",
-      "5": "Dos saltos enormes. The Maw a nivel 1 hace aproximadamente 1e6750x más daño que un Cadu al máximo. Yachiyl solo supera a The Maw a nivel 157,500, así que empiezas a subirlo ahí.",
+      "5": "Dos saltos enormes. The Maw a nivel 1 hace aproximadamente 1e6750x más daño que un Cadu al máximo. Yachiyl solo supera a The Maw a nivel 157.500, así que empiezas a subirlo ahí.",
       "6": "Rose, Sophia, Blanche y Dorothy se van turnando a medida que cada una desbloquea mejoras para las demás. Súbelas primero sin mejoras y luego recorre los niveles de mejora, saltándote casi todo lo de Dorothy."
     },
     "range": "de {from} a {to}",

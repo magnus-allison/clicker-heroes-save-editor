@@ -2,18 +2,18 @@
 
 import { type ReactNode, useMemo, useState } from 'react';
 import { Coins, Search } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { TextInput } from '@/components/ui/TextInput';
 import {
 	firstGildingExponent,
+	formatChartNumbers,
 	formatGoldExponent,
 	gildingRowForExponent,
 	nextGildingRow,
 	parseGoldExponent
 } from '@/lib/gilding-chart';
-
-const exponentFormatter = new Intl.NumberFormat('en-US');
+import { formatNumber } from '@/lib/format';
 
 const Stat = ({ label, value }: { label: string; value: string }) => (
 	<div className='min-w-0'>
@@ -31,6 +31,7 @@ const monoStrong = (chunks: ReactNode) => <span className='font-mono text-fg-str
  */
 export const GildingLookup = () => {
 	const t = useTranslations('guidesUi.gildingChart');
+	const locale = useLocale();
 	const [gold, setGold] = useState('');
 
 	const exponent = useMemo(() => parseGoldExponent(gold), [gold]);
@@ -70,8 +71,8 @@ export const GildingLookup = () => {
 					<p className='text-[13px] leading-6 text-(--color-fg-secondary)'>
 						{t.rich('lookup.belowChart', {
 							mono: monoStrong,
-							gold: formatGoldExponent(exponent),
-							first: formatGoldExponent(firstGildingExponent)
+							gold: formatGoldExponent(exponent, locale),
+							first: formatGoldExponent(firstGildingExponent, locale)
 						})}
 					</p>
 				</div>
@@ -88,17 +89,25 @@ export const GildingLookup = () => {
 					</p>
 
 					<div className='mt-4 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-4'>
-						<Stat label={t('lookup.fromLevel')} value={row.fromLevel} />
-						<Stat label={t('lookup.toLevel')} value={row.toLevel ?? t('forever')} />
+						<Stat label={t('lookup.fromLevel')} value={formatChartNumbers(row.fromLevel, locale)} />
+						<Stat
+							label={t('lookup.toLevel')}
+							value={row.toLevel === null ? t('forever') : formatChartNumbers(row.toLevel, locale)}
+						/>
 						<Stat
 							label={t('lookup.goldRange')}
 							value={
 								row.goldTo === null
-									? `${formatGoldExponent(row.goldFrom)}+`
-									: `${formatGoldExponent(row.goldFrom)} – ${formatGoldExponent(row.goldTo)}`
+									? `${formatGoldExponent(row.goldFrom, locale)}+`
+									: `${formatGoldExponent(row.goldFrom, locale)} – ${formatGoldExponent(row.goldTo, locale)}`
 							}
 						/>
-						<Stat label={t('lookup.approxAncientSouls')} value={row.approxAncientSouls ?? '—'} />
+						<Stat
+							label={t('lookup.approxAncientSouls')}
+							value={
+								row.approxAncientSouls === null ? '—' : formatChartNumbers(row.approxAncientSouls, locale)
+							}
+						/>
 					</div>
 
 					<p className='mt-4 border-t border-(--color-line-subtle) pt-3 text-[13px] leading-6 text-(--color-fg-secondary)'>
@@ -106,8 +115,8 @@ export const GildingLookup = () => {
 							? t(`notes.${row.note}`)
 							: t('lookup.defaultNote', {
 									hero: row.hero,
-									from: row.fromLevel,
-									to: row.toLevel ?? t('forever')
+									from: formatChartNumbers(row.fromLevel, locale),
+									to: row.toLevel === null ? t('forever') : formatChartNumbers(row.toLevel, locale)
 								})}
 					</p>
 
@@ -115,9 +124,9 @@ export const GildingLookup = () => {
 						{upcoming
 							? t.rich('lookup.nextUp', {
 									hero: upcoming.hero,
-									gold: formatGoldExponent(upcoming.goldFrom),
+									gold: formatGoldExponent(upcoming.goldFrom, locale),
 									count: upcoming.goldFrom - exponent!,
-									distance: exponentFormatter.format(upcoming.goldFrom - exponent!),
+									distance: formatNumber(upcoming.goldFrom - exponent!, locale),
 									strong: (chunks) => <span className='font-medium text-fg-strong'>{chunks}</span>,
 									mono: monoStrong
 								})

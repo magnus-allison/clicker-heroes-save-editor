@@ -26,9 +26,9 @@ import { SectionCard } from '@/components/ui/SectionCard';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { useToast } from '@/components/ui/ToastProvider';
 import { useDurationUnits } from '@/components/tools/use-duration-units';
+import { useNumberFormat } from '@/components/ui/useNumberFormat';
 import { outsiderFields } from '@/lib/data/editor-config';
 import { examples } from '@/lib/data/example-saves';
-import { formatNumber } from '@/lib/format';
 import {
 	calculateOutsiders,
 	defaultOutsidersSettings,
@@ -44,10 +44,10 @@ const outsiderImages = new Map(outsiderFields.map((field) => [field.id, field.im
 
 const maxZoneOverride = 5_460_000;
 
-const percent = (value: number) => `${value.toFixed(2)}%`;
-
 export const OutsidersCalculator = () => {
 	const t = useTranslations('tools.outsiders');
+	const format = useNumberFormat();
+	const percent = (value: number) => `${format.fixed(value, 2)}%`;
 	const tShared = useTranslations('tools.shared');
 	const units = useDurationUnits();
 	const { showToast } = useToast();
@@ -155,7 +155,7 @@ export const OutsidersCalculator = () => {
 					<div className='grid gap-3 sm:grid-cols-3'>
 						<SummaryStat
 							label={t('summary.ancientSoulsEarned')}
-							value={calculation ? formatNumber(calculation.ancientSouls) : '-'}
+							value={calculation ? format.number(calculation.ancientSouls) : '-'}
 						/>
 						<SummaryStat
 							label={t('summary.transcendentPower')}
@@ -163,7 +163,7 @@ export const OutsidersCalculator = () => {
 						/>
 						<SummaryStat
 							label={t('summary.unspent')}
-							value={calculation ? formatNumber(calculation.ancientSoulsUnspent) : '-'}
+							value={calculation ? format.number(calculation.ancientSoulsUnspent) : '-'}
 						/>
 					</div>
 
@@ -220,7 +220,7 @@ export const OutsidersCalculator = () => {
 
 					{calculation?.ancientSoulsReserved ? (
 						<p className='text-[12px] text-(--color-fg-muted)'>
-							{t('reserved', { souls: formatNumber(calculation.ancientSoulsReserved) })}
+							{t('reserved', { souls: format.number(calculation.ancientSoulsReserved) })}
 						</p>
 					) : null}
 
@@ -230,7 +230,7 @@ export const OutsidersCalculator = () => {
 
 					<p className='text-[12px] text-(--color-fg-dim)'>
 						{t('plannedFromTotal', {
-							unspent: snapshot ? formatNumber(snapshot.ancientSoulsUnspent) : '0'
+							unspent: snapshot ? format.number(snapshot.ancientSoulsUnspent) : '0'
 						})}
 					</p>
 				</div>
@@ -259,17 +259,17 @@ export const OutsidersCalculator = () => {
 						<EditorTableBody>
 							<StatRow
 								label={t('estimates.highestZone')}
-								value={calculation ? formatNumber(calculation.highestZone) : '-'}
+								value={calculation ? format.number(calculation.highestZone) : '-'}
 							/>
 							<StatRow
 								label={t('estimates.logHeroSouls')}
-								value={calculation ? calculation.logHeroSouls.toFixed(2) : '-'}
+								value={calculation ? format.fixed(calculation.logHeroSouls, 2) : '-'}
 							/>
 							<StatRow
 								label={t('estimates.ancientSouls')}
 								value={
 									calculation
-										? `${formatNumber(calculation.nextAncientSouls)} (+${formatNumber(calculation.ancientSoulsGained)})`
+										? `${format.number(calculation.nextAncientSouls)} (+${format.number(calculation.ancientSoulsGained)})`
 										: '-'
 								}
 							/>
@@ -279,14 +279,14 @@ export const OutsidersCalculator = () => {
 							/>
 							<StatRow
 								label={t('estimates.ancientLevels')}
-								value={calculation ? formatNumber(calculation.ancientLevels) : '-'}
+								value={calculation ? format.number(calculation.ancientLevels) : '-'}
 							/>
 							<StatRow
 								label='Kumawakamaru'
 								value={
 									calculation
 										? t('estimates.kumawakamaruValue', {
-												value: calculation.ancientEffects.kumawakamaru.toFixed(2)
+												value: format.fixed(calculation.ancientEffects.kumawakamaru, 2)
 											})
 										: '-'
 								}
@@ -303,7 +303,7 @@ export const OutsidersCalculator = () => {
 								label='Bubos'
 								value={
 									calculation
-										? t('estimates.bubosValue', { value: calculation.ancientEffects.bubos.toFixed(2) })
+										? t('estimates.bubosValue', { value: format.fixed(calculation.ancientEffects.bubos, 2) })
 										: '-'
 								}
 							/>
@@ -311,7 +311,9 @@ export const OutsidersCalculator = () => {
 								label='Chronos'
 								value={
 									calculation
-										? t('estimates.chronosValue', { value: calculation.ancientEffects.chronos.toFixed(2) })
+										? t('estimates.chronosValue', {
+												value: format.fixed(calculation.ancientEffects.chronos, 2)
+											})
 										: '-'
 								}
 							/>
@@ -336,27 +338,27 @@ export const OutsidersCalculator = () => {
 						<EditorTableBody>
 							<StatRow
 								label={t('breakpoints.highMonstersPerZone')}
-								value={calculation ? formatNumber(calculation.breakpoints.highMonstersPerZone) : '-'}
+								value={calculation ? format.number(calculation.breakpoints.highMonstersPerZone) : '-'}
 							/>
 							<StatRow
 								label={t('breakpoints.primalChanceFloor')}
-								value={calculation ? formatNumber(calculation.breakpoints.primalChanceFloor) : '-'}
+								value={calculation ? format.number(calculation.breakpoints.primalChanceFloor) : '-'}
 							/>
 							<StatRow
 								label={t('breakpoints.bossHealthCeiling')}
-								value={calculation ? formatNumber(calculation.breakpoints.bossHealthCeiling) : '-'}
+								value={calculation ? format.number(calculation.breakpoints.bossHealthCeiling) : '-'}
 							/>
 							<StatRow
 								label={t('breakpoints.bossTimerFloor')}
-								value={calculation ? formatNumber(calculation.breakpoints.bossTimerFloor) : '-'}
+								value={calculation ? format.number(calculation.breakpoints.bossTimerFloor) : '-'}
 							/>
 							<StatRow
 								label={t('breakpoints.treasureChestCeiling')}
-								value={calculation ? formatNumber(calculation.breakpoints.treasureChestCeiling) : '-'}
+								value={calculation ? format.number(calculation.breakpoints.treasureChestCeiling) : '-'}
 							/>
 							<StatRow
 								label={t('breakpoints.treasureChestFloor')}
-								value={calculation ? formatNumber(calculation.breakpoints.treasureChestFloor) : '-'}
+								value={calculation ? format.number(calculation.breakpoints.treasureChestFloor) : '-'}
 							/>
 						</EditorTableBody>
 					</EditorTable>
@@ -383,33 +385,33 @@ export const OutsidersCalculator = () => {
 							<ComparisonRow
 								buffed={
 									calculation
-										? `${calculation.buffed.monstersPerZone.toFixed(2)}${
+										? `${format.fixed(calculation.buffed.monstersPerZone, 2)}${
 												calculation.buffed.monstersPerZone < 2 ? ' (2)' : ''
 											}`
 										: '-'
 								}
 								label={t('highestZoneStats.monstersPerZone')}
-								unbuffed={calculation ? calculation.unbuffed.monstersPerZone.toFixed(2) : '-'}
+								unbuffed={calculation ? format.fixed(calculation.unbuffed.monstersPerZone, 2) : '-'}
 							/>
 							<ComparisonRow
-								buffed={calculation ? `${calculation.buffed.treasureChestChance.toFixed(0)}%` : '-'}
+								buffed={calculation ? `${format.fixed(calculation.buffed.treasureChestChance, 0)}%` : '-'}
 								label={t('highestZoneStats.treasureChests')}
-								unbuffed={calculation ? `${calculation.unbuffed.treasureChestChance.toFixed(6)}x` : '-'}
+								unbuffed={calculation ? `${format.fixed(calculation.unbuffed.treasureChestChance, 6)}x` : '-'}
 							/>
 							<ComparisonRow
-								buffed={calculation ? `${calculation.buffed.bossHealth.toFixed(0)}x` : '-'}
+								buffed={calculation ? `${format.fixed(calculation.buffed.bossHealth, 0)}x` : '-'}
 								label={t('highestZoneStats.bossHealth')}
-								unbuffed={calculation ? `${calculation.unbuffed.bossHealth.toFixed(1)}x` : '-'}
+								unbuffed={calculation ? `${format.fixed(calculation.unbuffed.bossHealth, 1)}x` : '-'}
 							/>
 							<ComparisonRow
-								buffed={calculation ? `${calculation.buffed.bossTimer.toFixed(0)}s` : '-'}
+								buffed={calculation ? `${format.fixed(calculation.buffed.bossTimer, 0)}s` : '-'}
 								label={t('highestZoneStats.bossTimer')}
-								unbuffed={calculation ? `${calculation.unbuffed.bossTimer.toFixed(0)}s` : '-'}
+								unbuffed={calculation ? `${format.fixed(calculation.unbuffed.bossTimer, 0)}s` : '-'}
 							/>
 							<ComparisonRow
-								buffed={calculation ? `${calculation.buffed.primalBossChance.toFixed(0)}%` : '-'}
+								buffed={calculation ? `${format.fixed(calculation.buffed.primalBossChance, 0)}%` : '-'}
 								label={t('highestZoneStats.primalChance')}
-								unbuffed={calculation ? `${calculation.unbuffed.primalBossChance.toFixed(0)}%` : '-'}
+								unbuffed={calculation ? `${format.fixed(calculation.unbuffed.primalBossChance, 0)}%` : '-'}
 							/>
 						</EditorTableBody>
 					</EditorTable>
@@ -450,7 +452,7 @@ export const OutsidersCalculator = () => {
 						{simulation ? (
 							<p className='mt-3 text-[12px] text-(--color-fg-muted)'>
 								{t(simulation.truncated ? 'simulator.endsTruncated' : 'simulator.ends', {
-									souls: formatNumber(simulation.finalAncientSouls)
+									souls: format.number(simulation.finalAncientSouls)
 								})}
 							</p>
 						) : null}

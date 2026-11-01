@@ -24,8 +24,8 @@
       "active": "Activa"
     },
     "heroTiers": {
-      "base": "Treebeast - Wepwawet nivel 7,999",
-      "e9": "Wepwawet nivel 8,000 - Madzi",
+      "base": "Treebeast - Wepwawet nivel 7999",
+      "e9": "Wepwawet nivel 8000 - Madzi",
       "e10": "Xavira - Yachiyl",
       "scout": "Ace Scouts"
     },
@@ -141,7 +141,7 @@
       "chorgorloth": "coste de los ancients",
       "phandoryss": "DPS",
       "ponyboy": "Primal Hero Souls",
-      "borb": "efectividad de Kumawakamaru (+12.5% por nivel)",
+      "borb": "efectividad de Kumawakamaru (+12,5% por nivel)",
       "rhageist": "efectividad de Atman (+25% por nivel)",
       "kariqua": "efectividad de Bubos (+50% por nivel)",
       "orphalas": "efectividad de Chronos (+75% por nivel)",
@@ -229,7 +229,7 @@
     "breakpoints": {
       "title": "Zonas límite",
       "description": "Zonas en las que cada estadística mejorada llega a su límite.",
-      "highMonstersPerZone": "2.1 monstruos por zona",
+      "highMonstersPerZone": "2,1 monstruos por zona",
       "primalChanceFloor": "5% de probabilidad de primal",
       "bossHealthCeiling": "90% de vida de los jefes",
       "bossTimerFloor": "2 s de temporizador de jefe",

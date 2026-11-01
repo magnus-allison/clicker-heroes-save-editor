@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { EditorTableCell, EditorTableRow } from '@/components/ui/EditorTable';
+import { useNumberFormat } from '@/components/ui/useNumberFormat';
 import { formatHeroSouls, toPasteableNumber, type AncientRow } from '@/lib/ancients-calculator';
 
 /**
@@ -73,6 +74,7 @@ type AncientGoalRowProps = {
  */
 export const AncientGoalRow = ({ row }: AncientGoalRowProps) => {
 	const t = useTranslations('tools.ancients');
+	const { locale } = useNumberFormat();
 	const isIncrease = row.change.greaterThan(0);
 
 	return (
@@ -84,10 +86,10 @@ export const AncientGoalRow = ({ row }: AncientGoalRowProps) => {
 				</p>
 			</EditorTableCell>
 			<EditorTableCell className='text-right tabular-nums'>
-				{formatHeroSouls(row.currentLevel)}
+				{formatHeroSouls(row.currentLevel, locale)}
 			</EditorTableCell>
 			<EditorTableCell className='text-right tabular-nums'>
-				<span className='text-(--color-fg-strong)'>{formatHeroSouls(row.optimalLevel)}</span>
+				<span className='text-(--color-fg-strong)'>{formatHeroSouls(row.optimalLevel, locale)}</span>
 				{row.capped ? (
 					<span
 						className='ml-2 inline-flex h-5 items-center rounded-full border border-(--color-line-soft) bg-(--color-surface-muted) px-2 text-[10px] font-semibold text-(--color-fg-muted)'
@@ -107,7 +109,7 @@ export const AncientGoalRow = ({ row }: AncientGoalRowProps) => {
 						}
 					>
 						{isIncrease ? '+' : ''}
-						{formatHeroSouls(row.change)}
+						{formatHeroSouls(row.change, locale)}
 					</span>
 					<CopyButton
 						idleLabel={t('goalsTable.copyChange', { name: row.name })}
@@ -116,7 +118,9 @@ export const AncientGoalRow = ({ row }: AncientGoalRowProps) => {
 					/>
 				</div>
 			</EditorTableCell>
-			<EditorTableCell className='text-right tabular-nums'>{formatHeroSouls(row.cost)}</EditorTableCell>
+			<EditorTableCell className='text-right tabular-nums'>
+				{formatHeroSouls(row.cost, locale)}
+			</EditorTableCell>
 		</EditorTableRow>
 	);
 };

@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { ancientSoulFields, getOutsiderStats, outsiderFields } from '@/lib/data/editor-config';
-import { formatLargeNumber, formatNumber } from '@/lib/format';
+import { useNumberFormat } from '@/components/ui/useNumberFormat';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
 
@@ -34,6 +34,7 @@ const OUTSIDER_EXPONENTIAL_ABOVE = 100_000;
 
 export const OutsidersSection = ({ defaultOpen, icon, title }: Props) => {
 	const t = useTranslations('editor.outsiders');
+	const format = useNumberFormat();
 	const tTable = useTranslations('editor.table');
 	const { fieldLabel, resolve } = useEditorText();
 	const saveData = useSaveStore((state) => state.saveData);
@@ -111,13 +112,13 @@ export const OutsidersSection = ({ defaultOpen, icon, title }: Props) => {
 									<p className='text-(--color-fg)'>{field.name}</p>
 									<p className='mt-1 leading-6 text-(--color-fg-secondary)'>
 										{field.bonusLabel}
-										{formatLargeNumber(stats.primary, OUTSIDER_EXPONENTIAL_ABOVE)}%{' '}
+										{format.large(stats.primary, OUTSIDER_EXPONENTIAL_ABOVE)}%{' '}
 										{resolve({ key: `outsiders.bonus.${field.id}`, text: field.description })}
 									</p>
 									{field.capDescription && stats.secondary !== undefined ? (
 										<p className='mt-1 leading-6 text-(--color-fg-secondary)'>
 											{field.capLabel}
-											{formatLargeNumber(stats.secondary, OUTSIDER_EXPONENTIAL_ABOVE)}{' '}
+											{format.large(stats.secondary, OUTSIDER_EXPONENTIAL_ABOVE)}{' '}
 											{resolve({ key: `outsiders.cap.${field.id}`, text: field.capDescription })}
 										</p>
 									) : null}
@@ -132,7 +133,7 @@ export const OutsidersSection = ({ defaultOpen, icon, title }: Props) => {
 									/>
 								</EditorTableCell>
 								<EditorTableCell className='align-top text-(--color-fg)'>
-									{t('cost', { amount: formatNumber(stats.spent) })}
+									{t('cost', { amount: format.number(stats.spent) })}
 								</EditorTableCell>
 								<EditorTableCell className='min-w-40 align-top'>
 									<NumberInput

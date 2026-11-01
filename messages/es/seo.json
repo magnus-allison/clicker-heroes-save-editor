@@ -243,7 +243,7 @@
       },
       {
         "question": "¿Por qué el mismo héroe aparece más de una vez en la tabla de gilds?",
-        "answer": "Los héroes ganan multiplicadores de daño x10 en ciertos niveles, y el coste de subir de nivel crece a medida que avanzas. Por eso Wepwawet en el nivel 5.000 puede quedar por detrás de Gog y volver a superarlo en el 6.000 cuando consigue su siguiente multiplicador. Entre e383 y e500 los dos se alternan cada 500 niveles más o menos."
+        "answer": "Los héroes ganan multiplicadores de daño x10 en ciertos niveles, y el coste de subir de nivel crece a medida que avanzas. Por eso Wepwawet en el nivel 5000 puede quedar por detrás de Gog y volver a superarlo en el 6000 cuando consigue su siguiente multiplicador. Entre e383 y e500 los dos se alternan cada 500 niveles más o menos."
       },
       {
         "question": "¿Debo dorar a Dread Knight en Clicker Heroes?",
@@ -251,10 +251,10 @@
       },
       {
         "question": "¿Por qué Wepwawet y Gog dejan de alternarse después de e442?",
-        "answer": "Gog no recibe más multiplicadores x10 después del nivel 8.000, así que ya no puede volver a superar a Wepwawet. Quédate con Wepwawet desde e442 hasta Tsuchi en e500."
+        "answer": "Gog no recibe más multiplicadores x10 después del nivel 8000, así que ya no puede volver a superar a Wepwawet. Quédate con Wepwawet desde e442 hasta Tsuchi en e500."
       },
       {
-        "question": "¿Por qué Tsuchi en el nivel 1 es mejor que Wepwawet en el nivel 9.000?",
+        "question": "¿Por qué Tsuchi en el nivel 1 es mejor que Wepwawet en el nivel 9000?",
         "answer": "Contratar a Tsuchi cuesta menos que comprar 25 niveles más de Wepwawet en ese punto, y su daño base está en otro nivel por completo. El mismo patrón se repite con The Maw, que en el nivel 1 hace aproximadamente 1e6750 veces el daño de Cadu en el nivel 680.625."
       },
       {
@@ -263,7 +263,7 @@
       },
       {
         "question": "¿Por qué Yachiyl empieza en el nivel 157.500 y no en el 1?",
-        "answer": "Yachiyl solo supera a The Maw cuando llega a su primera mejora en el nivel 157.500. A Rose le pasa lo mismo frente a Yachiyl y necesita primero el nivel 9.700."
+        "answer": "Yachiyl solo supera a The Maw cuando llega a su primera mejora en el nivel 157.500. A Rose le pasa lo mismo frente a Yachiyl y necesita primero el nivel 9700."
       },
       {
         "question": "¿Por qué se salta tanto a Dorothy en la rotación de los Ace Scouts?",
@@ -271,7 +271,7 @@
       },
       {
         "question": "¿Cuántas Ancient Souls necesito para llegar a un héroe de la tabla de gilds?",
-        "answer": "La columna de Ancient Souls es una guía aproximada hasta Xavira, alrededor de 6.000. A partir de ahí no tiene sentido tabularla, porque el progreso depende mucho de tu reparto de outsiders y de cuántas veces hayas trascendido."
+        "answer": "La columna de Ancient Souls es una guía aproximada hasta Xavira, alrededor de 6000. A partir de ahí no tiene sentido tabularla, porque el progreso depende mucho de tu reparto de outsiders y de cuántas veces hayas trascendido."
       }
     ]
   },

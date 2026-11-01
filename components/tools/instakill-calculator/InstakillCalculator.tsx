@@ -21,6 +21,7 @@ import {
 } from '@/lib/instakill-calculator';
 import { formatLongDuration } from '@/lib/format';
 import { useDurationUnits } from '@/components/tools/use-duration-units';
+import { useNumberFormat } from '@/components/ui/useNumberFormat';
 import {
 	CalculatorCheckboxRow,
 	CalculatorFieldRow,
@@ -30,22 +31,14 @@ import {
 const kumawakamaruImageSrc = 'https://static.wikia.nocookie.net/clickerheroes/images/3/37/Kumawakamaru.png';
 const borbImageSrc = 'https://static.wikia.nocookie.net/clickerheroes/images/b/bd/Outsider_borb.png';
 
-/**
- * Not `formatDecimal` from `lib/format`: that is one decimal place, and this
- * calculator's outputs (monsters per zone, MPZ reduction, FPS) are only useful
- * to two.
- */
-const twoDecimals = new Intl.NumberFormat('en-US', {
-	maximumFractionDigits: 2,
-	minimumFractionDigits: 2
-});
-
-const formatMetric = (value: number) => twoDecimals.format(value);
-
 export const InstakillCalculator = () => {
 	const t = useTranslations('tools.instakill');
 	const tShared = useTranslations('tools.shared');
 	const units = useDurationUnits();
+	const format = useNumberFormat();
+	// Two decimals, not `format.decimal`'s one: monsters per zone, MPZ reduction
+	// and FPS are only useful to two.
+	const formatMetric = (value: number) => format.fixed(value, 2);
 	const [inputs, setInputs] = useState<InstakillCalculatorInputs>(defaultInstakillInputs);
 	const calculation = useMemo(() => calculateInstakill(inputs), [inputs]);
 

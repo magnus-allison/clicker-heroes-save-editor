@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
 
 import {
+	formatChartNumbers,
 	firstGildingExponent,
 	gildingPhaseById,
 	gildingPhases,
@@ -156,5 +157,14 @@ describe('nextGildingRow', () => {
 
 	test('returns nothing past the end of the chart', () => {
 		assert.equal(nextGildingRow(gildingRows.at(-1)!), null);
+	});
+});
+
+describe('formatChartNumbers', () => {
+	test('regroups every number in a label for the locale', () => {
+		assert.equal(formatChartNumbers('1,000-1,500', 'de'), '1.000-1.500');
+		assert.equal(formatChartNumbers('391,375', 'de'), '391.375');
+		assert.equal(formatChartNumbers('1,000-1,500'), '1,000-1,500');
+		assert.equal(formatChartNumbers('725', 'de'), '725');
 	});
 });
