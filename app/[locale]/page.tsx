@@ -15,49 +15,49 @@ const Page = async ({ params }: LocaleParams) => {
 	const t = await getTranslations('common.home');
 
 	return (
-	<>
-		<PageJsonLd locale={locale} page='home' />
+		<>
+			<PageJsonLd locale={locale} page='home' />
 
-		{/* <WelcomeBanner /> */}
+			{/* <WelcomeBanner /> */}
 
-		{/* The page's `<h1>`. `WelcomeBanner` carried it; with that hidden, this keeps one in place. */}
-		<section aria-labelledby='home-heading' className='flex flex-col gap-2 px-1'>
-			<h1
-				className='font-aeonik text-xl font-bold tracking-wide text-fg-strong lg:text-2xl'
-				id='home-heading'
+			{/* The page's `<h1>`. `WelcomeBanner` carried it; with that hidden, this keeps one in place. */}
+			<section aria-labelledby='home-heading' className='flex flex-col gap-2 px-1'>
+				<h1
+					className='font-aeonik text-xl font-bold tracking-wide text-fg-strong lg:text-2xl'
+					id='home-heading'
+				>
+					{t('title')}
+				</h1>
+				<p className='max-w-3xl font-aeonik text-[15px] font-light tracking-[0.035rem] text-fg-muted/80'>
+					{t('intro')}
+				</p>
+			</section>
+
+			<section aria-labelledby='tools-heading' className='flex flex-col gap-10 scroll-mt-8' id='tools'>
+				<Breadcrumb title='tools' />
+				<div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
+					<Tools />
+				</div>
+			</section>
+
+			<section aria-labelledby='guides-heading' className='flex flex-col gap-10 scroll-mt-8' id='guides'>
+				<Breadcrumb title='guides' />
+				<div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
+					<Guides />
+				</div>
+			</section>
+
+			<section
+				aria-labelledby='additional-info-heading'
+				className='flex flex-col gap-10 scroll-mt-8'
+				id='additional-info'
 			>
-				{t('title')}
-			</h1>
-			<p className='max-w-3xl font-aeonik text-[15px] font-light tracking-[0.035rem] text-fg-muted/80'>
-				{t('intro')}
-			</p>
-		</section>
-
-		<section aria-labelledby='tools-heading' className='flex flex-col gap-10 scroll-mt-8' id='tools'>
-			<Breadcrumb title='tools' />
-			<div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
-				<Tools />
-			</div>
-		</section>
-
-		<section aria-labelledby='guides-heading' className='flex flex-col gap-10 scroll-mt-8' id='guides'>
-			<Breadcrumb title='guides' />
-			<div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
-				<Guides />
-			</div>
-		</section>
-
-		<section
-			aria-labelledby='additional-info-heading'
-			className='flex flex-col gap-10 scroll-mt-8'
-			id='additional-info'
-		>
-			<Breadcrumb title='additional info' />
-			<div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
-				<AdditionalInfo />
-			</div>
-		</section>
-	</>
+				<Breadcrumb title='additional info' />
+				<div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
+					<AdditionalInfo />
+				</div>
+			</section>
+		</>
 	);
 };
 

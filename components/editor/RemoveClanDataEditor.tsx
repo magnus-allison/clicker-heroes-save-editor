@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-
+import { useTranslations } from 'next-intl';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
+import { useEditorText } from '@/components/editor/useEditorText';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import {
@@ -22,7 +23,7 @@ import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath, setValueAtPath, type PathSegment, type SaveData } from '@/lib/save-utils';
 
 type RemovedClanEntry = {
-	label: string;
+	field: WipeFieldConfig;
 	value: string;
 };
 
@@ -32,23 +33,36 @@ type RemovedClanData = {
 	entries: RemovedClanEntry[];
 };
 
+/** Display text the formatters need, resolved in the current locale. */
+type FormatText = {
+	emptyString: string;
+	raidClassLabel: (value: number) => string;
+};
+
 type WipeFieldConfig = {
 	label: string;
 	path: PathSegment[];
 	value: unknown;
-	format?: (rawValue: unknown) => string;
+	/** Key under `editor.removeClanData.fields`; clan fields use `editor.fields` instead. */
+	messageKey?: string;
+	format?: (rawValue: unknown, text: FormatText) => string;
 };
 
 const wipeFields: WipeFieldConfig[] = [
-	{ label: 'Email', path: ['email'], value: '' },
-	{ label: 'Password Hash', path: ['passwordHash'], value: '' },
-	{ label: 'Previous Login Timestamp', path: ['prevLoginTimestamp'], value: null },
-	{ label: 'Account', path: ['account'], value: null },
-	{ label: 'Account ID', path: ['accountId'], value: 0 },
-	{ label: 'Login Validated', path: ['loginValidated'], value: 'false' },
-	{ label: 'Unique ID', path: ['uniqueId'], value: '' },
-	{ label: 'Subscribed Email', path: ['subscribedEmail'], value: '' },
-	{ label: 'Type', path: ['type'], value: undefined }
+	{ label: 'Email', messageKey: 'email', path: ['email'], value: '' },
+	{ label: 'Password Hash', messageKey: 'passwordHash', path: ['passwordHash'], value: '' },
+	{
+		label: 'Previous Login Timestamp',
+		messageKey: 'prevLoginTimestamp',
+		path: ['prevLoginTimestamp'],
+		value: null
+	},
+	{ label: 'Account', messageKey: 'account', path: ['account'], value: null },
+	{ label: 'Account ID', messageKey: 'accountId', path: ['accountId'], value: 0 },
+	{ label: 'Login Validated', messageKey: 'loginValidated', path: ['loginValidated'], value: 'false' },
+	{ label: 'Unique ID', messageKey: 'uniqueId', path: ['uniqueId'], value: '' },
+	{ label: 'Subscribed Email', messageKey: 'subscribedEmail', path: ['subscribedEmail'], value: '' },
+	{ label: 'Type', messageKey: 'type', path: ['type'], value: undefined }
 ];
 
 const wipeClanFields: WipeFieldConfig[] = clanFields.map((field) => ({
@@ -58,18 +72,16 @@ const wipeClanFields: WipeFieldConfig[] = clanFields.map((field) => ({
 	value: 0,
 	format:
 		field.path[0] === 'newClanRaidClassId'
-			? (rawValue) => `${getRaidClassLabel(rawValue)} (${String(rawValue ?? 0)})`
+			? (rawValue, text) => `${getRaidClassLabel(rawValue, text)} (${String(rawValue ?? 0)})`
 			: undefined
 }));
 
 const wipeEntries = [...wipeClanFields, ...wipeFields];
 
-const getRaidClassLabel = (value: unknown) => {
-	const numericValue = typeof value === 'number' ? value : Number(value ?? 0);
-	return raidClassOptions.find((option) => option.value === numericValue)?.label ?? 'Unknown';
-};
+const getRaidClassLabel = (value: unknown, text: FormatText) =>
+	text.raidClassLabel(typeof value === 'number' ? value : Number(value ?? 0));
 
-const formatDisplayValue = (value: unknown) => {
+const formatDisplayValue = (value: unknown, text: FormatText) => {
 	if (value === undefined) {
 		return 'undefined';
 	}
@@ -79,7 +91,7 @@ const formatDisplayValue = (value: unknown) => {
 	}
 
 	if (typeof value === 'string') {
-		return value.length > 0 ? value : '(empty string)';
+		return value.length > 0 ? value : text.emptyString;
 	}
 
 	if (typeof value === 'object') {
@@ -91,6 +103,9 @@ const formatDisplayValue = (value: unknown) => {
 
 export const RemoveClanDataEditor = () => {
 	const { showToast } = useToast();
+	const t = useTranslations('editor.removeClanData');
+	const tTable = useTranslations('editor.table');
+	const { fieldLabel, fieldOptions } = useEditorText();
 	const saveData = useSaveStore((state) => state.saveData);
 	const originalSaveData = useSaveStore((state) => state.originalSaveData);
 	const updateSave = useSaveStore((state) => state.updateSave);
@@ -101,9 +116,21 @@ export const RemoveClanDataEditor = () => {
 	const removedClanEntries =
 		removedClanData && removedClanData.source === originalSaveData ? removedClanData.entries : null;
 
+	const raidClassLabels = fieldOptions({ path: ['newClanRaidClassId'], options: raidClassOptions }) ?? [];
+	const formatText: FormatText = {
+		emptyString: t('emptyString'),
+		raidClassLabel: (value) => raidClassLabels.find((option) => option.value === value)?.label ?? t('unknown')
+	};
+	const getFieldLabel = (field: WipeFieldConfig) =>
+		field.messageKey
+			? (t as unknown as (key: string) => string)(`fields.${field.messageKey}`)
+			: fieldLabel(field);
+	const formatField = (field: WipeFieldConfig, rawValue: unknown) =>
+		field.format ? field.format(rawValue, formatText) : formatDisplayValue(rawValue, formatText);
+
 	const handleRemoveClanData = () => {
 		if (!saveData) {
-			showToast('Load a save before removing clan data.');
+			showToast(t('loadFirst'));
 			return;
 		}
 
@@ -111,8 +138,8 @@ export const RemoveClanDataEditor = () => {
 			const rawValue = getValueAtPath(saveData, field.path);
 
 			return {
-				label: field.label,
-				value: field.format ? field.format(rawValue) : formatDisplayValue(rawValue)
+				field,
+				value: formatField(field, rawValue)
 			};
 		});
 
@@ -121,7 +148,7 @@ export const RemoveClanDataEditor = () => {
 		);
 
 		setRemovedClanData({ source: originalSaveData, entries: nextRemovedFields });
-		showToast('Clan data removed from the save.');
+		showToast(t('removed'));
 	};
 
 	return (
@@ -130,7 +157,7 @@ export const RemoveClanDataEditor = () => {
 
 			<SaveDataPanel hasEditStep />
 
-			<StepTitle step={2} title='Remove Clan Data From JSON' />
+			<StepTitle step={2} title={t('stepTitle')} />
 			<div
 				className={!saveData ? 'pointer-events-none opacity-40 select-none' : undefined}
 				// `inert` keeps the controls out of the tab order while the panel
@@ -140,31 +167,28 @@ export const RemoveClanDataEditor = () => {
 				<PanelSection>
 					<div className='grid gap-4 p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]'>
 						<div className='flex flex-col gap-3'>
-							<p className='text-[13px] leading-6 text-(--color-fg-secondary)'>
-								This removes clan-related fields and clears the account/login fields from the loaded save JSON
-								so the exported result is stripped down for a fresh rebuild.
-							</p>
+							<p className='text-[13px] leading-6 text-(--color-fg-secondary)'>{t('intro')}</p>
 							<div className='flex flex-col gap-2'>
 								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-									What gets removed
+									{t('whatGetsRemoved')}
 								</p>
-								<EditorTable label='Fields that get removed'>
+								<EditorTable label={t('tableLabel')}>
 									<EditorTableHead>
 										<tr>
-											<EditorTableHeaderCell>Field</EditorTableHeaderCell>
-											<EditorTableHeaderCell>Current value</EditorTableHeaderCell>
+											<EditorTableHeaderCell>{tTable('field')}</EditorTableHeaderCell>
+											<EditorTableHeaderCell>{tTable('currentValue')}</EditorTableHeaderCell>
 										</tr>
 									</EditorTableHead>
 									<EditorTableBody>
 										{wipeEntries.map((field) => {
 											const currentValue = getValueAtPath(saveData, field.path);
-											const displayValue = field.format
-												? field.format(currentValue)
-												: formatDisplayValue(currentValue);
+											const displayValue = formatField(field, currentValue);
 
 											return (
 												<EditorTableRow key={field.path.join('.')}>
-													<EditorTableCell className='text-(--color-fg)'>{field.label}</EditorTableCell>
+													<EditorTableCell className='text-(--color-fg)'>
+														{getFieldLabel(field)}
+													</EditorTableCell>
 													<EditorTableCell className='wrap-break-word text-(--color-fg-dim)'>
 														{displayValue}
 													</EditorTableCell>
@@ -176,27 +200,29 @@ export const RemoveClanDataEditor = () => {
 							</div>
 							<div className='flex flex-wrap gap-2'>
 								<Button className='flex-1' onClick={handleRemoveClanData} variant='primary'>
-									Remove Clan Data
+									{t('action')}
 								</Button>
 							</div>
 						</div>
 
 						<div className='flex flex-col gap-2'>
 							<h3 className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-								Removed Clan Data
+								{t('removedTitle')}
 							</h3>
 							{removedClanEntries ? (
-								<EditorTable label='Removed clan data'>
+								<EditorTable label={t('removedTableLabel')}>
 									<EditorTableHead>
 										<tr>
-											<EditorTableHeaderCell>Field</EditorTableHeaderCell>
-											<EditorTableHeaderCell>Removed value</EditorTableHeaderCell>
+											<EditorTableHeaderCell>{tTable('field')}</EditorTableHeaderCell>
+											<EditorTableHeaderCell>{tTable('removedValue')}</EditorTableHeaderCell>
 										</tr>
 									</EditorTableHead>
 									<EditorTableBody>
 										{removedClanEntries.map((entry) => (
-											<EditorTableRow key={entry.label}>
-												<EditorTableCell className='text-(--color-fg)'>{entry.label}</EditorTableCell>
+											<EditorTableRow key={entry.field.path.join('.')}>
+												<EditorTableCell className='text-(--color-fg)'>
+													{getFieldLabel(entry.field)}
+												</EditorTableCell>
 												<EditorTableCell className='wrap-break-word text-(--color-fg-dim)'>
 													{entry.value}
 												</EditorTableCell>
@@ -205,9 +231,7 @@ export const RemoveClanDataEditor = () => {
 									</EditorTableBody>
 								</EditorTable>
 							) : (
-								<p className='text-[13px] leading-6 text-(--color-fg-secondary)'>
-									Remove clan data from a loaded save to see the stripped values here.
-								</p>
+								<p className='text-[13px] leading-6 text-(--color-fg-secondary)'>{t('emptyState')}</p>
 							)}
 						</div>
 					</div>

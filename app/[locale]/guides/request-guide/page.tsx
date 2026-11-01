@@ -1,3 +1,5 @@
+import { getTranslations } from 'next-intl/server';
+
 import { FeedbackSection } from '@/components/editor/sections/FeedbackSection';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
 import { PageJsonLd } from '@/components/seo/PageJsonLd';
@@ -7,6 +9,7 @@ export const generateMetadata = pageMetadata('requestGuide');
 
 export default async function RequestGuidePage({ params }: LocaleParams) {
 	const locale = await initLocale(params);
+	const t = await getTranslations('editor.feedback.pages.requestGuide');
 
 	return (
 		<>
@@ -14,13 +17,13 @@ export default async function RequestGuidePage({ params }: LocaleParams) {
 			<Breadcrumb page='requestGuide' title='guides' />
 			<FeedbackSection
 				defaultOpen
-				description='Tell us the topic you are stuck on and what an ideal guide would cover.'
-				emptyMessageError='Describe the guide before sending your request.'
-				messageLabel='Your guide request'
-				messagePlaceholder='What topic should the guide cover, and where are you getting stuck?'
-				submitLabel='Send request'
-				successMessage='Guide request sent.'
-				title='Request a Guide'
+				description={t('description')}
+				emptyMessageError={t('emptyMessage')}
+				messageLabel={t('messageLabel')}
+				messagePlaceholder={t('messagePlaceholder')}
+				submitLabel={t('submit')}
+				successMessage={t('success')}
+				title={t('title')}
 				topic='guide-request'
 			/>
 		</>

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { RotateCcw } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
@@ -39,7 +40,24 @@ import { useSaveStore } from '@/lib/save-store';
 
 const plannerRowCount = 20;
 
+/** Outsider config ids to the keys their effects are translated under. */
+const outsiderKeys = {
+	1: 'xyliqil',
+	2: 'chorgorloth',
+	3: 'phandoryss',
+	5: 'ponyboy',
+	6: 'borb',
+	7: 'rhageist',
+	8: 'kariqua',
+	9: 'orphalas',
+	10: 'senakhan'
+} as const;
+
+const isOutsiderKeyId = (id: number): id is keyof typeof outsiderKeys => id in outsiderKeys;
+
 export const AncientsCalculator = () => {
+	const t = useTranslations('tools.ancients');
+	const tShared = useTranslations('tools.shared');
 	const saveData = useSaveStore((state) => state.saveData);
 	const [settings, setSettings] = useState<AncientsSettings>(defaultAncientsSettings);
 	const [heroSoulsOverride, setHeroSoulsOverride] = useState('');
@@ -64,6 +82,14 @@ export const AncientsCalculator = () => {
 	};
 
 	const availableSoulsLabel = calculation ? formatHeroSouls(calculation.heroSoulsAvailable) : '0';
+	const buildOptions = buildModeOptions.map((option) => ({
+		label: t(`buildModes.${option.value}`),
+		value: option.value
+	}));
+	const heroOptions = heroTierOptions.map((option) => ({
+		label: t(`heroTiers.${option.value}`),
+		value: option.value
+	}));
 
 	return (
 		<>
@@ -71,18 +97,18 @@ export const AncientsCalculator = () => {
 
 			<SaveDataPanel examples={examples} />
 
-			<StepTitle step={2} title='Settings' />
+			<StepTitle step={2} title={t('steps.settings')} />
 			<PanelSection>
 				<SectionCard
 					defaultOpen
-					description='Build, best hero, and the souls to distribute.'
-					title='Build'
+					description={t('build.description')}
+					title={t('build.title')}
 					actions={
 						<Button
-							aria-label='Reset defaults'
+							aria-label={tShared('resetDefaults')}
 							onClick={resetSettings}
 							size='sm'
-							title='Reset defaults'
+							title={tShared('resetDefaults')}
 							variant='ghost'
 						>
 							<RotateCcw aria-hidden='true' className='h-3.5 w-3.5' />
@@ -90,30 +116,22 @@ export const AncientsCalculator = () => {
 					}
 				>
 					<div className='grid gap-3'>
-						<SettingRow
-							description='Assumes you own Siyalatas for idle and hybrid, and Fragsworth for active.'
-							label='Build'
-						>
+						<SettingRow description={t('settings.buildDescription')} label={t('settings.buildLabel')}>
 							<Dropdown
-								aria-label='Build'
+								aria-label={t('settings.buildLabel')}
 								onChange={(event) => updateSetting('buildMode', event.target.value as BuildMode)}
-								options={buildModeOptions}
+								options={buildOptions}
 								value={settings.buildMode}
 							/>
 						</SettingRow>
 						{settings.buildMode === 'hybrid' ? (
 							<SettingRow
-								description='Fragsworth levels per Siyalatas level. 20 favours active heavily.'
-								help={
-									<p>
-										Hybrid builds are mostly used for timelapses at zones 50k - 250k and 1m+. Past that, idle
-										damage is negligible next to active, so a high ratio is usually better.
-									</p>
-								}
-								label='Fragsworth / Siyalatas ratio'
+								description={t('settings.ratioDescription')}
+								help={<p>{t('settings.ratioHelp')}</p>}
+								label={t('settings.ratioLabel')}
 							>
 								<NumberInput
-									ariaLabel='Fragsworth to Siyalatas ratio'
+									ariaLabel={t('settings.ratioAriaLabel')}
 									compact
 									onCommit={(value) => updateSetting('hybridRatio', clamp(value, 0.05, 100))}
 									selectOnFocus
@@ -121,23 +139,20 @@ export const AncientsCalculator = () => {
 								/>
 							</SettingRow>
 						) : null}
-						<SettingRow
-							description='Damage-to-gold ratios differ per hero, which shifts how far the gold ancients are levelled.'
-							label='Best hero this transcension'
-						>
+						<SettingRow description={t('settings.heroTierDescription')} label={t('settings.heroTierLabel')}>
 							<Dropdown
-								aria-label='Best hero this transcension'
+								aria-label={t('settings.heroTierLabel')}
 								onChange={(event) => updateSetting('heroTier', event.target.value as HeroTier)}
-								options={heroTierOptions}
+								options={heroOptions}
 								value={settings.heroTier}
 							/>
 						</SettingRow>
 						<SettingRow
-							description={`Leave empty to use the save (${availableSoulsLabel} HS).`}
-							label='Hero souls to spend'
+							description={t('settings.heroSoulsDescription', { souls: availableSoulsLabel })}
+							label={t('settings.heroSoulsLabel')}
 						>
 							<TextInput
-								ariaLabel='Hero souls to spend'
+								ariaLabel={t('settings.heroSoulsLabel')}
 								onCommit={setHeroSoulsOverride}
 								placeholder={availableSoulsLabel}
 								selectOnFocus
@@ -145,11 +160,11 @@ export const AncientsCalculator = () => {
 							/>
 						</SettingRow>
 						<SettingRow
-							description='Adds the souls your next ascension would hand over to the pool.'
-							label='Include souls gained after ascension'
+							description={t('settings.includeAscensionSoulsDescription')}
+							label={t('settings.includeAscensionSoulsLabel')}
 						>
 							<Checkbox
-								ariaLabel='Include souls gained after ascension'
+								ariaLabel={t('settings.includeAscensionSoulsLabel')}
 								checked={settings.includeSoulsAfterAscension}
 								onCheckedChange={(checked) => updateSetting('includeSoulsAfterAscension', checked)}
 							/>
@@ -157,17 +172,11 @@ export const AncientsCalculator = () => {
 					</div>
 				</SectionCard>
 
-				<SectionCard
-					description='Auxiliary ancients, reserved souls, and solver precision.'
-					title='Advanced configuration'
-				>
+				<SectionCard description={t('advanced.description')} title={t('advanced.title')}>
 					<div className='grid gap-3'>
-						<SettingRow
-							description='0 = never level it, 1 = level it as hard as the rules allow.'
-							label='Level Revolc'
-						>
+						<SettingRow description={t('advanced.revolcDescription')} label={t('advanced.revolcLabel')}>
 							<NumberInput
-								ariaLabel='Revolc level rate'
+								ariaLabel={t('advanced.revolcAriaLabel')}
 								compact
 								onCommit={(value) => updateSetting('revolcRate', clamp(value, 0, 1))}
 								selectOnFocus
@@ -175,24 +184,21 @@ export const AncientsCalculator = () => {
 							/>
 						</SettingRow>
 						<SettingRow
-							description='Same scale, applied to Vaagur and the skill duration ancients.'
-							label='Level skill ancients'
+							description={t('advanced.skillAncientsDescription')}
+							label={t('advanced.skillAncientsLabel')}
 						>
 							<NumberInput
-								ariaLabel='Skill ancients level rate'
+								ariaLabel={t('advanced.skillAncientsAriaLabel')}
 								compact
 								onCommit={(value) => updateSetting('skillAncientsRate', clamp(value, 0, 1))}
 								selectOnFocus
 								value={settings.skillAncientsRate}
 							/>
 						</SettingRow>
-						<SettingRow
-							description='Significant digits the solver converges to. Low is quicker, high is more accurate.'
-							label='Calculator precision'
-						>
+						<SettingRow description={t('advanced.precisionDescription')} label={t('advanced.precisionLabel')}>
 							<NumberInput
 								allowDecimal={false}
-								ariaLabel='Calculator precision'
+								ariaLabel={t('advanced.precisionLabel')}
 								compact
 								onCommit={(value) => updateSetting('precision', clamp(value, 4, 35))}
 								selectOnFocus
@@ -202,23 +208,23 @@ export const AncientsCalculator = () => {
 						<SettingRow
 							description={
 								snapshot
-									? `Holds back 80 HS per gild, and you have ${formatHeroSouls(snapshot.gilds)}.`
-									: 'Holds back 80 hero souls per gild.'
+									? t('advanced.regildingDescription', { gilds: formatHeroSouls(snapshot.gilds) })
+									: t('advanced.regildingDescriptionEmpty')
 							}
-							label='Reserve hero souls for regilding'
+							label={t('advanced.regildingLabel')}
 						>
 							<Checkbox
-								ariaLabel='Reserve hero souls for regilding'
+								ariaLabel={t('advanced.regildingLabel')}
 								checked={settings.keepSoulsForRegilding}
 								onCheckedChange={(checked) => updateSetting('keepSoulsForRegilding', checked)}
 							/>
 						</SettingRow>
 						<SettingRow
-							description='Skips any ancient whose in-game card you have collapsed.'
-							label='Ignore ancients minimized in-game'
+							description={t('advanced.ignoreMinimizedDescription')}
+							label={t('advanced.ignoreMinimizedLabel')}
 						>
 							<Checkbox
-								ariaLabel='Ignore ancients minimized in-game'
+								ariaLabel={t('advanced.ignoreMinimizedLabel')}
 								checked={settings.ignoreMinimizedAncients}
 								onCheckedChange={(checked) => updateSetting('ignoreMinimizedAncients', checked)}
 							/>
@@ -227,36 +233,38 @@ export const AncientsCalculator = () => {
 				</SectionCard>
 			</PanelSection>
 
-			<StepTitle step={3} title='Ancient levels' />
+			<StepTitle step={3} title={t('steps.ancientLevels')} />
 			<PanelSection>
 				<div className='grid gap-4 p-4'>
 					<div className='grid gap-3 sm:grid-cols-3'>
 						<SummaryStat
-							label='Souls to spend'
+							label={t('summary.soulsToSpend')}
 							value={calculation ? formatHeroSouls(calculation.heroSoulsForLeveling) : '-'}
 						/>
 						<SummaryStat
-							label='Souls spent'
+							label={t('summary.soulsSpent')}
 							value={calculation ? formatHeroSouls(calculation.heroSoulsSpent) : '-'}
 						/>
 						<SummaryStat
-							label='Souls left over'
+							label={t('summary.soulsLeftOver')}
 							value={calculation ? formatHeroSouls(calculation.heroSoulsRemaining.floor()) : '-'}
 						/>
 					</div>
 
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='Recommended ancient levels'
+						label={t('goalsTable.label')}
 						tableClassName='w-full'
 					>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell>Ancient</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Current</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Goal</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Change</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Cost (HS)</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{t('goalsTable.ancient')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>
+									{t('goalsTable.current')}
+								</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>{t('goalsTable.goal')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>{t('goalsTable.change')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>{t('goalsTable.cost')}</EditorTableHeaderCell>
 							</tr>
 						</EditorTableHead>
 						<EditorTableBody>
@@ -264,9 +272,7 @@ export const AncientsCalculator = () => {
 								calculation.rows.map((row) => <AncientGoalRow key={row.key} row={row} />)
 							) : (
 								<EmptyTableRow columns={5}>
-									{snapshot
-										? 'No owned ancients found in this save.'
-										: 'Load a save to see recommended ancient levels.'}
+									{snapshot ? t('goalsTable.noAncients') : t('goalsTable.empty')}
 								</EmptyTableRow>
 							)}
 						</EditorTableBody>
@@ -274,63 +280,72 @@ export const AncientsCalculator = () => {
 
 					{calculation?.soulBankLevel ? (
 						<p className='text-[12px] text-(--color-fg-muted)'>
-							Soul bank: keep {formatHeroSouls(calculation.soulBankLevel)} HS unspent. You do not own
-							Morgulis, so leftover souls are worth more banked than invested.
+							{t('soulBank', { souls: formatHeroSouls(calculation.soulBankLevel) })}
 						</p>
 					) : null}
 
 					{calculation ? (
 						<p className='text-[12px] text-(--color-fg-dim)'>
-							Tuned against {calculation.tuningAncientName}, calculated in{' '}
-							{(calculation.durationMs / 1000).toFixed(2)}s.
+							{t('tunedAgainst', {
+								ancient: calculation.tuningAncientName,
+								seconds: (calculation.durationMs / 1000).toFixed(2)
+							})}
 						</p>
 					) : null}
 				</div>
 			</PanelSection>
 
-			<StepTitle step={4} title='Transcension details' />
+			<StepTitle step={4} title={t('steps.transcensionDetails')} />
 			<PanelSection>
-				<SectionCard defaultOpen description='Values read from your save.' title='Stats'>
-					<EditorTable className='border-(--color-line-subtle)' label='Save stats' tableClassName='w-full'>
+				<SectionCard defaultOpen description={t('stats.description')} title={t('stats.title')}>
+					<EditorTable
+						className='border-(--color-line-subtle)'
+						label={t('stats.label')}
+						tableClassName='w-full'
+					>
 						<EditorTableBody>
 							<StatRow
-								label='Transcendent Power'
+								label={t('stats.transcendentPower')}
 								value={calculation ? `${calculation.transcendentPower.toFixed(2)}%` : '-'}
 							/>
 							<StatRow
-								label='Highest Zone Reached'
+								label={t('stats.highestZone')}
 								value={snapshot ? formatHeroSouls(snapshot.ascensionZone) : '-'}
 							/>
 							<StatRow
-								label='Ancient Souls Total'
+								label={t('stats.ancientSoulsTotal')}
 								value={snapshot ? formatHeroSouls(snapshot.ancientSoulsTotal) : '-'}
 							/>
-							<StatRow label='Gilds' value={snapshot ? formatHeroSouls(snapshot.gilds) : '-'} />
+							<StatRow label={t('stats.gilds')} value={snapshot ? formatHeroSouls(snapshot.gilds) : '-'} />
 							<StatRow
-								label='Souls gained after ascension'
+								label={t('stats.ascensionSouls')}
 								value={snapshot ? formatHeroSouls(snapshot.ascensionSouls) : '-'}
 							/>
 						</EditorTableBody>
 					</EditorTable>
 				</SectionCard>
 
-				<SectionCard description='Current outsider levels.' title='Outsiders'>
+				<SectionCard description={t('outsiders.description')} title={t('outsiders.title')}>
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='Outsider levels'
+						label={t('outsiders.label')}
 						tableClassName='w-full'
 					>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell className='w-18'>Image</EditorTableHeaderCell>
-								<EditorTableHeaderCell>Outsider</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Level</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='w-18'>{t('outsiders.image')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{t('outsiders.outsider')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>{t('outsiders.level')}</EditorTableHeaderCell>
 							</tr>
 						</EditorTableHead>
 						<EditorTableBody>
 							{outsiderFields.map((outsider) => (
 								<OutsiderLevelRow
-									description={outsider.description}
+									description={
+										isOutsiderKeyId(outsider.id)
+											? t(`outsiderEffects.${outsiderKeys[outsider.id]}`)
+											: outsider.description
+									}
 									imageSrc={outsider.imageSrc}
 									key={outsider.id}
 									level={snapshot ? formatHeroSouls(snapshot.outsiderLevels[outsider.id]) : '-'}
@@ -341,22 +356,17 @@ export const AncientsCalculator = () => {
 					</EditorTable>
 				</SectionCard>
 
-				<SectionCard
-					description='Hero souls to sacrifice for your next ancient souls.'
-					title='Ancient soul planner'
-				>
+				<SectionCard description={t('planner.description')} title={t('planner.title')}>
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='Ancient soul planner'
+						label={t('planner.title')}
 						tableClassName='w-full'
 					>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell>Gain</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>
-									By sacrificing a total of
-								</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Change</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{t('planner.gain')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>{t('planner.required')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>{t('planner.change')}</EditorTableHeaderCell>
 							</tr>
 						</EditorTableHead>
 						<EditorTableBody>
@@ -370,7 +380,7 @@ export const AncientsCalculator = () => {
 									/>
 								))
 							) : (
-								<EmptyTableRow columns={3}>Load a save to plan your next ancient souls.</EmptyTableRow>
+								<EmptyTableRow columns={3}>{t('planner.empty')}</EmptyTableRow>
 							)}
 						</EditorTableBody>
 					</EditorTable>

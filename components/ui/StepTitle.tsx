@@ -29,8 +29,8 @@ const StepPill = ({ number }: StepPillProps) => {
 	const t = useTranslations('common.ui');
 
 	return (
-	<span className='inline-flex h-6 shrink-0 items-center justify-center rounded-full border border-(--color-primary-line) bg-(--color-primary-soft) px-2 text-[10px] font-bold tracking-[0.08em] text-(--color-primary)'>
-		{t('step', { number })}
-	</span>
+		<span className='inline-flex h-6 shrink-0 items-center justify-center rounded-full border border-(--color-primary-line) bg-(--color-primary-soft) px-2 text-[10px] font-bold tracking-[0.08em] text-(--color-primary)'>
+			{t('step', { number })}
+		</span>
 	);
 };

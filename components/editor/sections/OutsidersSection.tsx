@@ -2,8 +2,10 @@
 
 import type { LucideIcon } from 'lucide-react';
 import { useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
+import { useEditorText } from '@/components/editor/useEditorText';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
 import {
@@ -30,11 +32,10 @@ type Props = {
  *  exponential notation at the same threshold the section always used. */
 const OUTSIDER_EXPONENTIAL_ABOVE = 100_000;
 
-export const OutsidersSection = ({
-	defaultOpen,
-	icon,
-	title = 'Outsiders and Ancient Souls'
-}: Props) => {
+export const OutsidersSection = ({ defaultOpen, icon, title }: Props) => {
+	const t = useTranslations('editor.outsiders');
+	const tTable = useTranslations('editor.table');
+	const { fieldLabel, resolve } = useEditorText();
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 	const outsiderRows = useMemo(
@@ -57,26 +58,24 @@ export const OutsidersSection = ({
 	return (
 		<CollapsiblePanel
 			defaultOpen={defaultOpen}
-			description='Edit ancient soul values and the outsider levels that shape long-run progression.'
+			description={t('description')}
 			icon={icon}
-			title={title}
+			title={title ?? t('title')}
 		>
 			<div className='space-y-6'>
 				<div>
 					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-						Ancient soul totals
+						{t('soulTotals')}
 					</p>
-					<EditorTable label='Ancient soul totals'>
+					<EditorTable label={t('soulTotals')}>
 						<EditorTableBody>
 							{ancientSoulFields.map((field) => (
 								<EditorTableRow key={field.path.join('.')}>
-									<EditorTableCell className='text-(--color-fg)'>
-										{field.label}
-									</EditorTableCell>
+									<EditorTableCell className='text-(--color-fg)'>{fieldLabel(field)}</EditorTableCell>
 									<EditorTableCell className='min-w-55'>
 										<BoundFieldControl
 											kind={field.kind}
-											label={field.label}
+											label={fieldLabel(field)}
 											path={field.path}
 											selectOnFocus
 										/>
@@ -87,14 +86,14 @@ export const OutsidersSection = ({
 					</EditorTable>
 				</div>
 
-				<EditorTable label='Outsiders'>
+				<EditorTable label={t('tableLabel')}>
 					<EditorTableHead>
 						<tr>
-							<EditorTableHeaderCell>Image</EditorTableHeaderCell>
-							<EditorTableHeaderCell>Description</EditorTableHeaderCell>
-							<EditorTableHeaderCell>Level</EditorTableHeaderCell>
-							<EditorTableHeaderCell>Cost</EditorTableHeaderCell>
-							<EditorTableHeaderCell>Spent</EditorTableHeaderCell>
+							<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
+							<EditorTableHeaderCell>{tTable('description')}</EditorTableHeaderCell>
+							<EditorTableHeaderCell>{tTable('level')}</EditorTableHeaderCell>
+							<EditorTableHeaderCell>{tTable('cost')}</EditorTableHeaderCell>
+							<EditorTableHeaderCell>{tTable('spent')}</EditorTableHeaderCell>
 						</tr>
 					</EditorTableHead>
 					<EditorTableBody>
@@ -113,22 +112,19 @@ export const OutsidersSection = ({
 									<p className='mt-1 leading-6 text-(--color-fg-secondary)'>
 										{field.bonusLabel}
 										{formatLargeNumber(stats.primary, OUTSIDER_EXPONENTIAL_ABOVE)}%{' '}
-										{field.description}
+										{resolve({ key: `outsiders.bonus.${field.id}`, text: field.description })}
 									</p>
 									{field.capDescription && stats.secondary !== undefined ? (
 										<p className='mt-1 leading-6 text-(--color-fg-secondary)'>
 											{field.capLabel}
-											{formatLargeNumber(
-												stats.secondary,
-												OUTSIDER_EXPONENTIAL_ABOVE
-											)}{' '}
-											{field.capDescription}
+											{formatLargeNumber(stats.secondary, OUTSIDER_EXPONENTIAL_ABOVE)}{' '}
+											{resolve({ key: `outsiders.cap.${field.id}`, text: field.capDescription })}
 										</p>
 									) : null}
 								</EditorTableCell>
 								<EditorTableCell className='min-w-40 align-top'>
 									<NumberInput
-										ariaLabel={`${field.name} level`}
+										ariaLabel={t('levelAria', { name: field.name })}
 										disabled={!saveData}
 										onCommit={(value) => updateValue(field.levelPath, value)}
 										selectOnFocus
@@ -136,11 +132,11 @@ export const OutsidersSection = ({
 									/>
 								</EditorTableCell>
 								<EditorTableCell className='align-top text-(--color-fg)'>
-									{formatNumber(stats.spent)} AS
+									{t('cost', { amount: formatNumber(stats.spent) })}
 								</EditorTableCell>
 								<EditorTableCell className='min-w-40 align-top'>
 									<NumberInput
-										ariaLabel={`${field.name} ancient souls spent`}
+										ariaLabel={t('spentAria', { name: field.name })}
 										disabled={!saveData}
 										onCommit={(value) => updateValue(field.spentPath, value)}
 										selectOnFocus

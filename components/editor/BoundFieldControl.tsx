@@ -63,9 +63,7 @@ export const BoundFieldControl = ({
 					className='sm:min-w-56'
 					disabled={isDisabled}
 					onChange={(event) => {
-						const selectedOption = options?.find(
-							(option) => String(option.value) === event.target.value
-						);
+						const selectedOption = options?.find((option) => String(option.value) === event.target.value);
 
 						if (selectedOption) {
 							updateValue(path, selectedOption.value);

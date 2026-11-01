@@ -2,12 +2,14 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 
-import { Link, usePathname } from '@/i18n/navigation';
-import { routing } from '@/i18n/routing';
+import { usePathname } from '@/i18n/navigation';
+import { localizedPath, routing } from '@/i18n/routing';
 
 /**
  * Links to the current page in every other language. Plain links rather than a
- * select, so crawlers also follow them between the language versions.
+ * select, so crawlers also follow them between the language versions. The href
+ * is built here rather than by next-intl's `Link`, which prefixes the default
+ * locale (`/en/...`) and so would point crawlers at a redirect.
  */
 export const LocaleSwitcher = () => {
 	const t = useTranslations('common');
@@ -23,16 +25,15 @@ export const LocaleSwitcher = () => {
 						{t(`localeNames.${option}`)}
 					</span>
 				) : (
-					<Link
+					<a
 						className='inline-block py-1 transition-colors hover:text-fg-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'
-						href={pathname}
+						href={localizedPath(pathname, option)}
 						hrefLang={option}
 						key={option}
 						lang={option}
-						locale={option}
 					>
 						{t(`localeNames.${option}`)}
-					</Link>
+					</a>
 				)
 			)}
 		</p>

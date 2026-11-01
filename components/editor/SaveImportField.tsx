@@ -2,7 +2,7 @@
 
 import type { ChangeEvent } from 'react';
 import { useRef, useState } from 'react';
-
+import { useTranslations } from 'next-intl';
 
 import { ExampleSaveButtons } from '@/components/editor/ExampleSaveButtons';
 import { CopyButton } from '@/components/ui/CopyButton';
@@ -50,7 +50,10 @@ const MAX_SAVE_FILE_BYTES = 4 * 1024 * 1024;
 export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, onLoad }: Props) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { showToast } = useToast();
-	const [selectedFileName, setSelectedFileName] = useState('No file selected');
+	const t = useTranslations('editor');
+	const tCommon = useTranslations('common.ui');
+	// `null` until a file or example is picked, so the placeholder follows the locale.
+	const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
 	const [decodeValue, setDecodeValue] = useState('');
 
 	const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -65,7 +68,7 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 		input.value = '';
 
 		if (file.size > MAX_SAVE_FILE_BYTES) {
-			showToast('That file is too large to be a Clicker Heroes save.');
+			showToast(t('importField.fileTooLarge'));
 			return;
 		}
 
@@ -74,7 +77,7 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 		try {
 			text = await file.text();
 		} catch {
-			showToast('That file could not be read. Try choosing it again.');
+			showToast(t('importField.fileUnreadable'));
 			return;
 		}
 
@@ -90,14 +93,14 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 					<FileUpIcon aria-hidden='true' className='h-4.5 w-4.5' />
 				</span>
 				<Pill className='ml-auto' isShining={isActiveStep}>
-					Step 1
+					{tCommon('step', { number: 1 })}
 				</Pill>
 			</span>
-			<CardTitle title='Import save data' />
+			<CardTitle title={t('importField.title')} />
 
 			<div className='flex flex-col gap-2.5'>
 				<input
-					aria-label='Choose save file'
+					aria-label={t('importField.chooseFile')}
 					className='hidden'
 					id={fileInputId}
 					name='saveFile'
@@ -110,15 +113,17 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 				<div className='flex flex-wrap items-center gap-2'>
 					<button
 						className='gap-1.5 whitespace-nowrap rounded-full
-						shadow-card px-2.5 py-1.5 font-medium text-fg-dim transition-[background-color] duration-200 hover:bg-(--color-bg-subtle-hover) dark:border-(--color-border-dark) dark:bg-(--color-bg-subtle-dark) dark:text-(--color-fg-dim-dark) dark:hover:bg-(--color-bg-subtle-hover-dark) flex items-center'
+						shadow-card px-2.5 py-1.5 font-medium text-fg-dim transition-[background-color] duration-200 hover:bg-(--color-surface-hover) flex items-center'
 						onClick={() => inputRef.current?.click()}
 					>
 						<MonitorUpIcon className='w-3.5 h-3.5 mt-0.5' />
-						<span className='font-aeonik text-sm'>Upload File</span>
+						<span className='font-aeonik text-sm'>{t('importField.uploadFile')}</span>
 					</button>
-					<p className='max-w-full truncate text-[11px] text-(--color-fg-dim)'>{selectedFileName}</p>
+					<p className='max-w-full truncate text-[11px] text-(--color-fg-dim)'>
+						{selectedFileName ?? t('importField.noFileSelected')}
+					</p>
 				</div>
-				<FieldDivider label='or paste below' />
+				<FieldDivider label={t('importField.orPaste')} />
 				<div
 					className='flex min-w-0 items-start gap-2'
 					onPaste={(event) => {
@@ -129,32 +134,32 @@ export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, o
 					}}
 				>
 					<TextInput
-						ariaLabel='Encoded save data to import'
+						ariaLabel={t('importField.ariaLabel')}
 						className='min-h-33'
 						multiline
 						onValueChange={setDecodeValue}
-						placeholder='Paste your encoded save data here...'
+						placeholder={t('importField.placeholder')}
 						resizable
 						value={decodeValue}
 					/>
 					<CopyButton
 						className='min-w-10 px-0'
-						idleLabel='Copy'
-						onCopied={() => showToast('Text copied.')}
-						onCopyFailed={() => showToast('Copying is not available in this browser.')}
+						idleLabel={tCommon('copy')}
+						onCopied={() => showToast(t('clipboard.copied'))}
+						onCopyFailed={() => showToast(t('clipboard.unavailable'))}
 						text={decodeValue}
 					/>
 				</div>
 				<ExampleSaveButtons
 					customExamples={examples}
 					onSelect={(save) => {
-						setSelectedFileName('Example save');
+						setSelectedFileName(t('importField.exampleSave'));
 						setDecodeValue(save);
 						onLoad({ value: save, source: 'example', isSubmit: false });
 					}}
 				/>
 				<SaveDataButton
-					title='Load Save Data'
+					title={t('importField.loadAction')}
 					onClick={() => onLoad({ value: decodeValue, source: 'paste', isSubmit: true })}
 				/>
 			</div>

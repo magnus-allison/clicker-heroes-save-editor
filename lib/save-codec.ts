@@ -17,7 +17,8 @@ export type DecodeResult = {
 	format: SaveEncodingFormat;
 };
 
-export type SaveDecodeErrorCode = 'empty' | 'unsupported' | 'invalidBase64' | 'decompressFailed' | 'notObject';
+export type SaveDecodeErrorCode =
+	'empty' | 'unsupported' | 'invalidBase64' | 'decompressFailed' | 'notObject';
 
 /**
  * A decode failure the user can act on. `message` stays in English (tests and

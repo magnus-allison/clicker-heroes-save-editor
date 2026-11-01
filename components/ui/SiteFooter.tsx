@@ -18,7 +18,9 @@ export const SiteFooter: FC = () => {
 	const t = useTranslations('common');
 	const links = [
 		...tools.filter(isListed).map((tool) => ({ href: tool.href, title: t(`cards.tools.${tool.key}.title`) })),
-		...guides.filter(isListed).map((guide) => ({ href: guide.href, title: t(`cards.guides.${guide.key}.title`) })),
+		...guides
+			.filter(isListed)
+			.map((guide) => ({ href: guide.href, title: t(`cards.guides.${guide.key}.title`) })),
 		{ href: '/faq', title: t('pages.faq') }
 	];
 

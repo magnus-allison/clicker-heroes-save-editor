@@ -1,9 +1,11 @@
 'use client';
 
 import { useMemo, type ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
+import { useDurationUnits } from '@/components/tools/use-duration-units';
 import {
 	EditorTable,
 	EditorTableBody,
@@ -17,7 +19,13 @@ import { StepTitle } from '@/components/ui/StepTitle';
 import { cn } from 'cn';
 import { mercenarySummaryFields } from '@/lib/data/editor-config';
 import { mercenaryExamples } from '@/lib/data/example-saves';
-import { formatDecimal, formatDurationSeconds, formatNumber, toFiniteNumber } from '@/lib/format';
+import {
+	formatDecimal,
+	formatDurationSeconds,
+	formatNumber,
+	toFiniteNumber,
+	type DurationUnits
+} from '@/lib/format';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath, type PathSegment } from '@/lib/save-utils';
 
@@ -29,7 +37,28 @@ type MercenaryEntry = {
 	data: MercenaryRecord;
 };
 
+/** Summary counters, each translated under `tools.mercenary.summary`. */
+const summaryKeys = [
+	'mercenaryCount',
+	'highestMercenaryLevelEver',
+	'totalMercenariesRevived',
+	'totalMercenariesBuried',
+	'total5MinuteQuests',
+	'heroSoulQuestsCompleted',
+	'goldQuestsCompleted',
+	'rubyQuestsCompleted',
+	'relicQuestsCompleted',
+	'skillQuestsCompleted'
+] as const;
+
+type SummaryKey = (typeof summaryKeys)[number];
+
+const isSummaryKey = (value: unknown): value is SummaryKey =>
+	typeof value === 'string' && (summaryKeys as readonly string[]).includes(value);
+
 type SummaryField = {
+	/** Message key; `label` is the English fallback for a field without one. */
+	key: SummaryKey | null;
 	label: string;
 	path: PathSegment[];
 };
@@ -43,13 +72,20 @@ const EMPTY_VALUE = '—';
  * quest totals the editor already knows about.
  */
 const rosterFields: SummaryField[] = [
-	{ label: 'Mercenary Count', path: ['mercenaryCount'] },
-	{ label: 'Highest Mercenary Level Ever', path: ['highestMercenaryLevelEver'] }
+	{ key: 'mercenaryCount', label: 'Mercenary Count', path: ['mercenaryCount'] },
+	{
+		key: 'highestMercenaryLevelEver',
+		label: 'Highest Mercenary Level Ever',
+		path: ['highestMercenaryLevelEver']
+	}
 ];
 
 const summaryFields: SummaryField[] = [
 	...rosterFields,
-	...mercenarySummaryFields.map((field) => ({ label: field.label, path: field.path }))
+	...mercenarySummaryFields.map((field) => {
+		const lastSegment = field.path.at(-1);
+		return { key: isSummaryKey(lastSegment) ? lastSegment : null, label: field.label, path: field.path };
+	})
 ];
 
 const isRecord = (value: unknown): value is MercenaryRecord =>
@@ -93,9 +129,9 @@ const formatName = (value: unknown) => {
 	return name || EMPTY_VALUE;
 };
 
-const formatDuration = (value: unknown) => {
+const formatDuration = (value: unknown, units: DurationUnits) => {
 	const seconds = toFiniteNumber(value);
-	return seconds === null ? EMPTY_VALUE : formatDurationSeconds(seconds);
+	return seconds === null ? EMPTY_VALUE : formatDurationSeconds(seconds, units);
 };
 
 /** Save fields such as experience and success chance are 0–1 fractions. */
@@ -104,58 +140,61 @@ const formatFraction = (value: unknown) => {
 	return fraction === null ? EMPTY_VALUE : `${formatDecimal(fraction * 100)}%`;
 };
 
+type RosterColumnKey =
+	'slot' | 'name' | 'level' | 'experience' | 'timeToDie' | 'bonusLives' | 'lastQuest' | 'successChance';
+
 type RosterColumn = {
-	/** Doubles as the React key, so it must be unique within the table. */
-	label: string;
+	/** React key, and the column's heading under `tools.mercenary.columns`. */
+	key: RosterColumnKey;
 	widthClassName: string;
 	align?: 'left' | 'right';
 	cellClassName?: string;
 	render: (entry: MercenaryEntry) => ReactNode;
 };
 
-const rosterColumns: readonly RosterColumn[] = [
+const buildRosterColumns = (units: DurationUnits): readonly RosterColumn[] => [
 	{
-		label: 'Slot',
+		key: 'slot',
 		widthClassName: 'w-16',
 		cellClassName: 'font-mono text-(--color-fg)',
 		render: (entry) => entry.index + 1
 	},
 	{
-		label: 'Name',
+		key: 'name',
 		widthClassName: 'w-44',
 		cellClassName: 'text-(--color-fg)',
 		render: (entry) => formatName(entry.data.name)
 	},
 	{
-		label: 'Level',
+		key: 'level',
 		widthClassName: 'w-24',
 		align: 'right',
 		render: (entry) => formatCount(entry.data.level)
 	},
 	{
-		label: 'Experience',
+		key: 'experience',
 		widthClassName: 'w-28',
 		align: 'right',
 		render: (entry) => formatFraction(entry.data.experience)
 	},
 	{
-		label: 'Time to Die',
+		key: 'timeToDie',
 		widthClassName: 'w-32',
-		render: (entry) => formatDuration(entry.data.timeToDie)
+		render: (entry) => formatDuration(entry.data.timeToDie, units)
 	},
 	{
-		label: 'Bonus Lives',
+		key: 'bonusLives',
 		widthClassName: 'w-28',
 		align: 'right',
 		render: (entry) => formatCount(entry.data.bonusLives)
 	},
 	{
-		label: 'Last Quest',
+		key: 'lastQuest',
 		widthClassName: 'w-32',
-		render: (entry) => formatDuration(entry.data.lastQuestDuration)
+		render: (entry) => formatDuration(entry.data.lastQuestDuration, units)
 	},
 	{
-		label: 'Success Chance',
+		key: 'successChance',
 		widthClassName: 'w-32',
 		align: 'right',
 		render: (entry) => formatFraction(entry.data.lastQuestSuccessChance)
@@ -163,6 +202,8 @@ const rosterColumns: readonly RosterColumn[] = [
 ];
 
 export const MercenaryViewer = () => {
+	const t = useTranslations('tools.mercenary');
+	const rosterColumns = buildRosterColumns(useDurationUnits());
 	const saveData = useSaveStore((state) => state.saveData);
 	const mercenaries = useMemo(
 		() => toMercenaryEntries(getValueAtPath(saveData, ['mercenaries', 'mercenaries'])),
@@ -175,17 +216,17 @@ export const MercenaryViewer = () => {
 
 			<SaveDataPanel examples={mercenaryExamples} />
 
-			<StepTitle step={2} title='Mercenary Roster' />
+			<StepTitle step={2} title={t('steps.roster')} />
 			<PanelSection>
 				<div className='grid gap-4 p-4'>
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='Mercenary roster'
+						label={t('rosterLabel')}
 						tableClassName='w-full table-fixed'
 					>
 						<colgroup>
 							{rosterColumns.map((column) => (
-								<col className={column.widthClassName} key={column.label} />
+								<col className={column.widthClassName} key={column.key} />
 							))}
 						</colgroup>
 						<EditorTableHead>
@@ -193,9 +234,9 @@ export const MercenaryViewer = () => {
 								{rosterColumns.map((column) => (
 									<EditorTableHeaderCell
 										className={column.align === 'right' ? 'text-right' : undefined}
-										key={column.label}
+										key={column.key}
 									>
-										{column.label}
+										{t(`columns.${column.key}`)}
 									</EditorTableHeaderCell>
 								))}
 							</tr>
@@ -210,7 +251,7 @@ export const MercenaryViewer = () => {
 													column.align === 'right' && 'text-right tabular-nums',
 													column.cellClassName
 												)}
-												key={column.label}
+												key={column.key}
 											>
 												{column.render(entry)}
 											</EditorTableCell>
@@ -223,7 +264,7 @@ export const MercenaryViewer = () => {
 										className='py-6 text-center text-(--color-fg-muted)'
 										colSpan={rosterColumns.length}
 									>
-										Load a save with mercenaries to see the roster here.
+										{t('rosterEmpty')}
 									</EditorTableCell>
 								</EditorTableRow>
 							)}
@@ -232,12 +273,12 @@ export const MercenaryViewer = () => {
 				</div>
 			</PanelSection>
 
-			<StepTitle step={3} title='Mercenary Summary' />
+			<StepTitle step={3} title={t('steps.summary')} />
 			<PanelSection>
 				<div className='grid gap-4 p-4'>
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='Mercenary summary'
+						label={t('summaryLabel')}
 						tableClassName='w-full table-fixed'
 					>
 						<colgroup>
@@ -247,7 +288,9 @@ export const MercenaryViewer = () => {
 						<EditorTableBody>
 							{summaryFields.map((field) => (
 								<EditorTableRow key={field.path.join('.')}>
-									<EditorTableCell className='text-(--color-fg)'>{field.label}</EditorTableCell>
+									<EditorTableCell className='text-(--color-fg)'>
+										{field.key ? t(`summary.${field.key}`) : field.label}
+									</EditorTableCell>
 									<EditorTableCell className='text-right tabular-nums'>
 										{formatCount(getValueAtPath(saveData, field.path))}
 									</EditorTableCell>

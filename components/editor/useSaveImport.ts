@@ -1,9 +1,10 @@
 'use client';
 
 import { startTransition } from 'react';
-
+import { useTranslations } from 'next-intl';
 
 import type { SaveImportRequest } from '@/components/editor/SaveImportField';
+import { useEditorText } from '@/components/editor/useEditorText';
 import { useToast } from '@/components/ui/ToastProvider';
 import { decodeSaveString, type DecodeResult } from '@/lib/save-codec';
 import { useSaveStore } from '@/lib/save-store';
@@ -22,6 +23,8 @@ type Options = {
  */
 export const useSaveImport = ({ onDecoded, onFailed }: Options = {}) => {
 	const { showToast } = useToast();
+	const t = useTranslations('editor.import');
+	const { errorMessage } = useEditorText();
 	const loadSave = useSaveStore((state) => state.loadSave);
 
 	return (request: SaveImportRequest) => {
@@ -33,10 +36,10 @@ export const useSaveImport = ({ onDecoded, onFailed }: Options = {}) => {
 				loadSave(decoded.data);
 			});
 			onDecoded?.(decoded, request);
-			showToast('Save data loaded.');
+			showToast(t('loaded'));
 		} catch (error) {
 			onFailed?.(request);
-			showToast(error instanceof Error ? error.message : 'Failed to decode save data.');
+			showToast(errorMessage(error, t('failed')));
 		}
 	};
 };

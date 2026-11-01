@@ -1,6 +1,7 @@
 'use client';
 
 import type { LucideIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
@@ -23,15 +24,12 @@ type Props = {
 	title?: string;
 };
 
-function getGildedLabel(epicLevel: number) {
-	if (epicLevel <= 0) {
-		return '';
-	}
-
-	return `${epicLevel}x Gilded (+${epicLevel * 50}%)`;
-}
-
-export const HeroesSection = ({ defaultOpen, icon, title = 'Heroes' }: Props) => {
+export const HeroesSection = ({ defaultOpen, icon, title: titleProp }: Props) => {
+	const t = useTranslations('editor.heroes');
+	const tTable = useTranslations('editor.table');
+	const title = titleProp ?? t('title');
+	const getGildedLabel = (epicLevel: number) =>
+		epicLevel <= 0 ? '' : t('gilded', { count: epicLevel, percent: epicLevel * 50 });
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 	const heroCollection =
@@ -45,10 +43,10 @@ export const HeroesSection = ({ defaultOpen, icon, title = 'Heroes' }: Props) =>
 			<EditorTable label={title}>
 				<EditorTableHead>
 					<tr>
-						<EditorTableHeaderCell>Image</EditorTableHeaderCell>
-						<EditorTableHeaderCell>Hero</EditorTableHeaderCell>
-						<EditorTableHeaderCell>Level</EditorTableHeaderCell>
-						<EditorTableHeaderCell>Gilded Level</EditorTableHeaderCell>
+						<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
+						<EditorTableHeaderCell>{tTable('hero')}</EditorTableHeaderCell>
+						<EditorTableHeaderCell>{tTable('level')}</EditorTableHeaderCell>
+						<EditorTableHeaderCell>{tTable('gildedLevel')}</EditorTableHeaderCell>
 					</tr>
 				</EditorTableHead>
 				<EditorTableBody>
@@ -86,7 +84,7 @@ export const HeroesSection = ({ defaultOpen, icon, title = 'Heroes' }: Props) =>
 								</EditorTableCell>
 								<EditorTableCell className='min-w-45'>
 									<NumberInput
-										ariaLabel={`${hero.name} level`}
+										ariaLabel={t('levelAria', { name: hero.name })}
 										compact
 										disabled={!saveData}
 										onCommit={(value) =>
@@ -98,7 +96,7 @@ export const HeroesSection = ({ defaultOpen, icon, title = 'Heroes' }: Props) =>
 								</EditorTableCell>
 								<EditorTableCell className='min-w-45'>
 									<NumberInput
-										ariaLabel={`${hero.name} gilded level`}
+										ariaLabel={t('gildedLevelAria', { name: hero.name })}
 										compact
 										disabled={!saveData}
 										onCommit={(value) =>

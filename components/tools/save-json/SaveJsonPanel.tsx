@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-
+import { useTranslations } from 'next-intl';
 
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
@@ -15,6 +15,14 @@ import { useToast } from '@/components/ui/ToastProvider';
 import { encodeSaveData } from '@/lib/save-codec';
 import type { SaveData } from '@/lib/save-utils';
 
+/** Thrown when the JSON is valid but is not the object a save has to be. */
+class NotAnObjectError extends Error {
+	constructor() {
+		super('JSON must parse to an object.');
+		this.name = 'NotAnObjectError';
+	}
+}
+
 /**
  * Parses the JSON textarea into something `encodeSaveData` will accept. The
  * codec only ever gets a plain object, so arrays and primitives are rejected
@@ -24,13 +32,14 @@ const parseSaveJson = (value: string): SaveData => {
 	const parsed: unknown = JSON.parse(value);
 
 	if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
-		throw new Error('JSON must parse to an object.');
+		throw new NotAnObjectError();
 	}
 
 	return parsed as SaveData;
 };
 
 export const SaveJsonPanel = () => {
+	const t = useTranslations('tools.saveJson');
 	const { showToast } = useToast();
 	const [jsonValue, setJsonValue] = useState('');
 	const [encodeValue, setEncodeValue] = useState('');
@@ -54,24 +63,42 @@ export const SaveJsonPanel = () => {
 	// from this click — never from an effect watching the textarea.
 	const handleEncode = () => {
 		if (isJsonEmpty) {
-			showToast('Paste some JSON before converting.');
+			showToast(t('toasts.empty'));
 			return;
 		}
 
 		try {
 			setEncodeValue(encodeSaveData(parseSaveJson(jsonValue)));
-			showToast('JSON converted to save data.');
+			showToast(t('toasts.converted'));
 		} catch (error) {
-			showToast(error instanceof Error ? error.message : 'Failed to convert JSON to save data.');
+			if (error instanceof NotAnObjectError) {
+				showToast(t('toasts.notAnObject'));
+			} else {
+				// Parser and codec errors are technical detail, so they are
+				// passed through as the reason rather than translated.
+				showToast(
+					error instanceof Error
+						? t('toasts.convertFailedWithReason', { reason: error.message })
+						: t('toasts.convertFailed')
+				);
+			}
 		}
 	};
 
 	const handleFormat = () => {
 		try {
 			setJsonValue(JSON.stringify(parseSaveJson(jsonValue), null, 2));
-			showToast('JSON formatted.');
+			showToast(t('toasts.formatted'));
 		} catch (error) {
-			showToast(error instanceof Error ? error.message : 'That JSON could not be parsed.');
+			if (error instanceof NotAnObjectError) {
+				showToast(t('toasts.notAnObject'));
+			} else {
+				showToast(
+					error instanceof Error
+						? t('toasts.parseFailedWithReason', { reason: error.message })
+						: t('toasts.parseFailed')
+				);
+			}
 		}
 	};
 
@@ -80,47 +107,43 @@ export const SaveJsonPanel = () => {
 			<PanelSection className='grid lg:grid-cols-2 p-0'>
 				<SaveImportField fileInputId='save-json-file-input' isActiveStep={isJsonEmpty} onLoad={importSave} />
 				<SaveExportField
-					actionLabel='Convert JSON to Save'
-					ariaLabel='Encoded save data to export'
-					dataLabel='edited data'
+					actionLabel={t('export.action')}
+					ariaLabel={t('export.ariaLabel')}
+					dataLabel={t('export.dataLabel')}
 					isActiveStep={!isJsonEmpty && encodeValue.length === 0}
 					onAction={handleEncode}
 					onValueChange={setEncodeValue}
-					placeholder='Your encoded save data will appear here...'
-					title='Export Your Save Data'
+					placeholder={t('export.placeholder')}
+					title={t('export.title')}
 					value={encodeValue}
 				/>
 			</PanelSection>
 
-			<StepTitle step={2} title='Edit The Raw Save JSON' />
+			<StepTitle step={2} title={t('step')} />
 			<PanelSection>
 				<div className='flex flex-col gap-3 p-3 sm:p-4'>
-					<p className='text-[13px] leading-6 text-(--color-fg-secondary)'>
-						Importing a save decodes it into the JSON below. Edit any field by hand, then convert it back into
-						an encoded save string. Pasting JSON straight in works too — no save import needed.
-					</p>
+					<p className='text-[13px] leading-6 text-(--color-fg-secondary)'>{t('intro')}</p>
 					<div className='flex min-w-0 items-start gap-2'>
 						<TextInput
-							ariaLabel='Raw save JSON'
+							ariaLabel={t('jsonAriaLabel')}
 							className='min-h-96'
 							multiline
 							onValueChange={setJsonValue}
-							placeholder='Paste save JSON here, or import a save above...'
+							placeholder={t('jsonPlaceholder')}
 							resizable
 							rows={24}
 							value={jsonValue}
 						/>
 						<CopyButton
 							className='min-w-10 px-0'
-							idleLabel='Copy'
-							onCopied={() => showToast('JSON copied.')}
-							onCopyFailed={() => showToast('Copying is not available in this browser.')}
+							onCopied={() => showToast(t('toasts.copied'))}
+							onCopyFailed={() => showToast(t('toasts.copyFailed'))}
 							text={jsonValue}
 						/>
 					</div>
 					<div className='flex flex-wrap gap-2'>
 						<Button disabled={isJsonEmpty} onClick={handleFormat} variant='subtle'>
-							Format JSON
+							{t('format')}
 						</Button>
 					</div>
 				</div>

@@ -17,3 +17,10 @@ export const routing = defineRouting({
 });
 
 export type Locale = (typeof routing.locales)[number];
+
+/**
+ * The path a page lives at in a locale: the default locale unprefixed, others
+ * under `/<locale>`. Mirrors `localePrefix: 'as-needed'`.
+ */
+export const localizedPath = (path: string, locale: Locale) =>
+	locale === routing.defaultLocale ? path : `/${locale}${path === '/' ? '' : path}`;

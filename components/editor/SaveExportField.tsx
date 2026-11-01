@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-
+import { useTranslations } from 'next-intl';
 
 import { CopyButton } from '@/components/ui/CopyButton';
 import { FieldDivider } from '@/components/ui/FieldDivider';
@@ -56,11 +56,13 @@ export const SaveExportField = ({
 	value
 }: Props) => {
 	const { showToast } = useToast();
+	const t = useTranslations('editor');
+	const tCommon = useTranslations('common.ui');
 	const hasValue = value.trim().length > 0;
 
 	const handleDownload = () => {
 		if (!hasValue) {
-			showToast('Nothing to download yet — run the export first.');
+			showToast(t('exportField.nothingToDownload'));
 			return;
 		}
 
@@ -69,7 +71,7 @@ export const SaveExportField = ({
 		try {
 			url = URL.createObjectURL(new Blob([value], { type: 'text/plain;charset=utf-8' }));
 		} catch {
-			showToast('Downloading is not available in this browser.');
+			showToast(t('exportField.downloadUnavailable'));
 			return;
 		}
 
@@ -81,7 +83,6 @@ export const SaveExportField = ({
 		link.remove();
 		// The blob is only needed for the duration of the click.
 		URL.revokeObjectURL(url);
-
 	};
 
 	return (
@@ -92,27 +93,27 @@ export const SaveExportField = ({
 						<FileDownIcon aria-hidden='true' className='h-4.5 w-4.5' />
 					</span>
 					<Pill className='ml-auto' isShining={isActiveStep}>
-						Step 3
+						{tCommon('step', { number: 3 })}
 					</Pill>
 				</span>
-				<CardTitle title='Export save data' />
+				<CardTitle title={t('exportField.title')} />
 				<div className='flex flex-1 flex-col gap-2.5'>
 					<div className='flex flex-wrap items-center gap-2'>
 						<button
 							className='gap-1.5 whitespace-nowrap rounded-full
-						shadow-card px-2.5 py-1.5 font-medium text-fg-dim transition-[background-color] duration-200 hover:bg-(--color-bg-subtle-hover) disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent dark:border-(--color-border-dark) dark:bg-(--color-bg-subtle-dark) dark:text-(--color-fg-dim-dark) dark:hover:bg-(--color-bg-subtle-hover-dark) flex items-center'
+						shadow-card px-2.5 py-1.5 font-medium text-fg-dim transition-[background-color] duration-200 hover:bg-(--color-surface-hover) disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent flex items-center'
 							disabled={!hasValue}
 							onClick={handleDownload}
 							type='button'
 						>
 							<MonitorDownIcon className='w-3.5 h-3.5 mt-0.5' />
-							<span className='font-aeonik text-sm'>Download File</span>
+							<span className='font-aeonik text-sm'>{t('exportField.downloadFile')}</span>
 						</button>
 						<p className='max-w-full truncate text-[11px] text-(--color-fg-dim)'>
 							{hasValue ? fileName : '...'}
 						</p>
 					</div>
-					<FieldDivider label='or copy below' />
+					<FieldDivider label={t('exportField.orCopy')} />
 					<div className='flex min-w-0 items-start gap-2'>
 						<TextInput
 							ariaLabel={ariaLabel}
@@ -125,9 +126,9 @@ export const SaveExportField = ({
 						/>
 						<CopyButton
 							className='min-w-10 px-0'
-							idleLabel='Copy'
-							onCopied={() => showToast('Text copied.')}
-							onCopyFailed={() => showToast('Copying is not available in this browser.')}
+							idleLabel={tCommon('copy')}
+							onCopied={() => showToast(t('clipboard.copied'))}
+							onCopyFailed={() => showToast(t('clipboard.unavailable'))}
 							text={value}
 						/>
 					</div>
@@ -137,9 +138,7 @@ export const SaveExportField = ({
 			</div>
 			<p className='mt-auto flex items-start gap-2 p-5 font-aeonik text-sm tracking-wide text-fg-dim/65'>
 				<ShieldAlertIcon aria-hidden='true' className='mt-1.5 h-3 w-3 shrink-0' />
-				<span>
-					Always keep a backup of your original save before importing any edited data back into the game.
-				</span>
+				<span>{t('exportField.backupWarning')}</span>
 			</p>
 		</section>
 	);

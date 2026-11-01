@@ -1,344 +1,354 @@
 {
-	"table": {
-		"image": "Image",
-		"item": "Item",
-		"value": "Value",
-		"amount": "Amount",
-		"description": "Description",
-		"unlocked": "Unlocked",
-		"hero": "Hero",
-		"level": "Level",
-		"gildedLevel": "Gilded Level",
-		"name": "Name",
-		"timeToDie": "Time to Die",
-		"bonusLives": "Bonus Lives",
-		"cost": "Cost",
-		"spent": "Spent",
-		"skinName": "Skin Name",
-		"field": "Field",
-		"currentValue": "Current value",
-		"removedValue": "Removed value"
-	},
-	"clipboard": {
-		"copied": "Text copied.",
-		"unavailable": "Copying is not available in this browser."
-	},
-	"importField": {
-		"title": "Import save data",
-		"noFileSelected": "No file selected",
-		"exampleSave": "Example save",
-		"chooseFile": "Choose save file",
-		"uploadFile": "Upload File",
-		"orPaste": "or paste below",
-		"ariaLabel": "Encoded save data to import",
-		"placeholder": "Paste your encoded save data here...",
-		"loadAction": "Load Save Data",
-		"orExample": "or load an example save",
-		"fileTooLarge": "That file is too large to be a Clicker Heroes save.",
-		"fileUnreadable": "That file could not be read. Try choosing it again."
-	},
-	"exportField": {
-		"title": "Export save data",
-		"downloadFile": "Download File",
-		"orCopy": "or copy below",
-		"nothingToDownload": "Nothing to download yet — run the export first.",
-		"downloadUnavailable": "Downloading is not available in this browser.",
-		"backupWarning": "Always keep a backup of your original save before importing any edited data back into the game."
-	},
-	"saveDataPanel": {
-		"title": "Export Your Save Data",
-		"encodeAction": "Encode Save",
-		"ariaLabel": "Encoded save data to export",
-		"placeholder": "Your encoded save data will appear here...",
-		"dataLabel": "edited data",
-		"loadFirst": "Load a save before encoding.",
-		"encoded": "Save encoded.",
-		"encodeFailed": "Failed to encode save data."
-	},
-	"import": {
-		"loaded": "Save data loaded.",
-		"failed": "Failed to decode save data."
-	},
-	"decodeErrors": {
-		"empty": "Paste a save string or load a save file first.",
-		"unsupported": "That string does not look like a supported Clicker Heroes save.",
-		"invalidBase64": "The {format} save payload is not valid base64. Check that the whole save string was copied.",
-		"decompressFailed": "The {format} save payload could not be decompressed ({reason}). Check that the whole save string was copied.",
-		"notObject": "Decoded save data is not a valid object."
-	},
-	"saveHelp": {
-		"title": "Where is my save file?",
-		"iconAlt": "{name} icon",
-		"icons": {
-			"apple": "Apple",
-			"openFolder": "Open folder",
-			"steam": "Steam",
-			"windows": "Windows",
-			"platform": "Platform"
-		},
-		"entries": {
-			"windows": {
-				"title": "Windows",
-				"note": "Two files: .save and .backup. Both the Steam and stand-alone use the same path."
-			},
-			"macSteam": {
-				"title": "Mac - Steam"
-			},
-			"macStandalone": {
-				"title": "Mac - Stand-alone"
-			}
-		}
-	},
-	"changes": {
-		"title": "Changes",
-		"versus": "vs. imported save",
-		"truncated": "Only the first {count} changes are listed.",
-		"labels": {
-			"outsiderLevel": "{name} · Level",
-			"outsiderSpent": "{name} · Ancient Souls Spent",
-			"mercenaryName": "Mercenary {number} · Name",
-			"mercenaryLevel": "Mercenary {number} · Level",
-			"mercenaryTimeToDie": "Mercenary {number} · Time To Die",
-			"mercenaryBonusLives": "Mercenary {number} · Bonus Lives",
-			"currentSkin": "Current Auto Clicker Skin",
-			"transcensionHistory": "Transcension History",
-			"heroLevel": "{name} · Level",
-			"heroGildedLevel": "{name} · Gilded Level",
-			"achievement": "Achievement · {name}",
-			"skinUnlocked": "{name} · Unlocked"
-		},
-		"values": {
-			"none": "none",
-			"yes": "Yes",
-			"no": "No",
-			"empty": "empty",
-			"entries": "{count, plural, one {# entry} other {# entries}}"
-		}
-	},
-	"fields": {
-		"rubies": "Rubies",
-		"autoclickers": "Autoclickers",
-		"paidForRubyMultiplier": "2x Damage Multiplier",
-		"unopenedClickmasPresents": "Clickmas Presents",
-		"spikedNog": "Spiked Nog",
-		"candyCanes": "Candy Canes",
-		"labelMakers": "Label Makers",
-		"forgeCoals": "Forge Coals",
-		"gold": "Gold",
-		"highestFinishedZone": "Highest Zone Number",
-		"currentZoneHeight": "Current Zone Number",
-		"heroSouls": "Hero Souls",
-		"primalSouls": "Transcendent Hero Souls",
-		"newClanRaidClassId": "Clan Raid Class",
-		"newClanRaidClassLevel": "Clan Raid Class Level",
-		"immortalSouls": "Immortal Souls",
-		"titanDamage": "Titan Damage",
-		"totalMercenariesRevived": "Total Mercenaries Revived",
-		"totalMercenariesBuried": "Total Mercenaries Buried",
-		"total5MinuteQuests": "Total 5-Minute Quests",
-		"heroSoulQuestsCompleted": "Hero Soul Quests Completed",
-		"goldQuestsCompleted": "Gold Quests Completed",
-		"rubyQuestsCompleted": "Ruby Quests Completed",
-		"relicQuestsCompleted": "Relic Quests Completed",
-		"skillQuestsCompleted": "Skill Quests Completed",
-		"ancientSouls": "Ancient Souls",
-		"ancientSoulsTotal": "Ancient Souls Total",
-		"heroSoulsSacrificed": "Hero Souls Sacrificed"
-	},
-	"fieldHelp": {
-		"spikedNog": {
-			"body": "Consuming a Spiked Nog grants +1 CPS per Auto Clicker on the monster for 1 hour. This effect stacks both in effect and duration."
-		},
-		"candyCanes": {
-			"body": "These can be used to resurrect fallen mercenaries."
-		},
-		"labelMakers": {
-			"body": "These can be used to rename mercenaries."
-		},
-		"forgeCoals": {
-			"body": "A useless item found in Clickmas Presents."
-		}
-	},
-	"fieldOptions": {
-		"newClanRaidClassId": {
-			"0": "None",
-			"1": "Rogue",
-			"2": "Mage",
-			"3": "Priest"
-		}
-	},
-	"saveEditor": {
-		"editTitle": "Edit your save data",
-		"sections": {
-			"shopItems": "Shop Items",
-			"seasonalItems": "Seasonal Items",
-			"zoneItems": "Zone Items",
-			"heroes": "Heroes",
-			"achievements": "Achievements",
-			"clanValues": "Clan Values"
-		},
-		"clanDescription": "Raid classes map to 0 = None, 1 = Rogue, 2 = Mage, 3 = Priest."
-	},
-	"achievements": {
-		"tableLabel": "Transcension achievement fields",
-		"transcendentHighestZone": "Transcendent Highest Zone",
-		"reward": "Reward: {reward}",
-		"unlockedAria": "{name} unlocked",
-		"groups": {
-			"0": "Gold-related achievements",
-			"1": "Hero-related achievements",
-			"2": "DPS-related achievements",
-			"3": "Click-related achievements",
-			"4": "Zone-related achievements",
-			"5": "Ascension-related achievements",
-			"6": "Monster-related achievements",
-			"7": "CentennialBoss-related achievements",
-			"8": "Relic-related achievements",
-			"9": "Mercenary-related achievements",
-			"10": "Quests-related achievements",
-			"11": "Transcendence-related achievements",
-			"12": "Other-related achievements"
-		}
-	},
-	"customField": {
-		"title": "Find Custom Field",
-		"description": "Search a top-level primitive field and edit it directly.",
-		"searchLabel": "Search field by name",
-		"choose": "Choose a field",
-		"fieldName": "Field name",
-		"fieldValue": "Field value",
-		"enabled": "Enabled"
-	},
-	"heroes": {
-		"title": "Heroes",
-		"gilded": "{count}x Gilded (+{percent}%)",
-		"levelAria": "{name} level",
-		"gildedLevelAria": "{name} gilded level"
-	},
-	"mercenaries": {
-		"title": "Mercenaries",
-		"description": "Tweak mercenary lifetime stats and the current party roster.",
-		"viewDetails": "View Mercenary Details",
-		"summary": "Summary",
-		"summaryLabel": "Mercenary summary",
-		"roster": "Mercenary roster",
-		"nameAria": "Mercenary {number} name",
-		"levelAria": "Mercenary {number} level",
-		"timeToDieAria": "Mercenary {number} time to die",
-		"bonusLivesAria": "Mercenary {number} bonus lives"
-	},
-	"outsiders": {
-		"title": "Outsiders and Ancient Souls",
-		"description": "Edit ancient soul values and the outsider levels that shape long-run progression.",
-		"soulTotals": "Ancient soul totals",
-		"tableLabel": "Outsiders",
-		"levelAria": "{name} level",
-		"spentAria": "{name} ancient souls spent",
-		"cost": "{amount} AS",
-		"bonus": {
-			"1": "effectiveness of all idle bonuses",
-			"2": "Ancient cost",
-			"3": "DPS",
-			"5": "Primal Hero Souls",
-			"6": "effectiveness of Kumawakamaru (+12.5% per level)",
-			"7": "effectiveness of Atman (+25% per level)",
-			"8": "effectiveness of Bubos (+50% per level)",
-			"9": "effectiveness of Chronos (+75% per level)",
-			"10": "effectiveness of Dora (+100% per level)"
-		},
-		"cap": {
-			"6": "monsters on level (min: 2)",
-			"7": "chance of Primal Boss (min: 5%)",
-			"8": "multiplier of Boss HP (min: 5)",
-			"9": "seconds on Boss Fight (min: 2 sec)",
-			"10": "chance of chest (min: 1%)"
-		}
-	},
-	"skins": {
-		"title": "Auto Clicker Skins",
-		"unlockAll": "Unlock All",
-		"allUnlocked": "All skins unlocked.",
-		"tableLabel": "Auto clicker skins",
-		"unlockedAria": "{name} unlocked",
-		"currentSkin": "Current skin"
-	},
-	"transcensions": {
-		"title": "Transcensions and Ascensions",
-		"description": "Save history for transcensions and ascensions can safely be cleared if you want a smaller export.",
-		"body": "The save contains all transcensions and ascensions information. This can significantly increase the size of the save file, and the game does not require this history to continue working.",
-		"viewHistory": "View Transcension History",
-		"inspect": "To inspect the history first, look under <code>{path}</code> in the JSON tools below.",
-		"clear": "Clear Transcension Data",
-		"cleared": "Transcension history cleared."
-	},
-	"removeClanData": {
-		"stepTitle": "Remove Clan Data From JSON",
-		"intro": "This removes clan-related fields and clears the account/login fields from the loaded save JSON so the exported result is stripped down for a fresh rebuild.",
-		"whatGetsRemoved": "What gets removed",
-		"tableLabel": "Fields that get removed",
-		"action": "Remove Clan Data",
-		"removedTitle": "Removed Clan Data",
-		"removedTableLabel": "Removed clan data",
-		"emptyState": "Remove clan data from a loaded save to see the stripped values here.",
-		"loadFirst": "Load a save before removing clan data.",
-		"removed": "Clan data removed from the save.",
-		"emptyString": "(empty string)",
-		"unknown": "Unknown",
-		"fields": {
-			"email": "Email",
-			"passwordHash": "Password Hash",
-			"prevLoginTimestamp": "Previous Login Timestamp",
-			"account": "Account",
-			"accountId": "Account ID",
-			"loginValidated": "Login Validated",
-			"uniqueId": "Unique ID",
-			"subscribedEmail": "Subscribed Email",
-			"type": "Type"
-		}
-	},
-	"feedback": {
-		"title": "Feedback",
-		"description": "Send your suggestions and improvements to make the save editor better!",
-		"messageLabel": "Your feedback message",
-		"messagePlaceholder": "Write your feedback here...",
-		"submit": "Submit",
-		"sending": "Sending...",
-		"emptyMessage": "Enter a message before sending feedback.",
-		"success": "Feedback sent.",
-		"invalidEmail": "Enter a valid email address, or leave it blank.",
-		"sendFailed": "Unable to send feedback right now.",
-		"nameAria": "Your name",
-		"namePlaceholder": "Name (optional)",
-		"emailAria": "Your email address",
-		"emailPlaceholder": "Email (optional)",
-		"pages": {
-			"feedback": {
-				"title": "Send Feedback",
-				"description": "Share tool issues, site problems, missing workflows, or general suggestions."
-			},
-			"requestTool": {
-				"title": "Request a Tool",
-				"description": "Describe the tool you want, what it should work out, and how you would use it.",
-				"emptyMessage": "Describe the tool before sending your request.",
-				"messageLabel": "Your tool request",
-				"messagePlaceholder": "What should the tool do? What would you put in, and what should it tell you?",
-				"submit": "Send request",
-				"success": "Tool request sent."
-			},
-			"requestGuide": {
-				"title": "Request a Guide",
-				"description": "Tell us the topic you are stuck on and what an ideal guide would cover.",
-				"emptyMessage": "Describe the guide before sending your request.",
-				"messageLabel": "Your guide request",
-				"messagePlaceholder": "What topic should the guide cover, and where are you getting stuck?",
-				"submit": "Send request",
-				"success": "Guide request sent."
-			}
-		}
-	},
-	"seasonalBanner": {
-		"badge": "NEW",
-		"text": "Seasonal items have been added to the save-editor!",
-		"cta": "Open save-editor"
-	}
+  "table": {
+    "image": "Image",
+    "item": "Item",
+    "value": "Value",
+    "amount": "Amount",
+    "description": "Description",
+    "unlocked": "Unlocked",
+    "hero": "Hero",
+    "level": "Level",
+    "gildedLevel": "Gilded Level",
+    "name": "Name",
+    "timeToDie": "Time to Die",
+    "bonusLives": "Bonus Lives",
+    "cost": "Cost",
+    "spent": "Spent",
+    "skinName": "Skin Name",
+    "field": "Field",
+    "currentValue": "Current value",
+    "removedValue": "Removed value"
+  },
+  "clipboard": {
+    "copied": "Text copied.",
+    "unavailable": "Copying is not available in this browser."
+  },
+  "importField": {
+    "title": "Import save data",
+    "noFileSelected": "No file selected",
+    "exampleSave": "Example save",
+    "chooseFile": "Choose save file",
+    "uploadFile": "Upload File",
+    "orPaste": "or paste below",
+    "ariaLabel": "Encoded save data to import",
+    "placeholder": "Paste your encoded save data here...",
+    "loadAction": "Load Save Data",
+    "orExample": "or load an example save",
+    "fileTooLarge": "That file is too large to be a Clicker Heroes save.",
+    "fileUnreadable": "That file could not be read. Try choosing it again."
+  },
+  "exportField": {
+    "title": "Export save data",
+    "downloadFile": "Download File",
+    "orCopy": "or copy below",
+    "nothingToDownload": "Nothing to download yet — run the export first.",
+    "downloadUnavailable": "Downloading is not available in this browser.",
+    "backupWarning": "Always keep a backup of your original save before importing any edited data back into the game."
+  },
+  "saveDataPanel": {
+    "title": "Export Your Save Data",
+    "encodeAction": "Encode Save",
+    "ariaLabel": "Encoded save data to export",
+    "placeholder": "Your encoded save data will appear here...",
+    "dataLabel": "edited data",
+    "loadFirst": "Load a save before encoding.",
+    "encoded": "Save encoded.",
+    "encodeFailed": "Failed to encode save data."
+  },
+  "import": {
+    "loaded": "Save data loaded.",
+    "failed": "Failed to decode save data."
+  },
+  "decodeErrors": {
+    "empty": "Paste a save string or load a save file first.",
+    "unsupported": "That string does not look like a supported Clicker Heroes save.",
+    "invalidBase64": "The {format} save payload is not valid base64. Check that the whole save string was copied.",
+    "decompressFailed": "The {format} save payload could not be decompressed ({reason}). Check that the whole save string was copied.",
+    "notObject": "Decoded save data is not a valid object."
+  },
+  "saveHelp": {
+    "title": "Where is my save file?",
+    "iconAlt": "{name} icon",
+    "icons": {
+      "apple": "Apple",
+      "openFolder": "Open folder",
+      "steam": "Steam",
+      "windows": "Windows",
+      "platform": "Platform"
+    },
+    "entries": {
+      "windows": {
+        "title": "Windows",
+        "note": "Two files: .save and .backup. Both the Steam and stand-alone use the same path."
+      },
+      "macSteam": {
+        "title": "Mac - Steam"
+      },
+      "macStandalone": {
+        "title": "Mac - Stand-alone"
+      }
+    }
+  },
+  "changes": {
+    "title": "Changes",
+    "versus": "vs. imported save",
+    "truncated": "Only the first {count} changes are listed.",
+    "labels": {
+      "outsiderLevel": "{name} · Level",
+      "outsiderSpent": "{name} · Ancient Souls Spent",
+      "mercenaryName": "Mercenary {number} · Name",
+      "mercenaryLevel": "Mercenary {number} · Level",
+      "mercenaryTimeToDie": "Mercenary {number} · Time To Die",
+      "mercenaryBonusLives": "Mercenary {number} · Bonus Lives",
+      "currentSkin": "Current Auto Clicker Skin",
+      "transcensionHistory": "Transcension History",
+      "heroLevel": "{name} · Level",
+      "heroGildedLevel": "{name} · Gilded Level",
+      "achievement": "Achievement · {name}",
+      "skinUnlocked": "{name} · Unlocked"
+    },
+    "values": {
+      "none": "none",
+      "yes": "Yes",
+      "no": "No",
+      "empty": "empty",
+      "entries": "{count, plural, one {# entry} other {# entries}}"
+    }
+  },
+  "fields": {
+    "rubies": "Rubies",
+    "autoclickers": "Autoclickers",
+    "paidForRubyMultiplier": "2x Damage Multiplier",
+    "unopenedClickmasPresents": "Clickmas Presents",
+    "spikedNog": "Spiked Nog",
+    "candyCanes": "Candy Canes",
+    "labelMakers": "Label Makers",
+    "forgeCoals": "Forge Coals",
+    "gold": "Gold",
+    "highestFinishedZone": "Highest Zone Number",
+    "currentZoneHeight": "Current Zone Number",
+    "heroSouls": "Hero Souls",
+    "primalSouls": "Transcendent Hero Souls",
+    "newClanRaidClassId": "Clan Raid Class",
+    "newClanRaidClassLevel": "Clan Raid Class Level",
+    "immortalSouls": "Immortal Souls",
+    "titanDamage": "Titan Damage",
+    "totalMercenariesRevived": "Total Mercenaries Revived",
+    "totalMercenariesBuried": "Total Mercenaries Buried",
+    "total5MinuteQuests": "Total 5-Minute Quests",
+    "heroSoulQuestsCompleted": "Hero Soul Quests Completed",
+    "goldQuestsCompleted": "Gold Quests Completed",
+    "rubyQuestsCompleted": "Ruby Quests Completed",
+    "relicQuestsCompleted": "Relic Quests Completed",
+    "skillQuestsCompleted": "Skill Quests Completed",
+    "ancientSouls": "Ancient Souls",
+    "ancientSoulsTotal": "Ancient Souls Total",
+    "heroSoulsSacrificed": "Hero Souls Sacrificed"
+  },
+  "fieldHelp": {
+    "spikedNog": {
+      "body": "Consuming a Spiked Nog grants +1 CPS per Auto Clicker on the monster for 1 hour. This effect stacks both in effect and duration."
+    },
+    "candyCanes": {
+      "body": "These can be used to resurrect fallen mercenaries."
+    },
+    "labelMakers": {
+      "body": "These can be used to rename mercenaries."
+    },
+    "forgeCoals": {
+      "body": "A useless item found in Clickmas Presents."
+    }
+  },
+  "fieldOptions": {
+    "newClanRaidClassId": {
+      "0": "None",
+      "1": "Rogue",
+      "2": "Mage",
+      "3": "Priest"
+    }
+  },
+  "saveEditor": {
+    "editTitle": "Edit your save data",
+    "sections": {
+      "shopItems": "Shop Items",
+      "seasonalItems": "Seasonal Items",
+      "zoneItems": "Zone Items",
+      "heroes": "Heroes",
+      "achievements": "Achievements",
+      "clanValues": "Clan Values"
+    },
+    "clanDescription": "Raid classes map to 0 = None, 1 = Rogue, 2 = Mage, 3 = Priest."
+  },
+  "achievements": {
+    "tableLabel": "Transcension achievement fields",
+    "transcendentHighestZone": "Transcendent Highest Zone",
+    "reward": "Reward: {reward}",
+    "unlockedAria": "{name} unlocked",
+    "groups": {
+      "0": "Gold-related achievements",
+      "1": "Hero-related achievements",
+      "2": "DPS-related achievements",
+      "3": "Click-related achievements",
+      "4": "Zone-related achievements",
+      "5": "Ascension-related achievements",
+      "6": "Monster-related achievements",
+      "7": "CentennialBoss-related achievements",
+      "8": "Relic-related achievements",
+      "9": "Mercenary-related achievements",
+      "10": "Quests-related achievements",
+      "11": "Transcendence-related achievements",
+      "12": "Other-related achievements"
+    }
+  },
+  "customField": {
+    "title": "Find Custom Field",
+    "description": "Search a top-level primitive field and edit it directly.",
+    "searchLabel": "Search field by name",
+    "choose": "Choose a field",
+    "fieldName": "Field name",
+    "fieldValue": "Field value",
+    "enabled": "Enabled"
+  },
+  "heroes": {
+    "title": "Heroes",
+    "gilded": "{count}x Gilded (+{percent}%)",
+    "levelAria": "{name} level",
+    "gildedLevelAria": "{name} gilded level"
+  },
+  "mercenaries": {
+    "title": "Mercenaries",
+    "description": "Tweak mercenary lifetime stats and the current party roster.",
+    "viewDetails": "View Mercenary Details",
+    "summary": "Summary",
+    "summaryLabel": "Mercenary summary",
+    "roster": "Mercenary roster",
+    "nameAria": "Mercenary {number} name",
+    "levelAria": "Mercenary {number} level",
+    "timeToDieAria": "Mercenary {number} time to die",
+    "bonusLivesAria": "Mercenary {number} bonus lives"
+  },
+  "outsiders": {
+    "title": "Outsiders and Ancient Souls",
+    "description": "Edit ancient soul values and the outsider levels that shape long-run progression.",
+    "soulTotals": "Ancient soul totals",
+    "tableLabel": "Outsiders",
+    "levelAria": "{name} level",
+    "spentAria": "{name} ancient souls spent",
+    "cost": "{amount} AS",
+    "bonus": {
+      "1": "effectiveness of all idle bonuses",
+      "2": "Ancient cost",
+      "3": "DPS",
+      "5": "Primal Hero Souls",
+      "6": "effectiveness of Kumawakamaru (+12.5% per level)",
+      "7": "effectiveness of Atman (+25% per level)",
+      "8": "effectiveness of Bubos (+50% per level)",
+      "9": "effectiveness of Chronos (+75% per level)",
+      "10": "effectiveness of Dora (+100% per level)"
+    },
+    "cap": {
+      "6": "monsters on level (min: 2)",
+      "7": "chance of Primal Boss (min: 5%)",
+      "8": "multiplier of Boss HP (min: 5)",
+      "9": "seconds on Boss Fight (min: 2 sec)",
+      "10": "chance of chest (min: 1%)"
+    }
+  },
+  "skins": {
+    "title": "Auto Clicker Skins",
+    "unlockAll": "Unlock All",
+    "allUnlocked": "All skins unlocked.",
+    "tableLabel": "Auto clicker skins",
+    "unlockedAria": "{name} unlocked",
+    "currentSkin": "Current skin"
+  },
+  "transcensions": {
+    "title": "Transcensions and Ascensions",
+    "description": "Save history for transcensions and ascensions can safely be cleared if you want a smaller export.",
+    "body": "The save contains all transcensions and ascensions information. This can significantly increase the size of the save file, and the game does not require this history to continue working.",
+    "viewHistory": "View Transcension History",
+    "inspect": "To inspect the history first, look under <code>{path}</code> in the JSON tools below.",
+    "clear": "Clear Transcension Data",
+    "cleared": "Transcension history cleared."
+  },
+  "removeClanData": {
+    "stepTitle": "Remove Clan Data From JSON",
+    "intro": "This removes clan-related fields and clears the account/login fields from the loaded save JSON so the exported result is stripped down for a fresh rebuild.",
+    "whatGetsRemoved": "What gets removed",
+    "tableLabel": "Fields that get removed",
+    "action": "Remove Clan Data",
+    "removedTitle": "Removed Clan Data",
+    "removedTableLabel": "Removed clan data",
+    "emptyState": "Remove clan data from a loaded save to see the stripped values here.",
+    "loadFirst": "Load a save before removing clan data.",
+    "removed": "Clan data removed from the save.",
+    "emptyString": "(empty string)",
+    "unknown": "Unknown",
+    "fields": {
+      "email": "Email",
+      "passwordHash": "Password Hash",
+      "prevLoginTimestamp": "Previous Login Timestamp",
+      "account": "Account",
+      "accountId": "Account ID",
+      "loginValidated": "Login Validated",
+      "uniqueId": "Unique ID",
+      "subscribedEmail": "Subscribed Email",
+      "type": "Type"
+    }
+  },
+  "feedback": {
+    "title": "Feedback",
+    "description": "Send your suggestions and improvements to make the save editor better!",
+    "messageLabel": "Your feedback message",
+    "messagePlaceholder": "Write your feedback here...",
+    "submit": "Submit",
+    "sending": "Sending...",
+    "emptyMessage": "Enter a message before sending feedback.",
+    "success": "Feedback sent.",
+    "invalidEmail": "Enter a valid email address, or leave it blank.",
+    "sendFailed": "Unable to send feedback right now.",
+    "nameAria": "Your name",
+    "namePlaceholder": "Name (optional)",
+    "emailAria": "Your email address",
+    "emailPlaceholder": "Email (optional)",
+    "pages": {
+      "feedback": {
+        "title": "Send Feedback",
+        "description": "Share tool issues, site problems, missing workflows, or general suggestions."
+      },
+      "requestTool": {
+        "title": "Request a Tool",
+        "description": "Describe the tool you want, what it should work out, and how you would use it.",
+        "emptyMessage": "Describe the tool before sending your request.",
+        "messageLabel": "Your tool request",
+        "messagePlaceholder": "What should the tool do? What would you put in, and what should it tell you?",
+        "submit": "Send request",
+        "success": "Tool request sent."
+      },
+      "requestGuide": {
+        "title": "Request a Guide",
+        "description": "Tell us the topic you are stuck on and what an ideal guide would cover.",
+        "emptyMessage": "Describe the guide before sending your request.",
+        "messageLabel": "Your guide request",
+        "messagePlaceholder": "What topic should the guide cover, and where are you getting stuck?",
+        "submit": "Send request",
+        "success": "Guide request sent."
+      }
+    },
+    "tooManyRequests": "Too many requests. Please wait a moment before trying again."
+  },
+  "seasonalBanner": {
+    "badge": "NEW",
+    "text": "Seasonal items have been added to the save-editor!",
+    "cta": "Open save-editor"
+  },
+  "exampleSaves": {
+    "basic": "Basic Save",
+    "idle": "Idle Build",
+    "active": "Active Build",
+    "transcension": "Transcension",
+    "fullRoster": "Full Roster",
+    "mobile": "Mobile",
+    "desktop": "Desktop"
+  }
 }

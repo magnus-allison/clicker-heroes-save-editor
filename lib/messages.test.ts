@@ -32,7 +32,9 @@ const compare = (source: unknown, target: unknown, path: string, problems: strin
 		if (typeof target !== 'string') {
 			problems.push(`${path}: expected a string`);
 		} else if (tokens(source).join() !== tokens(target).join()) {
-			problems.push(`${path}: placeholders differ (${tokens(source).join(' ')} vs ${tokens(target).join(' ')})`);
+			problems.push(
+				`${path}: placeholders differ (${tokens(source).join(' ')} vs ${tokens(target).join(' ')})`
+			);
 		}
 
 		return;

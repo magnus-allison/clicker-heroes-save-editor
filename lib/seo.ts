@@ -1,6 +1,6 @@
 import type { Metadata, MetadataRoute } from 'next';
 
-import { routing, type Locale } from '@/i18n/routing';
+import { localizedPath, routing, type Locale } from '@/i18n/routing';
 import enSeo from '@/messages/en/seo.json';
 import esSeo from '@/messages/es/seo.json';
 
@@ -98,7 +98,7 @@ export const seoPages = {
 		changeFrequency: 'weekly',
 		priority: 0.95,
 		lastModified: '2026-09-14',
-		schemaType: 'WebApplication',
+		schemaType: 'WebApplication'
 	},
 	instakillCalculator: {
 		path: '/tools/instakill-calculator',
@@ -112,7 +112,7 @@ export const seoPages = {
 		changeFrequency: 'monthly',
 		priority: 0.75,
 		lastModified: '2026-08-26',
-		schemaType: 'WebApplication',
+		schemaType: 'WebApplication'
 	},
 	ancientsCalculator: {
 		path: '/tools/ancients-calculator',
@@ -128,7 +128,7 @@ export const seoPages = {
 		changeFrequency: 'monthly',
 		priority: 0.85,
 		lastModified: '2026-08-26',
-		schemaType: 'WebApplication',
+		schemaType: 'WebApplication'
 	},
 	outsidersCalculator: {
 		path: '/tools/outsiders-calculator',
@@ -145,7 +145,7 @@ export const seoPages = {
 		changeFrequency: 'monthly',
 		priority: 0.85,
 		lastModified: '2026-08-26',
-		schemaType: 'WebApplication',
+		schemaType: 'WebApplication'
 	},
 	transcensionViewer: {
 		path: '/tools/transcension-viewer',
@@ -158,7 +158,7 @@ export const seoPages = {
 		changeFrequency: 'monthly',
 		priority: 0.75,
 		lastModified: '2026-09-14',
-		schemaType: 'WebApplication',
+		schemaType: 'WebApplication'
 	},
 	mercenaryViewer: {
 		path: '/tools/mercenary-viewer',
@@ -171,7 +171,7 @@ export const seoPages = {
 		changeFrequency: 'monthly',
 		priority: 0.7,
 		lastModified: '2026-09-14',
-		schemaType: 'WebApplication',
+		schemaType: 'WebApplication'
 	},
 	removeClanData: {
 		path: '/tools/remove-clan-data',
@@ -184,7 +184,7 @@ export const seoPages = {
 		changeFrequency: 'monthly',
 		priority: 0.8,
 		lastModified: '2026-08-26',
-		schemaType: 'WebApplication',
+		schemaType: 'WebApplication'
 	},
 	saveConverter: {
 		path: '/tools/save-converter',
@@ -197,7 +197,7 @@ export const seoPages = {
 		changeFrequency: 'monthly',
 		priority: 0.8,
 		lastModified: '2026-08-27',
-		schemaType: 'WebApplication',
+		schemaType: 'WebApplication'
 	},
 	saveJson: {
 		path: '/tools/save-json',
@@ -211,7 +211,7 @@ export const seoPages = {
 		changeFrequency: 'monthly',
 		priority: 0.75,
 		lastModified: '2026-08-27',
-		schemaType: 'WebApplication',
+		schemaType: 'WebApplication'
 	},
 	newPlayerGuide: {
 		path: '/guides/new-player-guide',
@@ -339,10 +339,6 @@ type PageText = {
 const pageText = (key: SeoPageKey, locale: Locale): PageText => seoText[locale].pages[key];
 
 const absoluteUrl = (path: string) => new URL(path, SITE_CONFIG.url).toString();
-
-/** The path a page lives at in a locale: English unprefixed, others under `/<locale>`. */
-export const localizedPath = (path: string, locale: Locale) =>
-	locale === routing.defaultLocale ? path : `/${locale}${path === '/' ? '' : path}`;
 
 /** hreflang alternates: every locale, plus `x-default` on the English page. */
 const languageAlternates = (path: string, toUrl: (path: string) => string = (value) => value) => ({

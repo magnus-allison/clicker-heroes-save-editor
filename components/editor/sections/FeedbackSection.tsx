@@ -3,6 +3,7 @@
 import { MessageCircleMoreIcon, type LucideIcon } from 'lucide-react';
 import type { FormEvent } from 'react';
 import { useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/Button';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
@@ -26,24 +27,24 @@ type Props = {
 	successMessage?: string;
 };
 
-const defaultDescription = 'Send your suggestions and improvements to make the save editor better!';
-
 /** Deliberately loose: the server and the mail provider are the real arbiters. */
 const isLikelyEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
 export const FeedbackSection = ({
 	defaultOpen,
-	description = defaultDescription,
-	emptyMessageError = 'Enter a message before sending feedback.',
+	description,
+	emptyMessageError,
 	icon,
-	messageLabel = 'Your feedback message',
-	messagePlaceholder = 'Write your feedback here...',
-	submitLabel = 'Submit',
-	successMessage = 'Feedback sent.',
-	title = 'Feedback',
+	messageLabel,
+	messagePlaceholder,
+	submitLabel,
+	successMessage,
+	title,
 	topic = 'feedback'
 }: Props) => {
 	const { showToast } = useToast();
+	const locale = useLocale();
+	const t = useTranslations('editor.feedback');
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
@@ -56,12 +57,12 @@ export const FeedbackSection = ({
 		event.preventDefault();
 
 		if (!trimmedMessage) {
-			showToast(emptyMessageError);
+			showToast(emptyMessageError ?? t('emptyMessage'));
 			return;
 		}
 
 		if (trimmedEmail && !isLikelyEmail(trimmedEmail)) {
-			showToast('Enter a valid email address, or leave it blank.');
+			showToast(t('invalidEmail'));
 			return;
 		}
 
@@ -88,7 +89,15 @@ export const FeedbackSection = ({
 			} | null;
 
 			if (!response.ok) {
-				showToast(payload?.error ?? 'Unable to send feedback right now.');
+				// The API's error text is English, so other locales get the translated
+				// equivalent; only rate limiting has its own message.
+				showToast(
+					response.status === 429
+						? t('tooManyRequests')
+						: locale === 'en'
+							? (payload?.error ?? t('sendFailed'))
+							: t('sendFailed')
+				);
 				return;
 			}
 
@@ -96,9 +105,9 @@ export const FeedbackSection = ({
 			setEmail('');
 			setMessage('');
 			setWebsite('');
-			showToast(successMessage);
+			showToast(successMessage ?? t('success'));
 		} catch {
-			showToast('Unable to send feedback right now.');
+			showToast(t('sendFailed'));
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -107,9 +116,9 @@ export const FeedbackSection = ({
 	return (
 		<CollapsiblePanel
 			defaultOpen={defaultOpen}
-			description={description}
+			description={description ?? t('description')}
 			icon={MessageCircleMoreIcon}
-			title={title}
+			title={title ?? t('title')}
 		>
 			<form className='flex flex-col gap-3' onSubmit={handleSubmit}>
 				<input
@@ -122,36 +131,36 @@ export const FeedbackSection = ({
 					value={website}
 				/>
 				<TextInput
-					ariaLabel='Your name'
+					ariaLabel={t('nameAria')}
 					className='max-w-70'
 					disabled={isSubmitting}
 					onValueChange={setName}
-					placeholder='Name (optional)'
+					placeholder={t('namePlaceholder')}
 					value={name}
 				/>
 				<TextInput
-					ariaLabel='Your email address'
+					ariaLabel={t('emailAria')}
 					className='max-w-70'
 					disabled={isSubmitting}
 					onValueChange={setEmail}
-					placeholder='Email (optional)'
+					placeholder={t('emailPlaceholder')}
 					type='email'
 					value={email}
 				/>
 				<TextInput
-					ariaLabel={messageLabel}
+					ariaLabel={messageLabel ?? t('messageLabel')}
 					className='min-h-28'
 					disabled={isSubmitting}
 					multiline
 					onValueChange={setMessage}
-					placeholder={messagePlaceholder}
+					placeholder={messagePlaceholder ?? t('messagePlaceholder')}
 					resizable
 					rows={5}
 					value={message}
 				/>
 				<div className='flex justify-start'>
 					<Button disabled={isSubmitting || !trimmedMessage} type='submit' variant='primary'>
-						{isSubmitting ? 'Sending...' : submitLabel}
+						{isSubmitting ? t('sending') : (submitLabel ?? t('submit'))}
 					</Button>
 				</div>
 			</form>

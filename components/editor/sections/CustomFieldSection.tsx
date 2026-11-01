@@ -2,6 +2,7 @@
 
 import type { LucideIcon } from 'lucide-react';
 import { useMemo, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { Checkbox } from '@/components/ui/Checkbox';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
@@ -17,7 +18,8 @@ type Props = {
 	title?: string;
 };
 
-export const CustomFieldSection = ({ defaultOpen, icon, title = 'Find Custom Field' }: Props) => {
+export const CustomFieldSection = ({ defaultOpen, icon, title }: Props) => {
+	const t = useTranslations('editor.customField');
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 	const options = useMemo(
@@ -34,50 +36,50 @@ export const CustomFieldSection = ({ defaultOpen, icon, title = 'Find Custom Fie
 	return (
 		<CollapsiblePanel
 			defaultOpen={defaultOpen}
-			description='Search a top-level primitive field and edit it directly.'
+			description={t('description')}
 			icon={icon}
-			title={title}
+			title={title ?? t('title')}
 		>
 			<div className='grid gap-4 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)]'>
 				<div className='space-y-4'>
 					<div>
 						<p className='mb-2 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-							Search field by name
+							{t('searchLabel')}
 						</p>
 						<Dropdown
 							disabled={!saveData}
 							onChange={(event) => setSelectedKey(event.target.value)}
 							options={options}
-							placeholder='Choose a field'
+							placeholder={t('choose')}
 							value={resolvedKey}
 						/>
 					</div>
 					<div>
 						<p className='mb-2 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-							Field name
+							{t('fieldName')}
 						</p>
 						<div className='rounded-(--radius-card) border border-(--color-line) bg-(--color-surface-sunken) px-4 py-3 text-[13px] text-(--color-fg) shadow-[inset_0_1px_2px_var(--color-shadow)]'>
-							{resolvedKey || 'Choose a field'}
+							{resolvedKey || t('choose')}
 						</div>
 					</div>
 				</div>
 
 				<div>
 					<p className='mb-2 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-						Field value
+						{t('fieldValue')}
 					</p>
 					{typeof currentValue === 'boolean' ? (
 						<div className='rounded-(--radius-card) border border-(--color-line) bg-(--color-surface) px-4 py-3 shadow-[var(--shadow-raised)]'>
 							<Checkbox
 								checked={currentValue}
 								disabled={isDisabled}
-								label='Enabled'
+								label={t('enabled')}
 								onCheckedChange={(checked) => updateValue([resolvedKey], checked)}
 							/>
 						</div>
 					) : typeof currentValue === 'number' ? (
 						<NumberInput
-							ariaLabel={resolvedKey || 'Field value'}
+							ariaLabel={resolvedKey || t('fieldValue')}
 							disabled={isDisabled}
 							onCommit={(value) => updateValue([resolvedKey], value)}
 							selectOnFocus
@@ -85,7 +87,7 @@ export const CustomFieldSection = ({ defaultOpen, icon, title = 'Find Custom Fie
 						/>
 					) : (
 						<TextInput
-							ariaLabel={resolvedKey || 'Field value'}
+							ariaLabel={resolvedKey || t('fieldValue')}
 							disabled={isDisabled}
 							onCommit={(value) => updateValue([resolvedKey], value)}
 							value={currentValue == null ? '' : String(currentValue)}

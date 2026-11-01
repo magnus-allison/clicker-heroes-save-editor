@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { EditorTableCell, EditorTableRow } from '@/components/ui/EditorTable';
@@ -25,6 +27,42 @@ export const PlannerRow = ({ change, gain, required }: PlannerRowProps) => (
 	</EditorTableRow>
 );
 
+/** Ancient keys whose effect line is translated under `tools.ancients.effects`. */
+const ancientEffectKeys = [
+	'solomon',
+	'libertas',
+	'siyalatas',
+	'mammon',
+	'mimzee',
+	'pluto',
+	'dogcog',
+	'fortuna',
+	'atman',
+	'dora',
+	'bhaal',
+	'morgulis',
+	'chronos',
+	'bubos',
+	'fragsworth',
+	'vaagur',
+	'kumawakamaru',
+	'chawedo',
+	'hecatoncheir',
+	'berserker',
+	'sniperino',
+	'kleptos',
+	'energon',
+	'argaiv',
+	'juggernaut',
+	'revolc',
+	'nogardnit'
+] as const;
+
+type AncientEffectKey = (typeof ancientEffectKeys)[number];
+
+const isAncientEffectKey = (key: string): key is AncientEffectKey =>
+	(ancientEffectKeys as readonly string[]).includes(key);
+
 type AncientGoalRowProps = {
 	row: AncientRow;
 };
@@ -34,13 +72,16 @@ type AncientGoalRowProps = {
  * copies as plain digits, ready for the game's bulk level-up field.
  */
 export const AncientGoalRow = ({ row }: AncientGoalRowProps) => {
+	const t = useTranslations('tools.ancients');
 	const isIncrease = row.change.greaterThan(0);
 
 	return (
 		<EditorTableRow>
 			<EditorTableCell>
 				<p className='text-[13px] font-semibold text-(--color-fg-strong)'>{row.name}</p>
-				<p className='mt-0.5 text-[12px] text-(--color-fg-muted)'>{row.effect}</p>
+				<p className='mt-0.5 text-[12px] text-(--color-fg-muted)'>
+					{isAncientEffectKey(row.key) ? t(`effects.${row.key}`) : row.effect}
+				</p>
 			</EditorTableCell>
 			<EditorTableCell className='text-right tabular-nums'>
 				{formatHeroSouls(row.currentLevel)}
@@ -50,9 +91,9 @@ export const AncientGoalRow = ({ row }: AncientGoalRowProps) => {
 				{row.capped ? (
 					<span
 						className='ml-2 inline-flex h-5 items-center rounded-full border border-(--color-line-soft) bg-(--color-surface-muted) px-2 text-[10px] font-semibold text-(--color-fg-muted)'
-						title='Levelled to the point where this ancient stops paying off'
+						title={t('goalsTable.capTitle')}
 					>
-						cap
+						{t('goalsTable.cap')}
 					</span>
 				) : null}
 			</EditorTableCell>
@@ -69,8 +110,8 @@ export const AncientGoalRow = ({ row }: AncientGoalRowProps) => {
 						{formatHeroSouls(row.change)}
 					</span>
 					<CopyButton
-						idleLabel={`Copy ${row.name} level change`}
-						successLabel={`Copied ${row.name} level change`}
+						idleLabel={t('goalsTable.copyChange', { name: row.name })}
+						successLabel={t('goalsTable.copiedChange', { name: row.name })}
 						text={toPasteableNumber(row.change)}
 					/>
 				</div>

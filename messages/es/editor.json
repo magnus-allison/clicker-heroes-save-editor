@@ -1,1 +1,354 @@
-{}
+{
+  "table": {
+    "image": "Imagen",
+    "item": "Objeto",
+    "value": "Valor",
+    "amount": "Cantidad",
+    "description": "Descripción",
+    "unlocked": "Desbloqueado",
+    "hero": "Héroe",
+    "level": "Nivel",
+    "gildedLevel": "Gilds",
+    "name": "Nombre",
+    "timeToDie": "Tiempo hasta morir",
+    "bonusLives": "Vidas extra",
+    "cost": "Coste",
+    "spent": "Gastado",
+    "skinName": "Nombre de la skin",
+    "field": "Campo",
+    "currentValue": "Valor actual",
+    "removedValue": "Valor eliminado"
+  },
+  "clipboard": {
+    "copied": "Texto copiado.",
+    "unavailable": "Este navegador no permite copiar."
+  },
+  "importField": {
+    "title": "Importar partida",
+    "noFileSelected": "Ningún archivo seleccionado",
+    "exampleSave": "Partida de ejemplo",
+    "chooseFile": "Elegir archivo de guardado",
+    "uploadFile": "Subir archivo",
+    "orPaste": "o pégala abajo",
+    "ariaLabel": "Código de la partida que vas a importar",
+    "placeholder": "Pega aquí el código de tu partida...",
+    "loadAction": "Cargar partida",
+    "orExample": "o carga una partida de ejemplo",
+    "fileTooLarge": "Ese archivo es demasiado grande para ser una partida de Clicker Heroes.",
+    "fileUnreadable": "No se pudo leer ese archivo. Vuelve a elegirlo."
+  },
+  "exportField": {
+    "title": "Exportar partida",
+    "downloadFile": "Descargar archivo",
+    "orCopy": "o cópiala abajo",
+    "nothingToDownload": "Todavía no hay nada que descargar: primero exporta la partida.",
+    "downloadUnavailable": "Este navegador no permite descargar archivos.",
+    "backupWarning": "Guarda siempre una copia de seguridad de tu partida original antes de importar datos editados en el juego."
+  },
+  "saveDataPanel": {
+    "title": "Exporta tu partida",
+    "encodeAction": "Codificar partida",
+    "ariaLabel": "Código de la partida que vas a exportar",
+    "placeholder": "Aquí aparecerá el código de tu partida...",
+    "dataLabel": "los datos editados",
+    "loadFirst": "Carga una partida antes de codificarla.",
+    "encoded": "Partida codificada.",
+    "encodeFailed": "No se pudo codificar la partida."
+  },
+  "import": {
+    "loaded": "Partida cargada.",
+    "failed": "No se pudo decodificar la partida."
+  },
+  "decodeErrors": {
+    "empty": "Primero pega el código de una partida o carga un archivo de guardado.",
+    "unsupported": "Ese texto no parece una partida de Clicker Heroes compatible.",
+    "invalidBase64": "El contenido {format} de la partida no es base64 válido. Comprueba que copiaste el código completo.",
+    "decompressFailed": "No se pudo descomprimir el contenido {format} de la partida ({reason}). Comprueba que copiaste el código completo.",
+    "notObject": "La partida decodificada no es un objeto válido."
+  },
+  "saveHelp": {
+    "title": "¿Dónde está mi archivo de guardado?",
+    "iconAlt": "Icono de {name}",
+    "icons": {
+      "apple": "Apple",
+      "openFolder": "carpeta abierta",
+      "steam": "Steam",
+      "windows": "Windows",
+      "platform": "plataforma"
+    },
+    "entries": {
+      "windows": {
+        "title": "Windows",
+        "note": "Dos archivos: .save y .backup. La versión de Steam y la independiente usan la misma ruta."
+      },
+      "macSteam": {
+        "title": "Mac - Steam"
+      },
+      "macStandalone": {
+        "title": "Mac - Versión independiente"
+      }
+    }
+  },
+  "changes": {
+    "title": "Cambios",
+    "versus": "respecto a la partida importada",
+    "truncated": "Solo se muestran los primeros {count} cambios.",
+    "labels": {
+      "outsiderLevel": "{name} · Nivel",
+      "outsiderSpent": "{name} · Ancient Souls gastadas",
+      "mercenaryName": "Mercenario {number} · Nombre",
+      "mercenaryLevel": "Mercenario {number} · Nivel",
+      "mercenaryTimeToDie": "Mercenario {number} · Tiempo hasta morir",
+      "mercenaryBonusLives": "Mercenario {number} · Vidas extra",
+      "currentSkin": "Skin actual del autoclicker",
+      "transcensionHistory": "Historial de trascendencias",
+      "heroLevel": "{name} · Nivel",
+      "heroGildedLevel": "{name} · Gilds",
+      "achievement": "Logro · {name}",
+      "skinUnlocked": "{name} · Desbloqueada"
+    },
+    "values": {
+      "none": "ninguno",
+      "yes": "Sí",
+      "no": "No",
+      "empty": "vacío",
+      "entries": "{count, plural, one {# entrada} other {# entradas}}"
+    }
+  },
+  "fields": {
+    "rubies": "Rubíes",
+    "autoclickers": "Autoclickers",
+    "paidForRubyMultiplier": "Multiplicador de daño x2",
+    "unopenedClickmasPresents": "Clickmas Presents",
+    "spikedNog": "Spiked Nog",
+    "candyCanes": "Candy Canes",
+    "labelMakers": "Label Makers",
+    "forgeCoals": "Forge Coals",
+    "gold": "Oro",
+    "highestFinishedZone": "Zona más alta",
+    "currentZoneHeight": "Zona actual",
+    "heroSouls": "Hero Souls",
+    "primalSouls": "Transcendent Hero Souls",
+    "newClanRaidClassId": "Clase de raid del clan",
+    "newClanRaidClassLevel": "Nivel de la clase de raid del clan",
+    "immortalSouls": "Immortal Souls",
+    "titanDamage": "Daño a titanes",
+    "totalMercenariesRevived": "Total de mercenarios revividos",
+    "totalMercenariesBuried": "Total de mercenarios enterrados",
+    "total5MinuteQuests": "Total de misiones de 5 minutos",
+    "heroSoulQuestsCompleted": "Misiones de Hero Souls completadas",
+    "goldQuestsCompleted": "Misiones de oro completadas",
+    "rubyQuestsCompleted": "Misiones de rubíes completadas",
+    "relicQuestsCompleted": "Misiones de reliquias completadas",
+    "skillQuestsCompleted": "Misiones de habilidad completadas",
+    "ancientSouls": "Ancient Souls",
+    "ancientSoulsTotal": "Ancient Souls totales",
+    "heroSoulsSacrificed": "Hero Souls sacrificadas"
+  },
+  "fieldHelp": {
+    "spikedNog": {
+      "body": "Consumir un Spiked Nog da +1 CPS por cada autoclicker en el monstruo durante 1 hora. El efecto se acumula tanto en potencia como en duración."
+    },
+    "candyCanes": {
+      "body": "Sirven para resucitar mercenarios caídos."
+    },
+    "labelMakers": {
+      "body": "Sirven para cambiar el nombre de los mercenarios."
+    },
+    "forgeCoals": {
+      "body": "Un objeto sin utilidad que se encuentra en los Clickmas Presents."
+    }
+  },
+  "fieldOptions": {
+    "newClanRaidClassId": {
+      "0": "Ninguna",
+      "1": "Rogue",
+      "2": "Mage",
+      "3": "Priest"
+    }
+  },
+  "saveEditor": {
+    "editTitle": "Edita tu partida",
+    "sections": {
+      "shopItems": "Objetos de la tienda",
+      "seasonalItems": "Objetos de temporada",
+      "zoneItems": "Objetos de zona",
+      "heroes": "Héroes",
+      "achievements": "Logros",
+      "clanValues": "Valores del clan"
+    },
+    "clanDescription": "Las clases de raid corresponden a 0 = Ninguna, 1 = Rogue, 2 = Mage, 3 = Priest."
+  },
+  "achievements": {
+    "tableLabel": "Campos de logros de trascendencia",
+    "transcendentHighestZone": "Zona más alta trascendente",
+    "reward": "Recompensa: {reward}",
+    "unlockedAria": "{name} desbloqueado",
+    "groups": {
+      "0": "Logros de oro",
+      "1": "Logros de héroes",
+      "2": "Logros de DPS",
+      "3": "Logros de clics",
+      "4": "Logros de zonas",
+      "5": "Logros de ascensión",
+      "6": "Logros de monstruos",
+      "7": "Logros de jefes centenarios",
+      "8": "Logros de reliquias",
+      "9": "Logros de mercenarios",
+      "10": "Logros de misiones",
+      "11": "Logros de trascendencia",
+      "12": "Otros logros"
+    }
+  },
+  "customField": {
+    "title": "Campo personalizado",
+    "description": "Busca un campo primitivo de primer nivel y edítalo directamente.",
+    "searchLabel": "Buscar campo por nombre",
+    "choose": "Elige un campo",
+    "fieldName": "Nombre del campo",
+    "fieldValue": "Valor del campo",
+    "enabled": "Activado"
+  },
+  "heroes": {
+    "title": "Héroes",
+    "gilded": "{count, plural, one {# gild} other {# gilds}} (+{percent}%)",
+    "levelAria": "Nivel de {name}",
+    "gildedLevelAria": "Gilds de {name}"
+  },
+  "mercenaries": {
+    "title": "Mercenarios",
+    "description": "Ajusta las estadísticas totales de mercenarios y el grupo actual.",
+    "viewDetails": "Ver detalles de los mercenarios",
+    "summary": "Resumen",
+    "summaryLabel": "Resumen de mercenarios",
+    "roster": "Grupo de mercenarios",
+    "nameAria": "Nombre del mercenario {number}",
+    "levelAria": "Nivel del mercenario {number}",
+    "timeToDieAria": "Tiempo hasta morir del mercenario {number}",
+    "bonusLivesAria": "Vidas extra del mercenario {number}"
+  },
+  "outsiders": {
+    "title": "Outsiders y Ancient Souls",
+    "description": "Edita tus Ancient Souls y los niveles de los outsiders, que marcan la progresión a largo plazo.",
+    "soulTotals": "Totales de Ancient Souls",
+    "tableLabel": "Outsiders",
+    "levelAria": "Nivel de {name}",
+    "spentAria": "Ancient Souls gastadas en {name}",
+    "cost": "{amount} AS",
+    "bonus": {
+      "1": "de efectividad de todas las bonificaciones idle",
+      "2": "de coste de los ancients",
+      "3": "de DPS",
+      "5": "de Primal Hero Souls",
+      "6": "de efectividad de Kumawakamaru (+12.5% por nivel)",
+      "7": "de efectividad de Atman (+25% por nivel)",
+      "8": "de efectividad de Bubos (+50% por nivel)",
+      "9": "de efectividad de Chronos (+75% por nivel)",
+      "10": "de efectividad de Dora (+100% por nivel)"
+    },
+    "cap": {
+      "6": "monstruos por zona (mín.: 2)",
+      "7": "de probabilidad de jefe primal (mín.: 5%)",
+      "8": "multiplicador de la vida del jefe (mín.: 5)",
+      "9": "segundos para el combate contra el jefe (mín.: 2 s)",
+      "10": "de probabilidad de cofre (mín.: 1%)"
+    }
+  },
+  "skins": {
+    "title": "Skins de autoclicker",
+    "unlockAll": "Desbloquear todas",
+    "allUnlocked": "Todas las skins desbloqueadas.",
+    "tableLabel": "Skins de autoclicker",
+    "unlockedAria": "{name} desbloqueada",
+    "currentSkin": "Skin actual"
+  },
+  "transcensions": {
+    "title": "Trascendencias y ascensiones",
+    "description": "Puedes borrar sin problema el historial de trascendencias y ascensiones si quieres una exportación más pequeña.",
+    "body": "La partida guarda toda la información de tus trascendencias y ascensiones. Esto puede aumentar mucho el tamaño del archivo de guardado, y el juego no necesita este historial para seguir funcionando.",
+    "viewHistory": "Ver historial de trascendencias",
+    "inspect": "Para revisar el historial antes, busca <code>{path}</code> en las herramientas JSON de abajo.",
+    "clear": "Borrar datos de trascendencias",
+    "cleared": "Historial de trascendencias borrado."
+  },
+  "removeClanData": {
+    "stepTitle": "Eliminar datos de clan del JSON",
+    "intro": "Esto elimina los campos relacionados con el clan y vacía los campos de cuenta e inicio de sesión del JSON de la partida cargada, para que el resultado exportado quede limpio para empezar de nuevo.",
+    "whatGetsRemoved": "Qué se elimina",
+    "tableLabel": "Campos que se eliminan",
+    "action": "Eliminar datos de clan",
+    "removedTitle": "Datos de clan eliminados",
+    "removedTableLabel": "Datos de clan eliminados",
+    "emptyState": "Elimina los datos de clan de una partida cargada para ver aquí los valores quitados.",
+    "loadFirst": "Carga una partida antes de eliminar los datos de clan.",
+    "removed": "Datos de clan eliminados de la partida.",
+    "emptyString": "(texto vacío)",
+    "unknown": "Desconocida",
+    "fields": {
+      "email": "Correo electrónico",
+      "passwordHash": "Hash de la contraseña",
+      "prevLoginTimestamp": "Fecha del último inicio de sesión",
+      "account": "Cuenta",
+      "accountId": "ID de cuenta",
+      "loginValidated": "Inicio de sesión validado",
+      "uniqueId": "ID único",
+      "subscribedEmail": "Correo suscrito",
+      "type": "Tipo"
+    }
+  },
+  "feedback": {
+    "title": "Comentarios",
+    "description": "¡Envía tus sugerencias y mejoras para hacer mejor el editor de partidas!",
+    "messageLabel": "Tu comentario",
+    "messagePlaceholder": "Escribe aquí tu comentario...",
+    "submit": "Enviar",
+    "sending": "Enviando...",
+    "emptyMessage": "Escribe un mensaje antes de enviar tu comentario.",
+    "success": "Comentario enviado.",
+    "invalidEmail": "Escribe un correo electrónico válido o déjalo en blanco.",
+    "sendFailed": "No se pudo enviar tu comentario en este momento.",
+    "nameAria": "Tu nombre",
+    "namePlaceholder": "Nombre (opcional)",
+    "emailAria": "Tu correo electrónico",
+    "emailPlaceholder": "Correo electrónico (opcional)",
+    "pages": {
+      "feedback": {
+        "title": "Enviar comentarios",
+        "description": "Cuéntanos sobre fallos en las herramientas, problemas del sitio, funciones que echas en falta o cualquier sugerencia."
+      },
+      "requestTool": {
+        "title": "Solicitar una herramienta",
+        "description": "Describe la herramienta que quieres, qué debería calcular y cómo la usarías.",
+        "emptyMessage": "Describe la herramienta antes de enviar tu solicitud.",
+        "messageLabel": "Tu solicitud de herramienta",
+        "messagePlaceholder": "¿Qué debería hacer la herramienta? ¿Qué datos le darías y qué debería decirte?",
+        "submit": "Enviar solicitud",
+        "success": "Solicitud de herramienta enviada."
+      },
+      "requestGuide": {
+        "title": "Solicitar una guía",
+        "description": "Cuéntanos en qué tema estás atascado y qué debería cubrir la guía ideal.",
+        "emptyMessage": "Describe la guía antes de enviar tu solicitud.",
+        "messageLabel": "Tu solicitud de guía",
+        "messagePlaceholder": "¿Qué tema debería cubrir la guía y en qué parte te atascas?",
+        "submit": "Enviar solicitud",
+        "success": "Solicitud de guía enviada."
+      }
+    },
+    "tooManyRequests": "Demasiados envíos seguidos. Espera un momento antes de volver a intentarlo."
+  },
+  "seasonalBanner": {
+    "badge": "NUEVO",
+    "text": "¡Ya puedes editar los objetos de temporada en el editor de partidas!",
+    "cta": "Abrir el editor de partidas"
+  },
+  "exampleSaves": {
+    "basic": "Partida básica",
+    "idle": "Build idle",
+    "active": "Build activa",
+    "transcension": "Trascendencia",
+    "fullRoster": "Plantilla completa",
+    "mobile": "Móvil",
+    "desktop": "Escritorio"
+  }
+}

@@ -3,7 +3,9 @@
 import { useMemo } from 'react';
 
 import { ChevronRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
+import { useEditorText } from '@/components/editor/useEditorText';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { diffSaveData, MAX_CHANGES } from '@/lib/save-diff';
 import { describeChange } from '@/lib/save-diff-labels';
@@ -27,12 +29,21 @@ type Props = {
 export const SaveChangesSummary = ({ defaultOpen }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const originalSaveData = useSaveStore((state) => state.originalSaveData);
+	const t = useTranslations('editor.changes');
+	const { resolve } = useEditorText();
 
 	const { changes, truncated } = useMemo(
 		() => diffSaveData(originalSaveData, saveData),
 		[originalSaveData, saveData]
 	);
 	const describedChanges = useMemo(() => changes.map(describeChange), [changes]);
+	const rows = describedChanges.map((change) => ({
+		key: change.key,
+		imageSrc: change.imageSrc,
+		label: resolve(change.label),
+		from: resolve(change.from),
+		to: resolve(change.to)
+	}));
 
 	if (describedChanges.length === 0) {
 		return null;
@@ -48,16 +59,16 @@ export const SaveChangesSummary = ({ defaultOpen }: Props) => {
 					aria-hidden='true'
 					className='h-3.5 w-3.5 shrink-0 text-(--color-fg-dim) transition-transform duration-200 ease-snap group-open:rotate-90 group-open:text-(--color-primary)'
 				/>
-				<span className='font-semibold'>Changes</span>
+				<span className='font-semibold'>{t('title')}</span>
 				<span className='rounded-full border border-(--color-line) bg-(--color-surface) px-2 py-0.5 text-[11px] tabular-nums text-(--color-fg-muted)'>
 					{describedChanges.length}
 					{truncated ? '+' : ''}
 				</span>
-				<span className='ml-auto text-[11px] text-(--color-fg-dim)'>vs. imported save</span>
+				<span className='ml-auto text-[11px] text-(--color-fg-dim)'>{t('versus')}</span>
 			</summary>
 
 			<ul className='max-h-72 overflow-y-auto border-t border-(--color-line-subtle)'>
-				{describedChanges.map((change) => (
+				{rows.map((change) => (
 					<li
 						className='grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-(--color-line-subtle) px-3 py-2 last:border-b-0'
 						key={change.key}
@@ -92,7 +103,7 @@ export const SaveChangesSummary = ({ defaultOpen }: Props) => {
 
 			{truncated ? (
 				<p className='border-t border-(--color-line-subtle) px-3 py-2 text-[11px] text-(--color-fg-dim)'>
-					Only the first {MAX_CHANGES} changes are listed.
+					{t('truncated', { count: MAX_CHANGES })}
 				</p>
 			) : null}
 		</details>

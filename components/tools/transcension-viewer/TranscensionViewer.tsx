@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState, type ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { Breadcrumb } from '@/components/home/Breadcrumb';
 import {
@@ -14,11 +15,13 @@ import {
 import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
+import { useDurationUnits } from '@/components/tools/use-duration-units';
 import { cn } from 'cn';
 import {
 	formatDurationMinutes,
 	formatDurationSeconds,
 	formatLargeNumber,
+	type DurationUnits,
 	formatNumber,
 	log10OfSaveValue
 } from '@/lib/format';
@@ -128,7 +131,7 @@ const toHistoryEntries = (value: unknown): HistoryEntry[] => {
  * key decides whether we read seconds or minutes. The formatting itself is
  * shared.
  */
-const formatDuration = (match: FieldMatch | undefined) => {
+const formatDuration = (match: FieldMatch | undefined, units: DurationUnits) => {
 	const value = match?.value;
 
 	// A non-numeric string is shown verbatim rather than as `0m`.
@@ -139,19 +142,19 @@ const formatDuration = (match: FieldMatch | undefined) => {
 	const numericValue = typeof value === 'number' ? value : Number(value ?? 0);
 
 	return normalizeKey(match?.key ?? '').includes('second')
-		? formatDurationSeconds(numericValue)
-		: formatDurationMinutes(numericValue);
+		? formatDurationSeconds(numericValue, units)
+		: formatDurationMinutes(numericValue, units);
 };
 
-const getDurationLabel = (entry: SaveRecord) => {
+const getDurationLabel = (entry: SaveRecord, units: DurationUnits) => {
 	const startTime = Number(entry.startTime);
 	const endTime = Number(entry.endTime);
 
 	if (Number.isFinite(startTime) && Number.isFinite(endTime)) {
-		return formatDurationMinutes((endTime - startTime) / 60000);
+		return formatDurationMinutes((endTime - startTime) / 60000, units);
 	}
 
-	return formatDuration(getFirstMatch(entry, fieldAliases.duration));
+	return formatDuration(getFirstMatch(entry, fieldAliases.duration), units);
 };
 
 /** Every save field here is optional, and a missing field reads as zero. */
@@ -186,7 +189,8 @@ const getEntryNumberLabel = (entry: HistoryEntry) => {
 };
 
 type HistoryColumn = {
-	/** Doubles as the React key, so it must be unique within a table. */
+	/** React key, unique within a table. */
+	id: string;
 	label: string;
 	widthClassName: string;
 	align?: 'left' | 'right';
@@ -219,7 +223,7 @@ const HistoryTable = ({ columns, emptyMessage, entries, label, selection }: Hist
 		<EditorTable className='border-(--color-line-subtle)' label={label} tableClassName='w-full table-fixed'>
 			<colgroup>
 				{columns.map((column) => (
-					<col className={column.widthClassName} key={column.label} />
+					<col className={column.widthClassName} key={column.id} />
 				))}
 			</colgroup>
 			<EditorTableHead>
@@ -227,7 +231,7 @@ const HistoryTable = ({ columns, emptyMessage, entries, label, selection }: Hist
 					{columns.map((column) => (
 						<EditorTableHeaderCell
 							className={column.align === 'right' ? 'text-right' : undefined}
-							key={column.label}
+							key={column.id}
 						>
 							{column.label}
 						</EditorTableHeaderCell>
@@ -254,7 +258,7 @@ const HistoryTable = ({ columns, emptyMessage, entries, label, selection }: Hist
 											column.align === 'right' && 'text-right tabular-nums',
 											column.cellClassName
 										)}
-										key={column.label}
+										key={column.id}
 									>
 										{/* The first cell carries the keyboard-reachable
 										    control that selects the row. */}
@@ -288,53 +292,85 @@ const HistoryTable = ({ columns, emptyMessage, entries, label, selection }: Hist
 	</div>
 );
 
-const numberColumn = (label: string, widthClassName: string, aliases: readonly string[]): HistoryColumn => ({
+const numberColumn = (
+	id: string,
+	label: string,
+	widthClassName: string,
+	aliases: readonly string[]
+): HistoryColumn => ({
+	id,
 	label,
 	widthClassName,
 	align: 'right',
 	render: (entry) => formatSaveNumber(getFirstValue(entry.data, aliases))
 });
 
-const entryNumberColumn: HistoryColumn = {
-	label: 'No.',
-	widthClassName: 'w-16',
-	cellClassName: 'font-mono text-(--color-fg)',
-	render: getEntryNumberLabel
+type ColumnLabels = Record<
+	'number' | 'duration' | 'ascensions' | 'highestZone' | 'heroSouls' | 'ancientSouls',
+	string
+>;
+
+const buildColumns = (labels: ColumnLabels, units: DurationUnits) => {
+	const entryNumberColumn: HistoryColumn = {
+		id: 'number',
+		label: labels.number,
+		widthClassName: 'w-16',
+		cellClassName: 'font-mono text-(--color-fg)',
+		render: getEntryNumberLabel
+	};
+
+	const durationColumn: HistoryColumn = {
+		id: 'duration',
+		label: labels.duration,
+		widthClassName: 'w-32',
+		render: (entry) => getDurationLabel(entry.data, units)
+	};
+
+	const transcensionColumns: readonly HistoryColumn[] = [
+		entryNumberColumn,
+		durationColumn,
+		{
+			id: 'ascensions',
+			label: labels.ascensions,
+			widthClassName: 'w-28',
+			align: 'right',
+			render: (entry) => getAscensionCount(entry.data)
+		},
+		numberColumn('highestZone', labels.highestZone, 'w-24', fieldAliases.highestZone),
+		numberColumn('heroSouls', labels.heroSouls, 'w-32', fieldAliases.heroSouls),
+		{
+			id: 'ancientSouls',
+			label: labels.ancientSouls,
+			widthClassName: 'w-24',
+			align: 'right',
+			render: (entry) => getAncientSoulsLabel(entry.data)
+		}
+	];
+
+	const ascensionColumns: readonly HistoryColumn[] = [
+		entryNumberColumn,
+		durationColumn,
+		numberColumn('highestZone', labels.highestZone, 'w-24', fieldAliases.highestZone),
+		numberColumn('heroSouls', labels.heroSouls, 'w-32', fieldAliases.heroSouls)
+	];
+
+	return { ascensionColumns, transcensionColumns };
 };
-
-const durationColumn: HistoryColumn = {
-	label: 'Duration',
-	widthClassName: 'w-32',
-	render: (entry) => getDurationLabel(entry.data)
-};
-
-const transcensionColumns: readonly HistoryColumn[] = [
-	entryNumberColumn,
-	durationColumn,
-	{
-		label: 'Ascensions',
-		widthClassName: 'w-28',
-		align: 'right',
-		render: (entry) => getAscensionCount(entry.data)
-	},
-	numberColumn('HZE', 'w-24', fieldAliases.highestZone),
-	numberColumn('HS', 'w-32', fieldAliases.heroSouls),
-	{
-		label: 'AS',
-		widthClassName: 'w-24',
-		align: 'right',
-		render: (entry) => getAncientSoulsLabel(entry.data)
-	}
-];
-
-const ascensionColumns: readonly HistoryColumn[] = [
-	entryNumberColumn,
-	durationColumn,
-	numberColumn('HZE', 'w-24', fieldAliases.highestZone),
-	numberColumn('HS', 'w-32', fieldAliases.heroSouls)
-];
 
 export const TranscensionViewer = () => {
+	const t = useTranslations('tools.transcension');
+	const units = useDurationUnits();
+	const { ascensionColumns, transcensionColumns } = buildColumns(
+		{
+			number: t('columns.number'),
+			duration: t('columns.duration'),
+			ascensions: t('columns.ascensions'),
+			highestZone: t('columns.highestZone'),
+			heroSouls: t('columns.heroSouls'),
+			ancientSouls: t('columns.ancientSouls')
+		},
+		units
+	);
 	const saveData = useSaveStore((state) => state.saveData);
 	const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 	const transcensions = useMemo(
@@ -351,17 +387,17 @@ export const TranscensionViewer = () => {
 
 			<SaveDataPanel examples={transcensionExamples} />
 
-			<StepTitle step={2} title='Transcensions' />
+			<StepTitle step={2} title={t('steps.transcensions')} />
 			<PanelSection>
 				<HistoryTable
 					columns={transcensionColumns}
-					emptyMessage='Load a save with transcension history to see it here.'
+					emptyMessage={t('transcensionsEmpty')}
 					entries={transcensions}
-					label='Transcensions'
+					label={t('transcensionsLabel')}
 					selection={{
 						selectedIndex: selectedTranscension?.index,
 						onSelect: setSelectedIndex,
-						getSelectLabel: (entry) => `Show ascensions in transcension #${getEntryNumberLabel(entry)}`
+						getSelectLabel: (entry) => t('selectTranscension', { number: getEntryNumberLabel(entry) })
 					}}
 				/>
 			</PanelSection>
@@ -370,16 +406,16 @@ export const TranscensionViewer = () => {
 				step={3}
 				title={
 					selectedTranscension
-						? `Ascensions in Transcension #${getEntryNumberLabel(selectedTranscension)}`
-						: 'Ascensions in Transcension'
+						? t('steps.ascensionsIn', { number: getEntryNumberLabel(selectedTranscension) })
+						: t('steps.ascensionsInEmpty')
 				}
 			/>
 			<PanelSection>
 				<HistoryTable
 					columns={ascensionColumns}
-					emptyMessage='Select a transcension with ascension history to see its ascensions here.'
+					emptyMessage={t('ascensionsEmpty')}
 					entries={selectedAscensions}
-					label='Ascensions in the selected transcension'
+					label={t('ascensionsLabel')}
 				/>
 			</PanelSection>
 		</>

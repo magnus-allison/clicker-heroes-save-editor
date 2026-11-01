@@ -50,4 +50,9 @@ export const messages = { en, es };
  * for `NextIntlClientProvider`; guide prose, tool write-ups and SEO text render
  * on the server and never ship to the browser.
  */
-export const clientNamespaces = ['common', 'editor', 'tools', 'guidesUi'] as const satisfies readonly (keyof typeof en)[];
+export const clientNamespaces = [
+	'common',
+	'editor',
+	'tools',
+	'guidesUi'
+] as const satisfies readonly (keyof typeof en)[];

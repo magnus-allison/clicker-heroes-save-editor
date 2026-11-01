@@ -1,284 +1,284 @@
 {
-	"site": {
-		"description": "Editor de partidas de Clicker Heroes y herramientas gratis online. Decodifica, revisa, edita y vuelve a codificar tus partidas de Clicker Heroes en el navegador."
-	},
-	"breadcrumb": {
-		"home": "Inicio",
-		"tools": "Herramientas",
-		"guides": "Guías"
-	},
-	"pages": {
-		"home": {
-			"metaTitle": "Clicker Heroes: editor de partidas, calculadoras y guías",
-			"description": "Herramientas gratis para Clicker Heroes en tu navegador: editor de partidas, calculadoras de ancients, outsiders e instakill, convertidor de partidas y tabla de gilds."
-		},
-		"saveEditor": {
-			"metaTitle": "Editor de partidas de Clicker Heroes – Online y gratis",
-			"description": "Editor de partidas de Clicker Heroes gratis y online: decodifica, revisa, edita y vuelve a codificar tu partida. Cambia oro, rubíes, Hero Souls, héroes, ancients, ascensiones y más.",
-			"applicationName": "Editor de partidas de Clicker Heroes",
-			"featureList": [
-				"Decodifica códigos de partida de Clicker Heroes",
-				"Codifica la partida editada para importarla de nuevo en el juego",
-				"Edita oro, rubíes, Hero Souls, ancients y datos de ascensión",
-				"Edita héroes, logros, skins, mercenarios, outsiders, datos de clan y campos personalizados",
-				"Escribe cualquier campo de la partida directamente con su ruta"
-			]
-		},
-		"instakillCalculator": {
-			"metaTitle": "Calculadora de instakill de Clicker Heroes – Zonas por hora",
-			"description": "Calcula la duración de una ruta de instakill en Clicker Heroes, los monstruos por zona y las zonas por hora a partir de Kumawakamaru, Borb, el rango de zonas y los FPS.",
-			"applicationName": "Calculadora de instakill de Clicker Heroes",
-			"featureList": [
-				"Calcula la duración de la ruta",
-				"Calcula los monstruos por zona",
-				"Calcula las zonas por hora según el rango de zonas y los FPS"
-			]
-		},
-		"ancientsCalculator": {
-			"metaTitle": "Calculadora de ancients de Clicker Heroes – Niveles óptimos",
-			"description": "Calculadora de ancients de Clicker Heroes gratis. Importa tu partida y obtén los niveles óptimos de cada ancient, su coste y un planificador de Ancient Souls para builds idle, híbridas y activas.",
-			"applicationName": "Calculadora de ancients de Clicker Heroes",
-			"featureList": [
-				"Calcula los niveles óptimos de ancients a partir de una partida importada",
-				"Admite builds idle, híbridas y activas con una proporción híbrida ajustable",
-				"Muestra el coste en Hero Souls de cada ancient y las almas sobrantes",
-				"Planifica las Hero Souls necesarias para las siguientes Ancient Souls"
-			]
-		},
-		"outsidersCalculator": {
-			"metaTitle": "Calculadora de outsiders de Clicker Heroes – Niveles óptimos",
-			"description": "Calculadora de outsiders de Clicker Heroes gratis. Importa tu partida y obtén los niveles óptimos de Borb, Phandoryss, Ponyboy y Chor’gorloth, estimaciones de fin de trascendencia y un simulador.",
-			"applicationName": "Calculadora de outsiders de Clicker Heroes",
-			"featureList": [
-				"Calcula los niveles óptimos de outsiders a partir de una partida importada",
-				"Estima la zona más alta, las Hero Souls y las Ancient Souls con las que termina una trascendencia",
-				"Muestra los puntos de corte por zona y las estadísticas en la zona más alta",
-				"Proyecta cada trascendencia desde ahora hasta el final del juego",
-				"Escribe los niveles de outsiders recomendados en la partida"
-			]
-		},
-		"transcensionViewer": {
-			"metaTitle": "Visor de trascendencias de Clicker Heroes – Historial",
-			"description": "Importa una partida de Clicker Heroes y revisa tu historial de trascendencias con la duración de cada ascensión, la HZE y el total de Hero Souls y Ancient Souls.",
-			"applicationName": "Visor de trascendencias de Clicker Heroes",
-			"featureList": [
-				"Consulta el historial de trascendencias de Clicker Heroes",
-				"Revisa las ascensiones de una partida importada",
-				"Revisa la HZE y el total de Hero Souls y Ancient Souls"
-			]
-		},
-		"mercenaryViewer": {
-			"metaTitle": "Visor de mercenarios de Clicker Heroes – Plantilla y misiones",
-			"description": "Importa una partida de Clicker Heroes y consulta tus mercenarios y sus estadísticas históricas: nivel, tiempo de vida restante, vidas extra y misiones completadas.",
-			"applicationName": "Visor de mercenarios de Clicker Heroes",
-			"featureList": [
-				"Consulta los mercenarios de una partida de Clicker Heroes",
-				"Revisa el nivel, el tiempo de vida restante y las vidas extra de cada mercenario",
-				"Revisa el total histórico de mercenarios y misiones"
-			]
-		},
-		"removeClanData": {
-			"metaTitle": "Eliminar datos de clan de una partida de Clicker Heroes",
-			"description": "Elimina los datos de clan, cuenta e inicio de sesión de una partida de Clicker Heroes y vuelve a codificarla en tu navegador.",
-			"applicationName": "Herramienta para eliminar datos de clan de Clicker Heroes",
-			"featureList": [
-				"Elimina los campos de clan de las partidas de Clicker Heroes",
-				"Limpia los datos de cuenta e inicio de sesión",
-				"Vuelve a codificar la partida limpia en el navegador"
-			]
-		},
-		"saveConverter": {
-			"metaTitle": "Convertidor de partidas de Clicker Heroes – PC y móvil",
-			"description": "Convierte partidas de Clicker Heroes entre los formatos de PC y móvil en tu navegador, con el origen detectado y el número de parche.",
-			"applicationName": "Convertidor de partidas de Clicker Heroes",
-			"featureList": [
-				"Detecta si una partida de Clicker Heroes viene de PC o de móvil",
-				"Muestra el número de parche de la partida cuando está disponible",
-				"Convierte partidas entre los formatos de compresión de PC y móvil",
-				"Vuelve a codificar la partida convertida en el navegador"
-			]
-		},
-		"saveJson": {
-			"metaTitle": "Partida de Clicker Heroes a JSON – Decodifica y edita",
-			"description": "Herramienta para desarrolladores: decodifica una partida de Clicker Heroes a JSON, edita cualquier campo a mano y vuelve a codificar el JSON como código de partida en tu navegador.",
-			"applicationName": "Herramienta de JSON para partidas de Clicker Heroes",
-			"featureList": [
-				"Decodifica partidas de Clicker Heroes a JSON con formato",
-				"Edita a mano cualquier campo de la partida",
-				"Convierte el JSON editado de nuevo en un código de partida",
-				"Formatea y copia el JSON de la partida en el navegador"
-			]
-		},
-		"newPlayerGuide": {
-			"metaTitle": "Guía para principiantes de Clicker Heroes (1.0e12)",
-			"description": "Guía para principiantes de Clicker Heroes 1.0e12: tu primera partida, cuándo ascender, dar gilds a los Power 5, qué ancients comprar, tu primera trascendencia, rubíes, mercenarios, clanes y reliquias."
-		},
-		"gildingChart": {
-			"metaTitle": "Tabla de gilds de Clicker Heroes – Qué héroe dorar (1.0e12)",
-			"description": "Qué héroe dorar en cada umbral de oro en Clicker Heroes 1.0e12, desde The Masked Samurai hasta los Ace Scouts. Introduce tu oro para encontrar tu héroe óptimo."
-		},
-		"progressTips": {
-			"metaTitle": "Consejos de Clicker Heroes – 10 formas de progresar más rápido",
-			"description": "Diez formas de progresar más rápido en Clicker Heroes 1.0e12: cuándo ascender y trascender, qué héroe subir y dorar, qué build elegir, combos de habilidades, en qué gastar rubíes y cómo superar muros."
-		},
-		"requestTool": {
-			"metaTitle": "Solicita una herramienta o calculadora de Clicker Heroes",
-			"description": "Sugiere una nueva herramienta o calculadora de Clicker Heroes. Describe qué quieres, qué debería calcular y cómo la usarías."
-		},
-		"requestGuide": {
-			"metaTitle": "Solicita una guía de Clicker Heroes",
-			"description": "Sugiere una nueva guía de Clicker Heroes. Cuéntanos en qué tema te has atascado y qué debería cubrir la guía ideal."
-		},
-		"faq": {
-			"metaTitle": "Preguntas frecuentes del editor de partidas de Clicker Heroes",
-			"description": "Respuestas a las dudas más comunes sobre el editor de partidas de Clicker Heroes: cómo cargar y exportar una partida, dónde está el archivo de guardado, si tus datos salen del navegador y qué hacer si no se decodifica."
-		},
-		"feedback": {
-			"metaTitle": "Comentarios sobre las herramientas de Clicker Heroes",
-			"description": "Envía errores, peticiones de funciones, ideas y comentarios generales sobre el editor de partidas y las herramientas de Clicker Heroes."
-		}
-	},
-	"faqs": {
-		"saveEditor": [
-			{
-				"question": "¿Cómo edito una partida de Clicker Heroes?",
-				"answer": "Pega el código de tu partida de Clicker Heroes en el editor, decodifícalo, cambia los campos que necesites y copia el resultado codificado en el diálogo de importación del juego."
-			},
-			{
-				"question": "¿Puede este editor cambiar oro, rubíes, Hero Souls y ancients?",
-				"answer": "Sí. El editor incluye controles para las monedas principales, los niveles de los héroes, las Hero Souls, la progresión de los ancients, las ascensiones, los logros, las skins, los mercenarios, los outsiders, los datos de clan y campos personalizados. La edición del JSON en bruto está en la herramienta Partida a JSON."
-			},
-			{
-				"question": "¿Se sube mi partida de Clicker Heroes a un servidor?",
-				"answer": "No. El editor funciona en el navegador y procesa la partida en tu dispositivo, así que no tienes que subirla a este sitio para editarla."
-			}
-		],
-		"site": [
-			{
-				"id": "using-the-editor",
-				"title": "Usar el editor",
-				"summary": "Cargar una partida, cambiarla y volver a llevarla a Clicker Heroes.",
-				"faqs": [
-					{
-						"question": "¿Cómo cargo mi partida en el editor?",
-						"answer": "Exporta tu partida desde el juego, pega el código en el paso 1 del editor de partidas y pulsa Cargar partida. También puedes elegir tu archivo .save con el selector de archivos. La partida se decodifica al momento y se desbloquea el paso 2. Varias calculadoras incluyen partidas de ejemplo si solo quieres ver cómo funciona una herramienta."
-					},
-					{
-						"question": "¿Dónde está mi archivo de guardado de Clicker Heroes?",
-						"answer": "En Windows, tanto la versión de Steam como la independiente usan C:\\Users\\[USUARIO]\\AppData\\Roaming\\ClickerHeroes2\\Local Store\\saves, que contiene un archivo .save y otro .backup. En Mac con Steam está en ~/Library/Application Support/Steam/userdata/[IDUSUARIO]/363970/remote/, y la versión independiente de Mac usa ~/Library/Application Support/com.playsaurus.clickerheroes/. La misma lista aparece en «¿Dónde está mi archivo de guardado?» dentro del editor."
-					},
-					{
-						"question": "¿Cómo vuelvo a meter la partida editada en el juego?",
-						"answer": "Pulsa Codificar partida en el paso 3, copia el código y pégalo en la opción de importar partida de Clicker Heroes. Vuelve a codificar después de cada cambio: el cuadro de exportación solo contiene el código de la última vez que pulsaste el botón."
-					},
-					{
-						"question": "¿Qué puedo cambiar exactamente?",
-						"answer": "Oro, rubíes, Hero Souls, objetos de la tienda y de temporada, niveles y gilds de los héroes, skins, logros, ascensiones y trascendencias, datos de clan, mercenarios y outsiders. Lo que no cubren las secciones se puede escribir por ruta en la sección Campo personalizado, o a mano en la herramienta Partida a JSON."
-					},
-					{
-						"question": "¿El editor funciona con partidas de móvil?",
-						"answer": "Decodifica partidas de PC, de móvil y códigos antiguos. Si necesitas que una partida de una plataforma cargue en la otra, pásala primero por el convertidor de partidas."
-					}
-				]
-			},
-			{
-				"id": "safety-and-privacy",
-				"title": "Seguridad y privacidad",
-				"summary": "Qué pasa con los datos de tu partida y cómo evitar perder progreso.",
-				"faqs": [
-					{
-						"question": "¿Se sube mi partida a un servidor?",
-						"answer": "No. La decodificación, la edición y la codificación se hacen en tu navegador, así que el código de tu partida nunca se envía a este sitio ni se guarda fuera de tu dispositivo."
-					},
-					{
-						"question": "¿Debo hacer una copia de seguridad antes de editar?",
-						"answer": "Siempre. Guarda una copia del código original, o del archivo .save, antes de importar una partida editada. En Windows también hay un archivo .backup junto a la partida al que puedes volver."
-					},
-					{
-						"question": "¿Puedo romper mi partida al editarla?",
-						"answer": "Sí. Valores muy fuera de lo que espera el juego, o un campo personalizado escrito en la ruta equivocada, pueden dar una partida que el juego no carga. Cambia una cosa cada vez, vuelve a importar y comprueba el juego antes de la siguiente edición."
-					},
-					{
-						"question": "¿Editar mi partida va contra las normas?",
-						"answer": "Editar una partida de un jugador es decisión tuya, pero los valores editados pueden afectar a las raids de clan y a las clasificaciones, y modificar los datos de la partida puede ir contra los términos del juego. Las herramientas se ofrecen tal cual; úsalas bajo tu responsabilidad."
-					},
-					{
-						"question": "¿Cómo quito los datos de clan y de cuenta antes de compartir una partida?",
-						"answer": "Usa la herramienta Eliminar datos de clan. Borra los campos de clan, cuenta e inicio de sesión de la partida importada y vuelve a codificar el resultado en tu navegador."
-					}
-				]
-			},
-			{
-				"id": "troubleshooting",
-				"title": "Solución de problemas",
-				"summary": "Los errores más habituales y lo que suele causarlos.",
-				"faqs": [
-					{
-						"question": "El editor dice que el texto no parece una partida de Clicker Heroes compatible",
-						"answer": "El texto pegado no está en ningún formato de partida que el editor reconozca. Casi siempre significa que solo se copió una parte del código, o que el texto viene de otro juego u otra herramienta. Vuelve a copiar la partida desde el principio hasta el final del código, o carga directamente el archivo .save."
-					},
-					{
-						"question": "El código no es base64 válido o no se descomprime",
-						"answer": "El código llegó al editor incompleto o modificado. Los saltos de línea y los espacios no importan; que falten caracteres, sí. Vuelve a copiar la partida entera o usa el selector de archivos en lugar de pegarla."
-					},
-					{
-						"question": "No pasa nada después de pegar mi partida",
-						"answer": "El editor decodifica al cargar, no al pegar. Pulsa Cargar partida después de pegarla: deberías ver el aviso «Partida cargada.» y las secciones de edición se activarán."
-					},
-					{
-						"question": "El juego no acepta mi partida editada",
-						"answer": "Comprueba que pulsaste Codificar partida después de tu último cambio y que copiaste el código entero. Si el juego sigue rechazándola, importa tu copia de seguridad y repite los cambios en pasos más pequeños para encontrar el valor que no le gusta."
-					},
-					{
-						"question": "Algo más falla o falta un valor",
-						"answer": "Envíalo con el formulario de comentarios, indicando la herramienta que usabas y lo que esperabas que pasara. Tanto los errores como las peticiones de campos que el editor todavía no cubre son bienvenidos."
-					}
-				]
-			}
-		],
-		"gildingChart": [
-			{
-				"question": "¿Tengo que volver a dorar en cada fila de la tabla de gilds?",
-				"answer": "No. Mover gilds cuesta Hero Souls, y mientras haces instakill el daño extra no sirve de nada. Sáltate filas sin problema y mueve tus gilds solo cuando los monstruos empiecen a sobrevivir a tus golpes. La tabla muestra lo óptimo, no una lista que tengas que completar."
-			},
-			{
-				"question": "¿Por qué el mismo héroe aparece más de una vez en la tabla de gilds?",
-				"answer": "Los héroes ganan multiplicadores de daño x10 en ciertos niveles, y el coste de subir de nivel crece a medida que avanzas. Por eso Wepwawet en el nivel 5.000 puede quedar por detrás de Gog y volver a superarlo en el 6.000 cuando consigue su siguiente multiplicador. Entre e383 y e500 los dos se alternan cada 500 niveles más o menos."
-			},
-			{
-				"question": "¿Debo dorar a Dread Knight en Clicker Heroes?",
-				"answer": "No. Dorar a Dread Knight nunca es óptimo en ningún momento del juego. Sáltalo."
-			},
-			{
-				"question": "¿Por qué Wepwawet y Gog dejan de alternarse después de e442?",
-				"answer": "Gog no recibe más multiplicadores x10 después del nivel 8.000, así que ya no puede volver a superar a Wepwawet. Quédate con Wepwawet desde e442 hasta Tsuchi en e500."
-			},
-			{
-				"question": "¿Por qué Tsuchi en el nivel 1 es mejor que Wepwawet en el nivel 9.000?",
-				"answer": "Contratar a Tsuchi cuesta menos que comprar 25 niveles más de Wepwawet en ese punto, y su daño base está en otro nivel por completo. El mismo patrón se repite con The Maw, que en el nivel 1 hace aproximadamente 1e6750 veces el daño de Cadu en el nivel 680.625."
-			},
-			{
-				"question": "¿Por qué Cadu y Ceus se alternan en la tabla de gilds?",
-				"answer": "Los Tomb Guardians se potencian entre sí: Cadu desbloquea una mejora para Ceus, Ceus desbloquea otra para Cadu, y así sucesivamente. Subes el que toque a continuación. Cualquiera de los dos sirve para empezar en e25.500, y después de la última mejora de Ceus en el nivel 588.000 te quedas con Cadu hasta The Maw."
-			},
-			{
-				"question": "¿Por qué Yachiyl empieza en el nivel 157.500 y no en el 1?",
-				"answer": "Yachiyl solo supera a The Maw cuando llega a su primera mejora en el nivel 157.500. A Rose le pasa lo mismo frente a Yachiyl y necesita primero el nivel 9.700."
-			},
-			{
-				"question": "¿Por qué se salta tanto a Dorothy en la rotación de los Ace Scouts?",
-				"answer": "Varias de sus mejoras cuestan más oro que la mejora equivalente de Rose y hacen menos daño, así que Dorothy 1, 2 y 4 son peores compras que simplemente subir a Rose. Aun así aparece tres veces en la rotación, así que sigue las filas tal como están en lugar de descartarla."
-			},
-			{
-				"question": "¿Cuántas Ancient Souls necesito para llegar a un héroe de la tabla de gilds?",
-				"answer": "La columna de Ancient Souls es una guía aproximada hasta Xavira, alrededor de 6.000. A partir de ahí no tiene sentido tabularla, porque el progreso depende mucho de tu reparto de outsiders y de cuántas veces hayas trascendido."
-			}
-		]
-	},
-	"faqPage": {
-		"intro": "Dudas habituales sobre el editor de partidas de Clicker Heroes y las herramientas que lo acompañan: cargar y exportar partidas, qué pasa con los datos de tu partida y qué significan los errores cuando una partida no se decodifica.",
-		"contentsLabel": "Contenido de las preguntas frecuentes",
-		"contents": "Contenido",
-		"footer": "¿Sigues atascado o crees que algo de aquí está mal? <link>Envía tus comentarios</link> y cuéntanos qué intentabas hacer: nos sirven tanto los informes de errores como las preguntas que esta página debería responder."
-	}
+  "site": {
+    "description": "Editor de partidas de Clicker Heroes y herramientas gratis online. Decodifica, revisa, edita y vuelve a codificar tus partidas de Clicker Heroes en el navegador."
+  },
+  "breadcrumb": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "guides": "Guías"
+  },
+  "pages": {
+    "home": {
+      "metaTitle": "Clicker Heroes: editor de partidas, calculadoras y guías",
+      "description": "Herramientas gratis para Clicker Heroes en tu navegador: editor de partidas, calculadoras de ancients, outsiders e instakill, convertidor de partidas y tabla de gilds."
+    },
+    "saveEditor": {
+      "metaTitle": "Editor de partidas de Clicker Heroes – Online y gratis",
+      "description": "Editor de partidas de Clicker Heroes gratis y online: decodifica, revisa, edita y vuelve a codificar tu partida. Cambia oro, rubíes, Hero Souls, héroes, ancients, ascensiones y más.",
+      "applicationName": "Editor de partidas de Clicker Heroes",
+      "featureList": [
+        "Decodifica códigos de partida de Clicker Heroes",
+        "Codifica la partida editada para importarla de nuevo en el juego",
+        "Edita oro, rubíes, Hero Souls, ancients y datos de ascensión",
+        "Edita héroes, logros, skins, mercenarios, outsiders, datos de clan y campos personalizados",
+        "Escribe cualquier campo de la partida directamente con su ruta"
+      ]
+    },
+    "instakillCalculator": {
+      "metaTitle": "Calculadora de instakill de Clicker Heroes – Zonas por hora",
+      "description": "Calcula la duración de una ruta de instakill en Clicker Heroes, los monstruos por zona y las zonas por hora a partir de Kumawakamaru, Borb, el rango de zonas y los FPS.",
+      "applicationName": "Calculadora de instakill de Clicker Heroes",
+      "featureList": [
+        "Calcula la duración de la ruta",
+        "Calcula los monstruos por zona",
+        "Calcula las zonas por hora según el rango de zonas y los FPS"
+      ]
+    },
+    "ancientsCalculator": {
+      "metaTitle": "Calculadora de ancients de Clicker Heroes – Niveles óptimos",
+      "description": "Calculadora de ancients de Clicker Heroes gratis. Importa tu partida y obtén los niveles óptimos de cada ancient, su coste y un planificador de Ancient Souls para builds idle, híbridas y activas.",
+      "applicationName": "Calculadora de ancients de Clicker Heroes",
+      "featureList": [
+        "Calcula los niveles óptimos de ancients a partir de una partida importada",
+        "Admite builds idle, híbridas y activas con una proporción híbrida ajustable",
+        "Muestra el coste en Hero Souls de cada ancient y las almas sobrantes",
+        "Planifica las Hero Souls necesarias para las siguientes Ancient Souls"
+      ]
+    },
+    "outsidersCalculator": {
+      "metaTitle": "Calculadora de outsiders de Clicker Heroes – Niveles óptimos",
+      "description": "Calculadora de outsiders de Clicker Heroes gratis. Importa tu partida y obtén los niveles óptimos de Borb, Phandoryss, Ponyboy y Chor’gorloth, estimaciones de fin de trascendencia y un simulador.",
+      "applicationName": "Calculadora de outsiders de Clicker Heroes",
+      "featureList": [
+        "Calcula los niveles óptimos de outsiders a partir de una partida importada",
+        "Estima la zona más alta, las Hero Souls y las Ancient Souls con las que termina una trascendencia",
+        "Muestra los puntos de corte por zona y las estadísticas en la zona más alta",
+        "Proyecta cada trascendencia desde ahora hasta el final del juego",
+        "Escribe los niveles de outsiders recomendados en la partida"
+      ]
+    },
+    "transcensionViewer": {
+      "metaTitle": "Visor de trascendencias de Clicker Heroes – Historial",
+      "description": "Importa una partida de Clicker Heroes y revisa tu historial de trascendencias con la duración de cada ascensión, la HZE y el total de Hero Souls y Ancient Souls.",
+      "applicationName": "Visor de trascendencias de Clicker Heroes",
+      "featureList": [
+        "Consulta el historial de trascendencias de Clicker Heroes",
+        "Revisa las ascensiones de una partida importada",
+        "Revisa la HZE y el total de Hero Souls y Ancient Souls"
+      ]
+    },
+    "mercenaryViewer": {
+      "metaTitle": "Visor de mercenarios de Clicker Heroes – Plantilla y misiones",
+      "description": "Importa una partida de Clicker Heroes y consulta tus mercenarios y sus estadísticas históricas: nivel, tiempo de vida restante, vidas extra y misiones completadas.",
+      "applicationName": "Visor de mercenarios de Clicker Heroes",
+      "featureList": [
+        "Consulta los mercenarios de una partida de Clicker Heroes",
+        "Revisa el nivel, el tiempo de vida restante y las vidas extra de cada mercenario",
+        "Revisa el total histórico de mercenarios y misiones"
+      ]
+    },
+    "removeClanData": {
+      "metaTitle": "Eliminar datos de clan de una partida de Clicker Heroes",
+      "description": "Elimina los datos de clan, cuenta e inicio de sesión de una partida de Clicker Heroes y vuelve a codificarla en tu navegador.",
+      "applicationName": "Herramienta para eliminar datos de clan de Clicker Heroes",
+      "featureList": [
+        "Elimina los campos de clan de las partidas de Clicker Heroes",
+        "Limpia los datos de cuenta e inicio de sesión",
+        "Vuelve a codificar la partida limpia en el navegador"
+      ]
+    },
+    "saveConverter": {
+      "metaTitle": "Convertidor de partidas de Clicker Heroes – PC y móvil",
+      "description": "Convierte partidas de Clicker Heroes entre los formatos de PC y móvil en tu navegador, con el origen detectado y el número de parche.",
+      "applicationName": "Convertidor de partidas de Clicker Heroes",
+      "featureList": [
+        "Detecta si una partida de Clicker Heroes viene de PC o de móvil",
+        "Muestra el número de parche de la partida cuando está disponible",
+        "Convierte partidas entre los formatos de compresión de PC y móvil",
+        "Vuelve a codificar la partida convertida en el navegador"
+      ]
+    },
+    "saveJson": {
+      "metaTitle": "Partida de Clicker Heroes a JSON – Decodifica y edita",
+      "description": "Herramienta para desarrolladores: decodifica una partida de Clicker Heroes a JSON, edita cualquier campo a mano y vuelve a codificar el JSON como código de partida en tu navegador.",
+      "applicationName": "Herramienta de JSON para partidas de Clicker Heroes",
+      "featureList": [
+        "Decodifica partidas de Clicker Heroes a JSON con formato",
+        "Edita a mano cualquier campo de la partida",
+        "Convierte el JSON editado de nuevo en un código de partida",
+        "Formatea y copia el JSON de la partida en el navegador"
+      ]
+    },
+    "newPlayerGuide": {
+      "metaTitle": "Guía para principiantes de Clicker Heroes (1.0e12)",
+      "description": "Guía para principiantes de Clicker Heroes 1.0e12: tu primera partida, cuándo ascender, dar gilds a los Power 5, qué ancients comprar, tu primera trascendencia, rubíes, mercenarios, clanes y reliquias."
+    },
+    "gildingChart": {
+      "metaTitle": "Tabla de gilds de Clicker Heroes – Qué héroe dorar (1.0e12)",
+      "description": "Qué héroe dorar en cada umbral de oro en Clicker Heroes 1.0e12, desde The Masked Samurai hasta los Ace Scouts. Introduce tu oro para encontrar tu héroe óptimo."
+    },
+    "progressTips": {
+      "metaTitle": "Consejos de Clicker Heroes – 10 formas de progresar más rápido",
+      "description": "Diez formas de progresar más rápido en Clicker Heroes 1.0e12: cuándo ascender y trascender, qué héroe subir y dorar, qué build elegir, combos de habilidades, en qué gastar rubíes y cómo superar muros."
+    },
+    "requestTool": {
+      "metaTitle": "Solicita una herramienta o calculadora de Clicker Heroes",
+      "description": "Sugiere una nueva herramienta o calculadora de Clicker Heroes. Describe qué quieres, qué debería calcular y cómo la usarías."
+    },
+    "requestGuide": {
+      "metaTitle": "Solicita una guía de Clicker Heroes",
+      "description": "Sugiere una nueva guía de Clicker Heroes. Cuéntanos en qué tema te has atascado y qué debería cubrir la guía ideal."
+    },
+    "faq": {
+      "metaTitle": "Preguntas frecuentes del editor de partidas de Clicker Heroes",
+      "description": "Respuestas a las dudas más comunes sobre el editor de partidas de Clicker Heroes: cómo cargar y exportar una partida, dónde está el archivo de guardado, si tus datos salen del navegador y qué hacer si no se decodifica."
+    },
+    "feedback": {
+      "metaTitle": "Comentarios sobre las herramientas de Clicker Heroes",
+      "description": "Envía errores, peticiones de funciones, ideas y comentarios generales sobre el editor de partidas y las herramientas de Clicker Heroes."
+    }
+  },
+  "faqs": {
+    "saveEditor": [
+      {
+        "question": "¿Cómo edito una partida de Clicker Heroes?",
+        "answer": "Pega el código de tu partida de Clicker Heroes en el editor, decodifícalo, cambia los campos que necesites y copia el resultado codificado en el diálogo de importación del juego."
+      },
+      {
+        "question": "¿Puede este editor cambiar oro, rubíes, Hero Souls y ancients?",
+        "answer": "Sí. El editor incluye controles para las monedas principales, los niveles de los héroes, las Hero Souls, la progresión de los ancients, las ascensiones, los logros, las skins, los mercenarios, los outsiders, los datos de clan y campos personalizados. La edición del JSON en bruto está en la herramienta Partida a JSON."
+      },
+      {
+        "question": "¿Se sube mi partida de Clicker Heroes a un servidor?",
+        "answer": "No. El editor funciona en el navegador y procesa la partida en tu dispositivo, así que no tienes que subirla a este sitio para editarla."
+      }
+    ],
+    "site": [
+      {
+        "id": "using-the-editor",
+        "title": "Usar el editor",
+        "summary": "Cargar una partida, cambiarla y volver a llevarla a Clicker Heroes.",
+        "faqs": [
+          {
+            "question": "¿Cómo cargo mi partida en el editor?",
+            "answer": "Exporta tu partida desde el juego, pega el código en el paso 1 del editor de partidas y pulsa Cargar partida. También puedes elegir tu archivo .save con el selector de archivos. La partida se decodifica al momento y se desbloquea el paso 2. Varias calculadoras incluyen partidas de ejemplo si solo quieres ver cómo funciona una herramienta."
+          },
+          {
+            "question": "¿Dónde está mi archivo de guardado de Clicker Heroes?",
+            "answer": "En Windows, tanto la versión de Steam como la independiente usan C:\\Users\\[USUARIO]\\AppData\\Roaming\\ClickerHeroes2\\Local Store\\saves, que contiene un archivo .save y otro .backup. En Mac con Steam está en ~/Library/Application Support/Steam/userdata/[IDUSUARIO]/363970/remote/, y la versión independiente de Mac usa ~/Library/Application Support/com.playsaurus.clickerheroes/. La misma lista aparece en «¿Dónde está mi archivo de guardado?» dentro del editor."
+          },
+          {
+            "question": "¿Cómo vuelvo a meter la partida editada en el juego?",
+            "answer": "Pulsa Codificar partida en el paso 3, copia el código y pégalo en la opción de importar partida de Clicker Heroes. Vuelve a codificar después de cada cambio: el cuadro de exportación solo contiene el código de la última vez que pulsaste el botón."
+          },
+          {
+            "question": "¿Qué puedo cambiar exactamente?",
+            "answer": "Oro, rubíes, Hero Souls, objetos de la tienda y de temporada, niveles y gilds de los héroes, skins, logros, ascensiones y trascendencias, datos de clan, mercenarios y outsiders. Lo que no cubren las secciones se puede escribir por ruta en la sección Campo personalizado, o a mano en la herramienta Partida a JSON."
+          },
+          {
+            "question": "¿El editor funciona con partidas de móvil?",
+            "answer": "Decodifica partidas de PC, de móvil y códigos antiguos. Si necesitas que una partida de una plataforma cargue en la otra, pásala primero por el convertidor de partidas."
+          }
+        ]
+      },
+      {
+        "id": "safety-and-privacy",
+        "title": "Seguridad y privacidad",
+        "summary": "Qué pasa con los datos de tu partida y cómo evitar perder progreso.",
+        "faqs": [
+          {
+            "question": "¿Se sube mi partida a un servidor?",
+            "answer": "No. La decodificación, la edición y la codificación se hacen en tu navegador, así que el código de tu partida nunca se envía a este sitio ni se guarda fuera de tu dispositivo."
+          },
+          {
+            "question": "¿Debo hacer una copia de seguridad antes de editar?",
+            "answer": "Siempre. Guarda una copia del código original, o del archivo .save, antes de importar una partida editada. En Windows también hay un archivo .backup junto a la partida al que puedes volver."
+          },
+          {
+            "question": "¿Puedo romper mi partida al editarla?",
+            "answer": "Sí. Valores muy fuera de lo que espera el juego, o un campo personalizado escrito en la ruta equivocada, pueden dar una partida que el juego no carga. Cambia una cosa cada vez, vuelve a importar y comprueba el juego antes de la siguiente edición."
+          },
+          {
+            "question": "¿Editar mi partida va contra las normas?",
+            "answer": "Editar una partida de un jugador es decisión tuya, pero los valores editados pueden afectar a las raids de clan y a las clasificaciones, y modificar los datos de la partida puede ir contra los términos del juego. Las herramientas se ofrecen tal cual; úsalas bajo tu responsabilidad."
+          },
+          {
+            "question": "¿Cómo quito los datos de clan y de cuenta antes de compartir una partida?",
+            "answer": "Usa la herramienta Eliminar datos de clan. Borra los campos de clan, cuenta e inicio de sesión de la partida importada y vuelve a codificar el resultado en tu navegador."
+          }
+        ]
+      },
+      {
+        "id": "troubleshooting",
+        "title": "Solución de problemas",
+        "summary": "Los errores más habituales y lo que suele causarlos.",
+        "faqs": [
+          {
+            "question": "El editor dice que el texto no parece una partida de Clicker Heroes compatible",
+            "answer": "El texto pegado no está en ningún formato de partida que el editor reconozca. Casi siempre significa que solo se copió una parte del código, o que el texto viene de otro juego u otra herramienta. Vuelve a copiar la partida desde el principio hasta el final del código, o carga directamente el archivo .save."
+          },
+          {
+            "question": "El código no es base64 válido o no se descomprime",
+            "answer": "El código llegó al editor incompleto o modificado. Los saltos de línea y los espacios no importan; que falten caracteres, sí. Vuelve a copiar la partida entera o usa el selector de archivos en lugar de pegarla."
+          },
+          {
+            "question": "No pasa nada después de pegar mi partida",
+            "answer": "El editor decodifica al cargar, no al pegar. Pulsa Cargar partida después de pegarla: deberías ver el aviso «Partida cargada.» y las secciones de edición se activarán."
+          },
+          {
+            "question": "El juego no acepta mi partida editada",
+            "answer": "Comprueba que pulsaste Codificar partida después de tu último cambio y que copiaste el código entero. Si el juego sigue rechazándola, importa tu copia de seguridad y repite los cambios en pasos más pequeños para encontrar el valor que no le gusta."
+          },
+          {
+            "question": "Algo más falla o falta un valor",
+            "answer": "Envíalo con el formulario de comentarios, indicando la herramienta que usabas y lo que esperabas que pasara. Tanto los errores como las peticiones de campos que el editor todavía no cubre son bienvenidos."
+          }
+        ]
+      }
+    ],
+    "gildingChart": [
+      {
+        "question": "¿Tengo que volver a dorar en cada fila de la tabla de gilds?",
+        "answer": "No. Mover gilds cuesta Hero Souls, y mientras haces instakill el daño extra no sirve de nada. Sáltate filas sin problema y mueve tus gilds solo cuando los monstruos empiecen a sobrevivir a tus golpes. La tabla muestra lo óptimo, no una lista que tengas que completar."
+      },
+      {
+        "question": "¿Por qué el mismo héroe aparece más de una vez en la tabla de gilds?",
+        "answer": "Los héroes ganan multiplicadores de daño x10 en ciertos niveles, y el coste de subir de nivel crece a medida que avanzas. Por eso Wepwawet en el nivel 5.000 puede quedar por detrás de Gog y volver a superarlo en el 6.000 cuando consigue su siguiente multiplicador. Entre e383 y e500 los dos se alternan cada 500 niveles más o menos."
+      },
+      {
+        "question": "¿Debo dorar a Dread Knight en Clicker Heroes?",
+        "answer": "No. Dorar a Dread Knight nunca es óptimo en ningún momento del juego. Sáltalo."
+      },
+      {
+        "question": "¿Por qué Wepwawet y Gog dejan de alternarse después de e442?",
+        "answer": "Gog no recibe más multiplicadores x10 después del nivel 8.000, así que ya no puede volver a superar a Wepwawet. Quédate con Wepwawet desde e442 hasta Tsuchi en e500."
+      },
+      {
+        "question": "¿Por qué Tsuchi en el nivel 1 es mejor que Wepwawet en el nivel 9.000?",
+        "answer": "Contratar a Tsuchi cuesta menos que comprar 25 niveles más de Wepwawet en ese punto, y su daño base está en otro nivel por completo. El mismo patrón se repite con The Maw, que en el nivel 1 hace aproximadamente 1e6750 veces el daño de Cadu en el nivel 680.625."
+      },
+      {
+        "question": "¿Por qué Cadu y Ceus se alternan en la tabla de gilds?",
+        "answer": "Los Tomb Guardians se potencian entre sí: Cadu desbloquea una mejora para Ceus, Ceus desbloquea otra para Cadu, y así sucesivamente. Subes el que toque a continuación. Cualquiera de los dos sirve para empezar en e25.500, y después de la última mejora de Ceus en el nivel 588.000 te quedas con Cadu hasta The Maw."
+      },
+      {
+        "question": "¿Por qué Yachiyl empieza en el nivel 157.500 y no en el 1?",
+        "answer": "Yachiyl solo supera a The Maw cuando llega a su primera mejora en el nivel 157.500. A Rose le pasa lo mismo frente a Yachiyl y necesita primero el nivel 9.700."
+      },
+      {
+        "question": "¿Por qué se salta tanto a Dorothy en la rotación de los Ace Scouts?",
+        "answer": "Varias de sus mejoras cuestan más oro que la mejora equivalente de Rose y hacen menos daño, así que Dorothy 1, 2 y 4 son peores compras que simplemente subir a Rose. Aun así aparece tres veces en la rotación, así que sigue las filas tal como están en lugar de descartarla."
+      },
+      {
+        "question": "¿Cuántas Ancient Souls necesito para llegar a un héroe de la tabla de gilds?",
+        "answer": "La columna de Ancient Souls es una guía aproximada hasta Xavira, alrededor de 6.000. A partir de ahí no tiene sentido tabularla, porque el progreso depende mucho de tu reparto de outsiders y de cuántas veces hayas trascendido."
+      }
+    ]
+  },
+  "faqPage": {
+    "intro": "Dudas habituales sobre el editor de partidas de Clicker Heroes y las herramientas que lo acompañan: cargar y exportar partidas, qué pasa con los datos de tu partida y qué significan los errores cuando una partida no se decodifica.",
+    "contentsLabel": "Contenido de las preguntas frecuentes",
+    "contents": "Contenido",
+    "footer": "¿Sigues atascado o crees que algo de aquí está mal? <link>Envía tus comentarios</link> y cuéntanos qué intentabas hacer: nos sirven tanto los informes de errores como las preguntas que esta página debería responder."
+  }
 }

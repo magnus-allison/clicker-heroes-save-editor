@@ -1,9 +1,11 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { EditorTableCell, EditorTableRow } from '@/components/ui/EditorTable';
-import { formatNumber } from '@/lib/format';
+import { formatLongDuration, formatNumber, type DurationUnits } from '@/lib/format';
 import type { OutsiderRecommendation, TranscensionRow } from '@/lib/outsiders-calculator';
 
 /**
@@ -23,6 +25,7 @@ type OutsiderGoalRowProps = {
  * recommended level copies as plain digits, ready for the game's level field.
  */
 export const OutsiderGoalRow = ({ currentLevel, imageSrc, row }: OutsiderGoalRowProps) => {
+	const t = useTranslations('tools.outsiders.goalsTable');
 	const change = currentLevel === null ? null : row.level - currentLevel;
 
 	return (
@@ -44,8 +47,8 @@ export const OutsiderGoalRow = ({ currentLevel, imageSrc, row }: OutsiderGoalRow
 						{formatNumber(row.level)}
 					</span>
 					<CopyButton
-						idleLabel={`Copy ${row.name} level`}
-						successLabel={`Copied ${row.name} level`}
+						idleLabel={t('copyLevel', { name: row.name })}
+						successLabel={t('copiedLevel', { name: row.name })}
 						text={String(row.level)}
 					/>
 				</div>
@@ -67,26 +70,32 @@ export const OutsiderGoalRow = ({ currentLevel, imageSrc, row }: OutsiderGoalRow
 
 type TranscensionTableRowProps = {
 	row: TranscensionRow;
+	/** Translated unit suffixes for the duration column. */
+	units: DurationUnits;
 };
 
 /** One projected transcension in the simulator. */
-export const TranscensionTableRow = ({ row }: TranscensionTableRowProps) => (
-	<EditorTableRow>
-		<EditorTableCell className='tabular-nums text-(--color-fg-strong)'>
-			{formatNumber(row.ancientSouls)}
-		</EditorTableCell>
-		<EditorTableCell className='text-right tabular-nums'>{formatNumber(row.borbLevel)}</EditorTableCell>
-		<EditorTableCell className='text-right tabular-nums'>{formatNumber(row.highestZone)}</EditorTableCell>
-		<EditorTableCell className='text-right tabular-nums'>
-			{row.monstersPerZone.toFixed(2)}
-			{row.monstersPerZone < 2 ? (
-				<span className='ml-1 text-(--color-fg-muted)' title='The game never drops below two'>
-					(2)
-				</span>
-			) : null}
-		</EditorTableCell>
-		<EditorTableCell className='text-right tabular-nums text-(--color-fg-muted)'>
-			{row.durationLabel}
-		</EditorTableCell>
-	</EditorTableRow>
-);
+export const TranscensionTableRow = ({ row, units }: TranscensionTableRowProps) => {
+	const t = useTranslations('tools.outsiders.simulator');
+
+	return (
+		<EditorTableRow>
+			<EditorTableCell className='tabular-nums text-(--color-fg-strong)'>
+				{formatNumber(row.ancientSouls)}
+			</EditorTableCell>
+			<EditorTableCell className='text-right tabular-nums'>{formatNumber(row.borbLevel)}</EditorTableCell>
+			<EditorTableCell className='text-right tabular-nums'>{formatNumber(row.highestZone)}</EditorTableCell>
+			<EditorTableCell className='text-right tabular-nums'>
+				{row.monstersPerZone.toFixed(2)}
+				{row.monstersPerZone < 2 ? (
+					<span className='ml-1 text-(--color-fg-muted)' title={t('minimumTitle')}>
+						(2)
+					</span>
+				) : null}
+			</EditorTableCell>
+			<EditorTableCell className='text-right tabular-nums text-(--color-fg-muted)'>
+				{row.durationSeconds === null ? '-' : formatLongDuration(row.durationSeconds, units)}
+			</EditorTableCell>
+		</EditorTableRow>
+	);
+};

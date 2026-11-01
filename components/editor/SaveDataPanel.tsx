@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-
+import { useTranslations } from 'next-intl';
 
 import { SaveChangesSummary } from '@/components/editor/SaveChangesSummary';
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
+import { useEditorText } from '@/components/editor/useEditorText';
 import { useSaveImport } from '@/components/editor/useSaveImport';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { useToast } from '@/components/ui/ToastProvider';
@@ -27,6 +28,8 @@ interface Props {
  */
 export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: Props) => {
 	const { showToast } = useToast();
+	const t = useTranslations('editor.saveDataPanel');
+	const { errorMessage } = useEditorText();
 	const saveData = useSaveStore((state) => state.saveData);
 	const markExported = useSaveStore((state) => state.markExported);
 	const activeStep = useSaveFlowStep({ hasEditStep });
@@ -44,7 +47,7 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 
 	const handleEncode = () => {
 		if (!saveData) {
-			showToast('Load a save before encoding.');
+			showToast(t('loadFirst'));
 			return;
 		}
 
@@ -53,9 +56,9 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 			// a save the editor has been pushed into a bad shape.
 			setEncodeValue(encodeSaveData(saveData));
 			markExported();
-			showToast('Save encoded.');
+			showToast(t('encoded'));
 		} catch (error) {
-			showToast(error instanceof Error ? error.message : 'Failed to encode save data.');
+			showToast(errorMessage(error, t('encodeFailed')));
 		}
 	};
 
@@ -68,15 +71,15 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 				onLoad={importSave}
 			/>
 			<SaveExportField
-				actionLabel='Encode Save'
-				ariaLabel='Encoded save data to export'
+				actionLabel={t('encodeAction')}
+				ariaLabel={t('ariaLabel')}
 				belowOutput={<SaveChangesSummary />}
-				dataLabel='edited data'
+				dataLabel={t('dataLabel')}
 				isActiveStep={activeStep === 3}
 				onAction={handleEncode}
 				onValueChange={setEncodeValue}
-				placeholder='Your encoded save data will appear here...'
-				title='Export Your Save Data'
+				placeholder={t('placeholder')}
+				title={t('title')}
 				value={encodeValue}
 			/>
 		</PanelSection>

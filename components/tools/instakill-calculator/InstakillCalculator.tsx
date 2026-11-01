@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { Calculator, Gauge, RotateCcw, Timer, Zap } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { Breadcrumb } from '@/components/home/Breadcrumb';
 import { Button } from '@/components/ui/Button';
@@ -18,7 +19,8 @@ import {
 	defaultInstakillInputs,
 	type InstakillCalculatorInputs
 } from '@/lib/instakill-calculator';
-import { formatNumber } from '@/lib/format';
+import { formatLongDuration } from '@/lib/format';
+import { useDurationUnits } from '@/components/tools/use-duration-units';
 import {
 	CalculatorCheckboxRow,
 	CalculatorFieldRow,
@@ -40,9 +42,10 @@ const twoDecimals = new Intl.NumberFormat('en-US', {
 
 const formatMetric = (value: number) => twoDecimals.format(value);
 
-const formatEffectiveMonsters = (value: number) => `Effective ${formatMetric(value)}`;
-
 export const InstakillCalculator = () => {
+	const t = useTranslations('tools.instakill');
+	const tShared = useTranslations('tools.shared');
+	const units = useDurationUnits();
 	const [inputs, setInputs] = useState<InstakillCalculatorInputs>(defaultInstakillInputs);
 	const calculation = useMemo(() => calculateInstakill(inputs), [inputs]);
 
@@ -64,14 +67,14 @@ export const InstakillCalculator = () => {
 			<PanelSection>
 				<SectionCard
 					defaultOpen
-					description='Ancient levels, route range, and frame timing.'
-					title='Inputs'
+					description={t('inputs.description')}
+					title={t('inputs.title')}
 					actions={
 						<Button
-							aria-label='Reset defaults'
+							aria-label={tShared('resetDefaults')}
 							onClick={resetInputs}
 							size='sm'
-							title='Reset defaults'
+							title={tShared('resetDefaults')}
 							variant='ghost'
 						>
 							<RotateCcw aria-hidden='true' className='h-3.5 w-3.5' />
@@ -80,7 +83,7 @@ export const InstakillCalculator = () => {
 				>
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='Instakill calculator inputs'
+						label={t('inputs.label')}
 						tableClassName='w-full table-fixed'
 					>
 						<colgroup>
@@ -90,15 +93,17 @@ export const InstakillCalculator = () => {
 						</colgroup>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell>Image</EditorTableHeaderCell>
-								<EditorTableHeaderCell>Item</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-left sm:text-right'>Value</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{t('inputs.image')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{t('inputs.item')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-left sm:text-right'>
+									{t('inputs.value')}
+								</EditorTableHeaderCell>
 							</tr>
 						</EditorTableHead>
 						<EditorTableBody>
 							<CalculatorFieldRow
 								allowDecimal={false}
-								description='Ancient of Shadows level'
+								description={t('inputs.kumawakamaruDescription')}
 								id='kumawakamaru-level'
 								imageAlt='Kumawakamaru'
 								imageSrc={kumawakamaruImageSrc}
@@ -108,7 +113,7 @@ export const InstakillCalculator = () => {
 							/>
 							<CalculatorFieldRow
 								allowDecimal={false}
-								description='Outsider level'
+								description={t('inputs.borbDescription')}
 								id='borb-level'
 								imageAlt='Borb'
 								imageSrc={borbImageSrc}
@@ -118,28 +123,28 @@ export const InstakillCalculator = () => {
 							/>
 							<CalculatorFieldRow
 								allowDecimal={false}
-								description='First zone in the route'
+								description={t('inputs.startZoneDescription')}
 								id='start-zone'
-								imageAlt='Zone Explorer'
+								imageAlt={t('inputs.startZoneImageAlt')}
 								imageSrc='/assets/zoneItems/zone_explorer.webp'
-								label='Starting Zone'
+								label={t('inputs.startZoneLabel')}
 								onCommit={(value) => updateInput('startZone', value)}
 								value={inputs.startZone}
 							/>
 							<CalculatorFieldRow
 								allowDecimal={false}
-								description='Last zone in the route'
+								description={t('inputs.endZoneDescription')}
 								id='end-zone'
-								imageAlt='Zone Lord'
+								imageAlt={t('inputs.endZoneImageAlt')}
 								imageSrc='/assets/zoneItems/zone_lord.webp'
-								label='Target Zone'
+								label={t('inputs.endZoneLabel')}
 								onCommit={(value) => updateInput('endZone', value)}
 								value={inputs.endZone}
 							/>
 							<CalculatorFieldRow
-								description='Frames per second'
+								description={t('inputs.fpsDescription')}
 								id='fps'
-								imageAlt='Auto Clicker'
+								imageAlt={t('inputs.fpsImageAlt')}
 								imageSrc='/assets/autoclickers/Autoclicker_default.webp'
 								label='FPS'
 								onCommit={(value) => updateInput('fps', value)}
@@ -147,20 +152,15 @@ export const InstakillCalculator = () => {
 							/>
 							<CalculatorCheckboxRow
 								checked={inputs.acInstakill}
-								description='Treat autoclicker attacks as instakills.'
+								description={t('inputs.acInstakillDescription')}
 								icon={<Zap aria-hidden='true' className='h-4 w-4' />}
-								label='AC instakill'
+								label={t('inputs.acInstakillLabel')}
 								onCheckedChange={(checked) => updateInput('acInstakill', checked)}
 							/>
 							<CalculatorCheckboxRow
 								checked={inputs.root2}
-								description='Use the alternate logarithmic Kumawakamaru and Borb reduction formula.'
-								help={
-									<p>
-										Uses the alternate logarithmic Kumawakamaru and Borb reduction formula from the original
-										calculator.
-									</p>
-								}
+								description={t('inputs.root2Description')}
+								help={<p>{t('inputs.root2Help')}</p>}
 								icon={<Gauge aria-hidden='true' className='h-4 w-4' />}
 								label='root2'
 								onCheckedChange={(checked) => updateInput('root2', checked)}
@@ -169,14 +169,10 @@ export const InstakillCalculator = () => {
 					</EditorTable>
 				</SectionCard>
 
-				<SectionCard
-					defaultOpen
-					description='Calculated monsters per zone, duration, and pace.'
-					title='Output'
-				>
+				<SectionCard defaultOpen description={t('output.description')} title={t('output.title')}>
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='Instakill calculator results'
+						label={t('output.label')}
 						tableClassName='w-full table-fixed'
 					>
 						<colgroup>
@@ -186,46 +182,48 @@ export const InstakillCalculator = () => {
 						</colgroup>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell>Icon</EditorTableHeaderCell>
-								<EditorTableHeaderCell>Metric</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-left sm:text-right'>Value</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{t('output.icon')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{t('output.metric')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-left sm:text-right'>
+									{t('output.value')}
+								</EditorTableHeaderCell>
 							</tr>
 						</EditorTableHead>
 						<EditorTableBody>
 							<ResultMetricRow
-								detail={formatEffectiveMonsters(calculation.startMonstersPerZone)}
+								detail={t('output.effective', { value: formatMetric(calculation.startMonstersPerZone) })}
 								icon={<Calculator aria-hidden='true' className='h-4 w-4' />}
-								label='Start MPZ'
+								label={t('output.startMpz')}
 								value={formatMetric(calculation.rawStartMonstersPerZone)}
 							/>
 							<ResultMetricRow
-								detail={formatEffectiveMonsters(calculation.endMonstersPerZone)}
+								detail={t('output.effective', { value: formatMetric(calculation.endMonstersPerZone) })}
 								icon={<Calculator aria-hidden='true' className='h-4 w-4' />}
-								label='End MPZ'
+								label={t('output.endMpz')}
 								value={formatMetric(calculation.rawEndMonstersPerZone)}
 							/>
 							<ResultMetricRow
-								detail={`${formatNumber(calculation.zonesTotal)} zones`}
+								detail={t('output.zones', { count: calculation.zonesTotal })}
 								icon={<Timer aria-hidden='true' className='h-4 w-4' />}
-								label='Duration'
-								value={calculation.durationLabel}
+								label={t('output.duration')}
+								value={formatLongDuration(calculation.durationSeconds, units)}
 							/>
 							<ResultMetricRow
-								detail={`${formatNumber(Math.round(calculation.framesTotal))} frames`}
+								detail={t('output.frames', { count: Math.round(calculation.framesTotal) })}
 								icon={<Gauge aria-hidden='true' className='h-4 w-4' />}
-								label='Zones/hour'
+								label={t('output.zonesPerHour')}
 								value={formatMetric(calculation.zonesPerHour)}
 							/>
 							<ResultMetricRow
-								detail='Kumawakamaru and Borb'
+								detail={t('output.mpzReductionDetail')}
 								icon={<Zap aria-hidden='true' className='h-4 w-4' />}
-								label='MPZ reduction'
+								label={t('output.mpzReduction')}
 								value={formatMetric(calculation.mpzReduction)}
 							/>
 							<ResultMetricRow
-								detail={inputs.acInstakill ? '14 kill frames' : '15 kill frames'}
+								detail={t('output.killFrames', { count: inputs.acInstakill ? 14 : 15 })}
 								icon={<Gauge aria-hidden='true' className='h-4 w-4' />}
-								label='Timing'
+								label={t('output.timing')}
 								value={`${formatMetric(calculation.inputs.fps)} FPS`}
 							/>
 						</EditorTableBody>

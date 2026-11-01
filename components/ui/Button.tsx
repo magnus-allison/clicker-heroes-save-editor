@@ -21,7 +21,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
  */
 const variantClasses = {
 	primary:
-		'border-(--color-primary-line) bg-(--color-primary-surface) font-semibold text-(--color-primary) shadow-[var(--shadow-raised)] hover:border-(--color-primary) hover:bg-(--color-primary-soft) hover:text-(--color-primary) active:bg-(--color-primary-surface)',
+		'border-(--color-primary-line) bg-(--color-primary-surface) font-semibold text-(--color-primary-text) shadow-[var(--shadow-raised)] hover:border-(--color-primary) hover:bg-(--color-primary-soft) hover:text-(--color-primary-text) active:bg-(--color-primary-surface)',
 	secondary:
 		'border-(--color-line-soft) bg-(--color-surface-sunken) text-(--color-fg-muted) shadow-[var(--shadow-raised)] hover:text-(--color-fg)',
 	subtle:

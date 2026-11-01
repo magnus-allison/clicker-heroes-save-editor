@@ -1,3 +1,5 @@
+import { getTranslations } from 'next-intl/server';
+
 import { FeedbackSection } from '@/components/editor/sections/FeedbackSection';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
 import { PageJsonLd } from '@/components/seo/PageJsonLd';
@@ -7,6 +9,7 @@ export const generateMetadata = pageMetadata('requestTool');
 
 export default async function RequestToolPage({ params }: LocaleParams) {
 	const locale = await initLocale(params);
+	const t = await getTranslations('editor.feedback.pages.requestTool');
 
 	return (
 		<>
@@ -14,13 +17,13 @@ export default async function RequestToolPage({ params }: LocaleParams) {
 			<Breadcrumb page='requestTool' title='tools' />
 			<FeedbackSection
 				defaultOpen
-				description='Describe the tool you want, what it should work out, and how you would use it.'
-				emptyMessageError='Describe the tool before sending your request.'
-				messageLabel='Your tool request'
-				messagePlaceholder='What should the tool do? What would you put in, and what should it tell you?'
-				submitLabel='Send request'
-				successMessage='Tool request sent.'
-				title='Request a Tool'
+				description={t('description')}
+				emptyMessageError={t('emptyMessage')}
+				messageLabel={t('messageLabel')}
+				messagePlaceholder={t('messagePlaceholder')}
+				submitLabel={t('submit')}
+				successMessage={t('success')}
+				title={t('title')}
 				topic='tool-request'
 			/>
 		</>

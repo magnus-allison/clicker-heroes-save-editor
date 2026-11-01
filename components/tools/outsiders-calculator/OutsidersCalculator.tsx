@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 
 import { RotateCcw } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
@@ -24,6 +25,7 @@ import { PanelSection } from '@/components/ui/PanelSection';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { useToast } from '@/components/ui/ToastProvider';
+import { useDurationUnits } from '@/components/tools/use-duration-units';
 import { outsiderFields } from '@/lib/data/editor-config';
 import { examples } from '@/lib/data/example-saves';
 import { formatNumber } from '@/lib/format';
@@ -45,6 +47,9 @@ const maxZoneOverride = 5_460_000;
 const percent = (value: number) => `${value.toFixed(2)}%`;
 
 export const OutsidersCalculator = () => {
+	const t = useTranslations('tools.outsiders');
+	const tShared = useTranslations('tools.shared');
+	const units = useDurationUnits();
 	const { showToast } = useToast();
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValues = useSaveStore((state) => state.updateValues);
@@ -67,7 +72,7 @@ export const OutsidersCalculator = () => {
 
 	const applyToSave = () => {
 		if (!snapshot || !calculation) {
-			showToast('Load a save before applying outsider levels.');
+			showToast(t('toasts.noSave'));
 			return;
 		}
 
@@ -75,12 +80,12 @@ export const OutsidersCalculator = () => {
 
 		if (plan.blockedBy.length > 0) {
 			const names = plan.blockedBy.map((definition) => definition.name).join(', ');
-			showToast(`${names} already sit above the recommendation. Respec in game, then try again.`);
+			showToast(t('toasts.blocked', { names }));
 			return;
 		}
 
 		updateValues(plan.updates);
-		showToast('Outsider levels written to the save.');
+		showToast(t('toasts.applied'));
 	};
 
 	return (
@@ -89,18 +94,18 @@ export const OutsidersCalculator = () => {
 
 			<SaveDataPanel examples={examples} hasEditStep />
 
-			<StepTitle step={2} title='Outsider levels' />
+			<StepTitle step={2} title={t('steps.outsiderLevels')} />
 			<PanelSection>
 				<SectionCard
 					defaultOpen
-					description='Target zone, Orphalas, and the ancient soul reserve.'
-					title='Settings'
+					description={t('settings.description')}
+					title={t('settings.title')}
 					actions={
 						<Button
-							aria-label='Reset defaults'
+							aria-label={tShared('resetDefaults')}
 							onClick={() => setSettings(defaultOutsidersSettings)}
 							size='sm'
-							title='Reset defaults'
+							title={tShared('resetDefaults')}
 							variant='ghost'
 						>
 							<RotateCcw aria-hidden='true' className='h-3.5 w-3.5' />
@@ -109,50 +114,36 @@ export const OutsidersCalculator = () => {
 				>
 					<div className='grid gap-3'>
 						<SettingRow
-							description='Plan for a zone you pick instead of the one your ancient souls suggest. 0 uses the estimate.'
-							help={
-								<p>
-									The estimate assumes you push actively and ascend until the run stops paying off. Pin a zone
-									here if you already know where you intend to stop, or to see what a shorter run would want.
-								</p>
-							}
-							label='Zone override'
+							description={t('settings.zoneOverrideDescription')}
+							help={<p>{t('settings.zoneOverrideHelp')}</p>}
+							label={t('settings.zoneOverrideLabel')}
 						>
 							<NumberInput
 								allowDecimal={false}
-								ariaLabel='Zone override'
+								ariaLabel={t('settings.zoneOverrideLabel')}
 								compact
 								onCommit={(value) => updateSetting('zoneOverride', clamp(value, 0, maxZoneOverride))}
 								selectOnFocus
 								value={settings.zoneOverride}
 							/>
 						</SettingRow>
-						<SettingRow
-							description='Orphalas only buys boss fight timer, which active pushing rarely needs.'
-							label='Level Orphalas'
-						>
+						<SettingRow description={t('settings.orphalasDescription')} label={t('settings.orphalasLabel')}>
 							<Checkbox
-								ariaLabel='Level Orphalas'
+								ariaLabel={t('settings.orphalasLabel')}
 								checked={settings.levelOrphalas}
 								onCheckedChange={(checked) => updateSetting('levelOrphalas', checked)}
 							/>
 						</SettingRow>
-						<SettingRow
-							description='Holds back a tenth of what is left after Borb instead of spending it.'
-							label='Reserve ancient souls'
-						>
+						<SettingRow description={t('settings.reserveDescription')} label={t('settings.reserveLabel')}>
 							<Checkbox
-								ariaLabel='Reserve ancient souls'
+								ariaLabel={t('settings.reserveLabel')}
 								checked={settings.reserveAncientSouls}
 								onCheckedChange={(checked) => updateSetting('reserveAncientSouls', checked)}
 							/>
 						</SettingRow>
-						<SettingRow
-							description='Projects every transcension between here and the end of the game.'
-							label='Transcension simulator'
-						>
+						<SettingRow description={t('settings.simulatorDescription')} label={t('settings.simulatorLabel')}>
 							<Checkbox
-								ariaLabel='Transcension simulator'
+								ariaLabel={t('settings.simulatorLabel')}
 								checked={showSimulator}
 								onCheckedChange={setShowSimulator}
 							/>
@@ -163,32 +154,36 @@ export const OutsidersCalculator = () => {
 				<div className='grid gap-4 p-4'>
 					<div className='grid gap-3 sm:grid-cols-3'>
 						<SummaryStat
-							label='Ancient souls earned'
+							label={t('summary.ancientSoulsEarned')}
 							value={calculation ? formatNumber(calculation.ancientSouls) : '-'}
 						/>
 						<SummaryStat
-							label='Transcendent Power'
+							label={t('summary.transcendentPower')}
 							value={calculation ? formatTranscendentPower(calculation.ancientSouls) : '-'}
 						/>
 						<SummaryStat
-							label='Unspent after this plan'
+							label={t('summary.unspent')}
 							value={calculation ? formatNumber(calculation.ancientSoulsUnspent) : '-'}
 						/>
 					</div>
 
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='Recommended outsider levels'
+						label={t('goalsTable.label')}
 						tableClassName='w-full'
 					>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell className='w-18'>Image</EditorTableHeaderCell>
-								<EditorTableHeaderCell>Outsider</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Current</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Level</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Change</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Total cost</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='w-18'>{t('goalsTable.image')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{t('goalsTable.outsider')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>
+									{t('goalsTable.current')}
+								</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>{t('goalsTable.level')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>{t('goalsTable.change')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>
+									{t('goalsTable.totalCost')}
+								</EditorTableHeaderCell>
 							</tr>
 						</EditorTableHead>
 						<EditorTableBody>
@@ -202,7 +197,7 @@ export const OutsidersCalculator = () => {
 									/>
 								))
 							) : (
-								<EmptyTableRow columns={6}>Load a save to see recommended outsider levels.</EmptyTableRow>
+								<EmptyTableRow columns={6}>{t('goalsTable.empty')}</EmptyTableRow>
 							)}
 						</EditorTableBody>
 					</EditorTable>
@@ -210,13 +205,13 @@ export const OutsidersCalculator = () => {
 					{calculation ? (
 						<div className='flex flex-wrap items-center gap-2'>
 							<Button disabled={!saveData} onClick={applyToSave} variant='primary'>
-								Apply Levels To Save
+								{t('apply')}
 							</Button>
 							<span className='inline-flex items-center gap-1 rounded-(--radius-control) border border-(--color-line-subtle) bg-(--color-surface-muted) py-1 pr-1 pl-3 font-mono text-[12px] text-(--color-fg-secondary)'>
 								{calculation.shareString}
 								<CopyButton
-									idleLabel='Copy outsider levels'
-									successLabel='Copied outsider levels'
+									idleLabel={t('copyLevels')}
+									successLabel={t('copiedLevels')}
 									text={calculation.shareString}
 								/>
 							</span>
@@ -225,61 +220,53 @@ export const OutsidersCalculator = () => {
 
 					{calculation?.ancientSoulsReserved ? (
 						<p className='text-[12px] text-(--color-fg-muted)'>
-							Holding back {formatNumber(calculation.ancientSoulsReserved)} ancient souls, as the reserve
-							setting asks.
+							{t('reserved', { souls: formatNumber(calculation.ancientSoulsReserved) })}
 						</p>
 					) : null}
 
 					{snapshot && !snapshot.transcendent ? (
-						<p className='text-[12px] text-(--color-fg-muted)'>
-							This save has never transcended, so it has no outsiders to level yet. Transcend at zone 300
-							first — the plan below is what to do once you have.
-						</p>
+						<p className='text-[12px] text-(--color-fg-muted)'>{t('notTranscended')}</p>
 					) : null}
 
 					<p className='text-[12px] text-(--color-fg-dim)'>
-						Planned from every ancient soul the save has earned, not the{' '}
-						{snapshot ? formatNumber(snapshot.ancientSoulsUnspent) : '0'} it currently has unspent, so respec
-						in game before applying these levels.
+						{t('plannedFromTotal', {
+							unspent: snapshot ? formatNumber(snapshot.ancientSoulsUnspent) : '0'
+						})}
 					</p>
 				</div>
 			</PanelSection>
 
 			{calculation && calculation.hints.length > 0 ? (
 				<PanelSection>
-					<SectionCard defaultOpen description='What to do with this run.' title='Guidance'>
+					<SectionCard defaultOpen description={t('guidance.description')} title={t('guidance.title')}>
 						<ul className='grid list-disc gap-2 pl-5 text-[13px] leading-6 text-(--color-fg-secondary)'>
 							{calculation.hints.map((hint) => (
-								<li key={hint}>{hint}</li>
+								<li key={hint.key}>{t(`hints.${hint.key}`, hint.values)}</li>
 							))}
 						</ul>
 					</SectionCard>
 				</PanelSection>
 			) : null}
 
-			<StepTitle title='Transcension details' />
+			<StepTitle title={t('steps.transcensionDetails')} />
 			<PanelSection>
-				<SectionCard
-					defaultOpen
-					description='Where this transcension ends if you follow the plan.'
-					title='End of transcension estimates'
-				>
+				<SectionCard defaultOpen description={t('estimates.description')} title={t('estimates.title')}>
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='End of transcension estimates'
+						label={t('estimates.title')}
 						tableClassName='w-full'
 					>
 						<EditorTableBody>
 							<StatRow
-								label='Highest zone'
+								label={t('estimates.highestZone')}
 								value={calculation ? formatNumber(calculation.highestZone) : '-'}
 							/>
 							<StatRow
-								label='Hero souls (log10)'
+								label={t('estimates.logHeroSouls')}
 								value={calculation ? calculation.logHeroSouls.toFixed(2) : '-'}
 							/>
 							<StatRow
-								label='Ancient souls'
+								label={t('estimates.ancientSouls')}
 								value={
 									calculation
 										? `${formatNumber(calculation.nextAncientSouls)} (+${formatNumber(calculation.ancientSoulsGained)})`
@@ -287,95 +274,109 @@ export const OutsidersCalculator = () => {
 								}
 							/>
 							<StatRow
-								label='Transcendent Power'
+								label={t('estimates.transcendentPower')}
 								value={calculation ? formatTranscendentPower(calculation.nextAncientSouls) : '-'}
 							/>
 							<StatRow
-								label='Ancient levels'
+								label={t('estimates.ancientLevels')}
 								value={calculation ? formatNumber(calculation.ancientLevels) : '-'}
 							/>
 							<StatRow
 								label='Kumawakamaru'
 								value={
 									calculation
-										? `${calculation.ancientEffects.kumawakamaru.toFixed(2)} monsters per zone`
+										? t('estimates.kumawakamaruValue', {
+												value: calculation.ancientEffects.kumawakamaru.toFixed(2)
+											})
 										: '-'
 								}
 							/>
 							<StatRow
 								label='Atman'
-								value={calculation ? `${percent(calculation.ancientEffects.atman)} chance of primal` : '-'}
+								value={
+									calculation
+										? t('estimates.atmanValue', { value: percent(calculation.ancientEffects.atman) })
+										: '-'
+								}
 							/>
 							<StatRow
 								label='Bubos'
-								value={calculation ? `${calculation.ancientEffects.bubos.toFixed(2)} boss life` : '-'}
+								value={
+									calculation
+										? t('estimates.bubosValue', { value: calculation.ancientEffects.bubos.toFixed(2) })
+										: '-'
+								}
 							/>
 							<StatRow
 								label='Chronos'
 								value={
-									calculation ? `${calculation.ancientEffects.chronos.toFixed(2)}s boss fight timer` : '-'
+									calculation
+										? t('estimates.chronosValue', { value: calculation.ancientEffects.chronos.toFixed(2) })
+										: '-'
 								}
 							/>
 							<StatRow
 								label='Dora'
-								value={calculation ? `${percent(calculation.ancientEffects.dora)} treasure chests` : '-'}
+								value={
+									calculation
+										? t('estimates.doraValue', { value: percent(calculation.ancientEffects.dora) })
+										: '-'
+								}
 							/>
 						</EditorTableBody>
 					</EditorTable>
 				</SectionCard>
 
-				<SectionCard
-					description='Zones at which each buffed stat reaches its limit.'
-					title='Zone breakpoints'
-				>
+				<SectionCard description={t('breakpoints.description')} title={t('breakpoints.title')}>
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='Zone breakpoints'
+						label={t('breakpoints.title')}
 						tableClassName='w-full'
 					>
 						<EditorTableBody>
 							<StatRow
-								label='2.1 monsters per zone'
+								label={t('breakpoints.highMonstersPerZone')}
 								value={calculation ? formatNumber(calculation.breakpoints.highMonstersPerZone) : '-'}
 							/>
 							<StatRow
-								label='5% primal chance'
+								label={t('breakpoints.primalChanceFloor')}
 								value={calculation ? formatNumber(calculation.breakpoints.primalChanceFloor) : '-'}
 							/>
 							<StatRow
-								label='90% boss health'
+								label={t('breakpoints.bossHealthCeiling')}
 								value={calculation ? formatNumber(calculation.breakpoints.bossHealthCeiling) : '-'}
 							/>
 							<StatRow
-								label='2s boss timer'
+								label={t('breakpoints.bossTimerFloor')}
 								value={calculation ? formatNumber(calculation.breakpoints.bossTimerFloor) : '-'}
 							/>
 							<StatRow
-								label='99% treasure chests'
+								label={t('breakpoints.treasureChestCeiling')}
 								value={calculation ? formatNumber(calculation.breakpoints.treasureChestCeiling) : '-'}
 							/>
 							<StatRow
-								label='1% treasure chests'
+								label={t('breakpoints.treasureChestFloor')}
 								value={calculation ? formatNumber(calculation.breakpoints.treasureChestFloor) : '-'}
 							/>
 						</EditorTableBody>
 					</EditorTable>
 				</SectionCard>
 
-				<SectionCard
-					description='What the highest zone looks like with and without your outsiders.'
-					title='Stats at the highest zone'
-				>
+				<SectionCard description={t('highestZoneStats.description')} title={t('highestZoneStats.title')}>
 					<EditorTable
 						className='border-(--color-line-subtle)'
-						label='Stats at the highest zone'
+						label={t('highestZoneStats.title')}
 						tableClassName='w-full'
 					>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell>Stat</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Unbuffed</EditorTableHeaderCell>
-								<EditorTableHeaderCell className='text-right'>Buffed</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{t('highestZoneStats.stat')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>
+									{t('highestZoneStats.unbuffed')}
+								</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>
+									{t('highestZoneStats.buffed')}
+								</EditorTableHeaderCell>
 							</tr>
 						</EditorTableHead>
 						<EditorTableBody>
@@ -387,27 +388,27 @@ export const OutsidersCalculator = () => {
 											}`
 										: '-'
 								}
-								label='Monsters per zone'
+								label={t('highestZoneStats.monstersPerZone')}
 								unbuffed={calculation ? calculation.unbuffed.monstersPerZone.toFixed(2) : '-'}
 							/>
 							<ComparisonRow
 								buffed={calculation ? `${calculation.buffed.treasureChestChance.toFixed(0)}%` : '-'}
-								label='Treasure chests'
+								label={t('highestZoneStats.treasureChests')}
 								unbuffed={calculation ? `${calculation.unbuffed.treasureChestChance.toFixed(6)}x` : '-'}
 							/>
 							<ComparisonRow
 								buffed={calculation ? `${calculation.buffed.bossHealth.toFixed(0)}x` : '-'}
-								label='Boss health'
+								label={t('highestZoneStats.bossHealth')}
 								unbuffed={calculation ? `${calculation.unbuffed.bossHealth.toFixed(1)}x` : '-'}
 							/>
 							<ComparisonRow
 								buffed={calculation ? `${calculation.buffed.bossTimer.toFixed(0)}s` : '-'}
-								label='Boss timer'
+								label={t('highestZoneStats.bossTimer')}
 								unbuffed={calculation ? `${calculation.unbuffed.bossTimer.toFixed(0)}s` : '-'}
 							/>
 							<ComparisonRow
 								buffed={calculation ? `${calculation.buffed.primalBossChance.toFixed(0)}%` : '-'}
-								label='Primal chance'
+								label={t('highestZoneStats.primalChance')}
 								unbuffed={calculation ? `${calculation.unbuffed.primalBossChance.toFixed(0)}%` : '-'}
 							/>
 						</EditorTableBody>
@@ -415,22 +416,23 @@ export const OutsidersCalculator = () => {
 				</SectionCard>
 
 				{showSimulator ? (
-					<SectionCard
-						description='Every transcension from here to the end of the game.'
-						title='Transcension simulator'
-					>
+					<SectionCard description={t('simulator.description')} title={t('simulator.title')}>
 						<EditorTable
 							className='border-(--color-line-subtle)'
-							label='Transcension simulator'
+							label={t('simulator.title')}
 							tableClassName='w-full'
 						>
 							<EditorTableHead>
 								<tr>
-									<EditorTableHeaderCell>Ancient souls</EditorTableHeaderCell>
-									<EditorTableHeaderCell className='text-right'>Borb</EditorTableHeaderCell>
-									<EditorTableHeaderCell className='text-right'>Highest zone</EditorTableHeaderCell>
-									<EditorTableHeaderCell className='text-right'>Final MpZ</EditorTableHeaderCell>
-									<EditorTableHeaderCell className='text-right'>Time</EditorTableHeaderCell>
+									<EditorTableHeaderCell>{t('simulator.ancientSouls')}</EditorTableHeaderCell>
+									<EditorTableHeaderCell className='text-right'>{t('simulator.borb')}</EditorTableHeaderCell>
+									<EditorTableHeaderCell className='text-right'>
+										{t('simulator.highestZone')}
+									</EditorTableHeaderCell>
+									<EditorTableHeaderCell className='text-right'>
+										{t('simulator.finalMpz')}
+									</EditorTableHeaderCell>
+									<EditorTableHeaderCell className='text-right'>{t('simulator.time')}</EditorTableHeaderCell>
 								</tr>
 							</EditorTableHead>
 							<EditorTableBody>
@@ -438,17 +440,18 @@ export const OutsidersCalculator = () => {
 									simulation.rows.map((row, index) => (
 										// Two projected transcensions can start on the same souls
 										// once the projection stops making progress.
-										<TranscensionTableRow key={`${index}-${row.ancientSouls}`} row={row} />
+										<TranscensionTableRow key={`${index}-${row.ancientSouls}`} row={row} units={units} />
 									))
 								) : (
-									<EmptyTableRow columns={5}>Load a save to project your transcensions.</EmptyTableRow>
+									<EmptyTableRow columns={5}>{t('simulator.empty')}</EmptyTableRow>
 								)}
 							</EditorTableBody>
 						</EditorTable>
 						{simulation ? (
 							<p className='mt-3 text-[12px] text-(--color-fg-muted)'>
-								Ends on {formatNumber(simulation.finalAncientSouls)} ancient souls
-								{simulation.truncated ? ', where the projection stops making progress.' : '.'}
+								{t(simulation.truncated ? 'simulator.endsTruncated' : 'simulator.ends', {
+									souls: formatNumber(simulation.finalAncientSouls)
+								})}
 							</p>
 						) : null}
 					</SectionCard>

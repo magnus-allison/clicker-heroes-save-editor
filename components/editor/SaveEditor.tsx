@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { AchievementsSection } from '@/components/editor/sections/AchievementsSection';
 import { CustomFieldSection } from '@/components/editor/sections/CustomFieldSection';
@@ -39,6 +40,8 @@ import { CardTitle } from '../ui/LinkCard';
 
 export const SaveEditor = () => {
 	const { showToast } = useToast();
+	const t = useTranslations('editor.saveEditor');
+	const tCommon = useTranslations('common.ui');
 	const hasSave = useSaveStore((state) => state.saveData !== null);
 	const activeStep = useSaveFlowStep({ hasEditStep: true });
 	const step2Ref = useRef<HTMLDivElement>(null);
@@ -57,17 +60,17 @@ export const SaveEditor = () => {
 
 			<div className={cn(!hasSave && 'pointer-events-none opacity-40 select-none')} inert={!hasSave}>
 				<div ref={step2Ref} className='mt-5 mb-10 flex scroll-mt-8 flex-row items-center gap-3'>
-					<Pill isShining={activeStep === 2}>Step 2</Pill>
-					<CardTitle title={'Edit your save data'} className='pt-1' />
+					<Pill isShining={activeStep === 2}>{tCommon('step', { number: 2 })}</Pill>
+					<CardTitle title={t('editTitle')} className='pt-1' />
 				</div>
 				<div className='flex flex-col gap-5'>
-					<SimpleFieldsSection title='Shop Items' icon={StoreIcon} fields={shopItemFields} />
+					<SimpleFieldsSection title={t('sections.shopItems')} icon={StoreIcon} fields={shopItemFields} />
 
 					<SimpleFieldsSection
 						defaultOpen
 						icon={CandyCaneIcon}
 						fields={seasonalItemFields}
-						title='Seasonal Items'
+						title={t('sections.seasonalItems')}
 					/>
 
 					<SkinsSection defaultOpen showToast={showToast} icon={PointerIcon} />
@@ -76,20 +79,20 @@ export const SaveEditor = () => {
 						defaultOpen
 						icon={CircleDollarSign}
 						fields={zoneItemFields}
-						title='Zone Items'
+						title={t('sections.zoneItems')}
 					/>
 
-					<HeroesSection icon={UsersIcon} title='Heroes' />
+					<HeroesSection icon={UsersIcon} title={t('sections.heroes')} />
 
-					<AchievementsSection icon={TrophyIcon} title='Achievements' />
+					<AchievementsSection icon={TrophyIcon} title={t('sections.achievements')} />
 
 					<TranscensionsSection icon={SparklesIcon} showToast={showToast} />
 
 					<SimpleFieldsSection
-						description='Raid classes map to 0 = None, 1 = Rogue, 2 = Mage, 3 = Priest.'
+						description={t('clanDescription')}
 						fields={clanFields}
 						icon={ShieldIcon}
-						title='Clan Values'
+						title={t('sections.clanValues')}
 					/>
 
 					<MercenariesSection icon={SwordsIcon} />

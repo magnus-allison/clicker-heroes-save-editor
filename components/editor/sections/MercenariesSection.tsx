@@ -1,8 +1,10 @@
 'use client';
 
 import type { LucideIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
+import { useEditorText } from '@/components/editor/useEditorText';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import {
 	EditorTable,
@@ -24,32 +26,31 @@ type Props = {
 	title?: string;
 };
 
-export const MercenariesSection = ({ defaultOpen, icon, title = 'Mercenaries' }: Props) => {
+export const MercenariesSection = ({ defaultOpen, icon, title }: Props) => {
+	const t = useTranslations('editor.mercenaries');
+	const tTable = useTranslations('editor.table');
+	const { fieldLabel } = useEditorText();
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 
 	return (
-		<CollapsiblePanel
-			description='Tweak mercenary lifetime stats and the current party roster.'
-			icon={icon}
-			title={title}
-		>
+		<CollapsiblePanel description={t('description')} icon={icon} title={title ?? t('title')}>
 			<div className='space-y-6'>
 				<div>
-					<ToolLink href='/tools/mercenary-viewer'>View Mercenary Details</ToolLink>
+					<ToolLink href='/tools/mercenary-viewer'>{t('viewDetails')}</ToolLink>
 				</div>
 
 				<div>
-					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>Summary</p>
-					<EditorTable label='Mercenary summary'>
+					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>{t('summary')}</p>
+					<EditorTable label={t('summaryLabel')}>
 						<EditorTableBody>
 							{mercenarySummaryFields.map((field) => (
 								<EditorTableRow key={field.path.join('.')}>
-									<EditorTableCell className='text-(--color-fg)'>{field.label}</EditorTableCell>
+									<EditorTableCell className='text-(--color-fg)'>{fieldLabel(field)}</EditorTableCell>
 									<EditorTableCell className='min-w-55'>
 										<BoundFieldControl
 											kind={field.kind}
-											label={field.label}
+											label={fieldLabel(field)}
 											path={field.path}
 											selectOnFocus
 										/>
@@ -61,16 +62,14 @@ export const MercenariesSection = ({ defaultOpen, icon, title = 'Mercenaries' }:
 				</div>
 
 				<div>
-					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-						Mercenary roster
-					</p>
-					<EditorTable label='Mercenary roster'>
+					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>{t('roster')}</p>
+					<EditorTable label={t('roster')}>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell>Name</EditorTableHeaderCell>
-								<EditorTableHeaderCell>Level</EditorTableHeaderCell>
-								<EditorTableHeaderCell>Time to Die</EditorTableHeaderCell>
-								<EditorTableHeaderCell>Bonus Lives</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{tTable('name')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{tTable('level')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{tTable('timeToDie')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{tTable('bonusLives')}</EditorTableHeaderCell>
 							</tr>
 						</EditorTableHead>
 						<EditorTableBody>
@@ -79,14 +78,14 @@ export const MercenariesSection = ({ defaultOpen, icon, title = 'Mercenaries' }:
 									<EditorTableCell className='min-w-55'>
 										<BoundFieldControl
 											kind='text'
-											label={`Mercenary ${slot.id + 1} name`}
+											label={t('nameAria', { number: slot.id + 1 })}
 											path={slot.namePath}
 											selectOnFocus
 										/>
 									</EditorTableCell>
 									<EditorTableCell className='min-w-40'>
 										<NumberInput
-											ariaLabel={`Mercenary ${slot.id + 1} level`}
+											ariaLabel={t('levelAria', { number: slot.id + 1 })}
 											disabled={!saveData}
 											onCommit={(value) => updateValue(slot.levelPath, value)}
 											selectOnFocus
@@ -95,7 +94,7 @@ export const MercenariesSection = ({ defaultOpen, icon, title = 'Mercenaries' }:
 									</EditorTableCell>
 									<EditorTableCell className='min-w-45'>
 										<NumberInput
-											ariaLabel={`Mercenary ${slot.id + 1} time to die`}
+											ariaLabel={t('timeToDieAria', { number: slot.id + 1 })}
 											disabled={!saveData}
 											onCommit={(value) => updateValue(slot.timeToDiePath, value)}
 											selectOnFocus
@@ -104,7 +103,7 @@ export const MercenariesSection = ({ defaultOpen, icon, title = 'Mercenaries' }:
 									</EditorTableCell>
 									<EditorTableCell className='min-w-45'>
 										<NumberInput
-											ariaLabel={`Mercenary ${slot.id + 1} bonus lives`}
+											ariaLabel={t('bonusLivesAria', { number: slot.id + 1 })}
 											disabled={!saveData}
 											onCommit={(value) => updateValue(slot.bonusLivesPath, value)}
 											selectOnFocus

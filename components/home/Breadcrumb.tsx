@@ -18,7 +18,10 @@ interface Props {
 	page?: PageKey;
 }
 
-const groups: Record<Props['title'], { icon: LucideIcon; href: string; label: 'tools' | 'guides' | 'additionalInfo' }> = {
+const groups: Record<
+	Props['title'],
+	{ icon: LucideIcon; href: string; label: 'tools' | 'guides' | 'additionalInfo' }
+> = {
 	tools: { icon: BoxIcon, href: '/#tools', label: 'tools' },
 	guides: { icon: BookOpen, href: '/#guides', label: 'guides' },
 	'additional info': { icon: Info, href: '/#additional-info', label: 'additionalInfo' }

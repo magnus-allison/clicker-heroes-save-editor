@@ -1,6 +1,7 @@
 'use client';
 
 import type { LucideIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { Checkbox } from '@/components/ui/Checkbox';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
@@ -27,32 +28,42 @@ type Props = {
 export const AchievementsSection = ({ defaultOpen, icon, title }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
+	const t = useTranslations('editor.achievements');
+	const tTable = useTranslations('editor.table');
+	const has = t.has as (key: string) => boolean;
+	const translate = t as unknown as (key: string) => string;
+	const groupCaption = (group: { type: number; label: string }) => {
+		const key = `groups.${group.type}`;
+		return has(key) ? translate(key) : `${group.label}-related achievements`;
+	};
 
 	return (
 		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title={title}>
 			<div className='space-y-6'>
-				<EditorTable label='Transcension achievement fields'>
+				<EditorTable label={t('tableLabel')}>
 					<EditorTableHead>
 						<tr>
-							<EditorTableHeaderCell>Image</EditorTableHeaderCell>
-							<EditorTableHeaderCell>Item</EditorTableHeaderCell>
-							<EditorTableHeaderCell className='text-left sm:text-right'>Value</EditorTableHeaderCell>
+							<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
+							<EditorTableHeaderCell>{tTable('item')}</EditorTableHeaderCell>
+							<EditorTableHeaderCell className='text-left sm:text-right'>
+								{tTable('value')}
+							</EditorTableHeaderCell>
 						</tr>
 					</EditorTableHead>
 					<EditorTableBody>
 						<EditorTableRow>
 							<EditorTableCell>
 								<EditorImage
-									alt='Transcendent Highest Zone'
+									alt={t('transcendentHighestZone')}
 									className='h-11 w-11 object-contain'
 									size={44}
 									src='/assets/profile/Transcend_achieve.webp'
 								/>
 							</EditorTableCell>
-							<EditorTableCell className='text-(--color-fg)'>Transcendent Highest Zone</EditorTableCell>
+							<EditorTableCell className='text-(--color-fg)'>{t('transcendentHighestZone')}</EditorTableCell>
 							<EditorTableCell className='min-w-55'>
 								<NumberInput
-									ariaLabel='Transcendent Highest Zone'
+									ariaLabel={t('transcendentHighestZone')}
 									disabled={!saveData}
 									onCommit={(value) => updateValue(['transcendentHighestFinishedZone'], value)}
 									selectOnFocus
@@ -69,13 +80,13 @@ export const AchievementsSection = ({ defaultOpen, icon, title }: Props) => {
 							{/* A `caption` rather than a heading above the table: it gives the
 							    table an accessible name without a floating `h3`. */}
 							<caption className='border-b border-(--color-line-subtle) bg-(--color-surface-muted) px-3 py-3 text-left text-[13px] text-(--color-fg) sm:px-4'>
-								{group.label}-related achievements
+								{groupCaption(group)}
 							</caption>
 							<EditorTableHead>
 								<tr>
-									<EditorTableHeaderCell>Image</EditorTableHeaderCell>
-									<EditorTableHeaderCell>Description</EditorTableHeaderCell>
-									<EditorTableHeaderCell>Unlocked</EditorTableHeaderCell>
+									<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
+									<EditorTableHeaderCell>{tTable('description')}</EditorTableHeaderCell>
+									<EditorTableHeaderCell>{tTable('unlocked')}</EditorTableHeaderCell>
 								</tr>
 							</EditorTableHead>
 							<EditorTableBody>
@@ -96,13 +107,15 @@ export const AchievementsSection = ({ defaultOpen, icon, title }: Props) => {
 												<p className='mt-1 italic text-(--color-fg-dim)'>{achievement[2]}</p>
 											) : null}
 											{achievement[3] ? (
-												<p className='mt-1 text-(--color-primary-text)'>Reward: {achievement[3]}</p>
+												<p className='mt-1 text-(--color-primary-text)'>
+													{t('reward', { reward: achievement[3] })}
+												</p>
 											) : null}
 										</EditorTableCell>
 										<EditorTableCell className='align-top'>
 											<div className='flex justify-start pt-1'>
 												<Checkbox
-													ariaLabel={`${achievement[0]} unlocked`}
+													ariaLabel={t('unlockedAria', { name: achievement[0] })}
 													checked={Boolean(getValueAtPath(saveData, ['achievements', id]))}
 													disabled={!saveData}
 													onCheckedChange={(checked) => {

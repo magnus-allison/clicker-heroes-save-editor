@@ -1,6 +1,7 @@
 'use client';
 
 import type { LucideIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/Button';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
@@ -15,36 +16,32 @@ type Props = {
 	title?: string;
 };
 
-export const TranscensionsSection = ({
-	defaultOpen,
-	icon,
-	showToast,
-	title = 'Transcensions and Ascensions'
-}: Props) => {
+export const TranscensionsSection = ({ defaultOpen, icon, showToast, title }: Props) => {
+	const t = useTranslations('editor.transcensions');
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateSave = useSaveStore((state) => state.updateSave);
 
 	return (
 		<CollapsiblePanel
 			defaultOpen={defaultOpen}
-			description='Save history for transcensions and ascensions can safely be cleared if you want a smaller export.'
+			description={t('description')}
 			icon={icon}
-			title={title}
+			title={title ?? t('title')}
 		>
 			<div className='space-y-4 text-[12px] leading-6 text-(--color-fg-secondary)'>
-				<p>
-					The save contains all transcensions and ascensions information. This can significantly increase the
-					size of the save file, and the game does not require this history to continue working.
-				</p>
+				<p>{t('body')}</p>
 				<div>
-					<ToolLink href='/tools/transcension-viewer'>View Transcension History</ToolLink>
+					<ToolLink href='/tools/transcension-viewer'>{t('viewHistory')}</ToolLink>
 				</div>
 				<p>
-					To inspect the history first, look under{' '}
-					<span className='rounded-(--radius-control) border border-(--color-line) bg-(--color-surface-muted) px-2 py-1 text-(--color-fg)'>
-						stats &gt; transcensions
-					</span>{' '}
-					in the JSON tools below.
+					{t.rich('inspect', {
+						path: 'stats > transcensions',
+						code: (chunks) => (
+							<span className='rounded-(--radius-control) border border-(--color-line) bg-(--color-surface-muted) px-2 py-1 text-(--color-fg)'>
+								{chunks}
+							</span>
+						)
+					})}
 				</p>
 				<div className='max-w-70'>
 					<Button
@@ -58,11 +55,11 @@ export const TranscensionsSection = ({
 							// untouched parts of the save keep their identity, which is
 							// what lets the change summary diff the save in O(edits).
 							updateSave((current) => setValueAtPath(current, ['stats', 'transcensions'], {}));
-							showToast('Transcension history cleared.');
+							showToast(t('cleared'));
 						}}
 						variant='primary'
 					>
-						Clear Transcension Data
+						{t('clear')}
 					</Button>
 				</div>
 			</div>

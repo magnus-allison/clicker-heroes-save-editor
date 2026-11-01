@@ -1,7 +1,7 @@
 'use client';
 
-
 import { type LucideIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/Button';
 import { Checkbox } from '@/components/ui/Checkbox';
@@ -30,6 +30,8 @@ export const SkinsSection = ({ defaultOpen, icon, showToast }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateSave = useSaveStore((state) => state.updateSave);
 	const updateValue = useSaveStore((state) => state.updateValue);
+	const t = useTranslations('editor.skins');
+	const tTable = useTranslations('editor.table');
 	const selectedSkinId = Number(
 		getValueAtPath(saveData, ['currentAutoclickerSkin']) ?? autoClickerSkins[0].id
 	);
@@ -38,7 +40,7 @@ export const SkinsSection = ({ defaultOpen, icon, showToast }: Props) => {
 		: false;
 
 	return (
-		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title='Auto Clicker Skins'>
+		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title={t('title')}>
 			<div className='space-y-6'>
 				<div className='flex items-center justify-between gap-3'>
 					<Pill
@@ -56,19 +58,19 @@ export const SkinsSection = ({ defaultOpen, icon, showToast }: Props) => {
 								});
 								return next;
 							});
-							showToast('All skins unlocked.');
+							showToast(t('allUnlocked'));
 						}}
 					>
-						Unlock All
+						{t('unlockAll')}
 					</Pill>
 				</div>
 
-				<EditorTable label='Auto clicker skins'>
+				<EditorTable label={t('tableLabel')}>
 					<EditorTableHead>
 						<tr>
-							<EditorTableHeaderCell>Image</EditorTableHeaderCell>
-							<EditorTableHeaderCell>Skin Name</EditorTableHeaderCell>
-							<EditorTableHeaderCell>Unlocked</EditorTableHeaderCell>
+							<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
+							<EditorTableHeaderCell>{tTable('skinName')}</EditorTableHeaderCell>
+							<EditorTableHeaderCell>{tTable('unlocked')}</EditorTableHeaderCell>
 						</tr>
 					</EditorTableHead>
 					<EditorTableBody>
@@ -86,7 +88,7 @@ export const SkinsSection = ({ defaultOpen, icon, showToast }: Props) => {
 								<EditorTableCell>
 									<div className='flex justify-start'>
 										<Checkbox
-											ariaLabel={`${skin.name} unlocked`}
+											ariaLabel={t('unlockedAria', { name: skin.name })}
 											checked={Boolean(getValueAtPath(saveData, ['autoclickerSkins', skin.id]))}
 											disabled={!saveData}
 											onCheckedChange={(checked) => updateValue(['autoclickerSkins', skin.id], checked)}
@@ -99,7 +101,7 @@ export const SkinsSection = ({ defaultOpen, icon, showToast }: Props) => {
 				</EditorTable>
 
 				<div>
-					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>Current skin</p>
+					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>{t('currentSkin')}</p>
 					<div className='mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4'>
 						{autoClickerSkins.map((skin) => {
 							const isSelected = selectedSkinId === skin.id;

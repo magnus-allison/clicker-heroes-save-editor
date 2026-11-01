@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-
+import { useTranslations } from 'next-intl';
 
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
@@ -23,35 +23,20 @@ import type { SaveData, SelectOption } from '@/lib/save-utils';
 /** What the import step detected about the save that is currently loaded. */
 type LoadedSave = {
 	device: SaveDevice | null;
-	patchNumber: string;
+	patchNumber: string | null;
 };
 
-const outputDeviceOptions = [
-	{ label: 'PC', value: 'pc' },
-	{ label: 'Mobile', value: 'mobile' }
-] as const satisfies readonly SelectOption[];
+const outputDevices = ['pc', 'mobile'] as const satisfies readonly SaveDevice[];
 
 /** The `<select>` hands back a plain string, so narrow it instead of asserting. */
-const isSaveDevice = (value: string): value is SaveDevice =>
-	outputDeviceOptions.some((option) => option.value === value);
+const isSaveDevice = (value: string): value is SaveDevice => outputDevices.some((device) => device === value);
 
-const formatDevice = (device: SaveDevice | null) => {
-	if (device === 'pc') {
-		return 'PC';
-	}
-
-	if (device === 'mobile') {
-		return 'Mobile';
-	}
-
-	return 'unknown';
-};
-
+/** `null` when the save has no patch number to show. */
 const getPatchNumber = (data: SaveData) => {
 	const patchNumber = data.readPatchNumber;
 
 	if (patchNumber === undefined || patchNumber === null || patchNumber === '') {
-		return 'n/a';
+		return null;
 	}
 
 	return String(patchNumber);
@@ -64,6 +49,7 @@ const encodeConvertedSave = (source: SaveData, device: SaveDevice) => {
 };
 
 export const SaveConverterPanel = () => {
+	const t = useTranslations('tools.saveConverter');
 	const { showToast } = useToast();
 	const saveData = useSaveStore((state) => state.saveData);
 	const [loadedSave, setLoadedSave] = useState<LoadedSave | null>(null);
@@ -83,6 +69,12 @@ export const SaveConverterPanel = () => {
 		setEncodeValue('');
 	};
 
+	const formatDevice = (device: SaveDevice | null) => t(`devices.${device ?? 'unknown'}`);
+	const outputDeviceOptions: SelectOption[] = outputDevices.map((device) => ({
+		label: formatDevice(device),
+		value: device
+	}));
+
 	const importSave = useSaveImport({
 		onDecoded: handleDecoded,
 		onFailed: () => {
@@ -94,15 +86,18 @@ export const SaveConverterPanel = () => {
 	// never from an effect watching `saveData`.
 	const handleEncode = () => {
 		if (!saveData || !loadedSave) {
-			showToast('Load a save before converting.');
+			showToast(t('toasts.noSave'));
 			return;
 		}
 
 		try {
 			setEncodeValue(encodeConvertedSave(saveData, outputDevice));
-			showToast(`Save converted for ${formatDevice(outputDevice)}.`);
+			showToast(t('toasts.converted', { device: formatDevice(outputDevice) }));
 		} catch (error) {
-			showToast(error instanceof Error ? error.message : 'Failed to convert save data.');
+			// Codec errors are technical detail, passed through as the reason.
+			showToast(
+				error instanceof Error ? t('toasts.failedWithReason', { reason: error.message }) : t('toasts.failed')
+			);
 		}
 	};
 
@@ -116,19 +111,19 @@ export const SaveConverterPanel = () => {
 					onLoad={importSave}
 				/>
 				<SaveExportField
-					actionLabel='Convert Save'
-					ariaLabel='Converted save data to export'
-					dataLabel='converted data'
+					actionLabel={t('export.action')}
+					ariaLabel={t('export.ariaLabel')}
+					dataLabel={t('export.dataLabel')}
 					isActiveStep={Boolean(loadedSave) && encodeValue.length === 0}
 					onAction={handleEncode}
 					onValueChange={setEncodeValue}
-					placeholder='Your converted save data will appear here...'
-					title='Export Converted Save'
+					placeholder={t('export.placeholder')}
+					title={t('export.title')}
 					value={encodeValue}
 				/>
 			</PanelSection>
 
-			<StepTitle step={2} title='Converter Options' />
+			<StepTitle step={2} title={t('step')} />
 			<div
 				className={!loadedSave ? 'pointer-events-none opacity-40 select-none' : undefined}
 				// `inert` keeps the controls out of the tab order while the panel
@@ -140,22 +135,24 @@ export const SaveConverterPanel = () => {
 						<div className='grid gap-3 sm:grid-cols-2'>
 							<div className='rounded-(--radius-card) border border-(--color-line-soft) bg-(--color-surface) px-3 py-2.5 shadow-[var(--shadow-raised)]'>
 								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-									Detected origin
+									{t('detectedOrigin')}
 								</p>
 								<p className='mt-1 text-[13px] font-semibold text-(--color-fg-strong)'>
 									{formatDevice(loadedSave?.device ?? null)}
 								</p>
 							</div>
 							<div className='rounded-(--radius-card) border border-(--color-line-soft) bg-(--color-surface) px-3 py-2.5 shadow-[var(--shadow-raised)]'>
-								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>Patch number</p>
+								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+									{t('patchNumber')}
+								</p>
 								<p className='mt-1 text-[13px] font-semibold text-(--color-fg-strong)'>
-									{loadedSave?.patchNumber ?? 'n/a'}
+									{loadedSave?.patchNumber ?? t('notAvailable')}
 								</p>
 							</div>
 						</div>
 						<label className='grid gap-1.5'>
 							<span className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
-								Output device
+								{t('outputDevice')}
 							</span>
 							<Dropdown
 								onChange={(event) => {
