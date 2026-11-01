@@ -207,7 +207,13 @@ export const gildingChartFaqs = [
 
 type SeoPage = {
 	path: string;
+	/** Short page name, as the breadcrumb shows it (e.g. "Save Editor"). */
 	title: string | { absolute: string };
+	/**
+	 * The full `<title>`, OG and Twitter title. Leads with the query the page
+	 * targets ("Clicker Heroes Ancients Calculator") and stays under ~60
+	 * characters so search results do not truncate it.
+	 */
 	metaTitle: string;
 	description: string;
 	keywords: string[];
@@ -246,7 +252,7 @@ export const seoPages = {
 	saveEditor: {
 		path: '/tools/save-editor',
 		title: 'Save Editor',
-		metaTitle: 'Clicker Heroes | Save Editor',
+		metaTitle: 'Clicker Heroes Save Editor – Edit Your Save Online, Free',
 		description:
 			'Free online Clicker Heroes save editor for decoding, inspecting, editing, and re-encoding save files. Edit gold, rubies, Hero Souls, heroes, Ancients, ascensions, and more.',
 		keywords: [
@@ -274,7 +280,7 @@ export const seoPages = {
 	instakillCalculator: {
 		path: '/tools/instakill-calculator',
 		title: 'Instakill Calculator',
-		metaTitle: 'Clicker Heroes | Instakill Calculator',
+		metaTitle: 'Clicker Heroes Instakill Calculator – Zones per Hour',
 		description:
 			'Estimate Clicker Heroes instakill route duration, monsters per zone, and zones per hour from Kumawakamaru, Borb, zone range, and FPS.',
 		keywords: [
@@ -298,7 +304,7 @@ export const seoPages = {
 	ancientsCalculator: {
 		path: '/tools/ancients-calculator',
 		title: 'Ancients Calculator',
-		metaTitle: 'Clicker Heroes | Ancients Calculator',
+		metaTitle: 'Clicker Heroes Ancients Calculator – Optimal Ancient Levels',
 		description:
 			'Free Clicker Heroes ancients calculator. Import a save to get optimal ancient levels, level-up costs, and an ancient soul planner for idle, hybrid, and active builds.',
 		keywords: [
@@ -325,7 +331,7 @@ export const seoPages = {
 	outsidersCalculator: {
 		path: '/tools/outsiders-calculator',
 		title: 'Outsiders Calculator',
-		metaTitle: 'Clicker Heroes | Outsiders Calculator',
+		metaTitle: 'Clicker Heroes Outsiders Calculator – Optimal Outsider Levels',
 		description:
 			'Free Clicker Heroes outsiders calculator. Import a save to get optimal Borb, Phandoryss, Ponyboy and Chor’gorloth levels, end-of-transcension estimates, zone breakpoints, and a transcension simulator.',
 		keywords: [
@@ -354,7 +360,7 @@ export const seoPages = {
 	transcensionViewer: {
 		path: '/tools/transcension-viewer',
 		title: 'Transcension Viewer',
-		metaTitle: 'Clicker Heroes | Transcension Viewer',
+		metaTitle: 'Clicker Heroes Transcension Viewer – Ascension History',
 		description:
 			'Import a Clicker Heroes save and inspect transcension history with ascension duration, HZE, Hero Souls, and Ancient Souls totals.',
 		keywords: [
@@ -377,7 +383,7 @@ export const seoPages = {
 	mercenaryViewer: {
 		path: '/tools/mercenary-viewer',
 		title: 'Mercenary Viewer',
-		metaTitle: 'Clicker Heroes | Mercenary Viewer',
+		metaTitle: 'Clicker Heroes Mercenary Viewer – Roster & Quest Stats',
 		description:
 			'Import a Clicker Heroes save and view your mercenary roster and lifetime mercenary stats, including levels, time to die, bonus lives, and completed quests.',
 		keywords: [
@@ -400,7 +406,7 @@ export const seoPages = {
 	removeClanData: {
 		path: '/tools/remove-clan-data',
 		title: 'Remove Clan Data',
-		metaTitle: 'Clicker Heroes | Remove Clan Data Tool',
+		metaTitle: 'Remove Clan Data From a Clicker Heroes Save',
 		description:
 			'Remove Clicker Heroes clan, account, and login data from an imported save file, then re-encode the cleaned save locally in your browser.',
 		keywords: [
@@ -423,7 +429,7 @@ export const seoPages = {
 	saveConverter: {
 		path: '/tools/save-converter',
 		title: 'Save Converter',
-		metaTitle: 'Clicker Heroes | Save Converter',
+		metaTitle: 'Clicker Heroes Save Converter – PC to Mobile and Back',
 		description:
 			'Convert Clicker Heroes save files between PC and mobile formats locally in your browser, with detected origin and patch number details.',
 		keywords: [
@@ -447,7 +453,7 @@ export const seoPages = {
 	saveJson: {
 		path: '/tools/save-json',
 		title: 'Save JSON',
-		metaTitle: 'Clicker Heroes | Save JSON Tool',
+		metaTitle: 'Clicker Heroes Save to JSON – Decode and Edit Raw Saves',
 		description:
 			'Developer tool that decodes a Clicker Heroes save into raw JSON, lets you edit any field by hand, and re-encodes the JSON back into a save string in your browser.',
 		keywords: [
@@ -472,7 +478,7 @@ export const seoPages = {
 	newPlayerGuide: {
 		path: '/guides/new-player-guide',
 		title: 'New Player Guide',
-		metaTitle: 'Clicker Heroes | New Player Guide',
+		metaTitle: 'Clicker Heroes Beginner Guide – New Player Guide (1.0e12)',
 		description:
 			'A beginner guide to Clicker Heroes 1.0e12: your first run, when to ascend, gilding the Power 5, which ancients to buy, your first transcension, rubies, mercenaries, clans, and relics.',
 		keywords: [
@@ -494,9 +500,9 @@ export const seoPages = {
 	gildingChart: {
 		path: '/guides/gilding-chart',
 		title: 'Hero Gilding Chart',
-		metaTitle: 'Clicker Heroes | Hero Gilding Chart',
+		metaTitle: 'Clicker Heroes Gilding Chart – Which Hero to Gild (1.0e12)',
 		description:
-			'The Clicker Heroes 1.0e12 hero gilding chart: which hero to gild at every gold threshold, from The Masked Samurai through Wepwawet, Xavira, the Tomb Guardians, The Maw, Yachiyl and the Ace Scouts. Enter your gold to find your optimal hero.',
+			'Which hero to gild at every gold threshold in Clicker Heroes 1.0e12, from The Masked Samurai to the Ace Scouts. Enter your gold to find your optimal hero.',
 		keywords: [
 			'clicker heroes gilding chart',
 			'clicker heroes hero gilding chart',
@@ -518,7 +524,7 @@ export const seoPages = {
 	progressTips: {
 		path: '/guides/progress-tips',
 		title: '10 Tips to Progress Faster',
-		metaTitle: 'Clicker Heroes | 10 Tips to Progress Faster',
+		metaTitle: 'Clicker Heroes Tips – 10 Ways to Progress Faster',
 		description:
 			'Ten ways to speed up progress in Clicker Heroes 1.0e12: when to ascend and transcend, which hero to level and gild, picking a build, ancient and outsider calculators, skill combos, ruby spending, and breaking through walls.',
 		keywords: [
@@ -540,7 +546,7 @@ export const seoPages = {
 	requestTool: {
 		path: '/tools/request-tool',
 		title: 'Request New Tool',
-		metaTitle: 'Clicker Heroes | Request a New Tool',
+		metaTitle: 'Request a Clicker Heroes Tool or Calculator',
 		description:
 			'Suggest a new Clicker Heroes tool or calculator. Describe the tool you want, what it should work out, and how you would use it.',
 		keywords: [
@@ -557,7 +563,7 @@ export const seoPages = {
 	requestGuide: {
 		path: '/guides/request-guide',
 		title: 'Request New Guide',
-		metaTitle: 'Clicker Heroes | Request a New Guide',
+		metaTitle: 'Request a Clicker Heroes Guide',
 		description:
 			'Suggest a new Clicker Heroes guide. Tell us the topic you are stuck on and what an ideal guide would cover.',
 		keywords: [
@@ -574,7 +580,7 @@ export const seoPages = {
 	faq: {
 		path: '/faq',
 		title: 'FAQ',
-		metaTitle: 'Clicker Heroes | Save Editor FAQ',
+		metaTitle: 'Clicker Heroes Save Editor FAQ – Save File Location and Help',
 		description:
 			'Answers to common questions about the Clicker Heroes save editor: how to load and export a save, where the save file lives, whether save data leaves your browser, and what to do when a save will not decode.',
 		keywords: [
@@ -611,12 +617,14 @@ export type SeoPageKey = keyof typeof seoPages;
 
 const absoluteUrl = (path: string) => new URL(path, SITE_CONFIG.url).toString();
 
+const authorId = `${SITE_CONFIG.url}/#author`;
+
 export const createPageMetadata = (key: SeoPageKey): Metadata => {
 	const page: SeoPage = seoPages[key];
 	const keywords = [...new Set([...baseKeywords, ...page.keywords])];
 
 	return {
-		title: page.title,
+		title: { absolute: page.metaTitle },
 		description: page.description,
 		keywords,
 		alternates: {
@@ -694,7 +702,19 @@ export const createPageJsonLd = (key: SeoPageKey) => {
 			alternateName: SITE_CONFIG.alternateName,
 			url: SITE_CONFIG.url,
 			description: SITE_CONFIG.description,
-			inLanguage: 'en'
+			inLanguage: 'en',
+			publisher: {
+				'@id': authorId
+			}
+		},
+		{
+			// The one person behind the site. Every author and publisher reference
+			// points here, so search engines see a single, consistent entity.
+			'@type': 'Person',
+			'@id': authorId,
+			name: SITE_CONFIG.author.name,
+			url: SITE_CONFIG.author.url,
+			sameAs: [SITE_CONFIG.author.url]
 		},
 		{
 			// The page itself. Tools and articles describe their content in
@@ -746,9 +766,7 @@ export const createPageJsonLd = (key: SeoPageKey) => {
 			featureList: page.featureList,
 			keywords: [...new Set([...baseKeywords, ...page.keywords])].join(', '),
 			author: {
-				'@type': 'Person',
-				name: SITE_CONFIG.author.name,
-				url: SITE_CONFIG.author.url
+				'@id': authorId
 			},
 			offers: {
 				'@type': 'Offer',
@@ -770,14 +788,10 @@ export const createPageJsonLd = (key: SeoPageKey) => {
 			dateModified: page.lastModified,
 			keywords: [...new Set([...baseKeywords, ...page.keywords])].join(', '),
 			author: {
-				'@type': 'Person',
-				name: SITE_CONFIG.author.name,
-				url: SITE_CONFIG.author.url
+				'@id': authorId
 			},
 			publisher: {
-				'@type': 'Person',
-				name: SITE_CONFIG.author.name,
-				url: SITE_CONFIG.author.url
+				'@id': authorId
 			},
 			image: absoluteUrl(SITE_CONFIG.ogImage),
 			mainEntityOfPage: {

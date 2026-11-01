@@ -4,7 +4,7 @@ import { BookOpenTextIcon, CoinsIcon, MessageCirclePlus, RocketIcon } from 'luci
 
 import { LinkCard, type LinkCardItem } from '@/components/ui/LinkCard';
 
-const guides: LinkCardItem[] = [
+export const guides: LinkCardItem[] = [
 	{
 		title: 'New Player Guide',
 		href: '/guides/new-player-guide',

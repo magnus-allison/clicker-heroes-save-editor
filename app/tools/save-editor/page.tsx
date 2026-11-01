@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
+import { Fragment } from 'react';
 
 import { SaveEditor } from '@/components/editor/SaveEditor';
+import { GuideLink } from '@/components/guides/GuideLink';
+import { toolLinks } from '@/components/tools/tool-links';
 import { createPageJsonLd, createPageMetadata, saveEditorFaqs, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('saveEditor');
 
 const structuredData = createPageJsonLd('saveEditor');
+
+const relatedLinks = [toolLinks.saveJson, toolLinks.saveConverter, toolLinks.removeClanData, toolLinks.faq];
 
 const SaveEditorPage = () => (
 	<>
@@ -67,6 +72,16 @@ const SaveEditorPage = () => (
 					))}
 				</div>
 			</div>
+
+			<p className='text-sm text-(--color-fg-muted)'>
+				See also:{' '}
+				{relatedLinks.map((link, index) => (
+					<Fragment key={link.href}>
+						{index > 0 ? ' · ' : null}
+						<GuideLink href={link.href}>{link.title}</GuideLink>
+					</Fragment>
+				))}
+			</p>
 		</section>
 	</>
 );

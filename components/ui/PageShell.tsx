@@ -4,12 +4,15 @@ import { cn } from 'cn';
 
 type Props = {
 	children: ReactNode;
+	/** Rendered after `<main>`, so site-wide links sit outside the page's own content. */
+	footer?: ReactNode;
 };
 
-export const PageShell = ({ children }: Props) => {
+export const PageShell = ({ children, footer }: Props) => {
 	return (
-		<div className='flex min-h-screen w-full justify-center overflow-x-hidden p-4 sm:p-8'>
-			<main className={cn('flex w-full flex-col max-w-297 gap-10')}>{children}</main>
+		<div className='flex min-h-screen w-full flex-col items-center overflow-x-hidden p-4 sm:p-8'>
+			<main className={cn('flex w-full flex-1 flex-col max-w-297 gap-10')}>{children}</main>
+			{footer}
 		</div>
 	);
 };

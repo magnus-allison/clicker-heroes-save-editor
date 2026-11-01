@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { MercenaryViewer } from '@/components/tools/mercenary-viewer/MercenaryViewer';
+import { MercenaryAbout } from '@/components/tools/mercenary-viewer/MercenaryAbout';
 import { createPageJsonLd, createPageMetadata, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('mercenaryViewer');
@@ -15,6 +16,7 @@ export default function MercenaryViewerPage() {
 				dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
 			/>
 			<MercenaryViewer />
+			<MercenaryAbout />
 		</>
 	);
 }

@@ -419,8 +419,8 @@ export const ancientDefinitions: AncientDefinition[] = [
 	skillAncient(23, 'hecatoncheir', 'Hecatoncheir', '+ seconds of Super Clicks'),
 	skillAncient(24, 'berserker', 'Berserker', '+ seconds of Powersurge'),
 	skillAncient(25, 'sniperino', 'Sniperino', '+ seconds of Lucky Strikes'),
-	skillAncient(26, 'energon', 'Energon', '+ seconds of Golden Clicks'),
-	skillAncient(27, 'kleptos', 'Kleptos', '+ seconds of Metal Detector'),
+	skillAncient(26, 'kleptos', 'Kleptos', '+ seconds of Golden Clicks'),
+	skillAncient(27, 'energon', 'Energon', '+ seconds of Metal Detector'),
 	{
 		id: 28,
 		key: 'argaiv',

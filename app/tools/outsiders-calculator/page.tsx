@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { OutsidersCalculator } from '@/components/tools/outsiders-calculator/OutsidersCalculator';
+import { OutsidersAbout } from '@/components/tools/outsiders-calculator/OutsidersAbout';
 import { createPageJsonLd, createPageMetadata, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('outsidersCalculator');
@@ -15,6 +16,7 @@ export default function OutsidersCalculatorPage() {
 				dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
 			/>
 			<OutsidersCalculator />
+			<OutsidersAbout />
 		</>
 	);
 }

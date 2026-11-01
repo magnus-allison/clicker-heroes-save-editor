@@ -16,7 +16,7 @@ import {
 
 import { LinkCard, type LinkCardItem } from '@/components/ui/LinkCard';
 
-const tools: LinkCardItem[] = [
+export const tools: LinkCardItem[] = [
 	{
 		title: 'Save Editor',
 		href: '/tools/save-editor',

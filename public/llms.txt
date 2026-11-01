@@ -20,6 +20,7 @@ Save decoding, editing, and encoding run in the browser; saves are not uploaded 
 
 - [New Player Guide](https://clickerheroes.dev/guides/new-player-guide): From a fresh save to the first transcension: ascending, gilding, which ancients to buy, rubies, mercenaries, clans, and relics.
 - [Hero Gilding Chart](https://clickerheroes.dev/guides/gilding-chart): Which hero to gild at every gold threshold, from The Masked Samurai through the Ace Scouts, with a gold lookup.
+- [10 Tips to Progress Faster](https://clickerheroes.dev/guides/progress-tips): When to ascend and transcend, which hero to level and gild, picking a build, skill combos, ruby spending, and breaking through walls.
 
 ## Help
 

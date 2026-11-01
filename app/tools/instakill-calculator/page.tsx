@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { InstakillCalculator } from '@/components/tools/instakill-calculator/InstakillCalculator';
+import { InstakillAbout } from '@/components/tools/instakill-calculator/InstakillAbout';
 import { createPageJsonLd, createPageMetadata, serializeJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata('instakillCalculator');
@@ -15,6 +16,7 @@ export default function InstakillCalculatorPage() {
 				dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
 			/>
 			<InstakillCalculator />
+			<InstakillAbout />
 		</>
 	);
 }

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { ToastProvider } from '@/components/ui/ToastProvider';
 import { SITE_CONFIG } from '@/lib/seo';
@@ -10,6 +11,7 @@ import './globals.css';
 import { PageBanner } from '@/components/home/PageBanner';
 import { welcomeBannerScript } from '@/lib/welcome-banner';
 import { PageShell } from '@/components/ui/PageShell';
+import { SiteFooter } from '@/components/ui/SiteFooter';
 
 const ibmPlexMono = IBM_Plex_Mono({
 	variable: '--font-ibm-plex-mono',
@@ -19,24 +21,25 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 /*
  * Aeonik is a display face used for card headings only, so just the three
- * weights those headings reach for are loaded.
+ * weights those headings reach for are loaded, upright only: nothing sets
+ * Aeonik in italic, and every face listed here is preloaded on every page.
+ * The .woff2 files are Latin subsets of the .ttf originals (pyftsubset with the
+ * Google Fonts "latin" and "latin-ext" ranges plus arrows), about half the
+ * transfer size. Aeonik has no Cyrillic, Greek or CJK, so those fall back.
  */
 const aeonik = localFont({
 	variable: '--font-aeonik-local',
 	display: 'swap',
 	src: [
-		{ path: '../public/fonts/aeonik-font/Aeonik-Regular.ttf', weight: '400', style: 'normal' },
-		{ path: '../public/fonts/aeonik-font/Aeonik-RegularItalic.ttf', weight: '400', style: 'italic' },
-		{ path: '../public/fonts/aeonik-font/Aeonik-Medium.ttf', weight: '500', style: 'normal' },
-		{ path: '../public/fonts/aeonik-font/Aeonik-MediumItalic.ttf', weight: '500', style: 'italic' },
-		{ path: '../public/fonts/aeonik-font/Aeonik-Bold.ttf', weight: '700', style: 'normal' },
-		{ path: '../public/fonts/aeonik-font/Aeonik-BoldItalic.ttf', weight: '700', style: 'italic' }
+		{ path: '../public/fonts/aeonik-font/Aeonik-Regular.woff2', weight: '400', style: 'normal' },
+		{ path: '../public/fonts/aeonik-font/Aeonik-Medium.woff2', weight: '500', style: 'normal' },
+		{ path: '../public/fonts/aeonik-font/Aeonik-Bold.woff2', weight: '700', style: 'normal' }
 	]
 });
 
 export const metadata: Metadata = {
 	metadataBase: new URL(SITE_CONFIG.url),
-	applicationName: SITE_CONFIG.name,
+	applicationName: SITE_CONFIG.siteName,
 	title: {
 		default: SITE_CONFIG.title,
 		template: `${SITE_CONFIG.name} | %s`
@@ -106,8 +109,6 @@ export const metadata: Metadata = {
 
 	manifest: '/site.webmanifest',
 	other: {
-		'profile:first_name': 'Magnus',
-		'profile:last_name': 'Allison',
 		'og:image:type': 'image/png'
 	}
 };
@@ -137,12 +138,13 @@ export default function RootLayout({
 			</head>
 			<body className='min-h-full'>
 				<ToastProvider>
-					<PageShell>
+					<PageShell footer={<SiteFooter />}>
 						<PageBanner />
 						{children}
 					</PageShell>
 				</ToastProvider>
 				<Analytics />
+				<SpeedInsights />
 			</body>
 		</html>
 	);
