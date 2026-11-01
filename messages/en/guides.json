@@ -1,0 +1,225 @@
+{
+	"shared": {
+		"part": "Part {number}",
+		"contents": "Contents",
+		"contentsLabel": "Guide contents"
+	},
+	"progressTips": {
+		"intro": "Ten habits that make the biggest difference to how fast a Clicker Heroes 1.0e12 save moves. None of them are secrets, but most slow saves are missing at least one. If you are starting from scratch, read the <newPlayerGuide>new player guide</newPlayerGuide> first — this picks up where it leaves off.",
+		"parts": {
+			"resets": "Resets",
+			"heroes": "Heroes",
+			"souls": "Souls and builds",
+			"skillsAndRubies": "Skills and rubies",
+			"everythingElse": "Everything else"
+		},
+		"sections": {
+			"ascend": {
+				"title": "1. Ascend early and often",
+				"summary": "A short run that doubles your Hero Souls beats a long run that barely moves them.",
+				"items": {
+					"1": "Progress comes from resets, not from any single run. Pushing deeper after your gains have stalled is time you could have spent on a faster next run.",
+					"2": "Early on, a good rule is to ascend once the run would at least double the Hero Souls you already have.",
+					"3": "If the next boss wall would take more than a few minutes of farming, ascending is usually the quicker way past it.",
+					"4": "Spend every Hero Soul on ancients straight after ascending, before you start the new run."
+				}
+			},
+			"transcend": {
+				"title": "2. Transcend on time",
+				"summary": "Take the first one at zone 300. After that, watch your soul growth.",
+				"items": {
+					"1": "Transcend as soon as it unlocks at zone 300. Transcendent Power boosts every primal boss after that, so any souls you grind beforehand come back quickly.",
+					"2": "Later transcensions are about timing: when each ascension is only adding a small fraction to your Hero Souls, the transcension is played out.",
+					"3": "The <transcensionViewer>transcension viewer</transcensionViewer> shows Hero Souls and Ancient Souls per ascension straight from your save, which makes the slowdown easy to spot.",
+					"4": "The <outsidersCalculator>outsiders calculator</outsidersCalculator> estimates the zone and Ancient Souls a transcension should end on, so you know roughly where to stop before you start."
+				}
+			},
+			"newestHero": {
+				"title": "3. Push your newest hero",
+				"summary": "Damage comes from one hero at a time. Make sure it is the right one.",
+				"items": {
+					"1": "Each new hero is a tier above the last, so your gold almost always does more on the newest hero you can afford than on anyone behind it.",
+					"2": "Buy their upgrades as soon as they unlock — they are nearly always the best gold-for-damage buy available.",
+					"3": "Past level 200, level in multiples of 25. Most heroes get a damage multiplier every 25 levels, and stopping just short of one wastes gold.",
+					"4": "Older heroes stop mattering once they are left behind. Do not spread gold across the whole roster to keep them level."
+				}
+			},
+			"gilds": {
+				"title": "4. Keep gilds on one hero",
+				"summary": "Spread gilds do nothing. Stacked on your main hero, they multiply everything.",
+				"items": {
+					"1": "Every gild adds damage to one hero only. Scattered across several heroes, most of that bonus sits on heroes you are not using.",
+					"2": "Move all of your gilds onto the hero carrying your damage, and move them again when a newer hero takes over.",
+					"3": "Regilding costs Hero Souls, so only do it when your current hero is clearly falling behind — not on every small change.",
+					"4": "The <gildingChart>hero gilding chart</gildingChart> tells you which hero to gild at your current gold."
+				}
+			},
+			"build": {
+				"title": "5. Commit to a build",
+				"summary": "Idle, hybrid or active. Pick the one that matches how you actually play.",
+				"items": {
+					"1": "Idle suits players who check in a few times a day. Siyalatas and Libertas reward you for leaving the game alone.",
+					"2": "Active suits players who sit with the game open. Juggernaut, Fragsworth and Bhaal scale with clicking, and in-game auto-clickers do that clicking for you.",
+					"3": "Hybrid splits souls between the two and suits most players once they have a few auto-clickers.",
+					"4": "Half an idle build and half an active one is weaker than either done properly. Choose one and spend souls to match it."
+				}
+			},
+			"calculators": {
+				"title": "6. Let the calculators do the maths",
+				"summary": "Ancient and outsider levels are formulas. There is no reason to guess them.",
+				"items": {
+					"1": "Import your save into the <ancientsCalculator>ancients calculator</ancientsCalculator> after every ascension. It returns optimal ancient levels for your build, and what each level costs.",
+					"2": "Run the <outsidersCalculator>outsiders calculator</outsidersCalculator> at the start of every transcension. Outsiders respec for free, so there is nothing to lose by following it.",
+					"3": "When the calculator and your instinct disagree, trust the calculator. Hand-levelled ancients are one of the most common reasons a save feels slow."
+				}
+			},
+			"skills": {
+				"title": "7. Chain your skills",
+				"summary": "Skills used together hit much harder than skills used whenever they come off cooldown.",
+				"items": {
+					"1": "Save your damage skills for boss fights and fire them together, so the short windows overlap.",
+					"2": "Energize doubles the next skill you use, and Reload cuts the cooldown of the last one. Both are worth far more paired with another skill than used on their own.",
+					"3": "Dark Ritual permanently raises your DPS for the rest of the ascension. The classic Energize, Dark Ritual, Reload chain early in a run pays off for every zone after it.",
+					"4": "Use Metal Detector and Golden Clicks together when farming gold for a big level-up."
+				}
+			},
+			"rubies": {
+				"title": "8. Spend rubies on auto-clickers",
+				"summary": "Rubies are scarce. Spend them on things that keep working.",
+				"items": {
+					"1": "Auto-clickers are the best long-term ruby buy. They power active and hybrid builds and Nogardnit on idle.",
+					"2": "Timelapse is worth saving for later in the game, when skipping hours of progress covers a lot of zones.",
+					"3": "Skip recruiting mercenaries, buying gilds, relics and extra raid fights. They cost a lot and give little back.",
+					"4": "The <rubySection>ruby section</rubySection> of the new player guide has the full buy order."
+				}
+			},
+			"sideSystems": {
+				"title": "9. Use the side systems",
+				"summary": "Mercenaries, clans and backups each take a minute a day and add up over weeks.",
+				"items": {
+					"1": "Keep mercenaries questing at all times, and pick ruby quests whenever they are offered. The <mercenaryViewer>mercenary viewer</mercenaryViewer> shows your roster and their lifetime stats.",
+					"2": "Join a clan and fight the daily raid boss. It is free Hero Souls for a few clicks.",
+					"3": "Back up your save regularly — export it and keep the string somewhere safe. A lost save is the slowest progress of all."
+				}
+			},
+			"walls": {
+				"title": "10. Break through walls",
+				"summary": "A wall means something needs to change. Waiting rarely fixes it.",
+				"items": {
+					"1": "Stuck on a boss? Drop back a zone, farm gold, and level your main hero to its next multiple of 25 before trying again.",
+					"2": "Save your skills for the boss and fire them all at once rather than on cooldown.",
+					"3": "Check your gilds are on the right hero and your ancients match the calculator. A wall that appears suddenly is often one of those two.",
+					"4": "Once Kumawakamaru and Borb start thinning out monster counts, the <instakillCalculator>instakill calculator</instakillCalculator> shows how fast you should be moving through zones.",
+					"5": "If none of that works, the run is probably over. Ascend and come back stronger."
+				}
+			},
+			"whereNext": {
+				"title": "Where to go next",
+				"summary": "More detail on the topics above.",
+				"items": {
+					"1": "<newPlayerGuide>New player guide</newPlayerGuide> — a fresh save to your first transcension, step by step.",
+					"2": "<gildingChart>Hero gilding chart</gildingChart> — which hero to gild, and when.",
+					"3": "<blog>Official Clicker Heroes blog</blog> — the developers’ own list of tips.",
+					"4": "Ask questions on the <subreddit>Clicker Heroes subreddit</subreddit> or the official Discord."
+				}
+			}
+		}
+	},
+	"gildingChart": {
+		"intro": "Which hero to put every gild into, at every point in Clicker Heroes 1.0e12, from your first transcension through to the Ace Scouts. Enter your gold below and the chart tells you where you should be. Hero balance has not changed since 1.0e11, so the chart applies to the current game. Adapted from the community e10 chart and extended past Yachiyl.",
+		"parts": {
+			"findYourHero": "Find your hero",
+			"howGildingWorks": "How gilding works",
+			"readingTheChart": "Reading the chart",
+			"theChart": "The chart",
+			"commonQuestions": "Common questions"
+		},
+		"sections": {
+			"goldLookup": {
+				"title": "Gold lookup",
+				"summary": "Enter your current gold to jump straight to the row that applies to you."
+			},
+			"whatAGildDoes": {
+				"title": "What a gild does",
+				"summary": "A permanent +50% damage bonus attached to one specific hero.",
+				"items": {
+					"1": "Gilds drop from zone bosses every 10 zones past 100, and they stack: 200 gilds on one hero is +100x that hero’s damage.",
+					"2": "A gild only helps the hero it is sitting on, and moving one costs Hero Souls.",
+					"3": "So the whole game of gilding is this: exactly one hero is your damage dealer at any moment, and every gild you own should be on it.",
+					"4": "Before your first <newPlayerGuide>transcension</newPlayerGuide> you will not have the Hero Souls to move gilds around freely. Get lucky gilds on one of the Power 5 (Treebeast, Ivan, Brittany, Samurai, Seer) and level that hero instead."
+				}
+			},
+			"whenToRegild": {
+				"title": "When to re-gild",
+				"summary": "Only when you can see monster health bars.",
+				"items": {
+					"1": "While you are instakilling, extra damage does nothing at all. Re-gilding during that stretch spends Hero Souls on damage you cannot use.",
+					"2": "Once monsters start surviving your hits, switch to the optimal hero for your gold and move your gilds across.",
+					"3": "The <ancientsCalculator>ancients calculator</ancientsCalculator> can hold back 80 Hero Souls per gild so a re-gild does not eat the souls you were saving for ancients."
+				}
+			},
+			"ascendingAndTranscending": {
+				"title": "Ascending and transcending",
+				"summary": "What to do once even the optimal hero cannot keep up.",
+				"items": {
+					"1": "When you cannot keep instakilling even after switching heroes, re-gilding and burning cooldowns, it is time to ascend.",
+					"2": "When ascending no longer earns new Ancient Souls, check “Next AS” on the last tab, it is time to transcend.",
+					"3": "Always ascend before you transcend. Any Hero Souls gained during your final ascension are lost otherwise.",
+					"4": "The <transcensionViewer>transcension viewer</transcensionViewer> shows Hero Soul and Ancient Soul gains per ascension, which makes that call easier."
+				}
+			},
+			"theColumns": {
+				"title": "The columns",
+				"summary": "Four columns and one rule.",
+				"items": {
+					"1": "<strong>Gold</strong> is log10, so the column shows exponents rather than amounts. A row listed at e442 needs 1e442 gold, which is the number after the “e” in your gold display.",
+					"2": "<strong>From and To level</strong> are where to start and stop leveling that hero. Past the target, the next row is more damage per gold.",
+					"3": "<strong>Approx. AS</strong> is roughly the Ancient Souls you would have on arrival. A sanity check rather than a gate, and it stops being listed past Xavira.",
+					"4": "<strong>The rule:</strong> find the last row whose gold requirement you have met. That hero gets every gild you own."
+				}
+			},
+			"skippingRows": {
+				"title": "Skipping rows",
+				"summary": "Skipping is expected. Two upgrades are worth backtracking for.",
+				"items": {
+					"1": "If your damage is high enough that you are still instakilling, blow straight past rows. Nothing is lost.",
+					"2": "Two upgrades are worth going back for regardless, and both are flagged in the chart: <strong>Bomber Max at level 100</strong> for +50% gold found, and <strong>Gog at level 100</strong> for +50% DPS on all heroes.",
+					"3": "Heroes reappearing later in the chart is not a mistake. Heroes gain 10x multipliers at level milestones and costs scale, so a hero that fell off can become the cheapest damage again."
+				}
+			},
+			"thePhases": {
+				"title": "The six phases",
+				"summary": "The chart looks like 59 arbitrary rows. It is really six patterns."
+			},
+			"fullChart": {
+				"title": "Full gilding chart",
+				"summary": "Grouped by phase. Flagged notes are the two upgrades worth backtracking for."
+			},
+			"faq": {
+				"title": "Frequently asked",
+				"summary": "The questions that come up every time this chart is posted."
+			}
+		},
+		"phaseSummaries": {
+			"1": "Hire each new hero at 1,000, gild it, push to 1,500, move on. Mechanical and fast. Two upgrade detours matter: Bomber Max and Gog, both at level 100.",
+			"2": "The two leapfrog each other every ~500 levels as each picks up a new 10x multiplier. Ends when Gog runs out of multipliers at level 8,000.",
+			"3": "The easiest stretch in the game. Each new hero is so much stronger that you hire it at level 1, move every gild across, and ride it to the next one.",
+			"4": "Cadu and Ceus buff each other, so you alternate, pushing whichever one unlocks the upgrade the other needs. Nine steps of ping-pong.",
+			"5": "Two enormous jumps. The Maw at level 1 outdamages a maxed Cadu by roughly 1e6750x. Yachiyl only overtakes The Maw at level 157,500, so you start it there.",
+			"6": "Rose, Sophia, Blanche and Dorothy rotate as each unlocks upgrades for the others. Run them bare first, then cycle through upgrade tiers, skipping most of Dorothy."
+		},
+		"range": "{from} to {to}",
+		"rangeOnwards": "{from} onwards",
+		"table": {
+			"label": "Clicker Heroes gilding chart",
+			"step": "#",
+			"hero": "Optimal hero",
+			"fromLevel": "From lvl",
+			"toLevel": "To lvl",
+			"gold": "Gold (log10)",
+			"approxAncientSouls": "~AS",
+			"notes": "Notes",
+			"phase": "Phase {phase} · {title} · {range}"
+		}
+	}
+}

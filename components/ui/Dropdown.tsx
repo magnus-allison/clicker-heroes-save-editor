@@ -1,5 +1,6 @@
 import type { SelectHTMLAttributes } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { cn } from 'cn';
 import type { SelectOption } from '@/lib/save-utils';
@@ -10,7 +11,8 @@ type Props = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'children'> & {
 };
 
 export const Dropdown = ({ className, options, placeholder, value, ...props }: Props) => {
-	const ariaLabel = props['aria-label'] ?? placeholder ?? 'Select option';
+	const t = useTranslations('common.ui');
+	const ariaLabel = props['aria-label'] ?? placeholder ?? t('selectOption');
 
 	return (
 		<div className='group relative'>

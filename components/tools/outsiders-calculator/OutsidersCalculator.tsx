@@ -85,7 +85,7 @@ export const OutsidersCalculator = () => {
 
 	return (
 		<>
-			<Breadcrumb subtitle='Outsiders Calculator' title='tools' />
+			<Breadcrumb page='outsidersCalculator' title='tools' />
 
 			<SaveDataPanel examples={examples} hasEditStep />
 

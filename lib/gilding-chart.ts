@@ -13,86 +13,96 @@
 
 export type GildingPhaseId = 1 | 2 | 3 | 4 | 5 | 6;
 
+/**
+ * Phase titles, summaries and row notes are translated: they live in the
+ * `guidesUi.gildingChart` and `guides.gildingChart` messages, keyed by phase
+ * id and by `GildingNoteKey`. This file holds only the numbers and hero names.
+ */
 export type GildingPhase = {
 	id: GildingPhaseId;
-	title: string;
-	summary: string;
-	/** Human-readable gold span, for headings. */
-	range: string;
+	/** log10 gold span shown in headings. Not always the rows' exact span. */
+	rangeFrom: number;
+	/** `null` when the phase runs to the end of the chart. */
+	rangeTo: number | null;
 };
+
+export const gildingNoteKeys = [
+	'dreadKnight',
+	'bareExponent',
+	'rangersAndBeasts',
+	'thePattern',
+	'bomberMaxUpgrade',
+	'gogUpgrade',
+	'followWepwawet',
+	'bettyClicker',
+	'kingMidas',
+	'wepAndGog',
+	'stayOnWep',
+	'hireTsuchi',
+	'lastSoulsEstimate',
+	'eitherGuardian',
+	'ceusBoostsCadu',
+	'lastCeusUpgrade',
+	'theMaw',
+	'yachiyl',
+	'roseLevel',
+	'noUpgradesFirst',
+	'firstUpgrades',
+	'skipDorothy1',
+	'skipDorothy2',
+	'dorothy3',
+	'skipDorothy4',
+	'endOfChart'
+] as const;
+
+/** Message key under `guidesUi.gildingChart.notes`. */
+export type GildingNoteKey = (typeof gildingNoteKeys)[number];
 
 export type GildingRow = {
 	/** 1-based position in the chart, stable across filtering. */
 	step: number;
 	hero: string;
-	/** Levels are strings: a couple are ranges or 'Forever' rather than numbers. */
+	/** Levels are strings: a couple are ranges rather than numbers. */
 	fromLevel: string;
-	toLevel: string;
+	/** `null` on the final row: keep levelling it forever. */
+	toLevel: string | null;
 	/** log10 gold at which this hero becomes the optimal gild target. */
 	goldFrom: number;
 	/** log10 gold at which the next row takes over. `null` on the final row. */
 	goldTo: number | null;
 	/** Rough Ancient Souls when you get here. Not tabulated past Xavira. */
 	approxAncientSouls: string | null;
-	note: string | null;
+	note: GildingNoteKey | null;
 	/** Notes worth backtracking for even when you are skipping rows. */
 	highlight?: boolean;
 	phase: GildingPhaseId;
 };
 
 export const gildingPhases = [
-	{
-		id: 1,
-		title: 'The e10 climb',
-		summary:
-			'Hire each new hero at 1,000, gild it, push to 1,500, move on. Mechanical and fast. Two upgrade detours matter: Bomber Max and Gog, both at level 100.',
-		range: 'e35 to e295'
-	},
-	{
-		id: 2,
-		title: 'Wepwawet and Gog',
-		summary:
-			'The two leapfrog each other every ~500 levels as each picks up a new 10x multiplier. Ends when Gog runs out of multipliers at level 8,000.',
-		range: 'e383 to e500'
-	},
-	{
-		id: 3,
-		title: 'Solo heroes',
-		summary:
-			'The easiest stretch in the game. Each new hero is so much stronger that you hire it at level 1, move every gild across, and ride it to the next one.',
-		range: 'e500 to e25,500'
-	},
-	{
-		id: 4,
-		title: 'Tomb Guardians',
-		summary:
-			'Cadu and Ceus buff each other, so you alternate, pushing whichever one unlocks the upgrade the other needs. Nine steps of ping-pong.',
-		range: 'e25,500 to e45,500'
-	},
-	{
-		id: 5,
-		title: 'The Maw and Yachiyl',
-		summary:
-			'Two enormous jumps. The Maw at level 1 outdamages a maxed Cadu by roughly 1e6750x. Yachiyl only overtakes The Maw at level 157,500, so you start it there.',
-		range: 'e45,500 to e108,838'
-	},
-	{
-		id: 6,
-		title: 'Ace Scouts',
-		summary:
-			'Rose, Sophia, Blanche and Dorothy rotate as each unlocks upgrades for the others. Run them bare first, then cycle through upgrade tiers, skipping most of Dorothy.',
-		range: 'e108,838 onwards'
-	}
+	{ id: 1, rangeFrom: 35, rangeTo: 295 },
+	{ id: 2, rangeFrom: 383, rangeTo: 500 },
+	{ id: 3, rangeFrom: 500, rangeTo: 25500 },
+	{ id: 4, rangeFrom: 25500, rangeTo: 45500 },
+	{ id: 5, rangeFrom: 45500, rangeTo: 108838 },
+	{ id: 6, rangeFrom: 108838, rangeTo: null }
 ] as const satisfies readonly GildingPhase[];
+
+const exponentFormatter = new Intl.NumberFormat('en-US');
+
+/**
+ * `e442`, `e25,500`. Always grouped the English way, whatever the page locale,
+ * so it reads the same as the game’s own gold display.
+ */
+export const formatGoldExponent = (value: number) => `e${exponentFormatter.format(value)}`;
 
 type RawRow = [
 	hero: string,
 	fromLevel: string,
-	toLevel: string,
+	toLevel: string | null,
 	goldFrom: number,
 	goldTo: number | null,
 	approxAncientSouls: string | null,
-	note: string | null,
+	note: GildingNoteKey | null,
 	phase: GildingPhaseId,
 	highlight?: true
 ];
@@ -105,7 +115,7 @@ const rawRows: readonly RawRow[] = [
 		35,
 		77,
 		'10',
-		'Dread Knight is never optimal to gild. Sources list the start level as either 1,000 or 1,500; either is fine.',
+		'dreadKnight',
 		1
 	],
 	[
@@ -115,10 +125,10 @@ const rawRows: readonly RawRow[] = [
 		77,
 		100,
 		'12',
-		'From here on gold is written as the bare exponent, the number after the "e".',
+		'bareExponent',
 		1
 	],
-	['Terra', '1,000', '1,500', 100, 115, '14', 'Most rangers and beasts become optimal at level 1,000.', 1],
+	['Terra', '1,000', '1,500', 100, 115, '14', 'rangersAndBeasts', 1],
 	['Phthalo', '1,000', '1,500', 115, 130, '17', null, 1],
 	['Orntchya Gladeye, Didensy Banana', '1,000', '1,500', 130, 145, '20', null, 1],
 	[
@@ -128,7 +138,7 @@ const rawRows: readonly RawRow[] = [
 		145,
 		160,
 		'22',
-		'The pattern by now: hire to 1,000, gild, level to 1,500, move on.',
+		'thePattern',
 		1
 	],
 	['Cadmia', '1,000', '1,500', 160, 175, '24', null, 1],
@@ -141,7 +151,7 @@ const rawRows: readonly RawRow[] = [
 		205,
 		220,
 		'31',
-		'At Chiron 1,100, buy Bomber Max to level 100 for his +50% gold found upgrade.',
+		'bomberMaxUpgrade',
 		1,
 		true
 	],
@@ -152,13 +162,13 @@ const rawRows: readonly RawRow[] = [
 		220,
 		235,
 		'34',
-		'At Moloch 1,100, buy Gog to level 100 for his +50% all-hero DPS upgrade.',
+		'gogUpgrade',
 		1,
 		true
 	],
 	['Bomber Max', '1,000', '1,500', 235, 250, '36', null, 1],
 	['Gog', '1,000', '1,500', 250, 265, '38', null, 1],
-	['Wepwawet', '1,000', '1,500', 265, 280, '40', 'From here, gilding follows Wepwawet upgrades.', 1],
+	['Wepwawet', '1,000', '1,500', 265, 280, '40', 'followWepwawet', 1],
 	[
 		'Betty Clicker',
 		'9,350',
@@ -166,7 +176,7 @@ const rawRows: readonly RawRow[] = [
 		280,
 		295,
 		'42',
-		'Needs the Wepwawet upgrade at level 1,500, which boosts Betty heavily.',
+		'bettyClicker',
 		1
 	],
 	[
@@ -176,7 +186,7 @@ const rawRows: readonly RawRow[] = [
 		295,
 		383,
 		'44',
-		'Needs the Wepwawet upgrade at level 2,000. The wiki lists the end level as 13,575.',
+		'kingMidas',
 		1
 	],
 	[
@@ -186,7 +196,7 @@ const rawRows: readonly RawRow[] = [
 		383,
 		397,
 		'56',
-		'Wep and Gog now trade off every ~500 levels as each gains a new 10x.',
+		'wepAndGog',
 		2
 	],
 	['Gog', '6,000', '6,500', 397, 412, '59', null, 2],
@@ -199,7 +209,7 @@ const rawRows: readonly RawRow[] = [
 		442,
 		500,
 		'65',
-		'Gog gets no more 10x multipliers after level 8,000, so stay on Wep from here.',
+		'stayOnWep',
 		2
 	],
 	[
@@ -209,7 +219,7 @@ const rawRows: readonly RawRow[] = [
 		500,
 		1000,
 		'75',
-		'Hiring Tsuchi at level 1 costs less than 25 more levels of Wepwawet, and is instantly better.',
+		'hireTsuchi',
 		3
 	],
 	['Skogur', '1', '33,975', 1000, 2000, '200', null, 3],
@@ -223,7 +233,7 @@ const rawRows: readonly RawRow[] = [
 		14000,
 		25500,
 		'6,000',
-		'Last row with a meaningful Ancient Souls estimate. Past here, use a progression calculator.',
+		'lastSoulsEstimate',
 		3
 	],
 	[
@@ -233,7 +243,7 @@ const rawRows: readonly RawRow[] = [
 		25500,
 		27204,
 		null,
-		'Either Guardian works here. Cadu gets the first upgrade, which boosts Ceus.',
+		'eitherGuardian',
 		4
 	],
 	[
@@ -243,7 +253,7 @@ const rawRows: readonly RawRow[] = [
 		27204,
 		28908,
 		null,
-		'At 116,000 Ceus boosts Cadu. The alternating pattern continues from here.',
+		'ceusBoostsCadu',
 		4
 	],
 	['Cadu, Tomb Guardian', '116,000', '180,000', 28908, 30789, null, null, 4],
@@ -258,7 +268,7 @@ const rawRows: readonly RawRow[] = [
 		40044,
 		42777,
 		null,
-		'The last Ceus upgrade unlocks here. After this, stay on Cadu until The Maw.',
+		'lastCeusUpgrade',
 		4
 	],
 	['Cadu, Tomb Guardian', '588,000', '680,625', 42777, 45500, null, null, 4],
@@ -269,7 +279,7 @@ const rawRows: readonly RawRow[] = [
 		45500,
 		76628,
 		null,
-		'The Maw at level 1 deals roughly 1e6750x the damage of Cadu at 680,625, for the same price.',
+		'theMaw',
 		5
 	],
 	[
@@ -279,7 +289,7 @@ const rawRows: readonly RawRow[] = [
 		76628,
 		108838,
 		null,
-		'Yachiyl does less damage than The Maw until its first upgrade at 157,500, which is why you start it there. Reaching this row means you have beaten 1.0e10.',
+		'yachiyl',
 		5
 	],
 	[
@@ -289,10 +299,10 @@ const rawRows: readonly RawRow[] = [
 		108838,
 		114500,
 		null,
-		'Because of 1.0e11 hero scaling, Rose is not immediately better than Yachiyl. She needs level 9,700.',
+		'roseLevel',
 		6
 	],
-	['Sophia', '1', '150,525', 114500, 127500, null, 'Run through each scout with no upgrades first.', 6],
+	['Sophia', '1', '150,525', 114500, 127500, null, 'noUpgradesFirst', 6],
 	['Blanche', '1', '170,200', 127500, 142200, null, null, 6],
 	['Dorothy', '1', '205,975', 142200, 159989, null, null, 6],
 	[
@@ -302,7 +312,7 @@ const rawRows: readonly RawRow[] = [
 		159989,
 		172987,
 		null,
-		'Now start collecting each scout first upgrade. This rotating pattern continues to the end.',
+		'firstUpgrades',
 		6
 	],
 	['Sophia', '677,250', '903,025', 172987, 192486, null, null, 6],
@@ -314,12 +324,12 @@ const rawRows: readonly RawRow[] = [
 		211977,
 		224976,
 		null,
-		'Skip Dorothy 1: it costs more but deals less damage than Rose 2.',
+		'skipDorothy1',
 		6
 	],
 	['Sophia', '1,279,250', '1,505,025', 224976, 244474, null, null, 6],
 	['Blanche', '1,354,500', '1,580,200', 244474, 263966, null, null, 6],
-	['Rose', '1,806,000', '1,956,500', 263966, 276964, null, 'Skip Dorothy 2, same reason as before.', 6],
+	['Rose', '1,806,000', '1,956,500', 263966, 276964, null, 'skipDorothy2', 6],
 	['Sophia', '1,881,250', '2,107,025', 276964, 296463, null, null, 6],
 	['Blanche', '1,956,500', '2,126,700', 296463, 311163, null, null, 6],
 	[
@@ -329,16 +339,16 @@ const rawRows: readonly RawRow[] = [
 		311163,
 		315954,
 		null,
-		'Dorothy 3 is worth taking, unlike 1 and 2.',
+		'dorothy3',
 		6
 	],
 	['Rose', '2,408,000', '2,558,500', 315954, 328953, null, null, 6],
 	['Sophia', '2,483,250', '2,709,025', 328953, 348452, null, null, 6],
 	['Blanche', '2,558,500', '2,784,200', 348452, 367943, null, null, 6],
-	['Rose', '3,010,000', '3,160,500', 367943, 380942, null, 'Skip Dorothy 4, same reason as before.', 6],
+	['Rose', '3,010,000', '3,160,500', 367943, 380942, null, 'skipDorothy4', 6],
 	['Sophia', '3,085,250', '3,311,025', 380942, 400440, null, null, 6],
 	['Blanche', '3,160,500', '3,405,950', 400440, 421639, null, null, 6],
-	['Dorothy', '3,235,750', 'Forever', 421639, null, null, 'End of the tabulated chart.', 6]
+	['Dorothy', '3,235,750', null, 421639, null, null, 'endOfChart', 6]
 ];
 
 export const gildingRows: readonly GildingRow[] = rawRows.map(

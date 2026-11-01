@@ -1,0 +1,410 @@
+{
+	"shared": {
+		"resetDefaults": "Reset defaults",
+		"units": {
+			"year": "y",
+			"day": "d",
+			"hour": "h",
+			"minute": "m"
+		}
+	},
+	"ancients": {
+		"steps": {
+			"settings": "Settings",
+			"ancientLevels": "Ancient levels",
+			"transcensionDetails": "Transcension details"
+		},
+		"build": {
+			"title": "Build",
+			"description": "Build, best hero, and the souls to distribute."
+		},
+		"buildModes": {
+			"idle": "Idle",
+			"hybrid": "Hybrid",
+			"active": "Active"
+		},
+		"heroTiers": {
+			"base": "Treebeast - Lvl 7,999 Wepwawet",
+			"e9": "Lvl 8,000 Wepwawet - Madzi",
+			"e10": "Xavira - Yachiyl",
+			"scout": "Ace Scouts"
+		},
+		"settings": {
+			"buildLabel": "Build",
+			"buildDescription": "Assumes you own Siyalatas for idle and hybrid, and Fragsworth for active.",
+			"ratioLabel": "Fragsworth / Siyalatas ratio",
+			"ratioAriaLabel": "Fragsworth to Siyalatas ratio",
+			"ratioDescription": "Fragsworth levels per Siyalatas level. 20 favours active heavily.",
+			"ratioHelp": "Hybrid builds are mostly used for timelapses at zones 50k - 250k and 1m+. Past that, idle damage is negligible next to active, so a high ratio is usually better.",
+			"heroTierLabel": "Best hero this transcension",
+			"heroTierDescription": "Damage-to-gold ratios differ per hero, which shifts how far the gold ancients are levelled.",
+			"heroSoulsLabel": "Hero souls to spend",
+			"heroSoulsDescription": "Leave empty to use the save ({souls} HS).",
+			"includeAscensionSoulsLabel": "Include souls gained after ascension",
+			"includeAscensionSoulsDescription": "Adds the souls your next ascension would hand over to the pool."
+		},
+		"advanced": {
+			"title": "Advanced configuration",
+			"description": "Auxiliary ancients, reserved souls, and solver precision.",
+			"revolcLabel": "Level Revolc",
+			"revolcAriaLabel": "Revolc level rate",
+			"revolcDescription": "0 = never level it, 1 = level it as hard as the rules allow.",
+			"skillAncientsLabel": "Level skill ancients",
+			"skillAncientsAriaLabel": "Skill ancients level rate",
+			"skillAncientsDescription": "Same scale, applied to Vaagur and the skill duration ancients.",
+			"precisionLabel": "Calculator precision",
+			"precisionDescription": "Significant digits the solver converges to. Low is quicker, high is more accurate.",
+			"regildingLabel": "Reserve hero souls for regilding",
+			"regildingDescription": "Holds back 80 HS per gild, and you have {gilds}.",
+			"regildingDescriptionEmpty": "Holds back 80 hero souls per gild.",
+			"ignoreMinimizedLabel": "Ignore ancients minimized in-game",
+			"ignoreMinimizedDescription": "Skips any ancient whose in-game card you have collapsed."
+		},
+		"summary": {
+			"soulsToSpend": "Souls to spend",
+			"soulsSpent": "Souls spent",
+			"soulsLeftOver": "Souls left over"
+		},
+		"goalsTable": {
+			"label": "Recommended ancient levels",
+			"ancient": "Ancient",
+			"current": "Current",
+			"goal": "Goal",
+			"change": "Change",
+			"cost": "Cost (HS)",
+			"noAncients": "No owned ancients found in this save.",
+			"empty": "Load a save to see recommended ancient levels.",
+			"cap": "cap",
+			"capTitle": "Levelled to the point where this ancient stops paying off",
+			"copyChange": "Copy {name} level change",
+			"copiedChange": "Copied {name} level change"
+		},
+		"soulBank": "Soul bank: keep {souls} HS unspent. You do not own Morgulis, so leftover souls are worth more banked than invested.",
+		"tunedAgainst": "Tuned against {ancient}, calculated in {seconds}s.",
+		"stats": {
+			"title": "Stats",
+			"description": "Values read from your save.",
+			"label": "Save stats",
+			"transcendentPower": "Transcendent Power",
+			"highestZone": "Highest Zone Reached",
+			"ancientSoulsTotal": "Ancient Souls Total",
+			"gilds": "Gilds",
+			"ascensionSouls": "Souls gained after ascension"
+		},
+		"outsiders": {
+			"title": "Outsiders",
+			"description": "Current outsider levels.",
+			"label": "Outsider levels",
+			"image": "Image",
+			"outsider": "Outsider",
+			"level": "Level"
+		},
+		"planner": {
+			"title": "Ancient soul planner",
+			"description": "Hero souls to sacrifice for your next ancient souls.",
+			"gain": "Gain",
+			"required": "By sacrificing a total of",
+			"change": "Change",
+			"empty": "Load a save to plan your next ancient souls."
+		},
+		"effects": {
+			"solomon": "+% Primal Hero Souls",
+			"libertas": "+% gold from monsters while idle",
+			"siyalatas": "+% DPS while idle",
+			"mammon": "+% gold dropped",
+			"mimzee": "+% gold from treasure chests",
+			"pluto": "+% gold from Golden Clicks",
+			"dogcog": "-% hero hire and level-up cost",
+			"fortuna": "+% chance of 10x gold",
+			"atman": "+% chance of Primal Bosses",
+			"dora": "+% more treasure chests",
+			"bhaal": "+% critical click damage",
+			"morgulis": "+% base DPS per Hero Soul spent",
+			"chronos": "+ seconds on boss fight timers",
+			"bubos": "-% boss life",
+			"fragsworth": "+% click damage",
+			"vaagur": "-% skill cooldowns",
+			"kumawakamaru": "- monsters required per zone",
+			"chawedo": "+ seconds of Clickstorm",
+			"hecatoncheir": "+ seconds of Super Clicks",
+			"berserker": "+ seconds of Powersurge",
+			"sniperino": "+ seconds of Lucky Strikes",
+			"kleptos": "+ seconds of Golden Clicks",
+			"energon": "+ seconds of Metal Detector",
+			"argaiv": "+% gilded damage bonus",
+			"juggernaut": "+% DPS per click combo",
+			"revolc": "+% chance of double rubies",
+			"nogardnit": "+% DPS per idle Auto Clicker"
+		},
+		"outsiderEffects": {
+			"xyliqil": "effectiveness of all idle bonuses",
+			"chorgorloth": "Ancient cost",
+			"phandoryss": "DPS",
+			"ponyboy": "Primal Hero Souls",
+			"borb": "effectiveness of Kumawakamaru (+12.5% per level)",
+			"rhageist": "effectiveness of Atman (+25% per level)",
+			"kariqua": "effectiveness of Bubos (+50% per level)",
+			"orphalas": "effectiveness of Chronos (+75% per level)",
+			"senakhan": "effectiveness of Dora (+100% per level)"
+		}
+	},
+	"outsiders": {
+		"steps": {
+			"outsiderLevels": "Outsider levels",
+			"transcensionDetails": "Transcension details"
+		},
+		"settings": {
+			"title": "Settings",
+			"description": "Target zone, Orphalas, and the ancient soul reserve.",
+			"zoneOverrideLabel": "Zone override",
+			"zoneOverrideDescription": "Plan for a zone you pick instead of the one your ancient souls suggest. 0 uses the estimate.",
+			"zoneOverrideHelp": "The estimate assumes you push actively and ascend until the run stops paying off. Pin a zone here if you already know where you intend to stop, or to see what a shorter run would want.",
+			"orphalasLabel": "Level Orphalas",
+			"orphalasDescription": "Orphalas only buys boss fight timer, which active pushing rarely needs.",
+			"reserveLabel": "Reserve ancient souls",
+			"reserveDescription": "Holds back a tenth of what is left after Borb instead of spending it.",
+			"simulatorLabel": "Transcension simulator",
+			"simulatorDescription": "Projects every transcension between here and the end of the game."
+		},
+		"summary": {
+			"ancientSoulsEarned": "Ancient souls earned",
+			"transcendentPower": "Transcendent Power",
+			"unspent": "Unspent after this plan"
+		},
+		"goalsTable": {
+			"label": "Recommended outsider levels",
+			"image": "Image",
+			"outsider": "Outsider",
+			"current": "Current",
+			"level": "Level",
+			"change": "Change",
+			"totalCost": "Total cost",
+			"empty": "Load a save to see recommended outsider levels.",
+			"copyLevel": "Copy {name} level",
+			"copiedLevel": "Copied {name} level"
+		},
+		"apply": "Apply Levels To Save",
+		"copyLevels": "Copy outsider levels",
+		"copiedLevels": "Copied outsider levels",
+		"toasts": {
+			"noSave": "Load a save before applying outsider levels.",
+			"blocked": "{names} already sit above the recommendation. Respec in game, then try again.",
+			"applied": "Outsider levels written to the save."
+		},
+		"reserved": "Holding back {souls} ancient souls, as the reserve setting asks.",
+		"notTranscended": "This save has never transcended, so it has no outsiders to level yet. Transcend at zone 300 first — the plan below is what to do once you have.",
+		"plannedFromTotal": "Planned from every ancient soul the save has earned, not the {unspent} it currently has unspent, so respec in game before applying these levels.",
+		"guidance": {
+			"title": "Guidance",
+			"description": "What to do with this run."
+		},
+		"hints": {
+			"noAncientSouls": "You need ancient souls for this to work. Transcend as soon as you unlock transcendence at zone 300. It is worth it.",
+			"firstAscension": "Your first ascension should be at zone 130, so you unlock Kumawakamaru and a few other ancients as soon as possible. That speeds up every ascension after it.",
+			"borbForZone": "Only {borbForZone} Borb is needed for two monsters per zone on your final ascension, but {borbForFirstAscension} is needed for two monsters per zone after ascending for the first time at zone 130.",
+			"borbHigher": "There are more ascensions than the last one, so Borb is levelled higher to speed up the earlier ones.",
+			"transcendAfterAscensions": "Transcend after 3 or 4 ascensions that give new ancient souls. An ascension only counts if it earns you more hero souls than your previous transcension.",
+			"estimateActive": "The highest zone below is an estimate and assumes active play, which you should switch to as soon as you have two autoclickers.",
+			"guidelineNoLongerApplies": "The \"3 or 4 ascensions that give ancient souls\" guideline does not apply beyond 24% Transcendent Power.",
+			"keepAscending": "Keep ascending until you reach at least the estimated highest zone below. That takes more ascensions than you are used to.",
+			"closeToCap": "You are getting close to 25% Transcendent Power, so transcending no longer gives the boost it used to.",
+			"borbOnlyLimit": "You have enough Transcendent Power to reach any hero. Borb is your only limit now, and putting more levels into it is the only reason to transcend.",
+			"lastFourAtZero": "The last four outsiders are impractical to maintain at high zones, so they are kept at 0. This is not a bug.",
+			"oneLessAscension": "You can do one less ascension than the highest zone estimate asks for if you want a more pleasant run. It is only slightly worse long term."
+		},
+		"estimates": {
+			"title": "End of transcension estimates",
+			"description": "Where this transcension ends if you follow the plan.",
+			"highestZone": "Highest zone",
+			"logHeroSouls": "Hero souls (log10)",
+			"ancientSouls": "Ancient souls",
+			"transcendentPower": "Transcendent Power",
+			"ancientLevels": "Ancient levels",
+			"kumawakamaruValue": "{value} monsters per zone",
+			"atmanValue": "{value} chance of primal",
+			"bubosValue": "{value} boss life",
+			"chronosValue": "{value}s boss fight timer",
+			"doraValue": "{value} treasure chests"
+		},
+		"breakpoints": {
+			"title": "Zone breakpoints",
+			"description": "Zones at which each buffed stat reaches its limit.",
+			"highMonstersPerZone": "2.1 monsters per zone",
+			"primalChanceFloor": "5% primal chance",
+			"bossHealthCeiling": "90% boss health",
+			"bossTimerFloor": "2s boss timer",
+			"treasureChestCeiling": "99% treasure chests",
+			"treasureChestFloor": "1% treasure chests"
+		},
+		"highestZoneStats": {
+			"title": "Stats at the highest zone",
+			"description": "What the highest zone looks like with and without your outsiders.",
+			"stat": "Stat",
+			"unbuffed": "Unbuffed",
+			"buffed": "Buffed",
+			"monstersPerZone": "Monsters per zone",
+			"treasureChests": "Treasure chests",
+			"bossHealth": "Boss health",
+			"bossTimer": "Boss timer",
+			"primalChance": "Primal chance"
+		},
+		"simulator": {
+			"title": "Transcension simulator",
+			"description": "Every transcension from here to the end of the game.",
+			"ancientSouls": "Ancient souls",
+			"borb": "Borb",
+			"highestZone": "Highest zone",
+			"finalMpz": "Final MpZ",
+			"time": "Time",
+			"empty": "Load a save to project your transcensions.",
+			"minimumTitle": "The game never drops below two",
+			"ends": "Ends on {souls} ancient souls.",
+			"endsTruncated": "Ends on {souls} ancient souls, where the projection stops making progress."
+		}
+	},
+	"instakill": {
+		"inputs": {
+			"title": "Inputs",
+			"description": "Ancient levels, route range, and frame timing.",
+			"label": "Instakill calculator inputs",
+			"image": "Image",
+			"item": "Item",
+			"value": "Value",
+			"kumawakamaruDescription": "Ancient of Shadows level",
+			"borbDescription": "Outsider level",
+			"startZoneLabel": "Starting Zone",
+			"startZoneDescription": "First zone in the route",
+			"startZoneImageAlt": "Zone Explorer",
+			"endZoneLabel": "Target Zone",
+			"endZoneDescription": "Last zone in the route",
+			"endZoneImageAlt": "Zone Lord",
+			"fpsDescription": "Frames per second",
+			"fpsImageAlt": "Auto Clicker",
+			"acInstakillLabel": "AC instakill",
+			"acInstakillDescription": "Treat autoclicker attacks as instakills.",
+			"root2Description": "Use the alternate logarithmic Kumawakamaru and Borb reduction formula.",
+			"root2Help": "Uses the alternate logarithmic Kumawakamaru and Borb reduction formula from the original calculator."
+		},
+		"output": {
+			"title": "Output",
+			"description": "Calculated monsters per zone, duration, and pace.",
+			"label": "Instakill calculator results",
+			"icon": "Icon",
+			"metric": "Metric",
+			"value": "Value",
+			"effective": "Effective {value}",
+			"startMpz": "Start MPZ",
+			"endMpz": "End MPZ",
+			"duration": "Duration",
+			"zones": "{count, plural, one {# zone} other {# zones}}",
+			"zonesPerHour": "Zones/hour",
+			"frames": "{count, plural, one {# frame} other {# frames}}",
+			"mpzReduction": "MPZ reduction",
+			"mpzReductionDetail": "Kumawakamaru and Borb",
+			"timing": "Timing",
+			"killFrames": "{count} kill frames"
+		}
+	},
+	"transcension": {
+		"steps": {
+			"transcensions": "Transcensions",
+			"ascensionsIn": "Ascensions in Transcension #{number}",
+			"ascensionsInEmpty": "Ascensions in Transcension"
+		},
+		"columns": {
+			"number": "No.",
+			"duration": "Duration",
+			"ascensions": "Ascensions",
+			"highestZone": "HZE",
+			"heroSouls": "HS",
+			"ancientSouls": "AS"
+		},
+		"transcensionsLabel": "Transcensions",
+		"transcensionsEmpty": "Load a save with transcension history to see it here.",
+		"selectTranscension": "Show ascensions in transcension #{number}",
+		"ascensionsLabel": "Ascensions in the selected transcension",
+		"ascensionsEmpty": "Select a transcension with ascension history to see its ascensions here."
+	},
+	"mercenary": {
+		"steps": {
+			"roster": "Mercenary Roster",
+			"summary": "Mercenary Summary"
+		},
+		"rosterLabel": "Mercenary roster",
+		"summaryLabel": "Mercenary summary",
+		"columns": {
+			"slot": "Slot",
+			"name": "Name",
+			"level": "Level",
+			"experience": "Experience",
+			"timeToDie": "Time to Die",
+			"bonusLives": "Bonus Lives",
+			"lastQuest": "Last Quest",
+			"successChance": "Success Chance"
+		},
+		"rosterEmpty": "Load a save with mercenaries to see the roster here.",
+		"summary": {
+			"mercenaryCount": "Mercenary Count",
+			"highestMercenaryLevelEver": "Highest Mercenary Level Ever",
+			"totalMercenariesRevived": "Total Mercenaries Revived",
+			"totalMercenariesBuried": "Total Mercenaries Buried",
+			"total5MinuteQuests": "Total 5-Minute Quests",
+			"heroSoulQuestsCompleted": "Hero Soul Quests Completed",
+			"goldQuestsCompleted": "Gold Quests Completed",
+			"rubyQuestsCompleted": "Ruby Quests Completed",
+			"relicQuestsCompleted": "Relic Quests Completed",
+			"skillQuestsCompleted": "Skill Quests Completed"
+		}
+	},
+	"saveConverter": {
+		"export": {
+			"action": "Convert Save",
+			"ariaLabel": "Converted save data to export",
+			"dataLabel": "converted data",
+			"placeholder": "Your converted save data will appear here...",
+			"title": "Export Converted Save"
+		},
+		"step": "Converter Options",
+		"detectedOrigin": "Detected origin",
+		"patchNumber": "Patch number",
+		"outputDevice": "Output device",
+		"devices": {
+			"pc": "PC",
+			"mobile": "Mobile",
+			"unknown": "unknown"
+		},
+		"notAvailable": "n/a",
+		"toasts": {
+			"noSave": "Load a save before converting.",
+			"converted": "Save converted for {device}.",
+			"failed": "Failed to convert save data.",
+			"failedWithReason": "Failed to convert save data: {reason}"
+		}
+	},
+	"saveJson": {
+		"export": {
+			"action": "Convert JSON to Save",
+			"ariaLabel": "Encoded save data to export",
+			"dataLabel": "edited data",
+			"placeholder": "Your encoded save data will appear here...",
+			"title": "Export Your Save Data"
+		},
+		"step": "Edit The Raw Save JSON",
+		"intro": "Importing a save decodes it into the JSON below. Edit any field by hand, then convert it back into an encoded save string. Pasting JSON straight in works too — no save import needed.",
+		"jsonAriaLabel": "Raw save JSON",
+		"jsonPlaceholder": "Paste save JSON here, or import a save above...",
+		"format": "Format JSON",
+		"toasts": {
+			"empty": "Paste some JSON before converting.",
+			"converted": "JSON converted to save data.",
+			"convertFailed": "Failed to convert JSON to save data.",
+			"convertFailedWithReason": "Failed to convert JSON to save data: {reason}",
+			"notAnObject": "JSON must parse to an object.",
+			"formatted": "JSON formatted.",
+			"parseFailed": "That JSON could not be parsed.",
+			"parseFailedWithReason": "That JSON could not be parsed: {reason}",
+			"copied": "JSON copied.",
+			"copyFailed": "Copying is not available in this browser."
+		}
+	}
+}

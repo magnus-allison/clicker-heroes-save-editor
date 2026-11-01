@@ -1,0 +1,114 @@
+{
+	"heading": "How it works",
+	"seeAlso": "See also:",
+	"links": {
+		"saveEditor": "Save editor",
+		"ancientsCalculator": "Ancients calculator",
+		"outsidersCalculator": "Outsiders calculator",
+		"instakillCalculator": "Instakill calculator",
+		"transcensionViewer": "Transcension viewer",
+		"mercenaryViewer": "Mercenary viewer",
+		"saveConverter": "Save converter",
+		"removeClanData": "Remove clan data",
+		"saveJson": "Save JSON",
+		"newPlayerGuide": "New player guide",
+		"gildingChart": "Gilding chart",
+		"progressTips": "Progress tips",
+		"faq": "FAQ"
+	},
+	"ancients": {
+		"intro": "Spreads your Hero Souls across the ancients you own using the community Rules of Thumb. Ported from the <link>kepow.org optimizer</link>.",
+		"builds": {
+			"title": "Builds",
+			"body": "Idle levels everything against Siyalatas, active against Fragsworth. Hybrid levels both, with the ratio setting how many Fragsworth levels you buy per Siyalatas level."
+		},
+		"bestHero": {
+			"title": "Best hero",
+			"body": "Each hero tier has a different gold-to-damage ratio, which changes how far the gold ancients are worth levelling."
+		}
+	},
+	"instakill": {
+		"intro": "Once every monster dies in one hit, speed comes down to monsters per zone and frames per kill. This works out both from your Kumawakamaru and Borb levels.",
+		"monstersPerZone": {
+			"title": "Monsters per zone",
+			"body": "Zones start at 10 monsters and gain 0.1 every 500 zones. Kumawakamaru removes up to 8, Borb multiplies that, and nothing goes below 2."
+		},
+		"routeTime": {
+			"title": "Route time",
+			"body": "Each kill takes 15 frames, or 14 with AC instakill. Frames are added up zone by zone and divided by your FPS."
+		}
+	},
+	"mercenary": {
+		"intro": "Lays out your mercenaries in one table, alongside the lifetime stats the game tracks but rarely shows.",
+		"roster": {
+			"title": "Roster",
+			"body": "Level, experience, time to die, bonus lives, last quest and its success chance for every slot."
+		},
+		"lifetimeStats": {
+			"title": "Lifetime stats",
+			"body": "Mercenaries revived and buried, highest level reached, and quests completed by reward type."
+		}
+	},
+	"outsiders": {
+		"intro": "Turns the Ancient Souls in your save into outsider levels and estimates where the transcension ends. Ported from <link>Driej’s outsiders calculator</link>.",
+		"spendingOrder": {
+			"title": "Spending order",
+			"body": "Borb first, then Rhageist, K’Ariqua, Orphalas and Sen-Akhan up to their caps. The rest goes to Chor’gorloth, Phandoryss and Ponyboy, whichever is worth most per soul."
+		},
+		"applying": {
+			"title": "Applying the levels",
+			"body": "The plan uses every Ancient Soul you have earned, so respec in game first, or apply the levels to your save and import it."
+		}
+	},
+	"removeClanData": {
+		"intro": "A save also holds your clan and account details. Strip them before posting a save for help or giving it to someone else.",
+		"removed": {
+			"title": "What gets removed",
+			"body": "All clan fields, including raid class, plus email, password hash, account and login fields. Your progress is untouched."
+		}
+	},
+	"saveConverter": {
+		"intro": "PC and mobile saves hold the same data but are compressed differently, so a save from one will not import on the other. This re-encodes it for the other platform.",
+		"difference": {
+			"title": "The difference",
+			"body": "PC saves use raw deflate; mobile saves wrap the same JSON in zlib. Older legacy saves are recognised too."
+		}
+	},
+	"saveJson": {
+		"intro": "A save is one large JSON object under the encoding. Decode it, edit any field by hand, and encode it back.",
+		"careful": {
+			"title": "Be careful",
+			"body": "Nothing checks your values against what the game expects. Keep the original and change one thing at a time."
+		}
+	},
+	"transcension": {
+		"intro": "The game keeps a history of your recent transcensions and ascensions but never shows it. This reads it out of your save.",
+		"shows": {
+			"title": "What it shows",
+			"body": "Duration, ascensions, highest zone, Hero Souls and Ancient Souls for each transcension. Pick one to see its ascensions."
+		},
+		"helps": {
+			"title": "Why it helps",
+			"body": "When the last few ascensions added little for the time they took, it is time to transcend."
+		}
+	},
+	"saveEditor": {
+		"heading": "Free Clicker Heroes Save Decoder and Editor",
+		"intro": "This browser-based Clicker Heroes save editor decodes save strings, exposes editable game data, and re-encodes the result for import back into Clicker Heroes. It is built for restoring progress, testing builds, creating specific save states, and inspecting what is inside a Clicker Heroes save file.",
+		"features": {
+			"progress": {
+				"title": "Editable Progress",
+				"body": "Change gold, rubies, Hero Souls, ascensions, transcensions, zone data, clan values, outsiders, and custom fields."
+			},
+			"heroes": {
+				"title": "Heroes and Unlocks",
+				"body": "Inspect and adjust heroes, levels, gilds, skins, mercenaries, achievements, and profile-related save values."
+			},
+			"clientSide": {
+				"title": "Client-Side Tool",
+				"body": "Save strings are decoded and encoded locally in the browser, so the workflow stays fast and does not require installing a desktop trainer or mod."
+			}
+		},
+		"faqHeading": "Clicker Heroes Save Editor FAQ"
+	}
+}

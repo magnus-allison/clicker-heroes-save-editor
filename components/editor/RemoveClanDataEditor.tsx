@@ -126,7 +126,7 @@ export const RemoveClanDataEditor = () => {
 
 	return (
 		<>
-			<Breadcrumb subtitle='Remove Clan Data' title='tools' />
+			<Breadcrumb page='removeClanData' title='tools' />
 
 			<SaveDataPanel hasEditStep />
 

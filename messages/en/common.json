@@ -1,0 +1,165 @@
+{
+	"banner": {
+		"homeLabel": "clickerheroes.dev home",
+		"tagline": "Free Tools & Calculators - Clicker Heroes"
+	},
+	"breadcrumb": {
+		"label": "Breadcrumb",
+		"groups": {
+			"tools": "tools",
+			"guides": "guides",
+			"additionalInfo": "additional info"
+		}
+	},
+	"pages": {
+		"saveEditor": "Save Editor",
+		"instakillCalculator": "Instakill Calculator",
+		"ancientsCalculator": "Ancients Calculator",
+		"outsidersCalculator": "Outsiders Calculator",
+		"transcensionViewer": "Transcension Viewer",
+		"mercenaryViewer": "Mercenary Viewer",
+		"removeClanData": "Remove Clan Data",
+		"saveConverter": "Save Converter",
+		"saveJson": "Save JSON",
+		"newPlayerGuide": "New Player Guide",
+		"gildingChart": "Hero Gilding Chart",
+		"progressTips": "10 Tips to Progress Faster",
+		"requestTool": "Request a New Tool",
+		"requestGuide": "Request a New Guide",
+		"faq": "FAQ",
+		"feedback": "Feedback"
+	},
+	"home": {
+		"title": "Clicker Heroes Save Editor, Calculators & Guides",
+		"intro": "Free tools for Clicker Heroes 1.0e12. Everything runs in your browser."
+	},
+	"cards": {
+		"open": "Open",
+		"visit": "Visit",
+		"iconAlt": "{title} icon",
+		"tags": {
+			"mostPopular": "Most popular",
+			"new": "New",
+			"comingSoon": "Coming soon"
+		},
+		"tools": {
+			"saveEditor": {
+				"title": "Save Editor",
+				"description": "Inspect your save data, modify values, and export your updated save"
+			},
+			"outsidersCalculator": {
+				"title": "Outsiders Calculator",
+				"description": "Plan outsider levels, transcension estimates, and future transcensions"
+			},
+			"instakillCalculator": {
+				"title": "Instakill Calculator",
+				"description": "Estimate route duration, monsters per zone, and zones per hour"
+			},
+			"ancientsCalculator": {
+				"title": "Ancients Calculator",
+				"description": "Get optimal ancient levels and costs for your hero souls"
+			},
+			"transcensionViewer": {
+				"title": "Transcension Viewer",
+				"description": "Inspect transcension history and drill into ascensions from a save"
+			},
+			"mercenaryViewer": {
+				"title": "Mercenary Viewer",
+				"description": "View your mercenary roster and lifetime mercenary stats from a save"
+			},
+			"relicViewer": {
+				"title": "Relic Viewer",
+				"description": "Inspect relics, their bonuses, and rarity from a save"
+			},
+			"removeClanData": {
+				"title": "Remove Clan Data",
+				"description": "Remove clan, account, and login fields from a save in your browser"
+			},
+			"saveConverter": {
+				"title": "Save Converter",
+				"description": "Convert your save files between PC and mobile formats"
+			},
+			"saveJson": {
+				"title": "Save JSON",
+				"description": "Convert saves to and from raw JSON. Built for developers"
+			},
+			"requestTool": {
+				"title": "Request New Tool",
+				"description": "Make a suggestion for a new tool you'd like to see"
+			}
+		},
+		"guides": {
+			"newPlayerGuide": {
+				"title": "New Player Guide",
+				"description": "Fresh save to first transcension: ascending, ancients, rubies, mercs, and clans"
+			},
+			"gildingChart": {
+				"title": "Gilding Chart",
+				"description": "Which hero to gild at every gold threshold, from Samurai through to the Ace Scouts"
+			},
+			"progressTips": {
+				"title": "10 Tips to Progress Faster",
+				"description": "Ascending, gilding, builds, skill combos, rubies, and getting past walls"
+			},
+			"requestGuide": {
+				"title": "Request New Guide",
+				"description": "Suggest a new guide you would like to see, or contribute to an existing one"
+			}
+		},
+		"additional": {
+			"feedback": {
+				"title": "Submit Feedback",
+				"description": "Help us improve the quality of the site by submitting your thoughts"
+			},
+			"faq": {
+				"title": "FAQ",
+				"description": "Answers to common questions about the editor, save files, and more"
+			},
+			"github": {
+				"title": "GitHub Repository",
+				"description": "magnus-allison/clicker-heroes-save-editor"
+			},
+			"coffee": {
+				"title": "Buy Me a Coffee",
+				"description": "Help keep the editor free and updated by making a small contribution"
+			},
+			"game": {
+				"title": "Clicker Heroes",
+				"description": "Link to the games official website"
+			},
+			"steam": {
+				"title": "Clicker Heroes on Steam",
+				"description": "Link to the games official steam listing page"
+			}
+		}
+	},
+	"footer": {
+		"label": "Site",
+		"disclaimer": "Independent project, not affiliated with the creators of Clicker Heroes.",
+		"language": "Language"
+	},
+	"localeNames": {
+		"en": "English",
+		"es": "Español"
+	},
+	"notFound": {
+		"eyebrow": "Error 404",
+		"kicker": "Requested route missing",
+		"title": "Page not found",
+		"body": "The page you requested does not exist, was moved, or the URL was typed incorrectly. The save editor itself is still available from its tool page.",
+		"available": "Available from here",
+		"openEditor": "Open Save Editor",
+		"openEditorDescription": "Return to the main editor and load a save file.",
+		"about": "Read About The Tool",
+		"aboutDescription": "Jump to the overview and supported editing features."
+	},
+	"ui": {
+		"step": "Step {number}",
+		"copy": "Copy",
+		"copied": "Copied",
+		"selectOption": "Select option",
+		"numberInput": "Number input",
+		"textInput": "Text input",
+		"opensInNewTab": "(opens in a new tab)"
+	}
+}

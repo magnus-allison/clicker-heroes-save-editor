@@ -1,5 +1,7 @@
 import { type FC } from 'react';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+
+import { Link } from '@/i18n/navigation';
 
 /*
  * The site name is deliberately not a heading: it sits on every page, and a
@@ -7,9 +9,11 @@ import Link from 'next/link';
  * render their own `<h1>` (via `Breadcrumb`, or the home page intro).
  */
 export const PageBanner: FC = () => {
+	const t = useTranslations('common.banner');
+
 	return (
 		<Link
-			aria-label='clickerheroes.dev home'
+			aria-label={t('homeLabel')}
 			className='@container grid gap-3 rounded-2xl bg-card-background p-5 shadow-card transition-shadow duration-300 hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:gap-6 md:px-6 md:py-4.5'
 			href='/'
 		>
@@ -25,7 +29,7 @@ export const PageBanner: FC = () => {
 					clickerheroes.dev
 				</p>
 				<p className='text-[10px] font-medium uppercase tracking-[0.11em] text-[#C840BE] dark:text-[#FF57F9] font-aeonik md:text-[11px] md:tracking-[0.13em]'>
-					Free Tools &amp; Calculators - Clicker Heroes
+					{t('tagline')}
 				</p>
 			</div>
 		</Link>

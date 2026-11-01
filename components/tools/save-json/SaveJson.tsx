@@ -6,7 +6,7 @@ import { SaveJsonPanel } from '@/components/tools/save-json/SaveJsonPanel';
 export const SaveJson = () => {
 	return (
 		<>
-			<Breadcrumb subtitle='Save JSON' title='tools' />
+			<Breadcrumb page='saveJson' title='tools' />
 			<SaveJsonPanel />
 		</>
 	);

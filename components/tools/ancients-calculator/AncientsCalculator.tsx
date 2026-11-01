@@ -67,7 +67,7 @@ export const AncientsCalculator = () => {
 
 	return (
 		<>
-			<Breadcrumb subtitle='Ancients Calculator' title='tools' />
+			<Breadcrumb page='ancientsCalculator' title='tools' />
 
 			<SaveDataPanel examples={examples} />
 

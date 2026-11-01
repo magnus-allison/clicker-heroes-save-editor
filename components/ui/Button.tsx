@@ -9,18 +9,19 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 /*
- * `primary` is the only variant that carries a solid accent fill — it marks the
+ * `primary` is the only variant that carries the accent tint — it marks the
  * one action a step is asking for, so there should never be two of them
- * competing in the same panel. Everything else is a neutral surface.
+ * competing in the same panel. Everything else is a neutral surface. It shares
+ * its recipe with `SaveDataButton`, so every primary action reads the same.
  *
  * Deliberately no `background-image` gradients here: a gradient paints over
  * `background-color`, which would silently swallow the hover colour these
  * variants (and the shared base class) rely on. Depth comes from the inset
- * highlight in `--shadow-raised` / `--shadow-accent` instead.
+ * highlight in `--shadow-raised` instead.
  */
 const variantClasses = {
 	primary:
-		'border-(--color-primary-strong) bg-(--color-primary-fill) font-semibold text-(--color-primary-fg) shadow-[var(--shadow-accent)] hover:border-(--color-primary-strong) hover:bg-(--color-primary-strong) hover:text-(--color-primary-fg) hover:shadow-[var(--shadow-accent-hover)] active:bg-(--color-primary-fill)',
+		'border-(--color-primary-line) bg-(--color-primary-surface) font-semibold text-(--color-primary) shadow-[var(--shadow-raised)] hover:border-(--color-primary) hover:bg-(--color-primary-soft) hover:text-(--color-primary) active:bg-(--color-primary-surface)',
 	secondary:
 		'border-(--color-line-soft) bg-(--color-surface-sunken) text-(--color-fg-muted) shadow-[var(--shadow-raised)] hover:text-(--color-fg)',
 	subtle:

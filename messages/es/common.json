@@ -1,0 +1,165 @@
+{
+	"banner": {
+		"homeLabel": "Inicio de clickerheroes.dev",
+		"tagline": "Herramientas y calculadoras gratis - Clicker Heroes"
+	},
+	"breadcrumb": {
+		"label": "Ruta de navegación",
+		"groups": {
+			"tools": "herramientas",
+			"guides": "guías",
+			"additionalInfo": "más información"
+		}
+	},
+	"pages": {
+		"saveEditor": "Editor de partidas",
+		"instakillCalculator": "Calculadora de instakill",
+		"ancientsCalculator": "Calculadora de ancients",
+		"outsidersCalculator": "Calculadora de outsiders",
+		"transcensionViewer": "Visor de trascendencias",
+		"mercenaryViewer": "Visor de mercenarios",
+		"removeClanData": "Eliminar datos de clan",
+		"saveConverter": "Convertidor de partidas",
+		"saveJson": "Partida a JSON",
+		"newPlayerGuide": "Guía para principiantes",
+		"gildingChart": "Tabla de gilds",
+		"progressTips": "10 consejos para progresar más rápido",
+		"requestTool": "Solicitar una herramienta",
+		"requestGuide": "Solicitar una guía",
+		"faq": "Preguntas frecuentes",
+		"feedback": "Comentarios"
+	},
+	"home": {
+		"title": "Clicker Heroes: editor de partidas, calculadoras y guías",
+		"intro": "Herramientas gratis para Clicker Heroes 1.0e12. Todo funciona en tu navegador."
+	},
+	"cards": {
+		"open": "Abrir",
+		"visit": "Visitar",
+		"iconAlt": "Icono de {title}",
+		"tags": {
+			"mostPopular": "Más popular",
+			"new": "Nuevo",
+			"comingSoon": "Próximamente"
+		},
+		"tools": {
+			"saveEditor": {
+				"title": "Editor de partidas",
+				"description": "Revisa los datos de tu partida, cambia valores y exporta la partida actualizada"
+			},
+			"outsidersCalculator": {
+				"title": "Calculadora de outsiders",
+				"description": "Planifica niveles de outsiders, estimaciones de trascendencia y futuras trascendencias"
+			},
+			"instakillCalculator": {
+				"title": "Calculadora de instakill",
+				"description": "Calcula la duración de la ruta, los monstruos por zona y las zonas por hora"
+			},
+			"ancientsCalculator": {
+				"title": "Calculadora de ancients",
+				"description": "Obtén los niveles óptimos de ancients y su coste para tus Hero Souls"
+			},
+			"transcensionViewer": {
+				"title": "Visor de trascendencias",
+				"description": "Revisa tu historial de trascendencias y las ascensiones de una partida"
+			},
+			"mercenaryViewer": {
+				"title": "Visor de mercenarios",
+				"description": "Consulta tus mercenarios y sus estadísticas históricas desde una partida"
+			},
+			"relicViewer": {
+				"title": "Visor de reliquias",
+				"description": "Revisa las reliquias, sus bonificaciones y su rareza desde una partida"
+			},
+			"removeClanData": {
+				"title": "Eliminar datos de clan",
+				"description": "Quita los campos de clan, cuenta e inicio de sesión de una partida en tu navegador"
+			},
+			"saveConverter": {
+				"title": "Convertidor de partidas",
+				"description": "Convierte tus partidas entre los formatos de PC y móvil"
+			},
+			"saveJson": {
+				"title": "Partida a JSON",
+				"description": "Convierte partidas a JSON y de vuelta. Pensado para desarrolladores"
+			},
+			"requestTool": {
+				"title": "Solicitar herramienta",
+				"description": "Sugiere una nueva herramienta que te gustaría ver"
+			}
+		},
+		"guides": {
+			"newPlayerGuide": {
+				"title": "Guía para principiantes",
+				"description": "De una partida nueva a tu primera trascendencia: ascender, ancients, rubíes, mercenarios y clanes"
+			},
+			"gildingChart": {
+				"title": "Tabla de gilds",
+				"description": "Qué héroe dorar en cada umbral de oro, desde Samurai hasta los Ace Scouts"
+			},
+			"progressTips": {
+				"title": "10 consejos para progresar",
+				"description": "Ascender, dorar, builds, combos de habilidades, rubíes y cómo superar muros"
+			},
+			"requestGuide": {
+				"title": "Solicitar guía",
+				"description": "Sugiere una nueva guía que te gustaría ver o colabora con una existente"
+			}
+		},
+		"additional": {
+			"feedback": {
+				"title": "Enviar comentarios",
+				"description": "Ayúdanos a mejorar el sitio contándonos lo que piensas"
+			},
+			"faq": {
+				"title": "Preguntas frecuentes",
+				"description": "Respuestas a dudas comunes sobre el editor, los archivos de guardado y más"
+			},
+			"github": {
+				"title": "Repositorio en GitHub",
+				"description": "magnus-allison/clicker-heroes-save-editor"
+			},
+			"coffee": {
+				"title": "Invítame a un café",
+				"description": "Ayuda a mantener el editor gratis y actualizado con una pequeña aportación"
+			},
+			"game": {
+				"title": "Clicker Heroes",
+				"description": "Enlace a la web oficial del juego"
+			},
+			"steam": {
+				"title": "Clicker Heroes en Steam",
+				"description": "Enlace a la página oficial del juego en Steam"
+			}
+		}
+	},
+	"footer": {
+		"label": "Sitio",
+		"disclaimer": "Proyecto independiente, sin relación con los creadores de Clicker Heroes.",
+		"language": "Idioma"
+	},
+	"localeNames": {
+		"en": "English",
+		"es": "Español"
+	},
+	"notFound": {
+		"eyebrow": "Error 404",
+		"kicker": "No encontramos esta ruta",
+		"title": "Página no encontrada",
+		"body": "La página que buscas no existe, se ha movido o la dirección no es correcta. El editor de partidas sigue disponible en su página.",
+		"available": "Disponible desde aquí",
+		"openEditor": "Abrir el editor de partidas",
+		"openEditorDescription": "Vuelve al editor principal y carga un archivo de guardado.",
+		"about": "Leer sobre la herramienta",
+		"aboutDescription": "Ve a la descripción y a las funciones de edición disponibles."
+	},
+	"ui": {
+		"step": "Paso {number}",
+		"copy": "Copiar",
+		"copied": "Copiado",
+		"selectOption": "Selecciona una opción",
+		"numberInput": "Campo numérico",
+		"textInput": "Campo de texto",
+		"opensInNewTab": "(se abre en una pestaña nueva)"
+	}
+}

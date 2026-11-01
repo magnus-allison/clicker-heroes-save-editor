@@ -59,7 +59,7 @@ export const InstakillCalculator = () => {
 
 	return (
 		<>
-			<Breadcrumb subtitle='Instakill Calculator' title='tools' />
+			<Breadcrumb page='instakillCalculator' title='tools' />
 
 			<PanelSection>
 				<SectionCard

@@ -12,11 +12,8 @@ interface Props {
  * The one action a save card is asking for — full-width and accent-tinted so it
  * reads as the end of the step.
  *
- * Built on `--color-primary-*` and `--shadow-raised`, the accent tokens
- * `globals.css` actually declares. Deliberately *not* on `--color-primary-fill`
- * / `--color-primary-fg` / `--shadow-accent` the way `Button variant='primary'`
- * is: those are undeclared, so they resolve to nothing and leave the control
- * unpainted.
+ * Same accent recipe as `Button variant='primary'`, on the `--color-primary-*`
+ * tokens and `--shadow-raised`.
  */
 export const SaveDataButton: FC<Props> = ({ className, onClick, title }) => (
 	<button

@@ -18,6 +18,19 @@ const SECONDS_PER_HOUR = 3600;
 const SECONDS_PER_DAY = 86400;
 const SECONDS_PER_YEAR = 31557600;
 
+/**
+ * Unit suffixes for the duration formatters. English by default; components
+ * pass the translated set from the `tools.shared.units` messages.
+ */
+export type DurationUnits = {
+	year: string;
+	day: string;
+	hour: string;
+	minute: string;
+};
+
+const englishDurationUnits: DurationUnits = { year: 'y', day: 'd', hour: 'h', minute: 'm' };
+
 /** Coerce an unknown save value to a finite number, or `null` if impossible. */
 export function toFiniteNumber(value: unknown): number | null {
 	if (typeof value === 'number') {
@@ -72,9 +85,12 @@ export function formatDecimal(value: unknown): string {
 /**
  * `1d 2h 3m`, dropping zero units but always emitting at least `0m`.
  */
-export function formatDurationMinutes(totalMinutes: number): string {
+export function formatDurationMinutes(
+	totalMinutes: number,
+	units: DurationUnits = englishDurationUnits
+): string {
 	if (!Number.isFinite(totalMinutes) || totalMinutes <= 0) {
-		return '0m';
+		return `0${units.minute}`;
 	}
 
 	const wholeMinutes = Math.floor(totalMinutes);
@@ -83,21 +99,24 @@ export function formatDurationMinutes(totalMinutes: number): string {
 	const minutes = wholeMinutes % MINUTES_PER_HOUR;
 
 	const parts = [
-		days > 0 ? `${days}d` : null,
-		hours > 0 ? `${hours}h` : null,
-		minutes > 0 || (days === 0 && hours === 0) ? `${minutes}m` : null
+		days > 0 ? `${days}${units.day}` : null,
+		hours > 0 ? `${hours}${units.hour}` : null,
+		minutes > 0 || (days === 0 && hours === 0) ? `${minutes}${units.minute}` : null
 	];
 
 	return parts.filter(Boolean).join(' ');
 }
 
 /** `formatDurationMinutes` for a value expressed in seconds. */
-export function formatDurationSeconds(totalSeconds: number): string {
+export function formatDurationSeconds(
+	totalSeconds: number,
+	units: DurationUnits = englishDurationUnits
+): string {
 	if (!Number.isFinite(totalSeconds) || totalSeconds <= 0) {
-		return '0m';
+		return `0${units.minute}`;
 	}
 
-	return formatDurationMinutes(totalSeconds / 60);
+	return formatDurationMinutes(totalSeconds / 60, units);
 }
 
 /**
@@ -106,7 +125,10 @@ export function formatDurationSeconds(totalSeconds: number): string {
  * (`hh:mm:ss`) and long runs need a years component. Only the thousands
  * grouping is shared.
  */
-export function formatLongDuration(durationSeconds: number): string {
+export function formatLongDuration(
+	durationSeconds: number,
+	units: DurationUnits = englishDurationUnits
+): string {
 	const roundedSeconds = Math.max(0, Math.round(durationSeconds));
 
 	if (roundedSeconds < 72 * SECONDS_PER_HOUR) {
@@ -122,7 +144,7 @@ export function formatLongDuration(durationSeconds: number): string {
 	const days = Math.floor(secondsThisYear / SECONDS_PER_DAY);
 	const hours = (secondsThisYear - days * SECONDS_PER_DAY) / SECONDS_PER_HOUR;
 
-	return `${years > 0 ? `${formatNumber(years)}y ` : ''}${formatNumber(days)}d ${hours.toFixed(2)}h`;
+	return `${years > 0 ? `${formatNumber(years)}${units.year} ` : ''}${formatNumber(days)}${units.day} ${hours.toFixed(2)}${units.hour}`;
 }
 
 /**

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Check, Copy } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/Button';
 import { cn } from 'cn';
@@ -22,15 +23,18 @@ type Props = {
 export const CopyButton = ({
 	className,
 	disabled,
-	idleLabel = 'Copy',
+	idleLabel,
 	onCopied,
 	onCopyFailed,
 	size = 'md',
-	successLabel = 'Copied',
+	successLabel,
 	text,
 	variant = 'ghost'
 }: Props) => {
+	const t = useTranslations('common.ui');
 	const [isCopied, setIsCopied] = useState(false);
+	const idle = idleLabel ?? t('copy');
+	const success = successLabel ?? t('copied');
 
 	useEffect(() => {
 		if (!isCopied) {
@@ -43,7 +47,7 @@ export const CopyButton = ({
 
 	return (
 		<Button
-			aria-label={isCopied ? successLabel : idleLabel}
+			aria-label={isCopied ? success : idle}
 			className={cn(
 				'h-10 w-10 border-transparent bg-transparent p-0 disabled:border-transparent disabled:bg-transparent disabled:opacity-45',
 				className

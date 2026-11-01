@@ -4,6 +4,7 @@ import type { FocusEvent } from 'react';
 import { useId, useState } from 'react';
 
 import { cn } from 'cn';
+import { useTranslations } from 'next-intl';
 
 type Props = {
 	value: string;
@@ -42,13 +43,14 @@ export const TextInput = ({
 	type = 'text',
 	value
 }: Props) => {
+	const t = useTranslations('common.ui');
 	const generatedId = useId();
 	const [draftValue, setDraftValue] = useState(value);
 	const [isFocused, setIsFocused] = useState(false);
 	const displayValue = isFocused ? draftValue : value;
 
 	const sharedClassName = cn(
-		'w-full rounded-lg shadow-card bg-(--color-surface) px-2.5 text-[14px] text-(--color-fg) outline-none transition placeholder:text-(--color-fg-dim) hover:border-(--color-line-strong) focus:border-(--color-line-strong) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim)',
+		'w-full rounded-(--radius-control) border border-(--color-line) bg-(--color-surface) px-2.5 text-[13px] text-(--color-fg) outline-none transition placeholder:text-(--color-fg-dim) hover:border-(--color-line-strong) focus:border-(--color-line-strong) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim)',
 		multiline ? 'py-2' : 'h-10',
 		multiline && resizable && 'resize-y',
 		className
@@ -75,7 +77,7 @@ export const TextInput = ({
 	if (multiline) {
 		return (
 			<textarea
-				aria-label={ariaLabel ?? placeholder ?? 'Text input'}
+				aria-label={ariaLabel ?? placeholder ?? t('textInput')}
 				className={sharedClassName}
 				disabled={disabled}
 				id={id ?? generatedId}
@@ -95,7 +97,7 @@ export const TextInput = ({
 
 	return (
 		<input
-			aria-label={ariaLabel ?? placeholder ?? 'Text input'}
+			aria-label={ariaLabel ?? placeholder ?? t('textInput')}
 			className={sharedClassName}
 			disabled={disabled}
 			id={id ?? generatedId}

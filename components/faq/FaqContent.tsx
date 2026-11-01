@@ -1,24 +1,29 @@
 import { type FC } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { GuideLink } from '@/components/guides/GuideLink';
+import type { Locale } from '@/i18n/routing';
 import { siteFaqSections } from '@/lib/seo';
 
 /**
- * The `/faq` body. Sections come straight from `siteFaqSections`, which also
+ * The `/faq` body. Sections come straight from `siteFaqSections(locale)`, which also
  * feeds the page's `FAQPage` structured data, so the answers Google sees are
  * the answers on the page.
  */
-export const FaqContent: FC = () => (
+export const FaqContent: FC<{ locale: Locale }> = ({ locale }) => {
+	const t = useTranslations('seo.faqPage');
+	const sections = siteFaqSections(locale);
+
+	return (
 	<article className='flex flex-col gap-10'>
 		<div className='flex flex-col gap-6'>
 			<p className='max-w-3xl text-[14px] leading-7 text-(--color-fg-secondary)'>
-				Common questions about the Clicker Heroes save editor and the tools around it — loading and exporting
-				saves, what happens to your save data, and what the errors mean when a save will not decode.
+				{t('intro')}
 			</p>
-			<nav aria-label='FAQ contents' className='border-y border-(--color-line-subtle) py-4 sm:py-5'>
-				<p className='text-[11px] uppercase tracking-[0.12em] text-(--color-fg-dim)'>Contents</p>
+			<nav aria-label={t('contentsLabel')} className='border-y border-(--color-line-subtle) py-4 sm:py-5'>
+				<p className='text-[11px] uppercase tracking-[0.12em] text-(--color-fg-dim)'>{t('contents')}</p>
 				<div className='mt-3 grid gap-x-8 gap-y-4 sm:grid-cols-3'>
-					{siteFaqSections.map((section, index) => (
+					{sections.map((section, index) => (
 						<div key={section.id}>
 							<p className='flex items-baseline gap-2 text-[12px] font-semibold text-fg-strong'>
 								<span aria-hidden='true' className='text-[11px] font-normal text-(--color-fg-dim)'>
@@ -40,7 +45,7 @@ export const FaqContent: FC = () => (
 			</nav>
 		</div>
 
-		{siteFaqSections.map((section) => (
+		{sections.map((section) => (
 			<section
 				aria-labelledby={`${section.id}-heading`}
 				className='scroll-mt-8'
@@ -67,8 +72,8 @@ export const FaqContent: FC = () => (
 		))}
 
 		<p className='max-w-3xl border-t border-(--color-line-subtle) pt-5 text-[13px] leading-6 text-(--color-fg-secondary)'>
-			Still stuck, or think something here is wrong? <GuideLink href='/feedback'>Send feedback</GuideLink> and
-			tell us what you were trying to do — bug reports and questions this page should answer are both useful.
+			{t.rich('footer', { link: (chunks) => <GuideLink href='/feedback'>{chunks}</GuideLink> })}
 		</p>
 	</article>
-);
+	);
+};

@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowRight, MessageSquare } from 'lucide-react';
 
 export const AnnouncementBanner: FC = () => (

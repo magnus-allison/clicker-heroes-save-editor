@@ -171,7 +171,7 @@ export const MercenaryViewer = () => {
 
 	return (
 		<>
-			<Breadcrumb subtitle='Mercenary Viewer' title='tools' />
+			<Breadcrumb page='mercenaryViewer' title='tools' />
 
 			<SaveDataPanel examples={mercenaryExamples} />
 

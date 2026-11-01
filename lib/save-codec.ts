@@ -17,6 +17,24 @@ export type DecodeResult = {
 	format: SaveEncodingFormat;
 };
 
+export type SaveDecodeErrorCode = 'empty' | 'unsupported' | 'invalidBase64' | 'decompressFailed' | 'notObject';
+
+/**
+ * A decode failure the user can act on. `message` stays in English (tests and
+ * logs read it); the UI translates from `code` and `params` instead.
+ */
+export class SaveDecodeError extends Error {
+	readonly code: SaveDecodeErrorCode;
+	readonly params: Record<string, string>;
+
+	constructor(code: SaveDecodeErrorCode, message: string, params: Record<string, string> = {}) {
+		super(message);
+		this.name = 'SaveDecodeError';
+		this.code = code;
+		this.params = params;
+	}
+}
+
 function normalizeBase64(value: string) {
 	const normalized = value.replace(/\s/g, '').replace(/-/g, '+').replace(/_/g, '/');
 	const paddingLength = (4 - (normalized.length % 4)) % 4;
@@ -28,8 +46,10 @@ function base64ToBinaryString(value: string, format: SaveEncodingFormat) {
 	try {
 		return atob(normalizeBase64(value));
 	} catch {
-		throw new Error(
-			`The ${format} save payload is not valid base64. Check that the whole save string was copied.`
+		throw new SaveDecodeError(
+			'invalidBase64',
+			`The ${format} save payload is not valid base64. Check that the whole save string was copied.`,
+			{ format }
 		);
 	}
 }
@@ -67,8 +87,10 @@ function inflatePayload(payload: string, format: 'zlib' | 'deflate') {
 		return bytesToString(format === 'deflate' ? inflateRaw(bytes) : inflate(bytes));
 	} catch (error) {
 		const reason = error instanceof Error ? error.message : String(error);
-		throw new Error(
-			`The ${format} save payload could not be decompressed (${reason}). Check that the whole save string was copied.`
+		throw new SaveDecodeError(
+			'decompressFailed',
+			`The ${format} save payload could not be decompressed (${reason}). Check that the whole save string was copied.`,
+			{ format, reason }
 		);
 	}
 }
@@ -77,7 +99,7 @@ function parseSaveJson(json: string) {
 	const parsed = JSON.parse(json);
 
 	if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
-		throw new Error('Decoded save data is not a valid object.');
+		throw new SaveDecodeError('notObject', 'Decoded save data is not a valid object.');
 	}
 
 	return parsed as SaveData;
@@ -87,7 +109,7 @@ export function decodeSaveString(input: string): DecodeResult {
 	const trimmed = input.trim();
 
 	if (!trimmed) {
-		throw new Error('Paste a save string or load a save file first.');
+		throw new SaveDecodeError('empty', 'Paste a save string or load a save file first.');
 	}
 
 	if (trimmed.startsWith(ZLIB_PREFIX)) {
@@ -111,7 +133,7 @@ export function decodeSaveString(input: string): DecodeResult {
 		return { data: parseSaveJson(base64ToBinaryString(decoded, 'legacy')), format: 'legacy' };
 	}
 
-	throw new Error('That string does not look like a supported Clicker Heroes save.');
+	throw new SaveDecodeError('unsupported', 'That string does not look like a supported Clicker Heroes save.');
 }
 
 export function getSaveDeviceFromFormat(format: SaveEncodingFormat): SaveDevice | null {

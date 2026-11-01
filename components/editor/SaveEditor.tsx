@@ -51,7 +51,7 @@ export const SaveEditor = () => {
 
 	return (
 		<>
-			<Breadcrumb subtitle='Save Editor' title='tools' />
+			<Breadcrumb page='saveEditor' title='tools' />
 
 			<SaveDataPanel hasEditStep onLoadSuccess={scrollToStep2} />
 
