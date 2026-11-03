@@ -29,6 +29,7 @@
     "saveJson": "Spielstand als JSON",
     "newPlayerGuide": "Einsteiger-Guide",
     "gildingChart": "Gild-Tabelle für Helden",
+    "heroArtwork": "Helden-Artwork",
     "progressTips": "10 Tipps für schnelleren Fortschritt",
     "requestTool": "Neues Tool anfragen",
     "requestGuide": "Neuen Guide anfragen",
@@ -111,6 +112,10 @@
       "progressTips": {
         "title": "10 Tipps für schnelleren Fortschritt",
         "description": "Aufstieg, Gilds, Builds, Skill-Kombos, Rubine und wie du an Mauern vorbeikommst"
+      },
+      "heroArtwork": {
+        "title": "Helden-Artwork",
+        "description": "Das Porträt jedes Helden, als normales und als vergoldetes Artwork"
       },
       "requestGuide": {
         "title": "Neuen Guide anfragen",

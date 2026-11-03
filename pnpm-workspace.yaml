@@ -1,12 +1,9 @@
 allowBuilds:
-  '@parcel/watcher': set this to true or false
-  '@swc/core': set this to true or false
+  '@parcel/watcher': true
+  '@swc/core': true
   core-js: true
   sharp: true
   unrs-resolver: true
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
 minimumReleaseAgeExclude:
   - '@vercel/firewall@1.2.2'
   - resend@6.18.1 || 6.22.1 || 6.24.0 || 6.31.0

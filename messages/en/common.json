@@ -29,6 +29,7 @@
     "saveJson": "Save JSON",
     "newPlayerGuide": "New Player Guide",
     "gildingChart": "Hero Gilding Chart",
+    "heroArtwork": "Hero Artwork",
     "progressTips": "10 Tips to Progress Faster",
     "requestTool": "Request a New Tool",
     "requestGuide": "Request a New Guide",
@@ -111,6 +112,10 @@
       "progressTips": {
         "title": "10 Tips to Progress Faster",
         "description": "Ascending, gilding, builds, skill combos, rubies, and getting past walls"
+      },
+      "heroArtwork": {
+        "title": "Hero Artwork",
+        "description": "Every hero’s portrait, in both its normal and gilded artwork"
       },
       "requestGuide": {
         "title": "Request New Guide",

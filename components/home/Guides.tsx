@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { BookOpenTextIcon, CoinsIcon, MessageCirclePlus, RocketIcon } from 'lucide-react';
+import { BookOpenTextIcon, CoinsIcon, ImageIcon, MessageCirclePlus, RocketIcon } from 'lucide-react';
 
 import { useTranslations } from 'next-intl';
 
@@ -25,6 +25,12 @@ export const guides: LinkCardItem<GuideCardKey>[] = [
 		key: 'progressTips',
 		href: '/guides/progress-tips',
 		icon: RocketIcon,
+		tag: 'new'
+	},
+	{
+		key: 'heroArtwork',
+		href: '/guides/hero-artwork',
+		icon: ImageIcon,
 		tag: 'new'
 	},
 	{

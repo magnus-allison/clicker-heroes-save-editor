@@ -270,6 +270,22 @@ export const seoPages = {
 		schemaType: 'Article',
 		datePublished: '2026-09-29'
 	},
+	heroArtwork: {
+		path: '/guides/hero-artwork',
+		keywords: [
+			'clicker heroes hero artwork',
+			'clicker heroes heroes list',
+			'clicker heroes all heroes',
+			'clicker heroes gilded heroes',
+			'clicker heroes hero portraits',
+			'clicker heroes gilded artwork'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.7,
+		lastModified: '2026-11-03',
+		schemaType: 'Article',
+		datePublished: '2026-11-03'
+	},
 	requestTool: {
 		path: '/tools/request-tool',
 		keywords: [

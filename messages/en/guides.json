@@ -221,5 +221,17 @@
       "notes": "Notes",
       "phase": "Phase {phase} · {title} · {range}"
     }
+  },
+  "heroArtwork": {
+    "intro": "Every hero in Clicker Heroes 1.0e12, in hire order from Cid through to the Ace Scouts. Each hero shows its normal portrait next to its gilded artwork, the gold version that appears once a hero has at least one gild.",
+    "heroNumber": "Hero {number}",
+    "normal": "Normal",
+    "gilded": "Gilded",
+    "noGildedArt": "No gilded artwork yet",
+    "normalAlt": "{name}",
+    "gildedAlt": "{name}, gilded",
+    "viewFull": "View full image of {name}",
+    "viewerTitle": "{name} · {state}",
+    "close": "Close"
   }
 }

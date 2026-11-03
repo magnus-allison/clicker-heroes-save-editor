@@ -29,6 +29,7 @@
     "saveJson": "Partida a JSON",
     "newPlayerGuide": "Guía para principiantes",
     "gildingChart": "Tabla de gilds",
+    "heroArtwork": "Arte de los héroes",
     "progressTips": "10 consejos para progresar más rápido",
     "requestTool": "Solicitar una herramienta",
     "requestGuide": "Solicitar una guía",
@@ -111,6 +112,10 @@
       "progressTips": {
         "title": "10 consejos para progresar",
         "description": "Ascender, dorar, builds, combos de habilidades, rubíes y cómo superar muros"
+      },
+      "heroArtwork": {
+        "title": "Arte de los héroes",
+        "description": "El retrato de cada héroe, con su arte normal y dorado"
       },
       "requestGuide": {
         "title": "Solicitar guía",

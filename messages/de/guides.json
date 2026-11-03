@@ -221,5 +221,17 @@
       "notes": "Hinweise",
       "phase": "Phase {phase} · {title} · {range}"
     }
+  },
+  "heroArtwork": {
+    "intro": "Alle Helden in Clicker Heroes 1.0e12, in Anheuer-Reihenfolge von Cid bis zu den Ace Scouts. Jeder Held zeigt sein normales Porträt neben dem vergoldeten Artwork, der goldenen Version, die erscheint, sobald ein Held mindestens einen Gild hat.",
+    "heroNumber": "Held {number}",
+    "normal": "Normal",
+    "gilded": "Vergoldet",
+    "noGildedArt": "Noch kein vergoldetes Artwork",
+    "normalAlt": "{name}",
+    "gildedAlt": "{name}, vergoldet",
+    "viewFull": "Vollbild von {name} anzeigen",
+    "viewerTitle": "{name} · {state}",
+    "close": "Schließen"
   }
 }

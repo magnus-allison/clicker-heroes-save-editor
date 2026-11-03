@@ -221,5 +221,17 @@
       "notes": "Notas",
       "phase": "Fase {phase} · {title} · {range}"
     }
+  },
+  "heroArtwork": {
+    "intro": "Todos los héroes de Clicker Heroes 1.0e12, en orden de contratación, de Cid a los Ace Scouts. Cada héroe muestra su retrato normal junto a su arte dorado, la versión en oro que aparece cuando el héroe tiene al menos un gild.",
+    "heroNumber": "Héroe {number}",
+    "normal": "Normal",
+    "gilded": "Dorado",
+    "noGildedArt": "Aún sin arte dorado",
+    "normalAlt": "{name}",
+    "gildedAlt": "{name}, dorado",
+    "viewFull": "Ver imagen completa de {name}",
+    "viewerTitle": "{name} · {state}",
+    "close": "Cerrar"
   }
 }
