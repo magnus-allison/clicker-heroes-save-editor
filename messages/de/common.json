@@ -1,10 +1,16 @@
 {
   "banner": {
     "homeLabel": "Startseite von clickerheroes.dev",
-    "tagline": "Kostenlose Tools & Rechner - Clicker Heroes"
+    "tagline": "Kostenlose Tools & Rechner - Clicker Heroes",
+    "nav": {
+      "label": "Bereiche",
+      "tools": "Tools",
+      "guides": "Guides"
+    }
   },
   "breadcrumb": {
     "label": "Navigationspfad",
+    "switchTool": "Tool wechseln",
     "groups": {
       "tools": "Tools",
       "guides": "Guides",
@@ -30,8 +36,13 @@
     "feedback": "Feedback"
   },
   "home": {
-    "title": "Clicker Heroes Spielstand-Editor, Rechner & Guides",
-    "intro": "Kostenlose Tools für Clicker Heroes 1.0e12. Alles läuft direkt in deinem Browser."
+    "title": "Clicker Heroes Spielstand-Editor, <line>Rechner & Guides</line>",
+    "intro": "Kostenlose Tools für Clicker Heroes 1.0e12. Alles läuft direkt in deinem Browser.",
+    "badges": {
+      "free": "100 % kostenlos",
+      "browser": "Läuft im Browser",
+      "noAccount": "Kein Konto nötig"
+    }
   },
   "cards": {
     "open": "Öffnen",

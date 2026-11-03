@@ -23,8 +23,10 @@
 	--font-sans: var(--font-mono);
 	/* Display face for card headings — `font-aeonik`. */
 	--font-aeonik: var(--font-aeonik-local), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	/* The home page heading and intro — `font-manrope`. */
+	--font-manrope: var(--font-manrope-local), system-ui, 'Segoe UI', Roboto, sans-serif;
 
-	--color-background: light-dark(#fafafa, #020202);
+	--color-background: light-dark(#fafafa, #08080d);
 
 	--color-card-background: light-dark(#ffffff, #0a0a0a);
 	--color-card-border: light-dark(#e0e0e0, #1a1a1a);
@@ -104,9 +106,23 @@
 	--color-card-edge-highlight: light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.34));
 	--color-card-glow: light-dark(rgba(0, 0, 0, 0.14), rgba(255, 255, 255, 0.1));
 
-	/* Background dot grid — the two ends of the colour sweep across the page */
-	--color-dot-from: light-dark(rgba(15, 19, 24, 0.16), rgba(255, 255, 255, 0.11));
-	--color-dot-to: light-dark(rgba(44, 140, 65, 0.22), rgba(111, 207, 111, 0.14));
+	/* Background pattern — the two ends of the colour sweep across the page */
+	--color-pattern-from: light-dark(rgba(15, 19, 24, 0.02), rgba(255, 255, 255, 0.04));
+	--color-pattern-to: light-dark(rgba(44, 140, 65, 0.1), rgba(111, 207, 111, 0.035));
+
+	/* Site banner */
+	--color-banner-from: light-dark(#fcfbfe, #0f0d15);
+	--color-banner-to: light-dark(#ffffff, #0a0a0c);
+	--color-banner-edge: light-dark(rgba(124, 58, 237, 0.1), rgba(167, 139, 250, 0.09));
+	--color-banner-accent: light-dark(#6d28d9, #c4b5fd);
+	--color-banner-pill: light-dark(rgba(124, 58, 237, 0.05), rgba(139, 92, 246, 0.14));
+	--color-banner-pill-edge: light-dark(rgba(124, 58, 237, 0.16), rgba(167, 139, 250, 0.2));
+
+	/* Home hero — the badge icons */
+	--color-hero-accent-from: light-dark(#7c3aed, #a78bfa);
+	/* Home hero — the silver sheen on the heading, bright at the top */
+	--color-hero-silver-from: light-dark(#0f1318, #f4f4f8);
+	--color-hero-silver-to: light-dark(#262a31, #b4b4c2);
 
 	--shadow-popover: 0 12px 32px var(--color-shadow);
 	--shadow-raised:
@@ -135,9 +151,11 @@ html {
 }
 
 /*
- * Background dot grid. The pseudo-element paints a diagonal colour sweep and a
- * two-layer mask carves it into dots, then fades those dots out away from the
- * top of the viewport. Fixed, so the grid stays put while content scrolls.
+ * Background pattern. The pseudo-element paints a diagonal colour sweep and a
+ * two-layer mask carves it into contour lines, then fades them out away from
+ * the top of the viewport. Fixed, so the pattern stays put while content
+ * scrolls. The lines are "Topography" from Hero Patterns by Steve Schoger
+ * (heropatterns.com, CC BY 4.0); only its shape is used, never its colour.
  */
 body::before {
 	content: '';
@@ -145,13 +163,13 @@ body::before {
 	inset: 0;
 	z-index: -1;
 	pointer-events: none;
-	background-image: linear-gradient(135deg, var(--color-dot-from), var(--color-dot-to));
+	background-image: linear-gradient(135deg, var(--color-pattern-from), var(--color-pattern-to));
 	-webkit-mask:
-		radial-gradient(circle, #000 1px, transparent 1.5px) 0 0 / 22px 22px,
+		url('/assets/patterns/topography.svg') 0 0 / 600px 600px,
 		radial-gradient(ellipse 90% 70% at 50% 0%, #000 20%, transparent 100%);
 	-webkit-mask-composite: source-in;
 	mask:
-		radial-gradient(circle, #000 1px, transparent 1.5px) 0 0 / 22px 22px,
+		url('/assets/patterns/topography.svg') 0 0 / 600px 600px,
 		radial-gradient(ellipse 90% 70% at 50% 0%, #000 20%, transparent 100%);
 	mask-composite: intersect;
 }
@@ -255,12 +273,12 @@ img {
 }
 
 .gradient-spin {
-	background-image: conic-gradient(from var(--spin-angle), #fde68a, #facc15, #f59e0b, #facc15, #fde68a);
+	background-image: conic-gradient(from var(--spin-angle), #a5f3fc, #22d3ee, #3b82f6, #22d3ee, #a5f3fc);
 	animation: spin-gradient 3s linear infinite;
 }
 
 /*
- * The same travelling rim for cards, in the card's own grey rather than gold —
+ * The same travelling rim for cards, in the card's own grey rather than cyan —
  * a lighter band drifts around an edge that otherwise matches `--shadow-card`.
  * Cards own their background, so the Pill's padding-and-inner-child trick is out:
  * a pseudo-element paints the gradient and a two-layer mask punches out
@@ -298,4 +316,36 @@ img {
 		linear-gradient(#000 0 0) content-box,
 		linear-gradient(#000 0 0);
 	mask-composite: exclude;
+}
+
+/*
+ * The site banner, the home tiles and the editor's import/export panel: a
+ * slightly see-through wash with a frosted blur, lifted by a soft shadow.
+ * Unlayered, so it beats the card utilities.
+ */
+.site-banner,
+.glass-card,
+.glass-panel {
+	background: linear-gradient(
+		135deg,
+		color-mix(in srgb, var(--color-banner-from) 85%, transparent),
+		color-mix(in srgb, var(--color-banner-to) 85%, transparent)
+	);
+	-webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(12px);
+	box-shadow:
+		0 0 0 1px var(--color-banner-edge),
+		0 1px 2px light-dark(rgba(15, 19, 24, 0.06), rgba(0, 0, 0, 0.4)),
+		0 10px 28px -6px light-dark(rgba(15, 19, 24, 0.16), rgba(0, 0, 0, 0.6));
+}
+
+.glass-card {
+	transition: box-shadow 0.3s;
+}
+
+.glass-card:hover {
+	box-shadow:
+		0 0 0 1px var(--color-banner-pill-edge),
+		0 1px 2px light-dark(rgba(15, 19, 24, 0.06), rgba(0, 0, 0, 0.4)),
+		0 14px 32px -6px light-dark(rgba(15, 19, 24, 0.2), rgba(0, 0, 0, 0.7));
 }

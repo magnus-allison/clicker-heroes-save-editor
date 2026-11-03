@@ -2,6 +2,7 @@
 // `@/*` alias is a bundler/tsconfig convenience and does not resolve when this
 // module is loaded by plain Node (`node --test`).
 import { formatLongDuration, toFiniteNumber } from './format.ts';
+import { getValueAtPath, type SaveData } from './save-utils.ts';
 
 export type InstakillCalculatorInputs = {
 	kumawakamaruLevel: number;
@@ -61,6 +62,40 @@ export function normalizeInstakillInputs(
 		fps: clamp(roundToHundredth(toFiniteNumber(withDefaults.fps) ?? defaultInstakillInputs.fps), 0.01, 30),
 		acInstakill: withDefaults.acInstakill,
 		root2: withDefaults.root2
+	};
+}
+
+const kumawakamaruAncientId = 21;
+const borbOutsiderId = 6;
+
+/**
+ * The inputs a save can supply: Kumawakamaru and Borb levels, and the highest
+ * zone reached as the target zone. FPS, AC instakill and root2 are play-style
+ * settings the save does not record, so they are left as they are. A field the
+ * save is missing is left out rather than zeroed.
+ */
+export function readInstakillSave(saveData: SaveData | null | undefined): Partial<InstakillCalculatorInputs> {
+	if (!saveData) {
+		return {};
+	}
+
+	const kumawakamaruLevel = toFiniteNumber(
+		getValueAtPath(saveData, ['ancients', 'ancients', String(kumawakamaruAncientId), 'level'])
+	);
+	const borbLevel = toFiniteNumber(
+		getValueAtPath(saveData, ['outsiders', 'outsiders', String(borbOutsiderId), 'level'])
+	);
+	// The persisted zone is the best ever and normally the larger, but a save
+	// edited by hand can leave it behind this ascension's.
+	const zones = [saveData.highestFinishedZonePersist, saveData.highestFinishedZone]
+		.map(toFiniteNumber)
+		.filter((zone) => zone !== null);
+	const highestZone = zones.length > 0 ? Math.max(...zones) : null;
+
+	return {
+		...(kumawakamaruLevel === null ? {} : { kumawakamaruLevel }),
+		...(borbLevel === null ? {} : { borbLevel }),
+		...(highestZone === null || highestZone < 1 ? {} : { endZone: highestZone })
 	};
 }
 

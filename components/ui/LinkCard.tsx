@@ -1,5 +1,5 @@
 import { cn } from 'cn';
-import { ArrowRight, ArrowUpRight, LucideIcon } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Crown, LucideIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { type FC } from 'react';
 
@@ -36,7 +36,7 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 }) => {
 	const t = useTranslations('common.cards');
 	const className = cn(
-		`group flex h-full flex-col rounded-2xl bg-card-background p-5 transition-shadow duration-300 shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong hover:shadow-card-hover`,
+		`group flex h-full flex-col glass-card rounded-2xl p-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-info`,
 		disabled && 'opacity-50 select-none'
 	);
 
@@ -48,6 +48,7 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 				</span>
 				{tag && (
 					<Pill className='ml-auto' isShining={tag === 'mostPopular'}>
+						{tag === 'mostPopular' && <Crown aria-hidden='true' className='h-3 w-3 shrink-0 text-cyan-400' />}
 						{t(`tags.${tag}`)}
 					</Pill>
 				)}
@@ -105,7 +106,7 @@ export const ExternalLinkCard: FC<Props & { icon: string; tintIcon?: boolean }> 
 	return (
 		<a
 			className={cn(
-				`group flex h-full flex-col rounded-2xl bg-card-background p-5 transition-shadow duration-300 shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong hover:shadow-card-hover`
+				`group flex h-full flex-col glass-card rounded-2xl p-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-info`
 			)}
 			href={href}
 			target='_blank'
@@ -125,6 +126,7 @@ export const ExternalLinkCard: FC<Props & { icon: string; tintIcon?: boolean }> 
 				</span>
 				{tag && (
 					<Pill className='ml-auto' isShining={tag === 'mostPopular'}>
+						{tag === 'mostPopular' && <Crown aria-hidden='true' className='h-3 w-3 shrink-0 text-cyan-400' />}
 						{t(`tags.${tag}`)}
 					</Pill>
 				)}

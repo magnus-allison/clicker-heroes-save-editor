@@ -8,6 +8,7 @@ import {
 	formatInstakillDuration,
 	maxZone,
 	normalizeInstakillInputs,
+	readInstakillSave,
 	type InstakillCalculatorInputs
 } from './instakill-calculator.ts';
 
@@ -361,5 +362,28 @@ describe('formatInstakillDuration', () => {
 		assert.equal(formatInstakillDuration(year), '1y 0d 0.00h');
 		assert.equal(formatInstakillDuration(year + 86_400 * 2 + 3600), '1y 2d 1.00h');
 		assert.equal(formatInstakillDuration(year * 1000), '1,000y 0d 0.00h');
+	});
+});
+
+describe('readInstakillSave', () => {
+	test('reads Kumawakamaru, Borb and the highest zone from a save', () => {
+		const save = {
+			ancients: { ancients: { '21': { level: 25 } } },
+			outsiders: { outsiders: { '6': { level: '120' } } },
+			highestFinishedZonePersist: 612345
+		};
+
+		assert.deepEqual(readInstakillSave(save), { kumawakamaruLevel: 25, borbLevel: 120, endZone: 612345 });
+	});
+
+	test('takes the higher of the persisted and current-ascension zones', () => {
+		assert.deepEqual(readInstakillSave({ highestFinishedZonePersist: 3, highestFinishedZone: 5000 }), {
+			endZone: 5000
+		});
+	});
+
+	test('leaves out whatever the save does not have', () => {
+		assert.deepEqual(readInstakillSave({ highestFinishedZonePersist: 0 }), {});
+		assert.deepEqual(readInstakillSave(null), {});
 	});
 });

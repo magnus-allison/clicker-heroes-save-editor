@@ -263,6 +263,9 @@
     }
   },
   "instakill": {
+    "steps": {
+      "route": "Instakill route"
+    },
     "inputs": {
       "title": "Inputs",
       "description": "Ancient levels, route range, and frame timing.",

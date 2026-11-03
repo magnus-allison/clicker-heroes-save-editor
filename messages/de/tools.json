@@ -263,6 +263,9 @@
     }
   },
   "instakill": {
+    "steps": {
+      "route": "Instakill-Route"
+    },
     "inputs": {
       "title": "Eingaben",
       "description": "Ancient-Level, Zonenbereich der Route und Frame-Timing.",

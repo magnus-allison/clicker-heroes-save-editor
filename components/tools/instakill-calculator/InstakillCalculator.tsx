@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { Calculator, Gauge, RotateCcw, Timer, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import {
@@ -14,11 +15,15 @@ import {
 } from '@/components/ui/EditorTable';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { SectionCard } from '@/components/ui/SectionCard';
+import { StepTitle } from '@/components/ui/StepTitle';
 import {
 	calculateInstakill,
 	defaultInstakillInputs,
+	readInstakillSave,
 	type InstakillCalculatorInputs
 } from '@/lib/instakill-calculator';
+import { examples } from '@/lib/data/example-saves';
+import { useSaveStore } from '@/lib/save-store';
 import { formatLongDuration } from '@/lib/format';
 import { useDurationUnits } from '@/components/tools/use-duration-units';
 import { useNumberFormat } from '@/components/ui/useNumberFormat';
@@ -39,7 +44,24 @@ export const InstakillCalculator = () => {
 	// Two decimals, not `format.decimal`'s one: monsters per zone, MPZ reduction
 	// and FPS are only useful to two.
 	const formatMetric = (value: number) => format.fixed(value, 2);
-	const [inputs, setInputs] = useState<InstakillCalculatorInputs>(defaultInstakillInputs);
+	const saveData = useSaveStore((state) => state.saveData);
+	// Defaults overlaid with whatever the loaded save supplies, so a save loaded
+	// on another tool is already filled in on arrival.
+	const savedInputs = () =>
+		calculateInstakill({ ...defaultInstakillInputs, ...readInstakillSave(saveData) }).inputs;
+	const [inputs, setInputs] = useState<InstakillCalculatorInputs>(savedInputs);
+	const [inputsSave, setInputsSave] = useState(saveData);
+
+	// A newly loaded save refills the fields it covers and leaves FPS and the
+	// toggles as the user set them.
+	if (saveData !== inputsSave) {
+		setInputsSave(saveData);
+		if (saveData) {
+			setInputs(
+				(currentInputs) => calculateInstakill({ ...currentInputs, ...readInstakillSave(saveData) }).inputs
+			);
+		}
+	}
 	const calculation = useMemo(() => calculateInstakill(inputs), [inputs]);
 
 	const updateInput = <Key extends keyof InstakillCalculatorInputs>(
@@ -50,13 +72,16 @@ export const InstakillCalculator = () => {
 	};
 
 	const resetInputs = () => {
-		setInputs(defaultInstakillInputs);
+		setInputs(savedInputs());
 	};
 
 	return (
 		<>
 			<Breadcrumb page='instakillCalculator' title='tools' />
 
+			<SaveDataPanel examples={examples} />
+
+			<StepTitle step={2} title={t('steps.route')} />
 			<PanelSection>
 				<SectionCard
 					defaultOpen

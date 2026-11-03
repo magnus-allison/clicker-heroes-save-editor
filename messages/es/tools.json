@@ -263,6 +263,9 @@
     }
   },
   "instakill": {
+    "steps": {
+      "route": "Ruta de instakill"
+    },
     "inputs": {
       "title": "Datos",
       "description": "Niveles de ancients, rango de la ruta y tiempo por fotograma.",

@@ -9,6 +9,7 @@ import {
 	Landmark,
 	MessageCirclePlus,
 	Orbit,
+	SaveCheckIcon,
 	SwordIcon,
 	Users,
 	Wrench
@@ -25,7 +26,7 @@ export const tools: LinkCardItem<ToolCardKey>[] = [
 	{
 		key: 'saveEditor',
 		href: '/tools/save-editor',
-		icon: FileCode2,
+		icon: SaveCheckIcon,
 		tag: 'mostPopular'
 	},
 	{

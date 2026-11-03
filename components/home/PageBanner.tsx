@@ -12,26 +12,28 @@ export const PageBanner: FC = () => {
 	const t = useTranslations('common.banner');
 
 	return (
-		<Link
-			aria-label={t('homeLabel')}
-			className='@container grid gap-3 rounded-2xl bg-card-background p-5 shadow-card transition-shadow duration-300 hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:gap-6 md:px-6 md:py-4.5'
-			href='/'
-		>
-			<div className='flex h-16 w-16 shrink-0 items-center justify-center md:h-23 md:w-23'>
-				<img
-					alt=''
-					className='h-full w-full object-contain md:h-17 md:w-17'
-					src='/assets/icons/clicker-heroes.webp'
-				/>
-			</div>
-			<div className='min-w-0'>
-				<p className='font-aeonik ml-[-0.1rem] text-[clamp(1.375rem,9cqi,2.25rem)] tracking-wide font-bold uppercase text-fg-strong md:tracking-wider'>
-					clickerheroes.dev
-				</p>
-				<p className='text-[10px] font-medium uppercase tracking-[0.11em] text-[#C840BE] dark:text-[#FF57F9] font-aeonik md:text-[11px] md:tracking-[0.13em]'>
-					{t('tagline')}
-				</p>
-			</div>
-		</Link>
+		<header className='site-banner grid gap-4 rounded-2xl p-5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-info md:flex md:items-center md:justify-between md:gap-6 md:px-6 md:py-4.5'>
+			<Link
+				aria-label={t('homeLabel')}
+				className='@container grid min-w-0 flex-1 gap-3 rounded-xl outline-none md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:gap-6'
+				href='/'
+			>
+				<div className='flex h-16 w-16 shrink-0 items-center justify-center md:h-23 md:w-23'>
+					<img
+						alt=''
+						className='h-full w-full object-contain md:h-17 md:w-17'
+						src='/assets/icons/clicker-heroes.webp'
+					/>
+				</div>
+				<div className='min-w-0'>
+					<p className='font-aeonik ml-[-0.1rem] text-[clamp(0.9375rem,7cqi,1.625rem)] tracking-wide font-black uppercase text-fg-strong md:tracking-wider'>
+						clickerheroes.dev
+					</p>
+					<p className='text-[10px] font-medium uppercase tracking-[0.11em] text-banner-accent font-aeonik md:text-sm md:tracking-[0.13em]'>
+						{t('tagline')}
+					</p>
+				</div>
+			</Link>
+		</header>
 	);
 };

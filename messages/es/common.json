@@ -1,10 +1,16 @@
 {
   "banner": {
     "homeLabel": "Inicio de clickerheroes.dev",
-    "tagline": "Herramientas y calculadoras gratis - Clicker Heroes"
+    "tagline": "Herramientas y calculadoras gratis - Clicker Heroes",
+    "nav": {
+      "label": "Secciones",
+      "tools": "Herramientas",
+      "guides": "Guías"
+    }
   },
   "breadcrumb": {
     "label": "Ruta de navegación",
+    "switchTool": "Cambiar de herramienta",
     "groups": {
       "tools": "herramientas",
       "guides": "guías",
@@ -30,8 +36,13 @@
     "feedback": "Comentarios"
   },
   "home": {
-    "title": "Clicker Heroes: editor de partidas, calculadoras y guías",
-    "intro": "Herramientas gratis para Clicker Heroes 1.0e12. Todo funciona en tu navegador."
+    "title": "Clicker Heroes: editor de partidas, <line>calculadoras y guías</line>",
+    "intro": "Herramientas gratis para Clicker Heroes 1.0e12. Todo funciona en tu navegador.",
+    "badges": {
+      "free": "100 % gratis",
+      "browser": "En el navegador",
+      "noAccount": "Sin registrarse"
+    }
   },
   "cards": {
     "open": "Abrir",

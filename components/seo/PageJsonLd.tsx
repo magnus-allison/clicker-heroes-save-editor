@@ -11,7 +11,12 @@ interface Props {
 /** The page's JSON-LD graph, with its breadcrumb named as the page's `<h1>` is. */
 export const PageJsonLd = async ({ locale, page }: Props) => {
 	const t = await getTranslations({ locale, namespace: 'common' });
-	const pageName = page === 'home' ? t('home.title') : t(`pages.${page}`);
+	// The home title marks its second line and last words for the hero's
+	// styling; the tags are dropped here, keeping just the words.
+	const pageName =
+		page === 'home'
+			? t.markup('home.title', { line: (chunks) => chunks, accent: (chunks) => chunks })
+			: t(`pages.${page}`);
 
 	return (
 		<script

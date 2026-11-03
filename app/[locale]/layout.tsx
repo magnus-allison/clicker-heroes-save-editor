@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { IBM_Plex_Mono } from 'next/font/google';
+import { IBM_Plex_Mono, Manrope } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -22,6 +22,13 @@ const ibmPlexMono = IBM_Plex_Mono({
 	variable: '--font-ibm-plex-mono',
 	subsets: ['latin'],
 	weight: ['400', '500', '600']
+});
+
+/* Manrope sets the home page heading (bold) and its intro (light), so just those weights are loaded. */
+const manrope = Manrope({
+	variable: '--font-manrope-local',
+	subsets: ['latin'],
+	weight: ['300', '700']
 });
 
 /*
@@ -102,7 +109,7 @@ export default async function LocaleLayout({
 
 	return (
 		<html
-			className={`${ibmPlexMono.variable} ${aeonik.variable} h-full antialiased`}
+			className={`${ibmPlexMono.variable} ${manrope.variable} ${aeonik.variable} h-full antialiased`}
 			data-scroll-behavior='smooth'
 			lang={locale}
 			suppressHydrationWarning

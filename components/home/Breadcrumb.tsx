@@ -2,6 +2,7 @@ import { type FC } from 'react';
 import { BookOpen, BoxIcon, ChevronRight, Info, type LucideIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+import { ToolSwitcher } from '@/components/home/ToolSwitcher';
 import { Link } from '@/i18n/navigation';
 import type { messages } from '@/messages';
 
@@ -39,7 +40,7 @@ export const Breadcrumb: FC<Props> = ({ title, page }) => {
 
 	return (
 		<div className='flex flex-col'>
-			<div className='flex flex-row items-center'>
+			<div className='relative flex flex-row items-center'>
 				<span className='flex h-10 w-10 shrink-0 items-center justify-center text-fg-strong'>
 					<Icon aria-hidden='true' className='h-5 w-5' />
 				</span>
@@ -52,9 +53,13 @@ export const Breadcrumb: FC<Props> = ({ title, page }) => {
 							{groupName}
 						</Link>
 						<ChevronRight aria-hidden='true' className='mx-1.5 h-4 w-4 shrink-0 text-fg-dim' />
-						<h1 aria-current='page' className={headingClassName} id={id}>
-							{t(`pages.${page}`)}
-						</h1>
+						{title === 'tools' ? (
+							<ToolSwitcher className={headingClassName} id={id} page={page} />
+						) : (
+							<h1 aria-current='page' className={headingClassName} id={id}>
+								{t(`pages.${page}`)}
+							</h1>
+						)}
 					</nav>
 				) : (
 					<h2 className={headingClassName} id={id}>

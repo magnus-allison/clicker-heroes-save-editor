@@ -1,10 +1,16 @@
 {
   "banner": {
     "homeLabel": "clickerheroes.dev home",
-    "tagline": "Free Tools & Calculators - Clicker Heroes"
+    "tagline": "Free Tools & Calculators - Clicker Heroes",
+    "nav": {
+      "label": "Sections",
+      "tools": "Tools",
+      "guides": "Guides"
+    }
   },
   "breadcrumb": {
     "label": "Breadcrumb",
+    "switchTool": "Switch tool",
     "groups": {
       "tools": "tools",
       "guides": "guides",
@@ -30,8 +36,13 @@
     "feedback": "Feedback"
   },
   "home": {
-    "title": "Clicker Heroes Save Editor, Calculators & Guides",
-    "intro": "Free tools for Clicker Heroes 1.0e12. Everything runs in your browser."
+    "title": "Clicker Heroes Save Editor, <line>Calculators & Guides</line>",
+    "intro": "Free tools for Clicker Heroes 1.0e12. Everything runs in your browser.",
+    "badges": {
+      "free": "100% Free",
+      "browser": "Browser-based",
+      "noAccount": "No account needed"
+    }
   },
   "cards": {
     "open": "Open",
