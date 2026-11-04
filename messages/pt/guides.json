@@ -1,0 +1,237 @@
+{
+  "shared": {
+    "part": "Parte {number}",
+    "contents": "Conteúdo",
+    "contentsLabel": "Conteúdo do guia"
+  },
+  "progressTips": {
+    "intro": "Dez hábitos que mais fazem diferença na velocidade com que um save de Clicker Heroes 1.0e12 avança. Nenhum deles é segredo, mas a maioria dos saves lentos deixa pelo menos um de fora. Se você está começando do zero, leia primeiro o <newPlayerGuide>guia para iniciantes</newPlayerGuide> — este continua de onde aquele termina.",
+    "parts": {
+      "resets": "Resets",
+      "heroes": "Heróis",
+      "souls": "Souls e builds",
+      "skillsAndRubies": "Habilidades e rubis",
+      "everythingElse": "Todo o resto"
+    },
+    "sections": {
+      "ascend": {
+        "title": "1. Ascenda cedo e com frequência",
+        "summary": "Uma run curta que dobra suas Hero Souls vale mais do que uma run longa que mal as mexe.",
+        "items": {
+          "1": "O progresso vem dos resets, não de uma única run. Continuar avançando depois que seus ganhos estagnaram é tempo que você poderia ter usado numa próxima run mais rápida.",
+          "2": "No começo, uma boa regra é ascender quando a run for pelo menos dobrar as Hero Souls que você já tem.",
+          "3": "Se o próximo muro de chefe exigir mais do que alguns minutos de farm, ascender costuma ser o jeito mais rápido de passar por ele.",
+          "4": "Gaste todas as Hero Souls em ancients logo depois de ascender, antes de começar a nova run."
+        }
+      },
+      "transcend": {
+        "title": "2. Transcenda na hora certa",
+        "summary": "Faça a primeira na zona 300. Depois disso, fique de olho no crescimento das suas souls.",
+        "items": {
+          "1": "Transcenda assim que liberar, na zona 300. O Transcendent Power fortalece todos os chefes primordiais a partir daí, então as souls que você farmar antes voltam rápido.",
+          "2": "As transcendências seguintes são questão de timing: quando cada ascensão só acrescenta uma pequena fração às suas Hero Souls, a transcendência já deu o que tinha que dar.",
+          "3": "O <transcensionViewer>visualizador de transcendências</transcensionViewer> mostra as Hero Souls e Ancient Souls por ascensão direto do seu save, o que deixa a desaceleração fácil de perceber.",
+          "4": "A <outsidersCalculator>calculadora de outsiders</outsidersCalculator> estima a zona e as Ancient Souls em que uma transcendência deve terminar, para você saber mais ou menos onde parar antes de começar."
+        }
+      },
+      "newestHero": {
+        "title": "3. Foque no seu herói mais novo",
+        "summary": "O dano vem de um herói por vez. Garanta que seja o certo.",
+        "items": {
+          "1": "Cada herói novo está um nível acima do anterior, então seu ouro quase sempre rende mais no herói mais novo que você consegue pagar do que em qualquer um atrás dele.",
+          "2": "Compre os upgrades dele assim que liberarem — quase sempre são a melhor compra de dano por ouro disponível.",
+          "3": "Depois do nível 200, suba de nível em múltiplos de 25. A maioria dos heróis ganha um multiplicador de dano a cada 25 níveis, e parar logo antes de um desperdiça ouro.",
+          "4": "Heróis mais antigos deixam de importar quando ficam para trás. Não espalhe ouro pelo elenco inteiro para manter todos no mesmo nível."
+        }
+      },
+      "gilds": {
+        "title": "4. Mantenha os gilds em um só herói",
+        "summary": "Gilds espalhados não fazem nada. Concentrados no seu herói principal, eles multiplicam tudo.",
+        "items": {
+          "1": "Cada gild aumenta o dano de um único herói. Espalhada por vários heróis, a maior parte desse bônus fica em heróis que você nem está usando.",
+          "2": "Mova todos os seus gilds para o herói que carrega o seu dano, e mova de novo quando um herói mais novo assumir.",
+          "3": "Mover gilds custa Hero Souls, então só faça isso quando seu herói atual estiver claramente ficando para trás — não a cada pequena mudança.",
+          "4": "A <gildingChart>tabela de gilds de heróis</gildingChart> diz em qual herói dar gild com o seu ouro atual."
+        }
+      },
+      "build": {
+        "title": "5. Escolha uma build",
+        "summary": "Idle, híbrida ou ativa. Escolha a que combina com o jeito que você realmente joga.",
+        "items": {
+          "1": "A build idle é ideal para quem dá uma olhada no jogo algumas vezes por dia. Siyalatas e Libertas recompensam você por deixar o jogo quieto.",
+          "2": "A build ativa é ideal para quem fica com o jogo aberto. Juggernaut, Fragsworth e Bhaal escalam com cliques, e os autoclickers do jogo clicam por você.",
+          "3": "A build híbrida divide as souls entre as duas e serve para a maioria dos jogadores depois que eles têm alguns autoclickers.",
+          "4": "Meia build idle e meia build ativa é mais fraco do que qualquer uma das duas bem feita. Escolha uma e gaste as souls de acordo."
+        }
+      },
+      "calculators": {
+        "title": "6. Deixe as calculadoras fazerem as contas",
+        "summary": "Os níveis de ancients e outsiders são fórmulas. Não há motivo para chutar.",
+        "items": {
+          "1": "Importe seu save na <ancientsCalculator>calculadora de ancients</ancientsCalculator> depois de cada ascensão. Ela mostra os níveis ideais de ancients para a sua build e quanto custa cada nível.",
+          "2": "Use a <outsidersCalculator>calculadora de outsiders</outsidersCalculator> no início de cada transcendência. Redistribuir os outsiders é de graça, então você não perde nada seguindo a calculadora.",
+          "3": "Quando a calculadora e o seu instinto discordarem, confie na calculadora. Ancients nivelados no olho são um dos motivos mais comuns para um save parecer lento."
+        }
+      },
+      "skills": {
+        "title": "7. Encadeie suas habilidades",
+        "summary": "Habilidades usadas juntas batem muito mais forte do que habilidades usadas sempre que saem do cooldown.",
+        "items": {
+          "1": "Guarde suas habilidades de dano para as lutas contra chefes e use todas juntas, para que as janelas curtas se sobreponham.",
+          "2": "Energize dobra a próxima habilidade que você usar, e Reload reduz o cooldown da última. As duas valem muito mais combinadas com outra habilidade do que usadas sozinhas.",
+          "3": "Dark Ritual aumenta seu DPS permanentemente pelo resto da ascensão. O clássico combo Energize, Dark Ritual, Reload no começo de uma run compensa em todas as zonas seguintes.",
+          "4": "Use Metal Detector e Golden Clicks juntos quando estiver farmando ouro para um grande ganho de níveis."
+        }
+      },
+      "rubies": {
+        "title": "8. Gaste rubis em autoclickers",
+        "summary": "Rubis são escassos. Gaste em coisas que continuam funcionando.",
+        "items": {
+          "1": "Autoclickers são a melhor compra de rubis a longo prazo. Eles impulsionam builds ativas e híbridas, e Nogardnit na idle.",
+          "2": "Vale a pena guardar o Timelapse para mais tarde no jogo, quando pular horas de progresso cobre muitas zonas.",
+          "3": "Não gaste rubis recrutando mercenários, comprando gilds, relíquias ou lutas extras de raid. Custam muito e dão pouco retorno.",
+          "4": "A <rubySection>seção de rubis</rubySection> do guia para iniciantes tem a ordem de compra completa."
+        }
+      },
+      "sideSystems": {
+        "title": "9. Use os sistemas paralelos",
+        "summary": "Mercenários, clãs e backups levam um minuto por dia cada e somam muito ao longo das semanas.",
+        "items": {
+          "1": "Mantenha os mercenários sempre em missão e escolha missões de rubis sempre que aparecerem. O <mercenaryViewer>visualizador de mercenários</mercenaryViewer> mostra seu time e as estatísticas de cada um ao longo do tempo.",
+          "2": "Entre em um clã e lute contra o chefe da raid diária. São Hero Souls de graça por alguns cliques.",
+          "3": "Faça backup do seu save com frequência — exporte e guarde o código em um lugar seguro. Um save perdido é o progresso mais lento de todos."
+        }
+      },
+      "walls": {
+        "title": "10. Quebre os muros",
+        "summary": "Um muro significa que algo precisa mudar. Esperar raramente resolve.",
+        "items": {
+          "1": "Travou em um chefe? Volte uma zona, farme ouro e suba seu herói principal até o próximo múltiplo de 25 antes de tentar de novo.",
+          "2": "Guarde suas habilidades para o chefe e use todas de uma vez, em vez de usá-las assim que saem do cooldown.",
+          "3": "Confira se seus gilds estão no herói certo e se seus ancients batem com a calculadora. Um muro que aparece de repente costuma ser uma dessas duas coisas.",
+          "4": "Quando Kumawakamaru e Borb começarem a reduzir a quantidade de monstros, a <instakillCalculator>calculadora de instakill</instakillCalculator> mostra a velocidade com que você deveria estar passando pelas zonas.",
+          "5": "Se nada disso funcionar, a run provavelmente acabou. Ascenda e volte mais forte."
+        }
+      },
+      "whereNext": {
+        "title": "Para onde ir agora",
+        "summary": "Mais detalhes sobre os temas acima.",
+        "items": {
+          "1": "<newPlayerGuide>Guia para iniciantes</newPlayerGuide> — de um save novo até sua primeira transcendência, passo a passo.",
+          "2": "<gildingChart>Tabela de gilds de heróis</gildingChart> — em qual herói dar gild, e quando.",
+          "3": "<blog>Blog oficial de Clicker Heroes</blog> (em inglês) — a lista de dicas dos próprios desenvolvedores.",
+          "4": "Tire suas dúvidas no <subreddit>subreddit de Clicker Heroes</subreddit> ou no Discord oficial."
+        }
+      }
+    }
+  },
+  "gildingChart": {
+    "intro": "Em qual herói colocar cada gild, em cada momento de Clicker Heroes 1.0e12, da sua primeira transcendência até os Ace Scouts. Digite seu ouro abaixo e a tabela mostra onde você deveria estar. O balanceamento dos heróis não mudou desde a 1.0e11, então a tabela vale para o jogo atual. Adaptada da tabela e10 da comunidade e estendida para além de Yachiyl.",
+    "parts": {
+      "findYourHero": "Encontre seu herói",
+      "howGildingWorks": "Como os gilds funcionam",
+      "readingTheChart": "Como ler a tabela",
+      "theChart": "A tabela",
+      "commonQuestions": "Dúvidas comuns"
+    },
+    "sections": {
+      "goldLookup": {
+        "title": "Busca por ouro",
+        "summary": "Digite seu ouro atual para ir direto à linha que se aplica a você."
+      },
+      "whatAGildDoes": {
+        "title": "O que um gild faz",
+        "summary": "Um bônus permanente de +50% de dano ligado a um herói específico.",
+        "items": {
+          "1": "Gilds caem dos chefes de zona a cada 10 zonas depois da 100, e eles se acumulam: 200 gilds em um herói equivalem a +100x o dano desse herói.",
+          "2": "Um gild só ajuda o herói em que está, e mover um custa Hero Souls.",
+          "3": "Então toda a lógica dos gilds é esta: exatamente um herói é o seu causador de dano a cada momento, e todo gild que você tem deve estar nele.",
+          "4": "Antes da sua primeira <newPlayerGuide>transcendência</newPlayerGuide> você não vai ter Hero Souls para mover gilds à vontade. Se tiver a sorte de ganhar gilds em um dos Power 5 (Treebeast, Ivan, Brittany, Samurai, Seer), suba esse herói."
+        }
+      },
+      "whenToRegild": {
+        "title": "Quando mover os gilds",
+        "summary": "Só quando você conseguir ver as barras de vida dos monstros.",
+        "items": {
+          "1": "Enquanto você está dando instakill, dano extra não serve para nada. Mover os gilds nesse trecho gasta Hero Souls em dano que você não consegue usar.",
+          "2": "Quando os monstros começarem a sobreviver aos seus golpes, troque para o herói ideal para o seu ouro e mova seus gilds para ele.",
+          "3": "A <ancientsCalculator>calculadora de ancients</ancientsCalculator> pode reservar 80 Hero Souls por gild para que mover os gilds não consuma as souls que você estava guardando para os ancients."
+        }
+      },
+      "ascendingAndTranscending": {
+        "title": "Ascender e transcender",
+        "summary": "O que fazer quando nem o herói ideal consegue acompanhar.",
+        "items": {
+          "1": "Quando você não consegue mais dar instakill mesmo depois de trocar de herói, mover os gilds e usar todas as habilidades, é hora de ascender.",
+          "2": "Quando ascender não rende mais novas Ancient Souls (confira “Next AS” na última aba), é hora de transcender.",
+          "3": "Sempre ascenda antes de transcender. Caso contrário, as Hero Souls ganhas na sua última ascensão são perdidas.",
+          "4": "O <transcensionViewer>visualizador de transcendências</transcensionViewer> mostra quantas Hero Souls e Ancient Souls você ganha por ascensão, o que facilita essa decisão."
+        }
+      },
+      "theColumns": {
+        "title": "As colunas",
+        "summary": "Quatro colunas e uma regra.",
+        "items": {
+          "1": "<strong>Ouro</strong> está em log10, então a coluna mostra expoentes em vez de quantidades. Uma linha marcada como e442 precisa de 1e442 de ouro, que é o número depois do “e” no ouro mostrado no jogo.",
+          "2": "<strong>Do nível e Até o nível</strong> indicam onde começar e onde parar de subir o nível desse herói. Passado o alvo, a próxima linha dá mais dano por ouro.",
+          "3": "<strong>AS aprox.</strong> são mais ou menos as Ancient Souls que você terá ao chegar lá. Serve como referência, não como requisito, e deixa de ser listado depois de Xavira.",
+          "4": "<strong>A regra:</strong> encontre a última linha cujo requisito de ouro você já atingiu. Esse herói recebe todos os gilds que você tem."
+        }
+      },
+      "skippingRows": {
+        "title": "Pulando linhas",
+        "summary": "Pular linhas é normal. Dois upgrades valem a pena voltar para pegar.",
+        "items": {
+          "1": "Se o seu dano é alto o bastante para você continuar dando instakill, passe direto pelas linhas. Você não perde nada.",
+          "2": "Dois upgrades valem a pena voltar para pegar de qualquer jeito, e os dois estão marcados na tabela: <strong>Bomber Max no nível 100</strong> para +50% de ouro encontrado, e <strong>Gog no nível 100</strong> para +50% de DPS em todos os heróis.",
+          "3": "Heróis reaparecendo mais adiante na tabela não é erro. Os heróis ganham multiplicadores de 10x em marcos de nível e os custos escalam, então um herói que ficou para trás pode voltar a ser o dano mais barato."
+        }
+      },
+      "thePhases": {
+        "title": "As seis fases",
+        "summary": "A tabela parece ter 59 linhas aleatórias. Na verdade, são seis padrões."
+      },
+      "fullChart": {
+        "title": "Tabela de gilds completa",
+        "summary": "Agrupada por fase. As notas marcadas são os dois upgrades que valem a pena voltar para pegar."
+      },
+      "faq": {
+        "title": "Perguntas frequentes",
+        "summary": "As perguntas que aparecem toda vez que esta tabela é publicada."
+      }
+    },
+    "phaseSummaries": {
+      "1": "Contrate cada herói novo no 1.000, dê gild nele, suba até 1.500 e siga em frente. Mecânico e rápido. Dois desvios para upgrades importam: Bomber Max e Gog, ambos no nível 100.",
+      "2": "Os dois se revezam a cada ~500 níveis, conforme cada um ganha um novo multiplicador de 10x. Termina quando Gog fica sem multiplicadores no nível 8.000.",
+      "3": "O trecho mais fácil do jogo. Cada herói novo é tão mais forte que você o contrata no nível 1, passa todos os gilds para ele e vai com ele até o próximo.",
+      "4": "Cadu e Ceus se fortalecem mutuamente, então você alterna entre eles, subindo aquele que libera o upgrade de que o outro precisa. Nove passos de pingue-pongue.",
+      "5": "Dois saltos enormes. The Maw no nível 1 causa cerca de 1e6750x mais dano que um Cadu no máximo. Yachiyl só ultrapassa The Maw no nível 157.500, então você começa por ali.",
+      "6": "Rose, Sophia, Blanche e Dorothy se revezam conforme cada uma libera upgrades para as outras. Use-as sem upgrades primeiro, depois passe pelos níveis de upgrade, pulando a maior parte de Dorothy."
+    },
+    "range": "{from} a {to}",
+    "rangeOnwards": "{from} em diante",
+    "table": {
+      "label": "Tabela de gilds de Clicker Heroes",
+      "step": "#",
+      "hero": "Herói ideal",
+      "fromLevel": "Do nív.",
+      "toLevel": "Até nív.",
+      "gold": "Ouro (log10)",
+      "approxAncientSouls": "~AS",
+      "notes": "Notas",
+      "phase": "Fase {phase} · {title} · {range}"
+    }
+  },
+  "heroArtwork": {
+    "intro": "Todos os heróis de Clicker Heroes 1.0e12, na ordem de contratação, de Cid até os Ace Scouts. Cada herói mostra o retrato normal ao lado da arte com gild, a versão dourada que aparece quando o herói tem pelo menos um gild.",
+    "heroNumber": "Herói {number}",
+    "normal": "Normal",
+    "gilded": "Com gild",
+    "noGildedArt": "Ainda sem arte com gild",
+    "normalAlt": "{name}",
+    "gildedAlt": "{name}, com gild",
+    "viewFull": "Ver imagem completa de {name}",
+    "viewerTitle": "{name} · {state}",
+    "close": "Fechar"
+  }
+}

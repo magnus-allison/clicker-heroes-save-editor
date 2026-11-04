@@ -1,0 +1,183 @@
+{
+  "banner": {
+    "homeLabel": "Página inicial do clickerheroes.dev",
+    "tagline": "Ferramentas e calculadoras grátis - Clicker Heroes",
+    "nav": {
+      "label": "Seções",
+      "tools": "Ferramentas",
+      "guides": "Guias"
+    }
+  },
+  "breadcrumb": {
+    "label": "Trilha de navegação",
+    "switchTool": "Trocar de ferramenta",
+    "groups": {
+      "tools": "ferramentas",
+      "guides": "guias",
+      "additionalInfo": "mais informações"
+    }
+  },
+  "pages": {
+    "saveEditor": "Editor de save",
+    "instakillCalculator": "Calculadora de instakill",
+    "ancientsCalculator": "Calculadora de ancients",
+    "outsidersCalculator": "Calculadora de outsiders",
+    "transcensionViewer": "Visualizador de transcendências",
+    "mercenaryViewer": "Visualizador de mercenários",
+    "removeClanData": "Remover dados do clã",
+    "saveConverter": "Conversor de save",
+    "saveJson": "Save em JSON",
+    "newPlayerGuide": "Guia para iniciantes",
+    "gildingChart": "Tabela de gilds",
+    "heroArtwork": "Arte dos heróis",
+    "progressTips": "10 dicas para progredir mais rápido",
+    "requestTool": "Pedir uma nova ferramenta",
+    "requestGuide": "Pedir um novo guia",
+    "faq": "Perguntas frequentes",
+    "feedback": "Feedback"
+  },
+  "home": {
+    "title": "Clicker Heroes: editor de save, <line>calculadoras e guias</line>",
+    "intro": "Ferramentas grátis para Clicker Heroes 1.0e12. Tudo roda no seu navegador.",
+    "badges": {
+      "free": "100% grátis",
+      "browser": "No navegador",
+      "noAccount": "Sem cadastro"
+    }
+  },
+  "cards": {
+    "open": "Abrir",
+    "visit": "Visitar",
+    "iconAlt": "Ícone de {title}",
+    "tags": {
+      "mostPopular": "Mais popular",
+      "new": "Novo",
+      "comingSoon": "Em breve"
+    },
+    "tools": {
+      "saveEditor": {
+        "title": "Editor de save",
+        "description": "Examine os dados do seu save, altere valores e exporte o save atualizado"
+      },
+      "outsidersCalculator": {
+        "title": "Calculadora de outsiders",
+        "description": "Planeje níveis de outsiders, estimativas de transcendência e futuras transcendências"
+      },
+      "instakillCalculator": {
+        "title": "Calculadora de instakill",
+        "description": "Estime a duração da rota, os monstros por zona e as zonas por hora"
+      },
+      "ancientsCalculator": {
+        "title": "Calculadora de ancients",
+        "description": "Descubra os níveis ideais de ancients e o custo para as suas Hero Souls"
+      },
+      "transcensionViewer": {
+        "title": "Visualizador de transcendências",
+        "description": "Examine o histórico de transcendências e as ascensões de um save"
+      },
+      "mercenaryViewer": {
+        "title": "Visualizador de mercenários",
+        "description": "Veja seus mercenários e as estatísticas acumuladas deles a partir de um save"
+      },
+      "relicViewer": {
+        "title": "Visualizador de relíquias",
+        "description": "Examine as relíquias, seus bônus e sua raridade a partir de um save"
+      },
+      "removeClanData": {
+        "title": "Remover dados do clã",
+        "description": "Remova os campos de clã, conta e login de um save no seu navegador"
+      },
+      "saveConverter": {
+        "title": "Conversor de save",
+        "description": "Converta seus arquivos de save entre os formatos de PC e celular"
+      },
+      "saveJson": {
+        "title": "Save em JSON",
+        "description": "Converta saves para JSON e de volta. Feito para desenvolvedores"
+      },
+      "requestTool": {
+        "title": "Pedir nova ferramenta",
+        "description": "Sugira uma nova ferramenta que você gostaria de ver"
+      }
+    },
+    "guides": {
+      "newPlayerGuide": {
+        "title": "Guia para iniciantes",
+        "description": "De um save novo à primeira transcendência: ascender, ancients, rubis, mercenários e clãs"
+      },
+      "gildingChart": {
+        "title": "Tabela de gilds",
+        "description": "Em qual herói dar gild em cada faixa de ouro, de Samurai até os Ace Scouts"
+      },
+      "progressTips": {
+        "title": "10 dicas para progredir mais rápido",
+        "description": "Ascender, dar gild, builds, combos de habilidades, rubis e como passar das barreiras"
+      },
+      "heroArtwork": {
+        "title": "Arte dos heróis",
+        "description": "O retrato de cada herói, com a arte normal e a arte com gild"
+      },
+      "requestGuide": {
+        "title": "Pedir novo guia",
+        "description": "Sugira um novo guia que você gostaria de ver ou contribua com um existente"
+      }
+    },
+    "additional": {
+      "feedback": {
+        "title": "Enviar feedback",
+        "description": "Ajude a melhorar a qualidade do site contando o que você acha"
+      },
+      "faq": {
+        "title": "Perguntas frequentes",
+        "description": "Respostas para dúvidas comuns sobre o editor, arquivos de save e mais"
+      },
+      "github": {
+        "title": "Repositório no GitHub",
+        "description": "magnus-allison/clicker-heroes-save-editor"
+      },
+      "coffee": {
+        "title": "Buy Me a Coffee",
+        "description": "Ajude a manter o editor grátis e atualizado com uma pequena contribuição"
+      },
+      "game": {
+        "title": "Clicker Heroes",
+        "description": "Link para o site oficial do jogo"
+      },
+      "steam": {
+        "title": "Clicker Heroes na Steam",
+        "description": "Link para a página oficial do jogo na Steam"
+      }
+    }
+  },
+  "footer": {
+    "label": "Site",
+    "disclaimer": "Projeto independente, sem vínculo com os criadores de Clicker Heroes.",
+    "language": "Idioma"
+  },
+  "localeNames": {
+    "en": "English",
+    "es": "Español",
+    "de": "Deutsch",
+    "pt": "Português"
+  },
+  "notFound": {
+    "eyebrow": "Erro 404",
+    "kicker": "Rota solicitada não encontrada",
+    "title": "Página não encontrada",
+    "body": "A página que você procurou não existe, foi movida ou o endereço foi digitado errado. O editor de save continua disponível na página dele.",
+    "available": "Disponível a partir daqui",
+    "openEditor": "Abrir o editor de save",
+    "openEditorDescription": "Volte ao editor principal e carregue um arquivo de save.",
+    "about": "Saiba mais sobre a ferramenta",
+    "aboutDescription": "Vá para a visão geral e os recursos de edição disponíveis."
+  },
+  "ui": {
+    "step": "Passo {number}",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "selectOption": "Selecione uma opção",
+    "numberInput": "Campo numérico",
+    "textInput": "Campo de texto",
+    "opensInNewTab": "(abre em uma nova aba)"
+  }
+}

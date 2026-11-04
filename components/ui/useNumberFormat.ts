@@ -4,7 +4,7 @@ import { formatDecimal, formatFixed, formatLargeNumber, formatNumber } from '@/l
 
 /**
  * The `lib/format` formatters bound to the page locale, for display-only
- * output: German and Spanish group thousands with a dot and use a decimal
+ * output: German, Spanish and Portuguese group thousands with a dot and use a decimal
  * comma. Editable inputs keep the default format, because their parser strips
  * commas. `locale` is exposed for domain formatters (`formatHeroSouls`,
  * `formatGoldExponent`) that take it directly.

@@ -1,0 +1,354 @@
+{
+  "table": {
+    "image": "Imagem",
+    "item": "Item",
+    "value": "Valor",
+    "amount": "Quantidade",
+    "description": "Descrição",
+    "unlocked": "Desbloqueado",
+    "hero": "Herói",
+    "level": "Nível",
+    "gildedLevel": "Gilds",
+    "name": "Nome",
+    "timeToDie": "Tempo até morrer",
+    "bonusLives": "Vidas extras",
+    "cost": "Custo",
+    "spent": "Gasto",
+    "skinName": "Nome da skin",
+    "field": "Campo",
+    "currentValue": "Valor atual",
+    "removedValue": "Valor removido"
+  },
+  "clipboard": {
+    "copied": "Texto copiado.",
+    "unavailable": "Este navegador não permite copiar."
+  },
+  "importField": {
+    "title": "Importar save",
+    "noFileSelected": "Nenhum arquivo selecionado",
+    "exampleSave": "Save de exemplo",
+    "chooseFile": "Escolher arquivo de save",
+    "uploadFile": "Enviar arquivo",
+    "orPaste": "ou cole abaixo",
+    "ariaLabel": "Código do save a importar",
+    "placeholder": "Cole aqui o código do seu save...",
+    "loadAction": "Carregar save",
+    "orExample": "ou carregue um save de exemplo",
+    "fileTooLarge": "Esse arquivo é grande demais para ser um save de Clicker Heroes.",
+    "fileUnreadable": "Não foi possível ler esse arquivo. Tente escolhê-lo de novo."
+  },
+  "exportField": {
+    "title": "Exportar save",
+    "downloadFile": "Baixar arquivo",
+    "orCopy": "ou copie abaixo",
+    "nothingToDownload": "Ainda não há nada para baixar — exporte o save primeiro.",
+    "downloadUnavailable": "Este navegador não permite baixar arquivos.",
+    "backupWarning": "Sempre guarde um backup do seu save original antes de importar dados editados de volta para o jogo."
+  },
+  "saveDataPanel": {
+    "title": "Exporte seu save",
+    "encodeAction": "Codificar save",
+    "ariaLabel": "Código do save a exportar",
+    "placeholder": "O código do seu save vai aparecer aqui...",
+    "dataLabel": "dados editados",
+    "loadFirst": "Carregue um save antes de codificar.",
+    "encoded": "Save codificado.",
+    "encodeFailed": "Não foi possível codificar o save."
+  },
+  "import": {
+    "loaded": "Save carregado.",
+    "failed": "Não foi possível decodificar o save."
+  },
+  "decodeErrors": {
+    "empty": "Primeiro cole o código de um save ou carregue um arquivo de save.",
+    "unsupported": "Esse texto não parece ser um save compatível de Clicker Heroes.",
+    "invalidBase64": "O conteúdo {format} do save não é base64 válido. Confira se você copiou o código do save inteiro.",
+    "decompressFailed": "Não foi possível descompactar o conteúdo {format} do save ({reason}). Confira se você copiou o código do save inteiro.",
+    "notObject": "O save decodificado não é um objeto válido."
+  },
+  "saveHelp": {
+    "title": "Onde está meu arquivo de save?",
+    "iconAlt": "Ícone de {name}",
+    "icons": {
+      "apple": "Apple",
+      "openFolder": "pasta aberta",
+      "steam": "Steam",
+      "windows": "Windows",
+      "platform": "plataforma"
+    },
+    "entries": {
+      "windows": {
+        "title": "Windows",
+        "note": "Dois arquivos: .save e .backup. A versão da Steam e a versão independente usam o mesmo caminho."
+      },
+      "macSteam": {
+        "title": "Mac - Steam"
+      },
+      "macStandalone": {
+        "title": "Mac - Versão independente"
+      }
+    }
+  },
+  "changes": {
+    "title": "Alterações",
+    "versus": "em relação ao save importado",
+    "truncated": "Só as primeiras {count} alterações são mostradas.",
+    "labels": {
+      "outsiderLevel": "{name} · Nível",
+      "outsiderSpent": "{name} · Ancient Souls gastas",
+      "mercenaryName": "Mercenário {number} · Nome",
+      "mercenaryLevel": "Mercenário {number} · Nível",
+      "mercenaryTimeToDie": "Mercenário {number} · Tempo até morrer",
+      "mercenaryBonusLives": "Mercenário {number} · Vidas extras",
+      "currentSkin": "Skin atual do autoclicker",
+      "transcensionHistory": "Histórico de transcendências",
+      "heroLevel": "{name} · Nível",
+      "heroGildedLevel": "{name} · Gilds",
+      "achievement": "Conquista · {name}",
+      "skinUnlocked": "{name} · Desbloqueada"
+    },
+    "values": {
+      "none": "nenhum",
+      "yes": "Sim",
+      "no": "Não",
+      "empty": "vazio",
+      "entries": "{count, plural, one {# entrada} other {# entradas}}"
+    }
+  },
+  "fields": {
+    "rubies": "Rubis",
+    "autoclickers": "Autoclickers",
+    "paidForRubyMultiplier": "Multiplicador de dano 2x",
+    "unopenedClickmasPresents": "Clickmas Presents",
+    "spikedNog": "Spiked Nog",
+    "candyCanes": "Candy Canes",
+    "labelMakers": "Label Makers",
+    "forgeCoals": "Forge Coals",
+    "gold": "Ouro",
+    "highestFinishedZone": "Zona mais alta",
+    "currentZoneHeight": "Zona atual",
+    "heroSouls": "Hero Souls",
+    "primalSouls": "Transcendent Hero Souls",
+    "newClanRaidClassId": "Classe de raid do clã",
+    "newClanRaidClassLevel": "Nível da classe de raid do clã",
+    "immortalSouls": "Immortal Souls",
+    "titanDamage": "Dano a titãs",
+    "totalMercenariesRevived": "Total de mercenários revividos",
+    "totalMercenariesBuried": "Total de mercenários enterrados",
+    "total5MinuteQuests": "Total de missões de 5 minutos",
+    "heroSoulQuestsCompleted": "Missões de Hero Souls concluídas",
+    "goldQuestsCompleted": "Missões de ouro concluídas",
+    "rubyQuestsCompleted": "Missões de rubis concluídas",
+    "relicQuestsCompleted": "Missões de relíquias concluídas",
+    "skillQuestsCompleted": "Missões de habilidade concluídas",
+    "ancientSouls": "Ancient Souls",
+    "ancientSoulsTotal": "Total de Ancient Souls",
+    "heroSoulsSacrificed": "Hero Souls sacrificadas"
+  },
+  "fieldHelp": {
+    "spikedNog": {
+      "body": "Consumir um Spiked Nog dá +1 CPS por autoclicker no monstro durante 1 hora. O efeito se acumula tanto em intensidade quanto em duração."
+    },
+    "candyCanes": {
+      "body": "Servem para ressuscitar mercenários mortos."
+    },
+    "labelMakers": {
+      "body": "Servem para renomear mercenários."
+    },
+    "forgeCoals": {
+      "body": "Um item inútil encontrado nos Clickmas Presents."
+    }
+  },
+  "fieldOptions": {
+    "newClanRaidClassId": {
+      "0": "Nenhuma",
+      "1": "Rogue",
+      "2": "Mage",
+      "3": "Priest"
+    }
+  },
+  "saveEditor": {
+    "editTitle": "Edite seu save",
+    "sections": {
+      "shopItems": "Itens da loja",
+      "seasonalItems": "Itens sazonais",
+      "zoneItems": "Itens de zona",
+      "heroes": "Heróis",
+      "achievements": "Conquistas",
+      "clanValues": "Valores do clã"
+    },
+    "clanDescription": "As classes de raid correspondem a 0 = Nenhuma, 1 = Rogue, 2 = Mage, 3 = Priest."
+  },
+  "achievements": {
+    "tableLabel": "Campos de conquistas de transcendência",
+    "transcendentHighestZone": "Zona mais alta transcendente",
+    "reward": "Recompensa: {reward}",
+    "unlockedAria": "{name} desbloqueada",
+    "groups": {
+      "0": "Conquistas de ouro",
+      "1": "Conquistas de heróis",
+      "2": "Conquistas de DPS",
+      "3": "Conquistas de cliques",
+      "4": "Conquistas de zonas",
+      "5": "Conquistas de ascensão",
+      "6": "Conquistas de monstros",
+      "7": "Conquistas de chefes centenários",
+      "8": "Conquistas de relíquias",
+      "9": "Conquistas de mercenários",
+      "10": "Conquistas de missões",
+      "11": "Conquistas de transcendência",
+      "12": "Outras conquistas"
+    }
+  },
+  "customField": {
+    "title": "Campo personalizado",
+    "description": "Busque um campo primitivo de nível superior e edite-o diretamente.",
+    "searchLabel": "Buscar campo pelo nome",
+    "choose": "Escolha um campo",
+    "fieldName": "Nome do campo",
+    "fieldValue": "Valor do campo",
+    "enabled": "Ativado"
+  },
+  "heroes": {
+    "title": "Heróis",
+    "gilded": "{count, plural, one {# gild} other {# gilds}} (+{percent}%)",
+    "levelAria": "Nível de {name}",
+    "gildedLevelAria": "Gilds de {name}"
+  },
+  "mercenaries": {
+    "title": "Mercenários",
+    "description": "Ajuste as estatísticas gerais dos mercenários e o grupo atual.",
+    "viewDetails": "Ver detalhes dos mercenários",
+    "summary": "Resumo",
+    "summaryLabel": "Resumo dos mercenários",
+    "roster": "Grupo de mercenários",
+    "nameAria": "Nome do mercenário {number}",
+    "levelAria": "Nível do mercenário {number}",
+    "timeToDieAria": "Tempo até morrer do mercenário {number}",
+    "bonusLivesAria": "Vidas extras do mercenário {number}"
+  },
+  "outsiders": {
+    "title": "Outsiders e Ancient Souls",
+    "description": "Edite suas Ancient Souls e os níveis dos outsiders, que definem a progressão de longo prazo.",
+    "soulTotals": "Totais de Ancient Souls",
+    "tableLabel": "Outsiders",
+    "levelAria": "Nível de {name}",
+    "spentAria": "Ancient Souls gastas em {name}",
+    "cost": "{amount} AS",
+    "bonus": {
+      "1": "de eficácia de todos os bônus idle",
+      "2": "de custo dos ancients",
+      "3": "de DPS",
+      "5": "de Primal Hero Souls",
+      "6": "de eficácia de Kumawakamaru (+12,5% por nível)",
+      "7": "de eficácia de Atman (+25% por nível)",
+      "8": "de eficácia de Bubos (+50% por nível)",
+      "9": "de eficácia de Chronos (+75% por nível)",
+      "10": "de eficácia de Dora (+100% por nível)"
+    },
+    "cap": {
+      "6": "monstros por zona (mín.: 2)",
+      "7": "de chance de chefe primal (mín.: 5%)",
+      "8": "multiplicador da vida do chefe (mín.: 5)",
+      "9": "segundos para a luta contra o chefe (mín.: 2 s)",
+      "10": "de chance de baú (mín.: 1%)"
+    }
+  },
+  "skins": {
+    "title": "Skins de autoclicker",
+    "unlockAll": "Desbloquear todas",
+    "allUnlocked": "Todas as skins desbloqueadas.",
+    "tableLabel": "Skins de autoclicker",
+    "unlockedAria": "{name} desbloqueada",
+    "currentSkin": "Skin atual"
+  },
+  "transcensions": {
+    "title": "Transcendências e ascensões",
+    "description": "Você pode apagar sem problemas o histórico de transcendências e ascensões se quiser uma exportação menor.",
+    "body": "O save guarda todas as informações das suas transcendências e ascensões. Isso pode aumentar bastante o tamanho do arquivo de save, e o jogo não precisa desse histórico para continuar funcionando.",
+    "viewHistory": "Ver histórico de transcendências",
+    "inspect": "Para conferir o histórico antes, procure em <code>{path}</code> nas ferramentas de JSON abaixo.",
+    "clear": "Apagar dados de transcendências",
+    "cleared": "Histórico de transcendências apagado."
+  },
+  "removeClanData": {
+    "stepTitle": "Remover dados do clã do JSON",
+    "intro": "Isso remove os campos relacionados ao clã e limpa os campos de conta e login do JSON do save carregado, para que o resultado exportado fique enxuto e pronto para recomeçar do zero.",
+    "whatGetsRemoved": "O que é removido",
+    "tableLabel": "Campos que são removidos",
+    "action": "Remover dados do clã",
+    "removedTitle": "Dados do clã removidos",
+    "removedTableLabel": "Dados do clã removidos",
+    "emptyState": "Remova os dados do clã de um save carregado para ver aqui os valores retirados.",
+    "loadFirst": "Carregue um save antes de remover os dados do clã.",
+    "removed": "Dados do clã removidos do save.",
+    "emptyString": "(texto vazio)",
+    "unknown": "Desconhecido",
+    "fields": {
+      "email": "E-mail",
+      "passwordHash": "Hash da senha",
+      "prevLoginTimestamp": "Data do último login",
+      "account": "Conta",
+      "accountId": "ID da conta",
+      "loginValidated": "Login validado",
+      "uniqueId": "ID único",
+      "subscribedEmail": "E-mail inscrito",
+      "type": "Tipo"
+    }
+  },
+  "feedback": {
+    "title": "Feedback",
+    "description": "Envie suas sugestões e melhorias para deixar o editor de save ainda melhor!",
+    "messageLabel": "Sua mensagem de feedback",
+    "messagePlaceholder": "Escreva seu feedback aqui...",
+    "submit": "Enviar",
+    "sending": "Enviando...",
+    "emptyMessage": "Escreva uma mensagem antes de enviar seu feedback.",
+    "success": "Feedback enviado.",
+    "invalidEmail": "Informe um endereço de e-mail válido ou deixe em branco.",
+    "sendFailed": "Não foi possível enviar seu feedback agora.",
+    "nameAria": "Seu nome",
+    "namePlaceholder": "Nome (opcional)",
+    "emailAria": "Seu endereço de e-mail",
+    "emailPlaceholder": "E-mail (opcional)",
+    "pages": {
+      "feedback": {
+        "title": "Enviar feedback",
+        "description": "Conte sobre problemas nas ferramentas ou no site, fluxos que estão faltando ou qualquer sugestão."
+      },
+      "requestTool": {
+        "title": "Pedir uma ferramenta",
+        "description": "Descreva a ferramenta que você quer, o que ela deveria calcular e como você a usaria.",
+        "emptyMessage": "Descreva a ferramenta antes de enviar seu pedido.",
+        "messageLabel": "Seu pedido de ferramenta",
+        "messagePlaceholder": "O que a ferramenta deveria fazer? Que dados você informaria e o que ela deveria te mostrar?",
+        "submit": "Enviar pedido",
+        "success": "Pedido de ferramenta enviado."
+      },
+      "requestGuide": {
+        "title": "Pedir um guia",
+        "description": "Conte em qual tema você está travado e o que um guia ideal deveria abordar.",
+        "emptyMessage": "Descreva o guia antes de enviar seu pedido.",
+        "messageLabel": "Seu pedido de guia",
+        "messagePlaceholder": "Que tema o guia deveria abordar, e em que parte você está travando?",
+        "submit": "Enviar pedido",
+        "success": "Pedido de guia enviado."
+      }
+    },
+    "tooManyRequests": "Muitas solicitações. Espere um pouco antes de tentar de novo."
+  },
+  "seasonalBanner": {
+    "badge": "NOVO",
+    "text": "Os itens sazonais chegaram ao editor de save!",
+    "cta": "Abrir o editor de save"
+  },
+  "exampleSaves": {
+    "basic": "Save básico",
+    "idle": "Build idle",
+    "active": "Build ativa",
+    "transcension": "Transcendência",
+    "fullRoster": "Elenco completo",
+    "mobile": "Celular",
+    "desktop": "Computador"
+  }
+}

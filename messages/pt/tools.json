@@ -1,0 +1,413 @@
+{
+  "shared": {
+    "resetDefaults": "Restaurar padrões",
+    "units": {
+      "year": "a",
+      "day": "d",
+      "hour": "h",
+      "minute": "min"
+    }
+  },
+  "ancients": {
+    "steps": {
+      "settings": "Configurações",
+      "ancientLevels": "Níveis dos ancients",
+      "transcensionDetails": "Detalhes da transcendência"
+    },
+    "build": {
+      "title": "Build",
+      "description": "Build, melhor herói e as souls para distribuir."
+    },
+    "buildModes": {
+      "idle": "Idle",
+      "hybrid": "Híbrida",
+      "active": "Ativa"
+    },
+    "heroTiers": {
+      "base": "Treebeast - Wepwawet nível 7999",
+      "e9": "Wepwawet nível 8000 - Madzi",
+      "e10": "Xavira - Yachiyl",
+      "scout": "Ace Scouts"
+    },
+    "settings": {
+      "buildLabel": "Build",
+      "buildDescription": "Considera que você tem Siyalatas para as builds idle e híbrida, e Fragsworth para a ativa.",
+      "ratioLabel": "Proporção Fragsworth / Siyalatas",
+      "ratioAriaLabel": "Proporção entre Fragsworth e Siyalatas",
+      "ratioDescription": "Níveis de Fragsworth por nível de Siyalatas. 20 favorece bastante o ativo.",
+      "ratioHelp": "Builds híbridas são usadas principalmente em timelapses nas zonas 50k - 250k e 1m+. Depois disso, o dano idle é insignificante perto do ativo, então uma proporção alta costuma ser melhor.",
+      "heroTierLabel": "Melhor herói nesta transcendência",
+      "heroTierDescription": "A relação entre dano e ouro muda de herói para herói, o que altera até onde os ancients de ouro sobem de nível.",
+      "heroSoulsLabel": "Hero Souls para gastar",
+      "heroSoulsDescription": "Deixe vazio para usar o save ({souls} HS).",
+      "includeAscensionSoulsLabel": "Incluir souls ganhas após a ascensão",
+      "includeAscensionSoulsDescription": "Adiciona ao total as souls que sua próxima ascensão daria."
+    },
+    "advanced": {
+      "title": "Configuração avançada",
+      "description": "Ancients auxiliares, souls reservadas e precisão do cálculo.",
+      "revolcLabel": "Subir Revolc de nível",
+      "revolcAriaLabel": "Taxa de nível do Revolc",
+      "revolcDescription": "0 = nunca subir de nível, 1 = subir o máximo que as regras permitem.",
+      "skillAncientsLabel": "Subir ancients de habilidade de nível",
+      "skillAncientsAriaLabel": "Taxa de nível dos ancients de habilidade",
+      "skillAncientsDescription": "Mesma escala, aplicada a Vaagur e aos ancients de duração de habilidades.",
+      "precisionLabel": "Precisão da calculadora",
+      "precisionDescription": "Dígitos significativos em que o cálculo converge. Baixa é mais rápida, alta é mais precisa.",
+      "regildingLabel": "Reservar Hero Souls para refazer gilds",
+      "regildingDescription": "Reserva 80 HS por gild, e você tem {gilds}.",
+      "regildingDescriptionEmpty": "Reserva 80 Hero Souls por gild.",
+      "ignoreMinimizedLabel": "Ignorar ancients minimizados no jogo",
+      "ignoreMinimizedDescription": "Pula qualquer ancient cujo card você recolheu no jogo."
+    },
+    "summary": {
+      "soulsToSpend": "Souls para gastar",
+      "soulsSpent": "Souls gastas",
+      "soulsLeftOver": "Souls restantes"
+    },
+    "goalsTable": {
+      "label": "Níveis recomendados dos ancients",
+      "ancient": "Ancient",
+      "current": "Atual",
+      "goal": "Meta",
+      "change": "Mudança",
+      "cost": "Custo (HS)",
+      "noAncients": "Nenhum ancient encontrado neste save.",
+      "empty": "Carregue um save para ver os níveis recomendados dos ancients.",
+      "cap": "limite",
+      "capTitle": "Subiu de nível até o ponto em que este ancient deixa de compensar",
+      "copyChange": "Copiar mudança de nível de {name}",
+      "copiedChange": "Mudança de nível de {name} copiada"
+    },
+    "soulBank": "Reserva de souls: mantenha {souls} HS sem gastar. Você não tem Morgulis, então as souls que sobram valem mais guardadas do que investidas.",
+    "tunedAgainst": "Ajustado com base em {ancient}, calculado em {seconds}s.",
+    "stats": {
+      "title": "Estatísticas",
+      "description": "Valores lidos do seu save.",
+      "label": "Estatísticas do save",
+      "transcendentPower": "Transcendent Power",
+      "highestZone": "Zona mais alta alcançada",
+      "ancientSoulsTotal": "Total de Ancient Souls",
+      "gilds": "Gilds",
+      "ascensionSouls": "Souls ganhas após a ascensão"
+    },
+    "outsiders": {
+      "title": "Outsiders",
+      "description": "Níveis atuais dos outsiders.",
+      "label": "Níveis dos outsiders",
+      "image": "Imagem",
+      "outsider": "Outsider",
+      "level": "Nível"
+    },
+    "planner": {
+      "title": "Planejador de Ancient Souls",
+      "description": "Hero Souls a sacrificar pelas suas próximas Ancient Souls.",
+      "gain": "Ganho",
+      "required": "Sacrificando um total de",
+      "change": "Mudança",
+      "empty": "Carregue um save para planejar suas próximas Ancient Souls."
+    },
+    "effects": {
+      "solomon": "+% Primal Hero Souls",
+      "libertas": "+% ouro dos monstros em idle",
+      "siyalatas": "+% DPS em idle",
+      "mammon": "+% ouro dropado",
+      "mimzee": "+% ouro dos baús do tesouro",
+      "pluto": "+% ouro de Golden Clicks",
+      "dogcog": "-% custo de contratar e subir heróis de nível",
+      "fortuna": "+% chance de ouro x10",
+      "atman": "+% chance de chefes Primal",
+      "dora": "+% mais baús do tesouro",
+      "bhaal": "+% dano de cliques críticos",
+      "morgulis": "+% DPS base por Hero Soul gasta",
+      "chronos": "+ segundos no cronômetro dos chefes",
+      "bubos": "-% vida dos chefes",
+      "fragsworth": "+% dano por clique",
+      "vaagur": "-% tempo de recarga das habilidades",
+      "kumawakamaru": "- monstros necessários por zona",
+      "chawedo": "+ segundos de Clickstorm",
+      "hecatoncheir": "+ segundos de Super Clicks",
+      "berserker": "+ segundos de Powersurge",
+      "sniperino": "+ segundos de Lucky Strikes",
+      "kleptos": "+ segundos de Golden Clicks",
+      "energon": "+ segundos de Metal Detector",
+      "argaiv": "+% bônus de dano por gild",
+      "juggernaut": "+% DPS por combo de cliques",
+      "revolc": "+% chance de rubis em dobro",
+      "nogardnit": "+% DPS por autoclicker em idle"
+    },
+    "outsiderEffects": {
+      "xyliqil": "eficácia de todos os bônus idle",
+      "chorgorloth": "custo dos ancients",
+      "phandoryss": "DPS",
+      "ponyboy": "Primal Hero Souls",
+      "borb": "eficácia de Kumawakamaru (+12,5% por nível)",
+      "rhageist": "eficácia de Atman (+25% por nível)",
+      "kariqua": "eficácia de Bubos (+50% por nível)",
+      "orphalas": "eficácia de Chronos (+75% por nível)",
+      "senakhan": "eficácia de Dora (+100% por nível)"
+    }
+  },
+  "outsiders": {
+    "steps": {
+      "outsiderLevels": "Níveis dos outsiders",
+      "transcensionDetails": "Detalhes da transcendência"
+    },
+    "settings": {
+      "title": "Configurações",
+      "description": "Zona-alvo, Orphalas e a reserva de Ancient Souls.",
+      "zoneOverrideLabel": "Substituir zona",
+      "zoneOverrideDescription": "Planeje para uma zona escolhida por você em vez da sugerida pelas suas Ancient Souls. 0 usa a estimativa.",
+      "zoneOverrideHelp": "A estimativa considera que você avança no ativo e ascende até a run deixar de compensar. Fixe uma zona aqui se você já sabe onde pretende parar, ou para ver do que uma run mais curta precisaria.",
+      "orphalasLabel": "Subir Orphalas de nível",
+      "orphalasDescription": "Orphalas só aumenta o cronômetro dos chefes, algo que raramente faz falta quando você avança no ativo.",
+      "reserveLabel": "Reservar Ancient Souls",
+      "reserveDescription": "Guarda um décimo do que sobra depois do Borb em vez de gastar.",
+      "simulatorLabel": "Simulador de transcendências",
+      "simulatorDescription": "Projeta todas as transcendências daqui até o fim do jogo."
+    },
+    "summary": {
+      "ancientSoulsEarned": "Ancient Souls ganhas",
+      "transcendentPower": "Transcendent Power",
+      "unspent": "Não gastas após este plano"
+    },
+    "goalsTable": {
+      "label": "Níveis recomendados dos outsiders",
+      "image": "Imagem",
+      "outsider": "Outsider",
+      "current": "Atual",
+      "level": "Nível",
+      "change": "Mudança",
+      "totalCost": "Custo total",
+      "empty": "Carregue um save para ver os níveis recomendados dos outsiders.",
+      "copyLevel": "Copiar nível de {name}",
+      "copiedLevel": "Nível de {name} copiado"
+    },
+    "apply": "Aplicar níveis ao save",
+    "copyLevels": "Copiar níveis dos outsiders",
+    "copiedLevels": "Níveis dos outsiders copiados",
+    "toasts": {
+      "noSave": "Carregue um save antes de aplicar os níveis dos outsiders.",
+      "blocked": "{names} já estão acima da recomendação. Faça respec no jogo e tente de novo.",
+      "applied": "Níveis dos outsiders gravados no save."
+    },
+    "reserved": "Reservando {souls} Ancient Souls, conforme a configuração de reserva.",
+    "notTranscended": "Este save nunca transcendeu, então ainda não tem outsiders para subir de nível. Transcenda primeiro na zona 300 — o plano abaixo é o que fazer depois disso.",
+    "plannedFromTotal": "Planejado com todas as Ancient Souls que o save já ganhou, não com as {unspent} que ele tem sem gastar agora, então faça respec no jogo antes de aplicar estes níveis.",
+    "guidance": {
+      "title": "Orientações",
+      "description": "O que fazer nesta run."
+    },
+    "hints": {
+      "noAncientSouls": "Você precisa de Ancient Souls para isto funcionar. Transcenda assim que desbloquear a transcendência na zona 300. Vale a pena.",
+      "firstAscension": "Sua primeira ascensão deve ser na zona 130, para desbloquear Kumawakamaru e alguns outros ancients o quanto antes. Isso acelera todas as ascensões seguintes.",
+      "borbForZone": "Só {borbForZone} de Borb é necessário para dois monstros por zona na sua última ascensão, mas {borbForFirstAscension} é necessário para dois monstros por zona depois de ascender pela primeira vez na zona 130.",
+      "borbHigher": "Há mais ascensões além da última, então Borb sobe mais de nível para acelerar as anteriores.",
+      "transcendAfterAscensions": "Transcenda depois de 3 ou 4 ascensões que deem novas Ancient Souls. Uma ascensão só conta se render mais Hero Souls do que a sua transcendência anterior.",
+      "estimateActive": "A zona mais alta abaixo é uma estimativa e considera jogo ativo, para o qual você deve mudar assim que tiver dois autoclickers.",
+      "guidelineNoLongerApplies": "A regra das \"3 ou 4 ascensões que dão Ancient Souls\" não vale acima de 24% de Transcendent Power.",
+      "keepAscending": "Continue ascendendo até chegar pelo menos à zona mais alta estimada abaixo. Isso leva mais ascensões do que você está acostumado.",
+      "closeToCap": "Você está chegando perto de 25% de Transcendent Power, então transcender já não dá o impulso de antes.",
+      "borbOnlyLimit": "Você tem Transcendent Power suficiente para alcançar qualquer herói. Agora o Borb é seu único limite, e colocar mais níveis nele é o único motivo para transcender.",
+      "lastFourAtZero": "Os quatro últimos outsiders não são práticos de manter em zonas altas, então ficam em 0. Isso não é um bug.",
+      "oneLessAscension": "Você pode fazer uma ascensão a menos do que a estimativa de zona mais alta pede, se quiser uma run mais tranquila. A longo prazo é só um pouco pior."
+    },
+    "estimates": {
+      "title": "Estimativas para o fim da transcendência",
+      "description": "Onde esta transcendência termina se você seguir o plano.",
+      "highestZone": "Zona mais alta",
+      "logHeroSouls": "Hero Souls (log10)",
+      "ancientSouls": "Ancient Souls",
+      "transcendentPower": "Transcendent Power",
+      "ancientLevels": "Níveis dos ancients",
+      "kumawakamaruValue": "{value} monstros por zona",
+      "atmanValue": "{value} de chance de primal",
+      "bubosValue": "{value} de vida dos chefes",
+      "chronosValue": "{value}s no cronômetro dos chefes",
+      "doraValue": "{value} de baús do tesouro"
+    },
+    "breakpoints": {
+      "title": "Zonas de corte",
+      "description": "Zonas em que cada atributo bufado atinge o limite.",
+      "highMonstersPerZone": "2,1 monstros por zona",
+      "primalChanceFloor": "5% de chance de primal",
+      "bossHealthCeiling": "90% de vida dos chefes",
+      "bossTimerFloor": "2s no cronômetro dos chefes",
+      "treasureChestCeiling": "99% de baús do tesouro",
+      "treasureChestFloor": "1% de baús do tesouro"
+    },
+    "highestZoneStats": {
+      "title": "Atributos na zona mais alta",
+      "description": "Como fica a zona mais alta com e sem seus outsiders.",
+      "stat": "Atributo",
+      "unbuffed": "Sem buff",
+      "buffed": "Com buff",
+      "monstersPerZone": "Monstros por zona",
+      "treasureChests": "Baús do tesouro",
+      "bossHealth": "Vida dos chefes",
+      "bossTimer": "Cronômetro dos chefes",
+      "primalChance": "Chance de primal"
+    },
+    "simulator": {
+      "title": "Simulador de transcendências",
+      "description": "Todas as transcendências daqui até o fim do jogo.",
+      "ancientSouls": "Ancient Souls",
+      "borb": "Borb",
+      "highestZone": "Zona mais alta",
+      "finalMpz": "MpZ final",
+      "time": "Tempo",
+      "empty": "Carregue um save para projetar suas transcendências.",
+      "minimumTitle": "O jogo nunca fica abaixo de dois",
+      "ends": "Termina com {souls} Ancient Souls.",
+      "endsTruncated": "Termina com {souls} Ancient Souls, ponto em que a projeção para de progredir."
+    }
+  },
+  "instakill": {
+    "steps": {
+      "route": "Rota de instakill"
+    },
+    "inputs": {
+      "title": "Entradas",
+      "description": "Níveis dos ancients, intervalo da rota e tempo de frame.",
+      "label": "Entradas da calculadora de instakill",
+      "image": "Imagem",
+      "item": "Item",
+      "value": "Valor",
+      "kumawakamaruDescription": "Nível do Ancient of Shadows",
+      "borbDescription": "Nível do outsider",
+      "startZoneLabel": "Zona inicial",
+      "startZoneDescription": "Primeira zona da rota",
+      "startZoneImageAlt": "Zone Explorer",
+      "endZoneLabel": "Zona-alvo",
+      "endZoneDescription": "Última zona da rota",
+      "endZoneImageAlt": "Zone Lord",
+      "fpsDescription": "Frames por segundo",
+      "fpsImageAlt": "Auto Clicker",
+      "acInstakillLabel": "Instakill do AC",
+      "acInstakillDescription": "Tratar ataques do autoclicker como instakills.",
+      "root2Description": "Usar a fórmula logarítmica alternativa de redução de Kumawakamaru e Borb.",
+      "root2Help": "Usa a fórmula logarítmica alternativa de redução de Kumawakamaru e Borb da calculadora original."
+    },
+    "output": {
+      "title": "Resultado",
+      "description": "Monstros por zona, duração e ritmo calculados.",
+      "label": "Resultados da calculadora de instakill",
+      "icon": "Ícone",
+      "metric": "Métrica",
+      "value": "Valor",
+      "effective": "Efetivo {value}",
+      "startMpz": "MPZ inicial",
+      "endMpz": "MPZ final",
+      "duration": "Duração",
+      "zones": "{count, plural, one {# zona} other {# zonas}}",
+      "zonesPerHour": "Zonas/hora",
+      "frames": "{count, plural, one {# frame} other {# frames}}",
+      "mpzReduction": "Redução de MPZ",
+      "mpzReductionDetail": "Kumawakamaru e Borb",
+      "timing": "Tempos",
+      "killFrames": "{count} frames por abate"
+    }
+  },
+  "transcension": {
+    "steps": {
+      "transcensions": "Transcendências",
+      "ascensionsIn": "Ascensões na transcendência nº {number}",
+      "ascensionsInEmpty": "Ascensões na transcendência"
+    },
+    "columns": {
+      "number": "Nº",
+      "duration": "Duração",
+      "ascensions": "Ascensões",
+      "highestZone": "HZE",
+      "heroSouls": "HS",
+      "ancientSouls": "AS"
+    },
+    "transcensionsLabel": "Transcendências",
+    "transcensionsEmpty": "Carregue um save com histórico de transcendências para vê-lo aqui.",
+    "selectTranscension": "Mostrar as ascensões da transcendência nº {number}",
+    "ascensionsLabel": "Ascensões da transcendência selecionada",
+    "ascensionsEmpty": "Selecione uma transcendência com histórico de ascensões para ver as ascensões dela aqui."
+  },
+  "mercenary": {
+    "steps": {
+      "roster": "Lista de mercenários",
+      "summary": "Resumo dos mercenários"
+    },
+    "rosterLabel": "Lista de mercenários",
+    "summaryLabel": "Resumo dos mercenários",
+    "columns": {
+      "slot": "Slot",
+      "name": "Nome",
+      "level": "Nível",
+      "experience": "Experiência",
+      "timeToDie": "Tempo até morrer",
+      "bonusLives": "Vidas extras",
+      "lastQuest": "Última missão",
+      "successChance": "Chance de sucesso"
+    },
+    "rosterEmpty": "Carregue um save com mercenários para ver a lista aqui.",
+    "summary": {
+      "mercenaryCount": "Número de mercenários",
+      "highestMercenaryLevelEver": "Maior nível de mercenário já alcançado",
+      "totalMercenariesRevived": "Total de mercenários revividos",
+      "totalMercenariesBuried": "Total de mercenários enterrados",
+      "total5MinuteQuests": "Total de missões de 5 minutos",
+      "heroSoulQuestsCompleted": "Missões de Hero Souls concluídas",
+      "goldQuestsCompleted": "Missões de ouro concluídas",
+      "rubyQuestsCompleted": "Missões de rubis concluídas",
+      "relicQuestsCompleted": "Missões de relíquias concluídas",
+      "skillQuestsCompleted": "Missões de habilidade concluídas"
+    }
+  },
+  "saveConverter": {
+    "export": {
+      "action": "Converter save",
+      "ariaLabel": "Dados do save convertido para exportar",
+      "dataLabel": "dados convertidos",
+      "placeholder": "Os dados do seu save convertido vão aparecer aqui...",
+      "title": "Exportar save convertido"
+    },
+    "step": "Opções do conversor",
+    "detectedOrigin": "Origem detectada",
+    "patchNumber": "Número do patch",
+    "outputDevice": "Dispositivo de saída",
+    "devices": {
+      "pc": "PC",
+      "mobile": "Celular",
+      "unknown": "desconhecido"
+    },
+    "notAvailable": "n/d",
+    "toasts": {
+      "noSave": "Carregue um save antes de converter.",
+      "converted": "Save convertido para {device}.",
+      "failed": "Falha ao converter os dados do save.",
+      "failedWithReason": "Falha ao converter os dados do save: {reason}"
+    }
+  },
+  "saveJson": {
+    "export": {
+      "action": "Converter JSON em save",
+      "ariaLabel": "Dados do save codificado para exportar",
+      "dataLabel": "dados editados",
+      "placeholder": "Os dados do seu save codificado vão aparecer aqui...",
+      "title": "Exportar os dados do seu save"
+    },
+    "step": "Edite o JSON bruto do save",
+    "intro": "Importar um save o decodifica no JSON abaixo. Edite qualquer campo à mão e depois converta de volta em um código do save codificado. Colar o JSON diretamente também funciona — não é preciso importar um save.",
+    "jsonAriaLabel": "JSON bruto do save",
+    "jsonPlaceholder": "Cole o JSON do save aqui ou importe um save acima...",
+    "format": "Formatar JSON",
+    "toasts": {
+      "empty": "Cole algum JSON antes de converter.",
+      "converted": "JSON convertido em dados do save.",
+      "convertFailed": "Falha ao converter o JSON em dados do save.",
+      "convertFailedWithReason": "Falha ao converter o JSON em dados do save: {reason}",
+      "notAnObject": "O JSON precisa ser um objeto.",
+      "formatted": "JSON formatado.",
+      "parseFailed": "Não foi possível interpretar esse JSON.",
+      "parseFailedWithReason": "Não foi possível interpretar esse JSON: {reason}",
+      "copied": "JSON copiado.",
+      "copyFailed": "Copiar não está disponível neste navegador."
+    }
+  }
+}

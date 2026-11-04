@@ -1,0 +1,288 @@
+{
+  "site": {
+    "description": "Editor de save de Clicker Heroes e ferramentas grátis online. Decodifique, inspecione, edite e codifique de novo seus saves de Clicker Heroes no navegador."
+  },
+  "breadcrumb": {
+    "home": "Início",
+    "tools": "Ferramentas",
+    "guides": "Guias"
+  },
+  "pages": {
+    "home": {
+      "metaTitle": "Clicker Heroes: editor de save, calculadoras e guias",
+      "description": "Ferramentas grátis de Clicker Heroes no navegador: editor de save, calculadoras de ancients, outsiders e instakill, conversor de save e tabela de gilds."
+    },
+    "saveEditor": {
+      "metaTitle": "Editor de save de Clicker Heroes – Edite seu save online grátis",
+      "description": "Editor de save de Clicker Heroes grátis e online: decodifique, inspecione, edite e codifique de novo seu save. Mude ouro, rubis, Hero Souls, heróis, ancients, ascensões e mais.",
+      "applicationName": "Editor de save de Clicker Heroes",
+      "featureList": [
+        "Decodifique códigos de save de Clicker Heroes",
+        "Codifique o save editado para importar de volta no jogo",
+        "Edite ouro, rubis, Hero Souls, ancients e dados de ascensão",
+        "Edite heróis, conquistas, skins, mercenários, outsiders, dados do clã e campos personalizados",
+        "Escreva qualquer campo do save diretamente pelo caminho do campo"
+      ]
+    },
+    "instakillCalculator": {
+      "metaTitle": "Calculadora de instakill de Clicker Heroes – Zonas por hora",
+      "description": "Estime a duração de uma rota de instakill em Clicker Heroes, os monstros por zona e as zonas por hora a partir de Kumawakamaru, Borb, intervalo de zonas e FPS.",
+      "applicationName": "Calculadora de instakill de Clicker Heroes",
+      "featureList": [
+        "Estime a duração da rota",
+        "Calcule os monstros por zona",
+        "Estime as zonas por hora a partir do intervalo de zonas e do FPS"
+      ]
+    },
+    "ancientsCalculator": {
+      "metaTitle": "Calculadora de ancients de Clicker Heroes – Níveis ideais",
+      "description": "Calculadora de ancients de Clicker Heroes grátis. Importe seu save e veja os níveis ideais dos ancients, o custo de cada nível e um planejador de Ancient Souls para builds idle, híbrida e ativa.",
+      "applicationName": "Calculadora de ancients de Clicker Heroes",
+      "featureList": [
+        "Calcule os níveis ideais dos ancients a partir de um save importado",
+        "Suporte a builds idle, híbrida e ativa com proporção híbrida ajustável",
+        "Mostre o custo em Hero Souls de cada ancient e as souls que sobram",
+        "Planeje as Hero Souls necessárias para as próximas Ancient Souls"
+      ]
+    },
+    "outsidersCalculator": {
+      "metaTitle": "Calculadora de outsiders de Clicker Heroes – Níveis ideais",
+      "description": "Calculadora de outsiders de Clicker Heroes grátis. Importe seu save e veja os níveis ideais de Borb, Phandoryss, Ponyboy e Chor’gorloth, estimativas de fim de transcendência, breakpoints de zona e um simulador de transcendências.",
+      "applicationName": "Calculadora de outsiders de Clicker Heroes",
+      "featureList": [
+        "Calcule os níveis ideais dos outsiders a partir de um save importado",
+        "Estime a zona mais alta, as Hero Souls e as Ancient Souls em que uma transcendência termina",
+        "Mostre os breakpoints de zona e os atributos com buffs na zona mais alta",
+        "Projete cada transcendência daqui até o fim do jogo",
+        "Grave os níveis de outsiders recomendados de volta no save"
+      ]
+    },
+    "transcensionViewer": {
+      "metaTitle": "Histórico de transcendências de Clicker Heroes – Ascensões",
+      "description": "Importe um save de Clicker Heroes e veja o histórico de transcendências com a duração das ascensões, HZE e os totais de Hero Souls e Ancient Souls.",
+      "applicationName": "Visualizador de transcendências de Clicker Heroes",
+      "featureList": [
+        "Veja o histórico de transcendências de Clicker Heroes",
+        "Inspecione as ascensões a partir dos dados do save importado",
+        "Confira os totais de HZE, Hero Souls e Ancient Souls"
+      ]
+    },
+    "mercenaryViewer": {
+      "metaTitle": "Mercenários de Clicker Heroes – Lista e estatísticas de missões",
+      "description": "Importe um save de Clicker Heroes e veja sua lista de mercenários e as estatísticas totais deles, incluindo níveis, tempo até morrer, vidas extras e missões concluídas.",
+      "applicationName": "Visualizador de mercenários de Clicker Heroes",
+      "featureList": [
+        "Veja a lista de mercenários de Clicker Heroes a partir de um save",
+        "Inspecione o nível, o tempo até morrer e as vidas extras de cada mercenário",
+        "Confira os totais de mercenários e missões de todo o jogo"
+      ]
+    },
+    "removeClanData": {
+      "metaTitle": "Remover dados do clã de um save de Clicker Heroes",
+      "description": "Remova os dados de clã, conta e login de um arquivo de save de Clicker Heroes importado e codifique de novo o save limpo localmente no seu navegador.",
+      "applicationName": "Ferramenta Remover dados do clã de Clicker Heroes",
+      "featureList": [
+        "Remova os campos de clã dos saves de Clicker Heroes",
+        "Limpe os valores de conta e login",
+        "Codifique de novo o save limpo no navegador"
+      ]
+    },
+    "saveConverter": {
+      "metaTitle": "Conversor de save de Clicker Heroes – PC para celular e vice-versa",
+      "description": "Converta arquivos de save de Clicker Heroes entre os formatos de PC e celular localmente no navegador, com a origem detectada e o número do patch.",
+      "applicationName": "Conversor de save de Clicker Heroes",
+      "featureList": [
+        "Detecte se o save de Clicker Heroes é de PC ou celular",
+        "Mostre o número do patch do save quando disponível",
+        "Converta saves entre os formatos de compressão de PC e celular",
+        "Codifique de novo os saves convertidos localmente no navegador"
+      ]
+    },
+    "saveJson": {
+      "metaTitle": "Save de Clicker Heroes em JSON – Decodifique e edite saves brutos",
+      "description": "Ferramenta para desenvolvedores que decodifica um save de Clicker Heroes em JSON bruto, permite editar qualquer campo à mão e codifica o JSON de volta em um código de save no navegador.",
+      "applicationName": "Ferramenta Save em JSON de Clicker Heroes",
+      "featureList": [
+        "Decodifique saves de Clicker Heroes em JSON formatado",
+        "Edite à mão qualquer campo bruto do save",
+        "Converta o JSON editado de volta em um código de save codificado",
+        "Formate e copie o JSON bruto do save no navegador"
+      ]
+    },
+    "newPlayerGuide": {
+      "metaTitle": "Guia para iniciantes de Clicker Heroes – Guia do novo jogador (1.0e12)",
+      "description": "Um guia para iniciantes em Clicker Heroes 1.0e12: sua primeira run, quando ascender, dar gild nos Power 5, quais ancients comprar, sua primeira transcendência, rubis, mercenários, clãs e relíquias."
+    },
+    "gildingChart": {
+      "metaTitle": "Tabela de gilds de Clicker Heroes – Em qual herói dar gild (1.0e12)",
+      "description": "Em qual herói dar gild em cada faixa de ouro em Clicker Heroes 1.0e12, de The Masked Samurai aos Ace Scouts. Digite seu ouro para achar o herói ideal."
+    },
+    "progressTips": {
+      "metaTitle": "Dicas de Clicker Heroes – 10 formas de progredir mais rápido",
+      "description": "Dez formas de acelerar o progresso em Clicker Heroes 1.0e12: quando ascender e transcender, qual herói subir de nível e dar gild, escolher uma build, calculadoras de ancients e outsiders, combos de skills, gastar rubis e passar das paredes."
+    },
+    "heroArtwork": {
+      "metaTitle": "Artes dos heróis de Clicker Heroes – Retratos normais e com gild",
+      "description": "Todos os heróis de Clicker Heroes 1.0e12, de Cid aos Ace Scouts, com o retrato normal e a arte com gild lado a lado."
+    },
+    "requestTool": {
+      "metaTitle": "Peça uma ferramenta ou calculadora de Clicker Heroes",
+      "description": "Sugira uma nova ferramenta ou calculadora de Clicker Heroes. Descreva a ferramenta que você quer, o que ela deve calcular e como você a usaria."
+    },
+    "requestGuide": {
+      "metaTitle": "Peça um guia de Clicker Heroes",
+      "description": "Sugira um novo guia de Clicker Heroes. Conte para a gente em que tema você está travado e o que um guia ideal deveria cobrir."
+    },
+    "faq": {
+      "metaTitle": "FAQ do editor de save de Clicker Heroes – Onde fica o save e ajuda",
+      "description": "Respostas às dúvidas comuns sobre o editor de save de Clicker Heroes: como carregar e exportar um save, onde fica o arquivo de save, se os dados do save saem do seu navegador e o que fazer quando um save não decodifica."
+    },
+    "feedback": {
+      "metaTitle": "Feedback sobre as ferramentas de Clicker Heroes",
+      "description": "Envie relatos de bugs, pedidos de recursos, ideias de fluxos que faltam e feedback geral sobre o editor de save e as ferramentas de Clicker Heroes."
+    }
+  },
+  "faqs": {
+    "saveEditor": [
+      {
+        "question": "Como edito um arquivo de save de Clicker Heroes?",
+        "answer": "Cole o código do seu save de Clicker Heroes no editor, decodifique, mude os campos que você precisa e depois copie o resultado codificado de volta na janela de importação do jogo."
+      },
+      {
+        "question": "Este editor consegue mudar ouro, rubis, Hero Souls e ancients?",
+        "answer": "Sim. O editor tem controles para as moedas principais, níveis dos heróis, Hero Souls, progresso ligado aos ancients, ascensões, conquistas, skins, mercenários, outsiders, dados do clã e campos personalizados do save. A edição de JSON bruto fica na ferramenta separada Save em JSON."
+      },
+      {
+        "question": "Meu save de Clicker Heroes é enviado para um servidor?",
+        "answer": "Não. O editor roda no navegador e processa os dados do save no seu próprio dispositivo, então a edição funciona sem enviar seu save para este site."
+      }
+    ],
+    "site": [
+      {
+        "id": "using-the-editor",
+        "title": "Usando o editor",
+        "summary": "Como colocar um save no editor, alterá-lo e levá-lo de volta para o Clicker Heroes.",
+        "faqs": [
+          {
+            "question": "Como carrego meu save no editor?",
+            "answer": "Exporte seu save no jogo, cole o código no passo 1 do editor de save e clique em Carregar save. Você também pode escolher seu arquivo .save pelo seletor de arquivos. O save é decodificado na hora e o passo 2 é liberado. Várias calculadoras também trazem saves de exemplo se você só quiser ver como uma ferramenta funciona."
+          },
+          {
+            "question": "Onde está meu arquivo de save de Clicker Heroes?",
+            "answer": "No Windows, tanto a versão da Steam quanto a independente usam C:\\Users\\[USERNAME]\\AppData\\Roaming\\ClickerHeroes2\\Local Store\\saves, que contém um arquivo .save e um .backup. No Mac pela Steam fica em ~/Library/Application Support/Steam/userdata/[USERID]/363970/remote/, e a versão independente para Mac usa ~/Library/Application Support/com.playsaurus.clickerheroes/. A mesma lista aparece em \"Onde está meu arquivo de save?\" no editor."
+          },
+          {
+            "question": "Como coloco o save editado de volta no jogo?",
+            "answer": "Clique em Codificar save no passo 3, copie o código codificado e cole na opção de importar save do Clicker Heroes. Codifique de novo depois de qualquer outra edição — a caixa de exportação só guarda o código da última vez que você clicou no botão."
+          },
+          {
+            "question": "O que eu posso mudar de verdade?",
+            "answer": "Ouro, rubis, Hero Souls, itens da loja e de temporada, níveis e gilds dos heróis, skins, conquistas, ascensões e transcendências, dados do clã, mercenários e outsiders. O que as seções não cobrem pode ser escrito pelo caminho na seção Campo personalizado, ou à mão na ferramenta Save em JSON."
+          },
+          {
+            "question": "O editor funciona com saves de celular?",
+            "answer": "Ele decodifica códigos de save de PC, de celular e de versões antigas. Se você precisa que um save de uma plataforma carregue na outra, passe ele primeiro pela ferramenta Conversor de save."
+          }
+        ]
+      },
+      {
+        "id": "safety-and-privacy",
+        "title": "Segurança e privacidade",
+        "summary": "O que acontece com os dados do seu save e como evitar perder progresso.",
+        "faqs": [
+          {
+            "question": "Meu save é enviado para um servidor?",
+            "answer": "Não. A decodificação, a edição e a codificação rodam no seu navegador, então o código do seu save nunca é enviado para este site nem guardado fora do seu dispositivo."
+          },
+          {
+            "question": "Devo fazer backup do meu save antes de editar?",
+            "answer": "Sempre. Guarde uma cópia do código do save original, ou do arquivo .save, antes de importar um save editado. No Windows também existe um arquivo .backup ao lado do save que você pode usar se precisar."
+          },
+          {
+            "question": "Editar meu save pode estragá-lo?",
+            "answer": "Pode. Valores muito fora do que o jogo espera, ou um campo personalizado escrito no caminho errado, podem gerar um save que o jogo se recusa a carregar. Mude uma coisa de cada vez, importe de novo e confira o jogo antes de fazer a próxima edição."
+          },
+          {
+            "question": "Editar meu save é contra as regras?",
+            "answer": "Editar um save single-player é uma escolha sua, mas os valores editados podem afetar as raids de clã e os rankings, e modificar os dados do save pode violar os termos do jogo. As ferramentas são oferecidas como estão; use por sua conta e risco."
+          },
+          {
+            "question": "Como removo os dados de clã e de conta antes de compartilhar um save?",
+            "answer": "Use a ferramenta Remover dados do clã. Ela apaga os campos de clã, conta e login de um save importado e codifica de novo o resultado limpo no seu navegador."
+          }
+        ]
+      },
+      {
+        "id": "troubleshooting",
+        "title": "Solução de problemas",
+        "summary": "Os erros mais comuns e o que costuma causá-los.",
+        "faqs": [
+          {
+            "question": "O editor diz que o texto não parece um save de Clicker Heroes compatível",
+            "answer": "O texto colado não está em nenhum formato de save que o editor reconheça. Quase sempre isso significa que só parte do código foi copiada, ou que o texto veio de outro jogo ou ferramenta. Copie o save de novo, do começo até o fim do código, ou carregue o arquivo .save diretamente."
+          },
+          {
+            "question": "O código do save não é base64 válido ou não descompacta",
+            "answer": "O código chegou ao editor incompleto ou alterado. Quebras de linha e espaços não atrapalham — caracteres faltando, sim. Copie o save inteiro de novo ou use o seletor de arquivos em vez de colar."
+          },
+          {
+            "question": "Nada acontece depois que colo meu save",
+            "answer": "O editor decodifica ao carregar, não ao colar. Clique em Carregar save depois de colar; deve aparecer o aviso \"Save carregado.\" e as seções de edição devem ser liberadas."
+          },
+          {
+            "question": "O jogo não aceita meu save editado",
+            "answer": "Confira se você clicou em Codificar save depois da última edição e copiou o código codificado inteiro. Se o jogo ainda recusar, importe seu backup e refaça as edições em passos menores para achar o valor que ele não aceita."
+          },
+          {
+            "question": "Outra coisa está errada, ou falta algum valor",
+            "answer": "Mande pelo formulário de feedback, dizendo qual ferramenta você estava usando e o que esperava que acontecesse. Relatos de bugs e pedidos de campos que o editor ainda não cobre são bem-vindos."
+          }
+        ]
+      }
+    ],
+    "gildingChart": [
+      {
+        "question": "Preciso dar gild de novo em cada linha da tabela de gilds?",
+        "answer": "Não. Mover os gilds custa Hero Souls, e enquanto você está dando instakill, dano extra não faz diferença. Pule linhas à vontade e só mova os gilds quando os monstros começarem a sobreviver aos seus golpes. A tabela mostra o que é ideal, não uma lista que você precisa completar."
+      },
+      {
+        "question": "Por que o mesmo herói aparece mais de uma vez na tabela de gilds?",
+        "answer": "Os heróis ganham multiplicadores de dano de 10x em marcos de nível, e o custo de subir de nível aumenta conforme você avança. Assim, Wepwawet no nível 5.000 pode ficar atrás de Gog e depois passar dele de novo no 6.000, quando Wep pega o próximo multiplicador. Entre e383 e e500 os dois se revezam a cada 500 níveis, mais ou menos."
+      },
+      {
+        "question": "Devo dar gild no Dread Knight em Clicker Heroes?",
+        "answer": "Não. Dar gild no Dread Knight nunca é ideal em nenhum momento do jogo. Pule ele."
+      },
+      {
+        "question": "Por que Wepwawet e Gog param de se revezar depois de e442?",
+        "answer": "Gog não recebe mais multiplicadores de 10x depois do nível 8.000, então não consegue mais passar Wepwawet. Fique no Wepwawet de e442 até Tsuchi em e500."
+      },
+      {
+        "question": "Por que Tsuchi no nível 1 é melhor que Wepwawet no nível 9.000?",
+        "answer": "Contratar Tsuchi custa menos do que comprar mais 25 níveis de Wepwawet nesse ponto, e o dano base dele está em outro patamar. O mesmo padrão se repete com The Maw, que no nível 1 causa cerca de 1e6750x o dano de Cadu no nível 680.625."
+      },
+      {
+        "question": "Por que Cadu e Ceus se alternam na tabela de gilds?",
+        "answer": "Os Tomb Guardians dão buff um no outro: Cadu libera uma melhoria para Ceus, Ceus libera uma para Cadu, e assim por diante. Você sobe o que estiver na vez. Qualquer um dos dois serve para começar em e25.500, e depois da última melhoria de Ceus no 588.000 você fica no Cadu até The Maw."
+      },
+      {
+        "question": "Por que Yachiyl começa no nível 157.500 e não no nível 1?",
+        "answer": "Yachiyl só passa The Maw quando chega à primeira melhoria, no nível 157.500. Rose tem o mesmo problema contra Yachiyl e precisa chegar ao nível 9.700 primeiro."
+      },
+      {
+        "question": "Por que Dorothy é pulada tantas vezes no rodízio dos Ace Scouts?",
+        "answer": "Vários níveis de melhoria dela custam mais ouro que a melhoria equivalente de Rose e causam menos dano, então Dorothy 1, 2 e 4 são compras piores do que simplesmente subir Rose. Ela ainda aparece três vezes no rodízio, então siga as linhas como estão em vez de descartá-la."
+      },
+      {
+        "question": "Quantas Ancient Souls preciso para chegar a um herói da tabela de gilds?",
+        "answer": "A coluna de Ancient Souls é uma referência aproximada até Xavira, em cerca de 6.000. Depois disso ela não é tabulada de forma útil, porque o progresso depende muito da sua distribuição de outsiders e do número de transcendências."
+      }
+    ]
+  },
+  "faqPage": {
+    "intro": "Dúvidas comuns sobre o editor de save de Clicker Heroes e as ferramentas em volta dele — carregar e exportar saves, o que acontece com os dados do seu save e o que os erros significam quando um save não decodifica.",
+    "contentsLabel": "Conteúdo do FAQ",
+    "contents": "Conteúdo",
+    "footer": "Ainda travado, ou acha que algo aqui está errado? <link>Envie seu feedback</link> e conte o que você estava tentando fazer — relatos de bugs e perguntas que esta página deveria responder são úteis."
+  }
+}

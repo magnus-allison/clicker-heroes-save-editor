@@ -1,0 +1,56 @@
+{
+  "gildingChart": {
+    "phases": {
+      "1": "A escalada e10",
+      "2": "Wepwawet e Gog",
+      "3": "Heróis solo",
+      "4": "Tomb Guardians",
+      "5": "The Maw e Yachiyl",
+      "6": "Ace Scouts"
+    },
+    "notes": {
+      "dreadKnight": "Nunca vale a pena dar gild no Dread Knight. As fontes indicam 1.000 ou 1.500 como nível inicial; qualquer um serve.",
+      "bareExponent": "Daqui em diante o ouro aparece só como o expoente, o número depois do “e”.",
+      "rangersAndBeasts": "A maioria dos rangers e das feras passa a ser a melhor opção no nível 1.000.",
+      "thePattern": "O padrão a esta altura: contrate até 1.000, dê gild, suba até 1.500 e passe para o próximo.",
+      "bomberMaxUpgrade": "Com Chiron no 1.100, suba Bomber Max até o nível 100 para pegar a melhoria de +50% de ouro encontrado dele.",
+      "gogUpgrade": "Com Moloch no 1.100, suba Gog até o nível 100 para pegar a melhoria de +50% de DPS para todos os heróis dele.",
+      "followWepwawet": "Daqui em diante, os gilds acompanham as melhorias do Wepwawet.",
+      "bettyClicker": "Precisa da melhoria do Wepwawet no nível 1.500, que fortalece muito a Betty.",
+      "kingMidas": "Precisa da melhoria do Wepwawet no nível 2.000. A wiki indica 13.575 como nível final.",
+      "wepAndGog": "Agora Wep e Gog se revezam a cada ~500 níveis, conforme cada um ganha um novo 10x.",
+      "stayOnWep": "Gog não ganha mais multiplicadores 10x depois do nível 8.000, então fique no Wep daqui em diante.",
+      "hireTsuchi": "Contratar Tsuchi no nível 1 custa menos que mais 25 níveis de Wepwawet e já é melhor na hora.",
+      "lastSoulsEstimate": "Última linha com uma estimativa útil de Ancient Souls. Depois daqui, use uma calculadora de progressão.",
+      "eitherGuardian": "Qualquer um dos Guardians serve aqui. Cadu pega a primeira melhoria, que fortalece Ceus.",
+      "ceusBoostsCadu": "No 116.000, Ceus fortalece Cadu. O padrão alternado continua daqui em diante.",
+      "lastCeusUpgrade": "A última melhoria do Ceus é desbloqueada aqui. Depois disso, fique no Cadu até The Maw.",
+      "theMaw": "The Maw no nível 1 causa cerca de 1e6750x o dano do Cadu no 680.625, pelo mesmo preço.",
+      "yachiyl": "Yachiyl causa menos dano que The Maw até a primeira melhoria no 157.500, e é por isso que você começa nele ali. Chegar a esta linha significa que você já zerou a 1.0e10.",
+      "roseLevel": "Por causa do escalonamento de heróis da 1.0e11, Rose não é melhor que Yachiyl logo de cara. Ela precisa do nível 9.700.",
+      "noUpgradesFirst": "Passe primeiro por cada scout sem melhorias.",
+      "firstUpgrades": "Agora comece a pegar a primeira melhoria de cada scout. Esse padrão de rodízio continua até o fim.",
+      "skipDorothy1": "Pule a Dorothy 1: custa mais, mas causa menos dano que a Rose 2.",
+      "skipDorothy2": "Pule a Dorothy 2, pelo mesmo motivo.",
+      "dorothy3": "A Dorothy 3 vale a pena, ao contrário da 1 e da 2.",
+      "skipDorothy4": "Pule a Dorothy 4, pelo mesmo motivo.",
+      "endOfChart": "Fim da tabela."
+    },
+    "forever": "Para sempre",
+    "lookup": {
+      "label": "Seu ouro",
+      "inputLabel": "Seu ouro atual",
+      "hint": "Cole o número inteiro ou só o expoente. Só a ordem de grandeza importa.",
+      "invalid": "Isso não parece uma quantidade de ouro. Tente algo como <mono>1.4e442</mono> ou <mono>442</mono>.",
+      "belowChart": "<mono>{gold}</mono> está abaixo da primeira entrada da tabela, em <mono>{first}</mono>. A tabela começa depois da sua primeira transcendência. Até lá, coloque os gilds que você tiver em um dos Power 5 e suba o nível desse herói.",
+      "phase": "Fase {phase} · {title}",
+      "fromLevel": "Do nível",
+      "toLevel": "Até o nível",
+      "goldRange": "Faixa de ouro",
+      "approxAncientSouls": "AS aprox.",
+      "defaultNote": "Passe todos os seus gilds para {hero} e suba do nível {from} até o {to}.",
+      "nextUp": "Próximo: <strong>{hero}</strong> em <mono>{gold}</mono>, a {count, plural, one {{distance} ordem} other {{distance} ordens}} de grandeza daqui.",
+      "lastRow": "Esta é a última linha da tabela. Não há mais nada tabulado."
+    }
+  }
+}

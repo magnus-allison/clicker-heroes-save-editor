@@ -22,6 +22,14 @@ import deNewPlayerGuide from './de/newPlayerGuide.json';
 import deSeo from './de/seo.json';
 import deToolAbout from './de/toolAbout.json';
 import deTools from './de/tools.json';
+import ptCommon from './pt/common.json';
+import ptEditor from './pt/editor.json';
+import ptGuides from './pt/guides.json';
+import ptGuidesUi from './pt/guidesUi.json';
+import ptNewPlayerGuide from './pt/newPlayerGuide.json';
+import ptSeo from './pt/seo.json';
+import ptToolAbout from './pt/toolAbout.json';
+import ptTools from './pt/tools.json';
 
 /*
  * One JSON file per area of the site, so each can be translated on its own.
@@ -62,7 +70,18 @@ const de: typeof en = {
 	seo: deSeo
 };
 
-export const messages = { en, es, de };
+const pt: typeof en = {
+	common: ptCommon,
+	editor: ptEditor,
+	tools: ptTools,
+	toolAbout: ptToolAbout,
+	guides: ptGuides,
+	guidesUi: ptGuidesUi,
+	newPlayerGuide: ptNewPlayerGuide,
+	seo: ptSeo
+};
+
+export const messages = { en, es, de, pt };
 
 /**
  * Namespaces client components read. Only these are serialised into the page

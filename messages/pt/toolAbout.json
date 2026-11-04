@@ -1,0 +1,114 @@
+{
+  "heading": "Como funciona",
+  "seeAlso": "Veja também:",
+  "links": {
+    "saveEditor": "Editor de save",
+    "ancientsCalculator": "Calculadora de ancients",
+    "outsidersCalculator": "Calculadora de outsiders",
+    "instakillCalculator": "Calculadora de instakill",
+    "transcensionViewer": "Visualizador de transcendências",
+    "mercenaryViewer": "Visualizador de mercenários",
+    "saveConverter": "Conversor de save",
+    "removeClanData": "Remover dados do clã",
+    "saveJson": "Save em JSON",
+    "newPlayerGuide": "Guia para iniciantes",
+    "gildingChart": "Tabela de gilds",
+    "progressTips": "Dicas para progredir",
+    "faq": "Perguntas frequentes"
+  },
+  "ancients": {
+    "intro": "Distribui suas Hero Souls entre os ancients que você tem, seguindo as Rules of Thumb da comunidade. Adaptado do <link>otimizador do kepow.org</link>.",
+    "builds": {
+      "title": "Builds",
+      "body": "A build idle sobe tudo em função do Siyalatas, e a ativa em função do Fragsworth. A híbrida sobe os dois, e a proporção define quantos níveis de Fragsworth você compra para cada nível de Siyalatas."
+    },
+    "bestHero": {
+      "title": "Melhor herói",
+      "body": "Cada grupo de heróis tem uma relação diferente entre ouro e dano, o que muda até onde vale a pena subir o nível dos ancients de ouro."
+    }
+  },
+  "instakill": {
+    "intro": "Quando todo monstro morre com um golpe, a velocidade depende dos monstros por zona e dos frames por abate. Esta ferramenta calcula os dois a partir dos seus níveis de Kumawakamaru e Borb.",
+    "monstersPerZone": {
+      "title": "Monstros por zona",
+      "body": "As zonas começam com 10 monstros e ganham 0,1 a cada 500 zonas. Kumawakamaru remove até 8, Borb multiplica esse efeito e o número nunca fica abaixo de 2."
+    },
+    "routeTime": {
+      "title": "Duração da rota",
+      "body": "Cada abate leva 15 frames, ou 14 com instakill de AC. Os frames são somados zona por zona e divididos pelo seu FPS."
+    }
+  },
+  "mercenary": {
+    "intro": "Mostra seus mercenários em uma única tabela, junto com as estatísticas acumuladas que o jogo registra, mas quase nunca mostra.",
+    "roster": {
+      "title": "Elenco",
+      "body": "Nível, experiência, tempo até morrer, vidas extras, última missão e a chance de sucesso dela para cada vaga."
+    },
+    "lifetimeStats": {
+      "title": "Estatísticas acumuladas",
+      "body": "Mercenários revividos e enterrados, nível mais alto alcançado e missões concluídas por tipo de recompensa."
+    }
+  },
+  "outsiders": {
+    "intro": "Transforma as Ancient Souls do seu save em níveis de outsiders e estima onde a transcendência termina. Adaptado da <link>calculadora de outsiders do Driej</link>.",
+    "spendingOrder": {
+      "title": "Ordem de gasto",
+      "body": "Primeiro Borb, depois Rhageist, K’Ariqua, Orphalas e Sen-Akhan até os limites deles. O resto vai para Chor’gorloth, Phandoryss e Ponyboy, conforme qual render mais por soul."
+    },
+    "applying": {
+      "title": "Aplicando os níveis",
+      "body": "O plano usa todas as Ancient Souls que você já ganhou, então faça o respec no jogo primeiro, ou aplique os níveis ao seu save e importe-o."
+    }
+  },
+  "removeClanData": {
+    "intro": "Um save também guarda os dados do seu clã e da sua conta. Remova-os antes de postar um save para pedir ajuda ou de passá-lo para outra pessoa.",
+    "removed": {
+      "title": "O que é removido",
+      "body": "Todos os campos do clã, incluindo a classe de raid, além do email, do hash da senha e dos campos de conta e login. Seu progresso não é alterado."
+    }
+  },
+  "saveConverter": {
+    "intro": "Saves de PC e de celular guardam os mesmos dados, mas são compactados de forma diferente, então um save de uma plataforma não pode ser importado na outra. Esta ferramenta o recodifica para a outra plataforma.",
+    "difference": {
+      "title": "A diferença",
+      "body": "Saves de PC usam deflate puro; saves de celular envolvem o mesmo JSON em zlib. Saves antigos legados também são reconhecidos."
+    }
+  },
+  "saveJson": {
+    "intro": "Por baixo da codificação, um save é um grande objeto JSON. Decodifique-o, edite qualquer campo à mão e codifique-o de novo.",
+    "careful": {
+      "title": "Cuidado",
+      "body": "Nada verifica se os seus valores são os que o jogo espera. Guarde o original e mude uma coisa de cada vez."
+    }
+  },
+  "transcension": {
+    "intro": "O jogo guarda um histórico das suas transcendências e ascensões recentes, mas nunca o mostra. Esta ferramenta o lê do seu save.",
+    "shows": {
+      "title": "O que mostra",
+      "body": "Duração, ascensões, zona mais alta, Hero Souls e Ancient Souls de cada transcendência. Escolha uma para ver as ascensões dela."
+    },
+    "helps": {
+      "title": "Por que ajuda",
+      "body": "Quando as últimas ascensões renderam pouco pelo tempo que levaram, é hora de transcender."
+    }
+  },
+  "saveEditor": {
+    "heading": "Decodificador e editor de save de Clicker Heroes grátis",
+    "intro": "Este editor de save de Clicker Heroes roda no navegador: ele decodifica códigos de save, mostra os dados do jogo que podem ser editados e recodifica o resultado para você importar de volta no Clicker Heroes. Ele serve para recuperar progresso, testar builds, criar saves em um estado específico e ver o que há dentro de um arquivo de save de Clicker Heroes.",
+    "features": {
+      "progress": {
+        "title": "Progresso editável",
+        "body": "Altere ouro, rubis, Hero Souls, ascensões, transcendências, dados de zona, valores do clã, outsiders e campos personalizados."
+      },
+      "heroes": {
+        "title": "Heróis e desbloqueios",
+        "body": "Examine e ajuste heróis, níveis, gilds, skins, mercenários, conquistas e valores do save relacionados ao perfil."
+      },
+      "clientSide": {
+        "title": "Roda no seu navegador",
+        "body": "Os códigos de save são decodificados e codificados localmente no navegador, então tudo é rápido e você não precisa instalar nenhum trainer ou mod no computador."
+      }
+    },
+    "faqHeading": "Perguntas frequentes sobre o editor de save de Clicker Heroes"
+  }
+}

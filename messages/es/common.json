@@ -157,7 +157,8 @@
   "localeNames": {
     "en": "English",
     "es": "Español",
-    "de": "Deutsch"
+    "de": "Deutsch",
+    "pt": "Português"
   },
   "notFound": {
     "eyebrow": "Error 404",
