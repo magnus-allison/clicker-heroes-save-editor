@@ -1,0 +1,56 @@
+{
+  "gildingChart": {
+    "phases": {
+      "1": "La montée jusqu’à e10",
+      "2": "Wepwawet et Gog",
+      "3": "Héros en solo",
+      "4": "Tomb Guardians",
+      "5": "The Maw et Yachiyl",
+      "6": "Ace Scouts"
+    },
+    "notes": {
+      "dreadKnight": "Dorer Dread Knight n’est jamais optimal. Les sources indiquent 1 000 ou 1 500 comme niveau de départ ; les deux conviennent.",
+      "bareExponent": "À partir d’ici, l’or est noté par son seul exposant, le nombre après le « e ».",
+      "rangersAndBeasts": "La plupart des rangers et des bêtes deviennent optimaux au niveau 1 000.",
+      "thePattern": "Le schéma, à ce stade : recrute jusqu’à 1 000, dore, monte jusqu’à 1 500, puis passe au suivant.",
+      "bomberMaxUpgrade": "Avec Chiron au niveau 1 100, monte Bomber Max au niveau 100 pour son amélioration de +50 % d’or trouvé.",
+      "gogUpgrade": "Avec Moloch au niveau 1 100, monte Gog au niveau 100 pour son amélioration de +50 % de DPS pour tous les héros.",
+      "followWepwawet": "À partir d’ici, les gilds suivent les améliorations de Wepwawet.",
+      "bettyClicker": "Nécessite l’amélioration de Wepwawet au niveau 1 500, qui renforce fortement Betty.",
+      "kingMidas": "Nécessite l’amélioration de Wepwawet au niveau 2 000. Le wiki indique 13 575 comme niveau de fin.",
+      "wepAndGog": "Wep et Gog alternent désormais tous les ~500 niveaux, à mesure que chacun gagne un nouveau 10x.",
+      "stayOnWep": "Gog ne reçoit plus de multiplicateur 10x après le niveau 8 000, alors reste sur Wep à partir d’ici.",
+      "hireTsuchi": "Recruter Tsuchi au niveau 1 coûte moins cher que 25 niveaux de plus pour Wepwawet, et c’est tout de suite plus efficace.",
+      "lastSoulsEstimate": "Dernière ligne avec une estimation pertinente des Ancient Souls. Au-delà, utilise un calculateur de progression.",
+      "eitherGuardian": "N’importe quel Guardian convient ici. Cadu obtient la première amélioration, qui renforce Ceus.",
+      "ceusBoostsCadu": "À 116 000, Ceus renforce Cadu. L’alternance continue à partir d’ici.",
+      "lastCeusUpgrade": "La dernière amélioration de Ceus se débloque ici. Ensuite, reste sur Cadu jusqu’à The Maw.",
+      "theMaw": "The Maw au niveau 1 inflige environ 1e6750x les dégâts de Cadu au niveau 680 625, pour le même prix.",
+      "yachiyl": "Yachiyl inflige moins de dégâts que The Maw jusqu’à sa première amélioration à 157 500, c’est pourquoi tu commences à ce niveau. Atteindre cette ligne signifie que tu as terminé la 1.0e10.",
+      "roseLevel": "À cause du scaling des héros de la 1.0e11, Rose n’est pas tout de suite meilleure que Yachiyl. Elle a besoin du niveau 9 700.",
+      "noUpgradesFirst": "Passe d’abord par chaque scout sans amélioration.",
+      "firstUpgrades": "Commence maintenant à récupérer la première amélioration de chaque scout. Cette rotation continue jusqu’à la fin.",
+      "skipDorothy1": "Saute Dorothy 1 : elle coûte plus cher mais inflige moins de dégâts que Rose 2.",
+      "skipDorothy2": "Saute Dorothy 2, pour la même raison.",
+      "dorothy3": "Dorothy 3 vaut le coup, contrairement à 1 et 2.",
+      "skipDorothy4": "Saute Dorothy 4, pour la même raison.",
+      "endOfChart": "Fin du tableau."
+    },
+    "forever": "Pour toujours",
+    "lookup": {
+      "label": "Ton or",
+      "inputLabel": "Ton or actuel",
+      "hint": "Colle le nombre entier ou seulement l’exposant. Seul l’ordre de grandeur compte.",
+      "invalid": "Ça ne ressemble pas à une quantité d’or. Essaie par exemple <mono>1.4e442</mono> ou <mono>442</mono>.",
+      "belowChart": "<mono>{gold}</mono> est en dessous de la première entrée du tableau, à <mono>{first}</mono>. Le tableau commence après ta première transcendance. D’ici là, mets tous tes gilds sur l’un des Power 5 et monte ce héros de niveau.",
+      "phase": "Phase {phase} · {title}",
+      "fromLevel": "Du niveau",
+      "toLevel": "Au niveau",
+      "goldRange": "Plage d’or",
+      "approxAncientSouls": "AS approx.",
+      "defaultNote": "Déplace tous tes gilds sur {hero} et monte-le du niveau {from} au niveau {to}.",
+      "nextUp": "Ensuite : <strong>{hero}</strong> à <mono>{gold}</mono>, à {count, plural, one {{distance} ordre} other {{distance} ordres}} de grandeur.",
+      "lastRow": "C’est la dernière ligne du tableau. Rien d’autre n’est répertorié au-delà."
+    }
+  }
+}

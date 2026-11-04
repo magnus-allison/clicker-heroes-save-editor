@@ -1,0 +1,184 @@
+{
+  "banner": {
+    "homeLabel": "Accueil de clickerheroes.dev",
+    "tagline": "Outils et calculateurs gratuits - Clicker Heroes",
+    "nav": {
+      "label": "Sections",
+      "tools": "Outils",
+      "guides": "Guides"
+    }
+  },
+  "breadcrumb": {
+    "label": "Fil d’Ariane",
+    "switchTool": "Changer d’outil",
+    "groups": {
+      "tools": "outils",
+      "guides": "guides",
+      "additionalInfo": "infos complémentaires"
+    }
+  },
+  "pages": {
+    "saveEditor": "Éditeur de sauvegarde",
+    "instakillCalculator": "Calculateur d’instakill",
+    "ancientsCalculator": "Calculateur d’ancients",
+    "outsidersCalculator": "Calculateur d’outsiders",
+    "transcensionViewer": "Visualiseur de transcendances",
+    "mercenaryViewer": "Visualiseur de mercenaires",
+    "removeClanData": "Supprimer les données de clan",
+    "saveConverter": "Convertisseur de sauvegarde",
+    "saveJson": "Sauvegarde en JSON",
+    "newPlayerGuide": "Guide du débutant",
+    "gildingChart": "Tableau des gilds des héros",
+    "heroArtwork": "Illustrations des héros",
+    "progressTips": "10 astuces pour progresser plus vite",
+    "requestTool": "Demander un nouvel outil",
+    "requestGuide": "Demander un nouveau guide",
+    "faq": "FAQ",
+    "feedback": "Avis"
+  },
+  "home": {
+    "title": "Éditeur de sauvegarde Clicker Heroes, <line>calculateurs et guides</line>",
+    "intro": "Des outils gratuits pour Clicker Heroes 1.0e12. Tout fonctionne dans ton navigateur.",
+    "badges": {
+      "free": "100 % gratuit",
+      "browser": "Dans le navigateur",
+      "noAccount": "Aucun compte requis"
+    }
+  },
+  "cards": {
+    "open": "Ouvrir",
+    "visit": "Visiter",
+    "iconAlt": "Icône {title}",
+    "tags": {
+      "mostPopular": "Le plus populaire",
+      "new": "Nouveau",
+      "comingSoon": "Bientôt disponible"
+    },
+    "tools": {
+      "saveEditor": {
+        "title": "Éditeur de sauvegarde",
+        "description": "Inspecte les données de ta sauvegarde, modifie des valeurs et exporte ta sauvegarde mise à jour"
+      },
+      "outsidersCalculator": {
+        "title": "Calculateur d’outsiders",
+        "description": "Planifie les niveaux de tes outsiders, les estimations de transcendance et tes prochaines transcendances"
+      },
+      "instakillCalculator": {
+        "title": "Calculateur d’instakill",
+        "description": "Estime la durée du parcours, les monstres par zone et les zones par heure"
+      },
+      "ancientsCalculator": {
+        "title": "Calculateur d’ancients",
+        "description": "Obtiens les niveaux et coûts optimaux des ancients pour tes Hero Souls"
+      },
+      "transcensionViewer": {
+        "title": "Visualiseur de transcendances",
+        "description": "Inspecte l’historique de tes transcendances et explore les ascensions d’une sauvegarde"
+      },
+      "mercenaryViewer": {
+        "title": "Visualiseur de mercenaires",
+        "description": "Consulte tes mercenaires et leurs statistiques cumulées à partir d’une sauvegarde"
+      },
+      "relicViewer": {
+        "title": "Visualiseur de reliques",
+        "description": "Inspecte les reliques, leurs bonus et leur rareté à partir d’une sauvegarde"
+      },
+      "removeClanData": {
+        "title": "Supprimer les données de clan",
+        "description": "Supprime les champs de clan, de compte et de connexion d’une sauvegarde, directement dans ton navigateur"
+      },
+      "saveConverter": {
+        "title": "Convertisseur de sauvegarde",
+        "description": "Convertis tes fichiers de sauvegarde entre les formats PC et mobile"
+      },
+      "saveJson": {
+        "title": "Sauvegarde en JSON",
+        "description": "Convertis des sauvegardes en JSON brut et inversement. Conçu pour les développeurs"
+      },
+      "requestTool": {
+        "title": "Demander un nouvel outil",
+        "description": "Suggère un nouvel outil que tu aimerais voir"
+      }
+    },
+    "guides": {
+      "newPlayerGuide": {
+        "title": "Guide du débutant",
+        "description": "De la nouvelle sauvegarde à la première transcendance : ascension, ancients, rubis, mercenaires et clans"
+      },
+      "gildingChart": {
+        "title": "Tableau des gilds",
+        "description": "Quel héros dorer à chaque palier d’or, du Samurai jusqu’aux Ace Scouts"
+      },
+      "progressTips": {
+        "title": "10 astuces pour progresser plus vite",
+        "description": "Ascension, gilds, builds, combos de compétences, rubis et comment franchir les murs"
+      },
+      "heroArtwork": {
+        "title": "Illustrations des héros",
+        "description": "Le portrait de chaque héros, dans sa version normale et dorée"
+      },
+      "requestGuide": {
+        "title": "Demander un nouveau guide",
+        "description": "Suggère un nouveau guide que tu aimerais voir, ou contribue à un guide existant"
+      }
+    },
+    "additional": {
+      "feedback": {
+        "title": "Donner ton avis",
+        "description": "Aide-nous à améliorer la qualité du site en nous faisant part de ton avis"
+      },
+      "faq": {
+        "title": "FAQ",
+        "description": "Réponses aux questions fréquentes sur l’éditeur, les fichiers de sauvegarde et plus encore"
+      },
+      "github": {
+        "title": "Dépôt GitHub",
+        "description": "magnus-allison/clicker-heroes-save-editor"
+      },
+      "coffee": {
+        "title": "Buy Me a Coffee",
+        "description": "Aide à garder l’éditeur gratuit et à jour grâce à une petite contribution"
+      },
+      "game": {
+        "title": "Clicker Heroes",
+        "description": "Lien vers le site officiel du jeu"
+      },
+      "steam": {
+        "title": "Clicker Heroes sur Steam",
+        "description": "Lien vers la page officielle du jeu sur Steam"
+      }
+    }
+  },
+  "footer": {
+    "label": "Site",
+    "disclaimer": "Projet indépendant, sans lien avec les créateurs de Clicker Heroes.",
+    "language": "Langue"
+  },
+  "localeNames": {
+    "en": "English",
+    "es": "Español",
+    "de": "Deutsch",
+    "pt": "Português",
+    "fr": "Français"
+  },
+  "notFound": {
+    "eyebrow": "Erreur 404",
+    "kicker": "Page demandée introuvable",
+    "title": "Page introuvable",
+    "body": "La page demandée n’existe pas, a été déplacée ou l’URL a été mal saisie. L’éditeur de sauvegarde reste accessible depuis sa page d’outil.",
+    "available": "Accessible d’ici",
+    "openEditor": "Ouvrir l’éditeur de sauvegarde",
+    "openEditorDescription": "Reviens à l’éditeur principal et charge un fichier de sauvegarde.",
+    "about": "En savoir plus sur l’outil",
+    "aboutDescription": "Accède à la présentation et aux fonctions d’édition prises en charge."
+  },
+  "ui": {
+    "step": "Étape {number}",
+    "copy": "Copier",
+    "copied": "Copié",
+    "selectOption": "Choisir une option",
+    "numberInput": "Champ numérique",
+    "textInput": "Champ de texte",
+    "opensInNewTab": "(s’ouvre dans un nouvel onglet)"
+  }
+}

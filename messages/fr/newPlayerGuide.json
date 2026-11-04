@@ -1,0 +1,138 @@
+{
+  "intro": "Tout ce qu’il te faut pour passer d’une nouvelle sauvegarde à ta première transcendance dans Clicker Heroes 1.0e12. Ce guide part d’une build idle, la façon la plus simple de commencer : l’or continue de s’accumuler quand le jeu est fermé. Une fois que tu auras transcendé et obtenu quelques autoclickers en jeu, une build hybride ou active t’emmènera plus loin.",
+  "parts": {
+    "theEarlyGame": "Le début de partie",
+    "ancients": "Ancients",
+    "transcending": "Transcender",
+    "theSideSystems": "Les systèmes annexes",
+    "afterThisGuide": "Après ce guide"
+  },
+  "sections": {
+    "yourFirstRun": {
+      "title": "Ta première run",
+      "summary": "La première partie est la plus lente que tu feras jamais. Atteins la zone 130 et repars de zéro.",
+      "items": {
+        "firstUpgrade": "Monte chaque héros jusqu’à sa première amélioration au niveau 10, puis passe au héros suivant.",
+        "laterUpgrades": "Plus bas dans la liste des héros, pousse jusqu’à l’amélioration du niveau 25 avant de changer — et plus tard, jusqu’au niveau 50.",
+        "allHeroUpgrades": "Reviens acheter les <link>améliorations de DPS pour tous les héros</link> dès que tu peux te les offrir.",
+        "lastUpgrade": "Ne monte pas encore les héros au-delà de leur dernière amélioration.",
+        "failedBoss": "Tu as échoué face à un boss ? Farme de l’or dans la zone précédente jusqu’à pouvoir le tuer.",
+        "longWaits": "Attends-toi à de longues attentes au début. L’or s’accumule hors ligne, donc t’absenter un moment est une stratégie tout à fait valable.",
+        "skills": "Lance toutes tes compétences pour franchir un mur de boss, environ toutes les demi-heures.",
+        "primalBosses": "Les zones 110, 120 et 130 ont toutes des boss primaux, donc chacune rapporte forcément des Hero Souls."
+      }
+    },
+    "whenToAscend": {
+      "title": "Quand ascensionner",
+      "summary": "L’ascension est la boucle de progression principale. Chaque réinitialisation devrait être plus rapide que la précédente.",
+      "items": {
+        "moreSouls": "Plus tu accumules de Hero Souls avant d’ascensionner, plus la run suivante va vite.",
+        "zone130": "Atteins au moins la zone 130 avant ta première ascension — c’est un boss primal garanti.",
+        "every100th": "Ensuite, un boss primal est aussi garanti toutes les 100 zones.",
+        "keepPushing": "Continue d’avancer jusqu’à tomber sur un boss que tu ne peux pas tuer. S’il est primal, farme de l’or et réessaie avant d’abandonner.",
+        "spendGold": "Dépense l’or restant en niveaux de héros juste avant de réinitialiser : chaque tranche de 2 000 niveaux de héros cumulés rapporte une Hero Soul supplémentaire. Ça cessera de compter plus tard, mais ces Hero Souls sont bonnes à prendre pour l’instant."
+      }
+    },
+    "beyondZone130": {
+      "title": "Au-delà de la zone 130",
+      "summary": "À partir de ta deuxième run, ce sont les Power 5 qui te portent.",
+      "items": {
+        "backUp": "Fais régulièrement une copie de ta sauvegarde dans le cloud, ou envoie-toi simplement le fichier texte par e-mail. Tu peux en extraire une copie à tout moment avec l’<link>éditeur de sauvegarde</link>.",
+        "power5": "Monte Frostleaf au niveau 150, puis reviens en haut de la liste et monte Treebeast, Ivan, Brittany, the Seer et the Masked Samurai — les « Power 5 » — par multiples de 25.",
+        "remainingUpgrades": "Tu peux aussi acheter toutes les améliorations de héros restantes à ce stade.",
+        "dreadKnight": "Ignore Dread Knight. Son rapport coût/DPS est catastrophique ; ce que tu veux vraiment, c’est le bonus ×10 quand un héros atteint le niveau 1000, et les Power 5 feront l’affaire pendant un bon moment.",
+        "buy25": "Après quelques ascensions, tu passeras les premières zones rien qu’en achetant 25 niveaux de héros à la fois.",
+        "deGilding": "Retirer des gilds au hasard pour les placer sur les Power 5 est facultatif. Si tu le fais, n’y consacre pas plus de 10 % de tes Hero Souls — et avant ta première transcendance, ne prends même pas la peine de déplacer tes gilds."
+      }
+    },
+    "ancientsBeforeTranscending": {
+      "title": "Avant de transcender",
+      "summary": "Quatre ancients, au même niveau. Rien d’autre avant de transcender.",
+      "items": {
+        "idleFirst": "La build idle est celle par laquelle commencer, car l’or s’accumule pendant que le jeu est fermé.",
+        "buyFour": "Achète Siyalatas, Libertas, Mammon et Mimzee, et aucun autre, jusqu’à ta première transcendance.",
+        "keepLevel": "Garde les quatre au même niveau, ou aussi proches que possible.",
+        "spareSouls": "Garde en réserve un nombre de Hero Souls non dépensées égal au carré de leur niveau — avec des ancients au niveau 5, garde 25 Hero Souls de côté."
+      }
+    },
+    "ancientsAfterTranscending": {
+      "title": "Après la transcendance",
+      "summary": "L’ordre d’achat est un classement approximatif par utilité, pas une règle.",
+      "items": {
+        "earlyPick": "Prends un ancient idle ou Juggernaut le plus tôt possible dans une nouvelle transcendance, selon que tu joues en idle ou en actif/hybride.",
+        "idleOrder": "À acheter en premier en idle : Libertas, Siyalatas, Nogardnit.",
+        "activeOrder": "À acheter en premier en actif ou hybride : Juggernaut, Bhaal, Fragsworth.",
+        "next": "Ensuite : Atman, Kumawakamaru, puis tous les ancients liés à l’or.",
+        "summonAll": "Utilise « Summon All Ancients » dès que tu peux te payer le reste d’un coup.",
+        "nogardnit": "Ne monte Nogardnit que si tu as des autoclickers en jeu. Sans eux, il ne sert à rien.",
+        "calculator": "Calcule les niveaux exacts avec le <link>calculateur d’ancients</link> — importe ta sauvegarde et il te donne les niveaux et coûts optimaux pour une build idle, hybride ou active."
+      }
+    },
+    "yourFirstTranscension": {
+      "title": "Ta première transcendance",
+      "summary": "Se débloque à la zone 300. Fais-la immédiatement.",
+      "items": {
+        "what": "La transcendance est une réinitialisation de second niveau qui te relance une fois que les ascensions n’apportent plus de gains significatifs.",
+        "lose": "Tu perds tes ancients, tes reliques, tes Hero Souls, les gilds de zone et ta progression dans les zones.",
+        "keep": "Tu gardes tes Ancient Souls, tes rubis, tes outsiders, tes mercenaires, ta progression de clan et les gilds achetés avec des rubis.",
+        "outsiders": "Les Ancient Souls se dépensent dans les neuf outsiders — des méta-ancients, chacun avec un bonus différent, que tu peux redistribuer gratuitement à chaque transcendance.",
+        "transcendentPower": "Tu gagnes aussi du Transcendent Power, qui augmente de façon exponentielle les Hero Souls obtenues sur les boss primaux. C’est pour ça que ça ne vaut pas la peine de grinder avant ta première transcendance : fais-la à la zone 300 et tu récupéreras ces Hero Souls plus vite ensuite.",
+        "timing": "Pour savoir quand faire les transcendances suivantes, surveille la vitesse à laquelle tes Hero Souls par ascension augmentent. Quand l’ordre de grandeur cesse de grimper, il est temps de réinitialiser. Le <link>visualiseur de transcendances</link> affiche cet historique directement depuis ta sauvegarde."
+      }
+    },
+    "spendingRubies": {
+      "title": "Dépenser tes rubis",
+      "summary": "D’abord les autoclickers, ensuite les dégâts permanents, le reste plus tard.",
+      "items": {
+        "autoClickers": "Commence par un ou deux autoclickers, puis l’amélioration permanente qui double tes dégâts.",
+        "reserve": "Garde une petite réserve pour ressusciter les mercenaires tant que c’est encore bon marché.",
+        "quickAscension": "Quick Ascension n’est plus nécessaire au début d’une nouvelle transcendance, grâce à l’outsider Phandoryss.",
+        "moreAutoClickers": "Viennent ensuite d’autres autoclickers ; leur effet devient exponentiel une fois que tu en as cinq.",
+        "timelapse": "Timelapse devient important après plusieurs dizaines de milliers de zones. Utilise-le au début d’une longue ascension, avec tes gilds regroupés et de longues quêtes de rubis en cours pour tes mercenaires.",
+        "avoid": "Ne dépense pas tes rubis pour recruter des mercenaires, ni en gilds, en reliques ou en combats de boss de raid supplémentaires. Rien de tout ça n’en vaut la peine."
+      }
+    },
+    "mercenaries": {
+      "title": "Mercenaires",
+      "summary": "De la progression gratuite si tu les envoies sans arrêt en quête. Ce sont les quêtes de rubis qui comptent.",
+      "items": {
+        "lifespan": "Chaque mercenaire a une durée de vie prédéterminée, et seul le temps passé en quête est décompté.",
+        "rewards": "Les récompenses de quête sont multipliées par le niveau du mercenaire, et 24 heures de quête valent un niveau.",
+        "revive": "Ressuscite-les tant que c’est bon marché. Au-delà du niveau 11 ou 12, le coût n’en vaut généralement pas la peine.",
+        "questLength": "Les quêtes courtes rapportent plus par minute ; les longues demandent moins de surveillance, mais un mercenaire de haut niveau risque de mourir en pleine quête.",
+        "rubyQuests": "Les quêtes de rubis sont les meilleures. Les quêtes de Hero Souls, d’or, de reliques et de compétences sont au mieux situationnelles.",
+        "quality": "La qualité des mercenaires relève du pur hasard. Mieux vaut envoyer en quête ceux que tu as que d’en changer en espérant tomber sur mieux."
+      }
+    },
+    "clans": {
+      "title": "Clans",
+      "summary": "Un boss de raid quotidien, et des Hero Souls gratuites juste pour avoir participé.",
+      "items": {
+        "raid": "Affronte un boss de raid quotidien avec jusqu’à neuf autres membres de ton clan.",
+        "reward": "La récompense minimale est de 4 Hero Souls, et elle augmente à mesure que tu tues des boss primaux.",
+        "join": "Rejoins un clan de joueurs à un stade similaire au tien. Le <link>subreddit r/ClickerHeroesRecruit</link> est l’endroit habituel pour en trouver un."
+      }
+    },
+    "relics": {
+      "title": "Reliques",
+      "summary": "Utiles au début, sans intérêt peu après.",
+      "items": {
+        "dwarfed": "Toutes les stats des reliques finissent écrasées par les niveaux des ancients, mais elles aident en début de partie.",
+        "bestStats": "Kumawakamaru est la meilleure stat dans l’ensemble. Atman et Revolc sont bien aussi.",
+        "activeBuilds": "Sur les builds actives ou hybrides sans compétences actives en permanence, une bonne relique Sniperino ou Klepto prolonge Lucky Strikes et Golden Clicks."
+      }
+    },
+    "whereToGoNext": {
+      "title": "Pour aller plus loin",
+      "summary": "Des outils et des références pour quand tu auras passé ta première transcendance.",
+      "items": {
+        "ancientsCalculator": "<link>Calculateur d’ancients</link> — niveaux et coûts optimaux des ancients à partir de ta propre sauvegarde.",
+        "transcensionViewer": "<link>Visualiseur de transcendances</link> — suis tes gains de Hero Souls et d’Ancient Souls par ascension pour savoir quand faire ta prochaine transcendance.",
+        "instakillCalculator": "<link>Calculateur d’instakill</link> — zones par heure et monstres par zone une fois que Kumawakamaru et Borb commencent à compter.",
+        "gildingChart": "<link>Tableau des gilds des héros</link> — vers quel héros déplacer tes gilds, et quand.",
+        "outsidersCalculator": "<link>Calculateur d’outsiders</link> — comment dépenser tes Ancient Souls après avoir transcendé.",
+        "community": "Pose tes questions sur le <link>subreddit de Clicker Heroes</link> ou sur le Discord officiel."
+      }
+    }
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "site": {
+    "description": "Éditeur de sauvegarde Clicker Heroes et outils gratuits en ligne. Décode, inspecte, modifie et réencode tes sauvegardes Clicker Heroes dans ton navigateur."
+  },
+  "breadcrumb": {
+    "home": "Accueil",
+    "tools": "Outils",
+    "guides": "Guides"
+  },
+  "pages": {
+    "home": {
+      "metaTitle": "Clicker Heroes : éditeur de sauvegarde, calculateurs et guides",
+      "description": "Outils Clicker Heroes gratuits dans ton navigateur : éditeur de sauvegarde, calculateurs d’ancients et d’outsiders, calculateur d’instakill, convertisseur de sauvegarde et tableau des gilds."
+    },
+    "saveEditor": {
+      "metaTitle": "Éditeur de sauvegarde Clicker Heroes – En ligne et gratuit",
+      "description": "Éditeur de sauvegarde Clicker Heroes gratuit en ligne pour décoder, inspecter, modifier et réencoder tes fichiers de sauvegarde. Modifie l’or, les rubis, les Hero Souls, les héros, les ancients, les ascensions et plus encore.",
+      "applicationName": "Éditeur de sauvegarde Clicker Heroes",
+      "featureList": [
+        "Décoder les codes de sauvegarde Clicker Heroes",
+        "Encoder les sauvegardes modifiées pour les réimporter dans le jeu",
+        "Modifier l’or, les rubis, les Hero Souls, les ancients et les données d’ascension",
+        "Modifier les héros, succès, skins, mercenaires, outsiders, valeurs de clan et champs personnalisés",
+        "Écrire directement n’importe quel champ de la sauvegarde via un chemin de champ personnalisé"
+      ]
+    },
+    "instakillCalculator": {
+      "metaTitle": "Calculateur d’instakill Clicker Heroes – Zones par heure",
+      "description": "Estime la durée d’un parcours en instakill, le nombre de monstres par zone et les zones par heure dans Clicker Heroes selon Kumawakamaru, Borb, la plage de zones et les FPS.",
+      "applicationName": "Calculateur d’instakill Clicker Heroes",
+      "featureList": [
+        "Estimer la durée du parcours",
+        "Calculer le nombre de monstres par zone",
+        "Estimer les zones par heure selon la plage de zones et les FPS"
+      ]
+    },
+    "ancientsCalculator": {
+      "metaTitle": "Calculateur d’ancients Clicker Heroes – Niveaux optimaux",
+      "description": "Calculateur d’ancients Clicker Heroes gratuit. Importe une sauvegarde pour obtenir les niveaux optimaux de tes ancients, le coût des montées de niveau et un planificateur d’Ancient Souls pour les builds idle, hybride et active.",
+      "applicationName": "Calculateur d’ancients Clicker Heroes",
+      "featureList": [
+        "Calculer les niveaux optimaux des ancients à partir d’une sauvegarde importée",
+        "Gérer les builds idle, hybride et active avec un ratio hybride réglable",
+        "Afficher le coût en Hero Souls de chaque ancient et les Hero Souls restantes",
+        "Planifier les Hero Souls nécessaires pour les prochaines Ancient Souls"
+      ]
+    },
+    "outsidersCalculator": {
+      "metaTitle": "Calculateur d’outsiders Clicker Heroes – Niveaux optimaux",
+      "description": "Calculateur d’outsiders Clicker Heroes gratuit. Importe une sauvegarde pour obtenir les niveaux optimaux de Borb, Phandoryss, Ponyboy et Chor’gorloth, des estimations de fin de transcendance, les paliers de zones et un simulateur de transcendance.",
+      "applicationName": "Calculateur d’outsiders Clicker Heroes",
+      "featureList": [
+        "Calculer les niveaux optimaux des outsiders à partir d’une sauvegarde importée",
+        "Estimer la zone la plus haute, les Hero Souls et les Ancient Souls en fin de transcendance",
+        "Afficher les paliers de zones et les stats boostées à la zone la plus haute",
+        "Projeter chaque transcendance d’ici la fin du jeu",
+        "Réécrire les niveaux d’outsiders recommandés dans la sauvegarde"
+      ]
+    },
+    "transcensionViewer": {
+      "metaTitle": "Visualiseur de transcendances Clicker Heroes – Ascensions",
+      "description": "Importe une sauvegarde Clicker Heroes et consulte l’historique de tes transcendances avec la durée des ascensions, la HZE et les totaux de Hero Souls et d’Ancient Souls.",
+      "applicationName": "Visualiseur de transcendances Clicker Heroes",
+      "featureList": [
+        "Voir l’historique des transcendances Clicker Heroes",
+        "Inspecter les ascensions à partir des données d’une sauvegarde importée",
+        "Consulter la HZE et les totaux de Hero Souls et d’Ancient Souls"
+      ]
+    },
+    "mercenaryViewer": {
+      "metaTitle": "Visualiseur de mercenaires Clicker Heroes – Équipe et quêtes",
+      "description": "Importe une sauvegarde Clicker Heroes et consulte ton équipe de mercenaires et leurs stats cumulées, dont les niveaux, le temps avant la mort, les vies bonus et les quêtes terminées.",
+      "applicationName": "Visualiseur de mercenaires Clicker Heroes",
+      "featureList": [
+        "Voir l’équipe de mercenaires Clicker Heroes d’une sauvegarde",
+        "Inspecter le niveau, le temps avant la mort et les vies bonus des mercenaires",
+        "Consulter les totaux cumulés des mercenaires et des quêtes"
+      ]
+    },
+    "removeClanData": {
+      "metaTitle": "Supprimer les données de clan d’une sauvegarde Clicker Heroes",
+      "description": "Supprime les données de clan, de compte et de connexion d’un fichier de sauvegarde Clicker Heroes importé, puis réencode la sauvegarde nettoyée localement dans ton navigateur.",
+      "applicationName": "Outil de suppression des données de clan Clicker Heroes",
+      "featureList": [
+        "Supprimer les champs de clan des sauvegardes Clicker Heroes",
+        "Nettoyer les valeurs de compte et de connexion",
+        "Réencoder la sauvegarde nettoyée dans le navigateur"
+      ]
+    },
+    "saveConverter": {
+      "metaTitle": "Convertisseur de sauvegarde Clicker Heroes – PC et mobile",
+      "description": "Convertis tes fichiers de sauvegarde Clicker Heroes entre les formats PC et mobile localement dans ton navigateur, avec l’origine détectée et le numéro de patch.",
+      "applicationName": "Convertisseur de sauvegarde Clicker Heroes",
+      "featureList": [
+        "Détecter si une sauvegarde Clicker Heroes vient du PC ou du mobile",
+        "Afficher le numéro de patch de la sauvegarde quand il est disponible",
+        "Convertir les sauvegardes entre les formats de compression PC et mobile",
+        "Réencoder les sauvegardes converties localement dans le navigateur"
+      ]
+    },
+    "saveJson": {
+      "metaTitle": "Sauvegarde Clicker Heroes en JSON – Décode et modifie",
+      "description": "Outil pour développeurs qui décode une sauvegarde Clicker Heroes en JSON brut, te permet de modifier n’importe quel champ à la main et réencode le JSON en code de sauvegarde dans ton navigateur.",
+      "applicationName": "Outil Sauvegarde en JSON pour Clicker Heroes",
+      "featureList": [
+        "Décoder les sauvegardes Clicker Heroes en JSON formaté",
+        "Modifier à la main n’importe quel champ brut de la sauvegarde",
+        "Reconvertir le JSON modifié en code de sauvegarde encodé",
+        "Formater et copier le JSON brut de la sauvegarde dans le navigateur"
+      ]
+    },
+    "newPlayerGuide": {
+      "metaTitle": "Guide du débutant Clicker Heroes – Bien démarrer (1.0e12)",
+      "description": "Un guide du débutant pour Clicker Heroes 1.0e12 : ta première run, quand ascensionner, dorer les Power 5, quels ancients acheter, ta première transcendance, les rubis, les mercenaires, les clans et les reliques."
+    },
+    "gildingChart": {
+      "metaTitle": "Tableau des gilds Clicker Heroes – Quel héros dorer (1.0e12)",
+      "description": "Quel héros dorer à chaque palier d’or dans Clicker Heroes 1.0e12, de The Masked Samurai aux Ace Scouts. Entre ton or pour trouver ton héros optimal."
+    },
+    "progressTips": {
+      "metaTitle": "Astuces Clicker Heroes – 10 façons de progresser plus vite",
+      "description": "Dix façons d’accélérer ta progression dans Clicker Heroes 1.0e12 : quand ascensionner et transcender, quel héros monter et dorer, choisir un build, les calculateurs d’ancients et d’outsiders, les combos de compétences, dépenser tes rubis et franchir les murs."
+    },
+    "heroArtwork": {
+      "metaTitle": "Artwork des héros Clicker Heroes – Portraits normaux et dorés",
+      "description": "Tous les héros de Clicker Heroes 1.0e12, de Cid aux Ace Scouts, avec leur portrait normal et leur artwork doré côte à côte."
+    },
+    "requestTool": {
+      "metaTitle": "Demander un outil ou un calculateur Clicker Heroes",
+      "description": "Propose un nouvel outil ou calculateur Clicker Heroes. Décris l’outil que tu veux, ce qu’il doit calculer et comment tu l’utiliserais."
+    },
+    "requestGuide": {
+      "metaTitle": "Demander un guide Clicker Heroes",
+      "description": "Propose un nouveau guide Clicker Heroes. Dis-nous sur quel sujet tu bloques et ce qu’un guide idéal devrait couvrir."
+    },
+    "faq": {
+      "metaTitle": "FAQ de l’éditeur de sauvegarde Clicker Heroes – Emplacement et aide",
+      "description": "Réponses aux questions courantes sur l’éditeur de sauvegarde Clicker Heroes : comment charger et exporter une sauvegarde, où se trouve le fichier de sauvegarde, si tes données quittent ton navigateur et que faire quand une sauvegarde ne se décode pas."
+    },
+    "feedback": {
+      "metaTitle": "Retours sur les outils Clicker Heroes",
+      "description": "Envoie des rapports de bug, des demandes de fonctionnalités, des idées d’usages non couverts et tes retours sur l’éditeur de sauvegarde et les outils Clicker Heroes."
+    }
+  },
+  "faqs": {
+    "saveEditor": [
+      {
+        "question": "Comment modifier un fichier de sauvegarde Clicker Heroes ?",
+        "answer": "Colle ton code de sauvegarde Clicker Heroes dans l’éditeur, décode-le, modifie les champs voulus, puis recopie le résultat encodé dans la fenêtre d’importation du jeu."
+      },
+      {
+        "question": "Cet éditeur peut-il modifier l’or, les rubis, les Hero Souls et les ancients ?",
+        "answer": "Oui. L’éditeur permet de modifier les monnaies principales, les niveaux des héros, les Hero Souls, la progression liée aux ancients, les ascensions, les succès, les skins, les mercenaires, les outsiders, les valeurs de clan et des champs personnalisés de la sauvegarde. L’édition du JSON brut se fait dans l’outil séparé « Sauvegarde en JSON »."
+      },
+      {
+        "question": "Ma sauvegarde Clicker Heroes est-elle envoyée sur un serveur ?",
+        "answer": "Non. L’éditeur fonctionne dans le navigateur et traite les données de sauvegarde côté client : tu peux donc modifier ta sauvegarde sans l’envoyer à ce site."
+      }
+    ],
+    "site": [
+      {
+        "id": "using-the-editor",
+        "title": "Utiliser l’éditeur",
+        "summary": "Charger une sauvegarde, la modifier et la remettre dans Clicker Heroes.",
+        "faqs": [
+          {
+            "question": "Comment charger ma sauvegarde dans l’éditeur ?",
+            "answer": "Exporte ta sauvegarde depuis le jeu et colle le code à l’étape 1 de l’éditeur de sauvegarde, puis clique sur « Charger la sauvegarde ». Tu peux aussi choisir ton fichier .save avec le sélecteur de fichier. La sauvegarde est décodée sur place et l’étape 2 se débloque. Plusieurs calculateurs proposent aussi des sauvegardes d’exemple si tu veux juste voir comment un outil fonctionne."
+          },
+          {
+            "question": "Où est mon fichier de sauvegarde Clicker Heroes ?",
+            "answer": "Sous Windows, la version Steam comme la version autonome utilisent C:\\Users\\[USERNAME]\\AppData\\Roaming\\ClickerHeroes2\\Local Store\\saves, qui contient un fichier .save et un fichier .backup. Sur Mac via Steam, c’est ~/Library/Application Support/Steam/userdata/[USERID]/363970/remote/, et la version Mac autonome utilise ~/Library/Application Support/com.playsaurus.clickerheroes/. La même liste se trouve sous « Où est mon fichier de sauvegarde ? » dans l’éditeur."
+          },
+          {
+            "question": "Comment remettre ma sauvegarde modifiée dans le jeu ?",
+            "answer": "Clique sur « Encoder la sauvegarde » à l’étape 3, copie le code encodé et colle-le dans l’option d’importation de sauvegarde de Clicker Heroes. Encode à nouveau après chaque nouvelle modification : la zone d’export ne contient que le code généré la dernière fois que tu as cliqué sur ce bouton."
+          },
+          {
+            "question": "Qu’est-ce que je peux vraiment modifier ?",
+            "answer": "L’or, les rubis, les Hero Souls, les objets de la boutique et saisonniers, les niveaux et les gilds des héros, les skins, les succès, les ascensions et les transcendances, les valeurs de clan, les mercenaires et les outsiders. Tout ce que les sections ne couvrent pas peut être écrit via son chemin dans la section « Champ personnalisé », ou à la main dans l’outil « Sauvegarde en JSON »."
+          },
+          {
+            "question": "L’éditeur fonctionne-t-il avec les sauvegardes mobiles ?",
+            "answer": "Il décode les codes de sauvegarde PC, mobiles et des anciennes versions. Si tu veux charger une sauvegarde d’une plateforme sur l’autre, passe-la d’abord dans le « Convertisseur de sauvegarde »."
+          }
+        ]
+      },
+      {
+        "id": "safety-and-privacy",
+        "title": "Sécurité et confidentialité",
+        "summary": "Ce que deviennent tes données de sauvegarde, et comment éviter de perdre ta progression.",
+        "faqs": [
+          {
+            "question": "Ma sauvegarde est-elle envoyée sur un serveur ?",
+            "answer": "Non. Le décodage, la modification et l’encodage se font tous dans ton navigateur : ton code de sauvegarde n’est jamais envoyé à ce site ni stocké ailleurs que sur ton appareil."
+          },
+          {
+            "question": "Dois-je faire une copie de ma sauvegarde avant de la modifier ?",
+            "answer": "Toujours. Garde une copie du code de sauvegarde d’origine, ou du fichier .save, avant d’importer une version modifiée. Sous Windows, il y a aussi un fichier .backup à côté de la sauvegarde, sur lequel tu peux te rabattre."
+          },
+          {
+            "question": "Modifier ma sauvegarde peut-il la casser ?",
+            "answer": "Oui. Des valeurs très éloignées de ce que le jeu attend, ou un champ personnalisé écrit au mauvais chemin, peuvent donner une sauvegarde que le jeu refuse de charger. Change une seule chose à la fois, réimporte la sauvegarde et vérifie en jeu avant la modification suivante."
+          },
+          {
+            "question": "Modifier ma sauvegarde est-il contraire aux règles ?",
+            "answer": "Modifier une sauvegarde solo est un choix personnel, mais les valeurs modifiées peuvent se répercuter sur les raids de clan et les classements, et modifier les données de sauvegarde peut aller à l’encontre des conditions d’utilisation du jeu. Les outils sont fournis tels quels ; utilise-les à tes risques et périls."
+          },
+          {
+            "question": "Comment retirer les données de clan et de compte avant de partager une sauvegarde ?",
+            "answer": "Utilise l’outil « Supprimer les données de clan ». Il efface les champs de clan, de compte et de connexion d’une sauvegarde importée et réencode le résultat nettoyé dans ton navigateur."
+          }
+        ]
+      },
+      {
+        "id": "troubleshooting",
+        "title": "Dépannage",
+        "summary": "Les erreurs les plus fréquentes, et ce qui les cause en général.",
+        "faqs": [
+          {
+            "question": "« Ce code ne ressemble pas à une sauvegarde Clicker Heroes prise en charge »",
+            "answer": "Le texte collé n’est dans aucun format de sauvegarde reconnu par l’éditeur. Presque toujours, cela signifie qu’une partie seulement du code a été copiée, ou que le texte vient d’un autre jeu ou d’un autre outil. Recopie la sauvegarde du tout début du code jusqu’à la toute fin, ou charge directement le fichier .save."
+          },
+          {
+            "question": "Les données de la sauvegarde ne sont pas du base64 valide, ou ne se décompressent pas",
+            "answer": "Le code est arrivé incomplet ou altéré dans l’éditeur. Les retours à la ligne et les espaces ne posent pas de problème, mais les caractères manquants, si. Recopie toute la sauvegarde, ou utilise le sélecteur de fichier au lieu de coller."
+          },
+          {
+            "question": "Rien ne se passe quand je colle ma sauvegarde",
+            "answer": "L’éditeur décode au chargement, pas au collage. Clique sur « Charger la sauvegarde » après avoir collé ; tu devrais voir la notification « Sauvegarde chargée. » et les sections de modification devraient se réactiver."
+          },
+          {
+            "question": "Le jeu refuse ma sauvegarde modifiée",
+            "answer": "Vérifie que tu as cliqué sur « Encoder la sauvegarde » après ta dernière modification et que tu as copié tout le code encodé. Si le jeu la refuse encore, importe ta copie de secours et refais les modifications par petites étapes pour trouver la valeur qui pose problème."
+          },
+          {
+            "question": "Autre chose ne va pas, ou une valeur manque",
+            "answer": "Signale-le via le formulaire de retours en précisant l’outil que tu utilisais et ce que tu t’attendais à voir. Les rapports de bug comme les demandes de champs que l’éditeur ne gère pas encore sont les bienvenus."
+          }
+        ]
+      }
+    ],
+    "gildingChart": [
+      {
+        "question": "Dois-je redorer à chaque ligne du tableau des gilds ?",
+        "answer": "Non. Redorer coûte des Hero Souls, et tant que tu fais de l’instakill, les dégâts supplémentaires ne servent à rien. Saute des lignes sans hésiter et ne redore que quand les monstres commencent à survivre à tes coups. Le tableau indique ce qui est optimal, ce n’est pas une liste à cocher en entier."
+      },
+      {
+        "question": "Pourquoi le même héros apparaît-il plusieurs fois dans le tableau des gilds ?",
+        "answer": "Les héros gagnent des multiplicateurs de dégâts ×10 à certains paliers de niveau, et le coût des niveaux augmente au fur et à mesure. Ainsi, Wepwawet au niveau 5 000 peut passer derrière Gog, puis le redépasser à 6 000 quand Wep obtient son multiplicateur suivant. Entre e383 et e500, les deux se dépassent tour à tour tous les 500 niveaux environ."
+      },
+      {
+        "question": "Faut-il dorer Dread Knight dans Clicker Heroes ?",
+        "answer": "Non. Dorer Dread Knight n’est optimal à aucun moment du jeu. Ignore-le."
+      },
+      {
+        "question": "Pourquoi Wepwawet et Gog arrêtent-ils d’alterner après e442 ?",
+        "answer": "Gog ne reçoit plus de multiplicateur ×10 après le niveau 8 000, il ne peut donc plus redépasser Wepwawet. Reste sur Wepwawet de e442 jusqu’à Tsuchi en e500."
+      },
+      {
+        "question": "Pourquoi Tsuchi au niveau 1 est-il meilleur que Wepwawet au niveau 9 000 ?",
+        "answer": "À ce stade, recruter Tsuchi coûte moins cher qu’acheter 25 niveaux de plus pour Wepwawet, et ses dégâts de base sont d’un tout autre ordre. Le même schéma se répète avec The Maw, qui au niveau 1 inflige environ 1e6750 fois les dégâts de Cadu au niveau 680 625."
+      },
+      {
+        "question": "Pourquoi Cadu et Ceus alternent-ils dans le tableau des gilds ?",
+        "answer": "Les Tomb Guardians se renforcent mutuellement : Cadu débloque une amélioration pour Ceus, Ceus en débloque une pour Cadu, et ainsi de suite. Tu montes celui qui vient ensuite. Les deux sont un bon point de départ à e25 500, et après la dernière amélioration de Ceus au niveau 588 000, tu restes sur Cadu jusqu’à The Maw."
+      },
+      {
+        "question": "Pourquoi Yachiyl commence-t-il au niveau 157 500 et non au niveau 1 ?",
+        "answer": "Yachiyl ne dépasse The Maw qu’une fois sa première amélioration atteinte, au niveau 157 500. Rose a le même problème face à Yachiyl et doit d’abord atteindre le niveau 9 700."
+      },
+      {
+        "question": "Pourquoi Dorothy est-elle si souvent sautée dans la rotation des Ace Scouts ?",
+        "answer": "Plusieurs de ses paliers d’amélioration coûtent plus d’or que l’amélioration équivalente de Rose tout en infligeant moins de dégâts : Dorothy 1, 2 et 4 sont donc de moins bons achats que simplement monter Rose. Elle apparaît quand même trois fois dans la rotation, alors suis les lignes dans l’ordre indiqué au lieu de l’écarter."
+      },
+      {
+        "question": "Combien d’Ancient Souls me faut-il pour atteindre un héros du tableau des gilds ?",
+        "answer": "La colonne Ancient Souls est un repère approximatif jusqu’à Xavira, vers 6 000. Au-delà, elle n’est pas vraiment tabulée, car la progression dépend fortement de ta répartition des outsiders et de ton nombre de transcendances."
+      }
+    ]
+  },
+  "faqPage": {
+    "intro": "Les questions courantes sur l’éditeur de sauvegarde Clicker Heroes et les outils qui l’accompagnent : charger et exporter des sauvegardes, ce que deviennent tes données de sauvegarde et ce que signifient les erreurs quand une sauvegarde ne se décode pas.",
+    "contentsLabel": "Sommaire de la FAQ",
+    "contents": "Sommaire",
+    "footer": "Toujours bloqué, ou tu penses que quelque chose ici est faux ? <link>Envoie un retour</link> et dis-nous ce que tu essayais de faire : les rapports de bug comme les questions auxquelles cette page devrait répondre sont utiles."
+  }
+}

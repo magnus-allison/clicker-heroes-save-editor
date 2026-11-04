@@ -1,0 +1,114 @@
+{
+  "heading": "Comment ça marche",
+  "seeAlso": "Voir aussi :",
+  "links": {
+    "saveEditor": "Éditeur de sauvegarde",
+    "ancientsCalculator": "Calculateur d’ancients",
+    "outsidersCalculator": "Calculateur d’outsiders",
+    "instakillCalculator": "Calculateur d’instakill",
+    "transcensionViewer": "Visualiseur de transcendances",
+    "mercenaryViewer": "Visualiseur de mercenaires",
+    "saveConverter": "Convertisseur de sauvegarde",
+    "removeClanData": "Supprimer les données de clan",
+    "saveJson": "Sauvegarde en JSON",
+    "newPlayerGuide": "Guide du débutant",
+    "gildingChart": "Tableau des gilds",
+    "progressTips": "Astuces de progression",
+    "faq": "FAQ"
+  },
+  "ancients": {
+    "intro": "Répartit tes Hero Souls entre les ancients que tu possèdes selon les Rules of Thumb de la communauté. Adapté de l’<link>optimiseur de kepow.org</link>.",
+    "builds": {
+      "title": "Builds",
+      "body": "La build idle monte tout en fonction de Siyalatas, l’active en fonction de Fragsworth. L’hybride monte les deux, et le ratio définit combien de niveaux de Fragsworth tu achètes par niveau de Siyalatas."
+    },
+    "bestHero": {
+      "title": "Meilleur héros",
+      "body": "Chaque palier de héros a un rapport or/dégâts différent, ce qui change jusqu’où il vaut la peine de monter les ancients d’or."
+    }
+  },
+  "instakill": {
+    "intro": "Une fois que chaque monstre meurt en un coup, la vitesse dépend du nombre de monstres par zone et de frames par élimination. Cet outil calcule les deux à partir de tes niveaux de Kumawakamaru et de Borb.",
+    "monstersPerZone": {
+      "title": "Monstres par zone",
+      "body": "Les zones commencent à 10 monstres et en gagnent 0,1 toutes les 500 zones. Kumawakamaru en retire jusqu’à 8, Borb multiplie cet effet, et le total ne descend jamais sous 2."
+    },
+    "routeTime": {
+      "title": "Durée du parcours",
+      "body": "Chaque élimination prend 15 frames, ou 14 avec l’instakill AC. Les frames sont additionnées zone par zone puis divisées par tes FPS."
+    }
+  },
+  "mercenary": {
+    "intro": "Présente tes mercenaires dans un seul tableau, avec les statistiques cumulées que le jeu enregistre mais affiche rarement.",
+    "roster": {
+      "title": "Effectif",
+      "body": "Niveau, expérience, temps avant la mort, vies bonus, dernière quête et ses chances de réussite pour chaque emplacement."
+    },
+    "lifetimeStats": {
+      "title": "Statistiques cumulées",
+      "body": "Mercenaires ressuscités et enterrés, niveau le plus élevé atteint et quêtes terminées par type de récompense."
+    }
+  },
+  "outsiders": {
+    "intro": "Convertit les Ancient Souls de ta sauvegarde en niveaux d’outsiders et estime où la transcendance se termine. Adapté du <link>calculateur d’outsiders de Driej</link>.",
+    "spendingOrder": {
+      "title": "Ordre de dépense",
+      "body": "Borb d’abord, puis Rhageist, K’Ariqua, Orphalas et Sen-Akhan jusqu’à leur plafond. Le reste va à Chor’gorloth, Phandoryss et Ponyboy, selon celui qui rapporte le plus par âme."
+    },
+    "applying": {
+      "title": "Appliquer les niveaux",
+      "body": "Le plan utilise toutes les Ancient Souls que tu as gagnées : fais donc d’abord un respec en jeu, ou applique les niveaux à ta sauvegarde et importe-la."
+    }
+  },
+  "removeClanData": {
+    "intro": "Une sauvegarde contient aussi les informations de ton clan et de ton compte. Supprime-les avant de publier une sauvegarde pour demander de l’aide ou de la donner à quelqu’un.",
+    "removed": {
+      "title": "Ce qui est supprimé",
+      "body": "Tous les champs de clan, y compris la classe de raid, ainsi que l’e-mail, le hash du mot de passe et les champs de compte et de connexion. Ta progression reste intacte."
+    }
+  },
+  "saveConverter": {
+    "intro": "Les sauvegardes PC et mobile contiennent les mêmes données mais sont compressées différemment : une sauvegarde de l’une ne s’importera donc pas sur l’autre. Cet outil la réencode pour l’autre plateforme.",
+    "difference": {
+      "title": "La différence",
+      "body": "Les sauvegardes PC utilisent du deflate brut ; les sauvegardes mobiles enveloppent le même JSON dans zlib. Les anciennes sauvegardes legacy sont aussi reconnues."
+    }
+  },
+  "saveJson": {
+    "intro": "Sous l’encodage, une sauvegarde est un gros objet JSON. Décode-la, modifie n’importe quel champ à la main, puis réencode-la.",
+    "careful": {
+      "title": "Fais attention",
+      "body": "Rien ne vérifie tes valeurs par rapport à ce que le jeu attend. Garde l’original et ne change qu’une chose à la fois."
+    }
+  },
+  "transcension": {
+    "intro": "Le jeu garde un historique de tes dernières transcendances et ascensions mais ne l’affiche jamais. Cet outil le lit dans ta sauvegarde.",
+    "shows": {
+      "title": "Ce qu’il affiche",
+      "body": "Durée, ascensions, zone la plus haute, Hero Souls et Ancient Souls pour chaque transcendance. Choisis-en une pour voir ses ascensions."
+    },
+    "helps": {
+      "title": "Pourquoi c’est utile",
+      "body": "Quand les dernières ascensions ont peu rapporté pour le temps qu’elles ont pris, il est temps de transcender."
+    }
+  },
+  "saveEditor": {
+    "heading": "Décodeur et éditeur de sauvegarde Clicker Heroes gratuit",
+    "intro": "Cet éditeur de sauvegarde Clicker Heroes, qui fonctionne dans le navigateur, décode les codes de sauvegarde, expose les données de jeu modifiables et réencode le résultat pour que tu puisses l’importer à nouveau dans Clicker Heroes. Il est conçu pour restaurer ta progression, tester des builds, créer des états de sauvegarde précis et inspecter le contenu d’un fichier de sauvegarde Clicker Heroes.",
+    "features": {
+      "progress": {
+        "title": "Progression modifiable",
+        "body": "Modifie l’or, les rubis, les Hero Souls, les ascensions, les transcendances, les données de zone, les valeurs de clan, les outsiders et les champs personnalisés."
+      },
+      "heroes": {
+        "title": "Héros et déblocages",
+        "body": "Inspecte et ajuste les héros, les niveaux, les gilds, les skins, les mercenaires, les succès et les valeurs de sauvegarde liées au profil."
+      },
+      "clientSide": {
+        "title": "Outil côté client",
+        "body": "Les codes de sauvegarde sont décodés et encodés localement dans le navigateur : tout reste rapide et tu n’as pas besoin d’installer un trainer ou un mod sur ton ordinateur."
+      }
+    },
+    "faqHeading": "FAQ de l’éditeur de sauvegarde Clicker Heroes"
+  }
+}
