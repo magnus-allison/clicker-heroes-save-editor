@@ -15,8 +15,8 @@ importers:
         specifier: ^1.2.6
         version: 1.2.6
       '@vercel/speed-insights':
-        specifier: ^2.0.0
-        version: 2.0.0(next@16.4.5(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@types/node@26.1.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)
+        specifier: ^2.1.0
+        version: 2.1.0(next@16.4.5(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@types/node@26.1.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -27,8 +27,8 @@ importers:
         specifier: ^10.6.0
         version: 10.6.0
       lucide-react:
-        specifier: ^1.67.0
-        version: 1.67.0(@types/react@19.2.14)(react@19.3.1)
+        specifier: ^1.70.0
+        version: 1.70.0(@types/react@19.2.14)(react@19.3.1)
       next:
         specifier: 16.4.5
         version: 16.4.5(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@types/node@26.1.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -51,8 +51,8 @@ importers:
         specifier: ^3.7.0
         version: 3.7.0
       zustand:
-        specifier: ^5.0.16
-        version: 5.0.16(@types/react@19.2.14)(react@19.3.1)
+        specifier: ^5.1.0
+        version: 5.1.0(@types/react@19.2.14)(react@19.3.1)
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4
@@ -1127,10 +1127,10 @@ packages:
     resolution: {integrity: sha512-89ybsa2rnVNdw6RI3jGOVvqUJaBj6Umm4IagC1o3PKtr/MXxBKOLek+yyUgF0csA0O5W+dzcpdIhKxVXhgVVtA==}
     engines: {node: '>= 20'}
 
-  '@vercel/speed-insights@2.0.0':
-    resolution: {integrity: sha512-jwkNcrTeafWxjmWq4AHBaptSqZiJkYU5adLC9QBSqeim0GcqDMgN5Ievh8OG1rJ6W3A4l1oiP7qr9CWxGuzu3w==}
+  '@vercel/speed-insights@2.1.0':
+    resolution: {integrity: sha512-tkDiIEjjmlwPpTFnOK14hBhsRLMo5yoCeK2Er3AHWlL7WTzHgFSyItps3TOW0HukErUlYlaUeHiVLCyfiE4WAA==}
     peerDependencies:
-      '@sveltejs/kit': ^1 || ^2
+      '@sveltejs/kit': ^1 || ^2 || ^3 || ^3.0.0-next.0
       next: '>= 13'
       nuxt: '>= 3'
       react: ^18 || ^19 || ^19.0.0-rc
@@ -1921,8 +1921,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-react@1.67.0:
-    resolution: {integrity: sha512-z7kd21YNm/Gw3E7mTnq5dTuvV+yc+OEwA//oDENSG1SbZ/NVgKdjxALJFNdGoC0Ji7HaJR2Dha9ev7VUPxy9CQ==}
+  lucide-react@1.70.0:
+    resolution: {integrity: sha512-gCTPPN1MlQUBtUgdsUv+0CAUj+X8hifRUiRBw4E5v7lvDIOIpx0EZezdGQMSimS8pKA6esvullJub4GYr0mCHA==}
     peerDependencies:
       '@types/react': '*'
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -2436,8 +2436,8 @@ packages:
   zod@4.4.3:
     resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
 
-  zustand@5.0.16:
-    resolution: {integrity: sha512-Uv7e327ihlCfayfja3hDc0M64Upev1LWBKpRobdK4NyovDDPeeX4imWXc/wzC1yc6fkYPoAY/ncKVPAs2jrtQw==}
+  zustand@5.1.0:
+    resolution: {integrity: sha512-ciJZlP48M1PTQbVQq81CGVFxHTLpZNrFjKqwjtCU34AWuXTZT/jrF3p9+fI84Cf1eSCMLapxqBy/SNTfwOBuqA==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       '@types/react': '>=18.0.0'
@@ -3274,7 +3274,7 @@ snapshots:
 
   '@vercel/firewall@1.2.6': {}
 
-  '@vercel/speed-insights@2.0.0(next@16.4.5(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@types/node@26.1.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)':
+  '@vercel/speed-insights@2.1.0(next@16.4.5(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@types/node@26.1.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)':
     optionalDependencies:
       next: 16.4.5(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@types/node@26.1.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react: 19.3.1
@@ -4195,7 +4195,7 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@1.67.0(@types/react@19.2.14)(react@19.3.1):
+  lucide-react@1.70.0(@types/react@19.2.14)(react@19.3.1):
     dependencies:
       react: 19.3.1
     optionalDependencies:
@@ -4857,7 +4857,7 @@ snapshots:
 
   zod@4.4.3: {}
 
-  zustand@5.0.16(@types/react@19.2.14)(react@19.3.1):
+  zustand@5.1.0(@types/react@19.2.14)(react@19.3.1):
     optionalDependencies:
       '@types/react': 19.2.14
       react: 19.3.1

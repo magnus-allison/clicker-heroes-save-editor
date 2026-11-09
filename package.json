@@ -18,11 +18,11 @@
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "@vercel/firewall": "^1.2.6",
-    "@vercel/speed-insights": "^2.0.0",
+    "@vercel/speed-insights": "^2.1.0",
     "clsx": "^2.1.1",
     "cn": "^0.5.2",
     "decimal.js": "^10.6.0",
-    "lucide-react": "^1.67.0",
+    "lucide-react": "^1.70.0",
     "next": "16.4.5",
     "next-intl": "4.14.9",
     "pako": "^3.0.3",
@@ -30,7 +30,7 @@
     "react-dom": "19.3.1",
     "resend": "^6.37.0",
     "tailwind-merge": "^3.7.0",
-    "zustand": "^5.0.16"
+    "zustand": "^5.1.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
