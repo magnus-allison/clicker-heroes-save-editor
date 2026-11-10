@@ -64,42 +64,50 @@ export const SaveEditor = () => {
 					<CardTitle title={t('editTitle')} className='pt-1' />
 				</div>
 				<div className='flex flex-col gap-5'>
-					<SimpleFieldsSection title={t('sections.shopItems')} icon={StoreIcon} fields={shopItemFields} />
+					<SimpleFieldsSection
+						anchor='shop-items'
+						title={t('sections.shopItems')}
+						icon={StoreIcon}
+						fields={shopItemFields}
+					/>
 
 					<SimpleFieldsSection
+						anchor='seasonal-items'
 						defaultOpen
 						icon={CandyCaneIcon}
 						fields={seasonalItemFields}
 						title={t('sections.seasonalItems')}
 					/>
 
-					<SkinsSection defaultOpen showToast={showToast} icon={PointerIcon} />
+					<SkinsSection anchor='skins' defaultOpen showToast={showToast} icon={PointerIcon} />
 
 					<SimpleFieldsSection
+						anchor='zone-items'
 						defaultOpen
 						icon={CircleDollarSign}
 						fields={zoneItemFields}
 						title={t('sections.zoneItems')}
 					/>
 
-					<HeroesSection icon={UsersIcon} title={t('sections.heroes')} />
+					<HeroesSection anchor='heroes' icon={UsersIcon} title={t('sections.heroes')} />
 
-					<AchievementsSection icon={TrophyIcon} title={t('sections.achievements')} />
+					<AchievementsSection anchor='achievements' icon={TrophyIcon} title={t('sections.achievements')} />
 
-					<TranscensionsSection icon={SparklesIcon} showToast={showToast} />
+					<TranscensionsSection anchor='transcensions' icon={SparklesIcon} showToast={showToast} />
 
 					<SimpleFieldsSection
+						anchor='clan'
 						description={t('clanDescription')}
 						fields={clanFields}
 						icon={ShieldIcon}
 						title={t('sections.clanValues')}
 					/>
 
-					<MercenariesSection icon={SwordsIcon} />
+					<MercenariesSection anchor='mercenaries' icon={SwordsIcon} />
 
-					<OutsidersSection icon={GhostIcon} />
+					<OutsidersSection anchor='outsiders' icon={GhostIcon} />
 
-					<CustomFieldSection icon={SearchIcon} />
+					<CustomFieldSection anchor='custom-field' icon={SearchIcon} />
 				</div>
 			</div>
 		</>

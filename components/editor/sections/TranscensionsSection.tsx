@@ -10,19 +10,22 @@ import { useSaveStore } from '@/lib/save-store';
 import { setValueAtPath } from '@/lib/save-utils';
 
 type Props = {
+	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
+	anchor?: string;
 	defaultOpen?: boolean;
 	icon?: LucideIcon;
 	showToast: (message: string) => void;
 	title?: string;
 };
 
-export const TranscensionsSection = ({ defaultOpen, icon, showToast, title }: Props) => {
+export const TranscensionsSection = ({ anchor, defaultOpen, icon, showToast, title }: Props) => {
 	const t = useTranslations('editor.transcensions');
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateSave = useSaveStore((state) => state.updateSave);
 
 	return (
 		<CollapsiblePanel
+			anchor={anchor}
 			defaultOpen={defaultOpen}
 			description={t('description')}
 			icon={icon}

@@ -1,9 +1,11 @@
 'use client';
 
-import { ChevronDownIcon, type LucideIcon } from 'lucide-react';
-import { useId, useState, type ReactNode } from 'react';
+import { ChevronDownIcon, LinkIcon, type LucideIcon } from 'lucide-react';
+import { useEffect, useId, useRef, useState, type MouseEvent, type ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { PanelSection } from '@/components/ui/PanelSection';
+import { useToast } from '@/components/ui/ToastProvider';
 import { cn } from 'cn';
 
 type Props = {
@@ -11,12 +13,19 @@ type Props = {
 	title: string;
 	description?: string;
 	defaultOpen?: boolean;
+	/**
+	 * Makes the panel linkable as `#anchor`: a matching hash opens it and
+	 * scrolls to it, and the header gets a button that copies the link. Keep it
+	 * the same in every locale so shared links keep working.
+	 */
+	anchor?: string;
 	children: ReactNode;
 	className?: string;
 	bodyClassName?: string;
 };
 
 export const CollapsiblePanel = ({
+	anchor,
 	bodyClassName,
 	children,
 	className,
@@ -26,30 +35,97 @@ export const CollapsiblePanel = ({
 }: Props) => {
 	const [isOpen, setIsOpen] = useState(defaultOpen);
 	const bodyId = useId();
+	const sectionRef = useRef<HTMLDivElement>(null);
+	const t = useTranslations('common.ui');
+	const { showToast } = useToast();
+	// Set when the hash targets this panel; the effect below scrolls once the
+	// panel has rendered open, so the scroll lands on the laid-out section.
+	const [scrollRequest, setScrollRequest] = useState<ScrollBehavior | null>(null);
+
+	useEffect(() => {
+		if (!anchor) {
+			return;
+		}
+
+		const revealIfTargeted = (behavior: ScrollBehavior) => {
+			if (decodeURIComponent(window.location.hash.slice(1)) === anchor) {
+				setIsOpen(true);
+				setScrollRequest(behavior);
+			}
+		};
+		// A link opened fresh jumps straight there; a smooth scroll down a long
+		// editor would take seconds. In-page hash changes can glide.
+		const onHashChange = () => revealIfTargeted('smooth');
+
+		revealIfTargeted('instant');
+		window.addEventListener('hashchange', onHashChange);
+		return () => window.removeEventListener('hashchange', onHashChange);
+	}, [anchor]);
+
+	useEffect(() => {
+		if (scrollRequest) {
+			sectionRef.current?.scrollIntoView({ behavior: scrollRequest, block: 'start' });
+			setScrollRequest(null);
+		}
+	}, [scrollRequest]);
+
+	const copyLink = async (event: MouseEvent<HTMLAnchorElement>) => {
+		if (!anchor) {
+			return;
+		}
+
+		// Stay put: the link is for sharing, not for jumping to its own header.
+		event.preventDefault();
+		const url = new URL(window.location.href);
+		url.hash = anchor;
+		window.history.replaceState(window.history.state, '', url);
+
+		try {
+			await navigator.clipboard.writeText(url.toString());
+			showToast(t('linkCopied'));
+		} catch {
+			showToast(t('linkCopyFailed'));
+		}
+	};
 
 	return (
-		<PanelSection className={className}>
-			<button
-				aria-controls={bodyId}
-				aria-expanded={isOpen}
-				className='-m-1 flex w-full cursor-pointer items-center gap-3 rounded-(--radius-control) p-1 text-left transition-colors duration-150 hover:text-fg-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong'
-				onClick={() => setIsOpen((open) => !open)}
-				type='button'
-			>
-				{Icon ? <Icon aria-hidden='true' className='h-4.5 w-4.5 shrink-0 text-fg pt-0.5' /> : null}
-				<span className='min-w-0 flex-1'>
-					<span className='font-aeonik block text-[1.05rem] font-semibold tracking-wide uppercase text-fg-strong [word-spacing:0.2em]'>
-						{title}
+		<PanelSection className={cn(anchor && 'scroll-mt-8', className)} id={anchor} ref={sectionRef}>
+			<div className='group/header flex items-center gap-2'>
+				<button
+					aria-controls={bodyId}
+					aria-expanded={isOpen}
+					className='-m-1 flex min-w-0 flex-1 cursor-pointer items-center gap-3 rounded-(--radius-control) p-1 text-left transition-colors duration-150 hover:text-fg-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong'
+					onClick={() => setIsOpen((open) => !open)}
+					type='button'
+				>
+					{Icon ? <Icon aria-hidden='true' className='h-4.5 w-4.5 shrink-0 text-fg pt-0.5' /> : null}
+					<span className='min-w-0 flex-1'>
+						<span className='font-aeonik block text-[1.05rem] font-semibold tracking-wide uppercase text-fg-strong [word-spacing:0.2em]'>
+							{title}
+						</span>
 					</span>
-				</span>
-				<ChevronDownIcon
-					aria-hidden='true'
-					className={cn(
-						'h-4 w-4 shrink-0 text-(--color-fg-dim) transition-transform duration-200 ease-snap',
-						isOpen && 'rotate-180 text-(--color-primary)'
-					)}
-				/>
-			</button>
+					<ChevronDownIcon
+						aria-hidden='true'
+						className={cn(
+							'h-4 w-4 shrink-0 text-(--color-fg-dim) transition-transform duration-200 ease-snap',
+							isOpen && 'rotate-180 text-(--color-primary)'
+						)}
+					/>
+				</button>
+				{anchor ? (
+					<a
+						aria-label={t('copyLink', { section: title })}
+						className='order-first -my-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-(--radius-control) text-(--color-fg-dim) opacity-0 transition-[opacity,color] duration-150 hover:text-(--color-primary) focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong group-hover/header:opacity-100 [@media(hover:none)]:opacity-100'
+						href={`#${anchor}`}
+						onClick={(event) => {
+							void copyLink(event);
+						}}
+						title={t('copyLink', { section: title })}
+					>
+						<LinkIcon aria-hidden='true' className='h-3.5 w-3.5' />
+					</a>
+				) : null}
+			</div>
 			<div className={cn('mt-4', !isOpen && 'hidden', bodyClassName)} id={bodyId}>
 				{children}
 			</div>

@@ -20,12 +20,14 @@ import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
 
 type Props = {
+	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
+	anchor?: string;
 	defaultOpen?: boolean;
 	icon: LucideIcon;
 	title: string;
 };
 
-export const AchievementsSection = ({ defaultOpen, icon, title }: Props) => {
+export const AchievementsSection = ({ anchor, defaultOpen, icon, title }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 	const t = useTranslations('editor.achievements');
@@ -38,7 +40,7 @@ export const AchievementsSection = ({ defaultOpen, icon, title }: Props) => {
 	};
 
 	return (
-		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title={title}>
+		<CollapsiblePanel anchor={anchor} defaultOpen={defaultOpen} icon={icon} title={title}>
 			<div className='space-y-6'>
 				<EditorTable label={t('tableLabel')}>
 					<EditorTableHead className='max-sm:hidden'>

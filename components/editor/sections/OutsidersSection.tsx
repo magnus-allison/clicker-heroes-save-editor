@@ -22,6 +22,8 @@ import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
 
 type Props = {
+	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
+	anchor?: string;
 	defaultOpen?: boolean;
 	icon?: LucideIcon;
 	title?: string;
@@ -31,7 +33,7 @@ type Props = {
  *  exponential notation at the same threshold the section always used. */
 const OUTSIDER_EXPONENTIAL_ABOVE = 100_000;
 
-export const OutsidersSection = ({ defaultOpen, icon, title }: Props) => {
+export const OutsidersSection = ({ anchor, defaultOpen, icon, title }: Props) => {
 	const t = useTranslations('editor.outsiders');
 	const format = useNumberFormat();
 	const tTable = useTranslations('editor.table');
@@ -57,6 +59,7 @@ export const OutsidersSection = ({ defaultOpen, icon, title }: Props) => {
 
 	return (
 		<CollapsiblePanel
+			anchor={anchor}
 			defaultOpen={defaultOpen}
 			description={t('description')}
 			icon={icon}

@@ -13,12 +13,14 @@ import { useSaveStore } from '@/lib/save-store';
 import { listPrimitiveKeys } from '@/lib/save-utils';
 
 type Props = {
+	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
+	anchor?: string;
 	defaultOpen?: boolean;
 	icon?: LucideIcon;
 	title?: string;
 };
 
-export const CustomFieldSection = ({ defaultOpen, icon, title }: Props) => {
+export const CustomFieldSection = ({ anchor, defaultOpen, icon, title }: Props) => {
 	const t = useTranslations('editor.customField');
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
@@ -35,6 +37,7 @@ export const CustomFieldSection = ({ defaultOpen, icon, title }: Props) => {
 
 	return (
 		<CollapsiblePanel
+			anchor={anchor}
 			defaultOpen={defaultOpen}
 			description={t('description')}
 			icon={icon}

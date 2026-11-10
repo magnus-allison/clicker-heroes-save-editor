@@ -20,12 +20,14 @@ import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
 
 type Props = {
+	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
+	anchor?: string;
 	defaultOpen?: boolean;
 	icon?: LucideIcon;
 	title?: string;
 };
 
-export const MercenariesSection = ({ defaultOpen, icon, title }: Props) => {
+export const MercenariesSection = ({ anchor, defaultOpen, icon, title }: Props) => {
 	const t = useTranslations('editor.mercenaries');
 	const tTable = useTranslations('editor.table');
 	const { fieldLabel } = useEditorText();
@@ -33,7 +35,7 @@ export const MercenariesSection = ({ defaultOpen, icon, title }: Props) => {
 	const updateValue = useSaveStore((state) => state.updateValue);
 
 	return (
-		<CollapsiblePanel description={t('description')} icon={icon} title={title ?? t('title')}>
+		<CollapsiblePanel anchor={anchor} description={t('description')} icon={icon} title={title ?? t('title')}>
 			<div className='space-y-6'>
 				<div>
 					<ToolLink href='/tools/mercenary-viewer'>{t('viewDetails')}</ToolLink>

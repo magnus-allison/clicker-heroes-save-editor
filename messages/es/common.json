@@ -192,6 +192,9 @@
     "selectOption": "Selecciona una opción",
     "numberInput": "Campo numérico",
     "textInput": "Campo de texto",
-    "opensInNewTab": "(se abre en una pestaña nueva)"
+    "opensInNewTab": "(se abre en una pestaña nueva)",
+    "copyLink": "Copiar enlace a {section}",
+    "linkCopied": "Enlace copiado",
+    "linkCopyFailed": "No se pudo copiar el enlace"
   }
 }

@@ -20,6 +20,8 @@ import type { LucideIcon } from 'lucide-react';
 import { type FC } from 'react';
 
 type Props = {
+	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
+	anchor?: string;
 	icon?: LucideIcon;
 	title: string;
 	description?: string;
@@ -27,13 +29,19 @@ type Props = {
 	defaultOpen?: boolean;
 };
 
-export const SimpleFieldsSection: FC<Props> = ({ icon, title, description, fields, defaultOpen }) => {
+export const SimpleFieldsSection: FC<Props> = ({ anchor, icon, title, description, fields, defaultOpen }) => {
 	const tTable = useTranslations('editor.table');
 	const { fieldHelp, fieldLabel, fieldOptions } = useEditorText();
 	const showImageColumn = fields.some((field) => Boolean(field.imageSrc));
 
 	return (
-		<CollapsiblePanel defaultOpen={defaultOpen} description={description} icon={icon} title={title}>
+		<CollapsiblePanel
+			anchor={anchor}
+			defaultOpen={defaultOpen}
+			description={description}
+			icon={icon}
+			title={title}
+		>
 			<EditorTable label={title} tableClassName='w-full table-fixed'>
 				<colgroup>
 					{showImageColumn ? <col className='w-18 sm:w-22' /> : null}

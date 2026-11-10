@@ -192,6 +192,9 @@
     "selectOption": "Choisir une option",
     "numberInput": "Champ numérique",
     "textInput": "Champ de texte",
-    "opensInNewTab": "(s’ouvre dans un nouvel onglet)"
+    "opensInNewTab": "(s’ouvre dans un nouvel onglet)",
+    "copyLink": "Copier le lien vers {section}",
+    "linkCopied": "Lien copié",
+    "linkCopyFailed": "Impossible de copier le lien"
   }
 }

@@ -1,10 +1,12 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, Ref } from 'react';
 
 import { cn } from 'cn';
 
 interface Props {
 	children: ReactNode;
 	className?: string;
+	id?: string;
+	ref?: Ref<HTMLDivElement>;
 }
 
 /**
@@ -12,9 +14,11 @@ interface Props {
  * site banner (see globals.css). That class sets the background and shadow
  * unlayered, so there is no point adding background or shadow utilities here.
  */
-export const PanelSection = ({ children, className }: Props) => {
+export const PanelSection = ({ children, className, id, ref }: Props) => {
 	return (
 		<div
+			id={id}
+			ref={ref}
 			className={cn(
 				'glass-panel group flex w-full flex-col overflow-hidden rounded-2xl p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong',
 				className

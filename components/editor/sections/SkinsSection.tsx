@@ -21,12 +21,14 @@ import { getValueAtPath, setValueAtPath } from '@/lib/save-utils';
 import { Pill } from '@/components/ui/Pill';
 
 type Props = {
+	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
+	anchor?: string;
 	showToast: (message: string) => void;
 	defaultOpen?: boolean;
 	icon?: LucideIcon;
 };
 
-export const SkinsSection = ({ defaultOpen, icon, showToast }: Props) => {
+export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateSave = useSaveStore((state) => state.updateSave);
 	const updateValue = useSaveStore((state) => state.updateValue);
@@ -40,7 +42,7 @@ export const SkinsSection = ({ defaultOpen, icon, showToast }: Props) => {
 		: false;
 
 	return (
-		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title={t('title')}>
+		<CollapsiblePanel anchor={anchor} defaultOpen={defaultOpen} icon={icon} title={t('title')}>
 			<div className='space-y-6'>
 				<div className='flex items-center justify-between gap-3'>
 					<Pill

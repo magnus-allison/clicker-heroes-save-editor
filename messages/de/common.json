@@ -192,6 +192,9 @@
     "selectOption": "Option auswählen",
     "numberInput": "Zahleneingabe",
     "textInput": "Texteingabe",
-    "opensInNewTab": "(öffnet in neuem Tab)"
+    "opensInNewTab": "(öffnet in neuem Tab)",
+    "copyLink": "Link zu {section} kopieren",
+    "linkCopied": "Link kopiert",
+    "linkCopyFailed": "Link konnte nicht kopiert werden"
   }
 }

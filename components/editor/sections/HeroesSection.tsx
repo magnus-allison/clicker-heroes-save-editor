@@ -23,12 +23,14 @@ import { cn } from 'cn';
 const gildIncrements = [1, 10, 100] as const;
 
 type Props = {
+	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
+	anchor?: string;
 	defaultOpen?: boolean;
 	icon?: LucideIcon;
 	title?: string;
 };
 
-export const HeroesSection = ({ defaultOpen, icon, title: titleProp }: Props) => {
+export const HeroesSection = ({ anchor, defaultOpen, icon, title: titleProp }: Props) => {
 	const t = useTranslations('editor.heroes');
 	const tTable = useTranslations('editor.table');
 	const title = titleProp ?? t('title');
@@ -43,7 +45,7 @@ export const HeroesSection = ({ defaultOpen, icon, title: titleProp }: Props) =>
 		]) ?? {};
 
 	return (
-		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title={title}>
+		<CollapsiblePanel anchor={anchor} defaultOpen={defaultOpen} icon={icon} title={title}>
 			<EditorTable label={title}>
 				{/* Phones get labels inside each row instead (see below). */}
 				<EditorTableHead className='max-sm:hidden'>
