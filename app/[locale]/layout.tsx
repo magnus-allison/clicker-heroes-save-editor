@@ -15,6 +15,7 @@ import { clientNamespaces, messages } from '@/messages';
 import '../globals.css';
 import { PageBanner } from '@/components/home/PageBanner';
 import { welcomeBannerScript } from '@/lib/welcome-banner';
+import { MarkPageLoaded } from '@/components/ui/MarkPageLoaded';
 import { PageShell } from '@/components/ui/PageShell';
 import { SiteFooter } from '@/components/ui/SiteFooter';
 
@@ -123,6 +124,7 @@ export default async function LocaleLayout({
 						</PageShell>
 					</ToastProvider>
 				</NextIntlClientProvider>
+				<MarkPageLoaded />
 				<Analytics />
 				<SpeedInsights />
 			</body>

@@ -7,11 +7,16 @@ interface Props {
 	className?: string;
 }
 
+/**
+ * Every panel on the site, in the same frosted `glass-panel` treatment as the
+ * site banner (see globals.css). That class sets the background and shadow
+ * unlayered, so there is no point adding background or shadow utilities here.
+ */
 export const PanelSection = ({ children, className }: Props) => {
 	return (
 		<div
 			className={cn(
-				'w-full overflow-hidden rounded-2xl bg-card-background group flex flex-col p-5 transition-shadow duration-300 shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong hover:shadow-card-hover',
+				'glass-panel group flex w-full flex-col overflow-hidden rounded-2xl p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong',
 				className
 			)}
 		>

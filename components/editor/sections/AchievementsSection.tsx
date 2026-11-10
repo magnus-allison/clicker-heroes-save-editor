@@ -41,7 +41,7 @@ export const AchievementsSection = ({ defaultOpen, icon, title }: Props) => {
 		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title={title}>
 			<div className='space-y-6'>
 				<EditorTable label={t('tableLabel')}>
-					<EditorTableHead>
+					<EditorTableHead className='max-sm:hidden'>
 						<tr>
 							<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
 							<EditorTableHeaderCell>{tTable('item')}</EditorTableHeaderCell>
@@ -51,8 +51,9 @@ export const AchievementsSection = ({ defaultOpen, icon, title }: Props) => {
 						</tr>
 					</EditorTableHead>
 					<EditorTableBody>
-						<EditorTableRow>
-							<EditorTableCell>
+						{/* Phones: image and name on one line, the input full width below. */}
+						<EditorTableRow className='max-sm:flex max-sm:flex-wrap max-sm:items-center'>
+							<EditorTableCell className='max-sm:pb-0'>
 								<EditorImage
 									alt={t('transcendentHighestZone')}
 									className='h-11 w-11 object-contain'
@@ -60,8 +61,10 @@ export const AchievementsSection = ({ defaultOpen, icon, title }: Props) => {
 									src='/assets/profile/Transcend_achieve.webp'
 								/>
 							</EditorTableCell>
-							<EditorTableCell className='text-(--color-fg)'>{t('transcendentHighestZone')}</EditorTableCell>
-							<EditorTableCell className='min-w-55'>
+							<EditorTableCell className='text-(--color-fg) max-sm:min-w-0 max-sm:flex-1 max-sm:pb-0 max-sm:pl-0'>
+								{t('transcendentHighestZone')}
+							</EditorTableCell>
+							<EditorTableCell className='max-sm:w-full sm:min-w-55'>
 								<NumberInput
 									ariaLabel={t('transcendentHighestZone')}
 									disabled={!saveData}

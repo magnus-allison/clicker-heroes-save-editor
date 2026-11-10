@@ -59,6 +59,15 @@
     "loaded": "Partida cargada.",
     "failed": "No se pudo decodificar la partida."
   },
+  "lastSave": {
+    "badge": "Hola de nuevo",
+    "message": "¿Quieres seguir donde lo dejaste?",
+    "detail": "Guardada {time}{edits, plural, =0 {} one { · # cambio} other { · # cambios}}",
+    "restore": "Cargar última partida",
+    "dismissLabel": "Olvidar última partida",
+    "restored": "Última partida restaurada.",
+    "failed": "No se pudo restaurar tu última partida."
+  },
   "decodeErrors": {
     "empty": "Primero pega el código de una partida o carga un archivo de guardado.",
     "unsupported": "Ese texto no parece una partida de Clicker Heroes compatible.",

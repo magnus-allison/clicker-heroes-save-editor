@@ -59,6 +59,15 @@
     "loaded": "Sauvegarde chargée.",
     "failed": "Impossible de décoder la sauvegarde."
   },
+  "lastSave": {
+    "badge": "Content de te revoir",
+    "message": "Tu veux reprendre là où tu t’étais arrêté ?",
+    "detail": "Enregistrée {time}{edits, plural, =0 {} one { · # modification} other { · # modifications}}",
+    "restore": "Charger la dernière sauvegarde",
+    "dismissLabel": "Oublier la dernière sauvegarde",
+    "restored": "Dernière sauvegarde restaurée.",
+    "failed": "Impossible de restaurer ta dernière sauvegarde."
+  },
   "decodeErrors": {
     "empty": "Colle d’abord un code de sauvegarde ou charge un fichier de sauvegarde.",
     "unsupported": "Ce code ne ressemble pas à une sauvegarde Clicker Heroes prise en charge.",

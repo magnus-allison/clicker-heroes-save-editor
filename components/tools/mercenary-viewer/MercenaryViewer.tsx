@@ -222,11 +222,7 @@ export const MercenaryViewer = () => {
 			<StepTitle step={2} title={t('steps.roster')} />
 			<PanelSection>
 				<div className='grid gap-4 p-4'>
-					<EditorTable
-						className='border-(--color-line-subtle)'
-						label={t('rosterLabel')}
-						tableClassName='w-full table-fixed'
-					>
+					<EditorTable label={t('rosterLabel')} tableClassName='w-full table-fixed'>
 						<colgroup>
 							{rosterColumns.map((column) => (
 								<col className={column.widthClassName} key={column.key} />
@@ -279,11 +275,7 @@ export const MercenaryViewer = () => {
 			<StepTitle step={3} title={t('steps.summary')} />
 			<PanelSection>
 				<div className='grid gap-4 p-4'>
-					<EditorTable
-						className='border-(--color-line-subtle)'
-						label={t('summaryLabel')}
-						tableClassName='w-full table-fixed'
-					>
+					<EditorTable label={t('summaryLabel')} tableClassName='w-full table-fixed'>
 						<colgroup>
 							<col className='w-1/2' />
 							<col className='w-1/2' />

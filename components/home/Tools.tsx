@@ -11,6 +11,7 @@ import {
 	Orbit,
 	SaveCheckIcon,
 	SwordIcon,
+	SwordsIcon,
 	Users,
 	Wrench
 } from 'lucide-react';
@@ -38,7 +39,7 @@ export const tools: LinkCardItem<ToolCardKey>[] = [
 	{
 		key: 'instakillCalculator',
 		href: '/tools/instakill-calculator',
-		icon: Calculator
+		icon: SwordsIcon
 	},
 	{
 		key: 'ancientsCalculator',
@@ -86,10 +87,11 @@ export const tools: LinkCardItem<ToolCardKey>[] = [
 export const Tools: FC = () => {
 	const t = useTranslations('common.cards.tools');
 
-	return tools.map((tool) => (
+	return tools.map((tool, index) => (
 		<LinkCard
 			description={t(`${tool.key}.description`)}
 			disabled={tool.tag === 'comingSoon'}
+			fadeIndex={index}
 			href={tool.href}
 			icon={tool.icon}
 			key={tool.key}

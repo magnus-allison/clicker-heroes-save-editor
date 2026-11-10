@@ -1,7 +1,7 @@
 import { cn } from 'cn';
 import { ArrowRight, ArrowUpRight, Crown, LucideIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { type FC } from 'react';
+import { type CSSProperties, type FC } from 'react';
 
 import { Link } from '@/i18n/navigation';
 import { Pill } from './Pill';
@@ -24,7 +24,13 @@ interface Props {
 	href: string;
 	disabled?: boolean;
 	tag?: CardTag;
+	/** Position in the entrance stagger; set it to fade the card in on page load. */
+	fadeIndex?: number;
 }
+
+/** Stagger position for the `fade-in-on-load` entrance (see globals.css). */
+const fadeStyle = (fadeIndex?: number) =>
+	fadeIndex === undefined ? undefined : ({ '--fade-index': fadeIndex } as CSSProperties);
 
 export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 	icon: Icon,
@@ -32,13 +38,16 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 	description,
 	href,
 	disabled,
+	fadeIndex,
 	tag
 }) => {
 	const t = useTranslations('common.cards');
 	const className = cn(
 		`group flex h-full flex-col glass-card rounded-2xl p-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-info`,
-		disabled && 'opacity-50 select-none'
+		disabled && 'opacity-50 select-none',
+		fadeIndex !== undefined && 'fade-in-on-load'
 	);
+	const style = fadeStyle(fadeIndex);
 
 	const content = (
 		<>
@@ -79,14 +88,14 @@ export const LinkCard: FC<Props & { icon: LucideIcon }> = ({
 	 */
 	if (disabled) {
 		return (
-			<div aria-disabled='true' className={className}>
+			<div aria-disabled='true' className={className} style={style}>
 				{content}
 			</div>
 		);
 	}
 
 	return (
-		<Link className={className} href={href}>
+		<Link className={className} href={href} style={style}>
 			{content}
 		</Link>
 	);
@@ -98,6 +107,7 @@ export const ExternalLinkCard: FC<Props & { icon: string; tintIcon?: boolean }> 
 	tintIcon = true,
 	title,
 	description,
+	fadeIndex,
 	href,
 	tag
 }) => {
@@ -106,9 +116,11 @@ export const ExternalLinkCard: FC<Props & { icon: string; tintIcon?: boolean }> 
 	return (
 		<a
 			className={cn(
-				`group flex h-full flex-col glass-card rounded-2xl p-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-info`
+				`group flex h-full flex-col glass-card rounded-2xl p-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-info`,
+				fadeIndex !== undefined && 'fade-in-on-load'
 			)}
 			href={href}
+			style={fadeStyle(fadeIndex)}
 			target='_blank'
 			rel='noopener noreferrer'
 		>

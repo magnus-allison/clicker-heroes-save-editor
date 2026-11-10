@@ -40,12 +40,18 @@ export const guides: LinkCardItem<GuideCardKey>[] = [
 	}
 ];
 
-export const Guides: FC = () => {
+type Props = {
+	/** Where this grid's entrance stagger starts, so it follows the tools above. */
+	fadeOffset?: number;
+};
+
+export const Guides: FC<Props> = ({ fadeOffset = 0 }) => {
 	const t = useTranslations('common.cards.guides');
 
-	return guides.map((guide) => (
+	return guides.map((guide, index) => (
 		<LinkCard
 			description={t(`${guide.key}.description`)}
+			fadeIndex={fadeOffset + index}
 			href={guide.href}
 			icon={guide.icon}
 			key={guide.key}

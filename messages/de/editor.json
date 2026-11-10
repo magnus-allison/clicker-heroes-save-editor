@@ -59,6 +59,15 @@
     "loaded": "Spielstand geladen.",
     "failed": "Der Spielstand konnte nicht dekodiert werden."
   },
+  "lastSave": {
+    "badge": "Willkommen zurück",
+    "message": "Möchtest du dort weitermachen, wo du aufgehört hast?",
+    "detail": "Zuletzt gespeichert {time}{edits, plural, =0 {} one { · # Änderung} other { · # Änderungen}}",
+    "restore": "Letzten Spielstand laden",
+    "dismissLabel": "Letzten Spielstand vergessen",
+    "restored": "Letzter Spielstand wiederhergestellt.",
+    "failed": "Dein letzter Spielstand konnte nicht wiederhergestellt werden."
+  },
   "decodeErrors": {
     "empty": "Füge zuerst einen Spielstand-Code ein oder lade eine Speicherdatei.",
     "unsupported": "Dieser Code sieht nicht nach einem unterstützten Clicker-Heroes-Spielstand aus.",

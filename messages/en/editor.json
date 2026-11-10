@@ -59,6 +59,15 @@
     "loaded": "Save data loaded.",
     "failed": "Failed to decode save data."
   },
+  "lastSave": {
+    "badge": "Welcome back",
+    "message": "Want to pick up where you left off?",
+    "detail": "Last saved {time}{edits, plural, =0 {} one { · # edit} other { · # edits}}",
+    "restore": "Load last save",
+    "dismissLabel": "Forget last save",
+    "restored": "Last save restored.",
+    "failed": "Couldn't restore your last save."
+  },
   "decodeErrors": {
     "empty": "Paste a save string or load a save file first.",
     "unsupported": "That string does not look like a supported Clicker Heroes save.",

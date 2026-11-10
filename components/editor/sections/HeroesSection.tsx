@@ -11,12 +11,16 @@ import {
 	EditorTableCell,
 	EditorTableHead,
 	EditorTableHeaderCell,
-	EditorTableRow
+	EditorTableRow,
+	MobileCellLabel
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { orderedHeroes } from '@/lib/data/heroes';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
+import { cn } from 'cn';
+
+const gildIncrements = [1, 10, 100] as const;
 
 type Props = {
 	defaultOpen?: boolean;
@@ -41,9 +45,9 @@ export const HeroesSection = ({ defaultOpen, icon, title: titleProp }: Props) =>
 	return (
 		<CollapsiblePanel defaultOpen={defaultOpen} icon={icon} title={title}>
 			<EditorTable label={title}>
-				<EditorTableHead>
+				{/* Phones get labels inside each row instead (see below). */}
+				<EditorTableHead className='max-sm:hidden'>
 					<tr>
-						<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
 						<EditorTableHeaderCell>{tTable('hero')}</EditorTableHeaderCell>
 						<EditorTableHeaderCell>{tTable('level')}</EditorTableHeaderCell>
 						<EditorTableHeaderCell>{tTable('gildedLevel')}</EditorTableHeaderCell>
@@ -59,30 +63,37 @@ export const HeroesSection = ({ defaultOpen, icon, title: titleProp }: Props) =>
 
 						return (
 							<EditorTableRow
-								className={
-									isGilded
-										? 'border-(--color-gilded-line) bg-(--color-gilded-surface) text-(--color-gold)'
-										: undefined
-								}
+								// On phones each row becomes a small card: the hero across the top, the
+								// two inputs side by side below, so nothing scrolls sideways.
+								className={cn('max-sm:grid max-sm:grid-cols-2', isGilded && 'bg-(--color-gilded-surface)')}
 								key={hero.heroId}
 							>
-								<EditorTableCell>
-									<EditorImage
-										alt={hero.name}
-										className='h-12 w-12 object-contain'
-										size={48}
-										src={imageSrc}
-									/>
+								{/* Portrait and name share a cell, so the name column takes
+								    whatever the two inputs leave. */}
+								<EditorTableCell className='py-2 max-sm:col-span-2 max-sm:pb-0'>
+									<div className='flex items-center gap-3 sm:min-w-44'>
+										<EditorImage
+											alt=''
+											className='h-10 w-10 shrink-0 object-contain'
+											size={40}
+											src={imageSrc}
+										/>
+										<div className='flex min-w-0 flex-col items-start gap-1'>
+											<span className={isGilded ? 'text-(--color-gold)' : 'text-(--color-fg)'}>
+												{hero.name}
+											</span>
+											{isGilded ? (
+												<span className='inline-flex h-5 items-center rounded-full border border-(--color-gilded-line) px-2 text-[10px] font-bold tracking-wide text-(--color-gold)'>
+													{getGildedLabel(epicLevel)}
+												</span>
+											) : null}
+										</div>
+									</div>
 								</EditorTableCell>
-								<EditorTableCell>
-									<p className={isGilded ? 'text-(--color-gold)' : 'text-(--color-fg)'}>{hero.name}</p>
-									{isGilded ? (
-										<p className='mt-1 text-[11px] uppercase tracking-[0.08em] text-(--color-gold)'>
-											{getGildedLabel(epicLevel)}
-										</p>
-									) : null}
-								</EditorTableCell>
-								<EditorTableCell className='min-w-45'>
+								{/* `sm:w-px` shrinks the input columns to their content, so
+								    each header sits directly above its input. */}
+								<EditorTableCell className='py-2 sm:w-px sm:min-w-45'>
+									<MobileCellLabel>{tTable('level')}</MobileCellLabel>
 									<NumberInput
 										ariaLabel={t('levelAria', { name: hero.name })}
 										compact
@@ -94,11 +105,14 @@ export const HeroesSection = ({ defaultOpen, icon, title: titleProp }: Props) =>
 										value={level}
 									/>
 								</EditorTableCell>
-								<EditorTableCell className='min-w-45'>
+								<EditorTableCell className='py-2 sm:w-px sm:min-w-45'>
+									<MobileCellLabel>{tTable('gildedLevel')}</MobileCellLabel>
 									<NumberInput
 										ariaLabel={t('gildedLevelAria', { name: hero.name })}
 										compact
 										disabled={!saveData}
+										// Gilds come in ones and tens, not thousands.
+										increments={gildIncrements}
 										onCommit={(value) =>
 											updateValue(['heroCollection', 'heroes', hero.heroId, 'epicLevel'], value)
 										}

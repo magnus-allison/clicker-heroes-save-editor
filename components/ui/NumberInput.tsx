@@ -7,11 +7,9 @@ import { cn } from 'cn';
 import { useTranslations } from 'next-intl';
 import { formatNumber, parseNumberish, sanitizeNumberInput } from '@/lib/save-utils';
 
-const incrementOptions = [
-	{ label: '+10', amount: 10 },
-	{ label: '+100', amount: 100 },
-	{ label: '+1k', amount: 1000 }
-] as const;
+const defaultIncrements = [10, 100, 1000] as const;
+
+const incrementLabel = (amount: number) => (amount >= 1000 ? `+${amount / 1000}k` : `+${amount}`);
 
 type Props = {
 	value: number | string;
@@ -26,6 +24,10 @@ type Props = {
 	selectOnFocus?: boolean;
 	allowDecimal?: boolean;
 	inputClassName?: string;
+	/** Extra classes for the wrapper around the input and its step buttons. */
+	wrapperClassName?: string;
+	/** Step buttons beside the input. Defaults to +10, +100 and +1k. */
+	increments?: readonly number[];
 };
 
 export const NumberInput = ({
@@ -35,12 +37,14 @@ export const NumberInput = ({
 	compact = false,
 	disabled,
 	id,
+	increments = defaultIncrements,
 	inputClassName,
 	name,
 	onCommit,
 	placeholder,
 	selectOnFocus,
-	value
+	value,
+	wrapperClassName
 }: Props) => {
 	const t = useTranslations('common.ui');
 	const generatedId = useId();
@@ -75,7 +79,8 @@ export const NumberInput = ({
 		<div
 			className={cn(
 				'flex w-full flex-wrap gap-1.5 sm:ml-auto sm:flex-nowrap sm:items-stretch',
-				compact ? 'sm:w-73.5' : 'sm:max-w-full sm:w-fit'
+				compact ? 'sm:w-73.5' : 'sm:max-w-full sm:w-fit',
+				wrapperClassName
 			)}
 		>
 			<input
@@ -114,25 +119,25 @@ export const NumberInput = ({
 				type='text'
 				value={displayValue}
 			/>
-			{incrementOptions.map((option) => (
+			{increments.map((amount) => (
 				<Button
-					aria-label={`Increase by ${option.amount}`}
+					aria-label={`Increase by ${amount}`}
 					className='flex-none px-2'
 					disabled={disabled}
-					key={option.amount}
+					key={amount}
 					onPointerDown={(event) => {
 						event.preventDefault();
-						handleIncrement(option.amount);
+						handleIncrement(amount);
 					}}
 					onKeyDown={(event) => {
 						if (event.key === 'Enter' || event.key === ' ') {
 							event.preventDefault();
-							handleIncrement(option.amount);
+							handleIncrement(amount);
 						}
 					}}
 					variant='secondary'
 				>
-					{option.label}
+					{incrementLabel(amount)}
 				</Button>
 			))}
 		</div>

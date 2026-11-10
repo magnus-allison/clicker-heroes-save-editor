@@ -10,9 +10,8 @@ import {
 	EditorTable,
 	EditorTableBody,
 	EditorTableCell,
-	EditorTableHead,
-	EditorTableHeaderCell,
-	EditorTableRow
+	EditorTableRow,
+	MobileCellLabel
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { ToolLink } from '@/components/ui/ToolLink';
@@ -64,18 +63,14 @@ export const MercenariesSection = ({ defaultOpen, icon, title }: Props) => {
 				<div>
 					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>{t('roster')}</p>
 					<EditorTable label={t('roster')}>
-						<EditorTableHead>
-							<tr>
-								<EditorTableHeaderCell>{tTable('name')}</EditorTableHeaderCell>
-								<EditorTableHeaderCell>{tTable('level')}</EditorTableHeaderCell>
-								<EditorTableHeaderCell>{tTable('timeToDie')}</EditorTableHeaderCell>
-								<EditorTableHeaderCell>{tTable('bonusLives')}</EditorTableHeaderCell>
-							</tr>
-						</EditorTableHead>
 						<EditorTableBody>
 							{mercenarySlots.map((slot) => (
-								<EditorTableRow key={slot.id}>
-									<EditorTableCell className='min-w-55'>
+								// Cards at every width: the full row is wider than the page. Name
+								// across the top, the three numbers beneath it (two to a line on
+								// phones).
+								<EditorTableRow className='flex flex-wrap' key={slot.id}>
+									<EditorTableCell className='w-full pb-0'>
+										<MobileCellLabel hideFrom='never'>{tTable('name')}</MobileCellLabel>
 										<BoundFieldControl
 											kind='text'
 											label={t('nameAria', { number: slot.id + 1 })}
@@ -83,28 +78,34 @@ export const MercenariesSection = ({ defaultOpen, icon, title }: Props) => {
 											selectOnFocus
 										/>
 									</EditorTableCell>
-									<EditorTableCell className='min-w-40'>
+									<EditorTableCell className='w-1/2 max-sm:pb-0 sm:w-1/3'>
+										<MobileCellLabel hideFrom='never'>{tTable('level')}</MobileCellLabel>
 										<NumberInput
 											ariaLabel={t('levelAria', { number: slot.id + 1 })}
 											disabled={!saveData}
+											wrapperClassName='sm:ml-0 sm:w-full'
 											onCommit={(value) => updateValue(slot.levelPath, value)}
 											selectOnFocus
 											value={Number(getValueAtPath(saveData, slot.levelPath) ?? 0)}
 										/>
 									</EditorTableCell>
-									<EditorTableCell className='min-w-45'>
+									<EditorTableCell className='w-1/2 max-sm:pb-0 sm:w-1/3'>
+										<MobileCellLabel hideFrom='never'>{tTable('timeToDie')}</MobileCellLabel>
 										<NumberInput
 											ariaLabel={t('timeToDieAria', { number: slot.id + 1 })}
 											disabled={!saveData}
+											wrapperClassName='sm:ml-0 sm:w-full'
 											onCommit={(value) => updateValue(slot.timeToDiePath, value)}
 											selectOnFocus
 											value={Number(getValueAtPath(saveData, slot.timeToDiePath) ?? 0)}
 										/>
 									</EditorTableCell>
-									<EditorTableCell className='min-w-45'>
+									<EditorTableCell className='w-1/2 sm:w-1/3'>
+										<MobileCellLabel hideFrom='never'>{tTable('bonusLives')}</MobileCellLabel>
 										<NumberInput
 											ariaLabel={t('bonusLivesAria', { number: slot.id + 1 })}
 											disabled={!saveData}
+											wrapperClassName='sm:ml-0 sm:w-full'
 											onCommit={(value) => updateValue(slot.bonusLivesPath, value)}
 											selectOnFocus
 											value={Number(getValueAtPath(saveData, slot.bonusLivesPath) ?? 0)}

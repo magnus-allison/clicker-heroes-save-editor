@@ -167,11 +167,7 @@ export const OutsidersCalculator = () => {
 						/>
 					</div>
 
-					<EditorTable
-						className='border-(--color-line-subtle)'
-						label={t('goalsTable.label')}
-						tableClassName='w-full'
-					>
+					<EditorTable label={t('goalsTable.label')} tableClassName='w-full'>
 						<EditorTableHead>
 							<tr>
 								<EditorTableHeaderCell className='w-18'>{t('goalsTable.image')}</EditorTableHeaderCell>
@@ -251,11 +247,7 @@ export const OutsidersCalculator = () => {
 			<StepTitle title={t('steps.transcensionDetails')} />
 			<PanelSection>
 				<SectionCard defaultOpen description={t('estimates.description')} title={t('estimates.title')}>
-					<EditorTable
-						className='border-(--color-line-subtle)'
-						label={t('estimates.title')}
-						tableClassName='w-full'
-					>
+					<EditorTable label={t('estimates.title')} tableClassName='w-full'>
 						<EditorTableBody>
 							<StatRow
 								label={t('estimates.highestZone')}
@@ -330,11 +322,7 @@ export const OutsidersCalculator = () => {
 				</SectionCard>
 
 				<SectionCard description={t('breakpoints.description')} title={t('breakpoints.title')}>
-					<EditorTable
-						className='border-(--color-line-subtle)'
-						label={t('breakpoints.title')}
-						tableClassName='w-full'
-					>
+					<EditorTable label={t('breakpoints.title')} tableClassName='w-full'>
 						<EditorTableBody>
 							<StatRow
 								label={t('breakpoints.highMonstersPerZone')}
@@ -365,11 +353,7 @@ export const OutsidersCalculator = () => {
 				</SectionCard>
 
 				<SectionCard description={t('highestZoneStats.description')} title={t('highestZoneStats.title')}>
-					<EditorTable
-						className='border-(--color-line-subtle)'
-						label={t('highestZoneStats.title')}
-						tableClassName='w-full'
-					>
+					<EditorTable label={t('highestZoneStats.title')} tableClassName='w-full'>
 						<EditorTableHead>
 							<tr>
 								<EditorTableHeaderCell>{t('highestZoneStats.stat')}</EditorTableHeaderCell>
@@ -419,11 +403,7 @@ export const OutsidersCalculator = () => {
 
 				{showSimulator ? (
 					<SectionCard description={t('simulator.description')} title={t('simulator.title')}>
-						<EditorTable
-							className='border-(--color-line-subtle)'
-							label={t('simulator.title')}
-							tableClassName='w-full'
-						>
+						<EditorTable label={t('simulator.title')} tableClassName='w-full'>
 							<EditorTableHead>
 								<tr>
 									<EditorTableHeaderCell>{t('simulator.ancientSouls')}</EditorTableHeaderCell>

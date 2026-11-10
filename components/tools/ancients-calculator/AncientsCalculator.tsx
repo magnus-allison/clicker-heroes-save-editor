@@ -259,11 +259,7 @@ export const AncientsCalculator = () => {
 						/>
 					</div>
 
-					<EditorTable
-						className='border-(--color-line-subtle)'
-						label={t('goalsTable.label')}
-						tableClassName='w-full'
-					>
+					<EditorTable label={t('goalsTable.label')} tableClassName='w-full'>
 						<EditorTableHead>
 							<tr>
 								<EditorTableHeaderCell>{t('goalsTable.ancient')}</EditorTableHeaderCell>
@@ -306,11 +302,7 @@ export const AncientsCalculator = () => {
 			<StepTitle step={4} title={t('steps.transcensionDetails')} />
 			<PanelSection>
 				<SectionCard defaultOpen description={t('stats.description')} title={t('stats.title')}>
-					<EditorTable
-						className='border-(--color-line-subtle)'
-						label={t('stats.label')}
-						tableClassName='w-full'
-					>
+					<EditorTable label={t('stats.label')} tableClassName='w-full'>
 						<EditorTableBody>
 							<StatRow
 								label={t('stats.transcendentPower')}
@@ -337,11 +329,7 @@ export const AncientsCalculator = () => {
 				</SectionCard>
 
 				<SectionCard description={t('outsiders.description')} title={t('outsiders.title')}>
-					<EditorTable
-						className='border-(--color-line-subtle)'
-						label={t('outsiders.label')}
-						tableClassName='w-full'
-					>
+					<EditorTable label={t('outsiders.label')} tableClassName='w-full'>
 						<EditorTableHead>
 							<tr>
 								<EditorTableHeaderCell className='w-18'>{t('outsiders.image')}</EditorTableHeaderCell>
@@ -370,11 +358,7 @@ export const AncientsCalculator = () => {
 				</SectionCard>
 
 				<SectionCard description={t('planner.description')} title={t('planner.title')}>
-					<EditorTable
-						className='border-(--color-line-subtle)'
-						label={t('planner.title')}
-						tableClassName='w-full'
-					>
+					<EditorTable label={t('planner.title')} tableClassName='w-full'>
 						<EditorTableHead>
 							<tr>
 								<EditorTableHeaderCell>{t('planner.gain')}</EditorTableHeaderCell>

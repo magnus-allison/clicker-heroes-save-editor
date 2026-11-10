@@ -59,6 +59,15 @@
     "loaded": "Save carregado.",
     "failed": "Não foi possível decodificar o save."
   },
+  "lastSave": {
+    "badge": "Bem-vindo de volta",
+    "message": "Quer continuar de onde parou?",
+    "detail": "Salvo {time}{edits, plural, =0 {} one { · # alteração} other { · # alterações}}",
+    "restore": "Carregar último save",
+    "dismissLabel": "Esquecer último save",
+    "restored": "Último save restaurado.",
+    "failed": "Não foi possível restaurar seu último save."
+  },
   "decodeErrors": {
     "empty": "Primeiro cole o código de um save ou carregue um arquivo de save.",
     "unsupported": "Esse texto não parece ser um save compatível de Clicker Heroes.",

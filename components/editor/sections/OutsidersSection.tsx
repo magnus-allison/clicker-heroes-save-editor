@@ -12,9 +12,8 @@ import {
 	EditorTable,
 	EditorTableBody,
 	EditorTableCell,
-	EditorTableHead,
-	EditorTableHeaderCell,
-	EditorTableRow
+	EditorTableRow,
+	MobileCellLabel
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { ancientSoulFields, getOutsiderStats, outsiderFields } from '@/lib/data/editor-config';
@@ -88,19 +87,13 @@ export const OutsidersSection = ({ defaultOpen, icon, title }: Props) => {
 				</div>
 
 				<EditorTable label={t('tableLabel')}>
-					<EditorTableHead>
-						<tr>
-							<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
-							<EditorTableHeaderCell>{tTable('description')}</EditorTableHeaderCell>
-							<EditorTableHeaderCell>{tTable('level')}</EditorTableHeaderCell>
-							<EditorTableHeaderCell>{tTable('cost')}</EditorTableHeaderCell>
-							<EditorTableHeaderCell>{tTable('spent')}</EditorTableHeaderCell>
-						</tr>
-					</EditorTableHead>
 					<EditorTableBody>
 						{outsiderRows.map(({ field, level, spent, stats }) => (
-							<EditorTableRow key={field.id}>
-								<EditorTableCell className='align-top'>
+							// Cards at every width: the full row is wider than the page. Image
+							// and bonus text on top, then level, cost and spent (level and
+							// spent side by side on phones, cost below).
+							<EditorTableRow className='flex flex-wrap' key={field.id}>
+								<EditorTableCell className='pr-0 pb-0'>
 									<EditorImage
 										alt={field.name}
 										className='h-12 w-12 object-contain'
@@ -108,7 +101,7 @@ export const OutsidersSection = ({ defaultOpen, icon, title }: Props) => {
 										src={field.imageSrc}
 									/>
 								</EditorTableCell>
-								<EditorTableCell className='align-top'>
+								<EditorTableCell className='min-w-0 flex-1 basis-3/5 pb-0'>
 									<p className='text-(--color-fg)'>{field.name}</p>
 									<p className='mt-1 leading-6 text-(--color-fg-secondary)'>
 										{field.bonusLabel}
@@ -123,22 +116,27 @@ export const OutsidersSection = ({ defaultOpen, icon, title }: Props) => {
 										</p>
 									) : null}
 								</EditorTableCell>
-								<EditorTableCell className='min-w-40 align-top'>
+								<EditorTableCell className='w-1/2 max-sm:pb-0 sm:w-1/3'>
+									<MobileCellLabel hideFrom='never'>{tTable('level')}</MobileCellLabel>
 									<NumberInput
 										ariaLabel={t('levelAria', { name: field.name })}
 										disabled={!saveData}
+										wrapperClassName='sm:ml-0 sm:w-full'
 										onCommit={(value) => updateValue(field.levelPath, value)}
 										selectOnFocus
 										value={level}
 									/>
 								</EditorTableCell>
-								<EditorTableCell className='align-top text-(--color-fg)'>
+								<EditorTableCell className='w-full text-(--color-fg) max-sm:order-last max-sm:pt-1 sm:w-1/3'>
+									<MobileCellLabel hideFrom='never'>{tTable('cost')}</MobileCellLabel>
 									{t('cost', { amount: format.number(stats.spent) })}
 								</EditorTableCell>
-								<EditorTableCell className='min-w-40 align-top'>
+								<EditorTableCell className='w-1/2 max-sm:pb-0 sm:w-1/3'>
+									<MobileCellLabel hideFrom='never'>{tTable('spent')}</MobileCellLabel>
 									<NumberInput
 										ariaLabel={t('spentAria', { name: field.name })}
 										disabled={!saveData}
+										wrapperClassName='sm:ml-0 sm:w-full'
 										onCommit={(value) => updateValue(field.spentPath, value)}
 										selectOnFocus
 										value={spent}

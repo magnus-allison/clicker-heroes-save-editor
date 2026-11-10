@@ -22,6 +22,11 @@ type SaveStore = {
 	 */
 	hasExported: boolean;
 	loadSave: (data: SaveData) => void;
+	/**
+	 * Puts back a save from an earlier visit (see `lib/last-save`) with its
+	 * edits intact, so the diff and step pills pick up where they left off.
+	 */
+	restoreSave: (original: SaveData, current: SaveData) => void;
 	markExported: () => void;
 	updateValue: (path: PathSegment[], value: unknown) => void;
 	updateValues: (updates: ValueUpdate[]) => void;
@@ -54,6 +59,11 @@ export const useSaveStore = create<SaveStore>((set) => ({
 		// (see `RemoveClanDataEditor`), never as a mutable snapshot.
 		const nextSave = structuredClone(data);
 		set({ saveData: nextSave, originalSaveData: nextSave, hasExported: false });
+	},
+	restoreSave: (original, current) => {
+		// Freshly parsed from storage, so nothing else holds a reference to
+		// either object and no clone is needed.
+		set({ saveData: current, originalSaveData: original, hasExported: false });
 	},
 	markExported: () => {
 		set({ hasExported: true });

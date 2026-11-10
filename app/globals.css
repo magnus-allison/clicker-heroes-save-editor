@@ -187,11 +187,18 @@ a:hover {
 	color: var(--color-link-hover);
 }
 
-button,
-input,
-select,
-textarea {
-	font: inherit;
+/*
+ * In the base layer, not unlayered: an unlayered `font` here beats every
+ * Tailwind utility, so `text-[11px]` or `font-semibold` on a <button> or
+ * <input> was silently ignored.
+ */
+@layer base {
+	button,
+	input,
+	select,
+	textarea {
+		font: inherit;
+	}
 }
 
 button:not(:disabled) {
@@ -252,6 +259,25 @@ img {
 
 .motion-press:active {
 	transform: translateY(1px);
+}
+
+/*
+ * Entrance for the home page cards: a short rise and fade, staggered by each
+ * card's `--fade-index`. It only runs until `MarkPageLoaded` sets
+ * `data-loaded` on <html>, so it plays on a fresh load but not on client-side
+ * navigation back to the page. Only `from` is given, so each card ends on its
+ * own resting opacity (disabled cards stay dimmed).
+ */
+@keyframes fade-in-on-load {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+}
+
+html:not([data-loaded]) .fade-in-on-load {
+	animation: fade-in-on-load 0.5s var(--ease-snap) both;
+	animation-delay: calc(var(--fade-index, 0) * 45ms);
 }
 
 /*
@@ -337,6 +363,16 @@ img {
 		0 0 0 1px var(--color-banner-edge),
 		0 1px 2px light-dark(rgba(15, 19, 24, 0.06), rgba(0, 0, 0, 0.4)),
 		0 10px 28px -6px light-dark(rgba(15, 19, 24, 0.16), rgba(0, 0, 0, 0.6));
+}
+
+/*
+ * The site banner sits on every page above the real content, so it stays
+ * flatter than the panels: the same edge ring, without the deep drop shadow.
+ */
+.site-banner {
+	box-shadow:
+		0 0 0 1px var(--color-banner-edge),
+		0 1px 2px light-dark(rgba(15, 19, 24, 0.05), rgba(0, 0, 0, 0.3));
 }
 
 .glass-card {

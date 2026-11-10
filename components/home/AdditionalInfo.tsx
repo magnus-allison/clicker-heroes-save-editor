@@ -30,26 +30,34 @@ const externalLinks = [
 	}
 ] as const;
 
-export const AdditionalInfo: FC = () => {
+type Props = {
+	/** Where this grid's entrance stagger starts, so it follows the guides above. */
+	fadeOffset?: number;
+};
+
+export const AdditionalInfo: FC<Props> = ({ fadeOffset = 0 }) => {
 	const t = useTranslations('common.cards.additional');
 
 	return (
 		<>
 			<LinkCard
 				description={t('feedback.description')}
+				fadeIndex={fadeOffset}
 				href='/feedback'
 				icon={MessageCircle}
 				title={t('feedback.title')}
 			/>
 			<LinkCard
 				description={t('faq.description')}
+				fadeIndex={fadeOffset + 1}
 				href='/faq'
 				icon={MessageCircleQuestionIcon}
 				title={t('faq.title')}
 			/>
-			{externalLinks.map((link) => (
+			{externalLinks.map((link, index) => (
 				<ExternalLinkCard
 					description={t(`${link.key}.description`)}
+					fadeIndex={fadeOffset + 2 + index}
 					href={link.href}
 					icon={link.icon}
 					key={link.href}

@@ -221,7 +221,7 @@ type HistoryTableProps = {
  */
 const HistoryTable = ({ columns, emptyMessage, entries, label, selection }: HistoryTableProps) => (
 	<div className='grid gap-4 p-4'>
-		<EditorTable className='border-(--color-line-subtle)' label={label} tableClassName='w-full table-fixed'>
+		<EditorTable label={label} tableClassName='w-full table-fixed'>
 			<colgroup>
 				{columns.map((column) => (
 					<col className={column.widthClassName} key={column.id} />

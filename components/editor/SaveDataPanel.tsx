@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { LastSaveBanner } from '@/components/editor/LastSaveBanner';
 import { SaveChangesSummary } from '@/components/editor/SaveChangesSummary';
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
@@ -63,25 +64,33 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 	};
 
 	return (
-		<PanelSection className='glass-panel grid lg:grid-cols-2 p-0'>
-			<SaveImportField
-				examples={examples}
-				fileInputId='save-file-input'
-				isActiveStep={activeStep === 1}
-				onLoad={importSave}
+		<>
+			<LastSaveBanner
+				onRestore={() => {
+					setEncodeValue('');
+					onLoadSuccess?.();
+				}}
 			/>
-			<SaveExportField
-				actionLabel={t('encodeAction')}
-				ariaLabel={t('ariaLabel')}
-				belowOutput={<SaveChangesSummary />}
-				dataLabel={t('dataLabel')}
-				isActiveStep={activeStep === 3}
-				onAction={handleEncode}
-				onValueChange={setEncodeValue}
-				placeholder={t('placeholder')}
-				title={t('title')}
-				value={encodeValue}
-			/>
-		</PanelSection>
+			<PanelSection className='grid lg:grid-cols-2 p-0'>
+				<SaveImportField
+					examples={examples}
+					fileInputId='save-file-input'
+					isActiveStep={activeStep === 1}
+					onLoad={importSave}
+				/>
+				<SaveExportField
+					actionLabel={t('encodeAction')}
+					ariaLabel={t('ariaLabel')}
+					belowOutput={<SaveChangesSummary />}
+					dataLabel={t('dataLabel')}
+					isActiveStep={activeStep === 3}
+					onAction={handleEncode}
+					onValueChange={setEncodeValue}
+					placeholder={t('placeholder')}
+					title={t('title')}
+					value={encodeValue}
+				/>
+			</PanelSection>
+		</>
 	);
 };
