@@ -77,6 +77,26 @@
         "Review lifetime mercenary and quest totals"
       ]
     },
+    "relicViewer": {
+      "metaTitle": "Clicker Heroes Relic Viewer – Relics & Bonuses",
+      "description": "Import a Clicker Heroes save and view your relics, including equipped slots, the junk pile, rarity, level, bonuses, Forge Cores, and lifetime relic totals.",
+      "applicationName": "Clicker Heroes Relic Viewer",
+      "featureList": [
+        "View every Clicker Heroes relic from a save",
+        "Inspect relic slot, rarity, level, and bonuses",
+        "Review Forge Cores and lifetime relic totals"
+      ]
+    },
+    "relicEditor": {
+      "metaTitle": "Clicker Heroes Relic Editor – Edit Relics & Bonuses",
+      "description": "Import a Clicker Heroes save and edit its relics: rarity, bonuses and their points, equipment slots, the junk pile, and Forge Cores. Add or remove relics, then export the save.",
+      "applicationName": "Clicker Heroes Relic Editor",
+      "featureList": [
+        "Edit Clicker Heroes relic rarity and bonuses",
+        "Move relics between equipment slots and the junk pile",
+        "Add or remove relics and change Forge Cores"
+      ]
+    },
     "removeClanData": {
       "metaTitle": "Remove Clan Data From a Clicker Heroes Save",
       "description": "Remove Clicker Heroes clan, account, and login data from an imported save file, then re-encode the cleaned save locally in your browser.",

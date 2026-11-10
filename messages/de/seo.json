@@ -77,6 +77,26 @@
         "Gesamtwerte für Söldner und Quests auswerten"
       ]
     },
+    "relicViewer": {
+      "metaTitle": "Clicker Heroes Relikt-Übersicht – Relikte & Boni",
+      "description": "Importiere einen Clicker Heroes Spielstand und sieh dir deine Relikte an, mit Ausrüstungsplätzen, Schrotthaufen, Seltenheit, Stufe, Boni, Schmiedekernen und Relikt-Summen.",
+      "applicationName": "Clicker Heroes Relikt-Übersicht",
+      "featureList": [
+        "Alle Clicker Heroes Relikte aus einem Spielstand anzeigen",
+        "Platz, Seltenheit, Stufe und Boni jedes Relikts prüfen",
+        "Schmiedekerne und Relikt-Summen ansehen"
+      ]
+    },
+    "relicEditor": {
+      "metaTitle": "Clicker Heroes Relikt-Editor – Relikte & Boni bearbeiten",
+      "description": "Importiere einen Clicker Heroes Spielstand und bearbeite seine Relikte: Seltenheit, Boni und Punkte, Ausrüstungsplätze, Schrotthaufen und Schmiedekerne. Füge Relikte hinzu oder entferne sie und exportiere den Spielstand.",
+      "applicationName": "Clicker Heroes Relikt-Editor",
+      "featureList": [
+        "Seltenheit und Boni von Clicker Heroes Relikten bearbeiten",
+        "Relikte zwischen Ausrüstungsplätzen und Schrotthaufen verschieben",
+        "Relikte hinzufügen oder entfernen und Schmiedekerne ändern"
+      ]
+    },
     "removeClanData": {
       "metaTitle": "Clicker Heroes Clan-Daten entfernen – Spielstand bereinigen",
       "description": "Entferne Clan-, Konto- und Login-Daten aus einer Clicker Heroes Speicherdatei und kodiere den bereinigten Spielstand lokal in deinem Browser neu.",

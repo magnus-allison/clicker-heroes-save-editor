@@ -8,6 +8,8 @@
     "instakillCalculator": "Calculadora de instakill",
     "transcensionViewer": "Visor de trascendencias",
     "mercenaryViewer": "Visor de mercenarios",
+    "relicViewer": "Visor de reliquias",
+    "relicEditor": "Editor de reliquias",
     "saveConverter": "Convertidor de partidas",
     "removeClanData": "Eliminar datos de clan",
     "saveJson": "Partida a JSON",
@@ -47,6 +49,28 @@
     "lifetimeStats": {
       "title": "Estadísticas históricas",
       "body": "Mercenarios revividos y enterrados, nivel más alto alcanzado y misiones completadas por tipo de recompensa."
+    }
+  },
+  "relic": {
+    "intro": "Muestra todas las reliquias de tu partida en una sola tabla, primero las equipadas, junto con los totales de reliquias que guarda el juego.",
+    "relics": {
+      "title": "Reliquias",
+      "body": "Ranura de equipo, nombre, tipo, rareza, nivel y número de mejoras de cada reliquia, incluida la del montón de chatarra."
+    },
+    "bonuses": {
+      "title": "Bonificaciones y totales",
+      "body": "Cada bonificación con el ancient al que sube de nivel y cuántos niveles, además de núcleos de forja, reliquias recibidas y misiones de reliquias completadas."
+    }
+  },
+  "relicEditor": {
+    "intro": "Cambia las reliquias de una partida: su rareza, bonificaciones y puntos, dónde están y tus núcleos de forja. También puedes añadir reliquias nuevas o quitar otras.",
+    "editing": {
+      "title": "Qué puedes editar",
+      "body": "La rareza de Común a Legendaria, hasta cuatro bonificaciones por reliquia con sus puntos, las ranuras de equipo y el montón de chatarra, y los núcleos de forja."
+    },
+    "safety": {
+      "title": "Para que la partida cargue",
+      "body": "Solo se ofrecen bonificaciones confirmadas en el juego, porque una desconocida impide que la partida cargue. Guarda una copia de tu partida antes de importar una editada."
     }
   },
   "outsiders": {

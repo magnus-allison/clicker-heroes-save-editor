@@ -35,6 +35,9 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 	const markExported = useSaveStore((state) => state.markExported);
 	const activeStep = useSaveFlowStep({ hasEditStep });
 	const [encodeValue, setEncodeValue] = useState('');
+	// A restored save never went through the paste field, so it is re-encoded
+	// and handed to a fresh field (the `key` remounts it) to show what is loaded.
+	const [importSeed, setImportSeed] = useState({ key: 0, value: '' });
 
 	const importSave = useSaveImport({
 		onDecoded: (_decoded, request) => {
@@ -66,15 +69,24 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 	return (
 		<>
 			<LastSaveBanner
-				onRestore={() => {
+				onRestore={({ original }) => {
 					setEncodeValue('');
+					let value = '';
+					try {
+						value = encodeSaveData(original);
+					} catch {
+						// The save is loaded either way; an empty field is only cosmetic.
+					}
+					setImportSeed((seed) => ({ key: seed.key + 1, value }));
 					onLoadSuccess?.();
 				}}
 			/>
 			<PanelSection className='grid lg:grid-cols-2 p-0'>
 				<SaveImportField
+					key={importSeed.key}
 					examples={examples}
 					fileInputId='save-file-input'
+					initialValue={importSeed.value}
 					isActiveStep={activeStep === 1}
 					onLoad={importSave}
 				/>

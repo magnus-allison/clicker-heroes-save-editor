@@ -24,6 +24,8 @@
     "outsidersCalculator": "Outsiders Calculator",
     "transcensionViewer": "Transcension Viewer",
     "mercenaryViewer": "Mercenary Viewer",
+    "relicViewer": "Relic Viewer",
+    "relicEditor": "Relic Editor",
     "removeClanData": "Remove Clan Data",
     "saveConverter": "Save Converter",
     "saveJson": "Save JSON",
@@ -43,6 +45,13 @@
       "free": "100% Free",
       "browser": "Browser-based",
       "noAccount": "No account needed"
+    },
+    "newTools": {
+      "label": "New tools",
+      "badge": "New",
+      "text": "Relic Viewer and Relic Editor are here — inspect and edit the relics in your save.",
+      "viewer": "Relic Viewer",
+      "editor": "Relic Editor"
     }
   },
   "cards": {
@@ -82,6 +91,10 @@
       "relicViewer": {
         "title": "Relic Viewer",
         "description": "Inspect relics, their bonuses, and rarity from a save"
+      },
+      "relicEditor": {
+        "title": "Relic Editor",
+        "description": "Edit relic rarity, bonuses, slots and Forge Cores in a save"
       },
       "removeClanData": {
         "title": "Remove Clan Data",

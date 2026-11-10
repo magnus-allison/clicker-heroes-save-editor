@@ -5,6 +5,7 @@ import {
 	Braces,
 	Calculator,
 	FileCode2,
+	Hammer,
 	History,
 	Landmark,
 	MessageCirclePlus,
@@ -60,7 +61,13 @@ export const tools: LinkCardItem<ToolCardKey>[] = [
 		key: 'relicViewer',
 		href: '/tools/relic-viewer',
 		icon: SwordIcon,
-		tag: 'comingSoon'
+		tag: 'new'
+	},
+	{
+		key: 'relicEditor',
+		href: '/tools/relic-editor',
+		icon: Hammer,
+		tag: 'new'
 	},
 	{
 		key: 'removeClanData',

@@ -359,6 +359,90 @@
       "skillQuestsCompleted": "Abgeschlossene Skill-Quests"
     }
   },
+  "relic": {
+    "steps": {
+      "relics": "Relikte",
+      "summary": "Relikt-Übersicht"
+    },
+    "relicsLabel": "Relikte",
+    "summaryLabel": "Relikt-Übersicht",
+    "bonusNote": "Jeder Bonus zeigt den Ancient, dem er Level gibt, und danach die Level. Boni, die die Seite noch nicht benennen kann, zeigen stattdessen die Bonustyp-Nummer des Spiels.",
+    "columns": {
+      "slot": "Platz",
+      "name": "Name",
+      "type": "Typ",
+      "rarity": "Seltenheit",
+      "level": "Stufe",
+      "upgrades": "Upgrades",
+      "bonuses": "Boni"
+    },
+    "relicsEmpty": "Lade einen Spielstand mit Relikten, um sie hier zu sehen.",
+    "junkPile": "Schrotthaufen",
+    "rarities": {
+      "common": "Gewöhnlich",
+      "uncommon": "Ungewöhnlich",
+      "rare": "Selten",
+      "epic": "Episch",
+      "fabled": "Sagenhaft",
+      "mythical": "Mythisch",
+      "legendary": "Legendär"
+    },
+    "types": {
+      "sword": "Schwert",
+      "gloves": "Handschuhe",
+      "amulet": "Amulett",
+      "helm": "Helm",
+      "ring": "Ring"
+    },
+    "summary": {
+      "relicCount": "Relikte",
+      "equippedCount": "Ausgerüstete Relikte",
+      "forgeCores": "Schmiedekerne",
+      "totalRelicsReceived": "Erhaltene Relikte insgesamt",
+      "relicsReceivedThisTranscension": "In dieser Transzendenz erhaltene Relikte",
+      "relicQuestsCompleted": "Abgeschlossene Relikt-Quests"
+    }
+  },
+  "relicEditor": {
+    "editTitle": "Relikte bearbeiten",
+    "notes": {
+      "names": "Das Spiel benennt Relikte selbst nach Aussehen und Boni, daher ändern sich die Namen beim Laden des Spielstands.",
+      "levels": "Jeder Bonus bekommt Punkte; das Spiel berechnet daraus das Bonuslevel, und das Level eines Relikts ist die Summe seiner Punkte.",
+      "bonuses": "Angeboten werden nur Boni, die im Spiel bestätigt sind. Ein unbekannter Bonus verhindert, dass der Spielstand überhaupt lädt.",
+      "slots": "Die Plätze 1 bis 4 sind ausgerüstet, der Schrotthaufen fasst ein weiteres. Ein Relikt ohne Platz bleibt im Spielstand, wird aber nie angezeigt."
+    },
+    "forgeCores": "Schmiedekerne",
+    "add": {
+      "label": "Relikt hinzufügen",
+      "typeAria": "Typ des neuen Relikts",
+      "action": "Relikt hinzufügen",
+      "added": "Relikt hinzugefügt."
+    },
+    "slots": {
+      "equipped": "Platz {number}",
+      "none": "Kein Platz (im Spiel unsichtbar)"
+    },
+    "emptySave": "Dieser Spielstand hat noch keine Relikte. Füge oben eines hinzu.",
+    "noSave": "Lade einen Spielstand, um seine Relikte zu bearbeiten.",
+    "relic": {
+      "level": "Level {level}",
+      "remove": "Entfernen",
+      "removeAria": "{name} entfernen",
+      "removed": "Relikt entfernt.",
+      "look": "Aussehen",
+      "lookAria": "Aussehen von {name}",
+      "slot": "Platz",
+      "slotAria": "Platz für {name}",
+      "rarity": "Seltenheit",
+      "rarityAria": "Seltenheit von {name}"
+    },
+    "bonus": {
+      "none": "Kein Bonus",
+      "unconfirmed": "Unbestätigter Bonus #{type}",
+      "typeAria": "Bonus {line}",
+      "pointsAria": "Punkte für Bonus {line}"
+    }
+  },
   "saveConverter": {
     "export": {
       "action": "Spielstand konvertieren",

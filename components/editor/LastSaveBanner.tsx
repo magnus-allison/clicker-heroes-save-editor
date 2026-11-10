@@ -7,6 +7,7 @@ import { ArrowRight, X } from 'lucide-react';
 import { useToast } from '@/components/ui/ToastProvider';
 import {
 	clearLastSave,
+	type LastSave,
 	parseLastSaveMeta,
 	readLastSave,
 	readLastSaveMetaRaw,
@@ -63,7 +64,7 @@ const usePersistLastSave = () => {
 
 type Props = {
 	/** Runs after the stored save is back in the store, like a fresh import. */
-	onRestore?: () => void;
+	onRestore?: (restored: LastSave) => void;
 };
 
 /**
@@ -101,7 +102,7 @@ export const LastSaveBanner = ({ onRestore }: Props) => {
 
 		restoreSave(stored.original, stored.current);
 		showToast(t('restored'));
-		onRestore?.();
+		onRestore?.(stored);
 	};
 
 	return (

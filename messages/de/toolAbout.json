@@ -8,6 +8,8 @@
     "instakillCalculator": "Instakill-Rechner",
     "transcensionViewer": "Transzendenz-Übersicht",
     "mercenaryViewer": "Söldner-Übersicht",
+    "relicViewer": "Relikt-Übersicht",
+    "relicEditor": "Relikt-Editor",
     "saveConverter": "Spielstand-Konverter",
     "removeClanData": "Clan-Daten entfernen",
     "saveJson": "Spielstand als JSON",
@@ -47,6 +49,28 @@
     "lifetimeStats": {
       "title": "Gesamtstatistik",
       "body": "Wiederbelebte und begrabene Söldner, höchstes erreichtes Level und abgeschlossene Quests nach Belohnungsart."
+    }
+  },
+  "relic": {
+    "intro": "Zeigt alle Relikte deines Spielstands in einer Tabelle, die ausgerüsteten zuerst, zusammen mit den Relikt-Summen, die das Spiel speichert.",
+    "relics": {
+      "title": "Relikte",
+      "body": "Ausrüstungsplatz, Name, Typ, Seltenheit, Stufe und Anzahl der Upgrades für jedes Relikt, auch für das im Schrotthaufen."
+    },
+    "bonuses": {
+      "title": "Boni und Summen",
+      "body": "Jeder Bonus mit dem Ancient, dem er Level gibt, und der Anzahl der Level, dazu Schmiedekerne, erhaltene Relikte und abgeschlossene Relikt-Quests."
+    }
+  },
+  "relicEditor": {
+    "intro": "Ändert die Relikte in einem Spielstand: Seltenheit, Boni und Punkte, ihren Platz und deine Schmiedekerne. Du kannst auch neue Relikte hinzufügen oder alte entfernen.",
+    "editing": {
+      "title": "Was du bearbeiten kannst",
+      "body": "Seltenheit von Gewöhnlich bis Legendär, bis zu vier Boni pro Relikt mit ihren Punkten, Ausrüstungsplätze und den Schrotthaufen sowie Schmiedekerne."
+    },
+    "safety": {
+      "title": "Damit der Spielstand lädt",
+      "body": "Angeboten werden nur im Spiel bestätigte Boni, denn ein unbekannter verhindert das Laden. Sichere deinen Spielstand, bevor du einen bearbeiteten importierst."
     }
   },
   "outsiders": {

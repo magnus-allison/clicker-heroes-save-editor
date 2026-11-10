@@ -359,6 +359,90 @@
       "skillQuestsCompleted": "Quêtes de compétence terminées"
     }
   },
+  "relic": {
+    "steps": {
+      "relics": "Reliques",
+      "summary": "Résumé des reliques"
+    },
+    "relicsLabel": "Reliques",
+    "summaryLabel": "Résumé des reliques",
+    "bonusNote": "Chaque bonus indique l’ancient auquel il ajoute des niveaux, puis le nombre de niveaux. Un bonus que le site ne sait pas encore nommer affiche le numéro de type du jeu.",
+    "columns": {
+      "slot": "Emplacement",
+      "name": "Nom",
+      "type": "Type",
+      "rarity": "Rareté",
+      "level": "Niveau",
+      "upgrades": "Améliorations",
+      "bonuses": "Bonus"
+    },
+    "relicsEmpty": "Charge une sauvegarde avec des reliques pour les voir ici.",
+    "junkPile": "Tas de ferraille",
+    "rarities": {
+      "common": "Commune",
+      "uncommon": "Peu commune",
+      "rare": "Rare",
+      "epic": "Épique",
+      "fabled": "Fabuleuse",
+      "mythical": "Mythique",
+      "legendary": "Légendaire"
+    },
+    "types": {
+      "sword": "Épée",
+      "gloves": "Gants",
+      "amulet": "Amulette",
+      "helm": "Casque",
+      "ring": "Anneau"
+    },
+    "summary": {
+      "relicCount": "Reliques",
+      "equippedCount": "Reliques équipées",
+      "forgeCores": "Noyaux de forge",
+      "totalRelicsReceived": "Reliques reçues au total",
+      "relicsReceivedThisTranscension": "Reliques reçues pendant cette transcendance",
+      "relicQuestsCompleted": "Quêtes de reliques terminées"
+    }
+  },
+  "relicEditor": {
+    "editTitle": "Modifier les reliques",
+    "notes": {
+      "names": "Le jeu nomme lui-même les reliques selon leur apparence et leurs bonus, donc les noms changent au chargement de la sauvegarde.",
+      "levels": "Chaque bonus reçoit des points ; le jeu en déduit le niveau du bonus, et le niveau d’une relique est la somme de ses points.",
+      "bonuses": "Seuls les bonus confirmés en jeu sont proposés. Un bonus inconnu empêche la sauvegarde de se charger.",
+      "slots": "Les emplacements 1 à 4 sont équipés et le tas de ferraille en contient un de plus. Une relique sans emplacement reste dans la sauvegarde mais n’est jamais affichée."
+    },
+    "forgeCores": "Noyaux de forge",
+    "add": {
+      "label": "Ajouter une relique",
+      "typeAria": "Type de relique à ajouter",
+      "action": "Ajouter une relique",
+      "added": "Relique ajoutée."
+    },
+    "slots": {
+      "equipped": "Emplacement {number}",
+      "none": "Aucun emplacement (cachée en jeu)"
+    },
+    "emptySave": "Cette sauvegarde n’a pas encore de relique. Ajoute-en une ci-dessus.",
+    "noSave": "Charge une sauvegarde pour modifier ses reliques.",
+    "relic": {
+      "level": "Niveau {level}",
+      "remove": "Retirer",
+      "removeAria": "Retirer {name}",
+      "removed": "Relique retirée.",
+      "look": "Apparence",
+      "lookAria": "Apparence de {name}",
+      "slot": "Emplacement",
+      "slotAria": "Emplacement de {name}",
+      "rarity": "Rareté",
+      "rarityAria": "Rareté de {name}"
+    },
+    "bonus": {
+      "none": "Aucun bonus",
+      "unconfirmed": "Bonus non confirmé #{type}",
+      "typeAria": "Bonus {line}",
+      "pointsAria": "Points du bonus {line}"
+    }
+  },
   "saveConverter": {
     "export": {
       "action": "Convertir la sauvegarde",

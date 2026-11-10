@@ -24,6 +24,8 @@
     "outsidersCalculator": "Outsiders-Rechner",
     "transcensionViewer": "Transzendenz-Übersicht",
     "mercenaryViewer": "Söldner-Übersicht",
+    "relicViewer": "Relikt-Übersicht",
+    "relicEditor": "Relikt-Editor",
     "removeClanData": "Clan-Daten entfernen",
     "saveConverter": "Spielstand-Konverter",
     "saveJson": "Spielstand als JSON",
@@ -43,6 +45,13 @@
       "free": "100 % kostenlos",
       "browser": "Läuft im Browser",
       "noAccount": "Kein Konto nötig"
+    },
+    "newTools": {
+      "label": "Neue Tools",
+      "badge": "Neu",
+      "text": "Relikt-Übersicht und Relikt-Editor sind da – sieh dir die Relikte in deinem Spielstand an und bearbeite sie.",
+      "viewer": "Relikt-Übersicht",
+      "editor": "Relikt-Editor"
     }
   },
   "cards": {
@@ -82,6 +91,10 @@
       "relicViewer": {
         "title": "Relikt-Übersicht",
         "description": "Sieh dir Relikte, ihre Boni und ihre Seltenheit aus einem Spielstand an"
+      },
+      "relicEditor": {
+        "title": "Relikt-Editor",
+        "description": "Bearbeite Seltenheit, Boni, Plätze und Schmiedekerne deiner Relikte"
       },
       "removeClanData": {
         "title": "Clan-Daten entfernen",

@@ -176,6 +176,32 @@ export const seoPages = {
 		lastModified: '2026-09-14',
 		schemaType: 'WebApplication'
 	},
+	relicViewer: {
+		path: '/tools/relic-viewer',
+		keywords: [
+			'clicker heroes relic viewer',
+			'clicker heroes relics',
+			'clicker heroes relic bonuses',
+			'clicker heroes save viewer'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.7,
+		lastModified: '2026-11-10',
+		schemaType: 'WebApplication'
+	},
+	relicEditor: {
+		path: '/tools/relic-editor',
+		keywords: [
+			'clicker heroes relic editor',
+			'clicker heroes edit relics',
+			'clicker heroes relic bonuses',
+			'clicker heroes save editor'
+		],
+		changeFrequency: 'monthly',
+		priority: 0.75,
+		lastModified: '2026-11-10',
+		schemaType: 'WebApplication'
+	},
 	removeClanData: {
 		path: '/tools/remove-clan-data',
 		keywords: [

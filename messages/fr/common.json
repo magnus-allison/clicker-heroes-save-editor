@@ -24,6 +24,8 @@
     "outsidersCalculator": "Calculateur d’outsiders",
     "transcensionViewer": "Visualiseur de transcendances",
     "mercenaryViewer": "Visualiseur de mercenaires",
+    "relicViewer": "Visualiseur de reliques",
+    "relicEditor": "Éditeur de reliques",
     "removeClanData": "Supprimer les données de clan",
     "saveConverter": "Convertisseur de sauvegarde",
     "saveJson": "Sauvegarde en JSON",
@@ -43,6 +45,13 @@
       "free": "100 % gratuit",
       "browser": "Dans le navigateur",
       "noAccount": "Aucun compte requis"
+    },
+    "newTools": {
+      "label": "Nouveaux outils",
+      "badge": "Nouveau",
+      "text": "Le Visualiseur et l’Éditeur de reliques sont arrivés : consulte et modifie les reliques de ta sauvegarde.",
+      "viewer": "Visualiseur de reliques",
+      "editor": "Éditeur de reliques"
     }
   },
   "cards": {
@@ -82,6 +91,10 @@
       "relicViewer": {
         "title": "Visualiseur de reliques",
         "description": "Inspecte les reliques, leurs bonus et leur rareté à partir d’une sauvegarde"
+      },
+      "relicEditor": {
+        "title": "Éditeur de reliques",
+        "description": "Modifie la rareté, les bonus, les emplacements et les noyaux de forge d’une sauvegarde"
       },
       "removeClanData": {
         "title": "Supprimer les données de clan",

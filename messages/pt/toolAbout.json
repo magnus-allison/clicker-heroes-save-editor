@@ -8,6 +8,8 @@
     "instakillCalculator": "Calculadora de instakill",
     "transcensionViewer": "Visualizador de transcendências",
     "mercenaryViewer": "Visualizador de mercenários",
+    "relicViewer": "Visualizador de relíquias",
+    "relicEditor": "Editor de relíquias",
     "saveConverter": "Conversor de save",
     "removeClanData": "Remover dados do clã",
     "saveJson": "Save em JSON",
@@ -47,6 +49,28 @@
     "lifetimeStats": {
       "title": "Estatísticas acumuladas",
       "body": "Mercenários revividos e enterrados, nível mais alto alcançado e missões concluídas por tipo de recompensa."
+    }
+  },
+  "relic": {
+    "intro": "Mostra todas as relíquias do seu save em uma única tabela, com as equipadas primeiro e os totais de relíquias que o jogo registra.",
+    "relics": {
+      "title": "Relíquias",
+      "body": "Espaço de equipamento, nome, tipo, raridade, nível e número de melhorias de cada relíquia, incluindo a da pilha de sucata."
+    },
+    "bonuses": {
+      "title": "Bônus e totais",
+      "body": "Cada bônus com o ancient que ele melhora e quantos níveis, além dos núcleos de forja, relíquias recebidas e missões de relíquias concluídas."
+    }
+  },
+  "relicEditor": {
+    "intro": "Altera as relíquias de um save: raridade, bônus e pontos, onde ficam e seus núcleos de forja. Você também pode adicionar relíquias novas ou remover antigas.",
+    "editing": {
+      "title": "O que você pode editar",
+      "body": "Raridade de Comum a Lendária, até quatro bônus por relíquia com seus pontos, os espaços de equipamento e a pilha de sucata, e os núcleos de forja."
+    },
+    "safety": {
+      "title": "Para o save carregar",
+      "body": "Só são oferecidos bônus confirmados no jogo, porque um desconhecido impede o save de carregar. Faça uma cópia do seu save antes de importar um editado."
     }
   },
   "outsiders": {

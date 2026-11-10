@@ -359,6 +359,90 @@
       "skillQuestsCompleted": "Missões de habilidade concluídas"
     }
   },
+  "relic": {
+    "steps": {
+      "relics": "Relíquias",
+      "summary": "Resumo das relíquias"
+    },
+    "relicsLabel": "Relíquias",
+    "summaryLabel": "Resumo das relíquias",
+    "bonusNote": "Cada bônus mostra o ancient ao qual adiciona níveis e, em seguida, os níveis. Um bônus que o site ainda não sabe nomear mostra o número de tipo do jogo.",
+    "columns": {
+      "slot": "Espaço",
+      "name": "Nome",
+      "type": "Tipo",
+      "rarity": "Raridade",
+      "level": "Nível",
+      "upgrades": "Melhorias",
+      "bonuses": "Bônus"
+    },
+    "relicsEmpty": "Carregue um save com relíquias para vê-las aqui.",
+    "junkPile": "Pilha de sucata",
+    "rarities": {
+      "common": "Comum",
+      "uncommon": "Incomum",
+      "rare": "Rara",
+      "epic": "Épica",
+      "fabled": "Fabulosa",
+      "mythical": "Mítica",
+      "legendary": "Lendária"
+    },
+    "types": {
+      "sword": "Espada",
+      "gloves": "Luvas",
+      "amulet": "Amuleto",
+      "helm": "Elmo",
+      "ring": "Anel"
+    },
+    "summary": {
+      "relicCount": "Relíquias",
+      "equippedCount": "Relíquias equipadas",
+      "forgeCores": "Núcleos de forja",
+      "totalRelicsReceived": "Total de relíquias recebidas",
+      "relicsReceivedThisTranscension": "Relíquias recebidas nesta transcendência",
+      "relicQuestsCompleted": "Missões de relíquias concluídas"
+    }
+  },
+  "relicEditor": {
+    "editTitle": "Editar relíquias",
+    "notes": {
+      "names": "O jogo dá nome às relíquias pela aparência e pelos bônus, então os nomes mudam quando o save carrega.",
+      "levels": "Cada bônus recebe pontos; o jogo calcula o nível do bônus a partir deles, e o nível de uma relíquia é a soma dos seus pontos.",
+      "bonuses": "Só são oferecidos bônus confirmados no jogo. Um bônus desconhecido impede o save de carregar.",
+      "slots": "Os espaços 1 a 4 são equipados e a pilha de sucata guarda mais um. Uma relíquia sem espaço fica no save, mas nunca aparece."
+    },
+    "forgeCores": "Núcleos de forja",
+    "add": {
+      "label": "Adicionar uma relíquia",
+      "typeAria": "Tipo de relíquia a adicionar",
+      "action": "Adicionar relíquia",
+      "added": "Relíquia adicionada."
+    },
+    "slots": {
+      "equipped": "Espaço {number}",
+      "none": "Sem espaço (oculta no jogo)"
+    },
+    "emptySave": "Este save ainda não tem relíquias. Adicione uma acima.",
+    "noSave": "Carregue um save para editar as relíquias.",
+    "relic": {
+      "level": "Nível {level}",
+      "remove": "Remover",
+      "removeAria": "Remover {name}",
+      "removed": "Relíquia removida.",
+      "look": "Aparência",
+      "lookAria": "Aparência de {name}",
+      "slot": "Espaço",
+      "slotAria": "Espaço de {name}",
+      "rarity": "Raridade",
+      "rarityAria": "Raridade de {name}"
+    },
+    "bonus": {
+      "none": "Sem bônus",
+      "unconfirmed": "Bônus não confirmado #{type}",
+      "typeAria": "Bônus {line}",
+      "pointsAria": "Pontos do bônus {line}"
+    }
+  },
   "saveConverter": {
     "export": {
       "action": "Converter save",

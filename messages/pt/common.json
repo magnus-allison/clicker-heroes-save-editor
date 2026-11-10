@@ -24,6 +24,8 @@
     "outsidersCalculator": "Calculadora de outsiders",
     "transcensionViewer": "Visualizador de transcendências",
     "mercenaryViewer": "Visualizador de mercenários",
+    "relicViewer": "Visualizador de relíquias",
+    "relicEditor": "Editor de relíquias",
     "removeClanData": "Remover dados do clã",
     "saveConverter": "Conversor de save",
     "saveJson": "Save em JSON",
@@ -43,6 +45,13 @@
       "free": "100% grátis",
       "browser": "No navegador",
       "noAccount": "Sem cadastro"
+    },
+    "newTools": {
+      "label": "Novas ferramentas",
+      "badge": "Novo",
+      "text": "Chegaram o Visualizador e o Editor de relíquias: veja e edite as relíquias do seu save.",
+      "viewer": "Visualizador de relíquias",
+      "editor": "Editor de relíquias"
     }
   },
   "cards": {
@@ -82,6 +91,10 @@
       "relicViewer": {
         "title": "Visualizador de relíquias",
         "description": "Examine as relíquias, seus bônus e sua raridade a partir de um save"
+      },
+      "relicEditor": {
+        "title": "Editor de relíquias",
+        "description": "Edite raridade, bônus, espaços e núcleos de forja das relíquias de um save"
       },
       "removeClanData": {
         "title": "Remover dados do clã",

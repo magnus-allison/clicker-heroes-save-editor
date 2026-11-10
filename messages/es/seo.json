@@ -77,6 +77,26 @@
         "Revisa el total histórico de mercenarios y misiones"
       ]
     },
+    "relicViewer": {
+      "metaTitle": "Visor de reliquias de Clicker Heroes – Reliquias y bonificaciones",
+      "description": "Importa una partida de Clicker Heroes y revisa tus reliquias: ranuras equipadas, montón de chatarra, rareza, nivel, bonificaciones, núcleos de forja y totales históricos.",
+      "applicationName": "Visor de reliquias de Clicker Heroes",
+      "featureList": [
+        "Ver todas las reliquias de Clicker Heroes desde una partida",
+        "Revisar la ranura, rareza, nivel y bonificaciones de cada reliquia",
+        "Consultar los núcleos de forja y los totales de reliquias"
+      ]
+    },
+    "relicEditor": {
+      "metaTitle": "Editor de reliquias de Clicker Heroes – Reliquias y bonificaciones",
+      "description": "Importa una partida de Clicker Heroes y edita sus reliquias: rareza, bonificaciones y puntos, ranuras de equipo, montón de chatarra y núcleos de forja. Añade o quita reliquias y exporta la partida.",
+      "applicationName": "Editor de reliquias de Clicker Heroes",
+      "featureList": [
+        "Editar la rareza y las bonificaciones de las reliquias de Clicker Heroes",
+        "Mover reliquias entre las ranuras de equipo y el montón de chatarra",
+        "Añadir o quitar reliquias y cambiar los núcleos de forja"
+      ]
+    },
     "removeClanData": {
       "metaTitle": "Eliminar datos de clan de una partida de Clicker Heroes",
       "description": "Elimina los datos de clan, cuenta e inicio de sesión de una partida de Clicker Heroes y vuelve a codificarla en tu navegador.",

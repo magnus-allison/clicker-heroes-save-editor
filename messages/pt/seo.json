@@ -77,6 +77,26 @@
         "Confira os totais de mercenários e missões de todo o jogo"
       ]
     },
+    "relicViewer": {
+      "metaTitle": "Relíquias de Clicker Heroes – Visualizador e bônus",
+      "description": "Importe um save de Clicker Heroes e veja suas relíquias: espaços equipados, pilha de sucata, raridade, nível, bônus, núcleos de forja e totais acumulados.",
+      "applicationName": "Visualizador de relíquias de Clicker Heroes",
+      "featureList": [
+        "Ver todas as relíquias de Clicker Heroes de um save",
+        "Conferir espaço, raridade, nível e bônus de cada relíquia",
+        "Ver núcleos de forja e totais de relíquias"
+      ]
+    },
+    "relicEditor": {
+      "metaTitle": "Editor de relíquias de Clicker Heroes – Relíquias e bônus",
+      "description": "Importe um save de Clicker Heroes e edite as relíquias: raridade, bônus e pontos, espaços de equipamento, pilha de sucata e núcleos de forja. Adicione ou remova relíquias e exporte o save.",
+      "applicationName": "Editor de relíquias de Clicker Heroes",
+      "featureList": [
+        "Editar raridade e bônus das relíquias de Clicker Heroes",
+        "Mover relíquias entre os espaços e a pilha de sucata",
+        "Adicionar ou remover relíquias e alterar núcleos de forja"
+      ]
+    },
     "removeClanData": {
       "metaTitle": "Remover dados do clã de um save de Clicker Heroes",
       "description": "Remova os dados de clã, conta e login de um arquivo de save de Clicker Heroes importado e codifique de novo o save limpo localmente no seu navegador.",

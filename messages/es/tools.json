@@ -359,6 +359,90 @@
       "skillQuestsCompleted": "Misiones de habilidades completadas"
     }
   },
+  "relic": {
+    "steps": {
+      "relics": "Reliquias",
+      "summary": "Resumen de reliquias"
+    },
+    "relicsLabel": "Reliquias",
+    "summaryLabel": "Resumen de reliquias",
+    "bonusNote": "Cada bonificación muestra el ancient al que añade niveles y después los niveles. Si el sitio aún no conoce su nombre, muestra el número de tipo del juego.",
+    "columns": {
+      "slot": "Ranura",
+      "name": "Nombre",
+      "type": "Tipo",
+      "rarity": "Rareza",
+      "level": "Nivel",
+      "upgrades": "Mejoras",
+      "bonuses": "Bonificaciones"
+    },
+    "relicsEmpty": "Carga una partida con reliquias para verlas aquí.",
+    "junkPile": "Montón de chatarra",
+    "rarities": {
+      "common": "Común",
+      "uncommon": "Poco común",
+      "rare": "Rara",
+      "epic": "Épica",
+      "fabled": "Fabulosa",
+      "mythical": "Mítica",
+      "legendary": "Legendaria"
+    },
+    "types": {
+      "sword": "Espada",
+      "gloves": "Guantes",
+      "amulet": "Amuleto",
+      "helm": "Casco",
+      "ring": "Anillo"
+    },
+    "summary": {
+      "relicCount": "Reliquias",
+      "equippedCount": "Reliquias equipadas",
+      "forgeCores": "Núcleos de forja",
+      "totalRelicsReceived": "Reliquias recibidas en total",
+      "relicsReceivedThisTranscension": "Reliquias recibidas en esta trascendencia",
+      "relicQuestsCompleted": "Misiones de reliquias completadas"
+    }
+  },
+  "relicEditor": {
+    "editTitle": "Editar reliquias",
+    "notes": {
+      "names": "El juego pone nombre a las reliquias según su aspecto y bonificaciones, así que los nombres cambian al cargar la partida.",
+      "levels": "Cada bonificación recibe puntos; el juego calcula con ellos su nivel, y el nivel de una reliquia es la suma de sus puntos.",
+      "bonuses": "Solo se ofrecen bonificaciones confirmadas en el juego. Una bonificación desconocida impide que la partida cargue.",
+      "slots": "Las ranuras 1 a 4 están equipadas y el montón de chatarra guarda una más. Una reliquia sin ranura se conserva en la partida, pero nunca se muestra."
+    },
+    "forgeCores": "Núcleos de forja",
+    "add": {
+      "label": "Añadir una reliquia",
+      "typeAria": "Tipo de reliquia que añadir",
+      "action": "Añadir reliquia",
+      "added": "Reliquia añadida."
+    },
+    "slots": {
+      "equipped": "Ranura {number}",
+      "none": "Sin ranura (oculta en el juego)"
+    },
+    "emptySave": "Esta partida aún no tiene reliquias. Añade una arriba.",
+    "noSave": "Carga una partida para editar sus reliquias.",
+    "relic": {
+      "level": "Nivel {level}",
+      "remove": "Quitar",
+      "removeAria": "Quitar {name}",
+      "removed": "Reliquia quitada.",
+      "look": "Aspecto",
+      "lookAria": "Aspecto de {name}",
+      "slot": "Ranura",
+      "slotAria": "Ranura de {name}",
+      "rarity": "Rareza",
+      "rarityAria": "Rareza de {name}"
+    },
+    "bonus": {
+      "none": "Sin bonificación",
+      "unconfirmed": "Bonificación sin confirmar #{type}",
+      "typeAria": "Bonificación {line}",
+      "pointsAria": "Puntos de la bonificación {line}"
+    }
+  },
   "saveConverter": {
     "export": {
       "action": "Convertir partida",

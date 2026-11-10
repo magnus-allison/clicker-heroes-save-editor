@@ -70,9 +70,7 @@ export const useSaveStore = create<SaveStore>((set) => ({
 	},
 	updateValue: (path, value) => {
 		set((state) =>
-			state.saveData
-				? { saveData: applyUpdate(state.saveData, { path, value }), hasExported: false }
-				: state
+			state.saveData ? { saveData: applyUpdate(state.saveData, { path, value }), hasExported: false } : state
 		);
 	},
 	updateValues: (updates) => {

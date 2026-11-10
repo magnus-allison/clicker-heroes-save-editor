@@ -10,6 +10,8 @@ export const toolLinks = {
 	instakillCalculator: '/tools/instakill-calculator',
 	transcensionViewer: '/tools/transcension-viewer',
 	mercenaryViewer: '/tools/mercenary-viewer',
+	relicViewer: '/tools/relic-viewer',
+	relicEditor: '/tools/relic-editor',
 	saveConverter: '/tools/save-converter',
 	removeClanData: '/tools/remove-clan-data',
 	saveJson: '/tools/save-json',

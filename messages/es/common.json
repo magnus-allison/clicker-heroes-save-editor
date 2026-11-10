@@ -24,6 +24,8 @@
     "outsidersCalculator": "Calculadora de outsiders",
     "transcensionViewer": "Visor de trascendencias",
     "mercenaryViewer": "Visor de mercenarios",
+    "relicViewer": "Visor de reliquias",
+    "relicEditor": "Editor de reliquias",
     "removeClanData": "Eliminar datos de clan",
     "saveConverter": "Convertidor de partidas",
     "saveJson": "Partida a JSON",
@@ -43,6 +45,13 @@
       "free": "100 % gratis",
       "browser": "En el navegador",
       "noAccount": "Sin registrarse"
+    },
+    "newTools": {
+      "label": "Nuevas herramientas",
+      "badge": "Nuevo",
+      "text": "Ya están aquí el Visor y el Editor de reliquias: consulta y edita las reliquias de tu partida.",
+      "viewer": "Visor de reliquias",
+      "editor": "Editor de reliquias"
     }
   },
   "cards": {
@@ -82,6 +91,10 @@
       "relicViewer": {
         "title": "Visor de reliquias",
         "description": "Revisa las reliquias, sus bonificaciones y su rareza desde una partida"
+      },
+      "relicEditor": {
+        "title": "Editor de reliquias",
+        "description": "Edita la rareza, bonificaciones, ranuras y núcleos de forja de una partida"
       },
       "removeClanData": {
         "title": "Eliminar datos de clan",

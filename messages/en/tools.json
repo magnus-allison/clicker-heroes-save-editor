@@ -359,6 +359,90 @@
       "skillQuestsCompleted": "Skill Quests Completed"
     }
   },
+  "relic": {
+    "steps": {
+      "relics": "Relics",
+      "summary": "Relic Summary"
+    },
+    "relicsLabel": "Relics",
+    "summaryLabel": "Relic summary",
+    "bonusNote": "Each bonus shows the ancient it adds levels to, then the levels. A bonus the site can’t name yet shows the game’s bonus type number instead.",
+    "columns": {
+      "slot": "Slot",
+      "name": "Name",
+      "type": "Type",
+      "rarity": "Rarity",
+      "level": "Level",
+      "upgrades": "Upgrades",
+      "bonuses": "Bonuses"
+    },
+    "relicsEmpty": "Load a save with relics to see them here.",
+    "junkPile": "Junk Pile",
+    "rarities": {
+      "common": "Common",
+      "uncommon": "Uncommon",
+      "rare": "Rare",
+      "epic": "Epic",
+      "fabled": "Fabled",
+      "mythical": "Mythical",
+      "legendary": "Legendary"
+    },
+    "types": {
+      "sword": "Sword",
+      "gloves": "Gloves",
+      "amulet": "Amulet",
+      "helm": "Helm",
+      "ring": "Ring"
+    },
+    "summary": {
+      "relicCount": "Relics",
+      "equippedCount": "Equipped Relics",
+      "forgeCores": "Forge Cores",
+      "totalRelicsReceived": "Total Relics Received",
+      "relicsReceivedThisTranscension": "Relics Received This Transcension",
+      "relicQuestsCompleted": "Relic Quests Completed"
+    }
+  },
+  "relicEditor": {
+    "editTitle": "Edit Relics",
+    "notes": {
+      "names": "The game names relics itself from their look and bonuses, so names update when the save loads.",
+      "levels": "Each bonus takes points; the game works out the bonus level from them, and a relic’s level is the sum of its points.",
+      "bonuses": "Only bonuses confirmed in game are offered. An unknown bonus stops the save loading at all.",
+      "slots": "Slots 1 to 4 are equipped and the junk pile holds one more. A relic in no slot is kept in the save but never shown."
+    },
+    "forgeCores": "Forge Cores",
+    "add": {
+      "label": "Add a relic",
+      "typeAria": "Type of relic to add",
+      "action": "Add Relic",
+      "added": "Relic added."
+    },
+    "slots": {
+      "equipped": "Slot {number}",
+      "none": "No slot (hidden in game)"
+    },
+    "emptySave": "This save has no relics yet. Add one above.",
+    "noSave": "Load a save to edit its relics.",
+    "relic": {
+      "level": "Level {level}",
+      "remove": "Remove",
+      "removeAria": "Remove {name}",
+      "removed": "Relic removed.",
+      "look": "Look",
+      "lookAria": "Look of {name}",
+      "slot": "Slot",
+      "slotAria": "Slot for {name}",
+      "rarity": "Rarity",
+      "rarityAria": "Rarity of {name}"
+    },
+    "bonus": {
+      "none": "No bonus",
+      "unconfirmed": "Unconfirmed bonus #{type}",
+      "typeAria": "Bonus {line}",
+      "pointsAria": "Points for bonus {line}"
+    }
+  },
   "saveConverter": {
     "export": {
       "action": "Convert Save",

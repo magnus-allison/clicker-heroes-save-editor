@@ -132,6 +132,21 @@
 
 :root {
 	color-scheme: light dark;
+
+	/*
+	 * Relic rarities, as text. Each keeps the hue of the game's rarity tile
+	 * (see `relicRarityTiles`), darkened or lightened to reach 4.5:1 contrast
+	 * on this theme's surfaces. Plain variables rather than `@theme` tokens:
+	 * the relic viewer only reads them through `text-(--color-rarity-*)`, and
+	 * Tailwind drops theme tokens it does not see used.
+	 */
+	--color-rarity-common: light-dark(#646361, #83827f);
+	--color-rarity-uncommon: light-dark(#35641a, #4d9126);
+	--color-rarity-rare: light-dark(#1c509c, #4180dd);
+	--color-rarity-epic: light-dark(#771cca, #a75ee9);
+	--color-rarity-fabled: light-dark(#3b7a23, #5cbd37);
+	--color-rarity-mythical: light-dark(#6556e2, #7d70e6);
+	--color-rarity-legendary: light-dark(#70701a, #d4d345);
 }
 
 html,

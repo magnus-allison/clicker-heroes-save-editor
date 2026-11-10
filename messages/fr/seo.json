@@ -77,6 +77,26 @@
         "Consulter les totaux cumulés des mercenaires et des quêtes"
       ]
     },
+    "relicViewer": {
+      "metaTitle": "Visualiseur de reliques Clicker Heroes – Reliques et bonus",
+      "description": "Importe une sauvegarde Clicker Heroes et consulte tes reliques : emplacements équipés, tas de ferraille, rareté, niveau, bonus, noyaux de forge et totaux cumulés.",
+      "applicationName": "Visualiseur de reliques Clicker Heroes",
+      "featureList": [
+        "Voir toutes les reliques Clicker Heroes d’une sauvegarde",
+        "Inspecter l’emplacement, la rareté, le niveau et les bonus de chaque relique",
+        "Consulter les noyaux de forge et les totaux de reliques"
+      ]
+    },
+    "relicEditor": {
+      "metaTitle": "Éditeur de reliques Clicker Heroes – Reliques et bonus",
+      "description": "Importe une sauvegarde Clicker Heroes et modifie ses reliques : rareté, bonus et points, emplacements d’équipement, tas de ferraille et noyaux de forge. Ajoute ou retire des reliques, puis exporte la sauvegarde.",
+      "applicationName": "Éditeur de reliques Clicker Heroes",
+      "featureList": [
+        "Modifier la rareté et les bonus des reliques Clicker Heroes",
+        "Déplacer des reliques entre les emplacements et le tas de ferraille",
+        "Ajouter ou retirer des reliques et changer les noyaux de forge"
+      ]
+    },
     "removeClanData": {
       "metaTitle": "Supprimer les données de clan d’une sauvegarde Clicker Heroes",
       "description": "Supprime les données de clan, de compte et de connexion d’un fichier de sauvegarde Clicker Heroes importé, puis réencode la sauvegarde nettoyée localement dans ton navigateur.",

@@ -32,6 +32,11 @@ type Props = {
 	fileInputId: string;
 	examples?: ExampleSave[];
 	isActiveStep?: boolean;
+	/**
+	 * Text the paste field starts with, such as a restored save. Only read on
+	 * mount; give the field a new `key` to apply a different one.
+	 */
+	initialValue?: string;
 	onLoad: (request: SaveImportRequest) => void;
 };
 
@@ -47,14 +52,20 @@ const MAX_SAVE_FILE_BYTES = 4 * 1024 * 1024;
  * Owns the picked-file name and the pasted text; the caller only decides what
  * "load this" means.
  */
-export const SaveImportField = ({ examples, fileInputId, isActiveStep = false, onLoad }: Props) => {
+export const SaveImportField = ({
+	examples,
+	fileInputId,
+	initialValue = '',
+	isActiveStep = false,
+	onLoad
+}: Props) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { showToast } = useToast();
 	const t = useTranslations('editor');
 	const tCommon = useTranslations('common.ui');
 	// `null` until a file or example is picked, so the placeholder follows the locale.
 	const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
-	const [decodeValue, setDecodeValue] = useState('');
+	const [decodeValue, setDecodeValue] = useState(initialValue);
 
 	const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
 		const input = event.target;

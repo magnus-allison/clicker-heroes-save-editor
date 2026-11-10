@@ -8,6 +8,8 @@
     "instakillCalculator": "Calculateur d’instakill",
     "transcensionViewer": "Visualiseur de transcendances",
     "mercenaryViewer": "Visualiseur de mercenaires",
+    "relicViewer": "Visualiseur de reliques",
+    "relicEditor": "Éditeur de reliques",
     "saveConverter": "Convertisseur de sauvegarde",
     "removeClanData": "Supprimer les données de clan",
     "saveJson": "Sauvegarde en JSON",
@@ -47,6 +49,28 @@
     "lifetimeStats": {
       "title": "Statistiques cumulées",
       "body": "Mercenaires ressuscités et enterrés, niveau le plus élevé atteint et quêtes terminées par type de récompense."
+    }
+  },
+  "relic": {
+    "intro": "Présente toutes les reliques de ta sauvegarde dans un seul tableau, les équipées en premier, avec les totaux de reliques que le jeu enregistre.",
+    "relics": {
+      "title": "Reliques",
+      "body": "Emplacement, nom, type, rareté, niveau et nombre d’améliorations de chaque relique, y compris celle du tas de ferraille."
+    },
+    "bonuses": {
+      "title": "Bonus et totaux",
+      "body": "Chaque bonus avec l’ancient qu’il fait monter et le nombre de niveaux, plus les noyaux de forge, les reliques reçues et les quêtes de reliques terminées."
+    }
+  },
+  "relicEditor": {
+    "intro": "Modifie les reliques d’une sauvegarde : rareté, bonus et points, emplacement et noyaux de forge. Tu peux aussi ajouter de nouvelles reliques ou en retirer.",
+    "editing": {
+      "title": "Ce que tu peux modifier",
+      "body": "La rareté de Commune à Légendaire, jusqu’à quatre bonus par relique avec leurs points, les emplacements d’équipement et le tas de ferraille, et les noyaux de forge."
+    },
+    "safety": {
+      "title": "Pour que la sauvegarde se charge",
+      "body": "Seuls les bonus confirmés en jeu sont proposés, car un bonus inconnu empêche le chargement. Garde une copie de ta sauvegarde avant d’importer une version modifiée."
     }
   },
   "outsiders": {

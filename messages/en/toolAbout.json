@@ -8,6 +8,8 @@
     "instakillCalculator": "Instakill calculator",
     "transcensionViewer": "Transcension viewer",
     "mercenaryViewer": "Mercenary viewer",
+    "relicViewer": "Relic viewer",
+    "relicEditor": "Relic editor",
     "saveConverter": "Save converter",
     "removeClanData": "Remove clan data",
     "saveJson": "Save JSON",
@@ -47,6 +49,28 @@
     "lifetimeStats": {
       "title": "Lifetime stats",
       "body": "Mercenaries revived and buried, highest level reached, and quests completed by reward type."
+    }
+  },
+  "relic": {
+    "intro": "Lists every relic in your save in one table, with the equipped ones first and the relic totals the game keeps.",
+    "relics": {
+      "title": "Relics",
+      "body": "Equipment slot, name, type, rarity, level and upgrade count for every relic you own, including the one in the junk pile."
+    },
+    "bonuses": {
+      "title": "Bonuses and totals",
+      "body": "Each bonus by the ancient it levels and how many levels, plus Forge Cores, relics received and relic quests completed."
+    }
+  },
+  "relicEditor": {
+    "intro": "Changes the relics in a save: their rarity, bonuses and points, where they sit, and your Forge Cores. You can also add new relics or remove old ones.",
+    "editing": {
+      "title": "What you can edit",
+      "body": "Rarity from Common to Legendary, up to four bonuses per relic with their points, equipment slots and the junk pile, and Forge Cores."
+    },
+    "safety": {
+      "title": "Keeping the save loadable",
+      "body": "Only bonuses confirmed in game are offered, because an unknown one stops the save loading. Keep a backup of your save before importing an edited one."
     }
   },
   "outsiders": {
