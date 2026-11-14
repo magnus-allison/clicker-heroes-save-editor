@@ -1,7 +1,8 @@
 import { type FC, type ReactNode } from 'react';
 import { type Messages, useTranslations } from 'next-intl';
 
-import { GuideIndex, type GuideIndexPart } from '@/components/guides/GuideIndex';
+import type { GuideIndexPart } from '@/components/guides/GuideContents';
+import { GuideLayout } from '@/components/guides/GuideLayout';
 import { GuideLink } from '@/components/guides/GuideLink';
 import { GuideList, GuideListItem } from '@/components/guides/GuideList';
 import { GuidePart } from '@/components/guides/GuidePart';
@@ -112,19 +113,12 @@ export const ProgressTipsGuide: FC = () => {
 	);
 
 	return (
-		<article className='flex flex-col gap-10'>
-			<div className='flex flex-col gap-6'>
-				<p className='max-w-3xl text-[14px] leading-7 text-(--color-fg-secondary)'>
-					{t.rich('intro', links)}
-				</p>
-				<GuideIndex parts={parts} />
-			</div>
-
+		<GuideLayout intro={t.rich('intro', links)} parts={parts}>
 			{structure.map((part, index) => (
 				<GuidePart id={part.id} index={index + 1} key={part.id} title={t(`parts.${part.key}`)}>
 					{part.sections.map(renderSection)}
 				</GuidePart>
 			))}
-		</article>
+		</GuideLayout>
 	);
 };

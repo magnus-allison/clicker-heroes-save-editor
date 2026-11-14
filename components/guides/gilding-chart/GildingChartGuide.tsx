@@ -3,7 +3,8 @@ import { type Messages, useLocale, useTranslations } from 'next-intl';
 
 import { GildingLookup } from '@/components/guides/gilding-chart/GildingLookup';
 import { GildingTable, useGildingPhaseRange } from '@/components/guides/gilding-chart/GildingTable';
-import { GuideIndex, type GuideIndexPart } from '@/components/guides/GuideIndex';
+import type { GuideIndexPart } from '@/components/guides/GuideContents';
+import { GuideLayout } from '@/components/guides/GuideLayout';
 import { GuideLink } from '@/components/guides/GuideLink';
 import { GuideList, GuideListItem } from '@/components/guides/GuideList';
 import { GuidePart } from '@/components/guides/GuidePart';
@@ -120,12 +121,7 @@ export const GildingChartGuide: FC = () => {
 	);
 
 	return (
-		<article className='flex flex-col gap-10'>
-			<div className='flex flex-col gap-6'>
-				<p className='max-w-3xl text-[14px] leading-7 text-(--color-fg-secondary)'>{t('intro')}</p>
-				<GuideIndex parts={parts} />
-			</div>
-
+		<GuideLayout intro={t('intro')} parts={parts}>
 			<GuidePart {...part('find-your-hero')}>{section('gold-lookup', <GildingLookup />)}</GuidePart>
 
 			<GuidePart {...part('how-gilding-works')}>
@@ -145,34 +141,55 @@ export const GildingChartGuide: FC = () => {
 								className='rounded-(--radius-card) border border-(--color-line-subtle) bg-(--color-surface-muted) p-4'
 								key={phase.id}
 							>
-								<p className='text-[13px] font-semibold text-fg-strong'>
-									{phase.id}. {tUi(`phases.${phase.id}`)}
+								<p className='flex items-baseline gap-2 font-aeonik text-[13px] font-semibold uppercase tracking-[0.06em] text-fg-strong [word-spacing:0.12em]'>
+									<span
+										aria-hidden='true'
+										className='font-mono font-normal tracking-normal text-(--color-fg-dim)'
+									>
+										{String(phase.id).padStart(2, '0')}
+									</span>
+									{tUi(`phases.${phase.id}`)}
 								</p>
 								<p className='mt-1.5 text-[13px] leading-6 text-(--color-fg-muted)'>
 									{t(`phaseSummaries.${phase.id}`)}
 								</p>
-								<p className='mt-2 font-mono text-[12px] text-(--color-gold)'>{phaseRange(phase)}</p>
+								<p className='mt-3 inline-flex rounded-full border border-(--color-gilded-line) bg-(--color-gilded-surface) px-2.5 py-0.5 font-mono text-[11px] text-(--color-gold)'>
+									{phaseRange(phase)}
+								</p>
 							</div>
 						))}
 					</div>
 				)}
 			</GuidePart>
 
-			<GuidePart {...part('the-chart')}>{section('full-chart', <GildingTable />)}</GuidePart>
+			<GuidePart {...part('the-chart')}>
+				{section(
+					'full-chart',
+					// Bleeds to the panel's edges: the chart is the widest thing in any guide.
+					<div className='-mx-5 sm:-mx-7'>
+						<GildingTable />
+					</div>
+				)}
+			</GuidePart>
 
 			<GuidePart {...part('common-questions')}>
 				{section(
 					'faq',
-					<dl className='flex max-w-3xl flex-col gap-4'>
+					<dl className='flex max-w-3xl flex-col gap-3'>
 						{gildingChartFaqs(locale).map((faq) => (
-							<div key={faq.question}>
-								<dt className='text-[13px] font-semibold text-fg-strong'>{faq.question}</dt>
-								<dd className='mt-1 text-[13px] leading-6 text-(--color-fg-secondary)'>{faq.answer}</dd>
+							<div
+								className='rounded-(--radius-card) border border-(--color-line-subtle) bg-(--color-surface-muted)/50 px-4 py-3.5'
+								key={faq.question}
+							>
+								<dt className='font-aeonik text-[0.95rem] font-semibold leading-snug text-fg-strong'>
+									{faq.question}
+								</dt>
+								<dd className='mt-1.5 text-[13px] leading-6 text-(--color-fg-secondary)'>{faq.answer}</dd>
 							</div>
 						))}
 					</dl>
 				)}
 			</GuidePart>
-		</article>
+		</GuideLayout>
 	);
 };

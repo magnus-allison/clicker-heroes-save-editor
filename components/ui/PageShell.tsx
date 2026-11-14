@@ -10,7 +10,7 @@ type Props = {
 
 export const PageShell = ({ children, footer }: Props) => {
 	return (
-		<div className='flex min-h-screen w-full flex-col items-center overflow-x-hidden p-4 sm:p-8'>
+		<div className='flex min-h-screen w-full flex-col items-center overflow-x-clip p-4 sm:p-8'>
 			<main className={cn('flex w-full flex-1 flex-col max-w-297 gap-10')}>{children}</main>
 			{footer}
 		</div>

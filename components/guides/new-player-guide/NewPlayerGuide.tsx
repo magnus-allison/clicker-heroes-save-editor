@@ -1,7 +1,8 @@
 import { useTranslations } from 'next-intl';
 import { type FC, type ReactNode } from 'react';
 
-import { GuideIndex, type GuideIndexPart } from '@/components/guides/GuideIndex';
+import type { GuideIndexPart } from '@/components/guides/GuideContents';
+import { GuideLayout } from '@/components/guides/GuideLayout';
 import { GuideLink } from '@/components/guides/GuideLink';
 import { GuideList, GuideListItem } from '@/components/guides/GuideList';
 import { GuidePart } from '@/components/guides/GuidePart';
@@ -95,12 +96,7 @@ export const NewPlayerGuide: FC = () => {
 	};
 
 	return (
-		<article className='flex flex-col gap-10'>
-			<div className='flex flex-col gap-6'>
-				<p className='max-w-3xl text-[14px] leading-7 text-(--color-fg-secondary)'>{t('intro')}</p>
-				<GuideIndex parts={index} />
-			</div>
-
+		<GuideLayout intro={t('intro')} parts={index}>
 			<GuidePart {...part('theEarlyGame')}>
 				<GuideSection {...section('yourFirstRun')}>
 					<GuideList>
@@ -264,6 +260,6 @@ export const NewPlayerGuide: FC = () => {
 					</GuideList>
 				</GuideSection>
 			</GuidePart>
-		</article>
+		</GuideLayout>
 	);
 };

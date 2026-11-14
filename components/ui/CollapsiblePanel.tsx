@@ -1,11 +1,10 @@
 'use client';
 
-import { ChevronDownIcon, LinkIcon, type LucideIcon } from 'lucide-react';
-import { useEffect, useId, useRef, useState, type MouseEvent, type ReactNode } from 'react';
-import { useTranslations } from 'next-intl';
+import { ChevronDownIcon, type LucideIcon } from 'lucide-react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 
+import { AnchorLink } from '@/components/ui/AnchorLink';
 import { PanelSection } from '@/components/ui/PanelSection';
-import { useToast } from '@/components/ui/ToastProvider';
 import { cn } from 'cn';
 
 type Props = {
@@ -36,8 +35,6 @@ export const CollapsiblePanel = ({
 	const [isOpen, setIsOpen] = useState(defaultOpen);
 	const bodyId = useId();
 	const sectionRef = useRef<HTMLDivElement>(null);
-	const t = useTranslations('common.ui');
-	const { showToast } = useToast();
 	// Set when the hash targets this panel; the effect below scrolls once the
 	// panel has rendered open, so the scroll lands on the laid-out section.
 	const [scrollRequest, setScrollRequest] = useState<ScrollBehavior | null>(null);
@@ -69,25 +66,6 @@ export const CollapsiblePanel = ({
 		}
 	}, [scrollRequest]);
 
-	const copyLink = async (event: MouseEvent<HTMLAnchorElement>) => {
-		if (!anchor) {
-			return;
-		}
-
-		// Stay put: the link is for sharing, not for jumping to its own header.
-		event.preventDefault();
-		const url = new URL(window.location.href);
-		url.hash = anchor;
-		window.history.replaceState(window.history.state, '', url);
-
-		try {
-			await navigator.clipboard.writeText(url.toString());
-			showToast(t('linkCopied'));
-		} catch {
-			showToast(t('linkCopyFailed'));
-		}
-	};
-
 	return (
 		<PanelSection className={cn(anchor && 'scroll-mt-8', className)} id={anchor} ref={sectionRef}>
 			<div className='group/header flex items-center gap-2'>
@@ -113,17 +91,11 @@ export const CollapsiblePanel = ({
 					/>
 				</button>
 				{anchor ? (
-					<a
-						aria-label={t('copyLink', { section: title })}
-						className='order-first -my-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-(--radius-control) text-(--color-fg-dim) opacity-0 transition-[opacity,color] duration-150 hover:text-(--color-primary) focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong group-hover/header:opacity-100 [@media(hover:none)]:opacity-100'
-						href={`#${anchor}`}
-						onClick={(event) => {
-							void copyLink(event);
-						}}
-						title={t('copyLink', { section: title })}
-					>
-						<LinkIcon aria-hidden='true' className='h-3.5 w-3.5' />
-					</a>
+					<AnchorLink
+						anchor={anchor}
+						className='order-first -my-1 opacity-0 focus-visible:opacity-100 group-hover/header:opacity-100 [@media(hover:none)]:opacity-100'
+						label={title}
+					/>
 				) : null}
 			</div>
 			<div className={cn('mt-4', !isOpen && 'hidden', bodyClassName)} id={bodyId}>

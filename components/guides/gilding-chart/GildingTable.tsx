@@ -45,7 +45,7 @@ export const GildingTable: FC = () => {
 	const locale = useLocale();
 
 	return (
-		<EditorTable label={t('table.label')}>
+		<EditorTable className='rounded-none border-x-0' label={t('table.label')}>
 			<EditorTableHead>
 				<tr>
 					<EditorTableHeaderCell className='w-10'>{t('table.step')}</EditorTableHeaderCell>
@@ -56,7 +56,7 @@ export const GildingTable: FC = () => {
 					<EditorTableHeaderCell className='text-right'>
 						{t('table.approxAncientSouls')}
 					</EditorTableHeaderCell>
-					<EditorTableHeaderCell className='min-w-56'>{t('table.notes')}</EditorTableHeaderCell>
+					<EditorTableHeaderCell className='min-w-52'>{t('table.notes')}</EditorTableHeaderCell>
 				</tr>
 			</EditorTableHead>
 			<EditorTableBody>

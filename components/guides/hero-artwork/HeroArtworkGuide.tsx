@@ -2,6 +2,7 @@ import { type FC } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { ArtworkViewer } from '@/components/guides/hero-artwork/ArtworkViewer';
+import { GuideLead } from '@/components/guides/GuideLayout';
 import { orderedHeroes } from '@/lib/data/heroes';
 
 const frameClassName = 'flex h-32 items-center justify-center rounded-(--radius-card) border p-2';
@@ -44,7 +45,7 @@ const Artwork: FC<{ gilded?: boolean; label: string; name: string; src?: string 
 				</div>
 			)}
 			<figcaption
-				className={`text-center text-[11px] uppercase tracking-[0.08em] ${
+				className={`text-center font-aeonik text-[11px] font-semibold uppercase tracking-[0.1em] ${
 					gilded ? 'text-(--color-gold)' : 'text-(--color-fg-muted)'
 				}`}
 			>
@@ -58,20 +59,19 @@ export const HeroArtworkGuide: FC = () => {
 	const t = useTranslations('guides.heroArtwork');
 
 	return (
-		<article className='flex flex-col gap-8'>
-			<p className='max-w-3xl text-[14px] leading-7 text-(--color-fg-secondary)'>{t('intro')}</p>
+		<article className='flex flex-col gap-6'>
+			<GuideLead>{t('intro')}</GuideLead>
 
-			<ul className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
+			<ul className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
 				{orderedHeroes.map((hero) => (
-					<li
-						className='flex flex-col gap-3 rounded-(--radius-card) border border-(--color-line-subtle) p-4'
-						key={hero.heroId}
-					>
-						<div>
-							<p className='text-[11px] uppercase tracking-[0.12em] text-(--color-fg-dim)'>
+					<li className='glass-panel flex flex-col gap-4 rounded-2xl p-4 sm:p-5' key={hero.heroId}>
+						<div className='flex items-baseline justify-between gap-3'>
+							<h2 className='min-w-0 font-aeonik text-[0.95rem] font-semibold uppercase leading-tight tracking-wide text-fg-strong [word-spacing:0.15em]'>
+								{hero.name}
+							</h2>
+							<p className='shrink-0 font-mono text-[11px] text-(--color-fg-dim)'>
 								{t('heroNumber', { number: hero.heroId })}
 							</p>
-							<h2 className='mt-0.5 text-[13px] font-semibold leading-5 text-fg-strong'>{hero.name}</h2>
 						</div>
 						<div className='flex gap-3'>
 							<Artwork label={t('normal')} name={hero.name} src={hero.image} />
