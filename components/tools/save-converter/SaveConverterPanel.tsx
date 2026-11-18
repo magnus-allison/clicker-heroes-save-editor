@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { SaveDataFolder } from '@/components/editor/SaveDataFolder';
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
 import { useSaveImport } from '@/components/editor/useSaveImport';
@@ -103,14 +104,16 @@ export const SaveConverterPanel = () => {
 
 	return (
 		<>
-			<PanelSection className='grid lg:grid-cols-2 p-0'>
+			<SaveDataFolder>
 				<SaveImportField
+					headingInTab='always'
 					examples={saveConverterExamples}
 					fileInputId='save-converter-file-input'
 					isActiveStep={!loadedSave}
 					onLoad={importSave}
 				/>
 				<SaveExportField
+					headingInTab='lg'
 					actionLabel={t('export.action')}
 					ariaLabel={t('export.ariaLabel')}
 					dataLabel={t('export.dataLabel')}
@@ -121,7 +124,7 @@ export const SaveConverterPanel = () => {
 					title={t('export.title')}
 					value={encodeValue}
 				/>
-			</PanelSection>
+			</SaveDataFolder>
 
 			<StepTitle step={2} title={t('step')} />
 			<div

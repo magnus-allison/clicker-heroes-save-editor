@@ -5,11 +5,11 @@ import { useTranslations } from 'next-intl';
 
 import { LastSaveBanner } from '@/components/editor/LastSaveBanner';
 import { SaveChangesSummary } from '@/components/editor/SaveChangesSummary';
+import { SaveDataFolder } from '@/components/editor/SaveDataFolder';
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
 import { useEditorText } from '@/components/editor/useEditorText';
 import { useSaveImport } from '@/components/editor/useSaveImport';
-import { PanelSection } from '@/components/ui/PanelSection';
 import { useToast } from '@/components/ui/ToastProvider';
 import type { ExampleSave } from '@/lib/data/example-saves';
 import { encodeSaveData } from '@/lib/save-codec';
@@ -81,8 +81,9 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 					onLoadSuccess?.();
 				}}
 			/>
-			<PanelSection className='grid lg:grid-cols-2 p-0'>
+			<SaveDataFolder>
 				<SaveImportField
+					headingInTab='always'
 					key={importSeed.key}
 					examples={examples}
 					fileInputId='save-file-input'
@@ -91,6 +92,7 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 					onLoad={importSave}
 				/>
 				<SaveExportField
+					headingInTab='lg'
 					actionLabel={t('encodeAction')}
 					ariaLabel={t('ariaLabel')}
 					belowOutput={<SaveChangesSummary />}
@@ -102,7 +104,7 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 					title={t('title')}
 					value={encodeValue}
 				/>
-			</PanelSection>
+			</SaveDataFolder>
 		</>
 	);
 };

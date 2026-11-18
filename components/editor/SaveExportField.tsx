@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { headingInTabClasses, type HeadingInTab } from '@/components/editor/SaveDataFolder';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { FieldDivider } from '@/components/ui/FieldDivider';
 import { TextInput } from '@/components/ui/TextInput';
@@ -11,6 +12,7 @@ import { FileDownIcon, MonitorDownIcon, ShieldAlertIcon, TriangleAlertIcon } fro
 import { Pill } from '../ui/Pill';
 import { CardTitle } from '../ui/LinkCard';
 import { SaveDataButton } from './SaveDataButton';
+import { cn } from 'cn';
 
 type Props = {
 	title: string;
@@ -35,6 +37,8 @@ type Props = {
 	belowOutput?: ReactNode;
 	/** Name given to the downloaded file. */
 	fileName?: string;
+	/** Set inside `SaveDataFolder`, whose tab shows this field's heading. */
+	headingInTab?: HeadingInTab;
 };
 
 /**
@@ -48,6 +52,7 @@ export const SaveExportField = ({
 	belowOutput,
 	dataLabel,
 	fileName = 'clicker-heroes-save.txt',
+	headingInTab,
 	isActiveStep = false,
 	onAction,
 	onValueChange,
@@ -58,6 +63,7 @@ export const SaveExportField = ({
 	const { showToast } = useToast();
 	const t = useTranslations('editor');
 	const tCommon = useTranslations('common.ui');
+	const tabbed = headingInTab ? headingInTabClasses[headingInTab] : undefined;
 	const hasValue = value.trim().length > 0;
 
 	const handleDownload = () => {
@@ -88,15 +94,20 @@ export const SaveExportField = ({
 	return (
 		<section className='flex min-w-0 flex-col border-t border-shadow lg:border-l lg:border-t-0'>
 			<div className='flex flex-1 flex-col p-5'>
-				<span className='flex items-center gap-2'>
-					<span className='flex items-center justify-center transition-[background-color] duration-200'>
+				<span className={cn('flex items-center gap-2', tabbed?.row)}>
+					<span
+						className={cn(
+							'flex items-center justify-center transition-[background-color] duration-200',
+							tabbed?.icon
+						)}
+					>
 						<FileDownIcon aria-hidden='true' className='h-4.5 w-4.5' />
 					</span>
 					<Pill className='ml-auto' isShining={isActiveStep}>
 						{tCommon('step', { number: 3 })}
 					</Pill>
 				</span>
-				<CardTitle title={t('exportField.title')} />
+				<CardTitle className={tabbed?.title} title={t('exportField.title')} />
 				<div className='flex flex-1 flex-col gap-2.5'>
 					<div className='flex flex-wrap items-center gap-2'>
 						<button

@@ -4,6 +4,11 @@ import { ChevronDownIcon, type LucideIcon } from 'lucide-react';
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 
 import { AnchorLink } from '@/components/ui/AnchorLink';
+import {
+	folderTabClassName,
+	folderTabIconClassName,
+	folderTabTitleClassName
+} from '@/components/ui/FolderTab';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { cn } from 'cn';
 
@@ -74,14 +79,15 @@ export const CollapsiblePanel = ({
 				<button
 					aria-controls={bodyId}
 					aria-expanded={isOpen}
-					className='glass-tab relative z-10 flex min-w-0 cursor-pointer items-center gap-3 rounded-t-xl px-5 pt-3 pb-2.5 text-left focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-line-strong'
+					className={cn(
+						folderTabClassName,
+						'cursor-pointer text-left focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-line-strong'
+					)}
 					onClick={() => setIsOpen((open) => !open)}
 					type='button'
 				>
-					{Icon ? <Icon aria-hidden='true' className='h-4.5 w-4.5 shrink-0 text-fg pt-0.5' /> : null}
-					<span className='font-aeonik min-w-0 text-[1.05rem] leading-snug font-semibold tracking-wide uppercase text-fg-strong [word-spacing:0.2em]'>
-						{title}
-					</span>
+					{Icon ? <Icon aria-hidden='true' className={folderTabIconClassName} /> : null}
+					<span className={folderTabTitleClassName}>{title}</span>
 					<ChevronDownIcon
 						aria-hidden='true'
 						className={cn(

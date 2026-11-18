@@ -381,8 +381,9 @@ html:not([data-loaded]) .fade-in-on-load {
 }
 
 /*
- * The folder tab on a collapsible panel's header, joined to the panel's
- * top-left corner. Every choice here is about the join, which usually lands
+ * The folder tab (`FolderTab`) standing up off a panel's top edge: collapsible
+ * panel headers and the save import/export card. Every choice here is about
+ * the join with the panel, which usually lands
  * on a fractional pixel:
  *
  * - The fill is solid (the panel's wash already laid over the page) rather
@@ -391,8 +392,9 @@ html:not([data-loaded]) .fade-in-on-load {
  *   box-shadow ring clipped off, which leaks a hairline at a fractional clip.
  *   `padding-box` keeps the fill out from under the border, so the border
  *   tints the page exactly as the panel's ring does.
- * - The left margin pulls the border out into the column the panel's ring
- *   occupies (the ring is drawn outside the panel), so the sides line up.
+ * - `FolderTab` pulls the tab 1px left, putting the border in the column the
+ *   panel's ring occupies (the ring is drawn outside the panel), so the sides
+ *   line up.
  * - The tab sits flush on the panel, so its side borders stop exactly at the
  *   panel's top line; being solid and stacked above, it covers the panel's top
  *   ring. The `::after` strip carries the fill 1px further down, between the
@@ -404,7 +406,6 @@ html:not([data-loaded]) .fade-in-on-load {
 	background-clip: padding-box;
 	border: 1px solid var(--color-banner-edge);
 	border-bottom: 0;
-	margin-left: -1px;
 }
 
 .glass-tab::after {

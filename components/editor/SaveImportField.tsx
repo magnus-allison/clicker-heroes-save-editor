@@ -5,6 +5,7 @@ import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { ExampleSaveButtons } from '@/components/editor/ExampleSaveButtons';
+import { headingInTabClasses, type HeadingInTab } from '@/components/editor/SaveDataFolder';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { FieldDivider } from '@/components/ui/FieldDivider';
@@ -15,6 +16,7 @@ import { FileUpIcon, MonitorUpIcon } from 'lucide-react';
 import { Pill } from '../ui/Pill';
 import { CardTitle } from '../ui/LinkCard';
 import { SaveDataButton } from './SaveDataButton';
+import { cn } from 'cn';
 
 export type SaveImportSource = 'paste' | 'file' | 'example';
 
@@ -32,6 +34,8 @@ type Props = {
 	fileInputId: string;
 	examples?: ExampleSave[];
 	isActiveStep?: boolean;
+	/** Set inside `SaveDataFolder`, whose tab shows this field's heading. */
+	headingInTab?: HeadingInTab;
 	/**
 	 * Text the paste field starts with, such as a restored save. Only read on
 	 * mount; give the field a new `key` to apply a different one.
@@ -55,6 +59,7 @@ const MAX_SAVE_FILE_BYTES = 4 * 1024 * 1024;
 export const SaveImportField = ({
 	examples,
 	fileInputId,
+	headingInTab,
 	initialValue = '',
 	isActiveStep = false,
 	onLoad
@@ -66,6 +71,7 @@ export const SaveImportField = ({
 	// `null` until a file or example is picked, so the placeholder follows the locale.
 	const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
 	const [decodeValue, setDecodeValue] = useState(initialValue);
+	const tabbed = headingInTab ? headingInTabClasses[headingInTab] : undefined;
 
 	const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
 		const input = event.target;
@@ -99,15 +105,20 @@ export const SaveImportField = ({
 
 	return (
 		<section className='flex min-w-0 flex-col p-5'>
-			<span className='flex items-center gap-2'>
-				<span className='flex items-center justify-center transition-[background-color] duration-200'>
+			<span className={cn('flex items-center gap-2', tabbed?.row)}>
+				<span
+					className={cn(
+						'flex items-center justify-center transition-[background-color] duration-200',
+						tabbed?.icon
+					)}
+				>
 					<FileUpIcon aria-hidden='true' className='h-4.5 w-4.5' />
 				</span>
 				<Pill className='ml-auto' isShining={isActiveStep}>
 					{tCommon('step', { number: 1 })}
 				</Pill>
 			</span>
-			<CardTitle title={t('importField.title')} />
+			<CardTitle className={tabbed?.title} title={t('importField.title')} />
 
 			<div className='flex flex-1 flex-col gap-2.5'>
 				<input
