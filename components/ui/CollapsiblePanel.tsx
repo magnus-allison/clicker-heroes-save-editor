@@ -85,15 +85,15 @@ export const CollapsiblePanel = ({
 					<ChevronDownIcon
 						aria-hidden='true'
 						className={cn(
-							'h-4 w-4 shrink-0 text-(--color-fg-dim) transition-transform duration-200 ease-snap',
-							isOpen && 'rotate-180 text-(--color-primary)'
+							'h-4 w-4 shrink-0 text-fg-strong transition-transform duration-200 ease-snap',
+							isOpen && 'rotate-180'
 						)}
 					/>
 				</button>
 				{anchor ? (
 					<AnchorLink
 						anchor={anchor}
-						className='order-first -my-1 opacity-0 focus-visible:opacity-100 group-hover/header:opacity-100 [@media(hover:none)]:opacity-100'
+						className='-my-1 opacity-0 focus-visible:opacity-100 group-hover/header:opacity-100 [@media(hover:none)]:opacity-100'
 						label={title}
 					/>
 				) : null}

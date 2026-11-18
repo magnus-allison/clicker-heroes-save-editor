@@ -62,7 +62,7 @@ export const GildingTable: FC = () => {
 			<EditorTableBody>
 				{gildingPhases.map((phase) => (
 					<Fragment key={phase.id}>
-						<tr className='border-t border-(--color-line-subtle) first:border-t-0'>
+						<tr className='border-t border-(--color-banner-edge) first:border-t-0'>
 							<th
 								className='bg-(--color-surface-muted) px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim) sm:px-4'
 								colSpan={7}

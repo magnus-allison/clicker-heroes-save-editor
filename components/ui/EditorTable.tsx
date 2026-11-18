@@ -23,8 +23,10 @@ type EditorTableCellProps = ComponentPropsWithoutRef<'td'>;
  * padding stay identical everywhere.
  *
  * Styled after the glass import/export panel: no solid fill of its own, so
- * the panel's wash shows through, ringed by the same faint violet edge. The
- * header and row lines stay neutral so the colour never takes over.
+ * the panel's wash shows through, ringed by the same faint violet edge. Every
+ * line inside the table (header rule, row separators) uses that same edge so
+ * the grid reads as one frame; fills and text stay neutral so the colour never
+ * takes over.
  */
 export const EditorTable = ({
 	children,
@@ -56,7 +58,7 @@ export const EditorTableHead = ({ children, className, ...props }: EditorTableHe
 	return (
 		<thead
 			className={cn(
-				'border-b border-(--color-line-subtle) bg-(--color-surface-header)/50 text-[11px] uppercase tracking-[0.11em] text-(--color-fg-dim)',
+				'border-b border-(--color-banner-edge) bg-[light-dark(color-mix(in_oklab,var(--color-surface-header)_30%,transparent),rgba(0,0,0,0.25))] text-[11px] uppercase tracking-[0.11em] text-(--color-fg-muted)',
 				className
 			)}
 			{...props}
@@ -79,7 +81,7 @@ export const EditorTableRow = ({ children, className, ...props }: EditorTableRow
 	return (
 		<tr
 			className={cn(
-				'border-t border-(--color-line-subtle) transition-colors duration-150 first:border-t-0 hover:bg-(--color-surface-hover)/60',
+				'border-t border-(--color-banner-edge) transition-colors duration-150 first:border-t-0 hover:bg-[light-dark(rgba(0,0,0,0.03),rgba(0,0,0,0.25))]',
 				className
 			)}
 			{...props}

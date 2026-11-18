@@ -84,7 +84,7 @@ export const AchievementsSection = ({ anchor, defaultOpen, icon, title }: Props)
 						<EditorTable key={group.type}>
 							{/* A `caption` rather than a heading above the table: it gives the
 							    table an accessible name without a floating `h3`. */}
-							<caption className='border-b border-(--color-line-subtle) bg-(--color-surface-muted) px-3 py-3 text-left text-[13px] text-(--color-fg) sm:px-4'>
+							<caption className='border-b border-(--color-banner-edge) bg-(--color-surface-muted) px-3 py-3 text-left text-[13px] text-(--color-fg) sm:px-4'>
 								{groupCaption(group)}
 							</caption>
 							<EditorTableHead>
