@@ -20,7 +20,7 @@
     "faq": "FAQ"
   },
   "ancients": {
-    "intro": "Verteilt deine Hero Souls nach den Rules of Thumb der Community auf die Ancients, die du besitzt. Portiert vom <link>Optimizer von kepow.org</link>.",
+    "intro": "Verteilt deine Hero Souls nach den Rules of Thumb der Community auf die Ancients, die du besitzt.",
     "howTo": {
       "title": "So benutzt du ihn",
       "steps": [
@@ -138,7 +138,7 @@
     }
   },
   "outsiders": {
-    "intro": "Wandelt die Ancient Souls in deinem Spielstand in Outsider-Level um und schätzt, wo die Transzendenz endet. Portiert von <link>Driejs Outsiders-Rechner</link>.",
+    "intro": "Wandelt die Ancient Souls in deinem Spielstand in Outsider-Level um und schätzt, wo die Transzendenz endet.",
     "spendingOrder": {
       "title": "Reihenfolge",
       "body": "Zuerst Borb, dann Rhageist, K’Ariqua, Orphalas und Sen-Akhan bis zu ihren Obergrenzen. Der Rest geht an Chor’gorloth, Phandoryss und Ponyboy, je nachdem, wer pro Soul am meisten bringt."

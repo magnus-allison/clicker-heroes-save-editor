@@ -20,7 +20,7 @@
     "faq": "Perguntas frequentes"
   },
   "ancients": {
-    "intro": "Distribui suas Hero Souls entre os ancients que você tem, seguindo as Rules of Thumb da comunidade. Adaptado do <link>otimizador do kepow.org</link>.",
+    "intro": "Distribui suas Hero Souls entre os ancients que você tem, seguindo as Rules of Thumb da comunidade.",
     "howTo": {
       "title": "Como usar",
       "steps": [
@@ -138,7 +138,7 @@
     }
   },
   "outsiders": {
-    "intro": "Transforma as Ancient Souls do seu save em níveis de outsiders e estima onde a transcendência termina. Adaptado da <link>calculadora de outsiders do Driej</link>.",
+    "intro": "Transforma as Ancient Souls do seu save em níveis de outsiders e estima onde a transcendência termina.",
     "spendingOrder": {
       "title": "Ordem de gasto",
       "body": "Primeiro Borb, depois Rhageist, K’Ariqua, Orphalas e Sen-Akhan até os limites deles. O resto vai para Chor’gorloth, Phandoryss e Ponyboy, conforme qual render mais por soul."

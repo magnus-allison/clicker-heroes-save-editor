@@ -57,7 +57,6 @@ Then open the local URL printed by Next.js.
 - [Clicker Heroes Wiki (Fandom)](https://clickerheroes.fandom.com/wiki/Clicker_Heroes_Wiki)
 - [Clicker Heroes Subreddit](https://www.reddit.com/r/ClickerHeroes/)
 - [pako (zlib for JS)](https://github.com/nodeca/pako) — used for save decompression
-- [Clicker Heroes Outsiders](https://github.com/Driej/Clicker-Heroes-Outsiders) — the outsiders calculator is a port of this (Unlicense)
 
 ## Keywords
 

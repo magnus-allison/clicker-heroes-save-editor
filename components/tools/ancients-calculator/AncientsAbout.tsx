@@ -39,7 +39,7 @@ export const AncientsAbout: FC = () => {
 		<ToolAbout
 			faqs={ancientsCalculatorFaqs(locale)}
 			id='about-ancients-calculator'
-			intro={t.rich('intro', link('https://kepow.org/clickerheroes/'))}
+			intro={t('intro')}
 			related={['saveEditor', 'outsidersCalculator', 'transcensionViewer', 'gildingChart', 'newPlayerGuide']}
 			sections={[
 				{ title: t('howTo.title'), body: <Steps steps={t.raw('howTo.steps') as string[]} /> },

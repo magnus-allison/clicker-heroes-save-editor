@@ -20,7 +20,7 @@
     "faq": "FAQ"
   },
   "ancients": {
-    "intro": "Spreads your Hero Souls across the ancients you own using the community Rules of Thumb. Ported from the <link>kepow.org optimizer</link>.",
+    "intro": "Spreads your Hero Souls across the ancients you own using the community Rules of Thumb.",
     "howTo": {
       "title": "How to use it",
       "steps": [
@@ -138,7 +138,7 @@
     }
   },
   "outsiders": {
-    "intro": "Turns the Ancient Souls in your save into outsider levels and estimates where the transcension ends. Ported from <link>Driej’s outsiders calculator</link>.",
+    "intro": "Turns the Ancient Souls in your save into outsider levels and estimates where the transcension ends.",
     "spendingOrder": {
       "title": "Spending order",
       "body": "Borb first, then Rhageist, K’Ariqua, Orphalas and Sen-Akhan up to their caps. The rest goes to Chor’gorloth, Phandoryss and Ponyboy, whichever is worth most per soul."
