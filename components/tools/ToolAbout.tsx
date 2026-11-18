@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 
 import { GuideLink } from '@/components/guides/GuideLink';
 import { toolLinks, type ToolLinkKey } from '@/components/tools/tool-links';
+import type { Faq } from '@/lib/seo';
 
 export type ToolAboutSection = {
 	title: string;
@@ -14,6 +15,8 @@ interface Props {
 	intro: ReactNode;
 	sections: readonly ToolAboutSection[];
 	related: readonly ToolLinkKey[];
+	/** Shown under the sections; pass the same list `lib/seo.ts` gives the page's `FAQPage` data. */
+	faqs?: readonly Faq[];
 }
 
 interface RelatedToolLinksProps {
@@ -43,7 +46,7 @@ export const RelatedToolLinks: FC<RelatedToolLinksProps> = ({ className, related
  * tools are interactive forms with little prose of their own, so this is the
  * text search engines read — kept brief so it never competes with the tool.
  */
-export const ToolAbout: FC<Props> = ({ id, intro, related, sections }) => {
+export const ToolAbout: FC<Props> = ({ faqs, id, intro, related, sections }) => {
 	const t = useTranslations('toolAbout');
 
 	return (
@@ -62,6 +65,19 @@ export const ToolAbout: FC<Props> = ({ id, intro, related, sections }) => {
 					<div className='mt-1'>{section.body}</div>
 				</div>
 			))}
+			{faqs?.length ? (
+				<>
+					<h2 className='mt-3 text-[0.95rem] font-semibold leading-tight text-fg-strong' id={`${id}-faq`}>
+						{t('faqHeading')}
+					</h2>
+					{faqs.map((faq) => (
+						<div key={faq.question}>
+							<h3 className='font-semibold text-fg-strong'>{faq.question}</h3>
+							<p className='mt-1'>{faq.answer}</p>
+						</div>
+					))}
+				</>
+			) : null}
 			<RelatedToolLinks className='text-(--color-fg-muted)' related={related} />
 		</section>
 	);

@@ -32,6 +32,11 @@ export const tools: LinkCardItem<ToolCardKey>[] = [
 		tag: 'mostPopular'
 	},
 	{
+		key: 'ancientsCalculator',
+		href: '/tools/ancients-calculator',
+		icon: Landmark
+	},
+	{
 		key: 'outsidersCalculator',
 		href: '/tools/outsiders-calculator',
 		icon: Orbit,
@@ -41,11 +46,6 @@ export const tools: LinkCardItem<ToolCardKey>[] = [
 		key: 'instakillCalculator',
 		href: '/tools/instakill-calculator',
 		icon: SwordsIcon
-	},
-	{
-		key: 'ancientsCalculator',
-		href: '/tools/ancients-calculator',
-		icon: Landmark
 	},
 	{
 		key: 'transcensionViewer',

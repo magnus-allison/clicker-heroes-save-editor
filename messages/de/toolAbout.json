@@ -1,6 +1,7 @@
 {
   "heading": "So funktioniert’s",
   "seeAlso": "Siehe auch:",
+  "faqHeading": "Häufige Fragen",
   "links": {
     "saveEditor": "Spielstand-Editor",
     "ancientsCalculator": "Ancients-Rechner",
@@ -20,13 +21,76 @@
   },
   "ancients": {
     "intro": "Verteilt deine Hero Souls nach den Rules of Thumb der Community auf die Ancients, die du besitzt. Portiert vom <link>Optimizer von kepow.org</link>.",
+    "howTo": {
+      "title": "So benutzt du ihn",
+      "steps": [
+        "Exportiere deinen Spielstand in Clicker Heroes und füge ihn in Schritt 1 ein oder wähle deine .save-Datei aus. Klicke dann auf „Spielstand laden“.",
+        "Wähle in Schritt 2 deinen Build und deinen besten Helden in dieser Transzendenz. Die übrigen Einstellungen kannst du auf den Standardwerten lassen.",
+        "Schritt 3 listet die Ancients, die du besitzt. Level jeden im Spiel um den Wert in seiner Spalte „Änderung“ – der Kopier-Button kopiert diese Zahl.",
+        "Lade nach deinem nächsten Aufstieg den neuen Spielstand für einen aktuellen Plan. Der Rechner liest deinen Spielstand nur und ändert ihn nie."
+      ]
+    },
     "builds": {
       "title": "Builds",
-      "body": "Ein Idle-Build richtet alle Level an Siyalatas aus, ein Aktiv-Build an Fragsworth. Hybrid levelt beide, und das Verhältnis legt fest, wie viele Fragsworth-Level du pro Siyalatas-Level kaufst."
+      "body": "Ein Idle-Build richtet alle Level an Siyalatas aus, ein Aktiv-Build an Fragsworth. Hybrid levelt beide, und das Verhältnis legt fest, wie viele Fragsworth-Level du pro Siyalatas-Level kaufst. Ancients, die ein Build nicht braucht, fallen weg: Idle lässt Fragsworth, Bhaal, Juggernaut und Pluto aus, Aktiv lässt Siyalatas und Libertas aus. Welcher Build zu dir passt, steht in den <link>Tipps für schnelleren Fortschritt</link>."
     },
     "bestHero": {
       "title": "Bester Held",
-      "body": "Jede Heldenstufe hat ein anderes Verhältnis von Gold zu Schaden. Davon hängt ab, wie weit sich das Leveln der Gold-Ancients lohnt."
+      "body": "Jede Heldenstufe hat ein anderes Verhältnis von Gold zu Schaden. Davon hängt ab, wie weit sich das Leveln der Gold-Ancients lohnt. Wähle die Stufe des Helden, den du in dieser Transzendenz am meisten levelst – die <link>Gild-Tabelle</link> zeigt dir, welcher das bei deinem Gold ist."
+    },
+    "settings": {
+      "title": "Weitere Einstellungen",
+      "items": [
+        {
+          "name": "Auszugebende Hero Souls",
+          "body": "Lass das Feld leer, um die Souls aus deinem Spielstand zu nutzen, oder gib eine eigene Menge zum Planen ein."
+        },
+        {
+          "name": "Souls aus dem Aufstieg einrechnen",
+          "body": "Rechnet die Hero Souls dazu, die dir dein nächster Aufstieg bringen würde – eine pro 2.000 Heldenlevel plus Primal Souls –, damit du schon vor dem Aufstieg planen kannst."
+        },
+        {
+          "name": "Hero Souls zum Umvergolden reservieren",
+          "body": "Hält 80 Hero Souls für jeden Gild zurück, den du hast."
+        },
+        {
+          "name": "Revolc leveln / Skill-Ancients leveln",
+          "body": "Bei 0 werden sie nie gelevelt, bei 1 so weit, wie die Regeln es zulassen. Stehen die Skill-Ancients auf 0, fallen Vaagur und die Ancients für Skill-Dauer ganz weg."
+        },
+        {
+          "name": "Im Spiel minimierte Ancients ignorieren",
+          "body": "Überspringt jeden Ancient, dessen Karte du im Spiel eingeklappt hast."
+        }
+      ]
+    },
+    "results": {
+      "title": "Die Ergebnisse lesen",
+      "items": [
+        {
+          "name": "Ziel und Änderung",
+          "body": "Ziel ist das Level, das die Regeln anstreben, Änderung die Zahl der Level, die du dazukaufst. Das Ziel liegt nie unter deinem aktuellen Level – eine Änderung von 0 heißt also, dass dieser Ancient schon da steht, wo er hingehört."
+        },
+        {
+          "name": "max",
+          "body": "Markiert einen Ancient, der bis zu dem Punkt gelevelt ist, ab dem er sich nicht mehr lohnt, etwa Atman bei 2.880 oder Chronos bei 1.101."
+        },
+        {
+          "name": "Kosten (HS)",
+          "body": "Die Hero Souls, die diese Level kosten – dein Chor’gorloth-Rabatt ist schon eingerechnet."
+        },
+        {
+          "name": "Soul-Reserve",
+          "body": "Erscheint nur, wenn du Morgulis nicht besitzt: die Hero Souls, die du unausgegeben lassen solltest, weil sie ohne Morgulis gespart mehr wert sind als investiert."
+        },
+        {
+          "name": "Ancient-Souls-Planer",
+          "body": "Wie viele Hero Souls du für jede weitere Ancient Soul noch brauchst. Ancient Souls sind 5 × log10 der geopferten Hero Souls, abgerundet – jede braucht also etwa das 1,58-Fache an Souls der vorherigen."
+        }
+      ]
+    },
+    "example": {
+      "title": "Beispiel: ein Idle-Spielstand im Late Game",
+      "body": "Bei einem Spielstand mit höchster Zone 211.850 und 17.829 Ancient Souls ergeben die Idle-Standardwerte bei fast jedem Ancient eine Änderung von 0: Die gedeckelten sind ausgereizt, der Rest steht schon auf seinem Ziel, also gehen die Souls an Siyalatas und Libertas. Wechselst du auf Hybrid, kommen Fragsworth, Bhaal, Juggernaut und Pluto in die Tabelle, und die Souls verteilen sich stattdessen auf sie, Argaiv, Morgulis, Nogardnit und die Gold-Ancients. Deine eigenen Zahlen hängen von deinem Spielstand ab."
     }
   },
   "instakill": {
@@ -119,6 +183,16 @@
   "saveEditor": {
     "heading": "Kostenloser Clicker Heroes Spielstand-Decoder und -Editor",
     "intro": "Dieser browserbasierte Clicker Heroes Spielstand-Editor dekodiert Spielstand-Codes, macht die Spieldaten bearbeitbar und kodiert das Ergebnis neu, damit du es wieder in Clicker Heroes importieren kannst. Er eignet sich, um Fortschritt wiederherzustellen, Builds zu testen, gezielte Spielstände zu erstellen und nachzusehen, was in einer Clicker Heroes Speicherdatei steckt.",
+    "howTo": {
+      "title": "So bearbeitest du deinen Spielstand",
+      "steps": [
+        "Sichere ihn zuerst: Behalte eine Kopie deines aktuellen Spielstand-Codes oder deiner .save-Datei.",
+        "Exportiere deinen Spielstand in Clicker Heroes, füge ihn in Schritt 1 ein (oder wähle deine .save-Datei) und klicke auf „Spielstand laden“.",
+        "Ändere in Schritt 2, was du brauchst. Wenn du unsicher bist, ändere immer nur eine Sache.",
+        "Klicke in Schritt 3 auf „Spielstand kodieren“ und kopiere den gesamten kodierten Code.",
+        "Füge ihn über die Option zum Importieren des Spielstands ins Spiel ein und prüf das Spiel, bevor du weitere Änderungen machst."
+      ]
+    },
     "features": {
       "progress": {
         "title": "Fortschritt bearbeiten",
@@ -133,6 +207,7 @@
         "body": "Spielstand-Codes werden lokal im Browser dekodiert und kodiert. Das geht schnell, und du musst keinen Desktop-Trainer und keinen Mod installieren."
       }
     },
-    "faqHeading": "FAQ zum Clicker Heroes Spielstand-Editor"
+    "faqHeading": "FAQ zum Clicker Heroes Spielstand-Editor",
+    "faqMore": "Weitere Antworten, auch dazu, was die einzelnen Dekodierfehler bedeuten, findest du in der <link>vollständigen FAQ</link>."
   }
 }

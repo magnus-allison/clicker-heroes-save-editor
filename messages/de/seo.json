@@ -14,12 +14,12 @@
     },
     "saveEditor": {
       "metaTitle": "Clicker Heroes Spielstand-Editor – online & kostenlos",
-      "description": "Kostenloser Clicker Heroes Spielstand-Editor: Spielstände online dekodieren, bearbeiten und neu kodieren. Gold, Rubine, Hero Souls, Helden, Ancients, Aufstiege & mehr.",
+      "description": "Kostenloser Clicker Heroes Spielstand-Editor: Spielstand online dekodieren, Gold, Rubine, Hero Souls, Helden und Gilds, Outsider, Erfolge & mehr bearbeiten und neu kodieren.",
       "applicationName": "Clicker Heroes Spielstand-Editor",
       "featureList": [
         "Clicker Heroes Spielstand-Codes dekodieren",
         "Bearbeitete Spielstände kodieren und wieder ins Spiel importieren",
-        "Gold, Rubine, Hero Souls, Ancients und Aufstiegsdaten bearbeiten",
+        "Gold, Rubine, Hero Souls, Ancient Souls und Aufstiegsdaten bearbeiten",
         "Helden, Erfolge, Skins, Söldner, Outsiders, Clan-Werte und eigene Felder bearbeiten",
         "Beliebige Spielstandfelder direkt über einen eigenen Feldpfad schreiben"
       ]
@@ -166,15 +166,53 @@
     "saveEditor": [
       {
         "question": "Wie bearbeite ich eine Clicker Heroes Speicherdatei?",
-        "answer": "Füge deinen Clicker Heroes Spielstand-Code in den Editor ein, dekodiere ihn, ändere die gewünschten Felder und kopiere das kodierte Ergebnis zurück in den Import-Dialog des Spiels."
+        "answer": "Sichere deinen Spielstand, füge den Spielstand-Code in Schritt 1 ein und klicke auf „Spielstand laden“. Ändere in Schritt 2 die Felder, die du brauchst, klicke in Schritt 3 auf „Spielstand kodieren“ und füge den kodierten Code über die Option zum Importieren des Spielstands ins Spiel ein."
       },
       {
-        "question": "Kann der Editor Gold, Rubine, Hero Souls und Ancients ändern?",
-        "answer": "Ja. Der Editor bietet Einstellungen für die wichtigsten Währungen, Heldenlevel, Hero Souls, den Fortschritt rund um Ancients, Aufstiege, Erfolge, Skins, Söldner, Outsiders, Clan-Werte und eigene Spielstandfelder. Rohes JSON bearbeitest du im separaten Tool „Spielstand als JSON“."
+        "question": "Was kann der Spielstand-Editor ändern?",
+        "answer": "Gold, Rubine, Hero Souls, Shop- und Saison-Items, Heldenlevel und Gilds, Skins, Erfolge, Aufstiege und Transzendenzen, Clan-Werte, Söldner, Outsider und Ancient Souls. Alles andere kannst du im Abschnitt „Eigenes Feld“ per Pfad schreiben oder im Tool „Spielstand als JSON“ von Hand bearbeiten."
+      },
+      {
+        "question": "Kann ich die Level meiner Ancients bearbeiten?",
+        "answer": "Für Ancient-Level gibt es keinen Abschnitt. Berechne mit dem Ancients-Rechner, wie weit du jeden Ancient leveln solltest, und level sie dann im Spiel. Ancient Souls und Outsider-Level findest du im Abschnitt „Outsider und Ancient Souls“."
       },
       {
         "question": "Wird mein Clicker Heroes Spielstand auf einen Server hochgeladen?",
         "answer": "Nein. Der Editor läuft im Browser und verarbeitet die Spielstanddaten clientseitig. Du kannst also bearbeiten, ohne deinen Spielstand auf diese Seite hochzuladen."
+      },
+      {
+        "question": "Funktioniert der Editor mit Mobile-Spielständen?",
+        "answer": "Er dekodiert PC-, Mobile- und ältere Legacy-Spielstand-Codes. Wenn ein Spielstand von einer Plattform auf der anderen laden soll, schick ihn vorher durch den Spielstand-Konverter."
+      },
+      {
+        "question": "Warum akzeptiert das Spiel meinen bearbeiteten Spielstand nicht?",
+        "answer": "Prüf, ob du nach deiner letzten Änderung auf „Spielstand kodieren“ geklickt und den gesamten kodierten Code kopiert hast. Lehnt das Spiel ihn trotzdem ab, importiere dein Backup und wiederhole die Änderungen in kleineren Schritten, um den Wert zu finden, mit dem es nicht klarkommt."
+      }
+    ],
+    "ancientsCalculator": [
+      {
+        "question": "Warum findet der Ancients-Rechner keine Ancients in meinem Spielstand?",
+        "answer": "Er levelt nur Ancients, die du schon besitzt – ein Spielstand ohne beschworene Ancients gibt ihm nichts zu tun. Beschwöre im Spiel deine ersten Ancients, exportiere dann einen neuen Spielstand und lade ihn. Ist „Im Spiel minimierte Ancients ignorieren“ angehakt, werden eingeklappte Ancients ebenfalls übersprungen."
+      },
+      {
+        "question": "Sagt mir der Ancients-Rechner, welche Ancients ich kaufen soll?",
+        "answer": "Nein. Er verteilt Hero Souls auf die Ancients, die du schon besitzt. Welche Ancients du für Idle- und Aktiv-Builds zuerst holst, steht im Einsteiger-Guide."
+      },
+      {
+        "question": "Warum ist die Änderung bei den meisten meiner Ancients 0?",
+        "answer": "Der Rechner senkt nie ein Level. Eine Änderung von 0 heißt, dass der Ancient sein Ziel schon erreicht oder überschritten hat oder auf dem Level steht, ab dem er sich nicht mehr lohnt (markiert mit „max“). Im Late Game gilt das für die meisten."
+      },
+      {
+        "question": "Ändert der Ancients-Rechner meinen Spielstand?",
+        "answer": "Nein. Er liest deinen Spielstand nur. Level die Ancients im Spiel um die Werte in der Spalte „Änderung“ – der Spielstand-Editor hat keinen Abschnitt für Ancient-Level."
+      },
+      {
+        "question": "Soll ich einen Idle-, Hybrid- oder Aktiv-Build wählen?",
+        "answer": "Idle passt zu Spielern, die ein paar Mal am Tag reinschauen, denn Siyalatas und Libertas belohnen dich dafür, das Spiel in Ruhe zu lassen. Aktiv passt zu Spielern, die mit offenem Spiel davorsitzen, da Juggernaut, Fragsworth und Bhaal mit Klicks skalieren. Hybrid passt für die meisten, sobald sie ein paar Autoclicker haben. Entscheide dich für einen und gib deine Souls passend dazu aus."
+      },
+      {
+        "question": "Warum sagt mir die Soul-Reserve, dass ich Souls unausgegeben lassen soll?",
+        "answer": "Die Soul-Reserve erscheint nur, wenn du Morgulis nicht besitzt. Ohne Morgulis sind übrige Hero Souls gespart mehr wert als investiert, also hält der Rechner die Menge zurück, die sonst in Morgulis geflossen wäre."
       }
     ],
     "site": [

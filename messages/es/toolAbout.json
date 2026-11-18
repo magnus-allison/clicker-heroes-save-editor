@@ -1,6 +1,7 @@
 {
   "heading": "Cómo funciona",
   "seeAlso": "Ver también:",
+  "faqHeading": "Preguntas frecuentes",
   "links": {
     "saveEditor": "Editor de partidas",
     "ancientsCalculator": "Calculadora de ancients",
@@ -20,13 +21,76 @@
   },
   "ancients": {
     "intro": "Reparte tus Hero Souls entre los ancients que tienes según las Rules of Thumb de la comunidad. Adaptado del <link>optimizador de kepow.org</link>.",
+    "howTo": {
+      "title": "Cómo usarla",
+      "steps": [
+        "Exporta tu partida desde Clicker Heroes y pega el código en el paso 1, o elige tu archivo .save, y pulsa Cargar partida.",
+        "En el paso 2, elige tu build y tu mejor héroe en esta trascendencia. El resto de ajustes puede quedarse con los valores por defecto.",
+        "El paso 3 muestra los ancients que tienes. Sube cada uno en el juego según su columna Cambio; el botón de copiar copia ese número.",
+        "Después de tu próxima ascensión, carga la nueva partida para obtener un plan actualizado. La calculadora solo lee tu partida; nunca la modifica."
+      ]
+    },
     "builds": {
       "title": "Builds",
-      "body": "La build idle sube todo en función de Siyalatas y la activa en función de Fragsworth. La híbrida sube ambos, y la proporción indica cuántos niveles de Fragsworth compras por cada nivel de Siyalatas."
+      "body": "La build idle sube todo en función de Siyalatas y la activa en función de Fragsworth. La híbrida sube ambos, y la proporción indica cuántos niveles de Fragsworth compras por cada nivel de Siyalatas. Los ancients que una build no usa quedan fuera: la idle omite Fragsworth, Bhaal, Juggernaut y Pluto, y la activa omite Siyalatas y Libertas. Los <link>consejos para progresar</link> explican qué build te conviene."
     },
     "bestHero": {
       "title": "Mejor héroe",
-      "body": "Cada grupo de héroes tiene una relación distinta entre oro y daño, y eso cambia hasta dónde vale la pena subir los ancients de oro."
+      "body": "Cada grupo de héroes tiene una relación distinta entre oro y daño, y eso cambia hasta dónde vale la pena subir los ancients de oro. Elige el grupo del héroe que más vas a subir en esta trascendencia; la <link>tabla de gilds</link> te dice cuál es según tu oro."
+    },
+    "settings": {
+      "title": "Otros ajustes",
+      "items": [
+        {
+          "name": "Hero Souls para gastar",
+          "body": "Déjalo vacío para usar las souls de tu partida, o escribe una cantidad para planificar con ella."
+        },
+        {
+          "name": "Incluir las souls obtenidas al ascender",
+          "body": "Suma las Hero Souls que te daría tu próxima ascensión (una por cada 2000 niveles de héroe, más las primal souls), para que puedas planificar antes de ascender."
+        },
+        {
+          "name": "Reservar Hero Souls para mover gilds",
+          "body": "Guarda 80 Hero Souls por cada gild que tengas."
+        },
+        {
+          "name": "Subir de nivel a Revolc / los ancients de habilidades",
+          "body": "0 no los sube nunca y 1 los sube tanto como permiten las reglas. Con los ancients de habilidades en 0, Vaagur y los ancients de duración de habilidades quedan fuera por completo."
+        },
+        {
+          "name": "Ignorar los ancients minimizados en el juego",
+          "body": "Omite cualquier ancient cuya tarjeta hayas contraído en el juego."
+        }
+      ]
+    },
+    "results": {
+      "title": "Cómo leer los resultados",
+      "items": [
+        {
+          "name": "Objetivo y Cambio",
+          "body": "Objetivo es el nivel al que apuntan las reglas, y Cambio es cuántos niveles subir. El objetivo nunca está por debajo de tu nivel actual, así que un Cambio de 0 significa que ese ancient ya está donde debe."
+        },
+        {
+          "name": "tope",
+          "body": "Marca un ancient subido hasta el punto en que deja de compensar, como Atman en 2880 o Chronos en 1101."
+        },
+        {
+          "name": "Coste (HS)",
+          "body": "Las Hero Souls que cuestan esos niveles, con el descuento de Chor’gorloth ya aplicado."
+        },
+        {
+          "name": "Reserva de souls",
+          "body": "Solo aparece si no tienes Morgulis: las Hero Souls que conviene dejar sin gastar, porque sin Morgulis valen más guardadas que invertidas."
+        },
+        {
+          "name": "Planificador de Ancient Souls",
+          "body": "Cuántas Hero Souls más necesita cada Ancient Soul adicional. Las Ancient Souls son 5 × log10 de las Hero Souls sacrificadas, redondeado hacia abajo, así que cada una necesita unas 1,58 veces las souls de la anterior."
+        }
+      ]
+    },
+    "example": {
+      "title": "Ejemplo: una partida idle avanzada",
+      "body": "En una partida con zona más alta 211.850 y 17.829 Ancient Souls, los valores idle por defecto dan un Cambio de 0 a casi todos los ancients: los que tienen tope ya están al máximo y el resto ya está en su objetivo, así que las souls van a Siyalatas y Libertas. Si cambias a híbrida, Fragsworth, Bhaal, Juggernaut y Pluto entran en la tabla, y las souls se reparten entre ellos, Argaiv, Morgulis, Nogardnit y los ancients de oro. Tus números dependerán de tu partida."
     }
   },
   "instakill": {
@@ -119,6 +183,16 @@
   "saveEditor": {
     "heading": "Decodificador y editor de partidas de Clicker Heroes gratis",
     "intro": "Este editor de partidas de Clicker Heroes funciona en el navegador: decodifica códigos de partida, muestra los datos del juego que se pueden editar y vuelve a codificar el resultado para importarlo de nuevo en Clicker Heroes. Sirve para recuperar progreso, probar builds, crear partidas con un estado concreto y ver qué hay dentro de un archivo de guardado de Clicker Heroes.",
+    "howTo": {
+      "title": "Cómo editar tu partida",
+      "steps": [
+        "Primero haz una copia de seguridad: guarda el código de tu partida actual o tu archivo .save.",
+        "Exporta tu partida desde Clicker Heroes, pégala en el paso 1 (o elige tu archivo .save) y pulsa Cargar partida.",
+        "Cambia lo que necesites en el paso 2. Si no estás seguro, cambia una cosa cada vez.",
+        "Pulsa Codificar partida en el paso 3 y copia el código codificado entero.",
+        "Pégalo en la opción de importar partida del juego y compruébalo en el juego antes de hacer más cambios."
+      ]
+    },
     "features": {
       "progress": {
         "title": "Progreso editable",
@@ -133,6 +207,7 @@
         "body": "Los códigos de partida se decodifican y codifican localmente en el navegador, así que todo es rápido y no hace falta instalar ningún trainer ni mod de escritorio."
       }
     },
-    "faqHeading": "Preguntas frecuentes sobre el editor de partidas de Clicker Heroes"
+    "faqHeading": "Preguntas frecuentes sobre el editor de partidas de Clicker Heroes",
+    "faqMore": "Encontrarás más respuestas, incluido qué significa cada error de decodificación, en las <link>preguntas frecuentes completas</link>."
   }
 }

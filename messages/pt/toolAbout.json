@@ -1,6 +1,7 @@
 {
   "heading": "Como funciona",
   "seeAlso": "Veja também:",
+  "faqHeading": "Perguntas frequentes",
   "links": {
     "saveEditor": "Editor de save",
     "ancientsCalculator": "Calculadora de ancients",
@@ -20,13 +21,76 @@
   },
   "ancients": {
     "intro": "Distribui suas Hero Souls entre os ancients que você tem, seguindo as Rules of Thumb da comunidade. Adaptado do <link>otimizador do kepow.org</link>.",
+    "howTo": {
+      "title": "Como usar",
+      "steps": [
+        "Exporte seu save no Clicker Heroes e cole no passo 1, ou escolha seu arquivo .save, e clique em Carregar save.",
+        "No passo 2, escolha sua build e seu melhor herói nesta transcendência. As outras configurações podem ficar no padrão.",
+        "O passo 3 lista os ancients que você tem. Suba cada um no jogo pelo valor da coluna Mudança — o botão de copiar copia esse número.",
+        "Depois da sua próxima ascensão, carregue o novo save para ter um plano atualizado. A calculadora só lê o seu save; ela nunca o altera."
+      ]
+    },
     "builds": {
       "title": "Builds",
-      "body": "A build idle sobe tudo em função do Siyalatas, e a ativa em função do Fragsworth. A híbrida sobe os dois, e a proporção define quantos níveis de Fragsworth você compra para cada nível de Siyalatas."
+      "body": "A build idle sobe tudo em função do Siyalatas, e a ativa em função do Fragsworth. A híbrida sobe os dois, e a proporção define quantos níveis de Fragsworth você compra para cada nível de Siyalatas. Os ancients que uma build não usa ficam de fora: a idle ignora Fragsworth, Bhaal, Juggernaut e Pluto, e a ativa ignora Siyalatas e Libertas. As <link>dicas para progredir</link> explicam qual build combina com você."
     },
     "bestHero": {
       "title": "Melhor herói",
-      "body": "Cada grupo de heróis tem uma relação diferente entre ouro e dano, o que muda até onde vale a pena subir o nível dos ancients de ouro."
+      "body": "Cada grupo de heróis tem uma relação diferente entre ouro e dano, o que muda até onde vale a pena subir o nível dos ancients de ouro. Escolha o grupo do herói que você mais vai subir nesta transcendência — a <link>tabela de gilds</link> mostra qual é esse herói para o seu ouro."
+    },
+    "settings": {
+      "title": "Outras configurações",
+      "items": [
+        {
+          "name": "Hero Souls para gastar",
+          "body": "Deixe vazio para usar as souls do seu save, ou digite uma quantidade para planejar com ela."
+        },
+        {
+          "name": "Incluir souls ganhas após a ascensão",
+          "body": "Soma as Hero Souls que sua próxima ascensão daria — uma a cada 2.000 níveis de herói, mais as primal souls —, para você planejar antes de ascender."
+        },
+        {
+          "name": "Reservar Hero Souls para refazer gilds",
+          "body": "Guarda 80 Hero Souls para cada gild que você tem."
+        },
+        {
+          "name": "Subir Revolc / ancients de habilidade de nível",
+          "body": "0 nunca sobe o nível deles e 1 sobe o máximo que as regras permitem. Com os ancients de habilidade em 0, Vaagur e os ancients de duração de habilidade ficam totalmente de fora."
+        },
+        {
+          "name": "Ignorar ancients minimizados no jogo",
+          "body": "Pula qualquer ancient cujo card você recolheu no jogo."
+        }
+      ]
+    },
+    "results": {
+      "title": "Como ler os resultados",
+      "items": [
+        {
+          "name": "Meta e Mudança",
+          "body": "Meta é o nível que as regras buscam, e Mudança é quantos níveis subir. A meta nunca fica abaixo do seu nível atual, então uma Mudança de 0 quer dizer que esse ancient já está onde deveria."
+        },
+        {
+          "name": "limite",
+          "body": "Marca um ancient que subiu até o ponto em que deixa de compensar, como Atman em 2.880 ou Chronos em 1.101."
+        },
+        {
+          "name": "Custo (HS)",
+          "body": "As Hero Souls que esses níveis custam, já com o desconto do Chor’gorloth aplicado."
+        },
+        {
+          "name": "Reserva de souls",
+          "body": "Só aparece se você não tem Morgulis: as Hero Souls para manter sem gastar, porque sem Morgulis elas valem mais guardadas do que investidas."
+        },
+        {
+          "name": "Planejador de Ancient Souls",
+          "body": "Quantas Hero Souls a mais cada Ancient Soul extra exige. Ancient Souls são 5 × log10 das Hero Souls sacrificadas, arredondado para baixo, então cada uma precisa de cerca de 1,58 vez as souls da anterior."
+        }
+      ]
+    },
+    "example": {
+      "title": "Exemplo: um save idle avançado",
+      "body": "Em um save com zona mais alta 211.850 e 17.829 Ancient Souls, os padrões idle dão Mudança 0 para quase todos os ancients: os que têm limite já estão no máximo e o resto já está na meta, então as souls vão para Siyalatas e Libertas. Mude para híbrida e Fragsworth, Bhaal, Juggernaut e Pluto entram na tabela, e as souls se espalham entre eles, Argaiv, Morgulis, Nogardnit e os ancients de ouro. Os seus números dependem do seu save."
     }
   },
   "instakill": {
@@ -119,6 +183,16 @@
   "saveEditor": {
     "heading": "Decodificador e editor de save de Clicker Heroes grátis",
     "intro": "Este editor de save de Clicker Heroes roda no navegador: ele decodifica códigos de save, mostra os dados do jogo que podem ser editados e recodifica o resultado para você importar de volta no Clicker Heroes. Ele serve para recuperar progresso, testar builds, criar saves em um estado específico e ver o que há dentro de um arquivo de save de Clicker Heroes.",
+    "howTo": {
+      "title": "Como editar seu save",
+      "steps": [
+        "Faça backup primeiro: guarde uma cópia do código do seu save atual ou do arquivo .save.",
+        "Exporte seu save no Clicker Heroes, cole no passo 1 (ou escolha seu arquivo .save) e clique em Carregar save.",
+        "Mude o que precisar no passo 2. Se não tiver certeza, mude uma coisa de cada vez.",
+        "Clique em Codificar save no passo 3 e copie o código codificado inteiro.",
+        "Cole na opção de importar save do jogo e confira o jogo antes de fazer mais edições."
+      ]
+    },
     "features": {
       "progress": {
         "title": "Progresso editável",
@@ -133,6 +207,7 @@
         "body": "Os códigos de save são decodificados e codificados localmente no navegador, então tudo é rápido e você não precisa instalar nenhum trainer ou mod no computador."
       }
     },
-    "faqHeading": "Perguntas frequentes sobre o editor de save de Clicker Heroes"
+    "faqHeading": "Perguntas frequentes sobre o editor de save de Clicker Heroes",
+    "faqMore": "Mais respostas, incluindo o que significa cada erro de decodificação, estão nas <link>perguntas frequentes completas</link>."
   }
 }

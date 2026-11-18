@@ -14,12 +14,12 @@
     },
     "saveEditor": {
       "metaTitle": "Editor de save de Clicker Heroes – Edite seu save online grátis",
-      "description": "Editor de save de Clicker Heroes grátis e online: decodifique, inspecione, edite e codifique de novo seu save. Mude ouro, rubis, Hero Souls, heróis, ancients, ascensões e mais.",
+      "description": "Editor de save de Clicker Heroes grátis e online: decodifique seu save, mude ouro, rubis, Hero Souls, heróis e gilds, outsiders, conquistas e mais, e codifique de novo para importar.",
       "applicationName": "Editor de save de Clicker Heroes",
       "featureList": [
         "Decodifique códigos de save de Clicker Heroes",
         "Codifique o save editado para importar de volta no jogo",
-        "Edite ouro, rubis, Hero Souls, ancients e dados de ascensão",
+        "Edite ouro, rubis, Hero Souls, Ancient Souls e dados de ascensão",
         "Edite heróis, conquistas, skins, mercenários, outsiders, dados do clã e campos personalizados",
         "Escreva qualquer campo do save diretamente pelo caminho do campo"
       ]
@@ -166,15 +166,53 @@
     "saveEditor": [
       {
         "question": "Como edito um arquivo de save de Clicker Heroes?",
-        "answer": "Cole o código do seu save de Clicker Heroes no editor, decodifique, mude os campos que você precisa e depois copie o resultado codificado de volta na janela de importação do jogo."
+        "answer": "Faça backup do seu save, cole o código no passo 1 e clique em Carregar save. Mude os campos que precisar no passo 2, clique em Codificar save no passo 3 e cole o código codificado na opção de importar save do jogo."
       },
       {
-        "question": "Este editor consegue mudar ouro, rubis, Hero Souls e ancients?",
-        "answer": "Sim. O editor tem controles para as moedas principais, níveis dos heróis, Hero Souls, progresso ligado aos ancients, ascensões, conquistas, skins, mercenários, outsiders, dados do clã e campos personalizados do save. A edição de JSON bruto fica na ferramenta separada Save em JSON."
+        "question": "O que o editor de save consegue mudar?",
+        "answer": "Ouro, rubis, Hero Souls, itens da loja e de temporada, níveis e gilds dos heróis, skins, conquistas, ascensões e transcendências, dados do clã, mercenários, outsiders e Ancient Souls. O resto pode ser escrito pelo caminho na seção Campo personalizado, ou à mão na ferramenta Save em JSON."
+      },
+      {
+        "question": "Posso editar o nível dos meus ancients?",
+        "answer": "Não há uma seção para o nível dos ancients. Use a calculadora de ancients para saber até onde subir cada um e suba no jogo. Ancient Souls e níveis dos outsiders ficam na seção Outsiders e Ancient Souls."
       },
       {
         "question": "Meu save de Clicker Heroes é enviado para um servidor?",
         "answer": "Não. O editor roda no navegador e processa os dados do save no seu próprio dispositivo, então a edição funciona sem enviar seu save para este site."
+      },
+      {
+        "question": "O editor funciona com saves de celular?",
+        "answer": "Ele decodifica códigos de save de PC, de celular e de versões antigas. Se você precisa que um save de uma plataforma carregue na outra, passe ele primeiro pela ferramenta Conversor de save."
+      },
+      {
+        "question": "Por que o jogo não aceita meu save editado?",
+        "answer": "Confira se você clicou em Codificar save depois da última edição e copiou o código codificado inteiro. Se o jogo ainda recusar, importe seu backup e refaça as edições em passos menores para achar o valor que ele não aceita."
+      }
+    ],
+    "ancientsCalculator": [
+      {
+        "question": "Por que a calculadora de ancients não encontra ancients no meu save?",
+        "answer": "Ela só sobe ancients que você já tem, então um save sem nenhum invocado não dá nada para ela trabalhar. Invoque seus primeiros ancients no jogo, depois exporte e carregue um novo save. Se Ignorar ancients minimizados no jogo estiver marcado, os ancients recolhidos também são pulados."
+      },
+      {
+        "question": "A calculadora de ancients diz quais ancients comprar?",
+        "answer": "Não. Ela distribui as Hero Souls entre os ancients que você já tem. O guia para iniciantes explica quais ancients pegar primeiro em builds idle e ativas."
+      },
+      {
+        "question": "Por que a mudança é 0 na maioria dos meus ancients?",
+        "answer": "A calculadora nunca baixa um nível. Uma Mudança de 0 quer dizer que o ancient já está na meta ou acima dela, ou chegou ao nível em que deixa de compensar (marcado como limite). Em saves avançados, isso vale para a maioria."
+      },
+      {
+        "question": "A calculadora de ancients altera meu save?",
+        "answer": "Não. Ela só lê o seu save. Suba os ancients no jogo pelos valores da coluna Mudança — o editor de save não tem uma seção para o nível dos ancients."
+      },
+      {
+        "question": "Devo escolher build idle, híbrida ou ativa?",
+        "answer": "A idle é ideal para quem dá uma olhada no jogo algumas vezes por dia, já que Siyalatas e Libertas recompensam deixar o jogo quieto. A ativa é ideal para quem fica com o jogo aberto, porque Juggernaut, Fragsworth e Bhaal escalam com cliques. A híbrida serve para a maioria depois que tem alguns autoclickers. Escolha uma e gaste as souls de acordo."
+      },
+      {
+        "question": "Por que a reserva de souls diz para deixar souls sem gastar?",
+        "answer": "Ela só aparece quando você não tem Morgulis. Sem Morgulis, as Hero Souls que sobram valem mais guardadas do que investidas, então a calculadora segura a quantidade que iria para o Morgulis."
       }
     ],
     "site": [

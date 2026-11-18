@@ -14,12 +14,12 @@
     },
     "saveEditor": {
       "metaTitle": "Éditeur de sauvegarde Clicker Heroes – En ligne et gratuit",
-      "description": "Éditeur de sauvegarde Clicker Heroes gratuit en ligne pour décoder, inspecter, modifier et réencoder tes fichiers de sauvegarde. Modifie l’or, les rubis, les Hero Souls, les héros, les ancients, les ascensions et plus encore.",
+      "description": "Éditeur de sauvegarde Clicker Heroes gratuit en ligne : décode ta sauvegarde, modifie l’or, les rubis, les Hero Souls, les héros et les gilds, les outsiders, les succès et plus, puis réencode-la pour l’importer.",
       "applicationName": "Éditeur de sauvegarde Clicker Heroes",
       "featureList": [
         "Décoder les codes de sauvegarde Clicker Heroes",
         "Encoder les sauvegardes modifiées pour les réimporter dans le jeu",
-        "Modifier l’or, les rubis, les Hero Souls, les ancients et les données d’ascension",
+        "Modifier l’or, les rubis, les Hero Souls, les Ancient Souls et les données d’ascension",
         "Modifier les héros, succès, skins, mercenaires, outsiders, valeurs de clan et champs personnalisés",
         "Écrire directement n’importe quel champ de la sauvegarde via un chemin de champ personnalisé"
       ]
@@ -166,15 +166,53 @@
     "saveEditor": [
       {
         "question": "Comment modifier un fichier de sauvegarde Clicker Heroes ?",
-        "answer": "Colle ton code de sauvegarde Clicker Heroes dans l’éditeur, décode-le, modifie les champs voulus, puis recopie le résultat encodé dans la fenêtre d’importation du jeu."
+        "answer": "Fais une copie de ta sauvegarde, colle le code à l’étape 1 et clique sur « Charger la sauvegarde ». Modifie les champs voulus à l’étape 2, clique sur « Encoder la sauvegarde » à l’étape 3, puis colle le code encodé dans l’option d’importation de sauvegarde du jeu."
       },
       {
-        "question": "Cet éditeur peut-il modifier l’or, les rubis, les Hero Souls et les ancients ?",
-        "answer": "Oui. L’éditeur permet de modifier les monnaies principales, les niveaux des héros, les Hero Souls, la progression liée aux ancients, les ascensions, les succès, les skins, les mercenaires, les outsiders, les valeurs de clan et des champs personnalisés de la sauvegarde. L’édition du JSON brut se fait dans l’outil séparé « Sauvegarde en JSON »."
+        "question": "Que peut modifier l’éditeur de sauvegarde ?",
+        "answer": "L’or, les rubis, les Hero Souls, les objets de la boutique et saisonniers, les niveaux et les gilds des héros, les skins, les succès, les ascensions et les transcendances, les valeurs de clan, les mercenaires, les outsiders et les Ancient Souls. Tout le reste peut être écrit via son chemin dans la section « Champ personnalisé », ou à la main dans l’outil « Sauvegarde en JSON »."
+      },
+      {
+        "question": "Puis-je modifier le niveau de mes ancients ?",
+        "answer": "Il n’y a pas de section pour le niveau des ancients. Utilise le calculateur d’ancients pour savoir jusqu’où monter chacun, puis monte-les en jeu. Les Ancient Souls et les niveaux des outsiders se trouvent dans la section « Outsiders et Ancient Souls »."
       },
       {
         "question": "Ma sauvegarde Clicker Heroes est-elle envoyée sur un serveur ?",
         "answer": "Non. L’éditeur fonctionne dans le navigateur et traite les données de sauvegarde côté client : tu peux donc modifier ta sauvegarde sans l’envoyer à ce site."
+      },
+      {
+        "question": "L’éditeur fonctionne-t-il avec les sauvegardes mobiles ?",
+        "answer": "Il décode les codes de sauvegarde PC, mobiles et des anciennes versions. Si tu veux charger une sauvegarde d’une plateforme sur l’autre, passe-la d’abord dans le « Convertisseur de sauvegarde »."
+      },
+      {
+        "question": "Pourquoi le jeu refuse-t-il ma sauvegarde modifiée ?",
+        "answer": "Vérifie que tu as cliqué sur « Encoder la sauvegarde » après ta dernière modification et que tu as copié tout le code encodé. Si le jeu la refuse encore, importe ta copie de secours et refais les modifications par petites étapes pour trouver la valeur qui pose problème."
+      }
+    ],
+    "ancientsCalculator": [
+      {
+        "question": "Pourquoi le calculateur d’ancients ne trouve-t-il aucun ancient dans ma sauvegarde ?",
+        "answer": "Il ne monte que les ancients que tu possèdes déjà : une sauvegarde sans aucun ancient invoqué ne lui donne rien à faire. Invoque tes premiers ancients en jeu, puis exporte et charge une nouvelle sauvegarde. Si « Ignorer les ancients réduits en jeu » est coché, les ancients réduits sont aussi ignorés."
+      },
+      {
+        "question": "Le calculateur d’ancients me dit-il quels ancients acheter ?",
+        "answer": "Non. Il répartit les Hero Souls entre les ancients que tu possèdes déjà. Le guide du débutant explique quels ancients prendre en premier en build idle et active."
+      },
+      {
+        "question": "Pourquoi la variation est-elle de 0 pour la plupart de mes ancients ?",
+        "answer": "Le calculateur ne baisse jamais un niveau. Une variation de 0 signifie que l’ancient a déjà atteint ou dépassé son objectif, ou qu’il est au niveau où il cesse d’être rentable (marqué « plafond »). En fin de partie, c’est le cas de la plupart."
+      },
+      {
+        "question": "Le calculateur d’ancients modifie-t-il ma sauvegarde ?",
+        "answer": "Non. Il lit seulement ta sauvegarde. Monte les ancients en jeu des valeurs de la colonne « Variation » ; l’éditeur de sauvegarde n’a pas de section pour le niveau des ancients."
+      },
+      {
+        "question": "Faut-il choisir une build idle, hybride ou active ?",
+        "answer": "L’idle convient aux joueurs qui passent quelques fois par jour, car Siyalatas et Libertas récompensent le fait de laisser le jeu tourner seul. L’active convient aux joueurs qui gardent le jeu ouvert, car Juggernaut, Fragsworth et Bhaal évoluent avec les clics. L’hybride convient à la plupart des joueurs une fois qu’ils ont quelques autoclickers. Choisis-en une et dépense tes souls en conséquence."
+      },
+      {
+        "question": "Pourquoi la réserve de souls me dit-elle de garder des souls ?",
+        "answer": "Elle n’apparaît que si tu ne possèdes pas Morgulis. Sans Morgulis, les Hero Souls restantes valent plus en réserve qu’investies, donc le calculateur met de côté la quantité qui serait allée à Morgulis."
       }
     ],
     "site": [

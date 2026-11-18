@@ -52,6 +52,9 @@ export const saveEditorFaqs = (locale: Locale): readonly Faq[] => seoText[locale
 
 export const gildingChartFaqs = (locale: Locale): readonly Faq[] => seoText[locale].faqs.gildingChart;
 
+export const ancientsCalculatorFaqs = (locale: Locale): readonly Faq[] =>
+	seoText[locale].faqs.ancientsCalculator;
+
 /**
  * The `/faq` page. Grouped for the page itself; `FAQPage` structured data
  * flattens the same entries, so the two can never drift.
@@ -85,7 +88,7 @@ export const seoPages = {
 		changeFrequency: 'weekly',
 		priority: 1,
 		schemaType: 'CollectionPage',
-		lastModified: '2026-09-29'
+		lastModified: '2026-11-18'
 	},
 	saveEditor: {
 		path: '/tools/save-editor',
@@ -95,12 +98,11 @@ export const seoPages = {
 			'clicker heroes gold editor',
 			'clicker heroes rubies editor',
 			'clicker heroes hero souls editor',
-			'clicker heroes ancients editor',
 			'clicker heroes achievements editor'
 		],
 		changeFrequency: 'weekly',
 		priority: 0.95,
-		lastModified: '2026-09-14',
+		lastModified: '2026-11-18',
 		schemaType: 'WebApplication'
 	},
 	instakillCalculator: {
@@ -130,7 +132,7 @@ export const seoPages = {
 		],
 		changeFrequency: 'monthly',
 		priority: 0.85,
-		lastModified: '2026-08-26',
+		lastModified: '2026-11-18',
 		schemaType: 'WebApplication'
 	},
 	outsidersCalculator: {
@@ -448,6 +450,7 @@ export const createPageMetadata = (key: SeoPageKey, locale: Locale): Metadata =>
 const faqsFor = (key: SeoPageKey, locale: Locale): readonly Faq[] | undefined => {
 	if (key === 'saveEditor') return saveEditorFaqs(locale);
 	if (key === 'gildingChart') return gildingChartFaqs(locale);
+	if (key === 'ancientsCalculator') return ancientsCalculatorFaqs(locale);
 	if (key === 'faq') return siteFaqSections(locale).flatMap((section): readonly Faq[] => section.faqs);
 
 	return undefined;

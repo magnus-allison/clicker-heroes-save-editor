@@ -1,6 +1,7 @@
 {
   "heading": "Comment ça marche",
   "seeAlso": "Voir aussi :",
+  "faqHeading": "Questions fréquentes",
   "links": {
     "saveEditor": "Éditeur de sauvegarde",
     "ancientsCalculator": "Calculateur d’ancients",
@@ -20,13 +21,76 @@
   },
   "ancients": {
     "intro": "Répartit tes Hero Souls entre les ancients que tu possèdes selon les Rules of Thumb de la communauté. Adapté de l’<link>optimiseur de kepow.org</link>.",
+    "howTo": {
+      "title": "Comment l’utiliser",
+      "steps": [
+        "Exporte ta sauvegarde depuis Clicker Heroes et colle-la à l’étape 1, ou choisis ton fichier .save, puis clique sur « Charger la sauvegarde ».",
+        "À l’étape 2, choisis ta build et ton meilleur héros de cette transcendance. Les autres paramètres peuvent garder leurs valeurs par défaut.",
+        "L’étape 3 liste les ancients que tu possèdes. Monte chacun en jeu de la valeur de sa colonne « Variation » ; le bouton de copie copie ce nombre.",
+        "Après ta prochaine ascension, charge ta nouvelle sauvegarde pour obtenir un plan à jour. Le calculateur lit seulement ta sauvegarde, il ne la modifie jamais."
+      ]
+    },
     "builds": {
       "title": "Builds",
-      "body": "La build idle monte tout en fonction de Siyalatas, l’active en fonction de Fragsworth. L’hybride monte les deux, et le ratio définit combien de niveaux de Fragsworth tu achètes par niveau de Siyalatas."
+      "body": "La build idle monte tout en fonction de Siyalatas, l’active en fonction de Fragsworth. L’hybride monte les deux, et le ratio définit combien de niveaux de Fragsworth tu achètes par niveau de Siyalatas. Les ancients dont une build n’a pas besoin sont exclus : l’idle laisse de côté Fragsworth, Bhaal, Juggernaut et Pluto, et l’active laisse de côté Siyalatas et Libertas. Les <link>astuces pour progresser</link> t’aident à choisir ta build."
     },
     "bestHero": {
       "title": "Meilleur héros",
-      "body": "Chaque palier de héros a un rapport or/dégâts différent, ce qui change jusqu’où il vaut la peine de monter les ancients d’or."
+      "body": "Chaque palier de héros a un rapport or/dégâts différent, ce qui change jusqu’où il vaut la peine de monter les ancients d’or. Choisis le palier du héros que tu monteras le plus pendant cette transcendance ; le <link>tableau des gilds</link> t’indique lequel selon ton or."
+    },
+    "settings": {
+      "title": "Autres paramètres",
+      "items": [
+        {
+          "name": "Hero Souls à dépenser",
+          "body": "Laisse vide pour utiliser les souls de ta sauvegarde, ou saisis un montant pour planifier avec."
+        },
+        {
+          "name": "Inclure les souls gagnées après l’ascension",
+          "body": "Ajoute les Hero Souls que te donnerait ta prochaine ascension (une pour 2 000 niveaux de héros, plus les primal souls), pour planifier avant d’ascensionner."
+        },
+        {
+          "name": "Réserver des Hero Souls pour redorer",
+          "body": "Met de côté 80 Hero Souls par gild que tu possèdes."
+        },
+        {
+          "name": "Monter Revolc / les ancients de compétence",
+          "body": "0 ne les monte jamais et 1 les monte autant que les règles le permettent. Avec les ancients de compétence à 0, Vaagur et les ancients de durée de compétence sont entièrement exclus."
+        },
+        {
+          "name": "Ignorer les ancients réduits en jeu",
+          "body": "Ignore tout ancient dont tu as réduit la carte en jeu."
+        }
+      ]
+    },
+    "results": {
+      "title": "Lire les résultats",
+      "items": [
+        {
+          "name": "Objectif et Variation",
+          "body": "L’objectif est le niveau visé par les règles, et la variation le nombre de niveaux à ajouter. L’objectif n’est jamais inférieur à ton niveau actuel : une variation de 0 signifie que l’ancient est déjà là où il doit être."
+        },
+        {
+          "name": "plafond",
+          "body": "Indique un ancient monté jusqu’au point où il cesse d’être rentable, comme Atman à 2 880 ou Chronos à 1 101."
+        },
+        {
+          "name": "Coût (HS)",
+          "body": "Les Hero Souls que coûtent ces niveaux, réduction de Chor’gorloth déjà appliquée."
+        },
+        {
+          "name": "Réserve de souls",
+          "body": "N’apparaît que si tu ne possèdes pas Morgulis : les Hero Souls à garder sans les dépenser, car sans Morgulis elles valent plus en réserve qu’investies."
+        },
+        {
+          "name": "Planificateur d’Ancient Souls",
+          "body": "Combien de Hero Souls supplémentaires demande chaque Ancient Soul en plus. Les Ancient Souls valent 5 × log10 des Hero Souls sacrifiées, arrondi à l’inférieur : chacune demande environ 1,58 fois les souls de la précédente."
+        }
+      ]
+    },
+    "example": {
+      "title": "Exemple : une sauvegarde idle avancée",
+      "body": "Sur une sauvegarde avec une zone la plus haute de 211 850 et 17 829 Ancient Souls, les réglages idle par défaut donnent une variation de 0 à presque tous les ancients : ceux qui ont un plafond sont au maximum et les autres sont déjà à leur objectif, donc les souls vont à Siyalatas et Libertas. Passe en hybride, et Fragsworth, Bhaal, Juggernaut et Pluto entrent dans le tableau ; les souls se répartissent alors entre eux, Argaiv, Morgulis, Nogardnit et les ancients d’or. Tes propres chiffres dépendent de ta sauvegarde."
     }
   },
   "instakill": {
@@ -119,6 +183,16 @@
   "saveEditor": {
     "heading": "Décodeur et éditeur de sauvegarde Clicker Heroes gratuit",
     "intro": "Cet éditeur de sauvegarde Clicker Heroes, qui fonctionne dans le navigateur, décode les codes de sauvegarde, expose les données de jeu modifiables et réencode le résultat pour que tu puisses l’importer à nouveau dans Clicker Heroes. Il est conçu pour restaurer ta progression, tester des builds, créer des états de sauvegarde précis et inspecter le contenu d’un fichier de sauvegarde Clicker Heroes.",
+    "howTo": {
+      "title": "Comment modifier ta sauvegarde",
+      "steps": [
+        "Fais d’abord une copie : garde le code de ta sauvegarde actuelle ou ton fichier .save.",
+        "Exporte ta sauvegarde depuis Clicker Heroes, colle-la à l’étape 1 (ou choisis ton fichier .save) et clique sur « Charger la sauvegarde ».",
+        "Modifie ce dont tu as besoin à l’étape 2. En cas de doute, change une seule chose à la fois.",
+        "Clique sur « Encoder la sauvegarde » à l’étape 3 et copie tout le code encodé.",
+        "Colle-le dans l’option d’importation de sauvegarde du jeu, et vérifie en jeu avant de faire d’autres modifications."
+      ]
+    },
     "features": {
       "progress": {
         "title": "Progression modifiable",
@@ -133,6 +207,7 @@
         "body": "Les codes de sauvegarde sont décodés et encodés localement dans le navigateur : tout reste rapide et tu n’as pas besoin d’installer un trainer ou un mod sur ton ordinateur."
       }
     },
-    "faqHeading": "FAQ de l’éditeur de sauvegarde Clicker Heroes"
+    "faqHeading": "FAQ de l’éditeur de sauvegarde Clicker Heroes",
+    "faqMore": "D’autres réponses, dont la signification de chaque erreur de décodage, se trouvent dans la <link>FAQ complète</link>."
   }
 }

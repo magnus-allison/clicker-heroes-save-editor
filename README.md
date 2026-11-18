@@ -23,7 +23,7 @@
 | **Decode & Encode**        | Instantly decode any Clicker Heroes save string and re-encode after edits.                              |
 | **Edit Gold & Rubies**     | Modify currency values directly — no third-party software needed.                                       |
 | **Hero Management**        | Inspect and edit hero levels, unlocks, and upgrade states.                                              |
-| **Ascension & Hero Souls** | View and change ascension counts, Hero Souls, Ancients, and Outsiders.                                  |
+| **Ascension & Hero Souls** | View and change ascension counts, Hero Souls, Ancient Souls, and Outsiders.                             |
 | **Achievements & Profile** | Toggle or edit achievement flags and player profile entries.                                            |
 | **Ancients Calculator**    | Optimal ancient levels, level-up costs, and an ancient soul planner from an imported save.              |
 | **Outsiders Calculator**   | Optimal outsider levels, end-of-transcension estimates, zone breakpoints, and a transcension simulator. |

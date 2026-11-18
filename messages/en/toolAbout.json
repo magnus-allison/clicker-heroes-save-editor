@@ -1,6 +1,7 @@
 {
   "heading": "How it works",
   "seeAlso": "See also:",
+  "faqHeading": "Common questions",
   "links": {
     "saveEditor": "Save editor",
     "ancientsCalculator": "Ancients calculator",
@@ -20,13 +21,76 @@
   },
   "ancients": {
     "intro": "Spreads your Hero Souls across the ancients you own using the community Rules of Thumb. Ported from the <link>kepow.org optimizer</link>.",
+    "howTo": {
+      "title": "How to use it",
+      "steps": [
+        "Export your save from Clicker Heroes and paste it into step 1, or pick your .save file, then press Load Save Data.",
+        "In step 2, choose your build and your best hero this transcension. The other settings can stay at their defaults.",
+        "Step 3 lists the ancients you own. Level each one in game by the amount in its Change column — the copy button copies that number.",
+        "After your next ascension, load the new save for a fresh plan. The calculator only reads your save; it never changes it."
+      ]
+    },
     "builds": {
       "title": "Builds",
-      "body": "Idle levels everything against Siyalatas, active against Fragsworth. Hybrid levels both, with the ratio setting how many Fragsworth levels you buy per Siyalatas level."
+      "body": "Idle levels everything against Siyalatas, active against Fragsworth. Hybrid levels both, with the ratio setting how many Fragsworth levels you buy per Siyalatas level. Ancients a build has no use for are left out: idle skips Fragsworth, Bhaal, Juggernaut and Pluto, and active skips Siyalatas and Libertas. The <link>progress tips</link> cover which build suits you."
     },
     "bestHero": {
       "title": "Best hero",
-      "body": "Each hero tier has a different gold-to-damage ratio, which changes how far the gold ancients are worth levelling."
+      "body": "Each hero tier has a different gold-to-damage ratio, which changes how far the gold ancients are worth levelling. Pick the tier of the hero you will spend most of this transcension levelling — the <link>gilding chart</link> shows which hero that is for your gold."
+    },
+    "settings": {
+      "title": "Other settings",
+      "items": [
+        {
+          "name": "Hero souls to spend",
+          "body": "Leave it empty to use the souls in your save, or type an amount to plan with."
+        },
+        {
+          "name": "Include souls gained after ascension",
+          "body": "Adds the Hero Souls your next ascension would give you — one per 2,000 hero levels, plus primal souls — so you can plan before you ascend."
+        },
+        {
+          "name": "Reserve hero souls for regilding",
+          "body": "Holds back 80 Hero Souls for every gild you have."
+        },
+        {
+          "name": "Level Revolc / Level skill ancients",
+          "body": "0 never levels them and 1 levels them as far as the rules allow. With skill ancients at 0, Vaagur and the skill duration ancients are left out entirely."
+        },
+        {
+          "name": "Ignore ancients minimized in-game",
+          "body": "Skips any ancient whose card you have collapsed in game."
+        }
+      ]
+    },
+    "results": {
+      "title": "Reading the results",
+      "items": [
+        {
+          "name": "Goal and Change",
+          "body": "Goal is the level the rules aim for, and Change is how many levels to add. A goal is never below your current level, so a Change of 0 means that ancient is already where it should be."
+        },
+        {
+          "name": "cap",
+          "body": "Marks an ancient levelled to the point where it stops paying off, such as Atman at 2,880 or Chronos at 1,101."
+        },
+        {
+          "name": "Cost (HS)",
+          "body": "The Hero Souls those levels cost, with your Chor’gorloth discount already applied."
+        },
+        {
+          "name": "Soul bank",
+          "body": "Appears only if you do not own Morgulis: the Hero Souls to keep unspent, because without Morgulis they are worth more banked than invested."
+        },
+        {
+          "name": "Ancient soul planner",
+          "body": "How many more Hero Souls each extra Ancient Soul takes. Ancient Souls are 5 × log10 of the Hero Souls sacrificed, rounded down, so each one needs about 1.58 times the souls of the one before."
+        }
+      ]
+    },
+    "example": {
+      "title": "Example: a late-game idle save",
+      "body": "On a save with a highest zone of 211,850 and 17,829 Ancient Souls, the idle defaults give almost every ancient a Change of 0: the capped ones are maxed and the rest already sit at their goals, so the souls go to Siyalatas and Libertas. Switch to hybrid and Fragsworth, Bhaal, Juggernaut and Pluto join the table, and the souls spread across them, Argaiv, Morgulis, Nogardnit and the gold ancients instead. Your own numbers depend on your save."
     }
   },
   "instakill": {
@@ -119,6 +183,16 @@
   "saveEditor": {
     "heading": "Free Clicker Heroes Save Decoder and Editor",
     "intro": "This browser-based Clicker Heroes save editor decodes save strings, exposes editable game data, and re-encodes the result for import back into Clicker Heroes. It is built for restoring progress, testing builds, creating specific save states, and inspecting what is inside a Clicker Heroes save file.",
+    "howTo": {
+      "title": "How to edit your save",
+      "steps": [
+        "Back up first: keep a copy of your current save string or .save file.",
+        "Export your save from Clicker Heroes, paste it into step 1 (or pick your .save file) and press Load Save Data.",
+        "Change what you need in step 2. If you are unsure, change one thing at a time.",
+        "Press Encode Save in step 3 and copy the whole encoded string.",
+        "Paste it into the game’s import save option, and check the game before making more edits."
+      ]
+    },
     "features": {
       "progress": {
         "title": "Editable Progress",
@@ -133,6 +207,7 @@
         "body": "Save strings are decoded and encoded locally in the browser, so the workflow stays fast and does not require installing a desktop trainer or mod."
       }
     },
-    "faqHeading": "Clicker Heroes Save Editor FAQ"
+    "faqHeading": "Clicker Heroes Save Editor FAQ",
+    "faqMore": "More answers, including what each decode error means, are in the <link>full FAQ</link>."
   }
 }

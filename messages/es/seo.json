@@ -14,12 +14,12 @@
     },
     "saveEditor": {
       "metaTitle": "Editor de partidas de Clicker Heroes – Online y gratis",
-      "description": "Editor de partidas de Clicker Heroes gratis y online: decodifica, revisa, edita y vuelve a codificar tu partida. Cambia oro, rubíes, Hero Souls, héroes, ancients, ascensiones y más.",
+      "description": "Editor de partidas de Clicker Heroes gratis y online: decodifica tu partida, cambia oro, rubíes, Hero Souls, héroes y gilds, outsiders, logros y más, y vuelve a codificarla para importarla.",
       "applicationName": "Editor de partidas de Clicker Heroes",
       "featureList": [
         "Decodifica códigos de partida de Clicker Heroes",
         "Codifica la partida editada para importarla de nuevo en el juego",
-        "Edita oro, rubíes, Hero Souls, ancients y datos de ascensión",
+        "Edita oro, rubíes, Hero Souls, Ancient Souls y datos de ascensión",
         "Edita héroes, logros, skins, mercenarios, outsiders, datos de clan y campos personalizados",
         "Escribe cualquier campo de la partida directamente con su ruta"
       ]
@@ -166,15 +166,53 @@
     "saveEditor": [
       {
         "question": "¿Cómo edito una partida de Clicker Heroes?",
-        "answer": "Pega el código de tu partida de Clicker Heroes en el editor, decodifícalo, cambia los campos que necesites y copia el resultado codificado en el diálogo de importación del juego."
+        "answer": "Haz una copia de seguridad, pega el código de la partida en el paso 1 y pulsa Cargar partida. Cambia los campos que necesites en el paso 2, pulsa Codificar partida en el paso 3 y pega el código codificado en la opción de importar partida del juego."
       },
       {
-        "question": "¿Puede este editor cambiar oro, rubíes, Hero Souls y ancients?",
-        "answer": "Sí. El editor incluye controles para las monedas principales, los niveles de los héroes, las Hero Souls, la progresión de los ancients, las ascensiones, los logros, las skins, los mercenarios, los outsiders, los datos de clan y campos personalizados. La edición del JSON en bruto está en la herramienta Partida a JSON."
+        "question": "¿Qué puede cambiar el editor de partidas?",
+        "answer": "Oro, rubíes, Hero Souls, objetos de la tienda y de temporada, niveles y gilds de los héroes, skins, logros, ascensiones y trascendencias, datos de clan, mercenarios, outsiders y Ancient Souls. Lo demás se puede escribir por ruta en la sección Campo personalizado, o a mano en la herramienta Partida a JSON."
+      },
+      {
+        "question": "¿Puedo editar los niveles de mis ancients?",
+        "answer": "No hay una sección para los niveles de los ancients. Usa la calculadora de ancients para saber cuánto subir cada uno y súbelos en el juego. Las Ancient Souls y los niveles de los outsiders están en la sección Outsiders y Ancient Souls."
       },
       {
         "question": "¿Se sube mi partida de Clicker Heroes a un servidor?",
         "answer": "No. El editor funciona en el navegador y procesa la partida en tu dispositivo, así que no tienes que subirla a este sitio para editarla."
+      },
+      {
+        "question": "¿El editor funciona con partidas de móvil?",
+        "answer": "Decodifica partidas de PC, de móvil y códigos antiguos. Si necesitas que una partida de una plataforma cargue en la otra, pásala primero por el convertidor de partidas."
+      },
+      {
+        "question": "¿Por qué el juego no acepta mi partida editada?",
+        "answer": "Comprueba que pulsaste Codificar partida después de tu último cambio y que copiaste el código entero. Si el juego sigue rechazándola, importa tu copia de seguridad y repite los cambios en pasos más pequeños para encontrar el valor que no le gusta."
+      }
+    ],
+    "ancientsCalculator": [
+      {
+        "question": "¿Por qué la calculadora de ancients no encuentra ancients en mi partida?",
+        "answer": "Solo sube los ancients que ya tienes, así que una partida sin ninguno invocado no le da nada con qué trabajar. Invoca tus primeros ancients en el juego, exporta la partida y vuelve a cargarla. Si marcaste Ignorar los ancients minimizados en el juego, los ancients contraídos también se omiten."
+      },
+      {
+        "question": "¿La calculadora de ancients me dice qué ancients comprar?",
+        "answer": "No. Reparte las Hero Souls entre los ancients que ya tienes. La guía para principiantes explica qué ancients conseguir primero en builds idle y activas."
+      },
+      {
+        "question": "¿Por qué el cambio es 0 en la mayoría de mis ancients?",
+        "answer": "La calculadora nunca baja un nivel. Un Cambio de 0 significa que el ancient ya está en su objetivo o por encima, o que llegó al nivel en que deja de compensar (marcado como tope). En partidas avanzadas, eso pasa con la mayoría."
+      },
+      {
+        "question": "¿La calculadora de ancients modifica mi partida?",
+        "answer": "No. Solo lee tu partida. Sube los ancients en el juego según la columna Cambio; el editor de partidas no tiene una sección para los niveles de los ancients."
+      },
+      {
+        "question": "¿Elijo una build idle, híbrida o activa?",
+        "answer": "La idle es para quienes entran al juego unas pocas veces al día, porque Siyalatas y Libertas recompensan dejar el juego en paz. La activa es para quienes pasan tiempo con el juego abierto, ya que Juggernaut, Fragsworth y Bhaal escalan con los clics. La híbrida le va bien a la mayoría en cuanto tienen algunos autoclickers. Elige una y gasta las souls en consecuencia."
+      },
+      {
+        "question": "¿Por qué la reserva de souls me dice que deje souls sin gastar?",
+        "answer": "Solo aparece cuando no tienes Morgulis. Sin Morgulis, las Hero Souls sobrantes valen más guardadas que invertidas, así que la calculadora reserva la cantidad que se habría llevado Morgulis."
       }
     ],
     "site": [

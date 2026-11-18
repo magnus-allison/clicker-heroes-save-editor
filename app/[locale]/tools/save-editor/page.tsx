@@ -1,5 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
+import { GuideLink } from '@/components/guides/GuideLink';
+
 import { SaveEditor } from '@/components/editor/SaveEditor';
 import { RelatedToolLinks } from '@/components/tools/ToolAbout';
 import type { ToolLinkKey } from '@/components/tools/tool-links';
@@ -9,7 +11,15 @@ import { initLocale, pageMetadata, type LocaleParams } from '@/i18n/page';
 
 export const generateMetadata = pageMetadata('saveEditor');
 
-const relatedLinks: readonly ToolLinkKey[] = ['saveJson', 'saveConverter', 'removeClanData', 'faq'];
+const relatedLinks: readonly ToolLinkKey[] = [
+	'ancientsCalculator',
+	'outsidersCalculator',
+	'relicEditor',
+	'saveJson',
+	'saveConverter',
+	'removeClanData',
+	'faq'
+];
 
 const features = ['progress', 'heroes', 'clientSide'] as const;
 
@@ -35,6 +45,20 @@ const SaveEditorPage = async ({ params }: LocaleParams) => {
 					<p className='mt-3 max-w-4xl text-sm text-(--color-fg-muted)'>{t('intro')}</p>
 				</div>
 
+				<div aria-labelledby='clicker-heroes-save-editor-how-to'>
+					<h2
+						id='clicker-heroes-save-editor-how-to'
+						className='text-lg font-semibold text-(--color-fg-strong)'
+					>
+						{t('howTo.title')}
+					</h2>
+					<ol className='mt-3 max-w-4xl list-decimal space-y-1 pl-5 text-sm text-(--color-fg-muted)'>
+						{(t.raw('howTo.steps') as string[]).map((step) => (
+							<li key={step}>{step}</li>
+						))}
+					</ol>
+				</div>
+
 				<div className='grid gap-5 md:grid-cols-3'>
 					{features.map((feature) => (
 						<div key={feature}>
@@ -58,6 +82,11 @@ const SaveEditorPage = async ({ params }: LocaleParams) => {
 							</div>
 						))}
 					</div>
+					<p className='text-sm text-(--color-fg-muted)'>
+						{t.rich('faqMore', {
+							link: (chunks) => <GuideLink href='/faq#troubleshooting'>{chunks}</GuideLink>
+						})}
+					</p>
 				</div>
 
 				<RelatedToolLinks className='text-sm text-(--color-fg-muted)' related={relatedLinks} />
