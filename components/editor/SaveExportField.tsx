@@ -86,8 +86,8 @@ export const SaveExportField = ({
 	};
 
 	return (
-		<section className='flex min-w-0 flex-col border-t border-shadow px-1 lg:border-l lg:border-t-0'>
-			<div className='p-5'>
+		<section className='flex min-w-0 flex-col border-t border-shadow lg:border-l lg:border-t-0'>
+			<div className='flex flex-1 flex-col p-5'>
 				<span className='flex items-center gap-2'>
 					<span className='flex items-center justify-center transition-[background-color] duration-200'>
 						<FileDownIcon aria-hidden='true' className='h-4.5 w-4.5' />
@@ -133,13 +133,16 @@ export const SaveExportField = ({
 						/>
 					</div>
 					{belowOutput}
-					<SaveDataButton onClick={onAction} title={actionLabel} />
+					<p className='flex items-start gap-2 font-aeonik text-sm tracking-wide text-fg-dim/65'>
+						<ShieldAlertIcon aria-hidden='true' className='mt-1.5 h-3 w-3 shrink-0' />
+						<span>{t('exportField.backupWarning')}</span>
+					</p>
+					{/* Pinned to the bottom so it lines up with the import column's button. */}
+					<div className='mt-auto'>
+						<SaveDataButton onClick={onAction} title={actionLabel} />
+					</div>
 				</div>
 			</div>
-			<p className='mt-auto flex items-start gap-2 p-5 font-aeonik text-sm tracking-wide text-fg-dim/65'>
-				<ShieldAlertIcon aria-hidden='true' className='mt-1.5 h-3 w-3 shrink-0' />
-				<span>{t('exportField.backupWarning')}</span>
-			</p>
 		</section>
 	);
 };

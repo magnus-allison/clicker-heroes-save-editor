@@ -381,6 +381,54 @@ html:not([data-loaded]) .fade-in-on-load {
 }
 
 /*
+ * The folder tab on a collapsible panel's header, joined to the panel's
+ * top-left corner. Every choice here is about the join, which usually lands
+ * on a fractional pixel:
+ *
+ * - The fill is solid (the panel's wash already laid over the page) rather
+ *   than see-through, so it can overlap the panel without doubling up.
+ * - The edge is a real border with no bottom side, rather than the panel's
+ *   box-shadow ring clipped off, which leaks a hairline at a fractional clip.
+ *   `padding-box` keeps the fill out from under the border, so the border
+ *   tints the page exactly as the panel's ring does.
+ * - The left margin pulls the border out into the column the panel's ring
+ *   occupies (the ring is drawn outside the panel), so the sides line up.
+ * - The tab sits flush on the panel, so its side borders stop exactly at the
+ *   panel's top line; being solid and stacked above, it covers the panel's top
+ *   ring. The `::after` strip carries the fill 1px further down, between the
+ *   borders, so the join itself falls inside solid colour.
+ */
+.glass-tab {
+	--tab-fill: color-mix(in srgb, var(--color-banner-from) 85%, var(--color-background));
+	background: var(--tab-fill);
+	background-clip: padding-box;
+	border: 1px solid var(--color-banner-edge);
+	border-bottom: 0;
+	margin-left: -1px;
+}
+
+.glass-tab::after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: var(--tab-fill);
+	pointer-events: none;
+}
+
+/*
+ * The panel under a folder tab drops the frosted blur: blurring lightens the
+ * panel's top couple of pixels, which shows as a line right under the tab.
+ * At 85% fill the blur is barely visible anyway.
+ */
+.glass-panel.folder-panel {
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+}
+
+/*
  * The site banner sits on every page above the real content, so it stays
  * flatter than the panels: the same edge ring, without the deep drop shadow.
  */

@@ -98,7 +98,7 @@ export const SaveImportField = ({
 	};
 
 	return (
-		<section className='min-w-0 p-5'>
+		<section className='flex min-w-0 flex-col p-5'>
 			<span className='flex items-center gap-2'>
 				<span className='flex items-center justify-center transition-[background-color] duration-200'>
 					<FileUpIcon aria-hidden='true' className='h-4.5 w-4.5' />
@@ -109,7 +109,7 @@ export const SaveImportField = ({
 			</span>
 			<CardTitle title={t('importField.title')} />
 
-			<div className='flex flex-col gap-2.5'>
+			<div className='flex flex-1 flex-col gap-2.5'>
 				<input
 					aria-label={t('importField.chooseFile')}
 					className='hidden'
@@ -169,10 +169,13 @@ export const SaveImportField = ({
 						onLoad({ value: save, source: 'example', isSubmit: false });
 					}}
 				/>
-				<SaveDataButton
-					title={t('importField.loadAction')}
-					onClick={() => onLoad({ value: decodeValue, source: 'paste', isSubmit: true })}
-				/>
+				{/* Pinned to the bottom so it lines up with the export column's button. */}
+				<div className='mt-auto'>
+					<SaveDataButton
+						title={t('importField.loadAction')}
+						onClick={() => onLoad({ value: decodeValue, source: 'paste', isSubmit: true })}
+					/>
+				</div>
 			</div>
 		</section>
 	);

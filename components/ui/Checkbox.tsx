@@ -2,9 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { useId } from 'react';
-
 import { Check } from 'lucide-react';
-
 import { cn } from 'cn';
 
 type Props = {
@@ -37,7 +35,7 @@ export const Checkbox = ({ ariaLabel, checked, className, disabled, id, label, o
 				hasLabel ? 'min-w-10 gap-2 px-2.5' : 'w-10 min-w-10 justify-center',
 				checked &&
 					!disabled &&
-					'border-(--color-primary-line) bg-(--color-primary-surface) text-(--color-fg-strong) shadow-[var(--shadow-raised)]',
+					'border-primary-line bg-(--color-primary-surface) text-(--color-fg-strong) shadow-[var(--shadow-raised)]',
 				disabled
 					? 'cursor-not-allowed border-(--color-line-soft) bg-(--color-surface-sunken) text-(--color-fg-dim)'
 					: 'cursor-pointer',

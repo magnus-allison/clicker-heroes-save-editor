@@ -1,9 +1,9 @@
 'use client';
 
-import { type LucideIcon } from 'lucide-react';
+import { cn } from 'cn';
+import { CheckIcon, type LucideIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { Button } from '@/components/ui/Button';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
@@ -104,36 +104,44 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 
 				<div>
 					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>{t('currentSkin')}</p>
-					<div className='mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4'>
+					<div
+						aria-label={t('currentSkin')}
+						className='mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3'
+						role='radiogroup'
+					>
 						{autoClickerSkins.map((skin) => {
 							const isSelected = selectedSkinId === skin.id;
 
 							return (
-								// A `Button` rather than a bare `<button>` so these picker
-								// cards get the shared focus ring and disabled treatment.
-								// Selection is the `selected` surface rather than the
-								// accent-filled `primary` variant: this is a choice among
-								// the skins, not the panel's main action.
-								<Button
-									aria-pressed={isSelected}
-									className={
+								<button
+									aria-checked={isSelected}
+									className={cn(
+										'group flex h-12 items-center gap-2.5 rounded-xl pr-3 pl-1.5 text-left shadow-card transition-[background-color,box-shadow,color] duration-150 focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-45',
 										isSelected
-											? 'h-auto flex-col rounded-(--radius-card) border-(--color-primary-line) bg-(--color-surface-selected) px-3 py-3 text-left text-(--color-fg-strong)'
-											: 'h-auto flex-col rounded-(--radius-card) px-3 py-3 text-left'
-									}
+											? 'bg-(--color-primary-surface) text-(--color-fg-strong) shadow-[0_0_0_1px_var(--color-primary-line)]'
+											: 'text-fg-dim enabled:hover:bg-(--color-surface-hover) enabled:hover:text-fg-strong enabled:hover:shadow-card-hover'
+									)}
 									disabled={!saveData}
 									key={skin.id}
 									onClick={() => updateValue(['currentAutoclickerSkin'], skin.id)}
-									variant='secondary'
+									role='radio'
+									type='button'
 								>
-									<EditorImage
-										alt={skin.name}
-										className='mx-auto h-16 w-16 object-contain'
-										size={64}
-										src={skin.imageSrc}
-									/>
-									<span className='mt-3 block text-center text-[12px]'>{skin.name}</span>
-								</Button>
+									<span className='flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-surface-raised'>
+										<EditorImage
+											alt=''
+											className='h-7 w-7 object-contain transition-transform duration-150 group-enabled:group-hover:scale-110'
+											size={28}
+											src={skin.imageSrc}
+										/>
+									</span>
+									<span className='min-w-0 flex-1 truncate font-aeonik text-[13px] tracking-wide'>
+										{skin.name}
+									</span>
+									{isSelected && (
+										<CheckIcon aria-hidden='true' className='h-3.5 w-3.5 shrink-0 text-(--color-primary)' />
+									)}
+								</button>
 							);
 						})}
 					</div>
