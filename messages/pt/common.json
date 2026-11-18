@@ -46,12 +46,11 @@
       "browser": "No navegador",
       "noAccount": "Sem cadastro"
     },
-    "newTools": {
-      "label": "Novas ferramentas",
+    "update": {
+      "label": "Atualização do jogo",
       "badge": "Novo",
-      "text": "Chegaram o Visualizador e o Editor de relíquias: veja e edite as relíquias do seu save.",
-      "viewer": "Visualizador de relíquias",
-      "editor": "Editor de relíquias"
+      "text": "Chegou a nova skin de autoclicker Orc: desbloqueie grátis no Editor de save.",
+      "link": "Desbloquear a skin Orc"
     }
   },
   "cards": {

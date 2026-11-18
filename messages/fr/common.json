@@ -46,12 +46,11 @@
       "browser": "Dans le navigateur",
       "noAccount": "Aucun compte requis"
     },
-    "newTools": {
-      "label": "Nouveaux outils",
+    "update": {
+      "label": "Mise à jour du jeu",
       "badge": "Nouveau",
-      "text": "Le Visualiseur et l’Éditeur de reliques sont arrivés : consulte et modifie les reliques de ta sauvegarde.",
-      "viewer": "Visualiseur de reliques",
-      "editor": "Éditeur de reliques"
+      "text": "Le nouveau skin d’autocliqueur Orc est arrivé : débloque-le gratuitement dans l’Éditeur de sauvegarde.",
+      "link": "Débloquer le skin Orc"
     }
   },
   "cards": {

@@ -113,7 +113,7 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 								// cards get the shared focus ring and disabled treatment.
 								// Selection is the `selected` surface rather than the
 								// accent-filled `primary` variant: this is a choice among
-								// eight options, not the panel's main action.
+								// the skins, not the panel's main action.
 								<Button
 									aria-pressed={isSelected}
 									className={

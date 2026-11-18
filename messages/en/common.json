@@ -46,12 +46,11 @@
       "browser": "Browser-based",
       "noAccount": "No account needed"
     },
-    "newTools": {
-      "label": "New tools",
+    "update": {
+      "label": "Game update",
       "badge": "New",
-      "text": "Relic Viewer and Relic Editor are here — inspect and edit the relics in your save.",
-      "viewer": "Relic Viewer",
-      "editor": "Relic Editor"
+      "text": "The new Orc Auto Clicker skin is out — unlock it for free in the Save Editor.",
+      "link": "Unlock the Orc skin"
     }
   },
   "cards": {

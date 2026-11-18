@@ -72,7 +72,8 @@ export const autoClickerSkins = [
 	{ id: 5, name: 'Red-Nosed Clickdeer', imageSrc: '/assets/autoclickers/Autoclicker_reindeer.webp' },
 	{ id: 6, name: 'Boxy & Bloop Clicker', imageSrc: '/assets/autoclickers/Autoclicker_boxynbloop.webp' },
 	{ id: 7, name: 'Unicorn Auto Clicker', imageSrc: '/assets/autoclickers/Autoclicker_unicorn.webp' },
-	{ id: 8, name: 'Whelping Auto Clicker', imageSrc: '/assets/autoclickers/Autoclicker_welping.webp' }
+	{ id: 8, name: 'Whelping Auto Clicker', imageSrc: '/assets/autoclickers/Autoclicker_welping.webp' },
+	{ id: 9, name: 'Orc Auto Clicker', imageSrc: '/assets/autoclickers/Autoclicker_orc.webp' }
 ] as const;
 
 export const raidClassOptions: SelectOption[] = [

@@ -8,7 +8,7 @@ import { AdditionalInfo } from '@/components/home/AdditionalInfo';
 import { Guides, guides } from '@/components/home/Guides';
 import { Tools, tools } from '@/components/home/Tools';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
-import { NewToolsBanner } from '@/components/home/NewToolsBanner';
+import { UpdateBanner } from '@/components/home/UpdateBanner';
 import { WelcomeBanner } from '@/components/home/WelcomeBanner';
 import heroImage from '@/public/assets/home/hero_v2.webp';
 
@@ -30,7 +30,7 @@ const Page = async ({ params }: LocaleParams) => {
 
 			{/* <WelcomeBanner /> */}
 
-			<NewToolsBanner />
+			<UpdateBanner />
 
 			{/* The page's `<h1>`. `WelcomeBanner` carried it; with that hidden, this keeps one in place. */}
 			<section

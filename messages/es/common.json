@@ -46,12 +46,11 @@
       "browser": "En el navegador",
       "noAccount": "Sin registrarse"
     },
-    "newTools": {
-      "label": "Nuevas herramientas",
+    "update": {
+      "label": "Actualización del juego",
       "badge": "Nuevo",
-      "text": "Ya están aquí el Visor y el Editor de reliquias: consulta y edita las reliquias de tu partida.",
-      "viewer": "Visor de reliquias",
-      "editor": "Editor de reliquias"
+      "text": "Ya está aquí la nueva skin de autoclicker Orco: desbloquéala gratis en el Editor de partidas.",
+      "link": "Desbloquear la skin Orco"
     }
   },
   "cards": {

@@ -46,12 +46,11 @@
       "browser": "Läuft im Browser",
       "noAccount": "Kein Konto nötig"
     },
-    "newTools": {
-      "label": "Neue Tools",
+    "update": {
+      "label": "Spiel-Update",
       "badge": "Neu",
-      "text": "Relikt-Übersicht und Relikt-Editor sind da – sieh dir die Relikte in deinem Spielstand an und bearbeite sie.",
-      "viewer": "Relikt-Übersicht",
-      "editor": "Relikt-Editor"
+      "text": "Der neue Ork-Autoklicker-Skin ist da – schalte ihn kostenlos im Spielstand-Editor frei.",
+      "link": "Ork-Skin freischalten"
     }
   },
   "cards": {
