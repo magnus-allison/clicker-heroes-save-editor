@@ -1,18 +1,13 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { ToastItem } from '@/components/ui/ToastStack';
 import { ToastStack } from '@/components/ui/ToastStack';
+import { ToastContext } from '@/hooks/useToast';
 
 const TOAST_DURATION_MS = 2200;
-
-type ToastContextValue = {
-	showToast: (message: string) => void;
-};
-
-const ToastContext = createContext<ToastContextValue | null>(null);
 
 type Props = {
 	children: ReactNode;
@@ -54,14 +49,4 @@ export const ToastProvider = ({ children }: Props) => {
 			<ToastStack toasts={toasts} />
 		</ToastContext.Provider>
 	);
-};
-
-export const useToast = () => {
-	const context = useContext(ToastContext);
-
-	if (!context) {
-		throw new Error('useToast must be used within a ToastProvider.');
-	}
-
-	return context;
 };

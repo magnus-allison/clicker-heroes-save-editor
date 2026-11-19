@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
-import { useDurationUnits } from '@/components/tools/use-duration-units';
-import { useNumberFormat } from '@/components/ui/useNumberFormat';
+import { useDurationUnits } from '@/hooks/useDurationUnits';
+import { useNumberFormat } from '@/hooks/useNumberFormat';
 import {
 	EditorTable,
 	EditorTableBody,
@@ -27,7 +27,7 @@ import {
 	toFiniteNumber,
 	type DurationUnits
 } from '@/lib/format';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { getValueAtPath, type PathSegment } from '@/lib/save-utils';
 
 type MercenaryRecord = Record<string, unknown>;

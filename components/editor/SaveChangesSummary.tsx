@@ -5,11 +5,11 @@ import { useMemo } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { useEditorText } from '@/components/editor/useEditorText';
+import { useEditorText } from '@/hooks/useEditorText';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { diffSaveData, MAX_CHANGES } from '@/lib/save-diff';
 import { describeChange } from '@/lib/save-diff-labels';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 
 const countClassName =
 	'rounded-full border border-(--color-line) bg-(--color-surface) px-2 py-0.5 text-[11px] tabular-nums text-(--color-fg-muted)';

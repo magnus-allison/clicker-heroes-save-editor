@@ -25,9 +25,9 @@ import { NumberInput } from '@/components/ui/NumberInput';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { StepTitle } from '@/components/ui/StepTitle';
-import { useToast } from '@/components/ui/ToastProvider';
-import { useDurationUnits } from '@/components/tools/use-duration-units';
-import { useNumberFormat } from '@/components/ui/useNumberFormat';
+import { useToast } from '@/hooks/useToast';
+import { useDurationUnits } from '@/hooks/useDurationUnits';
+import { useNumberFormat } from '@/hooks/useNumberFormat';
 import { outsiderFields } from '@/lib/data/editor-config';
 import { examples } from '@/lib/data/example-saves';
 import {
@@ -39,7 +39,7 @@ import {
 	simulateTranscensions,
 	type OutsidersSettings
 } from '@/lib/outsiders-calculator';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 
 const outsiderImages = new Map(outsiderFields.map((field) => [field.id, field.imageSrc] as const));
 

@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useMemo, useSyncExternalStore } from 'react';
+import { useMemo, useSyncExternalStore } from 'react';
 import { useFormatter, useNow, useTranslations } from 'next-intl';
 import { ArrowRight, X } from 'lucide-react';
 
-import { useToast } from '@/components/ui/ToastProvider';
+import { useToast } from '@/hooks/useToast';
 import {
 	clearLastSave,
 	type LastSave,
@@ -14,53 +14,9 @@ import {
 	subscribeLastSave,
 	writeLastSave
 } from '@/lib/last-save';
-import { useSaveStore } from '@/lib/save-store';
+import { usePersistLastSave } from '@/hooks/usePersistLastSave';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import type { SaveData } from '@/lib/save-utils';
-
-/** Edits arrive per keystroke; writing a large save that often is wasteful. */
-const WRITE_DELAY_MS = 500;
-
-/**
- * Mirrors the loaded save into storage whenever it changes, debounced, and
- * flushes on `pagehide` so the last edit before closing the tab is not lost.
- */
-const usePersistLastSave = () => {
-	useEffect(() => {
-		let timer: number | undefined;
-		let pending: { original: SaveData; current: SaveData } | null = null;
-
-		const flush = () => {
-			window.clearTimeout(timer);
-			timer = undefined;
-			if (pending) {
-				writeLastSave(pending.original, pending.current);
-				pending = null;
-			}
-		};
-
-		const unsubscribe = useSaveStore.subscribe((state, previous) => {
-			const { originalSaveData, saveData } = state;
-			if (!saveData || !originalSaveData) {
-				return;
-			}
-			if (saveData === previous.saveData && originalSaveData === previous.originalSaveData) {
-				return;
-			}
-
-			pending = { original: originalSaveData, current: saveData };
-			window.clearTimeout(timer);
-			timer = window.setTimeout(flush, WRITE_DELAY_MS);
-		});
-
-		window.addEventListener('pagehide', flush);
-
-		return () => {
-			unsubscribe();
-			window.removeEventListener('pagehide', flush);
-			flush();
-		};
-	}, []);
-};
 
 type Props = {
 	/** Runs after the stored save is back in the store, like a fresh import. */

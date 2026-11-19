@@ -13,7 +13,7 @@ import { CardTitle } from '@/components/ui/LinkCard';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { Pill } from '@/components/ui/Pill';
-import { useToast } from '@/components/ui/ToastProvider';
+import { useToast } from '@/hooks/useToast';
 import { cn } from 'cn';
 import { relicExamples } from '@/lib/data/example-saves';
 import { getRelicRarity, relicBonusAncients, relicRarities } from '@/lib/data/relic-bonuses';
@@ -36,8 +36,8 @@ import {
 	type RelicEntry,
 	type RelicType
 } from '@/lib/relics';
-import { useSaveFlowStep } from '@/lib/save-flow';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveFlowStep } from '@/hooks/useSaveFlowStep';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import type { SelectOption } from '@/lib/save-utils';
 
 /** `Dropdown` values are strings; this one means "in no slot". */

@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
-import { useEditorText } from '@/components/editor/useEditorText';
+import { useEditorText } from '@/hooks/useEditorText';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
 import {
@@ -17,8 +17,8 @@ import {
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { ancientSoulFields, getOutsiderStats, outsiderFields } from '@/lib/data/editor-config';
-import { useNumberFormat } from '@/components/ui/useNumberFormat';
-import { useSaveStore } from '@/lib/save-store';
+import { useNumberFormat } from '@/hooks/useNumberFormat';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { getValueAtPath } from '@/lib/save-utils';
 
 type Props = {

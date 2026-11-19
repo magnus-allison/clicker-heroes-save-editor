@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/Button';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { ToolLink } from '@/components/ui/ToolLink';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { setValueAtPath } from '@/lib/save-utils';
 
 type Props = {

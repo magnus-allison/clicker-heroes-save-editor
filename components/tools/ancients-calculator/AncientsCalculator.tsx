@@ -22,7 +22,7 @@ import { NumberInput } from '@/components/ui/NumberInput';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { StepTitle } from '@/components/ui/StepTitle';
-import { useNumberFormat } from '@/components/ui/useNumberFormat';
+import { useNumberFormat } from '@/hooks/useNumberFormat';
 import { TextInput } from '@/components/ui/TextInput';
 import {
 	buildModeOptions,
@@ -38,7 +38,7 @@ import {
 } from '@/lib/ancients-calculator';
 import { outsiderFields } from '@/lib/data/editor-config';
 import { examples } from '@/lib/data/example-saves';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 
 const plannerRowCount = 20;
 

@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
-import { useEditorText } from '@/components/editor/useEditorText';
+import { useEditorText } from '@/hooks/useEditorText';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
 import {

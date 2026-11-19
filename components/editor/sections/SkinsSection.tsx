@@ -18,7 +18,7 @@ import {
 	EditorTableRow
 } from '@/components/ui/EditorTable';
 import { autoClickerSkins } from '@/lib/data/editor-config';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { getValueAtPath, setValueAtPath } from '@/lib/save-utils';
 
 type Props = {

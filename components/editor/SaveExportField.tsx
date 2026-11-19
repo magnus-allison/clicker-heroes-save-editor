@@ -7,7 +7,7 @@ import { headingInTabClasses, type HeadingInTab } from '@/components/editor/Save
 import { CopyButton } from '@/components/ui/CopyButton';
 import { FieldDivider } from '@/components/ui/FieldDivider';
 import { TextInput } from '@/components/ui/TextInput';
-import { useToast } from '@/components/ui/ToastProvider';
+import { useToast } from '@/hooks/useToast';
 import { FileDownIcon, MonitorDownIcon, ShieldAlertIcon, TriangleAlertIcon } from 'lucide-react';
 import { Pill } from '../ui/Pill';
 import { CardTitle } from '../ui/LinkCard';

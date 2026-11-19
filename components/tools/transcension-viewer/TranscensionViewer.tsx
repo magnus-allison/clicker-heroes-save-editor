@@ -15,8 +15,8 @@ import {
 import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { useDurationUnits } from '@/components/tools/use-duration-units';
-import { useNumberFormat } from '@/components/ui/useNumberFormat';
+import { useDurationUnits } from '@/hooks/useDurationUnits';
+import { useNumberFormat } from '@/hooks/useNumberFormat';
 import { cn } from 'cn';
 import {
 	formatDurationMinutes,
@@ -26,7 +26,7 @@ import {
 	formatNumber,
 	log10OfSaveValue
 } from '@/lib/format';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { getValueAtPath } from '@/lib/save-utils';
 import { transcensionExamples } from '@/lib/data/example-saves';
 

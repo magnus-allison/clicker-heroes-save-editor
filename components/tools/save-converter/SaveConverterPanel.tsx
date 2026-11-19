@@ -6,11 +6,11 @@ import { useTranslations } from 'next-intl';
 import { SaveDataFolder } from '@/components/editor/SaveDataFolder';
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
-import { useSaveImport } from '@/components/editor/useSaveImport';
+import { useSaveImport } from '@/hooks/useSaveImport';
 import { Dropdown } from '@/components/ui/Dropdown';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
-import { useToast } from '@/components/ui/ToastProvider';
+import { useToast } from '@/hooks/useToast';
 import { saveConverterExamples } from '@/lib/data/example-saves';
 import {
 	encodeSaveData,
@@ -18,7 +18,7 @@ import {
 	type DecodeResult,
 	type SaveDevice
 } from '@/lib/save-codec';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import type { SaveData, SelectOption } from '@/lib/save-utils';
 
 /** What the import step detected about the save that is currently loaded. */

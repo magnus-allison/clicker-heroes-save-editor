@@ -6,13 +6,13 @@ import { useTranslations } from 'next-intl';
 import { SaveDataFolder } from '@/components/editor/SaveDataFolder';
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
-import { useSaveImport } from '@/components/editor/useSaveImport';
+import { useSaveImport } from '@/hooks/useSaveImport';
 import { Button } from '@/components/ui/Button';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
 import { TextInput } from '@/components/ui/TextInput';
-import { useToast } from '@/components/ui/ToastProvider';
+import { useToast } from '@/hooks/useToast';
 import { encodeSaveData } from '@/lib/save-codec';
 import type { SaveData } from '@/lib/save-utils';
 

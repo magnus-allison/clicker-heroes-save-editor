@@ -16,7 +16,7 @@ import {
 	EditorTableRow
 } from '@/components/ui/EditorTable';
 import { achievementGroups, getAchievementImage } from '@/lib/data/achievements';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { getValueAtPath } from '@/lib/save-utils';
 
 type Props = {

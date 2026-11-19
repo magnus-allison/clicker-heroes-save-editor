@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { EditorTableCell, EditorTableRow } from '@/components/ui/EditorTable';
-import { useNumberFormat } from '@/components/ui/useNumberFormat';
+import { useNumberFormat } from '@/hooks/useNumberFormat';
 import { formatHeroSouls, toPasteableNumber, type AncientRow } from '@/lib/ancients-calculator';
 
 /**

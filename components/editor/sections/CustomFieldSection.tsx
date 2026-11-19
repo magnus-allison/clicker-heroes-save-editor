@@ -9,7 +9,7 @@ import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { Dropdown } from '@/components/ui/Dropdown';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { TextInput } from '@/components/ui/TextInput';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { listPrimitiveKeys } from '@/lib/save-utils';
 
 type Props = {

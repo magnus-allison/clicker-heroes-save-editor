@@ -8,13 +8,13 @@ import { SaveChangesSummary } from '@/components/editor/SaveChangesSummary';
 import { SaveDataFolder } from '@/components/editor/SaveDataFolder';
 import { SaveExportField } from '@/components/editor/SaveExportField';
 import { SaveImportField } from '@/components/editor/SaveImportField';
-import { useEditorText } from '@/components/editor/useEditorText';
-import { useSaveImport } from '@/components/editor/useSaveImport';
-import { useToast } from '@/components/ui/ToastProvider';
+import { useEditorText } from '@/hooks/useEditorText';
+import { useSaveImport } from '@/hooks/useSaveImport';
+import { useToast } from '@/hooks/useToast';
 import type { ExampleSave } from '@/lib/data/example-saves';
 import { encodeSaveData } from '@/lib/save-codec';
-import { useSaveFlowStep } from '@/lib/save-flow';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveFlowStep } from '@/hooks/useSaveFlowStep';
+import { useSaveStore } from '@/hooks/useSaveStore';
 
 interface Props {
 	onLoadSuccess?: () => void;

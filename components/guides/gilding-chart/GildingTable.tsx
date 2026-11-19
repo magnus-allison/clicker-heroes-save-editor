@@ -1,6 +1,8 @@
 import { Fragment, type FC } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
+import { useGildingPhaseRange } from '@/hooks/useGildingPhaseRange';
+
 import {
 	EditorTable,
 	EditorTableBody,
@@ -12,7 +14,6 @@ import {
 import {
 	formatChartNumbers,
 	formatGoldExponent,
-	type GildingPhase,
 	gildingPhases,
 	gildingRows
 } from '@/lib/gilding-chart';
@@ -21,17 +22,6 @@ const formatGoldRange = (goldFrom: number, goldTo: number | null, locale: string
 	goldTo === null
 		? `${formatGoldExponent(goldFrom, locale)}+`
 		: `${formatGoldExponent(goldFrom, locale)} – ${formatGoldExponent(goldTo, locale)}`;
-
-/** `e35 to e295`, `e108,838 onwards`: a phase's gold span in the page locale. */
-export const useGildingPhaseRange = () => {
-	const t = useTranslations('guides.gildingChart');
-	const locale = useLocale();
-
-	return ({ rangeFrom, rangeTo }: GildingPhase) =>
-		rangeTo === null
-			? t('rangeOnwards', { from: formatGoldExponent(rangeFrom, locale) })
-			: t('range', { from: formatGoldExponent(rangeFrom, locale), to: formatGoldExponent(rangeTo, locale) });
-};
 
 /**
  * The full chart, grouped by phase. Static, so it stays a server component and

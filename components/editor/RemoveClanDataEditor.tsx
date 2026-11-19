@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
-import { useEditorText } from '@/components/editor/useEditorText';
+import { useEditorText } from '@/hooks/useEditorText';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import {
@@ -17,9 +17,9 @@ import {
 } from '@/components/ui/EditorTable';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { StepTitle } from '@/components/ui/StepTitle';
-import { useToast } from '@/components/ui/ToastProvider';
+import { useToast } from '@/hooks/useToast';
 import { clanFields, raidClassOptions } from '@/lib/data/editor-config';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { getValueAtPath, setValueAtPath, type PathSegment, type SaveData } from '@/lib/save-utils';
 
 type RemovedClanEntry = {

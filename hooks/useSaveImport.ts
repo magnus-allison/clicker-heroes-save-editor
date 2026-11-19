@@ -4,10 +4,10 @@ import { startTransition } from 'react';
 import { useTranslations } from 'next-intl';
 
 import type { SaveImportRequest } from '@/components/editor/SaveImportField';
-import { useEditorText } from '@/components/editor/useEditorText';
-import { useToast } from '@/components/ui/ToastProvider';
+import { useEditorText } from '@/hooks/useEditorText';
+import { useToast } from '@/hooks/useToast';
 import { decodeSaveString, type DecodeResult } from '@/lib/save-codec';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 
 type Options = {
 	/** Runs after the save is in the store, before the analytics event. */

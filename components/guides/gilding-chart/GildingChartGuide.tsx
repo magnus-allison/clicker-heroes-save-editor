@@ -2,7 +2,8 @@ import { type FC, type ReactNode } from 'react';
 import { type Messages, useLocale, useTranslations } from 'next-intl';
 
 import { GildingLookup } from '@/components/guides/gilding-chart/GildingLookup';
-import { GildingTable, useGildingPhaseRange } from '@/components/guides/gilding-chart/GildingTable';
+import { GildingTable } from '@/components/guides/gilding-chart/GildingTable';
+import { useGildingPhaseRange } from '@/hooks/useGildingPhaseRange';
 import type { GuideIndexPart } from '@/components/guides/GuideContents';
 import { GuideLayout } from '@/components/guides/GuideLayout';
 import { GuideLink } from '@/components/guides/GuideLink';

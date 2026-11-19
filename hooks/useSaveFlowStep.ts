@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 
 import { diffSaveData } from '@/lib/save-diff';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 
 /** `null` once the user has been all the way through — nothing left to nudge. */
 export type SaveFlowStep = 1 | 2 | 3 | null;

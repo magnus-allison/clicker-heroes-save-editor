@@ -6,7 +6,7 @@ import { NumberInput } from '@/components/ui/NumberInput';
 import { TextInput } from '@/components/ui/TextInput';
 import type { SimpleFieldConfig } from '@/lib/data/editor-config';
 import { toFiniteNumber } from '@/lib/format';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import {
 	getValueAtPath,
 	hasPath,

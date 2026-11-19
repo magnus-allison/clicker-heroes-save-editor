@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { SaveDataPanel } from '@/components/editor/SaveDataPanel';
 import { Breadcrumb } from '@/components/home/Breadcrumb';
-import { useNumberFormat } from '@/components/ui/useNumberFormat';
+import { useNumberFormat } from '@/hooks/useNumberFormat';
 import {
 	EditorTable,
 	EditorTableBody,
@@ -21,7 +21,7 @@ import { cn } from 'cn';
 import { relicExamples } from '@/lib/data/example-saves';
 import { getRelicRarity, type RelicRarity } from '@/lib/data/relic-bonuses';
 import { formatFixed, formatNumber, toFiniteNumber } from '@/lib/format';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { relicTypes, toRelicEntries, type RelicEntry, type RelicType } from '@/lib/relics';
 import { getValueAtPath, type PathSegment } from '@/lib/save-utils';
 

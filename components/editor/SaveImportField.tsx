@@ -10,7 +10,7 @@ import { CopyButton } from '@/components/ui/CopyButton';
 import { EditorImage } from '@/components/ui/EditorImage';
 import { FieldDivider } from '@/components/ui/FieldDivider';
 import { TextInput } from '@/components/ui/TextInput';
-import { useToast } from '@/components/ui/ToastProvider';
+import { useToast } from '@/hooks/useToast';
 import type { ExampleSave } from '@/lib/data/example-saves';
 import { FileUpIcon, MonitorUpIcon } from 'lucide-react';
 import { Pill } from '../ui/Pill';

@@ -4,7 +4,7 @@ import { LinkIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import type { MouseEvent } from 'react';
 
-import { useToast } from '@/components/ui/ToastProvider';
+import { useToast } from '@/hooks/useToast';
 import { cn } from 'cn';
 
 interface Props {

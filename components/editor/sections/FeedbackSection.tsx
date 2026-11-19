@@ -8,7 +8,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/Button';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { TextInput } from '@/components/ui/TextInput';
-import { useToast } from '@/components/ui/ToastProvider';
+import { useToast } from '@/hooks/useToast';
 
 /** Decides the subject line the server puts on the email. */
 export type FeedbackTopic = 'feedback' | 'guide-request' | 'tool-request';

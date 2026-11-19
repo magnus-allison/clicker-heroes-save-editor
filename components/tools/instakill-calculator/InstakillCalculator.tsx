@@ -24,10 +24,10 @@ import {
 	type InstakillCalculatorInputs
 } from '@/lib/instakill-calculator';
 import { examples } from '@/lib/data/example-saves';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { formatLongDuration } from '@/lib/format';
-import { useDurationUnits } from '@/components/tools/use-duration-units';
-import { useNumberFormat } from '@/components/ui/useNumberFormat';
+import { useDurationUnits } from '@/hooks/useDurationUnits';
+import { useNumberFormat } from '@/hooks/useNumberFormat';
 import {
 	CalculatorCheckboxRow,
 	CalculatorFieldRow,

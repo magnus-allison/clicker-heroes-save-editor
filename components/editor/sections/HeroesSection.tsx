@@ -18,9 +18,9 @@ import {
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { Tooltip } from '@/components/ui/Tooltip';
-import { useNumberFormat } from '@/components/ui/useNumberFormat';
+import { useNumberFormat } from '@/hooks/useNumberFormat';
 import { orderedHeroes } from '@/lib/data/heroes';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { getValueAtPath } from '@/lib/save-utils';
 import { cn } from 'cn';
 
@@ -88,7 +88,12 @@ export const HeroesSection = ({ anchor, defaultOpen, icon, title: titleProp }: P
 								</EditorTableCell>
 								<EditorTableCell className='max-sm:col-span-3 max-sm:pb-0'>
 									<div className='flex min-w-0 items-center gap-1.5'>
-										<span className={cn('font-aeonik font-medium text-[14px]', isGilded ? 'text-(--color-gold)' : 'text-(--color-fg)')}>
+										<span
+											className={cn(
+												'font-aeonik font-medium text-[14px]',
+												isGilded ? 'text-(--color-gold)' : 'text-(--color-fg)'
+											)}
+										>
 											{hero.name}
 										</span>
 										{isGilded ? (

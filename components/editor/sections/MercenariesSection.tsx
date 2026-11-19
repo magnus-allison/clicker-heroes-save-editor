@@ -4,7 +4,7 @@ import type { LucideIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { BoundFieldControl } from '@/components/editor/BoundFieldControl';
-import { useEditorText } from '@/components/editor/useEditorText';
+import { useEditorText } from '@/hooks/useEditorText';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import {
 	EditorTable,
@@ -16,7 +16,7 @@ import {
 import { NumberInput } from '@/components/ui/NumberInput';
 import { ToolLink } from '@/components/ui/ToolLink';
 import { mercenarySlots, mercenarySummaryFields } from '@/lib/data/editor-config';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { getValueAtPath } from '@/lib/save-utils';
 
 type Props = {

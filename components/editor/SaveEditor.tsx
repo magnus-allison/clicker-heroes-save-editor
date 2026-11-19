@@ -12,13 +12,13 @@ import { OutsidersSection } from '@/components/editor/sections/OutsidersSection'
 import { SimpleFieldsSection } from '@/components/editor/sections/SimpleFieldsSection';
 import { SkinsSection } from '@/components/editor/sections/SkinsSection';
 import { TranscensionsSection } from '@/components/editor/sections/TranscensionsSection';
-import { useToast } from '@/components/ui/ToastProvider';
+import { useToast } from '@/hooks/useToast';
 import { clanFields } from '@/lib/data/editor-config';
 import { seasonalItemFields } from '@/lib/data/seasonalItems';
 import { shopItemFields } from '@/lib/data/shopItems';
 import { zoneItemFields } from '@/lib/data/zoneItems';
-import { useSaveFlowStep } from '@/lib/save-flow';
-import { useSaveStore } from '@/lib/save-store';
+import { useSaveFlowStep } from '@/hooks/useSaveFlowStep';
+import { useSaveStore } from '@/hooks/useSaveStore';
 import { Breadcrumb } from '../home/Breadcrumb';
 import { cn } from 'cn';
 import { Pill } from '../ui/Pill';
