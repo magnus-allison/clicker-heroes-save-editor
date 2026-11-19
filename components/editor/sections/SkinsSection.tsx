@@ -14,6 +14,7 @@ import {
 	EditorTableCell,
 	EditorTableHead,
 	EditorTableHeaderCell,
+	EditorTableImageHeaderCell,
 	EditorTableRow
 } from '@/components/ui/EditorTable';
 import { autoClickerSkins } from '@/lib/data/editor-config';
@@ -79,13 +80,13 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 				<EditorTable label={t('tableLabel')} tableClassName='w-full table-fixed'>
 					{/* The item tables' column widths, so names and images line up across sections. */}
 					<colgroup>
-						<col className='w-18 sm:w-22' />
-						<col className='w-[28%] sm:w-52' />
+						<col className='w-15' />
+						<col />
 						<col className='w-[52%] sm:w-120' />
 					</colgroup>
 					<EditorTableHead>
 						<tr>
-							<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
+							<EditorTableImageHeaderCell>{tTable('image')}</EditorTableImageHeaderCell>
 							<EditorTableHeaderCell>{tTable('skinName')}</EditorTableHeaderCell>
 							<EditorTableHeaderCell className='text-right'>{tTable('unlocked')}</EditorTableHeaderCell>
 						</tr>
@@ -136,7 +137,7 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 									className={cn(
 										'group relative flex h-14 w-14 items-center justify-center rounded-(--radius-control) border bg-(--color-surface-inset) transition-[background-color,border-color] duration-150 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring) disabled:cursor-not-allowed disabled:opacity-45',
 										isSelected
-											? 'border-(--color-fg-dim) bg-(--color-surface-hover)'
+											? 'border-(--color-fg-dim)'
 											: 'border-(--color-line) enabled:hover:border-(--color-line-strong)'
 									)}
 									disabled={!saveData || !isSelectable}

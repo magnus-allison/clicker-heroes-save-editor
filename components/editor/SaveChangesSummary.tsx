@@ -11,6 +11,9 @@ import { diffSaveData, MAX_CHANGES } from '@/lib/save-diff';
 import { describeChange } from '@/lib/save-diff-labels';
 import { useSaveStore } from '@/lib/save-store';
 
+const countClassName =
+	'rounded-full border border-(--color-line) bg-(--color-surface) px-2 py-0.5 text-[11px] tabular-nums text-(--color-fg-muted)';
+
 type Props = {
 	defaultOpen?: boolean;
 };
@@ -23,8 +26,8 @@ type Props = {
  * costs about as much as the number of edits, not the size of the save, and
  * can be recomputed on every render.
  *
- * Renders nothing until the first edit, which keeps it out of the way in the
- * read-only tools that share this panel.
+ * Only the editing tools render it. Before the first edit it shows as a static
+ * bar of the same height, so the first change doesn't shift the page.
  */
 export const SaveChangesSummary = ({ defaultOpen }: Props) => {
 	const saveData = useSaveStore((state) => state.saveData);
@@ -46,7 +49,14 @@ export const SaveChangesSummary = ({ defaultOpen }: Props) => {
 	}));
 
 	if (describedChanges.length === 0) {
-		return null;
+		return (
+			<div className='flex items-center gap-2 rounded-(--radius-card) border border-(--color-line) bg-(--color-surface-sunken) px-3 py-2.5 text-[12px] text-(--color-fg-dim)'>
+				<ChevronRight aria-hidden='true' className='h-3.5 w-3.5 shrink-0 opacity-50' />
+				<span className='font-semibold'>{t('title')}</span>
+				<span className={countClassName}>0</span>
+				<span className='ml-auto text-[11px]'>{t('none')}</span>
+			</div>
+		);
 	}
 
 	return (
@@ -60,7 +70,7 @@ export const SaveChangesSummary = ({ defaultOpen }: Props) => {
 					className='h-3.5 w-3.5 shrink-0 text-(--color-fg-dim) transition-transform duration-200 ease-snap group-open:rotate-90 group-open:text-(--color-primary)'
 				/>
 				<span className='font-semibold'>{t('title')}</span>
-				<span className='rounded-full border border-(--color-line) bg-(--color-surface) px-2 py-0.5 text-[11px] tabular-nums text-(--color-fg-muted)'>
+				<span className={countClassName}>
 					{describedChanges.length}
 					{truncated ? '+' : ''}
 				</span>

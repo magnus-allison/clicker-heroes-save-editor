@@ -95,7 +95,9 @@ export const SaveDataPanel = ({ onLoadSuccess, examples, hasEditStep = false }: 
 					headingInTab='lg'
 					actionLabel={t('encodeAction')}
 					ariaLabel={t('ariaLabel')}
-					belowOutput={<SaveChangesSummary />}
+					// Editing tools always reserve the bar, so the first edit doesn't push
+					// the rest of the page down when it appears.
+					belowOutput={hasEditStep ? <SaveChangesSummary /> : null}
 					dataLabel={t('dataLabel')}
 					isActiveStep={activeStep === 3}
 					onAction={handleEncode}

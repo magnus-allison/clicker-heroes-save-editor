@@ -6,7 +6,7 @@
     "amount": "Menge",
     "description": "Beschreibung",
     "unlocked": "Freigeschaltet",
-    "hero": "Held",
+    "hero": "Heldenname",
     "level": "Level",
     "gildedLevel": "Gilds",
     "name": "Name",
@@ -101,6 +101,7 @@
   "changes": {
     "title": "Änderungen",
     "versus": "vs. importierter Spielstand",
+    "none": "Noch keine Änderungen",
     "truncated": "Nur die ersten {count} Änderungen werden angezeigt.",
     "labels": {
       "outsiderLevel": "{name} · Level",
@@ -135,6 +136,7 @@
     "forgeCoals": "Forge Coals",
     "gold": "Gold",
     "highestFinishedZone": "Höchste Zone",
+    "transcendentHighestFinishedZone": "Höchste Zone über alle Transzendenzen",
     "currentZoneHeight": "Aktuelle Zone",
     "heroSouls": "Hero Souls",
     "primalSouls": "Transcendent Hero Souls",
@@ -189,8 +191,6 @@
     "clanDescription": "Raid-Klassen: 0 = Keine, 1 = Rogue, 2 = Mage, 3 = Priest."
   },
   "achievements": {
-    "tableLabel": "Felder für Transzendenz-Erfolge",
-    "transcendentHighestZone": "Höchste Zone über alle Transzendenzen",
     "reward": "Belohnung: {reward}",
     "unlockedAria": "{name} freigeschaltet",
     "groups": {
@@ -221,6 +221,7 @@
   "heroes": {
     "title": "Helden",
     "gilded": "{count, plural, one {# Gild} other {# Gilds}} (+{percent}%)",
+    "damageBonus": "Schadensbonus",
     "levelAria": "Level von {name}",
     "gildedLevelAria": "Gilds von {name}"
   },

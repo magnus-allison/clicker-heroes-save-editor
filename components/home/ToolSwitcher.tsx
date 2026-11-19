@@ -110,7 +110,7 @@ export const ToolSwitcher = ({ page, id, className }: Props) => {
 			<ul
 				aria-label={t('breadcrumb.switchTool')}
 				className={cn(
-					'absolute top-full left-0 z-50 mt-2 max-h-[min(70vh,28rem)] w-72 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-xl border border-card-border bg-card-background p-1.5 shadow-popover',
+					'absolute top-full left-0 z-50 mt-2 max-h-[min(70vh,28rem)] w-72 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-xl border border-card-border bg-surface-menu p-1.5 shadow-popover',
 					!isOpen && 'hidden'
 				)}
 				id={listId}
@@ -124,7 +124,7 @@ export const ToolSwitcher = ({ page, id, className }: Props) => {
 							<Link
 								aria-current={isCurrent ? 'page' : undefined}
 								className={cn(
-									'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm text-fg-secondary transition-colors hover:bg-surface-hover hover:text-fg-strong focus-visible:bg-surface-hover focus-visible:text-fg-strong focus-visible:outline-none',
+									'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm text-fg-secondary transition-colors hover:bg-surface-menu-hover hover:text-fg-strong focus-visible:bg-surface-menu-hover focus-visible:text-fg-strong focus-visible:outline-none',
 									isCurrent && 'font-medium text-fg-strong'
 								)}
 								href={href}

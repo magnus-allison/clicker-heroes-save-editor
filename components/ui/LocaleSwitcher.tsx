@@ -66,7 +66,7 @@ export const LocaleSwitcher = () => {
 				/>
 			</summary>
 			{/* Opens upwards: the switcher sits at the very bottom of the page. */}
-			<ul className='absolute bottom-full left-0 z-20 mb-1.5 min-w-full overflow-hidden rounded-(--radius-control) border border-line bg-(--color-surface-raised) py-1 shadow-(--shadow-popover)'>
+			<ul className='absolute bottom-full left-0 z-20 mb-1.5 min-w-full overflow-hidden rounded-(--radius-control) border border-line bg-(--color-surface-menu) py-1 shadow-(--shadow-popover)'>
 				{routing.locales.map((option) => {
 					const isCurrent = option === locale;
 
@@ -77,7 +77,7 @@ export const LocaleSwitcher = () => {
 								className={
 									isCurrent
 										? 'flex items-center justify-between gap-4 px-3 py-1.5 whitespace-nowrap text-fg-strong'
-										: 'flex items-center justify-between gap-4 px-3 py-1.5 whitespace-nowrap text-(--color-fg) transition-colors hover:bg-(--color-surface-hover) hover:text-fg-strong focus-visible:bg-(--color-surface-hover) focus-visible:outline-none'
+										: 'flex items-center justify-between gap-4 px-3 py-1.5 whitespace-nowrap text-(--color-fg) transition-colors hover:bg-(--color-surface-menu-hover) hover:text-fg-strong focus-visible:bg-(--color-surface-menu-hover) focus-visible:outline-none'
 								}
 								href={localizedPath(pathname, option)}
 								hrefLang={option}

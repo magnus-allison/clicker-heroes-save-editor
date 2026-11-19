@@ -12,9 +12,9 @@ import {
 	EditorTableCell,
 	EditorTableHead,
 	EditorTableHeaderCell,
+	EditorTableImageHeaderCell,
 	EditorTableRow
 } from '@/components/ui/EditorTable';
-import { NumberInput } from '@/components/ui/NumberInput';
 import { achievementGroups, getAchievementImage } from '@/lib/data/achievements';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
@@ -41,104 +41,65 @@ export const AchievementsSection = ({ anchor, defaultOpen, icon, title }: Props)
 
 	return (
 		<CollapsiblePanel anchor={anchor} defaultOpen={defaultOpen} icon={icon} title={title}>
-			<div className='space-y-6'>
-				<EditorTable label={t('tableLabel')}>
-					<EditorTableHead className='max-sm:hidden'>
-						<tr>
-							<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
-							<EditorTableHeaderCell>{tTable('item')}</EditorTableHeaderCell>
-							<EditorTableHeaderCell className='text-left sm:text-right'>
-								{tTable('value')}
-							</EditorTableHeaderCell>
-						</tr>
-					</EditorTableHead>
-					<EditorTableBody>
-						{/* Phones: image and name on one line, the input full width below. */}
-						<EditorTableRow className='max-sm:flex max-sm:flex-wrap max-sm:items-center'>
-							<EditorTableCell className='max-sm:pb-0'>
-								<EditorImage
-									alt={t('transcendentHighestZone')}
-									className='h-11 w-11 object-contain'
-									size={44}
-									src='/assets/profile/Transcend_achieve.webp'
-								/>
-							</EditorTableCell>
-							<EditorTableCell className='text-(--color-fg) max-sm:min-w-0 max-sm:flex-1 max-sm:pb-0 max-sm:pl-0'>
-								{t('transcendentHighestZone')}
-							</EditorTableCell>
-							<EditorTableCell className='max-sm:w-full sm:min-w-55'>
-								<NumberInput
-									ariaLabel={t('transcendentHighestZone')}
-									disabled={!saveData}
-									onCommit={(value) => updateValue(['transcendentHighestFinishedZone'], value)}
-									selectOnFocus
-									value={Number(getValueAtPath(saveData, ['transcendentHighestFinishedZone']) ?? 0)}
-								/>
-							</EditorTableCell>
-						</EditorTableRow>
-					</EditorTableBody>
-				</EditorTable>
+			<div className='grid gap-4 xl:grid-cols-2'>
+				{achievementGroups.map((group) => (
+					<EditorTable key={group.type}>
+						{/* A `caption` rather than a heading above the table: it gives the
+						    table an accessible name without a floating `h3`. */}
+						<caption className='border-b border-(--color-banner-edge) bg-(--color-surface-inset) px-3 py-3 text-left font-aeonik text-[11px] font-semibold uppercase tracking-[0.11em] text-(--color-fg-muted) sm:px-4'>
+							{groupCaption(group)}
+						</caption>
+						<EditorTableHead>
+							<tr>
+								<EditorTableImageHeaderCell>{tTable('image')}</EditorTableImageHeaderCell>
+								<EditorTableHeaderCell>{tTable('description')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell>{tTable('unlocked')}</EditorTableHeaderCell>
+							</tr>
+						</EditorTableHead>
+						<EditorTableBody>
+							{group.items.map(({ achievement, id }) => (
+								<EditorTableRow key={id}>
+									<EditorTableCell className='align-top'>
+										<EditorImage
+											alt={achievement[0]}
+											className='h-11 w-11 object-contain'
+											size={44}
+											src={getAchievementImage(achievement[4])}
+										/>
+									</EditorTableCell>
+									<EditorTableCell className='align-top'>
+										<p className='text-(--color-fg)'>{achievement[0]}</p>
+										<p className='mt-1 leading-6 text-(--color-fg-secondary)'>{achievement[1]}</p>
+										{achievement[2] ? (
+											<p className='mt-1 italic text-(--color-fg-dim)'>{achievement[2]}</p>
+										) : null}
+										{achievement[3] ? (
+											<p className='mt-1 text-(--color-primary-text)'>
+												{t('reward', { reward: achievement[3] })}
+											</p>
+										) : null}
+									</EditorTableCell>
+									<EditorTableCell className='align-top'>
+										<div className='flex justify-start pt-1'>
+											<Checkbox
+												ariaLabel={t('unlockedAria', { name: achievement[0] })}
+												checked={Boolean(getValueAtPath(saveData, ['achievements', id]))}
+												disabled={!saveData}
+												onCheckedChange={(checked) => {
+													if (!saveData) {
+														return;
+													}
 
-				<div className='grid gap-4 xl:grid-cols-2'>
-					{achievementGroups.map((group) => (
-						<EditorTable key={group.type}>
-							{/* A `caption` rather than a heading above the table: it gives the
-							    table an accessible name without a floating `h3`. */}
-							<caption className='border-b border-(--color-banner-edge) bg-(--color-surface-muted) px-3 py-3 text-left text-[13px] text-(--color-fg) sm:px-4'>
-								{groupCaption(group)}
-							</caption>
-							<EditorTableHead>
-								<tr>
-									<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
-									<EditorTableHeaderCell>{tTable('description')}</EditorTableHeaderCell>
-									<EditorTableHeaderCell>{tTable('unlocked')}</EditorTableHeaderCell>
-								</tr>
-							</EditorTableHead>
-							<EditorTableBody>
-								{group.items.map(({ achievement, id }) => (
-									<EditorTableRow key={id}>
-										<EditorTableCell className='align-top'>
-											<EditorImage
-												alt={achievement[0]}
-												className='h-11 w-11 object-contain'
-												size={44}
-												src={getAchievementImage(achievement[4])}
+													updateValue(['achievements', id], checked);
+												}}
 											/>
-										</EditorTableCell>
-										<EditorTableCell className='align-top'>
-											<p className='text-(--color-fg)'>{achievement[0]}</p>
-											<p className='mt-1 leading-6 text-(--color-fg-secondary)'>{achievement[1]}</p>
-											{achievement[2] ? (
-												<p className='mt-1 italic text-(--color-fg-dim)'>{achievement[2]}</p>
-											) : null}
-											{achievement[3] ? (
-												<p className='mt-1 text-(--color-primary-text)'>
-													{t('reward', { reward: achievement[3] })}
-												</p>
-											) : null}
-										</EditorTableCell>
-										<EditorTableCell className='align-top'>
-											<div className='flex justify-start pt-1'>
-												<Checkbox
-													ariaLabel={t('unlockedAria', { name: achievement[0] })}
-													checked={Boolean(getValueAtPath(saveData, ['achievements', id]))}
-													disabled={!saveData}
-													onCheckedChange={(checked) => {
-														if (!saveData) {
-															return;
-														}
-
-														updateValue(['achievements', id], checked);
-													}}
-												/>
-											</div>
-										</EditorTableCell>
-									</EditorTableRow>
-								))}
-							</EditorTableBody>
-						</EditorTable>
-					))}
-				</div>
+										</div>
+									</EditorTableCell>
+								</EditorTableRow>
+							))}
+						</EditorTableBody>
+					</EditorTable>
+				))}
 			</div>
 		</CollapsiblePanel>
 	);

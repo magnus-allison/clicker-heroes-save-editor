@@ -46,6 +46,12 @@
 	/* A darkening wash for table headers and the inputs inside tables and panels:
 	   see-through, so it sits on whatever panel is behind it. */
 	--color-surface-inset: light-dark(color-mix(in oklab, #e6edf5 30%, transparent), rgba(0, 0, 0, 0.25));
+	/* `--color-surface-inset` as it looks laid over a panel, made solid: dropdown
+	   menus float over other content, so a see-through wash would show it. */
+	--color-surface-menu: light-dark(#f5f7fb, #09080d);
+	/* The highlighted item in a menu: a step up from the menu in the same
+	   violet tint as the theme's lines, not a flat grey. */
+	--color-surface-menu-hover: light-dark(#e7ecf4, #1a1822);
 
 	/* Foreground ramp */
 	--color-fg-strong: light-dark(#0f1318, #f0f0f0);
@@ -220,6 +226,12 @@ a:hover {
 	textarea {
 		font: inherit;
 	}
+
+	/* In the base layer so a utility like `max-w-none` can still override it:
+	   unlayered CSS beats every Tailwind utility. */
+	img {
+		max-width: 100%;
+	}
 }
 
 button:not(:disabled) {
@@ -228,10 +240,6 @@ button:not(:disabled) {
 
 textarea {
 	resize: none;
-}
-
-img {
-	max-width: 100%;
 }
 
 /*

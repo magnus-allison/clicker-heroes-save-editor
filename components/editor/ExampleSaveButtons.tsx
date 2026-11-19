@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl';
 
-import { Button } from '@/components/ui/Button';
 import { FieldDivider } from '@/components/ui/FieldDivider';
 import { examples as defaultExamples, type ExampleSave } from '@/lib/data/example-saves';
 import { Pill } from '../ui/Pill';

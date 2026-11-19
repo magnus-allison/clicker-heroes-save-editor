@@ -18,6 +18,7 @@ import {
 	EditorTableCell,
 	EditorTableHead,
 	EditorTableHeaderCell,
+	EditorTableImageHeaderCell,
 	EditorTableRow
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
@@ -170,7 +171,7 @@ export const OutsidersCalculator = () => {
 					<EditorTable label={t('goalsTable.label')} tableClassName='w-full'>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell className='w-18'>{t('goalsTable.image')}</EditorTableHeaderCell>
+								<EditorTableImageHeaderCell>{t('goalsTable.image')}</EditorTableImageHeaderCell>
 								<EditorTableHeaderCell>{t('goalsTable.outsider')}</EditorTableHeaderCell>
 								<EditorTableHeaderCell className='text-right'>
 									{t('goalsTable.current')}

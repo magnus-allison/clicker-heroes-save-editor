@@ -1,6 +1,7 @@
 'use client';
 
 import type { LucideIcon } from 'lucide-react';
+import { StarIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
@@ -11,16 +12,16 @@ import {
 	EditorTableCell,
 	EditorTableHead,
 	EditorTableHeaderCell,
+	EditorTableImageHeaderCell,
 	EditorTableRow,
 	MobileCellLabel
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
+import { Tooltip } from '@/components/ui/Tooltip';
+import { useNumberFormat } from '@/components/ui/useNumberFormat';
 import { orderedHeroes } from '@/lib/data/heroes';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
-import { cn } from 'cn';
-
-const gildIncrements = [1, 10, 100] as const;
 
 type Props = {
 	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
@@ -34,8 +35,7 @@ export const HeroesSection = ({ anchor, defaultOpen, icon, title: titleProp }: P
 	const t = useTranslations('editor.heroes');
 	const tTable = useTranslations('editor.table');
 	const title = titleProp ?? t('title');
-	const getGildedLabel = (epicLevel: number) =>
-		epicLevel <= 0 ? '' : t('gilded', { count: epicLevel, percent: epicLevel * 50 });
+	const format = useNumberFormat();
 	const saveData = useSaveStore((state) => state.saveData);
 	const updateValue = useSaveStore((state) => state.updateValue);
 	const heroCollection =
@@ -46,13 +46,24 @@ export const HeroesSection = ({ anchor, defaultOpen, icon, title: titleProp }: P
 
 	return (
 		<CollapsiblePanel anchor={anchor} defaultOpen={defaultOpen} icon={icon} title={title}>
-			<EditorTable label={title}>
+			<EditorTable label={title} tableClassName='w-full sm:table-fixed'>
+				{/* The image column is the same fixed `w-15` as every other image table,
+				    so the names line up across sections. The name column takes whatever
+				    the two input columns leave. Phones lay rows out as cards, so the
+				    widths only apply from `sm` up. */}
+				<colgroup className='max-sm:hidden'>
+					<col className='w-15' />
+					<col />
+					<col className='w-48 lg:w-80' />
+					<col className='w-48 lg:w-80' />
+				</colgroup>
 				{/* Phones get labels inside each row instead (see below). */}
 				<EditorTableHead className='max-sm:hidden'>
 					<tr>
+						<EditorTableImageHeaderCell>{tTable('image')}</EditorTableImageHeaderCell>
 						<EditorTableHeaderCell>{tTable('hero')}</EditorTableHeaderCell>
-						<EditorTableHeaderCell>{tTable('level')}</EditorTableHeaderCell>
-						<EditorTableHeaderCell>{tTable('gildedLevel')}</EditorTableHeaderCell>
+						<EditorTableHeaderCell className='text-right'>{tTable('level')}</EditorTableHeaderCell>
+						<EditorTableHeaderCell className='text-right'>{tTable('gildedLevel')}</EditorTableHeaderCell>
 					</tr>
 				</EditorTableHead>
 				<EditorTableBody>
@@ -65,41 +76,60 @@ export const HeroesSection = ({ anchor, defaultOpen, icon, title: titleProp }: P
 
 						return (
 							<EditorTableRow
-								// On phones each row becomes a small card: the hero across the top, the
-								// two inputs side by side below, so nothing scrolls sideways.
-								className={cn('max-sm:grid max-sm:grid-cols-2', isGilded && 'bg-(--color-gilded-surface)')}
+								// On phones each row becomes a small card on a four-track grid: image
+								// and name across the top, the two inputs side by side below, so
+								// nothing scrolls sideways.
+								className='max-sm:grid max-sm:grid-cols-4'
 								key={hero.heroId}
 							>
-								{/* Portrait and name share a cell, so the name column takes
-								    whatever the two inputs leave. */}
-								<EditorTableCell className='py-2 max-sm:col-span-2 max-sm:pb-0'>
-									<div className='flex items-center gap-3 sm:min-w-44'>
-										<EditorImage
-											alt=''
-											className='h-10 w-10 shrink-0 object-contain'
-											size={40}
-											src={imageSrc}
-										/>
-										<div className='flex min-w-0 flex-col items-start gap-1'>
-											<span className={isGilded ? 'text-(--color-gold)' : 'text-(--color-fg)'}>
-												{hero.name}
-											</span>
-											{isGilded ? (
-												<span className='inline-flex h-5 items-center rounded-full border border-(--color-gilded-line) px-2 text-[10px] font-bold tracking-wide text-(--color-gold)'>
-													{getGildedLabel(epicLevel)}
-												</span>
-											) : null}
-										</div>
+								<EditorTableCell className='max-sm:pb-0'>
+									<EditorImage alt='' className='h-11 w-11 object-contain' size={44} src={imageSrc} />
+								</EditorTableCell>
+								<EditorTableCell className='max-sm:col-span-3 max-sm:pb-0'>
+									<div className='flex min-w-0 items-center gap-1.5'>
+										<span className={isGilded ? 'text-(--color-gold)' : 'text-(--color-fg)'}>
+											{hero.name}
+										</span>
+										{isGilded ? (
+											<Tooltip
+												contentClassName='w-max min-w-44 border-(--color-line) bg-(--color-surface-menu)'
+												placement='top'
+												title={hero.name}
+												trigger={
+													// A button so keyboard users can focus it and get the same tooltip.
+													<button
+														aria-label={t('gilded', { count: epicLevel, percent: epicLevel * 50 })}
+														className='flex h-5 w-5 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)'
+														type='button'
+													>
+														<StarIcon
+															aria-hidden='true'
+															className='h-3.5 w-3.5 fill-current text-(--color-gold)'
+														/>
+													</button>
+												}
+											>
+												<dl className='grid grid-cols-[1fr_auto] gap-x-4'>
+													<dt>{tTable('gildedLevel')}</dt>
+													<dd className='text-right tabular-nums text-(--color-fg-strong)'>
+														{format.number(epicLevel)}
+													</dd>
+													<dt>{t('damageBonus')}</dt>
+													<dd className='text-right tabular-nums text-(--color-gold)'>
+														+{format.number(epicLevel * 50)}%
+													</dd>
+												</dl>
+											</Tooltip>
+										) : null}
 									</div>
 								</EditorTableCell>
-								{/* `sm:w-px` shrinks the input columns to their content, so
-								    each header sits directly above its input. */}
-								<EditorTableCell className='py-2 sm:w-px sm:min-w-45'>
+								<EditorTableCell className='max-sm:col-span-2'>
 									<MobileCellLabel>{tTable('level')}</MobileCellLabel>
 									<NumberInput
 										ariaLabel={t('levelAria', { name: hero.name })}
 										compact
 										disabled={!saveData}
+										wrapperClassName='sm:w-full'
 										onCommit={(value) =>
 											updateValue(['heroCollection', 'heroes', hero.heroId, 'level'], value)
 										}
@@ -107,14 +137,13 @@ export const HeroesSection = ({ anchor, defaultOpen, icon, title: titleProp }: P
 										value={level}
 									/>
 								</EditorTableCell>
-								<EditorTableCell className='py-2 sm:w-px sm:min-w-45'>
+								<EditorTableCell className='max-sm:col-span-2'>
 									<MobileCellLabel>{tTable('gildedLevel')}</MobileCellLabel>
 									<NumberInput
 										ariaLabel={t('gildedLevelAria', { name: hero.name })}
 										compact
 										disabled={!saveData}
-										// Gilds come in ones and tens, not thousands.
-										increments={gildIncrements}
+										wrapperClassName='sm:w-full'
 										onCommit={(value) =>
 											updateValue(['heroCollection', 'heroes', hero.heroId, 'epicLevel'], value)
 										}

@@ -6,7 +6,7 @@
     "amount": "Amount",
     "description": "Description",
     "unlocked": "Unlocked",
-    "hero": "Hero",
+    "hero": "Hero Name",
     "level": "Level",
     "gildedLevel": "Gilded Level",
     "name": "Name",
@@ -101,6 +101,7 @@
   "changes": {
     "title": "Changes",
     "versus": "vs. imported save",
+    "none": "No changes yet",
     "truncated": "Only the first {count} changes are listed.",
     "labels": {
       "outsiderLevel": "{name} · Level",
@@ -134,8 +135,9 @@
     "labelMakers": "Label Makers",
     "forgeCoals": "Forge Coals",
     "gold": "Gold",
-    "highestFinishedZone": "Highest Zone Number",
-    "currentZoneHeight": "Current Zone Number",
+    "highestFinishedZone": "Highest Zone",
+    "transcendentHighestFinishedZone": "Transcendent Highest Zone",
+    "currentZoneHeight": "Current Zone",
     "heroSouls": "Hero Souls",
     "primalSouls": "Transcendent Hero Souls",
     "newClanRaidClassId": "Clan Raid Class",
@@ -189,8 +191,6 @@
     "clanDescription": "Raid classes map to 0 = None, 1 = Rogue, 2 = Mage, 3 = Priest."
   },
   "achievements": {
-    "tableLabel": "Transcension achievement fields",
-    "transcendentHighestZone": "Transcendent Highest Zone",
     "reward": "Reward: {reward}",
     "unlockedAria": "{name} unlocked",
     "groups": {
@@ -221,6 +221,7 @@
   "heroes": {
     "title": "Heroes",
     "gilded": "{count}x Gilded (+{percent}%)",
+    "damageBonus": "Damage bonus",
     "levelAria": "{name} level",
     "gildedLevelAria": "{name} gilded level"
   },

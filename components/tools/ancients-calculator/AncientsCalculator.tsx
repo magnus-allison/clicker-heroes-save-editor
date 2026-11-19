@@ -15,7 +15,8 @@ import {
 	EditorTable,
 	EditorTableBody,
 	EditorTableHead,
-	EditorTableHeaderCell
+	EditorTableHeaderCell,
+	EditorTableImageHeaderCell
 } from '@/components/ui/EditorTable';
 import { NumberInput } from '@/components/ui/NumberInput';
 import { PanelSection } from '@/components/ui/PanelSection';
@@ -332,7 +333,7 @@ export const AncientsCalculator = () => {
 					<EditorTable label={t('outsiders.label')} tableClassName='w-full'>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell className='w-18'>{t('outsiders.image')}</EditorTableHeaderCell>
+								<EditorTableImageHeaderCell>{t('outsiders.image')}</EditorTableImageHeaderCell>
 								<EditorTableHeaderCell>{t('outsiders.outsider')}</EditorTableHeaderCell>
 								<EditorTableHeaderCell className='text-right'>{t('outsiders.level')}</EditorTableHeaderCell>
 							</tr>

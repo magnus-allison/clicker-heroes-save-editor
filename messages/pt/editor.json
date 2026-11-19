@@ -6,7 +6,7 @@
     "amount": "Quantidade",
     "description": "Descrição",
     "unlocked": "Desbloqueado",
-    "hero": "Herói",
+    "hero": "Nome do herói",
     "level": "Nível",
     "gildedLevel": "Gilds",
     "name": "Nome",
@@ -101,6 +101,7 @@
   "changes": {
     "title": "Alterações",
     "versus": "em relação ao save importado",
+    "none": "Nenhuma alteração ainda",
     "truncated": "Só as primeiras {count} alterações são mostradas.",
     "labels": {
       "outsiderLevel": "{name} · Nível",
@@ -135,6 +136,7 @@
     "forgeCoals": "Forge Coals",
     "gold": "Ouro",
     "highestFinishedZone": "Zona mais alta",
+    "transcendentHighestFinishedZone": "Zona mais alta transcendente",
     "currentZoneHeight": "Zona atual",
     "heroSouls": "Hero Souls",
     "primalSouls": "Transcendent Hero Souls",
@@ -189,8 +191,6 @@
     "clanDescription": "As classes de raid correspondem a 0 = Nenhuma, 1 = Rogue, 2 = Mage, 3 = Priest."
   },
   "achievements": {
-    "tableLabel": "Campos de conquistas de transcendência",
-    "transcendentHighestZone": "Zona mais alta transcendente",
     "reward": "Recompensa: {reward}",
     "unlockedAria": "{name} desbloqueada",
     "groups": {
@@ -221,6 +221,7 @@
   "heroes": {
     "title": "Heróis",
     "gilded": "{count, plural, one {# gild} other {# gilds}} (+{percent}%)",
+    "damageBonus": "Bônus de dano",
     "levelAria": "Nível de {name}",
     "gildedLevelAria": "Gilds de {name}"
   },

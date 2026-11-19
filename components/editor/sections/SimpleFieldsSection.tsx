@@ -12,6 +12,7 @@ import {
 	EditorTableCell,
 	EditorTableHead,
 	EditorTableHeaderCell,
+	EditorTableImageHeaderCell,
 	EditorTableRow
 } from '@/components/ui/EditorTable';
 import { HelpToolTip } from '@/components/ui/HelpToolTip';
@@ -44,13 +45,13 @@ export const SimpleFieldsSection: FC<Props> = ({ anchor, icon, title, descriptio
 		>
 			<EditorTable label={title} tableClassName='w-full table-fixed'>
 				<colgroup>
-					{showImageColumn ? <col className='w-18 sm:w-22' /> : null}
-					<col className='w-[28%] sm:w-52' />
+					{showImageColumn ? <col className='w-15' /> : null}
+					<col />
 					<col className='w-[52%] sm:w-120' />
 				</colgroup>
 				<EditorTableHead>
 					<tr>
-						{showImageColumn ? <EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell> : null}
+						{showImageColumn ? <EditorTableImageHeaderCell>{tTable('image')}</EditorTableImageHeaderCell> : null}
 						<EditorTableHeaderCell>{tTable('item')}</EditorTableHeaderCell>
 						<EditorTableHeaderCell className='text-left sm:text-right'>
 							{tTable('amount')}

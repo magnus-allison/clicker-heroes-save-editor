@@ -44,6 +44,16 @@ export const EditorTable = ({
 					aria-label={label}
 					className={cn(
 						'min-w-full border-collapse text-left text-[13px] text-(--color-fg-secondary)',
+						// Tighten the gap between an image cell and the name/item beside it.
+						// `w-px` shrinks an auto-layout image column to the image itself instead of
+						// letting it take a share of the spare width. Fixed-layout tables size the
+						// column through their `<colgroup>` (`w-15`) instead. `max-w-none` stops the
+						// default `img { max-width: 100% }` resolving against that 1px and
+						// collapsing the image.
+						'[&_td:has(>img)]:w-px [&_td:has(>img)]:min-w-max [&_td:has(>img)]:pr-0 [&_td>img]:max-w-none [&_td:has(>img)+td]:pl-10',
+						// Same for the header row when the image is the first column, so the
+						// headings stay lined up with their cells.
+						'[&:has(td:first-child>img)_th:first-child]:pr-0 [&:has(td:first-child>img)_th:nth-child(2)]:pl-10',
 						tableClassName
 					)}
 				>
@@ -102,6 +112,19 @@ export const EditorTableHeaderCell = ({
 		<th className={cn('px-3 py-3 font-semibold sm:px-4 font-aeonik', className)} scope={scope} {...props}>
 			{children}
 		</th>
+	);
+};
+
+/**
+ * Header for an image column. The column is only as wide as its picture, so
+ * a visible label would run into the next heading; the picture speaks for
+ * itself, and the label stays for screen readers.
+ */
+export const EditorTableImageHeaderCell = ({ children, ...props }: EditorTableHeaderCellProps) => {
+	return (
+		<EditorTableHeaderCell {...props}>
+			<span className='sr-only'>{children}</span>
+		</EditorTableHeaderCell>
 	);
 };
 

@@ -11,15 +11,21 @@ export const zoneItemFields: SimpleFieldConfig[] = [
 		inputClassName: 'text-base sm:text-lg !w-82'
 	},
 	{
-		label: 'Highest Zone Number',
+		label: 'Current Zone',
+		imageSrc: `/assets/zoneItems/zone_lord.webp`,
+		path: ['currentZoneHeight'],
+		kind: 'number'
+	},
+	{
+		label: 'Highest Zone',
 		imageSrc: `/assets/zoneItems/zone_explorer.webp`,
 		path: ['highestFinishedZone'],
 		kind: 'number'
 	},
 	{
-		label: 'Current Zone Number',
-		imageSrc: `/assets/zoneItems/zone_lord.webp`,
-		path: ['currentZoneHeight'],
+		label: 'Transcendent Highest Zone',
+		imageSrc: '/assets/profile/Transcend_achieve.webp',
+		path: ['transcendentHighestFinishedZone'],
 		kind: 'number'
 	},
 	{

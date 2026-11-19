@@ -11,7 +11,8 @@ import {
 	EditorTable,
 	EditorTableBody,
 	EditorTableHead,
-	EditorTableHeaderCell
+	EditorTableHeaderCell,
+	EditorTableImageHeaderCell
 } from '@/components/ui/EditorTable';
 import { PanelSection } from '@/components/ui/PanelSection';
 import { SectionCard } from '@/components/ui/SectionCard';
@@ -101,14 +102,14 @@ export const InstakillCalculator = () => {
 				>
 					<EditorTable label={t('inputs.label')} tableClassName='w-full table-fixed'>
 						<colgroup>
-							<col className='w-18 sm:w-22' />
-							<col className='w-[38%] sm:w-auto' />
+							<col className='w-15' />
+							<col />
 							{/* Compact input (`sm:w-73.5`) plus the cell's `sm:px-4` on both sides. */}
 							<col className='w-[34%] sm:w-81.5' />
 						</colgroup>
 						<EditorTableHead>
 							<tr>
-								<EditorTableHeaderCell>{t('inputs.image')}</EditorTableHeaderCell>
+								<EditorTableImageHeaderCell>{t('inputs.image')}</EditorTableImageHeaderCell>
 								<EditorTableHeaderCell>{t('inputs.item')}</EditorTableHeaderCell>
 								<EditorTableHeaderCell className='text-left sm:text-right'>
 									{t('inputs.value')}
@@ -187,8 +188,8 @@ export const InstakillCalculator = () => {
 				<SectionCard defaultOpen description={t('output.description')} title={t('output.title')}>
 					<EditorTable label={t('output.label')} tableClassName='w-full table-fixed'>
 						<colgroup>
-							<col className='w-18 sm:w-22' />
-							<col className='w-[42%] sm:w-auto' />
+							<col className='w-15' />
+							<col />
 							<col className='w-[30%] sm:w-64' />
 						</colgroup>
 						<EditorTableHead>
