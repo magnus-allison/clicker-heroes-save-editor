@@ -80,7 +80,7 @@ export const AncientGoalRow = ({ row }: AncientGoalRowProps) => {
 	return (
 		<EditorTableRow>
 			<EditorTableCell>
-				<p className='text-[13px] font-semibold text-(--color-fg-strong)'>{row.name}</p>
+				<p className='font-aeonik font-medium text-[14px] text-fg-strong'>{row.name}</p>
 				<p className='mt-0.5 text-[12px] text-(--color-fg-muted)'>
 					{isAncientEffectKey(row.key) ? t(`effects.${row.key}`) : row.effect}
 				</p>

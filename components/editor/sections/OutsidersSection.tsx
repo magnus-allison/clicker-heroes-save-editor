@@ -105,7 +105,7 @@ export const OutsidersSection = ({ anchor, defaultOpen, icon, title }: Props) =>
 									/>
 								</EditorTableCell>
 								<EditorTableCell className='min-w-0 flex-1 basis-3/5 pb-0'>
-									<p className='text-(--color-fg)'>{field.name}</p>
+									<p className='font-aeonik font-medium text-[14px] text-(--color-fg)'>{field.name}</p>
 									<p className='mt-1 leading-6 text-(--color-fg-secondary)'>
 										{field.bonusLabel}
 										{format.large(stats.primary, OUTSIDER_EXPONENTIAL_ABOVE)}%{' '}

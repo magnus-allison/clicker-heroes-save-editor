@@ -102,7 +102,9 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 										src={skin.imageSrc}
 									/>
 								</EditorTableCell>
-								<EditorTableCell className='text-(--color-fg)'>{skin.name}</EditorTableCell>
+								<EditorTableCell className='font-aeonik font-medium text-[14px] text-fg'>
+									{skin.name}
+								</EditorTableCell>
 								<EditorTableCell>
 									<div className='flex justify-end'>
 										<Checkbox

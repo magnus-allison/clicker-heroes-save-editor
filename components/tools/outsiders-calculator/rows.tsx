@@ -38,7 +38,7 @@ export const OutsiderGoalRow = ({ currentLevel, imageSrc, row }: OutsiderGoalRow
 				) : null}
 			</EditorTableCell>
 			<EditorTableCell>
-				<p className='text-[13px] font-semibold text-(--color-fg-strong)'>{row.name}</p>
+				<p className='font-aeonik font-medium text-[14px] text-fg-strong'>{row.name}</p>
 			</EditorTableCell>
 			<EditorTableCell className='text-right tabular-nums text-(--color-fg-muted)'>
 				{currentLevel === null ? '-' : format.number(currentLevel)}

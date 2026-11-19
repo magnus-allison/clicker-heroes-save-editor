@@ -51,7 +51,9 @@ export const SimpleFieldsSection: FC<Props> = ({ anchor, icon, title, descriptio
 				</colgroup>
 				<EditorTableHead>
 					<tr>
-						{showImageColumn ? <EditorTableImageHeaderCell>{tTable('image')}</EditorTableImageHeaderCell> : null}
+						{showImageColumn ? (
+							<EditorTableImageHeaderCell>{tTable('image')}</EditorTableImageHeaderCell>
+						) : null}
 						<EditorTableHeaderCell>{tTable('item')}</EditorTableHeaderCell>
 						<EditorTableHeaderCell className='text-left sm:text-right'>
 							{tTable('amount')}
@@ -75,13 +77,13 @@ export const SimpleFieldsSection: FC<Props> = ({ anchor, icon, title, descriptio
 												src={field.imageSrc}
 											/>
 										) : (
-											<div className='h-11 w-11 rounded-(--radius-control) border border-dashed border-(--color-line-soft) bg-(--color-surface-sunken)' />
+											<div className='h-11 w-11 rounded-control border border-dashed border-(--color-line-soft) bg-(--color-surface-sunken)' />
 										)}
 									</EditorTableCell>
 								) : null}
 								<EditorTableCell>
 									<div className='flex min-w-0 items-center gap-3'>
-										<span className='min-w-0 text-[13px] text-(--color-fg)'>{label}</span>
+										<span className='min-w-0 font-aeonik font-medium text-[14px] text-fg'>{label}</span>
 										{help ? (
 											<HelpToolTip title={help.title}>
 												<p>{help.body}</p>

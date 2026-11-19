@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { IBM_Plex_Mono, Manrope } from 'next/font/google';
+import { Geist_Mono, Manrope } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -19,8 +19,8 @@ import { MarkPageLoaded } from '@/components/ui/MarkPageLoaded';
 import { PageShell } from '@/components/ui/PageShell';
 import { SiteFooter } from '@/components/ui/SiteFooter';
 
-const ibmPlexMono = IBM_Plex_Mono({
-	variable: '--font-ibm-plex-mono',
+const geistMono = Geist_Mono({
+	variable: '--font-geist-mono',
 	subsets: ['latin'],
 	weight: ['400', '500', '600']
 });
@@ -110,7 +110,7 @@ export default async function LocaleLayout({
 
 	return (
 		<html
-			className={`${ibmPlexMono.variable} ${manrope.variable} ${aeonik.variable} h-full antialiased`}
+			className={`${geistMono.variable} ${manrope.variable} ${aeonik.variable} h-full antialiased`}
 			data-scroll-behavior='smooth'
 			lang={locale}
 			suppressHydrationWarning

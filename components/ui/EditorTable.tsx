@@ -68,7 +68,7 @@ export const EditorTableHead = ({ children, className, ...props }: EditorTableHe
 	return (
 		<thead
 			className={cn(
-				'border-b border-(--color-banner-edge) bg-(--color-surface-inset) text-[11px] uppercase tracking-[0.11em] text-(--color-fg-muted)',
+				'border-b border-(--color-banner-edge) bg-(--color-surface-inset) text-[13px] uppercase tracking-[0.11em] text-(--color-fg-muted)',
 				className
 			)}
 			{...props}

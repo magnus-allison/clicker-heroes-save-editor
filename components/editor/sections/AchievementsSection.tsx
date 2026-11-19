@@ -68,7 +68,7 @@ export const AchievementsSection = ({ anchor, defaultOpen, icon, title }: Props)
 										/>
 									</EditorTableCell>
 									<EditorTableCell className='align-top'>
-										<p className='text-(--color-fg)'>{achievement[0]}</p>
+										<p className='font-aeonik font-medium text-[14px] text-(--color-fg)'>{achievement[0]}</p>
 										<p className='mt-1 leading-6 text-(--color-fg-secondary)'>{achievement[1]}</p>
 										{achievement[2] ? (
 											<p className='mt-1 italic text-(--color-fg-dim)'>{achievement[2]}</p>

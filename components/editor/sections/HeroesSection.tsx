@@ -22,6 +22,7 @@ import { useNumberFormat } from '@/components/ui/useNumberFormat';
 import { orderedHeroes } from '@/lib/data/heroes';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath } from '@/lib/save-utils';
+import { cn } from 'cn';
 
 type Props = {
 	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
@@ -87,7 +88,7 @@ export const HeroesSection = ({ anchor, defaultOpen, icon, title: titleProp }: P
 								</EditorTableCell>
 								<EditorTableCell className='max-sm:col-span-3 max-sm:pb-0'>
 									<div className='flex min-w-0 items-center gap-1.5'>
-										<span className={isGilded ? 'text-(--color-gold)' : 'text-(--color-fg)'}>
+										<span className={cn('font-aeonik font-medium text-[14px]', isGilded ? 'text-(--color-gold)' : 'text-(--color-fg)')}>
 											{hero.name}
 										</span>
 										{isGilded ? (
