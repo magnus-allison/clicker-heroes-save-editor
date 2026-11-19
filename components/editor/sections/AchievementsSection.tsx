@@ -53,7 +53,7 @@ export const AchievementsSection = ({ anchor, defaultOpen, icon, title }: Props)
 							<tr>
 								<EditorTableImageHeaderCell>{tTable('image')}</EditorTableImageHeaderCell>
 								<EditorTableHeaderCell>{tTable('description')}</EditorTableHeaderCell>
-								<EditorTableHeaderCell>{tTable('unlocked')}</EditorTableHeaderCell>
+								<EditorTableHeaderCell className='text-right'>{tTable('unlocked')}</EditorTableHeaderCell>
 							</tr>
 						</EditorTableHead>
 						<EditorTableBody>
@@ -80,7 +80,7 @@ export const AchievementsSection = ({ anchor, defaultOpen, icon, title }: Props)
 										) : null}
 									</EditorTableCell>
 									<EditorTableCell className='align-top'>
-										<div className='flex justify-start pt-1'>
+										<div className='flex justify-end pt-1'>
 											<Checkbox
 												ariaLabel={t('unlockedAria', { name: achievement[0] })}
 												checked={Boolean(getValueAtPath(saveData, ['achievements', id]))}
