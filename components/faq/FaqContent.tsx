@@ -28,7 +28,7 @@ export const FaqContent: FC<{ locale: Locale }> = ({ locale }) => {
 										{String(index + 1).padStart(2, '0')}
 									</span>
 									<a
-										className='transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
+										className='transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)'
 										href={`#${section.id}`}
 									>
 										{section.title}

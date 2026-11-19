@@ -47,7 +47,7 @@ export const Breadcrumb: FC<Props> = ({ title, page }) => {
 				{page ? (
 					<nav aria-label={t('breadcrumb.label')} className='flex flex-row items-center'>
 						<Link
-							className={`${headingClassName} rounded-radius-control text-fg-dim transition-colors hover:text-fg-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring`}
+							className={`${headingClassName} rounded-radius-control text-fg-dim transition-colors hover:text-fg-strong focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)`}
 							href={href}
 						>
 							{groupName}

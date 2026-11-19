@@ -7,7 +7,7 @@ interface Props {
 }
 
 const linkClass =
-	'font-medium text-fg-strong underline decoration-(--color-primary) decoration-1 underline-offset-4 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)';
+	'font-medium text-fg-strong underline decoration-(--color-primary) decoration-1 underline-offset-4 transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)';
 
 /**
  * Inline prose link. Internal paths route through the locale-aware `Link`;

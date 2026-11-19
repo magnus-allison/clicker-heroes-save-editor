@@ -267,7 +267,7 @@ const HistoryTable = ({ columns, emptyMessage, entries, label, selection }: Hist
 											<button
 												aria-label={selection.getSelectLabel(entry)}
 												aria-pressed={isSelected}
-												className='rounded-(--radius-control) underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
+												className='rounded-(--radius-control) underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)'
 												onClick={() => selection.onSelect(entry.index)}
 												type='button'
 											>

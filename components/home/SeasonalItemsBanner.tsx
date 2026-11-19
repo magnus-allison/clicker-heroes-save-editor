@@ -9,7 +9,7 @@ export const SeasonalItemsBanner: FC = () => {
 
 	return (
 		<Link
-			className='group flex flex-wrap items-center gap-x-3 gap-y-2 rounded-(--radius-card) border border-(--color-gilded-line) bg-(--color-gilded-surface) px-4 py-2.5 hover:border-(--color-gold) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
+			className='group flex flex-wrap items-center gap-x-3 gap-y-2 rounded-(--radius-card) border border-(--color-gilded-line) bg-(--color-gilded-surface) px-4 py-2.5 hover:border-(--color-gold) focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)'
 			href='/tools/save-editor'
 		>
 			<span className='inline-flex h-5 shrink-0 items-center rounded-full border border-(--color-gilded-line) px-2 text-[10px] font-bold tracking-wide text-(--color-gold)'>

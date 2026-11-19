@@ -31,7 +31,7 @@ export const ToolLink = ({ children, className, href }: Props) => {
 	return (
 		<Link
 			className={cn(
-				'motion-press inline-flex h-10 items-center justify-center gap-2 rounded-(--radius-control) border border-(--color-line-soft) bg-(--color-surface-sunken) px-4 text-[13px] leading-none text-(--color-fg-muted) shadow-[var(--shadow-raised)] transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-snap hover:border-(--color-line-strong) hover:bg-(--color-surface-hover) hover:text-(--color-fg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)',
+				'motion-press inline-flex h-10 items-center justify-center gap-2 rounded-(--radius-control) border border-(--color-line-soft) bg-(--color-surface-sunken) px-4 text-[13px] leading-none text-(--color-fg-muted) shadow-[var(--shadow-raised)] transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-snap hover:border-(--color-line-strong) hover:bg-(--color-surface-hover) hover:text-(--color-fg) focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)',
 				className
 			)}
 			href={href}

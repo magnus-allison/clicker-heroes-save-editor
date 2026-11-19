@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useRef, useState } from 'react';
+import { FC, useId, useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/Button';
 import { cn } from 'cn';
@@ -86,7 +86,7 @@ export const NumberInput = ({
 			<input
 				aria-label={ariaLabel ?? placeholder ?? t('numberInput')}
 				className={cn(
-					'h-10 w-full min-w-0 rounded-(--radius-control) border border-(--color-line) bg-(--color-surface) px-2.5 text-(--color-fg) outline-none transition placeholder:text-(--color-fg-dim) hover:border-(--color-line-strong) focus:border-(--color-line-strong) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim) sm:w-auto sm:flex-1',
+					'h-10 w-full min-w-0 rounded-(--radius-control) border border-(--color-line) bg-(--color-surface-inset) px-2.5 text-(--color-fg) outline-none transition-[color,background-color,border-color,box-shadow] duration-150 placeholder:text-(--color-fg-dim) hover:border-(--color-line-strong) focus:border-(--color-line-strong) focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim) sm:w-auto sm:flex-1',
 					inputClassName || 'text-[13px]',
 					compact ? 'sm:min-w-0' : 'sm:min-w-34',
 					className
@@ -120,26 +120,35 @@ export const NumberInput = ({
 				value={displayValue}
 			/>
 			{increments.map((amount) => (
-				<Button
-					aria-label={`Increase by ${amount}`}
-					className='flex-none px-2'
-					disabled={disabled}
-					key={amount}
-					onPointerDown={(event) => {
-						event.preventDefault();
-						handleIncrement(amount);
-					}}
-					onKeyDown={(event) => {
-						if (event.key === 'Enter' || event.key === ' ') {
-							event.preventDefault();
-							handleIncrement(amount);
-						}
-					}}
-					variant='secondary'
-				>
-					{incrementLabel(amount)}
-				</Button>
+				<IncrementButton amount={amount} disabled={disabled} handleIncrement={handleIncrement} key={amount} />
 			))}
 		</div>
 	);
 };
+
+interface IncrementButtonProps {
+	amount: number;
+	disabled?: boolean;
+	handleIncrement: (amount: number) => void;
+}
+
+const IncrementButton: FC<IncrementButtonProps> = ({ amount, disabled, handleIncrement }) => (
+	<Button
+		aria-label={`Increase by ${amount}`}
+		className='flex-none bg-surface-inset px-2 hover:bg-surface-inset border-line hover:border-line-strong'
+		disabled={disabled}
+		onPointerDown={(event) => {
+			event.preventDefault();
+			handleIncrement(amount);
+		}}
+		onKeyDown={(event) => {
+			if (event.key === 'Enter' || event.key === ' ') {
+				event.preventDefault();
+				handleIncrement(amount);
+			}
+		}}
+		variant='secondary'
+	>
+		{incrementLabel(amount)}
+	</Button>
+);

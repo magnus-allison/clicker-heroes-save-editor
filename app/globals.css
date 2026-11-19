@@ -43,6 +43,9 @@
 	--color-surface-header: light-dark(#e6edf5, #1d1d1d);
 	--color-surface-hover: light-dark(#eaf0f7, #151515);
 	--color-surface-selected: light-dark(#e0f0e3, #1a2a1a);
+	/* A darkening wash for table headers and the inputs inside tables and panels:
+	   see-through, so it sits on whatever panel is behind it. */
+	--color-surface-inset: light-dark(color-mix(in oklab, #e6edf5 30%, transparent), rgba(0, 0, 0, 0.25));
 
 	/* Foreground ramp */
 	--color-fg-strong: light-dark(#0f1318, #f0f0f0);
@@ -51,11 +54,13 @@
 	--color-fg-muted: light-dark(#374858, #9a9a9a);
 	--color-fg-dim: light-dark(#50606e, #6c6c6c);
 
-	/* Borders */
-	--color-line-strong: light-dark(#8a9aaa, #494949);
-	--color-line: light-dark(#a6b3c0, #252525);
-	--color-line-soft: light-dark(#bac4cf, #2f2f2f);
-	--color-line-subtle: light-dark(#c8d2dc, #252525);
+	/* Borders. The dark values carry the same faint violet as the page, panels
+	   and panel edges (`--color-banner-*`), at the old neutral greys' lightness,
+	   so borders sit in the theme instead of reading as a colder grey. */
+	--color-line-strong: light-dark(#8a9aaa, #4a4758);
+	--color-line: light-dark(#a6b3c0, #262431);
+	--color-line-soft: light-dark(#bac4cf, #302e3b);
+	--color-line-subtle: light-dark(#c8d2dc, #262431);
 
 	/* Links */
 	--color-link: light-dark(#2c3d4e, #acacac);
@@ -84,7 +89,8 @@
 	--color-info-line: light-dark(rgba(29, 95, 156, 0.22), rgba(96, 165, 250, 0.3));
 
 	/* Effects */
-	--color-focus-ring: light-dark(rgba(44, 140, 65, 0.24), rgba(127, 214, 127, 0.25));
+	/* Keyboard focus outline, drawn 1px off the element, and text selection. */
+	--color-focus-ring: light-dark(rgba(15, 19, 24, 0.32), rgba(240, 240, 248, 0.32));
 	--color-shadow: light-dark(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.45));
 	--color-icon-filter: light-dark(none, invert(1));
 

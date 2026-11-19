@@ -31,7 +31,7 @@ export const SiteFooter: FC = () => {
 					{links.map((link) => (
 						<li key={link.href}>
 							<Link
-								className='inline-block py-1 transition-colors hover:text-fg-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'
+								className='inline-block py-1 transition-colors hover:text-fg-strong focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)'
 								href={link.href}
 							>
 								{link.title}

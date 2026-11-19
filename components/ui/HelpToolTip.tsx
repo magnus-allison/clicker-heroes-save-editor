@@ -35,7 +35,7 @@ export const HelpToolTip = ({ children, className, placement, size = 'inline', t
 				<button
 					aria-label={title}
 					className={cn(
-						'group inline-flex items-center justify-center rounded-full border border-transparent bg-transparent transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:opacity-45',
+						'group inline-flex items-center justify-center rounded-full border border-transparent bg-transparent transition-[color,background-color,border-color,box-shadow] focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring) disabled:cursor-not-allowed disabled:opacity-45',
 						size === 'control' ? 'h-10 min-h-10 w-10 min-w-10' : 'h-7 min-h-7 w-7 min-w-7'
 					)}
 					type='button'

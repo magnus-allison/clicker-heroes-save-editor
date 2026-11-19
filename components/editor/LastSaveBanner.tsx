@@ -125,7 +125,7 @@ export const LastSaveBanner = ({ onRestore }: Props) => {
 			</span>
 			<span className='ml-auto inline-flex shrink-0 items-center gap-3'>
 				<button
-					className='group inline-flex items-center gap-1.5 rounded-sm text-[11px] font-semibold text-(--color-banner-accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
+					className='group inline-flex items-center gap-1.5 rounded-sm text-[11px] font-semibold text-(--color-banner-accent) focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)'
 					onClick={restore}
 					type='button'
 				>
@@ -137,7 +137,7 @@ export const LastSaveBanner = ({ onRestore }: Props) => {
 				</button>
 				<button
 					aria-label={t('dismissLabel')}
-					className='inline-flex h-5 w-5 items-center justify-center rounded-sm text-(--color-fg-dim) transition-colors hover:text-(--color-fg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)'
+					className='inline-flex h-5 w-5 items-center justify-center rounded-sm text-(--color-fg-dim) transition-colors hover:text-(--color-fg) focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)'
 					onClick={clearLastSave}
 					title={t('dismissLabel')}
 					type='button'

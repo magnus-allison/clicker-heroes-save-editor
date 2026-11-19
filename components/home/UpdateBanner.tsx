@@ -6,7 +6,7 @@ import { toolLinks } from '@/components/tools/tool-links';
 import { Link } from '@/i18n/navigation';
 
 const linkClassName =
-	'group inline-flex items-center gap-1.5 rounded-sm text-[11px] font-semibold text-(--color-info) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)';
+	'group inline-flex items-center gap-1.5 rounded-sm text-[11px] font-semibold text-(--color-info) focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)';
 
 /**
  * Home-page notice for the latest game update (currently the Orc auto clicker

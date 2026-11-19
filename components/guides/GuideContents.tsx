@@ -91,7 +91,7 @@ export const GuideContents: FC<Props> = ({ heading, label, parts }) => {
 						<li key={part.id}>
 							<a
 								className={cn(
-									'flex items-baseline gap-2 rounded-(--radius-control) font-aeonik text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors hover:text-fg-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) [word-spacing:0.12em]',
+									'flex items-baseline gap-2 rounded-(--radius-control) font-aeonik text-[12px] font-semibold uppercase tracking-[0.08em] transition-colors hover:text-fg-strong focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring) [word-spacing:0.12em]',
 									partActive ? 'text-fg-strong' : 'text-(--color-fg-secondary)'
 								)}
 								href={`#${part.id}`}
@@ -116,7 +116,7 @@ export const GuideContents: FC<Props> = ({ heading, label, parts }) => {
 											<a
 												aria-current={isActive ? 'location' : undefined}
 												className={cn(
-													'-ml-px block border-l py-1 pl-3.5 text-[12px] leading-5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)',
+													'-ml-px block border-l py-1 pl-3.5 text-[12px] leading-5 transition-colors focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)',
 													isActive
 														? 'border-(--color-primary) text-fg-strong'
 														: 'border-transparent text-(--color-fg-muted) hover:border-(--color-line-strong) hover:text-fg-strong'

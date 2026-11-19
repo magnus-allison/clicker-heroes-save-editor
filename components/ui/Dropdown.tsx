@@ -19,7 +19,7 @@ export const Dropdown = ({ className, options, placeholder, value, ...props }: P
 			<select
 				aria-label={ariaLabel}
 				className={cn(
-					'h-10 w-full appearance-none rounded-(--radius-control) border border-line bg-(--color-surface) px-2.5 pr-8 text-[13px] text-(--color-fg) shadow-[inset_0_1px_2px_var(--color-shadow)] outline-none transition-[border-color,box-shadow,background-color] duration-150 ease-snap hover:border-(--color-line-strong) focus:border-(--color-primary-line) focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim) disabled:shadow-none',
+					'h-10 w-full appearance-none rounded-(--radius-control) border border-line bg-(--color-surface-inset) px-2.5 pr-8 text-[13px] text-(--color-fg) shadow-[inset_0_1px_2px_var(--color-shadow)] outline-none transition-[border-color,box-shadow,background-color] duration-150 ease-snap hover:border-(--color-line-strong) focus:border-(--color-primary-line) focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim) disabled:shadow-none',
 					className
 				)}
 				value={value}

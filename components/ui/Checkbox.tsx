@@ -31,11 +31,10 @@ export const Checkbox = ({ ariaLabel, checked, className, disabled, id, label, o
 		<label
 			htmlFor={resolvedId}
 			className={cn(
-				'inline-flex h-10 min-h-10 shrink-0 items-center rounded-(--radius-control) border border-(--color-line) bg-(--color-surface) text-(--color-fg) shadow-[inset_0_1px_2px_var(--color-shadow)] outline-none transition-[border-color,background-color,color,box-shadow] duration-150 ease-snap hover:border-(--color-line-strong) focus-within:border-(--color-primary-line) focus-within:ring-2 focus-within:ring-(--color-focus-ring)',
+				'inline-flex h-10 min-h-10 shrink-0 items-center rounded-(--radius-control) border border-(--color-line) bg-(--color-surface-inset) text-(--color-fg) shadow-[inset_0_1px_2px_var(--color-shadow)] outline-none transition-[border-color,background-color,color,box-shadow] duration-150 ease-snap hover:border-(--color-line-strong) focus-within:outline-2 focus-within:outline-solid focus-within:outline-offset-1 focus-within:outline-(--color-focus-ring)',
 				hasLabel ? 'min-w-10 gap-2 px-2.5' : 'w-10 min-w-10 justify-center',
-				checked &&
-					!disabled &&
-					'border-primary-line bg-(--color-primary-surface) text-(--color-fg-strong) shadow-[var(--shadow-raised)]',
+				checked && !disabled && 'border-(--color-line-strong) text-(--color-fg-strong)',
+				// Ticked reads through the white tick and brighter edge, not a fill.
 				disabled
 					? 'cursor-not-allowed border-(--color-line-soft) bg-(--color-surface-sunken) text-(--color-fg-dim)'
 					: 'cursor-pointer',
@@ -54,10 +53,10 @@ export const Checkbox = ({ ariaLabel, checked, className, disabled, id, label, o
 			<Check
 				aria-hidden='true'
 				className={cn(
-					// Scale-in on the tick is the only feedback for the `hasLabel: false`
+					// Scale-in on the tick is the main feedback for the `hasLabel: false`
 					// variant, where the box itself barely changes size.
-					'h-3.5 w-3.5 flex-none transition-[opacity,transform,color] duration-150 ease-spring',
-					checked ? 'scale-100 text-(--color-primary) opacity-100' : 'scale-50 opacity-0',
+					'h-4.5 w-4.5 flex-none transition-[opacity,transform,color] duration-150 ease-spring',
+					checked ? 'scale-100 text-(--color-fg-strong) opacity-100' : 'scale-50 opacity-0',
 					disabled && checked && 'text-(--color-fg-dim)'
 				)}
 				strokeWidth={3}

@@ -43,7 +43,7 @@ export const AnchorLink = ({ anchor, className, label }: Props) => {
 		<a
 			aria-label={t('copyLink', { section: label })}
 			className={cn(
-				'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-(--radius-control) text-(--color-fg-dim) transition-[opacity,color] duration-150 hover:text-(--color-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong',
+				'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-(--radius-control) text-(--color-fg-dim) transition-[opacity,color] duration-150 hover:text-(--color-primary) focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)',
 				className
 			)}
 			href={`#${anchor}`}

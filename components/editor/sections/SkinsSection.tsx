@@ -4,6 +4,7 @@ import { cn } from 'cn';
 import { CheckIcon, type LucideIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+import { SaveDataButton } from '@/components/editor/SaveDataButton';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { CollapsiblePanel } from '@/components/ui/CollapsiblePanel';
 import { EditorImage } from '@/components/ui/EditorImage';
@@ -18,7 +19,6 @@ import {
 import { autoClickerSkins } from '@/lib/data/editor-config';
 import { useSaveStore } from '@/lib/save-store';
 import { getValueAtPath, setValueAtPath } from '@/lib/save-utils';
-import { Pill } from '@/components/ui/Pill';
 
 type Props = {
 	/** Hash id that links straight to this section (see `CollapsiblePanel`). */
@@ -44,9 +44,9 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 	return (
 		<CollapsiblePanel anchor={anchor} defaultOpen={defaultOpen} icon={icon} title={t('title')}>
 			<div className='space-y-6'>
-				<div className='flex items-center justify-between gap-3'>
-					<Pill
-						className='disabled:border-transparent disabled:opacity-45 cursor-pointer'
+				<div className='flex items-center justify-end gap-3'>
+					<SaveDataButton
+						className='mt-0 w-auto'
 						disabled={!saveData || allUnlocked}
 						onClick={() => {
 							if (!saveData) {
@@ -62,17 +62,23 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 							});
 							showToast(t('allUnlocked'));
 						}}
-					>
-						{t('unlockAll')}
-					</Pill>
+						title={t('unlockAll')}
+						variant='neutral'
+					/>
 				</div>
 
-				<EditorTable label={t('tableLabel')}>
+				<EditorTable label={t('tableLabel')} tableClassName='w-full table-fixed'>
+					{/* The item tables' column widths, so names and images line up across sections. */}
+					<colgroup>
+						<col className='w-18 sm:w-22' />
+						<col className='w-[28%] sm:w-52' />
+						<col className='w-[52%] sm:w-120' />
+					</colgroup>
 					<EditorTableHead>
 						<tr>
 							<EditorTableHeaderCell>{tTable('image')}</EditorTableHeaderCell>
 							<EditorTableHeaderCell>{tTable('skinName')}</EditorTableHeaderCell>
-							<EditorTableHeaderCell>{tTable('unlocked')}</EditorTableHeaderCell>
+							<EditorTableHeaderCell className='text-right'>{tTable('unlocked')}</EditorTableHeaderCell>
 						</tr>
 					</EditorTableHead>
 					<EditorTableBody>
@@ -88,7 +94,7 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 								</EditorTableCell>
 								<EditorTableCell className='text-(--color-fg)'>{skin.name}</EditorTableCell>
 								<EditorTableCell>
-									<div className='flex justify-start'>
+									<div className='flex justify-end'>
 										<Checkbox
 											ariaLabel={t('unlockedAria', { name: skin.name })}
 											checked={Boolean(getValueAtPath(saveData, ['autoclickerSkins', skin.id]))}
@@ -116,7 +122,7 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 								<button
 									aria-checked={isSelected}
 									className={cn(
-										'group flex h-12 items-center gap-2.5 rounded-xl pr-3 pl-1.5 text-left shadow-card transition-[background-color,box-shadow,color] duration-150 focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-45',
+										'group flex h-12 items-center gap-2.5 rounded-xl pr-3 pl-1.5 text-left shadow-card transition-[background-color,box-shadow,color] duration-150 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring) disabled:cursor-not-allowed disabled:opacity-45',
 										isSelected
 											? 'bg-(--color-primary-surface) text-(--color-fg-strong) shadow-[0_0_0_1px_var(--color-primary-line)]'
 											: 'text-fg-dim enabled:hover:bg-(--color-surface-hover) enabled:hover:text-fg-strong enabled:hover:shadow-card-hover'

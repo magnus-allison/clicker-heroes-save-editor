@@ -56,7 +56,7 @@ export const LocaleSwitcher = () => {
 		<details className='group relative w-fit' ref={detailsRef}>
 			<summary
 				aria-label={`${t('footer.language')}: ${t(`localeNames.${locale}`)}`}
-				className='flex h-8 cursor-pointer list-none items-center gap-2 rounded-(--radius-control) border border-line bg-(--color-surface) px-2.5 text-(--color-fg) transition-[border-color,background-color] duration-150 ease-snap select-none hover:border-(--color-line-strong) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring [&::-webkit-details-marker]:hidden'
+				className='flex h-8 cursor-pointer list-none items-center gap-2 rounded-(--radius-control) border border-line bg-(--color-surface) px-2.5 text-(--color-fg) transition-[border-color,background-color] duration-150 ease-snap select-none hover:border-(--color-line-strong) focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring) [&::-webkit-details-marker]:hidden'
 			>
 				<Languages aria-hidden='true' className='h-3.5 w-3.5 text-(--color-fg-dim)' />
 				<span lang={locale}>{t(`localeNames.${locale}`)}</span>

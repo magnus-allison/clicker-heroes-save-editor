@@ -20,7 +20,7 @@ export const PanelSection = ({ children, className, id, ref }: Props) => {
 			id={id}
 			ref={ref}
 			className={cn(
-				'glass-panel group flex w-full flex-col overflow-hidden rounded-2xl p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line-strong',
+				'glass-panel group flex w-full flex-col overflow-hidden rounded-2xl p-5 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)',
 				className
 			)}
 		>

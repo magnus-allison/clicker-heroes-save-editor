@@ -58,7 +58,7 @@ export const EditorTableHead = ({ children, className, ...props }: EditorTableHe
 	return (
 		<thead
 			className={cn(
-				'border-b border-(--color-banner-edge) bg-[light-dark(color-mix(in_oklab,var(--color-surface-header)_30%,transparent),rgba(0,0,0,0.25))] text-[11px] uppercase tracking-[0.11em] text-(--color-fg-muted)',
+				'border-b border-(--color-banner-edge) bg-(--color-surface-inset) text-[11px] uppercase tracking-[0.11em] text-(--color-fg-muted)',
 				className
 			)}
 			{...props}

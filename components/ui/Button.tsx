@@ -53,7 +53,7 @@ export const buttonClassName = ({
 	variant = 'secondary'
 }: ButtonStyle = {}) =>
 	cn(
-		'motion-press inline-flex items-center justify-center gap-2 rounded-(--radius-control) border bg-(--color-surface-strong) leading-none text-(--color-fg) transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-snap hover:border-(--color-line-strong) hover:bg-(--color-surface-hover) active:bg-(--color-surface-muted) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim) disabled:shadow-none',
+		'motion-press inline-flex items-center justify-center gap-2 rounded-(--radius-control) border bg-(--color-surface-strong) leading-none text-(--color-fg) transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-snap hover:border-(--color-line-strong) hover:bg-(--color-surface-hover) active:bg-(--color-surface-muted) focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring) disabled:cursor-not-allowed disabled:border-(--color-line-soft) disabled:bg-(--color-surface-sunken) disabled:text-(--color-fg-dim) disabled:shadow-none',
 		variantClasses[variant],
 		sizeClasses[size],
 		fullWidth && 'w-full',

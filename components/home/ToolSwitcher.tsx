@@ -92,7 +92,7 @@ export const ToolSwitcher = ({ page, id, className }: Props) => {
 				<button
 					aria-controls={listId}
 					aria-expanded={isOpen}
-					className='group -mx-1 flex cursor-pointer items-center gap-1 rounded-radius-control px-1 uppercase transition-colors hover:text-fg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring'
+					className='group -mx-1 flex cursor-pointer items-center gap-1 rounded-radius-control px-1 uppercase transition-colors hover:text-fg-secondary focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring)'
 					onClick={() => setIsOpen((open) => !open)}
 					ref={buttonRef}
 					type='button'
