@@ -3,14 +3,13 @@ import { type Messages, useLocale, useTranslations } from 'next-intl';
 
 import { GildingLookup } from '@/components/guides/gilding-chart/GildingLookup';
 import { GildingTable } from '@/components/guides/gilding-chart/GildingTable';
-import { useGildingPhaseRange } from '@/hooks/useGildingPhaseRange';
 import type { GuideIndexPart } from '@/components/guides/GuideContents';
 import { GuideLayout } from '@/components/guides/GuideLayout';
 import { GuideLink } from '@/components/guides/GuideLink';
 import { GuideList, GuideListItem } from '@/components/guides/GuideList';
 import { GuidePart } from '@/components/guides/GuidePart';
 import { GuideSection } from '@/components/guides/GuideSection';
-import { gildingPhases } from '@/lib/gilding-chart';
+import { formatGoldExponent, type GildingPhase, gildingPhases } from '@/lib/gilding-chart';
 import { gildingChartFaqs } from '@/lib/seo';
 
 type Sections = Messages['guides']['gildingChart']['sections'];
@@ -83,7 +82,10 @@ export const GildingChartGuide: FC = () => {
 	const t = useTranslations('guides.gildingChart');
 	const tUi = useTranslations('guidesUi.gildingChart');
 	const locale = useLocale();
-	const phaseRange = useGildingPhaseRange();
+	const phaseRange = ({ rangeFrom, rangeTo }: GildingPhase) =>
+		rangeTo === null
+			? t('rangeOnwards', { from: formatGoldExponent(rangeFrom, locale) })
+			: t('range', { from: formatGoldExponent(rangeFrom, locale), to: formatGoldExponent(rangeTo, locale) });
 
 	const parts = structure.map((part) => ({
 		id: part.id,

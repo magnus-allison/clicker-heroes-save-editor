@@ -1,8 +1,6 @@
 import { Fragment, type FC } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
-import { useGildingPhaseRange } from '@/hooks/useGildingPhaseRange';
-
 import {
 	EditorTable,
 	EditorTableBody,
@@ -14,6 +12,7 @@ import {
 import {
 	formatChartNumbers,
 	formatGoldExponent,
+	type GildingPhase,
 	gildingPhases,
 	gildingRows
 } from '@/lib/gilding-chart';
@@ -31,8 +30,11 @@ export const GildingTable: FC = () => {
 	const t = useTranslations('guides.gildingChart');
 	// Phase titles and row notes are shared with the client-side lookup.
 	const tUi = useTranslations('guidesUi.gildingChart');
-	const phaseRange = useGildingPhaseRange();
 	const locale = useLocale();
+	const phaseRange = ({ rangeFrom, rangeTo }: GildingPhase) =>
+		rangeTo === null
+			? t('rangeOnwards', { from: formatGoldExponent(rangeFrom, locale) })
+			: t('range', { from: formatGoldExponent(rangeFrom, locale), to: formatGoldExponent(rangeTo, locale) });
 
 	return (
 		<EditorTable className='rounded-none border-x-0' label={t('table.label')}>

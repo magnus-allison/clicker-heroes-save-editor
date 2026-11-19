@@ -12,7 +12,7 @@ import { describeChange } from '@/lib/save-diff-labels';
 import { useSaveStore } from '@/hooks/useSaveStore';
 
 const countClassName =
-	'rounded-full border border-(--color-line) bg-(--color-surface) px-2 py-0.5 text-[11px] tabular-nums text-(--color-fg-muted)';
+	'rounded-full border border-line bg-surface-inset px-2 py-0.5 text-[11px] tabular-nums text-fg-muted';
 
 type Props = {
 	defaultOpen?: boolean;
@@ -50,7 +50,7 @@ export const SaveChangesSummary = ({ defaultOpen }: Props) => {
 
 	if (describedChanges.length === 0) {
 		return (
-			<div className='flex items-center gap-2 rounded-(--radius-card) border border-(--color-line) bg-(--color-surface-sunken) px-3 py-2.5 text-[12px] text-(--color-fg-dim)'>
+			<div className='flex items-center gap-2 rounded-control border border-line bg-surface-inset px-3 py-2.5 text-[12px] text-fg-dim'>
 				<ChevronRight aria-hidden='true' className='h-3.5 w-3.5 shrink-0 opacity-50' />
 				<span className='font-semibold'>{t('title')}</span>
 				<span className={countClassName}>0</span>
@@ -60,27 +60,24 @@ export const SaveChangesSummary = ({ defaultOpen }: Props) => {
 	}
 
 	return (
-		<details
-			className='group rounded-(--radius-card) border border-(--color-line) bg-(--color-surface-sunken)'
-			open={defaultOpen}
-		>
-			<summary className='flex cursor-pointer list-none items-center gap-2 px-3 py-2.5 text-[12px] text-(--color-fg) transition-colors duration-150 ease-snap marker:hidden hover:text-(--color-fg-strong) [&::-webkit-details-marker]:hidden'>
+		<details className='group rounded-control border border-line bg-surface-inset' open={defaultOpen}>
+			<summary className='flex cursor-pointer list-none items-center gap-2 px-3 py-2.5 text-[12px] text-fg transition-colors duration-150 ease-snap marker:hidden hover:bg-surface-hover hover:text-fg-strong group-open:bg-surface-strong [&::-webkit-details-marker]:hidden'>
 				<ChevronRight
 					aria-hidden='true'
-					className='h-3.5 w-3.5 shrink-0 text-(--color-fg-dim) transition-transform duration-200 ease-snap group-open:rotate-90 group-open:text-(--color-primary)'
+					className='h-3.5 w-3.5 shrink-0 text-fg-dim transition-transform duration-200 ease-snap group-open:rotate-90 group-open:text-primary'
 				/>
 				<span className='font-semibold'>{t('title')}</span>
 				<span className={countClassName}>
 					{describedChanges.length}
 					{truncated ? '+' : ''}
 				</span>
-				<span className='ml-auto text-[11px] text-(--color-fg-dim)'>{t('versus')}</span>
+				<span className='ml-auto text-[11px] text-fg-dim'>{t('versus')}</span>
 			</summary>
 
-			<ul className='max-h-72 overflow-y-auto border-t border-(--color-line-subtle)'>
+			<ul className='max-h-72 overflow-y-auto border-t border-line-subtle'>
 				{rows.map((change) => (
 					<li
-						className='grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-(--color-line-subtle) px-3 py-2 last:border-b-0'
+						className='grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-line-subtle px-3 py-2 last:border-b-0'
 						key={change.key}
 					>
 						{change.imageSrc ? (
@@ -91,19 +88,19 @@ export const SaveChangesSummary = ({ defaultOpen }: Props) => {
 								src={change.imageSrc}
 							/>
 						) : (
-							<div className='h-7 w-7 shrink-0 rounded-(--radius-control) border border-dashed border-(--color-line-soft)' />
+							<div className='h-7 w-7 shrink-0 rounded-control border border-dashed border-line-soft' />
 						)}
-						<span className='min-w-0 truncate text-[12px] text-(--color-fg)' title={change.label}>
+						<span className='min-w-0 truncate text-[12px] text-fg' title={change.label}>
 							{change.label}
 						</span>
 						<span className='flex shrink-0 items-center gap-1.5 text-[12px] tabular-nums'>
-							<span className='max-w-28 truncate text-(--color-fg-dim)' title={change.from}>
+							<span className='max-w-28 truncate text-fg-dim' title={change.from}>
 								{change.from}
 							</span>
-							<span aria-hidden='true' className='text-(--color-fg-dim)'>
+							<span aria-hidden='true' className='text-fg-dim'>
 								→
 							</span>
-							<span className='max-w-28 truncate font-semibold text-(--color-fg-strong)' title={change.to}>
+							<span className='max-w-28 truncate font-semibold text-fg-strong' title={change.to}>
 								{change.to}
 							</span>
 						</span>
@@ -112,7 +109,7 @@ export const SaveChangesSummary = ({ defaultOpen }: Props) => {
 			</ul>
 
 			{truncated ? (
-				<p className='border-t border-(--color-line-subtle) px-3 py-2 text-[11px] text-(--color-fg-dim)'>
+				<p className='border-t border-line-subtle px-3 py-2 text-[11px] text-fg-dim'>
 					{t('truncated', { count: MAX_CHANGES })}
 				</p>
 			) : null}
