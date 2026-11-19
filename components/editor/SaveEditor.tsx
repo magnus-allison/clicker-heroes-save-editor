@@ -61,7 +61,7 @@ export const SaveEditor = () => {
 			<div className={cn(!hasSave && 'pointer-events-none opacity-40 select-none')} inert={!hasSave}>
 				<div ref={step2Ref} className='mt-5 mb-10 flex scroll-mt-8 flex-row items-center gap-3'>
 					<Pill isShining={activeStep === 2}>{tCommon('step', { number: 2 })}</Pill>
-					<CardTitle title={t('editTitle')} className='pt-1' />
+					<CardTitle as='h2' title={t('editTitle')} className='pt-1' />
 				</div>
 				<div className='flex flex-col gap-5'>
 					<SimpleFieldsSection

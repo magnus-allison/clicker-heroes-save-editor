@@ -118,7 +118,7 @@ export const SaveImportField = ({
 					{tCommon('step', { number: 1 })}
 				</Pill>
 			</span>
-			<CardTitle className={tabbed?.title} title={t('importField.title')} />
+			<CardTitle as='h2' className={tabbed?.title} title={t('importField.title')} />
 
 			<div className='flex flex-1 flex-col gap-2.5'>
 				<input

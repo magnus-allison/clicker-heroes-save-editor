@@ -167,15 +167,21 @@ export const ExternalLinkCard: FC<Props & { icon: string; tintIcon?: boolean }> 
 interface CardTitleProps {
 	title: string;
 	className?: string;
+	/**
+	 * Heading level. Cards in a home page list sit under an `<h2>` section, so
+	 * `h3`; a tool page's own steps (import, export, edit) sit right under the
+	 * page's `<h1>`, so they pass `h2` to keep the outline from skipping a level.
+	 */
+	as?: 'h2' | 'h3';
 }
 
-export const CardTitle: FC<CardTitleProps> = ({ title, className }) => (
-	<h3
+export const CardTitle: FC<CardTitleProps> = ({ title, className, as: Heading = 'h3' }) => (
+	<Heading
 		className={cn(
 			'font-aeonik mt-4 mb-6 block text-[1.24rem] tracking-wide font-semibold uppercase text-balance text-fg-strong [word-spacing:0.2em]',
 			className
 		)}
 	>
 		{title}
-	</h3>
+	</Heading>
 );

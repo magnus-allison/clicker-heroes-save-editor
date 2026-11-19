@@ -107,7 +107,7 @@ export const SaveExportField = ({
 						{tCommon('step', { number: 3 })}
 					</Pill>
 				</span>
-				<CardTitle className={tabbed?.title} title={t('exportField.title')} />
+				<CardTitle as='h2' className={tabbed?.title} title={t('exportField.title')} />
 				<div className='flex flex-1 flex-col gap-2.5'>
 					<div className='flex flex-wrap items-center gap-2'>
 						<button
