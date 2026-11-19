@@ -67,7 +67,7 @@ export const OutsidersSection = ({ anchor, defaultOpen, icon, title }: Props) =>
 		>
 			<div className='space-y-6'>
 				<div>
-					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+					<p className='mb-3 font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 						{t('soulTotals')}
 					</p>
 					<EditorTable label={t('soulTotals')}>

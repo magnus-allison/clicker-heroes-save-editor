@@ -137,7 +137,7 @@ export const SaveConverterPanel = () => {
 					<div className='grid gap-4 p-4 md:grid-cols-[minmax(0,1fr)_minmax(220px,0.7fr)] md:items-end'>
 						<div className='grid gap-3 sm:grid-cols-2'>
 							<div className='rounded-(--radius-card) border border-(--color-line-soft) bg-(--color-surface) px-3 py-2.5 shadow-[var(--shadow-raised)]'>
-								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+								<p className='font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 									{t('detectedOrigin')}
 								</p>
 								<p className='mt-1 text-[13px] font-semibold text-(--color-fg-strong)'>
@@ -145,7 +145,7 @@ export const SaveConverterPanel = () => {
 								</p>
 							</div>
 							<div className='rounded-(--radius-card) border border-(--color-line-soft) bg-(--color-surface) px-3 py-2.5 shadow-[var(--shadow-raised)]'>
-								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+								<p className='font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 									{t('patchNumber')}
 								</p>
 								<p className='mt-1 text-[13px] font-semibold text-(--color-fg-strong)'>
@@ -154,7 +154,7 @@ export const SaveConverterPanel = () => {
 							</div>
 						</div>
 						<label className='grid gap-1.5'>
-							<span className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+							<span className='font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 								{t('outputDevice')}
 							</span>
 							<Dropdown

@@ -42,7 +42,9 @@ export const MercenariesSection = ({ anchor, defaultOpen, icon, title }: Props) 
 				</div>
 
 				<div>
-					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>{t('summary')}</p>
+					<p className='mb-3 font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+						{t('summary')}
+					</p>
 					<EditorTable label={t('summaryLabel')}>
 						<EditorTableBody>
 							{mercenarySummaryFields.map((field) => (
@@ -63,7 +65,9 @@ export const MercenariesSection = ({ anchor, defaultOpen, icon, title }: Props) 
 				</div>
 
 				<div>
-					<p className='mb-3 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>{t('roster')}</p>
+					<p className='mb-3 font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+						{t('roster')}
+					</p>
 					<EditorTable label={t('roster')}>
 						<EditorTableBody>
 							{mercenarySlots.map((slot) => (

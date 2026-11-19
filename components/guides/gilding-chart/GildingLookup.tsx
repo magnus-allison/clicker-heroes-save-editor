@@ -17,7 +17,9 @@ import { formatNumber } from '@/lib/format';
 
 const Stat = ({ label, value }: { label: string; value: string }) => (
 	<div className='min-w-0'>
-		<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>{label}</p>
+		<p className='font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+			{label}
+		</p>
 		<p className='mt-0.5 truncate font-mono text-[15px] text-fg-strong'>{value}</p>
 	</div>
 );
@@ -80,7 +82,7 @@ export const GildingLookup = () => {
 
 			{row ? (
 				<div className='mt-4 rounded-(--radius-card) border border-(--color-gilded-line) bg-(--color-gilded-surface) p-4'>
-					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+					<p className='font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 						{t('lookup.phase', { phase: row.phase, title: t(`phases.${row.phase}`) })}
 					</p>
 					<p className='mt-1 flex items-center gap-2 text-[1.15rem] font-semibold leading-tight text-fg-strong'>

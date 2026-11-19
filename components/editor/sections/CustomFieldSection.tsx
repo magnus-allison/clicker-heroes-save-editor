@@ -46,7 +46,7 @@ export const CustomFieldSection = ({ anchor, defaultOpen, icon, title }: Props) 
 			<div className='grid gap-4 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)]'>
 				<div className='space-y-4'>
 					<div>
-						<p className='mb-2 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+						<p className='mb-2 font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 							{t('searchLabel')}
 						</p>
 						<Dropdown
@@ -58,7 +58,7 @@ export const CustomFieldSection = ({ anchor, defaultOpen, icon, title }: Props) 
 						/>
 					</div>
 					<div>
-						<p className='mb-2 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+						<p className='mb-2 font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 							{t('fieldName')}
 						</p>
 						<div className='rounded-(--radius-card) border border-(--color-line) bg-(--color-surface-sunken) px-4 py-3 text-[13px] text-(--color-fg) shadow-[inset_0_1px_2px_var(--color-shadow)]'>
@@ -68,7 +68,7 @@ export const CustomFieldSection = ({ anchor, defaultOpen, icon, title }: Props) 
 				</div>
 
 				<div>
-					<p className='mb-2 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+					<p className='mb-2 font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 						{t('fieldValue')}
 					</p>
 					{typeof currentValue === 'boolean' ? (

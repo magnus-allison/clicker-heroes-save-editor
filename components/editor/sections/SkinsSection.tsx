@@ -109,43 +109,48 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 				</EditorTable>
 
 				<div>
-					<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>{t('currentSkin')}</p>
-					<div
-						aria-label={t('currentSkin')}
-						className='mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3'
-						role='radiogroup'
-					>
+					<p className='font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+						{t('currentSkin')}
+					</p>
+					<div aria-label={t('currentSkin')} className='mt-3 flex flex-wrap gap-2' role='radiogroup'>
 						{autoClickerSkins.map((skin) => {
 							const isSelected = selectedSkinId === skin.id;
 
 							return (
+								// Picture only: the name lives in the accessible label and the hover title.
 								<button
 									aria-checked={isSelected}
+									aria-label={skin.name}
 									className={cn(
-										'group flex h-12 items-center gap-2.5 rounded-xl pr-3 pl-1.5 text-left shadow-card transition-[background-color,box-shadow,color] duration-150 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring) disabled:cursor-not-allowed disabled:opacity-45',
+										'group relative flex h-14 w-14 items-center justify-center rounded-(--radius-control) border bg-(--color-surface-inset) transition-[background-color,border-color] duration-150 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-1 focus-visible:outline-(--color-focus-ring) disabled:cursor-not-allowed disabled:opacity-45',
 										isSelected
-											? 'bg-(--color-primary-surface) text-(--color-fg-strong) shadow-[0_0_0_1px_var(--color-primary-line)]'
-											: 'text-fg-dim enabled:hover:bg-(--color-surface-hover) enabled:hover:text-fg-strong enabled:hover:shadow-card-hover'
+											? 'border-(--color-fg-dim) bg-(--color-surface-hover)'
+											: 'border-(--color-line) enabled:hover:border-(--color-line-strong)'
 									)}
 									disabled={!saveData}
 									key={skin.id}
 									onClick={() => updateValue(['currentAutoclickerSkin'], skin.id)}
 									role='radio'
+									title={skin.name}
 									type='button'
 								>
-									<span className='flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-surface-raised'>
-										<EditorImage
-											alt=''
-											className='h-7 w-7 object-contain transition-transform duration-150 group-enabled:group-hover:scale-110'
-											size={28}
-											src={skin.imageSrc}
-										/>
-									</span>
-									<span className='min-w-0 flex-1 truncate font-aeonik text-[13px] tracking-wide'>
-										{skin.name}
-									</span>
+									<EditorImage
+										alt=''
+										className={cn(
+											'h-10 w-10 object-contain transition-[opacity,transform] duration-150 group-enabled:group-hover:scale-110',
+											isSelected ? 'opacity-100' : 'opacity-60 group-enabled:group-hover:opacity-100'
+										)}
+										size={40}
+										src={skin.imageSrc}
+									/>
 									{isSelected && (
-										<CheckIcon aria-hidden='true' className='h-3.5 w-3.5 shrink-0 text-(--color-primary)' />
+										<span className='absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full border border-(--color-fg-dim) bg-(--color-background)'>
+											<CheckIcon
+												aria-hidden='true'
+												className='h-2.5 w-2.5 text-(--color-fg-strong)'
+												strokeWidth={3.5}
+											/>
+										</span>
 									)}
 								</button>
 							);

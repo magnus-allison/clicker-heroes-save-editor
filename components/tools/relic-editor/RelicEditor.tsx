@@ -121,7 +121,7 @@ export const RelicEditor = () => {
 						</ul>
 
 						<div className='flex flex-wrap items-end gap-6'>
-							<label className='grid gap-1.5 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+							<label className='grid gap-1.5 font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 								{t('forgeCores')}
 								<NumberInput
 									allowDecimal={false}
@@ -135,7 +135,7 @@ export const RelicEditor = () => {
 							</label>
 
 							<div className='grid gap-1.5'>
-								<span className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+								<span className='font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 									{t('add.label')}
 								</span>
 								<div className='flex items-center gap-2'>
@@ -247,7 +247,7 @@ const RelicCard = ({ entry, slotOptions, onRemove }: RelicCardProps) => {
 			</header>
 
 			<div className='grid gap-3 sm:grid-cols-2'>
-				<label className='grid gap-1.5 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim) sm:col-span-2'>
+				<label className='grid gap-1.5 font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim) sm:col-span-2'>
 					{t('relic.look')}
 					<Dropdown
 						aria-label={t('relic.lookAria', { name })}
@@ -256,7 +256,7 @@ const RelicCard = ({ entry, slotOptions, onRemove }: RelicCardProps) => {
 						value={imageId === null ? '' : String(imageId)}
 					/>
 				</label>
-				<label className='grid gap-1.5 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+				<label className='grid gap-1.5 font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 					{t('relic.slot')}
 					<Dropdown
 						aria-label={t('relic.slotAria', { name })}
@@ -270,7 +270,7 @@ const RelicCard = ({ entry, slotOptions, onRemove }: RelicCardProps) => {
 						value={entry.slot === null ? NO_SLOT : String(entry.slot)}
 					/>
 				</label>
-				<label className='grid gap-1.5 text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+				<label className='grid gap-1.5 font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 					{t('relic.rarity')}
 					<Dropdown
 						aria-label={t('relic.rarityAria', { name })}

@@ -169,7 +169,7 @@ export const RemoveClanDataEditor = () => {
 						<div className='flex flex-col gap-3'>
 							<p className='text-[13px] leading-6 text-(--color-fg-secondary)'>{t('intro')}</p>
 							<div className='flex flex-col gap-2'>
-								<p className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+								<p className='font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 									{t('whatGetsRemoved')}
 								</p>
 								<EditorTable label={t('tableLabel')}>
@@ -206,7 +206,7 @@ export const RemoveClanDataEditor = () => {
 						</div>
 
 						<div className='flex flex-col gap-2'>
-							<h3 className='text-[11px] uppercase tracking-[0.08em] text-(--color-fg-dim)'>
+							<h3 className='font-aeonik text-[11px] font-semibold uppercase tracking-[0.08em] text-(--color-fg-dim)'>
 								{t('removedTitle')}
 							</h3>
 							{removedClanEntries ? (
