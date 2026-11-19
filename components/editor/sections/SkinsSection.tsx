@@ -37,9 +37,18 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 	const selectedSkinId = Number(
 		getValueAtPath(saveData, ['currentAutoclickerSkin']) ?? autoClickerSkins[0].id
 	);
-	const allUnlocked = saveData
-		? autoClickerSkins.every((skin) => Boolean(getValueAtPath(saveData, ['autoclickerSkins', skin.id])))
-		: false;
+	const isUnlocked = (skinId: number) => Boolean(getValueAtPath(saveData, ['autoclickerSkins', skinId]));
+	const allUnlocked = saveData ? autoClickerSkins.every((skin) => isUnlocked(skin.id)) : false;
+
+	const setUnlocked = (skinId: number, unlocked: boolean) => {
+		updateSave((current) => {
+			let next = setValueAtPath(current, ['autoclickerSkins', skinId], unlocked);
+			if (!unlocked && skinId === selectedSkinId) {
+				next = setValueAtPath(next, ['currentAutoclickerSkin'], autoClickerSkins[0].id);
+			}
+			return next;
+		});
+	};
 
 	return (
 		<CollapsiblePanel anchor={anchor} defaultOpen={defaultOpen} icon={icon} title={t('title')}>
@@ -99,7 +108,7 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 											ariaLabel={t('unlockedAria', { name: skin.name })}
 											checked={Boolean(getValueAtPath(saveData, ['autoclickerSkins', skin.id]))}
 											disabled={!saveData}
-											onCheckedChange={(checked) => updateValue(['autoclickerSkins', skin.id], checked)}
+											onCheckedChange={(checked) => setUnlocked(skin.id, checked)}
 										/>
 									</div>
 								</EditorTableCell>
@@ -115,6 +124,9 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 					<div aria-label={t('currentSkin')} className='mt-3 flex flex-wrap gap-2' role='radiogroup'>
 						{autoClickerSkins.map((skin) => {
 							const isSelected = selectedSkinId === skin.id;
+							// Only owned skins can be worn. The selected tile stays enabled even
+							// if an older save points at a locked skin, so it still shows.
+							const isSelectable = isSelected || isUnlocked(skin.id);
 
 							return (
 								// Picture only: the name lives in the accessible label and the hover title.
@@ -127,22 +139,14 @@ export const SkinsSection = ({ anchor, defaultOpen, icon, showToast }: Props) =>
 											? 'border-(--color-fg-dim) bg-(--color-surface-hover)'
 											: 'border-(--color-line) enabled:hover:border-(--color-line-strong)'
 									)}
-									disabled={!saveData}
+									disabled={!saveData || !isSelectable}
 									key={skin.id}
 									onClick={() => updateValue(['currentAutoclickerSkin'], skin.id)}
 									role='radio'
 									title={skin.name}
 									type='button'
 								>
-									<EditorImage
-										alt=''
-										className={cn(
-											'h-10 w-10 object-contain transition-[opacity,transform] duration-150 group-enabled:group-hover:scale-110',
-											isSelected ? 'opacity-100' : 'opacity-60 group-enabled:group-hover:opacity-100'
-										)}
-										size={40}
-										src={skin.imageSrc}
-									/>
+									<EditorImage alt='' className='h-10 w-10 object-contain' size={40} src={skin.imageSrc} />
 									{isSelected && (
 										<span className='absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full border border-(--color-fg-dim) bg-(--color-background)'>
 											<CheckIcon
