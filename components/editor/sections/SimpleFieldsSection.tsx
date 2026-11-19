@@ -66,7 +66,12 @@ export const SimpleFieldsSection: FC<Props> = ({ anchor, icon, title, descriptio
 						const help = fieldHelp(field);
 
 						return (
-							<EditorTableRow key={field.path.join('.')}>
+							<EditorTableRow
+								className={
+									field.path.length === 1 && field.path[0] === 'rubies' ? 'ruby-twinkle-row' : undefined
+								}
+								key={field.path.join('.')}
+							>
 								{showImageColumn ? (
 									<EditorTableCell>
 										{field.imageSrc ? (

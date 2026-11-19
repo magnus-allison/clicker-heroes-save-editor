@@ -309,6 +309,23 @@ html:not([data-loaded]) .fade-in-on-load {
 	animation-delay: calc(var(--fade-index, 0) * 45ms);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+	.ruby-twinkle-row:hover img {
+		animation: ruby-twinkle 700ms ease-in-out;
+	}
+}
+
+@keyframes ruby-twinkle {
+	40% {
+		filter: drop-shadow(0 0 4px rgba(255, 72, 112, 0.5));
+		transform: scale(1.05);
+	}
+	75% {
+		filter: drop-shadow(0 0 1px rgba(255, 72, 112, 0.2));
+		transform: scale(1.01);
+	}
+}
+
 /*
  * Spinning gradient border (Pill). The angle is a registered custom property so
  * it can be interpolated — plain `--vars` are unanimatable strings. The element
